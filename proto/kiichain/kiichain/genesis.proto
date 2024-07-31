@@ -1,0 +1,12 @@
+syntax = "proto3";
+package kiichain.kiichain;
+
+import "gogoproto/gogo.proto";
+import "kiichain/kiichain/params.proto";
+
+option go_package = "kiichain/x/kiichain/types";
+
+// GenesisState defines the kiichain module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+}
