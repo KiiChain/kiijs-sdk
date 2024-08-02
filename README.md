@@ -13,7 +13,7 @@ A JS/TS library for interacting with KiiChain and other Cosmos-based blockchain 
 ```bash
 npm install kiijs
 ```
-### Install with npm
+### Install with yarn
 
 ```bash
 yarn add kiijs
