@@ -1,5 +1,5 @@
 {
-  "name": "@kii/kiijs-sdk",
+  "name": "kiijs-sdk",
   "version": "1.0.0",
   "description": "Library for interacting with KiiChain in browser and Node.js environments",
   "main": "lib/index.js",

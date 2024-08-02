@@ -1,6 +1,6 @@
 import { StdFee } from '@cosmjs/amino';
 import { EncodeObject, OfflineSigner, Registry } from '@cosmjs/proto-signing';
-import { AuthExtension, BankExtension, SigningStargateClientOptions as BaseSigningStargateClientOptions, DeliverTxResponse, HttpEndpoint, QueryClient, SignerData, StakingExtension, StargateClient, StargateClientOptions } from '@cosmjs/stargate';
+import { AuthExtension, BankExtension, SigningStargateClientOptions as BaseSigningStargateClientOptions, DeliverTxResponse, HttpEndpoint, QueryClient, SignerData, StakingExtension, StargateClient } from '@cosmjs/stargate';
 import { CometClient } from '@cosmjs/tendermint-rpc';
 import { TxRaw } from 'cosmjs-types/cosmos/tx/v1beta1/tx.js';
 import { TxExtension } from './tx-extension';
@@ -16,7 +16,6 @@ export declare class KiiStargateClient extends StargateClient {
     private readonly gasPrice;
     private readonly customQueryClient;
     private readonly simulateEndpoint;
-    static connect(endpoint: string | HttpEndpoint, options?: StargateClientOptions): Promise<KiiStargateClient>;
     static connectWithSigner(endpoint: string | HttpEndpoint, signer: OfflineSigner, options?: SigningStargateClientOptions): Promise<KiiStargateClient>;
     static createWithSigner(cometClient: CometClient, signer: OfflineSigner, options?: SigningStargateClientOptions): Promise<KiiStargateClient>;
     static offline(signer: OfflineSigner, options?: SigningStargateClientOptions): Promise<KiiStargateClient>;

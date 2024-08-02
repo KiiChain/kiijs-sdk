@@ -1,10 +1,16 @@
 <h1 align="center">
-    <b>KiiJS/TS -SDK</b>
+    <b>KiiJS/TS-SDK</b>
 </h1>
 
 <p align="center">
-A JS/TS library for interacting with KiiChain and other Cosmos-based blockchain networks
+A kiijs library for interacting with KiiChain and other Cosmos-based blockchain networks
 </p>
+
+## Getting Started
+
+`kiijs` is a library written in TypeScript used for interacting with kiichain. The library provides classes and methods to conveniently send transactions, query data, and wallet management. The library is implemented based on gRPC-web protocol which sends HTTP/1.5 or HTTP/2 requests to a gRPC proxy server, before serving them as HTTP/2 to gRPC server.
+
+The library support both Node.js and browsers.
 
 ## Installation
 
