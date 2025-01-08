@@ -35,7 +35,7 @@ import {KiiStargateQueryClient} from "../kiijs/client";
 async function main() {
 
   // connect to Kiichain test network using rpc
-  const rpcEndpoint = "https://a.testnet.kiivalidator.com:26658/";
+  const rpcEndpoint = "https://rpc.dos.sentry.testnet.v3.kiivalidator.com/";
   const client = await KiiStargateQueryClient.connect(
     rpcEndpoint
   );
