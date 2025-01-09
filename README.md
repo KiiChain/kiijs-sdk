@@ -35,7 +35,7 @@ import {KiiStargateQueryClient} from "../kiijs/client";
 async function main() {
 
   // connect to Kiichain test network using rpc
-  const rpcEndpoint = "https://a.testnet.kiivalidator.com:26658/";
+  const rpcEndpoint = "https://rpc.dos.sentry.testnet.v3.kiivalidator.com/";
   const client = await KiiStargateQueryClient.connect(
     rpcEndpoint
   );
@@ -50,7 +50,7 @@ async function main() {
 ## Documentation
 
 [comment]: # (TODO: Update this and other occurence with proper docs url)
-The full documentation can be found [here](https://docs.kiiglobal.io/kiipy/).
+The full documentation can be found [here](https://docs.kiiglobal.io/docs/build-on-kiichain/developer-tools/js-ts-sdk).
 
 ## Examples
 
@@ -70,10 +70,15 @@ Please be sure to read and follow our [Code of Conduct][coc]. By participating, 
 
 Read our [contribution guidelines][contributing] to learn about our issue and pull request submission processes, coding rules, and more.
 
-### Development Guidelines
-
-Read our [development guidelines][developing] to learn about the development processes and workflows.
-
 ### Issues, Questions and Discussions
 
-We use [GitHub Issues][issues] for tracking requests and bugs, and [GitHub Discussions][discussion] for general questions and discussion.
+We use [GitHub Issues][issues] for tracking requests and bugs, and for general questions and discussion.
+
+## License
+
+The KiiJS project is licensed under [Apache License 2.0][license].
+
+[contributing]: ./CONTRIBUTING.md
+[coc]: ./CODE_OF_CONDUCT.md
+[issues]: https://github.com/KiiChain/kiijs-sdk/issues
+[license]: ./LICENSE
