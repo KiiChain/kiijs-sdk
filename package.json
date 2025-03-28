@@ -1,58 +1,47 @@
 {
   "name": "kiijs-sdk",
-  "version": "2.0.1",
-  "description": "Library for interacting with KiiChain in browser and Node.js environments",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "scripts": {
-    "clean": "rimraf coverage lib cjs esm",
-    "tsc": "tsc -p tsconfig.json",
-    "build": "npm run build:cjs && npm run build:esm",
-    "build:cjs": "npx tsc --module commonjs --outDir cjs/ && echo '{\"type\": \"commonjs\"}' > cjs/package.json",
-    "build:esm": "npx tsc --module es2022 --outDir esm/ && echo '{\"type\": \"module\"}' > esm/package.json",
-    "prepublish": "yarn clean && yarn tsc",
-    "dev": "ts-node ./example/main.ts",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch"
-  },
+  "version": "0.0.1",
+  "author": "kiiglobal.io <devs@kiiglobal.io>",
+  "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/kii/kiijs-sdk"
+    "url": "https://github.com/KiiChain/kiijs-sdk"
   },
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "clean": "lerna run clean",
+    "build": "lerna run build --stream",
+    "lint": "lerna run lint --parallel",
+    "test": "lerna run test --stream --scope kiijs-sdk",
+    "codegen": "lerna run codegen --stream --scope kiijs-sdk",
+    "symlink": "symlink-workspace --logLevel error",
+    "postinstall": "yarn symlink"
+  },
   "devDependencies": {
-    "@types/jest": "^29.5.1",
-    "@types/secp256k1": "^4.0.3",
-    "jest": "^29.5.0",
-    "rimraf": "^5.0.0",
-    "ts-jest": "^29.1.0",
-    "ts-node": "^10.9.1",
-    "ts-proto": "1.121.6",
-    "typescript": "^5.0.4"
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.12.7",
+    "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "@typescript-eslint/parser": "^7.10.0",
+    "copyfiles": "^2.4.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-simple-import-sort": "^12.1.0",
+    "eslint-plugin-unused-imports": "^4.0.0",
+    "eslint": "^8.56.0",
+    "jest": "^29.6.2",
+    "lerna": "^6",
+    "prettier": "^3.0.2",
+    "rimraf": "4.4.1",
+    "strip-ansi": "^5",
+    "symlink-workspace": "^1.1.0",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.1.6"
   },
-  "dependencies": {
-    "@cosmjs/amino": "^0.32.4",
-    "@cosmjs/crypto": "^0.32.4",
-    "@cosmjs/encoding": "^0.32.4",
-    "@cosmjs/math": "^0.32.4",
-    "@cosmjs/proto-signing": "^0.32.4",
-    "@cosmjs/stargate": "^0.32.4",
-    "@cosmjs/tendermint-rpc": "^0.32.4",
-    "@cosmjs/utils": "^0.32.4",
-    "@types/google-protobuf": "^3.15.6",
-    "axios": "^1.4.0",
-    "bech32": "^2.0.0",
-    "bip32": "^4.0.0",
-    "bip39": "^3.1.0",
-    "crypto": "^1.0.1",
-    "ecpair": "^2.1.0",
-    "google-protobuf": "^3.21.2",
-    "secp256k1": "^5.0.0",
-    "web3": "^4.11.1"
-  },
-  "prettier": {
-    "trailingComma": "all",
-    "semi": false,
-    "singleQuote": true
-  }
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
