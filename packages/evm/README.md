@@ -53,7 +53,7 @@ const accounts = await provider.send('eth_requestAccounts', []);
 
 const contract = getAddressPrecompileEthersV6Contract(ADDRESS_PRECOMPILE_ADDRESS, signer);
 
-const cosmosAddress = await contract.getSeiAddr(accounts[0]);
+const cosmosAddress = await contract.getKiiAddr(accounts[0]);
 ```
 
 <br>
@@ -168,9 +168,6 @@ The JSON precompile contract facilitates interoperability between the EVM and Co
 | `extractAsBytes`         | `input: ` `string`, `key: ` `string` | `{ response: string }`   | Extracts data as bytes from the input using the specified key.           |
 | `extractAsBytesList` | `input: ` `string`, `key: ` `string` | `{ response: string[] }` | Extracts data as a list of bytes from the input using the specified key. |
 | `extractAsUint256`     | `input: ` `string`, `key: ` `string` | `{ response: string }`   | Extracts data as a uint256 from the input using the specified key.       |
-
-#### Precompile Addresses
-- [arctic-1](/sei-js/docs/variables/evm.JSON_PRECOMPILE_ADDRESS.html)
 
 <br>
 <br>

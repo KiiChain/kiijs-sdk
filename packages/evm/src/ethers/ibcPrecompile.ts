@@ -22,7 +22,7 @@ export const ETHERS_IBC_PRECOMPILE_ABI = IBC_PRECOMPILE_ABI as InterfaceAbi;
  * const ibcPrecompileContract = getIbcPrecompileEthersV6Contract(signer);
  * const cosmosAddress = 'cosmos1...';
  *
- * const bool = await ibcPrecompileContract.transfer(cosmosAddress, 'transfer', 'channel-0', 'usei', 100, 1n, 1n, 1n, 'memo');
+ * const bool = await ibcPrecompileContract.transfer(cosmosAddress, 'transfer', 'channel-0', 'ukii', 100, 1n, 1n, 1n, 'memo');
  * console.log('Transfer successful:', bool);
  * ```
  *

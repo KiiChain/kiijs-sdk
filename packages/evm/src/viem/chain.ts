@@ -1,6 +1,6 @@
 import { defineChain } from 'viem';
 
-export const seiLocal = defineChain({
+export const kiiLocal = defineChain({
 	id: 713715,
 	name: 'Kii Local',
 	nativeCurrency: { name: 'Kii', symbol: 'KII', decimals: 18 },

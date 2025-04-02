@@ -23,7 +23,7 @@ export const ETHERS_BANK_PRECOMPILE_ABI = BANK_PRECOMPILE_ABI as InterfaceAbi;
  *
  * const bankPrecompileContract = getBankPrecompileEthersV6Contract(signer);
  *
- * const balance = await bankPrecompileContract.balance(accounts[0], 'usei');
+ * const balance = await bankPrecompileContract.balance(accounts[0], 'ukii');
  * console.log('Balance:', balance);
  * ```
  *
