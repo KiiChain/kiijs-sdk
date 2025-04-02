@@ -1,7 +1,7 @@
 {
   "name": "kiijs-sdk",
-  "version": "0.0.1",
-  "author": "kiiglobal.io <devs@kiiglobal.io>",
+  "version": "1.0.0",
+  "author": "kiiglobal.io <dev@kiiglobal.io>",
   "private": true,
   "repository": {
     "type": "git",

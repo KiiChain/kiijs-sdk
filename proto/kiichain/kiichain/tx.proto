@@ -1,7 +1,0 @@
-syntax = "proto3";
-package kiichain.kiichain;
-
-option go_package = "kiichain/x/kiichain/types";
-
-// Msg defines the Msg service.
-service Msg {}

@@ -1,7 +1,7 @@
 {
-  "name": "kiijs-sdk",
-  "version": "0.0.1",
-  "author": "kiiglobal.io <devs@kiiglobal.io>",
+  "name": "@kiijs-sdk/proto",
+  "version": "1.0.0",
+  "author": "kiiglobal.io <dev@kiiglobal.io>",
   "description": "JS SDK for kiichain",
   "main": "index.js",
   "module": "esm/index.js",
