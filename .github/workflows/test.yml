@@ -1,0 +1,35 @@
+name: Test Packages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package: ['evm', 'proto']
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      # Install Yarn (modern Berry)
+      - name: Setup Yarn
+        run: |
+          corepack enable
+          yarn set version stable
+          yarn install
+          
+      # Run tests with coverage
+      - name: Test ${{ matrix.package }}
+        working-directory: ./packages/${{ matrix.package }}
+        run: yarn test:ci
+        env:
+          CI: true
