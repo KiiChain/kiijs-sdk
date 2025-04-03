@@ -1,0 +1,49 @@
+name: Publish Packages
+
+on:
+  workflow_dispatch: {}  # Manual trigger
+  push:
+    tags: ['v*']        # Auto-trigger on version tags
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+        if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v')
+      
+      # Setup Node.js and Yarn
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      # Install Yarn (modern Berry version)
+      - name: Install Yarn
+        run: |
+          corepack enable
+          yarn set version stable
+          yarn install
+          
+      # Build packages
+      - name: Build packages
+        run: yarn build
+        
+      # Publish EVM package
+      - name: Publish EVM package
+        working-directory: ./packages/evm
+        run: yarn npm publish --access public
+        env:
+          NPM_CONFIG_REGISTRY: 'https://registry.npmjs.org'
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+          
+      # Publish Proto package
+      - name: Publish Proto package
+        working-directory: ./packages/proto
+        run: yarn npm publish --access public
+        env:
+          NPM_CONFIG_REGISTRY: 'https://registry.npmjs.org'
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
