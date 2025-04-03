@@ -1,0 +1,43 @@
+{
+	"name": "@kiijs-sdk/evm",
+	"version": "1.0.0",
+	"author": "kiiglobal.io <devs@kiiglobal.io>",
+	"description": "TypeScript library for EVM interactions on the Kii blockchain",
+	"main": "./dist/cjs/index.js",
+	"module": "./dist/esm/index.js",
+	"types": "./dist/types/index.d.ts",
+	"sideEffects": false,
+	"scripts": {
+		"prebuild": "rimraf dist",
+		"build": "yarn build:types && yarn build:cjs && yarn build:esm && yarn build:prettier",
+		"build:cjs": "tsc --outDir dist/cjs --module commonjs",
+		"build:esm": "tsc --outDir dist/esm --module esnext",
+		"build:types": "tsc --project ./tsconfig.declaration.json",
+		"build:prettier": "prettier --write 'dist/**/*.js'",
+		"docs": "typedoc --out docs",
+		"test": "jest --passWithNoTests",
+		"lint": "eslint --ext .ts"
+	},
+	"homepage": "https://github.com/KiiChain/kiijs-sdk#readme",
+	"keywords": [
+		"kii",
+		"javascript",
+		"typescript",
+		"node",
+		"evm"
+	],
+	"repository": "git@github.com:KiiChain/kiijs-sdk.git",
+	"license": "MIT",
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"peerDependencies": {
+		"ethers": "^6.0.0",
+		"viem": "2.x"
+	},
+	"devDependencies": {
+		"ethers": "^6.0.0",
+		"viem": "2.x"
+	}
+}
