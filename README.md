@@ -1,84 +1,326 @@
-<h1 align="center">
-    <b>KiiJS/TS-SDK</b>
-</h1>
+# kiijs-sdk
 
 <p align="center">
-A kiijs library for interacting with KiiChain and other Cosmos-based blockchain networks
+  <img src="https://user-images.githubusercontent.com/545047/188804067-28e67e5e-0214-4449-ab04-2e0c564a6885.svg" width="80"><br />
+    JS SDK for kiichain
 </p>
 
-## Getting Started
+<p align="center" width="100%">
+  <a href="https://github.com/KiiChain/kiijs-sdk/actions/workflows/run-tests.yml">
+    <img height="20" src="https://github.com/KiiChain/kiijs-sdk/actions/workflows/run-tests.yml/badge.svg" />
+  </a>
+   <a href="https://github.com/KiiChain/kiijs-sdk/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+</p>
 
-`kiijs` is a library written in TypeScript used for interacting with kiichain. The library provides classes and methods to conveniently send transactions, query data, and wallet management. The library is implemented based on gRPC-web protocol which sends HTTP/1.5 or HTTP/2 requests to a gRPC proxy server, before serving them as HTTP/2 to gRPC server.
 
-The library support both Node.js and browsers.
+## install
 
-## Installation
-
-### Install with npm
-
-```bash
-npm install kiijs
+```sh
+npm install kiijs-sdk
 ```
-### Install with yarn
+## Table of contents
 
-```bash
-yarn add kiijs
+- [kiijs-sdk](#kiijs-sdk)
+  - [Install](#install)
+  - [Table of contents](#table-of-contents)
+- [Usage](#usage)
+    - [RPC Clients](#rpc-clients)
+    - [Composing Messages](#composing-messages)
+        - Cosmos, CosmWasm, and IBC
+            - [CosmWasm](#cosmwasm-messages)
+            - [IBC](#ibc-messages)
+            - [Cosmos](#cosmos-messages)
+- [Wallets and Signers](#connecting-with-wallets-and-signing-messages)
+    - [Stargate Client](#initializing-the-stargate-client)
+    - [Creating Signers](#creating-signers)
+    - [Broadcasting Messages](#broadcasting-messages)
+- [Advanced Usage](#advanced-usage)
+- [Developing](#developing)
+- [Codegen](#codegen)
+- [Publishing](#publishing)
+- [Stack](#interchain-javascript-stack)
+- [Credits](#credits)
+
+## Usage
+### RPC Clients
+
+```js
+import { kiichain } from 'kiijs-sdk';
+
+const { createRPCQueryClient } = kiichain.ClientFactory; 
+const client = await createRPCQueryClient({ rpcEndpoint: RPC_ENDPOINT });
+
+// now you can query the cosmos modules
+const balance = await client.cosmos.bank.v1beta1
+    .allBalances({ address: 'kiichain1addresshere' });
+
+// you can also query the kiichain modules
+const balances = await client.kiichain.exchange.v1beta1
+    .exchangeBalances()
 ```
 
-## Getting Started
+### Composing Messages
 
-Below is a simple example for querying an account's balances:
+Import the `kiichain` object from `kiijs-sdk`. 
 
-```javascript
-import {KiiStargateQueryClient} from "../kiijs/client";
+```js
+import { kiichain } from 'kiijs-sdk';
 
-async function main() {
-
-  // connect to Kiichain test network using rpc
-  const rpcEndpoint = "https://rpc.dos.sentry.testnet.v3.kiivalidator.com/";
-  const client = await KiiStargateQueryClient.connect(
-    rpcEndpoint
-  );
-  
-  // show all coin balances
-  const address = "kii1s0jekzmfy3ejmf75lh0xfc2zl3958lfk8gqtws";
-  const balance = await client.getAllBalances(address);
-  console.log('balance', balance);
-}
+const {
+    createSpotLimitOrder,
+    createSpotMarketOrder,
+    deposit
+} = kiichain.exchange.v1beta1.MessageComposer.withTypeUrl;
 ```
 
-## Documentation
+#### CosmWasm Messages
 
-[comment]: # (TODO: Update this and other occurence with proper docs url)
-The full documentation can be found [here](https://docs.kiiglobal.io/docs/build-on-kiichain/developer-tools/js-ts-sdk).
+```js
+import { cosmwasm } from "kiijs-sdk";
 
-## Examples
+const {
+    clearAdmin,
+    executeContract,
+    instantiateContract,
+    migrateContract,
+    storeCode,
+    updateAdmin
+} = cosmwasm.wasm.v1.MessageComposer.withTypeUrl;
+```
 
-Under the `example` directory, you can find examples of basic ledger interactions using `kiijs`, such as transferring tokens, staking, and deploying.
+#### IBC Messages
 
-## Contributing
+```js
+import { ibc } from 'kiijs-sdk';
 
-All contributions are very welcome! Remember, contribution is not only PRs and code, but any help with docs or helping other developers solve their issues are very appreciated!
+const {
+    transfer
+} = ibc.applications.transfer.v1.MessageComposer.withTypeUrl
+```
 
-Read below to learn how you can take part in the KiiJS-SDK project.
+#### Cosmos Messages
 
-### Code of Conduct
+```js
+import { cosmos } from 'kiijs-sdk';
 
-Please be sure to read and follow our [Code of Conduct][coc]. By participating, you are expected to uphold this code.
+const {
+    fundCommunityPool,
+    setWithdrawAddress,
+    withdrawDelegatorReward,
+    withdrawValidatorCommission
+} = cosmos.distribution.v1beta1.MessageComposer.fromPartial;
 
-### Contribution Guidelines
+const {
+    multiSend,
+    send
+} = cosmos.bank.v1beta1.MessageComposer.fromPartial;
 
-Read our [contribution guidelines][contributing] to learn about our issue and pull request submission processes, coding rules, and more.
+const {
+    beginRedelegate,
+    createValidator,
+    delegate,
+    editValidator,
+    undelegate
+} = cosmos.staking.v1beta1.MessageComposer.fromPartial;
 
-### Issues, Questions and Discussions
+const {
+    deposit,
+    submitProposal,
+    vote,
+    voteWeighted
+} = cosmos.gov.v1beta1.MessageComposer.fromPartial;
+```
 
-We use [GitHub Issues][issues] for tracking requests and bugs, and for general questions and discussion.
+## Connecting with Wallets and Signing Messages
 
-## License
+⚡️ For web interfaces, we recommend using [cosmos-kit](https://github.com/hyperweb-io/cosmos-kit). Continue below to see how to manually construct signers and clients.
 
-The KiiJS project is licensed under [Apache License 2.0][license].
+Here are the docs on [creating signers](https://docs.hyperweb.io/cosmos-kit) in cosmos-kit that can be used with Keplr and other wallets.
 
-[contributing]: ./CONTRIBUTING.md
-[coc]: ./CODE_OF_CONDUCT.md
-[issues]: https://github.com/KiiChain/kiijs-sdk/issues
-[license]: ./LICENSE
+### Initializing the Stargate Client
+
+Use `getSigningKiiChainClient` to get your `SigningStargateClient`, with the proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
+
+```js
+import { getSigningKiiChainClient } from 'kiijs-sdk';
+
+const stargateClient = await getSigningKiiChainClient({
+  rpcEndpoint,
+  signer // OfflineSigner
+});
+```
+### Creating Signers
+
+To broadcast messages, you can create signers with a variety of options:
+
+* [cosmos-kit](https://docs.hyperweb.io/cosmos-kit) (recommended)
+* [keplr](https://docs.keplr.app/api/cosmjs.html)
+* [cosmjs](https://gist.github.com/webmaster128/8444d42a7eceeda2544c8a59fbd7e1d9)
+### Amino Signer
+
+Likely you'll want to use the Amino, so unless you need proto, you should use this one:
+
+```js
+import { getOfflineSignerAmino as getOfflineSigner } from 'cosmjs-utils';
+```
+### Proto Signer
+
+```js
+import { getOfflineSignerProto as getOfflineSigner } from 'cosmjs-utils';
+```
+
+WARNING: NOT RECOMMENDED TO USE PLAIN-TEXT MNEMONICS. Please take care of your security and use best practices such as AES encryption and/or methods from 12factor applications.
+
+```js
+import { chains } from 'chain-registry';
+
+const mnemonic =
+  'unfold client turtle either pilot stock floor glow toward bullet car science';
+  const chain = chains.find(({ chain_name }) => chain_name === 'kiichain');
+  const signer = await getOfflineSigner({
+    mnemonic,
+    chain
+  });
+```
+### Broadcasting Messages
+
+Now that you have your `stargateClient`, you can broadcast messages:
+
+```js
+const { send } = cosmos.bank.v1beta1.MessageComposer.withTypeUrl;
+
+const msg = send({
+    amount: [
+    {
+        denom: 'coin',
+        amount: '1000'
+    }
+    ],
+    toAddress: address,
+    fromAddress: address
+});
+
+const fee: StdFee = {
+    amount: [
+    {
+        denom: 'coin',
+        amount: '864'
+    }
+    ],
+    gas: '86364'
+};
+const response = await stargateClient.signAndBroadcast(address, [msg], fee);
+```
+
+## Advanced Usage
+
+
+If you want to manually construct a stargate client
+
+```js
+import { OfflineSigner, GeneratedType, Registry } from "@cosmjs/proto-signing";
+import { AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
+
+import { 
+    cosmosAminoConverters,
+    cosmosProtoRegistry,
+    cosmwasmAminoConverters,
+    cosmwasmProtoRegistry,
+    ibcProtoRegistry,
+    ibcAminoConverters,
+    kiichainAminoConverters,
+    kiichainProtoRegistry
+} from 'kiijs-sdk';
+
+const signer: OfflineSigner = /* create your signer (see above)  */
+const rpcEndpint = 'https://rpc.cosmos.directory/kiichain'; // or another URL
+
+const protoRegistry: ReadonlyArray<[string, GeneratedType]> = [
+    ...cosmosProtoRegistry,
+    ...cosmwasmProtoRegistry,
+    ...ibcProtoRegistry,
+    ...kiichainProtoRegistry
+];
+
+const aminoConverters = {
+    ...cosmosAminoConverters,
+    ...cosmwasmAminoConverters,
+    ...ibcAminoConverters,
+    ...kiichainAminoConverters
+};
+
+const registry = new Registry(protoRegistry);
+const aminoTypes = new AminoTypes(aminoConverters);
+
+const stargateClient = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
+    registry,
+    aminoTypes
+});
+```
+
+## Developing
+
+When first cloning the repo:
+
+```
+yarn
+yarn build
+```
+
+### Codegen
+
+Look inside of `scripts/codegen.ts` and configure the settings for bundling your SDK and contracts into `kiijs-sdk`:
+
+```
+yarn codegen
+```
+
+### Publishing
+
+To publish, use `lerna`:
+
+```
+lerna publish
+```
+
+You can publish patch, minor, or major versions:
+
+```
+lerna publish minor
+```
+
+If you absolutely need to publish manually using npm, ensure to do it this way, and publish from the `dist/` directory for proper tree-shaking module paths:
+
+```
+cd ./packages/<your-telescope-module>
+yarn build
+cd dist
+npm publish
+```
+
+## Interchain JavaScript Stack 
+
+A unified toolkit for building applications and smart contracts in the Interchain ecosystem ⚛️
+
+| Category              | Tools                                                                                                                  | Description                                                                                           |
+|----------------------|------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| **Chain Information**   | [**Chain Registry**](https://github.com/hyperweb-io/chain-registry), [**Utils**](https://www.npmjs.com/package/@chain-registry/utils), [**Client**](https://www.npmjs.com/package/@chain-registry/client) | Everything from token symbols, logos, and IBC denominations for all assets you want to support in your application. |
+| **Wallet Connectors**| [**Interchain Kit**](https://github.com/hyperweb-io/interchain-kit)<sup>beta</sup>, [**Cosmos Kit**](https://github.com/hyperweb-io/cosmos-kit) | Experience the convenience of connecting with a variety of web3 wallets through a single, streamlined interface. |
+| **Signing Clients**          | [**InterchainJS**](https://github.com/hyperweb-io/interchainjs)<sup>beta</sup>, [**CosmJS**](https://github.com/cosmos/cosmjs) | A single, universal signing interface for any network |
+| **SDK Clients**              | [**Telescope**](https://github.com/hyperweb-io/telescope)                                                          | Your Frontend Companion for Building with TypeScript with Cosmos SDK Modules. |
+| **Starter Kits**     | [**Create Interchain App**](https://github.com/hyperweb-io/create-interchain-app)<sup>beta</sup>, [**Create Cosmos App**](https://github.com/hyperweb-io/create-cosmos-app) | Set up a modern Interchain app by running one command. |
+| **UI Kits**          | [**Interchain UI**](https://github.com/hyperweb-io/interchain-ui)                                                   | The Interchain Design System, empowering developers with a flexible, easy-to-use UI kit. |
+| **Testing Frameworks**          | [**Starship**](https://github.com/hyperweb-io/starship)                                                             | Unified Testing and Development for the Interchain. |
+| **TypeScript Smart Contracts** | [**Create Hyperweb App**](https://github.com/hyperweb-io/create-hyperweb-app)                              | Build and deploy full-stack blockchain applications with TypeScript |
+| **CosmWasm Contracts** | [**CosmWasm TS Codegen**](https://github.com/CosmWasm/ts-codegen)                                                   | Convert your CosmWasm smart contracts into dev-friendly TypeScript classes. |
+
+## Credits
+
+🛠 Built by Hyperweb (formerly Cosmology) — if you like our tools, please checkout and contribute to [our github ⚛️](https://github.com/hyperweb-io)
+
+
+## Disclaimer
+
+AS DESCRIBED IN THE LICENSES, THE SOFTWARE IS PROVIDED “AS IS”, AT YOUR OWN RISK, AND WITHOUT WARRANTIES OF ANY KIND.
+
+No developer or entity involved in creating this software will be liable for any claims or damages whatsoever associated with your use, inability to use, or your interaction with other users of the code, including any direct, indirect, incidental, special, exemplary, punitive or consequential damages, or loss of profits, cryptocurrencies, tokens, or anything else of value.
