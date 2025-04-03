@@ -9,7 +9,7 @@
   },
   "license": "SEE LICENSE IN LICENSE",
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "workspaces": [
     "packages/*"
