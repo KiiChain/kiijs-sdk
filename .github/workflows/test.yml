@@ -25,7 +25,7 @@ jobs:
         run: |
           corepack enable
           yarn set version stable
-          yarn install
+          yarn install --no-immutable
           
       # Run tests with coverage
       - name: Test ${{ matrix.package }}

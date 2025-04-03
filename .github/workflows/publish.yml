@@ -27,7 +27,7 @@ jobs:
         run: |
           corepack enable
           yarn set version stable
-          yarn install
+          yarn install --no-immutable
           
       # Build packages
       - name: Build packages
