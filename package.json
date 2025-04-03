@@ -18,7 +18,9 @@
     "clean": "lerna run clean",
     "build": "lerna run build --stream",
     "lint": "lerna run lint --parallel",
-    "test": "lerna run test --stream --scope kiijs-sdk",
+    "test": "yarn test:evm && yarn test:proto",
+    "test:evm": "cd packages/evm && yarn test",
+    "test:proto": "cd packages/proto && yarn test",
     "codegen": "lerna run codegen --stream --scope kiijs-sdk",
     "symlink": "symlink-workspace --logLevel error",
     "postinstall": "yarn symlink"
