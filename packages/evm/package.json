@@ -31,7 +31,8 @@
 	"license": "MIT",
 	"private": false,
 	"publishConfig": {
-		"access": "public"
+		"access": "public",
+		"registry": "https://registry.npmjs.org"
 	},
 	"peerDependencies": {
 		"ethers": "^6.0.0",
