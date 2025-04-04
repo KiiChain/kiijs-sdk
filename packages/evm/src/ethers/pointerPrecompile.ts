@@ -13,7 +13,7 @@ export const ETHERS_POINTER_PRECOMPILE_ABI = POINTER_PRECOMPILE_ABI as Interface
  *
  * @example
  * ```tsx
- * import { getPointerPrecompileEthersV6Contract } from 'kiijs-sdk/evm/ethers';
+ * import { getPointerPrecompileEthersV6Contract } from '@devkiiglobal/kiijs-evm/ethers';
  * import { ethers } from 'ethers';
  *
  * const provider = new ethers.BrowserProvider(window.ethereum); // or any other provider

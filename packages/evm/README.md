@@ -1,11 +1,11 @@
-# kiijs-sdk/evm
+# @devkiiglobal/kiijs-evm
 
 Typescript library containing helper functions for interacting with the EVM on KiiChain.
 
 ## Installation
 
 ```bash
-yarn add kiijs-sdk/evm ethers viem
+yarn add @devkiiglobal/kiijs-evm ethers viem
 ```
 
 <br>
@@ -25,7 +25,7 @@ The WagmiProvider is a React context provider that allows you to easily interact
 import { ReactNode } from 'react';
 import { WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ARCTIC_1_VIEM_CHAIN, createWagmiConfig } from 'kiijs-sdk/evm';
+import { ARCTIC_1_VIEM_CHAIN, createWagmiConfig } from '@devkiiglobal/kiijs-evm';
 
 const queryClient = new QueryClient();
 
@@ -43,7 +43,7 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
 ### Connection with ethers v6
 The 'ethers' package is a popular library for interacting with the Ethereum blockchain. This package provides a helper function for creating an ethers provider that is connected to the KiiChain EVM.
 ```tsx
-import { ADDRESS_PRECOMPILE_ADDRESS } from 'kiijs-sdk/evm';
+import { ADDRESS_PRECOMPILE_ADDRESS } from '@devkiiglobal/kiijs-evm';
 import { ethers } from 'ethers';
 
 const provider = new ethers.BrowserProvider(window.ethereum); // or any other provider
