@@ -13,7 +13,7 @@ export const ETHERS_ADDRESS_PRECOMPILE_ABI = ADDRESS_PRECOMPILE_ABI as Interface
  *
  * @example
  * ```tsx
- * import { getAddressPrecompileEthersV6Contract } from 'kiijs-sdk/evm/ethers';
+ * import { getAddressPrecompileEthersV6Contract } from '@devkiiglobal/kiijs-evm/ethers';
  * import { ethers } from 'ethers';
  *
  * const provider = new ethers.BrowserProvider(window.ethereum); // or any other provider

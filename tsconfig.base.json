@@ -15,7 +15,7 @@
 
     "baseUrl": "./",
     "paths": {
-      "kiijs-sdk/evm/*": ["packages/evm/dist/esm/*", "packages/evm/dist/cjs/*"],
+      "@devkiiglobal/kiijs-evm/*": ["packages/evm/dist/esm/*", "packages/evm/dist/cjs/*"],
     }
   },
   "exclude": [
