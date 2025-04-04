@@ -10,6 +10,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "publishConfig": {
     "access": "public",
+    "registry": "https://registry.npmjs.org",
     "directory": "dist"
   },
   "repository": {
