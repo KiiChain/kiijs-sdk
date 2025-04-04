@@ -14,5 +14,8 @@ module.exports = {
     transformIgnorePatterns: [`/node_modules/*`],
     testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
-    modulePathIgnorePatterns: ["dist/*"]
+    modulePathIgnorePatterns: ["dist/*"],
+    moduleNameMapper: {
+      '^@devkiiglobal/proto$': '<rootDir>/src/index.ts'
+    }
 };
