@@ -13,7 +13,7 @@ export const ETHERS_ORACLE_PRECOMPILE_ABI = ORACLE_PRECOMPILE_ABI as InterfaceAb
  *
  * @example
  * ```tsx
- * import { getOraclePrecompileEthersV6Contract } from '@kiijs-sdk/evm/ethers';
+ * import { getOraclePrecompileEthersV6Contract } from 'kiijs-sdk/evm/ethers';
  * import { ethers } from 'ethers';
  *
  * const provider = new ethers.BrowserProvider(window.ethereum); // or any other provider

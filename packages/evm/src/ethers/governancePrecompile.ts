@@ -13,7 +13,7 @@ export const ETHERS_GOVERNANCE_PRECOMPILE_ABI = GOVERNANCE_PRECOMPILE_ABI as Int
  *
  * @example
  * ```tsx
- * import { getGovernancePrecompileEthersV6Contract} from '@kiijs-sdk/evm/ethers';
+ * import { getGovernancePrecompileEthersV6Contract} from 'kiijs-sdk/evm/ethers';
  * import { ethers } from 'ethers';
  *
  * const provider = new ethers.BrowserProvider(); // or any other provider

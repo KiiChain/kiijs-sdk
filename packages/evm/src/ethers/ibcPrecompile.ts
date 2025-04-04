@@ -13,7 +13,7 @@ export const ETHERS_IBC_PRECOMPILE_ABI = IBC_PRECOMPILE_ABI as InterfaceAbi;
  *
  * @example
  * ```tsx
- * import { getIbcPrecompileEthersV6Contract } from '@kiijs-sdk/evm/ethers';
+ * import { getIbcPrecompileEthersV6Contract } from 'kiijs-sdk/evm/ethers';
  * import { ethers } from 'ethers';
  *
  * const provider = new ethers.BrowserProvider(window.ethereum); // or any other provider
