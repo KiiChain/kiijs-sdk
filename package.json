@@ -21,6 +21,9 @@
     "test": "yarn test:evm && yarn test:proto",
     "test:evm": "cd packages/evm && yarn test",
     "test:proto": "cd packages/proto && yarn test",
+    "test:ci": "yarn test:evm:ci && yarn test:proto:ci",
+    "test:evm:ci": "cd packages/evm && yarn test:ci",
+    "test:proto:ci": "cd packages/proto && yarn test:ci",
     "codegen": "lerna run codegen --stream --scope kiijs-sdk",
     "symlink": "symlink-workspace --logLevel error",
     "postinstall": "yarn symlink"
