@@ -13,7 +13,7 @@ export const ETHERS_DISTRIBUTION_PRECOMPILE_ABI = DISTRIBUTION_PRECOMPILE_ABI as
  *
  * @example
  * ```tsx
- * import { getDistributionPrecompileEthersV6Contract } from '@kiijs-sdk/evm/ethers';
+ * import { getDistributionPrecompileEthersV6Contract } from 'kiijs-sdk/evm/ethers';
  * import { ethers } from 'ethers';
  *
  * const provider = new ethers.BrowserProvider(); // or any other provider
