@@ -13,7 +13,7 @@ export const ETHERS_WASM_PRECOMPILE_ABI = WASM_PRECOMPILE_ABI as InterfaceAbi;
  *
  * @example
  * ```tsx
- * import { getWasmPrecompileEthersV6Contract } from '@devkiiglobal/kiijs-evm/ethers';
+ * import { getWasmPrecompileEthersV6Contract } from '@kiichain/kiijs-evm/ethers';
  * import { ethers } from 'ethers';
  *
  * const provider = new ethers.BrowserProvider(window.ethereum); // or any other provider

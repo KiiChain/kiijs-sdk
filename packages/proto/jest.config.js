@@ -16,6 +16,6 @@ module.exports = {
     moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
     modulePathIgnorePatterns: ["dist/*"],
     moduleNameMapper: {
-      '^@devkiiglobal/proto$': '<rootDir>/src/index.ts'
+      '^@kiichain/proto$': '<rootDir>/src/index.ts'
     }
 };

@@ -13,7 +13,7 @@ export const ETHERS_JSON_PRECOMPILE_ABI = JSON_PRECOMPILE_ABI as InterfaceAbi;
  *
  * @example
  * ```tsx
- * import { getJSONPrecompileEthersV6Contract } from '@devkiiglobal/kiijs-evm/ethers';
+ * import { getJSONPrecompileEthersV6Contract } from '@kiichain/kiijs-evm/ethers';
  * import { ethers } from 'ethers';
  *
  * const provider = new ethers.BrowserProvider(window.ethereum); // or any other provider

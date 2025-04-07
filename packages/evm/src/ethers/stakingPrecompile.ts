@@ -13,7 +13,7 @@ export const ETHERS_STAKING_PRECOMPILE_ABI = STAKING_PRECOMPILE_ABI as Interface
  *
  * @example
  * ```tsx
- * import { getStakingPrecompileEthersV6Contract} from '@devkiiglobal/kiijs-evm/ethers';
+ * import { getStakingPrecompileEthersV6Contract} from '@kiichain/kiijs-evm/ethers';
  * import { ethers } from 'ethers';
  *
  * const provider = new ethers.BrowserProvider(window.ethereum); // or any other provider
