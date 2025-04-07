@@ -14,7 +14,7 @@ export const kiichainAminoConverters = {
   ...tokenfactoryTxAmino.AminoConverter
 };
 export const kiichainProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...evmTxRegistry.registry, ...oracleTxRegistry.registry, ...tokenfactoryTxRegistry.registry];
-export const getSigningKiichainClientOptions = ({
+export const getSigningKiiChainClientOptions = ({
   defaultTypes = defaultRegistryTypes
 }: {
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
@@ -31,7 +31,7 @@ export const getSigningKiichainClientOptions = ({
     aminoTypes
   };
 };
-export const getSigningKiichainClient = async ({
+export const getSigningKiiChainClient = async ({
   rpcEndpoint,
   signer,
   defaultTypes = defaultRegistryTypes
@@ -43,7 +43,7 @@ export const getSigningKiichainClient = async ({
   const {
     registry,
     aminoTypes
-  } = getSigningKiichainClientOptions({
+  } = getSigningKiiChainClientOptions({
     defaultTypes
   });
   const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
