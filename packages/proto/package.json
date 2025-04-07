@@ -1,6 +1,6 @@
 {
-  "name": "@devkiiglobal/kiijs-proto",
-  "version": "1.0.0",
+  "name": "@kiichain/kiijs-proto",
+  "version": "0.1.1",
   "author": "kiiglobal.io <dev@kiiglobal.io>",
   "description": "JS SDK for kiichain",
   "main": "index.js",
