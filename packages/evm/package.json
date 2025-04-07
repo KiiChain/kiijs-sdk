@@ -1,6 +1,6 @@
 {
-	"name": "@devkiiglobal/kiijs-evm",
-	"version": "1.0.0",
+	"name": "@kiichain/kiijs-evm",
+	"version": "0.1.1",
 	"author": "kiiglobal.io <devs@kiiglobal.io>",
 	"description": "TypeScript library for EVM interactions on the Kii blockchain",
 	"main": "./dist/cjs/index.js",
