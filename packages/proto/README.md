@@ -1,4 +1,4 @@
-# kiijs-sdk
+# kiijs-proto
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/545047/188804067-28e67e5e-0214-4449-ab04-2e0c564a6885.svg" width="80"><br />
@@ -16,36 +16,38 @@
 ## install
 
 ```sh
-npm install kiijs-sdk
+npm install @kiichain/kiijs-proto
 ```
 ## Table of contents
 
-- [kiijs-sdk](#kiijs-sdk)
-  - [Install](#install)
+- [kiijs-proto](#kiijs-proto)
+  - [install](#install)
   - [Table of contents](#table-of-contents)
-- [Usage](#usage)
+  - [Usage](#usage)
     - [RPC Clients](#rpc-clients)
     - [Composing Messages](#composing-messages)
-        - Cosmos, CosmWasm, and IBC
-            - [CosmWasm](#cosmwasm-messages)
-            - [IBC](#ibc-messages)
-            - [Cosmos](#cosmos-messages)
-- [Wallets and Signers](#connecting-with-wallets-and-signing-messages)
-    - [Stargate Client](#initializing-the-stargate-client)
+      - [CosmWasm Messages](#cosmwasm-messages)
+      - [IBC Messages](#ibc-messages)
+      - [Cosmos Messages](#cosmos-messages)
+  - [Connecting with Wallets and Signing Messages](#connecting-with-wallets-and-signing-messages)
+    - [Initializing the Stargate Client](#initializing-the-stargate-client)
     - [Creating Signers](#creating-signers)
+    - [Amino Signer](#amino-signer)
+    - [Proto Signer](#proto-signer)
     - [Broadcasting Messages](#broadcasting-messages)
-- [Advanced Usage](#advanced-usage)
-- [Developing](#developing)
-- [Codegen](#codegen)
-- [Publishing](#publishing)
-- [Stack](#interchain-javascript-stack)
-- [Credits](#credits)
+  - [Advanced Usage](#advanced-usage)
+  - [Developing](#developing)
+    - [Codegen](#codegen)
+    - [Publishing](#publishing)
+  - [Interchain JavaScript Stack](#interchain-javascript-stack)
+  - [Credits](#credits)
+  - [Disclaimer](#disclaimer)
 
 ## Usage
 ### RPC Clients
 
 ```js
-import { kiichain } from 'kiijs-sdk';
+import { kiichain } from '@kiichain/kiijs-proto';
 
 const { createRPCQueryClient } = kiichain.ClientFactory; 
 const client = await createRPCQueryClient({ rpcEndpoint: RPC_ENDPOINT });
@@ -54,17 +56,14 @@ const client = await createRPCQueryClient({ rpcEndpoint: RPC_ENDPOINT });
 const balance = await client.cosmos.bank.v1beta1
     .allBalances({ address: 'kiichain1addresshere' });
 
-// you can also query the kiichain modules
-const balances = await client.kiichain.exchange.v1beta1
-    .exchangeBalances()
 ```
 
 ### Composing Messages
 
-Import the `kiichain` object from `kiijs-sdk`. 
+Import the `kiichain` object from `@kiichain/kiijs-proto`. 
 
 ```js
-import { kiichain } from 'kiijs-sdk';
+import { kiichain } from '@kiichain/kiijs-proto';
 
 const {
     createSpotLimitOrder,
@@ -76,7 +75,7 @@ const {
 #### CosmWasm Messages
 
 ```js
-import { cosmwasm } from "kiijs-sdk";
+import { cosmwasm } from "@kiichain/kiijs-proto";
 
 const {
     clearAdmin,
@@ -91,7 +90,7 @@ const {
 #### IBC Messages
 
 ```js
-import { ibc } from 'kiijs-sdk';
+import { ibc } from '@kiichain/kiijs-proto';
 
 const {
     transfer
@@ -101,7 +100,7 @@ const {
 #### Cosmos Messages
 
 ```js
-import { cosmos } from 'kiijs-sdk';
+import { cosmos } from '@kiichain/kiijs-proto';
 
 const {
     fundCommunityPool,
@@ -142,7 +141,7 @@ Here are the docs on [creating signers](https://docs.hyperweb.io/cosmos-kit) in 
 Use `getSigningKiiChainClient` to get your `SigningStargateClient`, with the proto/amino messages full-loaded. No need to manually add amino types, just require and initialize the client:
 
 ```js
-import { getSigningKiiChainClient } from 'kiijs-sdk';
+import { getSigningKiiChainClient } from '@kiichain/kiijs-proto';
 
 const stargateClient = await getSigningKiiChainClient({
   rpcEndpoint,
@@ -230,7 +229,7 @@ import {
     ibcAminoConverters,
     kiichainAminoConverters,
     kiichainProtoRegistry
-} from 'kiijs-sdk';
+} from '@kiichain/kiijs-proto';
 
 const signer: OfflineSigner = /* create your signer (see above)  */
 const rpcEndpint = 'https://rpc.cosmos.directory/kiichain'; // or another URL
@@ -269,7 +268,7 @@ yarn build
 
 ### Codegen
 
-Look inside of `scripts/codegen.ts` and configure the settings for bundling your SDK and contracts into `kiijs-sdk`:
+Look inside of `scripts/codegen.ts` and configure the settings for bundling your SDK and contracts into `kiijs-proto`:
 
 ```
 yarn codegen
