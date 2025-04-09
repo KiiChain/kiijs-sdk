@@ -8,6 +8,9 @@ describe('Chain Info Tests', () => {
   let client: StargateClient;
 
   beforeAll(async () => {
+    if (!process.env.TEST_MNEMONIC) {
+      throw new Error("Missing TEST_MNEMONIC in .env");
+    }
     client = await withRetry(() => 
       StargateClient.connect(DEVNET_CONFIG.rpcEndpoint)
     );

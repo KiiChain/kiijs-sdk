@@ -15,8 +15,8 @@
 		"build:types": "tsc --project ./tsconfig.declaration.json",
 		"build:prettier": "prettier --write 'dist/**/*.js'",
 		"docs": "typedoc --out docs",
-		"test": "jest --passWithNoTests",
-		"test:ci": "jest --passWithNoTests",
+		"test": "jest",
+		"test:ci": "jest",
 		"lint": "eslint --ext .ts"
 	},
 	"homepage": "https://github.com/KiiChain/kiijs-sdk#readme",
