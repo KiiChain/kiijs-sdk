@@ -36,7 +36,8 @@
 	},
 	"peerDependencies": {
 		"ethers": "^6.0.0",
-		"viem": "2.x"
+		"viem": "2.x",
+    	"dotenv": "16.4.7"
 	},
 	"devDependencies": {
 		"@types/jest": "^29.5.14",
