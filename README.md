@@ -12,8 +12,8 @@ KiiJS consists of smaller NPM packages within the @kiichain namespace. For more 
 
 | Package                                                 | Description                                                                                                                     |
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| [@kiichain/evm](packages/evm)                             | Typescript library containing helper functions for interacting with the EVM on Kiichain.                                             |
-| [@kiichain/proto](packages/proto)               | Typescript support for KiiChain protofiles, generated with Telescope                                   |                                                                  |
+| [@kiichain/kiijs-evm](packages/evm)                             | Typescript library containing helper functions for interacting with the EVM on Kiichain.                                             |
+| [@kiichain/kiijs-proto](packages/proto)               | Typescript support for KiiChain protofiles, generated with Telescope                                   |                                                                  |
 
 ## Contributing
 
