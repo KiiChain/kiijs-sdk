@@ -8,36 +8,32 @@ jest.setTimeout(60_000); // Total test timeout
 
 describe('Connect Wallet Test', () => {
     let provider: ethers.JsonRpcProvider;
-    let signer: ethers.HDNodeWallet;
-    let addressPrecompile: ethers.Contract;
-    let wallet: ethers.HDNodeWallet;
-    let keyring: Secp256k1HdWallet;
+    let wallet: ethers.Wallet;
   
     beforeAll(async () => {
       provider = new ethers.JsonRpcProvider(
-        'https://json-rpc.devnet.v3.kiivalidator.com'
+        'https://json-rpc.dos.sentry.testnet.v3.kiivalidator.com/'
       );
   
-      if (!process.env.TEST_MNEMONIC) {
-        throw new Error("Missing TEST_MNEMONIC in .env");
-      }
+      if (!process.env.TEST_PRIVATE_KEY) {
+        throw new Error("Missing TEST_PRIVATE_KEY in .env");
+      }    
 
-      keyring = await Secp256k1HdWallet.fromMnemonic(
-        process.env.TEST_MNEMONIC,
-        {
-          prefix: "kii",
-        }
-      );      
-
-      wallet = await ethers.HDNodeWallet.fromPhrase(process.env.TEST_MNEMONIC);
-
-      signer = wallet.connect(provider);
-
-      addressPrecompile = getAddressPrecompileEthersV6Contract(signer);
+      wallet = new ethers.Wallet(process.env.TEST_PRIVATE_KEY, provider);
     });
 
     it('unexpected address', async () => {
-        expect(signer.address).toEqual("0x4E9bdC3Dd5b4be373C0C08ce675A5E215796aF84")
+        expect(wallet.address).toEqual(process.env.TEST_HEX_ADDRESS)
       });
+
+    it('should send test transaction', async () => {
+      const tx = await wallet.sendTransaction({
+        to: wallet.address, // Send to self
+        value: ethers.parseEther("0.001"),
+        gasLimit: 100000 // Explicit gas limit
+      });
+      console.log("Tx hash:", tx.hash);
+      expect(tx.hash).toMatch(/^0x/);
+    });
   });
 
