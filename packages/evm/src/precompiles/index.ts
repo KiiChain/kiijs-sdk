@@ -1,4 +1,3 @@
-export * from './address';
 export * from './bank';
 export * from './bech32';
 export * from './distribution';
@@ -6,12 +5,6 @@ export * from './erc20';
 export * from './evidence';
 export * from './governance';
 export * from './ics20';
-export * from './ibc';
-export * from './json';
-export * from './oracle';
-export * from './pointer';
-export * from './pointerview';
 export * from './slashing';
 export * from './staking';
-export * from './wasm';
 export * from './werc20';
