@@ -41,11 +41,10 @@ jobs:
       - name: Build packages
         run: yarn build
         
-      # Publish packages with proper auth
-      - name: Publish Packages
+      # Publish package with proper auth
+      - name: Publish proto package
         run: |
-          cd packages/evm && yarn npm publish --access public
-          cd ../proto && yarn npm publish --access public
+          cd packages/proto && yarn npm publish --access public
         env:
           NPM_CONFIG_REGISTRY: 'https://registry.npmjs.org'
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
