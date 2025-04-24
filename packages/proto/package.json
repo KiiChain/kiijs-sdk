@@ -1,11 +1,11 @@
 {
   "name": "@kiichain/kiijs-proto",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "kiiglobal.io <dev@kiiglobal.io>",
   "description": "JS SDK for kiichain",
-  "main": "index.js",
-  "module": "esm/index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "homepage": "https://github.com/KiiChain/kiijs-sdk",
   "license": "SEE LICENSE IN LICENSE",
   "publishConfig": {
