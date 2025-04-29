@@ -5,7 +5,7 @@ import { SigningStargateClient} from '@cosmjs/stargate';
 export const DEVNET_CONFIG = {
   rpcEndpoint: 'https://rpc.devnet.v3.kiivalidator.com/',
   chainId: 'kiichain3', 
-  gasPrice: '0.025ukii',
+  gasPrice: '0.025akii',
   defaultMnemonic: process.env.TEST_MNEMONIC || "your test mnemonic password here" 
 };
 

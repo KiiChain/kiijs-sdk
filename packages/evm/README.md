@@ -43,7 +43,7 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
 ### Connection with ethers v6
 The 'ethers' package is a popular library for interacting with the Ethereum blockchain. This package provides a helper function for creating an ethers provider that is connected to the KiiChain EVM.
 ```tsx
-import { getAddressPrecompileEthersV6Contract } from '@kiichain/kiijs-evm';
+import { getBankPrecompileEthersV6Contract } from '@kiichain/kiijs-evm';
 import { ethers } from 'ethers';
 
 const provider = new ethers.BrowserProvider(window.ethereum); // or any other provider
@@ -51,9 +51,9 @@ const signer = await provider.getSigner();
 
 const accounts = await provider.send('eth_requestAccounts', []);
 
-const contract = getAddressPrecompileEthersV6Contract(signer);
+const contract = getBankPrecompileEthersV6Contract(signer);
 
-const cosmosAddress = await contract.getKiiAddr(accounts[0]);
+const cosmosAddress = await contract.balances();
 ```
 
 <br>

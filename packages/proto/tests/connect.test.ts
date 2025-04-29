@@ -16,7 +16,7 @@ describe('sign connection Test', () => {
   
   it('account should have balance', async () => {
     const [account] = await wallet.getAccounts();
-    const coin = await client.getBalance(account.address, 'ukii')
+    const coin = await client.getBalance(account.address, 'akii')
     expect(Number(coin.amount)).toBeGreaterThan(0);
   });
 

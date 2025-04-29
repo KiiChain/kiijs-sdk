@@ -15,7 +15,7 @@ export const ORO_DENOM =
   "factory/kii1ef2eurf9ls4kmhc6adcazscmzn8en73tuh2nvq/ORO";
 export const KIICHAIN_LCD_ENDPOINT =
   "https://lcd.uno.sentry.testnet.v3.kiivalidator.com";
-export const KIICHAIN_BASE_DENOM = "ukii";
+export const KIICHAIN_BASE_DENOM = "akii";
 
 export const TESTNET_ORO_EVM = defineChain({
   id: 1336,
