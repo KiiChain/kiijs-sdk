@@ -2,19 +2,13 @@
 import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
 import { defaultRegistryTypes, AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
 import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
-import * as evmTxRegistry from "../evm/tx.registry";
-import * as oracleTxRegistry from "../oracle/tx.registry";
-import * as tokenfactoryTxRegistry from "../tokenfactory/tx.registry";
-import * as evmTxAmino from "../evm/tx.amino";
-import * as oracleTxAmino from "../oracle/tx.amino";
-import * as tokenfactoryTxAmino from "../tokenfactory/tx.amino";
+import * as kiichainTokenfactoryV1beta1TxRegistry from "./tokenfactory/v1beta1/tx.registry";
+import * as kiichainTokenfactoryV1beta1TxAmino from "./tokenfactory/v1beta1/tx.amino";
 export const kiichainAminoConverters = {
-  ...evmTxAmino.AminoConverter,
-  ...oracleTxAmino.AminoConverter,
-  ...tokenfactoryTxAmino.AminoConverter
+  ...kiichainTokenfactoryV1beta1TxAmino.AminoConverter
 };
-export const kiichainProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...evmTxRegistry.registry, ...oracleTxRegistry.registry, ...tokenfactoryTxRegistry.registry];
-export const getSigningKiiChainClientOptions = ({
+export const kiichainProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...kiichainTokenfactoryV1beta1TxRegistry.registry];
+export const getSigningKiichainClientOptions = ({
   defaultTypes = defaultRegistryTypes
 }: {
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
@@ -31,7 +25,7 @@ export const getSigningKiiChainClientOptions = ({
     aminoTypes
   };
 };
-export const getSigningKiiChainClient = async ({
+export const getSigningKiichainClient = async ({
   rpcEndpoint,
   signer,
   defaultTypes = defaultRegistryTypes
@@ -43,7 +37,7 @@ export const getSigningKiiChainClient = async ({
   const {
     registry,
     aminoTypes
-  } = getSigningKiiChainClientOptions({
+  } = getSigningKiichainClientOptions({
     defaultTypes
   });
   const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {

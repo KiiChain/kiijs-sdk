@@ -1,35 +1,35 @@
 //@ts-nocheck
-import * as _69 from "./wasm/v1/authz";
-import * as _70 from "./wasm/v1/genesis";
-import * as _71 from "./wasm/v1/ibc";
-import * as _72 from "./wasm/v1/proposal";
-import * as _73 from "./wasm/v1/query";
-import * as _74 from "./wasm/v1/tx";
-import * as _75 from "./wasm/v1/types";
-import * as _186 from "./wasm/v1/tx.amino";
-import * as _187 from "./wasm/v1/tx.registry";
-import * as _188 from "./wasm/v1/query.rpc.Query";
-import * as _189 from "./wasm/v1/tx.rpc.msg";
-import * as _222 from "./rpc.query";
-import * as _223 from "./rpc.tx";
+import * as _125 from "./wasm/v1/authz";
+import * as _126 from "./wasm/v1/genesis";
+import * as _127 from "./wasm/v1/ibc";
+import * as _128 from "./wasm/v1/proposal_legacy";
+import * as _129 from "./wasm/v1/query";
+import * as _130 from "./wasm/v1/tx";
+import * as _131 from "./wasm/v1/types";
+import * as _269 from "./wasm/v1/tx.amino";
+import * as _270 from "./wasm/v1/tx.registry";
+import * as _271 from "./wasm/v1/query.rpc.Query";
+import * as _272 from "./wasm/v1/tx.rpc.msg";
+import * as _311 from "./rpc.query";
+import * as _312 from "./rpc.tx";
 export namespace cosmwasm {
   export namespace wasm {
     export const v1 = {
-      ..._69,
-      ..._70,
-      ..._71,
-      ..._72,
-      ..._73,
-      ..._74,
-      ..._75,
-      ..._186,
-      ..._187,
-      ..._188,
-      ..._189
+      ..._125,
+      ..._126,
+      ..._127,
+      ..._128,
+      ..._129,
+      ..._130,
+      ..._131,
+      ..._269,
+      ..._270,
+      ..._271,
+      ..._272
     };
   }
   export const ClientFactory = {
-    ..._222,
-    ..._223
+    ..._311,
+    ..._312
   };
 }

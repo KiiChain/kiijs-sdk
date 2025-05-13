@@ -10,13 +10,13 @@ export interface Query {
   /**
    * GranterGrants returns list of `GrantAuthorization`, granted by granter.
    * 
-   * Since: cosmos-sdk 0.45.2
+   * Since: cosmos-sdk 0.46
    */
   granterGrants(request: QueryGranterGrantsRequest): Promise<QueryGranterGrantsResponse>;
   /**
    * GranteeGrants returns a list of `GrantAuthorization` by grantee.
    * 
-   * Since: cosmos-sdk 0.45.2
+   * Since: cosmos-sdk 0.46
    */
   granteeGrants(request: QueryGranteeGrantsRequest): Promise<QueryGranteeGrantsResponse>;
 }

@@ -22,10 +22,7 @@ export interface Plan {
    */
   /** @deprecated */
   time: Date;
-  /**
-   * The height at which the upgrade must be performed.
-   * Only used if Time is not set.
-   */
+  /** The height at which the upgrade must be performed. */
   height: bigint;
   /**
    * Any application specific upgrade info to be included on-chain
@@ -62,11 +59,8 @@ export interface PlanAmino {
    * If this field is not empty, an error will be thrown.
    */
   /** @deprecated */
-  time?: string;
-  /**
-   * The height at which the upgrade must be performed.
-   * Only used if Time is not set.
-   */
+  time: string;
+  /** The height at which the upgrade must be performed. */
   height?: string;
   /**
    * Any application specific upgrade info to be included on-chain
@@ -98,10 +92,17 @@ export interface PlanSDKType {
 /**
  * SoftwareUpgradeProposal is a gov Content type for initiating a software
  * upgrade.
+ * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
+ * proposals, see MsgSoftwareUpgrade.
  */
+/** @deprecated */
 export interface SoftwareUpgradeProposal {
+  $typeUrl?: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
+  /** title of the proposal */
   title: string;
+  /** description of the proposal */
   description: string;
+  /** plan of the proposal */
   plan: Plan;
 }
 export interface SoftwareUpgradeProposalProtoMsg {
@@ -111,11 +112,17 @@ export interface SoftwareUpgradeProposalProtoMsg {
 /**
  * SoftwareUpgradeProposal is a gov Content type for initiating a software
  * upgrade.
+ * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
+ * proposals, see MsgSoftwareUpgrade.
  */
+/** @deprecated */
 export interface SoftwareUpgradeProposalAmino {
+  /** title of the proposal */
   title?: string;
+  /** description of the proposal */
   description?: string;
-  plan?: PlanAmino;
+  /** plan of the proposal */
+  plan: PlanAmino;
 }
 export interface SoftwareUpgradeProposalAminoMsg {
   type: "cosmos-sdk/SoftwareUpgradeProposal";
@@ -124,8 +131,12 @@ export interface SoftwareUpgradeProposalAminoMsg {
 /**
  * SoftwareUpgradeProposal is a gov Content type for initiating a software
  * upgrade.
+ * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
+ * proposals, see MsgSoftwareUpgrade.
  */
+/** @deprecated */
 export interface SoftwareUpgradeProposalSDKType {
+  $typeUrl?: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal";
   title: string;
   description: string;
   plan: PlanSDKType;
@@ -133,9 +144,15 @@ export interface SoftwareUpgradeProposalSDKType {
 /**
  * CancelSoftwareUpgradeProposal is a gov Content type for cancelling a software
  * upgrade.
+ * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
+ * proposals, see MsgCancelUpgrade.
  */
+/** @deprecated */
 export interface CancelSoftwareUpgradeProposal {
+  $typeUrl?: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
+  /** title of the proposal */
   title: string;
+  /** description of the proposal */
   description: string;
 }
 export interface CancelSoftwareUpgradeProposalProtoMsg {
@@ -145,9 +162,14 @@ export interface CancelSoftwareUpgradeProposalProtoMsg {
 /**
  * CancelSoftwareUpgradeProposal is a gov Content type for cancelling a software
  * upgrade.
+ * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
+ * proposals, see MsgCancelUpgrade.
  */
+/** @deprecated */
 export interface CancelSoftwareUpgradeProposalAmino {
+  /** title of the proposal */
   title?: string;
+  /** description of the proposal */
   description?: string;
 }
 export interface CancelSoftwareUpgradeProposalAminoMsg {
@@ -157,8 +179,12 @@ export interface CancelSoftwareUpgradeProposalAminoMsg {
 /**
  * CancelSoftwareUpgradeProposal is a gov Content type for cancelling a software
  * upgrade.
+ * Deprecated: This legacy proposal is deprecated in favor of Msg-based gov
+ * proposals, see MsgCancelUpgrade.
  */
+/** @deprecated */
 export interface CancelSoftwareUpgradeProposalSDKType {
+  $typeUrl?: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal";
   title: string;
   description: string;
 }
@@ -290,7 +316,7 @@ export const Plan = {
   toAmino(message: Plan): PlanAmino {
     const obj: any = {};
     obj.name = message.name === "" ? undefined : message.name;
-    obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : undefined;
+    obj.time = message.time ? Timestamp.toAmino(toTimestamp(message.time)) : new Date();
     obj.height = message.height !== BigInt(0) ? message.height?.toString() : undefined;
     obj.info = message.info === "" ? undefined : message.info;
     obj.upgraded_client_state = message.upgradedClientState ? Any.toAmino(message.upgradedClientState) : undefined;
@@ -320,6 +346,7 @@ export const Plan = {
 };
 function createBaseSoftwareUpgradeProposal(): SoftwareUpgradeProposal {
   return {
+    $typeUrl: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
     title: "",
     description: "",
     plan: Plan.fromPartial({})
@@ -386,7 +413,7 @@ export const SoftwareUpgradeProposal = {
     const obj: any = {};
     obj.title = message.title === "" ? undefined : message.title;
     obj.description = message.description === "" ? undefined : message.description;
-    obj.plan = message.plan ? Plan.toAmino(message.plan) : undefined;
+    obj.plan = message.plan ? Plan.toAmino(message.plan) : Plan.toAmino(Plan.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: SoftwareUpgradeProposalAminoMsg): SoftwareUpgradeProposal {
@@ -413,6 +440,7 @@ export const SoftwareUpgradeProposal = {
 };
 function createBaseCancelSoftwareUpgradeProposal(): CancelSoftwareUpgradeProposal {
   return {
+    $typeUrl: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal",
     title: "",
     description: ""
   };

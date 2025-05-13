@@ -11,11 +11,8 @@ export interface BaseVestingAccount {
   originalVesting: Coin[];
   delegatedFree: Coin[];
   delegatedVesting: Coin[];
+  /** Vesting end time, as unix timestamp (in seconds). */
   endTime: bigint;
-  /** admin field (optional), an address who has oversight powers for the vesting account such as cancelling */
-  admin: string;
-  /** this field (default nil) indicates whether the vesting for the account has been cancelled (and what time it was cancelled) */
-  cancelledTime: bigint;
 }
 export interface BaseVestingAccountProtoMsg {
   typeUrl: "/cosmos.vesting.v1beta1.BaseVestingAccount";
@@ -27,14 +24,11 @@ export interface BaseVestingAccountProtoMsg {
  */
 export interface BaseVestingAccountAmino {
   base_account?: BaseAccountAmino;
-  original_vesting?: CoinAmino[];
-  delegated_free?: CoinAmino[];
-  delegated_vesting?: CoinAmino[];
+  original_vesting: CoinAmino[];
+  delegated_free: CoinAmino[];
+  delegated_vesting: CoinAmino[];
+  /** Vesting end time, as unix timestamp (in seconds). */
   end_time?: string;
-  /** admin field (optional), an address who has oversight powers for the vesting account such as cancelling */
-  admin?: string;
-  /** this field (default nil) indicates whether the vesting for the account has been cancelled (and what time it was cancelled) */
-  cancelled_time?: string;
 }
 export interface BaseVestingAccountAminoMsg {
   type: "cosmos-sdk/BaseVestingAccount";
@@ -50,8 +44,6 @@ export interface BaseVestingAccountSDKType {
   delegated_free: CoinSDKType[];
   delegated_vesting: CoinSDKType[];
   end_time: bigint;
-  admin: string;
-  cancelled_time: bigint;
 }
 /**
  * ContinuousVestingAccount implements the VestingAccount interface. It
@@ -59,6 +51,7 @@ export interface BaseVestingAccountSDKType {
  */
 export interface ContinuousVestingAccount {
   baseVestingAccount?: BaseVestingAccount;
+  /** Vesting start time, as unix timestamp (in seconds). */
   startTime: bigint;
 }
 export interface ContinuousVestingAccountProtoMsg {
@@ -71,6 +64,7 @@ export interface ContinuousVestingAccountProtoMsg {
  */
 export interface ContinuousVestingAccountAmino {
   base_vesting_account?: BaseVestingAccountAmino;
+  /** Vesting start time, as unix timestamp (in seconds). */
   start_time?: string;
 }
 export interface ContinuousVestingAccountAminoMsg {
@@ -119,6 +113,7 @@ export interface DelayedVestingAccountSDKType {
 }
 /** Period defines a length of time and amount of coins that will vest. */
 export interface Period {
+  /** Period duration in seconds. */
   length: bigint;
   amount: Coin[];
 }
@@ -128,8 +123,9 @@ export interface PeriodProtoMsg {
 }
 /** Period defines a length of time and amount of coins that will vest. */
 export interface PeriodAmino {
+  /** Period duration in seconds. */
   length?: string;
-  amount?: CoinAmino[];
+  amount: CoinAmino[];
 }
 export interface PeriodAminoMsg {
   type: "cosmos-sdk/Period";
@@ -160,7 +156,7 @@ export interface PeriodicVestingAccountProtoMsg {
 export interface PeriodicVestingAccountAmino {
   base_vesting_account?: BaseVestingAccountAmino;
   start_time?: string;
-  vesting_periods?: PeriodAmino[];
+  vesting_periods: PeriodAmino[];
 }
 export interface PeriodicVestingAccountAminoMsg {
   type: "cosmos-sdk/PeriodicVestingAccount";
@@ -219,9 +215,7 @@ function createBaseBaseVestingAccount(): BaseVestingAccount {
     originalVesting: [],
     delegatedFree: [],
     delegatedVesting: [],
-    endTime: BigInt(0),
-    admin: "",
-    cancelledTime: BigInt(0)
+    endTime: BigInt(0)
   };
 }
 export const BaseVestingAccount = {
@@ -241,12 +235,6 @@ export const BaseVestingAccount = {
     }
     if (message.endTime !== BigInt(0)) {
       writer.uint32(40).int64(message.endTime);
-    }
-    if (message.admin !== "") {
-      writer.uint32(50).string(message.admin);
-    }
-    if (message.cancelledTime !== BigInt(0)) {
-      writer.uint32(56).int64(message.cancelledTime);
     }
     return writer;
   },
@@ -272,12 +260,6 @@ export const BaseVestingAccount = {
         case 5:
           message.endTime = reader.int64();
           break;
-        case 6:
-          message.admin = reader.string();
-          break;
-        case 7:
-          message.cancelledTime = reader.int64();
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -292,8 +274,6 @@ export const BaseVestingAccount = {
     message.delegatedFree = object.delegatedFree?.map(e => Coin.fromPartial(e)) || [];
     message.delegatedVesting = object.delegatedVesting?.map(e => Coin.fromPartial(e)) || [];
     message.endTime = object.endTime !== undefined && object.endTime !== null ? BigInt(object.endTime.toString()) : BigInt(0);
-    message.admin = object.admin ?? "";
-    message.cancelledTime = object.cancelledTime !== undefined && object.cancelledTime !== null ? BigInt(object.cancelledTime.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: BaseVestingAccountAmino): BaseVestingAccount {
@@ -306,12 +286,6 @@ export const BaseVestingAccount = {
     message.delegatedVesting = object.delegated_vesting?.map(e => Coin.fromAmino(e)) || [];
     if (object.end_time !== undefined && object.end_time !== null) {
       message.endTime = BigInt(object.end_time);
-    }
-    if (object.admin !== undefined && object.admin !== null) {
-      message.admin = object.admin;
-    }
-    if (object.cancelled_time !== undefined && object.cancelled_time !== null) {
-      message.cancelledTime = BigInt(object.cancelled_time);
     }
     return message;
   },
@@ -334,8 +308,6 @@ export const BaseVestingAccount = {
       obj.delegated_vesting = message.delegatedVesting;
     }
     obj.end_time = message.endTime !== BigInt(0) ? message.endTime?.toString() : undefined;
-    obj.admin = message.admin === "" ? undefined : message.admin;
-    obj.cancelled_time = message.cancelledTime !== BigInt(0) ? message.cancelledTime?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: BaseVestingAccountAminoMsg): BaseVestingAccount {

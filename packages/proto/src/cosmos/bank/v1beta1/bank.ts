@@ -3,6 +3,14 @@ import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** Params defines the parameters for the bank module. */
 export interface Params {
+  /**
+   * Deprecated: Use of SendEnabled in params is deprecated.
+   * For genesis, use the newly added send_enabled field in the genesis object.
+   * Storage, lookup, and manipulation of this information is now in the keeper.
+   * 
+   * As of cosmos-sdk 0.47, this only exists for backwards compatibility of genesis files.
+   */
+  /** @deprecated */
   sendEnabled: SendEnabled[];
   defaultSendEnabled: boolean;
 }
@@ -12,15 +20,24 @@ export interface ParamsProtoMsg {
 }
 /** Params defines the parameters for the bank module. */
 export interface ParamsAmino {
+  /**
+   * Deprecated: Use of SendEnabled in params is deprecated.
+   * For genesis, use the newly added send_enabled field in the genesis object.
+   * Storage, lookup, and manipulation of this information is now in the keeper.
+   * 
+   * As of cosmos-sdk 0.47, this only exists for backwards compatibility of genesis files.
+   */
+  /** @deprecated */
   send_enabled?: SendEnabledAmino[];
   default_send_enabled?: boolean;
 }
 export interface ParamsAminoMsg {
-  type: "cosmos-sdk/Params";
+  type: "cosmos-sdk/x/bank/Params";
   value: ParamsAmino;
 }
 /** Params defines the parameters for the bank module. */
 export interface ParamsSDKType {
+  /** @deprecated */
   send_enabled: SendEnabledSDKType[];
   default_send_enabled: boolean;
 }
@@ -68,7 +85,7 @@ export interface InputProtoMsg {
 /** Input models transaction input. */
 export interface InputAmino {
   address?: string;
-  coins?: CoinAmino[];
+  coins: CoinAmino[];
 }
 export interface InputAminoMsg {
   type: "cosmos-sdk/Input";
@@ -91,7 +108,7 @@ export interface OutputProtoMsg {
 /** Output models transaction outputs. */
 export interface OutputAmino {
   address?: string;
-  coins?: CoinAmino[];
+  coins: CoinAmino[];
 }
 export interface OutputAminoMsg {
   type: "cosmos-sdk/Output";
@@ -123,7 +140,7 @@ export interface SupplyProtoMsg {
  */
 /** @deprecated */
 export interface SupplyAmino {
-  total?: CoinAmino[];
+  total: CoinAmino[];
 }
 export interface SupplyAminoMsg {
   type: "cosmos-sdk/Supply";
@@ -149,7 +166,7 @@ export interface DenomUnit {
   /**
    * exponent represents power of 10 exponent that one must
    * raise the base_denom to in order to equal the given DenomUnit's denom
-   * 1 denom = 1^exponent base_denom
+   * 1 denom = 10^exponent base_denom
    * (e.g. with a base_denom of uatom, one can create a DenomUnit of 'atom' with
    * exponent = 6, thus: 1 atom = 10^6 uatom).
    */
@@ -171,7 +188,7 @@ export interface DenomUnitAmino {
   /**
    * exponent represents power of 10 exponent that one must
    * raise the base_denom to in order to equal the given DenomUnit's denom
-   * 1 denom = 1^exponent base_denom
+   * 1 denom = 10^exponent base_denom
    * (e.g. with a base_denom of uatom, one can create a DenomUnit of 'atom' with
    * exponent = 6, thus: 1 atom = 10^6 uatom).
    */
@@ -220,6 +237,19 @@ export interface Metadata {
    * Since: cosmos-sdk 0.43
    */
   symbol: string;
+  /**
+   * URI to a document (on or off-chain) that contains additional information. Optional.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+  uri: string;
+  /**
+   * URIHash is a sha256 hash of a document pointed by URI. It's used to verify that
+   * the document didn't change. Optional.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+  uriHash: string;
 }
 export interface MetadataProtoMsg {
   typeUrl: "/cosmos.bank.v1beta1.Metadata";
@@ -253,6 +283,19 @@ export interface MetadataAmino {
    * Since: cosmos-sdk 0.43
    */
   symbol?: string;
+  /**
+   * URI to a document (on or off-chain) that contains additional information. Optional.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+  uri?: string;
+  /**
+   * URIHash is a sha256 hash of a document pointed by URI. It's used to verify that
+   * the document didn't change. Optional.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+  uri_hash?: string;
 }
 export interface MetadataAminoMsg {
   type: "cosmos-sdk/Metadata";
@@ -269,26 +312,8 @@ export interface MetadataSDKType {
   display: string;
   name: string;
   symbol: string;
-}
-/** AllowList represents a list of allowed addresses to transact the denom. */
-export interface AllowList {
-  addresses: string[];
-}
-export interface AllowListProtoMsg {
-  typeUrl: "/cosmos.bank.v1beta1.AllowList";
-  value: Uint8Array;
-}
-/** AllowList represents a list of allowed addresses to transact the denom. */
-export interface AllowListAmino {
-  addresses?: string[];
-}
-export interface AllowListAminoMsg {
-  type: "cosmos-sdk/AllowList";
-  value: AllowListAmino;
-}
-/** AllowList represents a list of allowed addresses to transact the denom. */
-export interface AllowListSDKType {
-  addresses: string[];
+  uri: string;
+  uri_hash: string;
 }
 function createBaseParams(): Params {
   return {
@@ -356,7 +381,7 @@ export const Params = {
   },
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
-      type: "cosmos-sdk/Params",
+      type: "cosmos-sdk/x/bank/Params",
       value: Params.toAmino(message)
     };
   },
@@ -794,7 +819,9 @@ function createBaseMetadata(): Metadata {
     base: "",
     display: "",
     name: "",
-    symbol: ""
+    symbol: "",
+    uri: "",
+    uriHash: ""
   };
 }
 export const Metadata = {
@@ -817,6 +844,12 @@ export const Metadata = {
     }
     if (message.symbol !== "") {
       writer.uint32(50).string(message.symbol);
+    }
+    if (message.uri !== "") {
+      writer.uint32(58).string(message.uri);
+    }
+    if (message.uriHash !== "") {
+      writer.uint32(66).string(message.uriHash);
     }
     return writer;
   },
@@ -845,6 +878,12 @@ export const Metadata = {
         case 6:
           message.symbol = reader.string();
           break;
+        case 7:
+          message.uri = reader.string();
+          break;
+        case 8:
+          message.uriHash = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -860,6 +899,8 @@ export const Metadata = {
     message.display = object.display ?? "";
     message.name = object.name ?? "";
     message.symbol = object.symbol ?? "";
+    message.uri = object.uri ?? "";
+    message.uriHash = object.uriHash ?? "";
     return message;
   },
   fromAmino(object: MetadataAmino): Metadata {
@@ -880,6 +921,12 @@ export const Metadata = {
     if (object.symbol !== undefined && object.symbol !== null) {
       message.symbol = object.symbol;
     }
+    if (object.uri !== undefined && object.uri !== null) {
+      message.uri = object.uri;
+    }
+    if (object.uri_hash !== undefined && object.uri_hash !== null) {
+      message.uriHash = object.uri_hash;
+    }
     return message;
   },
   toAmino(message: Metadata): MetadataAmino {
@@ -894,6 +941,8 @@ export const Metadata = {
     obj.display = message.display === "" ? undefined : message.display;
     obj.name = message.name === "" ? undefined : message.name;
     obj.symbol = message.symbol === "" ? undefined : message.symbol;
+    obj.uri = message.uri === "" ? undefined : message.uri;
+    obj.uri_hash = message.uriHash === "" ? undefined : message.uriHash;
     return obj;
   },
   fromAminoMsg(object: MetadataAminoMsg): Metadata {
@@ -915,77 +964,6 @@ export const Metadata = {
     return {
       typeUrl: "/cosmos.bank.v1beta1.Metadata",
       value: Metadata.encode(message).finish()
-    };
-  }
-};
-function createBaseAllowList(): AllowList {
-  return {
-    addresses: []
-  };
-}
-export const AllowList = {
-  typeUrl: "/cosmos.bank.v1beta1.AllowList",
-  encode(message: AllowList, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    for (const v of message.addresses) {
-      writer.uint32(10).string(v!);
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): AllowList {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseAllowList();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.addresses.push(reader.string());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<AllowList>): AllowList {
-    const message = createBaseAllowList();
-    message.addresses = object.addresses?.map(e => e) || [];
-    return message;
-  },
-  fromAmino(object: AllowListAmino): AllowList {
-    const message = createBaseAllowList();
-    message.addresses = object.addresses?.map(e => e) || [];
-    return message;
-  },
-  toAmino(message: AllowList): AllowListAmino {
-    const obj: any = {};
-    if (message.addresses) {
-      obj.addresses = message.addresses.map(e => e);
-    } else {
-      obj.addresses = message.addresses;
-    }
-    return obj;
-  },
-  fromAminoMsg(object: AllowListAminoMsg): AllowList {
-    return AllowList.fromAmino(object.value);
-  },
-  toAminoMsg(message: AllowList): AllowListAminoMsg {
-    return {
-      type: "cosmos-sdk/AllowList",
-      value: AllowList.toAmino(message)
-    };
-  },
-  fromProtoMsg(message: AllowListProtoMsg): AllowList {
-    return AllowList.decode(message.value);
-  },
-  toProto(message: AllowList): Uint8Array {
-    return AllowList.encode(message).finish();
-  },
-  toProtoMsg(message: AllowList): AllowListProtoMsg {
-    return {
-      typeUrl: "/cosmos.bank.v1beta1.AllowList",
-      value: AllowList.encode(message).finish()
     };
   }
 };

@@ -2,10 +2,10 @@
 import { BinaryReader, BinaryWriter } from "../../../binary";
 /** ParameterChangeProposal defines a proposal to change one or more parameters. */
 export interface ParameterChangeProposal {
+  $typeUrl?: "/cosmos.params.v1beta1.ParameterChangeProposal";
   title: string;
   description: string;
   changes: ParamChange[];
-  isExpedited: boolean;
 }
 export interface ParameterChangeProposalProtoMsg {
   typeUrl: "/cosmos.params.v1beta1.ParameterChangeProposal";
@@ -15,8 +15,7 @@ export interface ParameterChangeProposalProtoMsg {
 export interface ParameterChangeProposalAmino {
   title?: string;
   description?: string;
-  changes?: ParamChangeAmino[];
-  is_expedited?: boolean;
+  changes: ParamChangeAmino[];
 }
 export interface ParameterChangeProposalAminoMsg {
   type: "cosmos-sdk/ParameterChangeProposal";
@@ -24,10 +23,10 @@ export interface ParameterChangeProposalAminoMsg {
 }
 /** ParameterChangeProposal defines a proposal to change one or more parameters. */
 export interface ParameterChangeProposalSDKType {
+  $typeUrl?: "/cosmos.params.v1beta1.ParameterChangeProposal";
   title: string;
   description: string;
   changes: ParamChangeSDKType[];
-  is_expedited: boolean;
 }
 /**
  * ParamChange defines an individual parameter change, for use in
@@ -66,10 +65,10 @@ export interface ParamChangeSDKType {
 }
 function createBaseParameterChangeProposal(): ParameterChangeProposal {
   return {
+    $typeUrl: "/cosmos.params.v1beta1.ParameterChangeProposal",
     title: "",
     description: "",
-    changes: [],
-    isExpedited: false
+    changes: []
   };
 }
 export const ParameterChangeProposal = {
@@ -83,9 +82,6 @@ export const ParameterChangeProposal = {
     }
     for (const v of message.changes) {
       ParamChange.encode(v!, writer.uint32(26).fork()).ldelim();
-    }
-    if (message.isExpedited === true) {
-      writer.uint32(32).bool(message.isExpedited);
     }
     return writer;
   },
@@ -105,9 +101,6 @@ export const ParameterChangeProposal = {
         case 3:
           message.changes.push(ParamChange.decode(reader, reader.uint32()));
           break;
-        case 4:
-          message.isExpedited = reader.bool();
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -120,7 +113,6 @@ export const ParameterChangeProposal = {
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     message.changes = object.changes?.map(e => ParamChange.fromPartial(e)) || [];
-    message.isExpedited = object.isExpedited ?? false;
     return message;
   },
   fromAmino(object: ParameterChangeProposalAmino): ParameterChangeProposal {
@@ -132,9 +124,6 @@ export const ParameterChangeProposal = {
       message.description = object.description;
     }
     message.changes = object.changes?.map(e => ParamChange.fromAmino(e)) || [];
-    if (object.is_expedited !== undefined && object.is_expedited !== null) {
-      message.isExpedited = object.is_expedited;
-    }
     return message;
   },
   toAmino(message: ParameterChangeProposal): ParameterChangeProposalAmino {
@@ -146,7 +135,6 @@ export const ParameterChangeProposal = {
     } else {
       obj.changes = message.changes;
     }
-    obj.is_expedited = message.isExpedited === false ? undefined : message.isExpedited;
     return obj;
   },
   fromAminoMsg(object: ParameterChangeProposalAminoMsg): ParameterChangeProposal {

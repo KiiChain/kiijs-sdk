@@ -6,18 +6,20 @@
   */
  
 export * from "./amino/bundle";
-export * from "./ics23/bundle";
+export * from "./capability/bundle";
 export * from "./cosmos_proto/bundle";
 export * from "./cosmos/bundle";
 export * from "./cosmos/client";
 export * from "./cosmwasm/bundle";
 export * from "./cosmwasm/client";
-export * from "./kiichain/bundle";
-export * from "./kiichain/client";
 export * from "./gogoproto/bundle";
 export * from "./google/bundle";
 export * from "./ibc/bundle";
 export * from "./ibc/client";
+export * from "./kiichain/bundle";
+export * from "./kiichain/client";
+export * from "./ratelimit/bundle";
+export * from "./ratelimit/client";
 export * from "./tendermint/bundle";
 export * from "./varint";
 export * from "./utf8";

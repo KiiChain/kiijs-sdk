@@ -1,7 +1,0 @@
-syntax = "proto3";
-package kiichain.kiichain3.tokenfactory;
-
-option go_package = "github.com/kiichain/kiichain/x/tokenfactory/types";
-
-// Params defines the parameters for the tokenfactory module.
-message Params {}

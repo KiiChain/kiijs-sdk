@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { Counterparty, CounterpartyAmino, CounterpartySDKType, Version, VersionAmino, VersionSDKType } from "./connection";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
-import { Height, HeightAmino, HeightSDKType } from "../../client/v1/client";
+import { Height, HeightAmino, HeightSDKType, Params, ParamsAmino, ParamsSDKType } from "../../client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
 /**
@@ -74,11 +74,10 @@ export interface MsgConnectionOpenInitResponseSDKType {}
  */
 export interface MsgConnectionOpenTry {
   clientId: string;
-  /**
-   * in the case of crossing hello's, when both chains call OpenInit, we need
-   * the connection identifier of the previous connection in state INIT
-   */
+  /** Deprecated: this field is unused. Crossing hellos are no longer supported in core IBC. */
+  /** @deprecated */
   previousConnectionId: string;
+  /** @deprecated */
   clientState?: Any;
   counterparty: Counterparty;
   delayPeriod: bigint;
@@ -90,11 +89,17 @@ export interface MsgConnectionOpenTry {
    */
   proofInit: Uint8Array;
   /** proof of client state included in message */
+  /** @deprecated */
   proofClient: Uint8Array;
   /** proof of client consensus state */
+  /** @deprecated */
   proofConsensus: Uint8Array;
+  /** @deprecated */
   consensusHeight: Height;
   signer: string;
+  /** optional proof data for host state machines that are unable to introspect their own consensus state */
+  /** @deprecated */
+  hostConsensusStateProof: Uint8Array;
 }
 export interface MsgConnectionOpenTryProtoMsg {
   typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenTry";
@@ -106,11 +111,10 @@ export interface MsgConnectionOpenTryProtoMsg {
  */
 export interface MsgConnectionOpenTryAmino {
   client_id?: string;
-  /**
-   * in the case of crossing hello's, when both chains call OpenInit, we need
-   * the connection identifier of the previous connection in state INIT
-   */
+  /** Deprecated: this field is unused. Crossing hellos are no longer supported in core IBC. */
+  /** @deprecated */
   previous_connection_id?: string;
+  /** @deprecated */
   client_state?: AnyAmino;
   counterparty?: CounterpartyAmino;
   delay_period?: string;
@@ -122,11 +126,17 @@ export interface MsgConnectionOpenTryAmino {
    */
   proof_init?: string;
   /** proof of client state included in message */
+  /** @deprecated */
   proof_client?: string;
   /** proof of client consensus state */
+  /** @deprecated */
   proof_consensus?: string;
+  /** @deprecated */
   consensus_height?: HeightAmino;
   signer?: string;
+  /** optional proof data for host state machines that are unable to introspect their own consensus state */
+  /** @deprecated */
+  host_consensus_state_proof?: string;
 }
 export interface MsgConnectionOpenTryAminoMsg {
   type: "cosmos-sdk/MsgConnectionOpenTry";
@@ -138,17 +148,24 @@ export interface MsgConnectionOpenTryAminoMsg {
  */
 export interface MsgConnectionOpenTrySDKType {
   client_id: string;
+  /** @deprecated */
   previous_connection_id: string;
+  /** @deprecated */
   client_state?: AnySDKType;
   counterparty: CounterpartySDKType;
   delay_period: bigint;
   counterparty_versions: VersionSDKType[];
   proof_height: HeightSDKType;
   proof_init: Uint8Array;
+  /** @deprecated */
   proof_client: Uint8Array;
+  /** @deprecated */
   proof_consensus: Uint8Array;
+  /** @deprecated */
   consensus_height: HeightSDKType;
   signer: string;
+  /** @deprecated */
+  host_consensus_state_proof: Uint8Array;
 }
 /** MsgConnectionOpenTryResponse defines the Msg/ConnectionOpenTry response type. */
 export interface MsgConnectionOpenTryResponse {}
@@ -172,6 +189,7 @@ export interface MsgConnectionOpenAck {
   connectionId: string;
   counterpartyConnectionId: string;
   version?: Version;
+  /** @deprecated */
   clientState?: Any;
   proofHeight: Height;
   /**
@@ -180,11 +198,17 @@ export interface MsgConnectionOpenAck {
    */
   proofTry: Uint8Array;
   /** proof of client state included in message */
+  /** @deprecated */
   proofClient: Uint8Array;
   /** proof of client consensus state */
+  /** @deprecated */
   proofConsensus: Uint8Array;
+  /** @deprecated */
   consensusHeight: Height;
   signer: string;
+  /** optional proof data for host state machines that are unable to introspect their own consensus state */
+  /** @deprecated */
+  hostConsensusStateProof: Uint8Array;
 }
 export interface MsgConnectionOpenAckProtoMsg {
   typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenAck";
@@ -198,6 +222,7 @@ export interface MsgConnectionOpenAckAmino {
   connection_id?: string;
   counterparty_connection_id?: string;
   version?: VersionAmino;
+  /** @deprecated */
   client_state?: AnyAmino;
   proof_height?: HeightAmino;
   /**
@@ -206,11 +231,17 @@ export interface MsgConnectionOpenAckAmino {
    */
   proof_try?: string;
   /** proof of client state included in message */
+  /** @deprecated */
   proof_client?: string;
   /** proof of client consensus state */
+  /** @deprecated */
   proof_consensus?: string;
+  /** @deprecated */
   consensus_height?: HeightAmino;
   signer?: string;
+  /** optional proof data for host state machines that are unable to introspect their own consensus state */
+  /** @deprecated */
+  host_consensus_state_proof?: string;
 }
 export interface MsgConnectionOpenAckAminoMsg {
   type: "cosmos-sdk/MsgConnectionOpenAck";
@@ -224,13 +255,19 @@ export interface MsgConnectionOpenAckSDKType {
   connection_id: string;
   counterparty_connection_id: string;
   version?: VersionSDKType;
+  /** @deprecated */
   client_state?: AnySDKType;
   proof_height: HeightSDKType;
   proof_try: Uint8Array;
+  /** @deprecated */
   proof_client: Uint8Array;
+  /** @deprecated */
   proof_consensus: Uint8Array;
+  /** @deprecated */
   consensus_height: HeightSDKType;
   signer: string;
+  /** @deprecated */
+  host_consensus_state_proof: Uint8Array;
 }
 /** MsgConnectionOpenAckResponse defines the Msg/ConnectionOpenAck response type. */
 export interface MsgConnectionOpenAckResponse {}
@@ -309,6 +346,55 @@ export interface MsgConnectionOpenConfirmResponseAminoMsg {
  * response type.
  */
 export interface MsgConnectionOpenConfirmResponseSDKType {}
+/** MsgUpdateParams defines the sdk.Msg type to update the connection parameters. */
+export interface MsgUpdateParams {
+  /** signer address */
+  signer: string;
+  /**
+   * params defines the connection parameters to update.
+   * 
+   * NOTE: All parameters must be supplied.
+   */
+  params: Params;
+}
+export interface MsgUpdateParamsProtoMsg {
+  typeUrl: "/ibc.core.connection.v1.MsgUpdateParams";
+  value: Uint8Array;
+}
+/** MsgUpdateParams defines the sdk.Msg type to update the connection parameters. */
+export interface MsgUpdateParamsAmino {
+  /** signer address */
+  signer?: string;
+  /**
+   * params defines the connection parameters to update.
+   * 
+   * NOTE: All parameters must be supplied.
+   */
+  params?: ParamsAmino;
+}
+export interface MsgUpdateParamsAminoMsg {
+  type: "cosmos-sdk/MsgUpdateParams";
+  value: MsgUpdateParamsAmino;
+}
+/** MsgUpdateParams defines the sdk.Msg type to update the connection parameters. */
+export interface MsgUpdateParamsSDKType {
+  signer: string;
+  params: ParamsSDKType;
+}
+/** MsgUpdateParamsResponse defines the MsgUpdateParams response type. */
+export interface MsgUpdateParamsResponse {}
+export interface MsgUpdateParamsResponseProtoMsg {
+  typeUrl: "/ibc.core.connection.v1.MsgUpdateParamsResponse";
+  value: Uint8Array;
+}
+/** MsgUpdateParamsResponse defines the MsgUpdateParams response type. */
+export interface MsgUpdateParamsResponseAmino {}
+export interface MsgUpdateParamsResponseAminoMsg {
+  type: "cosmos-sdk/MsgUpdateParamsResponse";
+  value: MsgUpdateParamsResponseAmino;
+}
+/** MsgUpdateParamsResponse defines the MsgUpdateParams response type. */
+export interface MsgUpdateParamsResponseSDKType {}
 function createBaseMsgConnectionOpenInit(): MsgConnectionOpenInit {
   return {
     clientId: "",
@@ -495,7 +581,8 @@ function createBaseMsgConnectionOpenTry(): MsgConnectionOpenTry {
     proofClient: new Uint8Array(),
     proofConsensus: new Uint8Array(),
     consensusHeight: Height.fromPartial({}),
-    signer: ""
+    signer: "",
+    hostConsensusStateProof: new Uint8Array()
   };
 }
 export const MsgConnectionOpenTry = {
@@ -536,6 +623,9 @@ export const MsgConnectionOpenTry = {
     }
     if (message.signer !== "") {
       writer.uint32(98).string(message.signer);
+    }
+    if (message.hostConsensusStateProof.length !== 0) {
+      writer.uint32(106).bytes(message.hostConsensusStateProof);
     }
     return writer;
   },
@@ -582,6 +672,9 @@ export const MsgConnectionOpenTry = {
         case 12:
           message.signer = reader.string();
           break;
+        case 13:
+          message.hostConsensusStateProof = reader.bytes();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -603,6 +696,7 @@ export const MsgConnectionOpenTry = {
     message.proofConsensus = object.proofConsensus ?? new Uint8Array();
     message.consensusHeight = object.consensusHeight !== undefined && object.consensusHeight !== null ? Height.fromPartial(object.consensusHeight) : undefined;
     message.signer = object.signer ?? "";
+    message.hostConsensusStateProof = object.hostConsensusStateProof ?? new Uint8Array();
     return message;
   },
   fromAmino(object: MsgConnectionOpenTryAmino): MsgConnectionOpenTry {
@@ -641,6 +735,9 @@ export const MsgConnectionOpenTry = {
     if (object.signer !== undefined && object.signer !== null) {
       message.signer = object.signer;
     }
+    if (object.host_consensus_state_proof !== undefined && object.host_consensus_state_proof !== null) {
+      message.hostConsensusStateProof = bytesFromBase64(object.host_consensus_state_proof);
+    }
     return message;
   },
   toAmino(message: MsgConnectionOpenTry): MsgConnectionOpenTryAmino {
@@ -661,6 +758,7 @@ export const MsgConnectionOpenTry = {
     obj.proof_consensus = message.proofConsensus ? base64FromBytes(message.proofConsensus) : undefined;
     obj.consensus_height = message.consensusHeight ? Height.toAmino(message.consensusHeight) : {};
     obj.signer = message.signer === "" ? undefined : message.signer;
+    obj.host_consensus_state_proof = message.hostConsensusStateProof ? base64FromBytes(message.hostConsensusStateProof) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgConnectionOpenTryAminoMsg): MsgConnectionOpenTry {
@@ -752,7 +850,8 @@ function createBaseMsgConnectionOpenAck(): MsgConnectionOpenAck {
     proofClient: new Uint8Array(),
     proofConsensus: new Uint8Array(),
     consensusHeight: Height.fromPartial({}),
-    signer: ""
+    signer: "",
+    hostConsensusStateProof: new Uint8Array()
   };
 }
 export const MsgConnectionOpenAck = {
@@ -787,6 +886,9 @@ export const MsgConnectionOpenAck = {
     }
     if (message.signer !== "") {
       writer.uint32(82).string(message.signer);
+    }
+    if (message.hostConsensusStateProof.length !== 0) {
+      writer.uint32(90).bytes(message.hostConsensusStateProof);
     }
     return writer;
   },
@@ -827,6 +929,9 @@ export const MsgConnectionOpenAck = {
         case 10:
           message.signer = reader.string();
           break;
+        case 11:
+          message.hostConsensusStateProof = reader.bytes();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -846,6 +951,7 @@ export const MsgConnectionOpenAck = {
     message.proofConsensus = object.proofConsensus ?? new Uint8Array();
     message.consensusHeight = object.consensusHeight !== undefined && object.consensusHeight !== null ? Height.fromPartial(object.consensusHeight) : undefined;
     message.signer = object.signer ?? "";
+    message.hostConsensusStateProof = object.hostConsensusStateProof ?? new Uint8Array();
     return message;
   },
   fromAmino(object: MsgConnectionOpenAckAmino): MsgConnectionOpenAck {
@@ -880,6 +986,9 @@ export const MsgConnectionOpenAck = {
     if (object.signer !== undefined && object.signer !== null) {
       message.signer = object.signer;
     }
+    if (object.host_consensus_state_proof !== undefined && object.host_consensus_state_proof !== null) {
+      message.hostConsensusStateProof = bytesFromBase64(object.host_consensus_state_proof);
+    }
     return message;
   },
   toAmino(message: MsgConnectionOpenAck): MsgConnectionOpenAckAmino {
@@ -894,6 +1003,7 @@ export const MsgConnectionOpenAck = {
     obj.proof_consensus = message.proofConsensus ? base64FromBytes(message.proofConsensus) : undefined;
     obj.consensus_height = message.consensusHeight ? Height.toAmino(message.consensusHeight) : {};
     obj.signer = message.signer === "" ? undefined : message.signer;
+    obj.host_consensus_state_proof = message.hostConsensusStateProof ? base64FromBytes(message.hostConsensusStateProof) : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgConnectionOpenAckAminoMsg): MsgConnectionOpenAck {
@@ -1132,6 +1242,143 @@ export const MsgConnectionOpenConfirmResponse = {
     return {
       typeUrl: "/ibc.core.connection.v1.MsgConnectionOpenConfirmResponse",
       value: MsgConnectionOpenConfirmResponse.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgUpdateParams(): MsgUpdateParams {
+  return {
+    signer: "",
+    params: Params.fromPartial({})
+  };
+}
+export const MsgUpdateParams = {
+  typeUrl: "/ibc.core.connection.v1.MsgUpdateParams",
+  encode(message: MsgUpdateParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.signer !== "") {
+      writer.uint32(10).string(message.signer);
+    }
+    if (message.params !== undefined) {
+      Params.encode(message.params, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParams {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateParams();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.signer = reader.string();
+          break;
+        case 2:
+          message.params = Params.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams {
+    const message = createBaseMsgUpdateParams();
+    message.signer = object.signer ?? "";
+    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    return message;
+  },
+  fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
+    const message = createBaseMsgUpdateParams();
+    if (object.signer !== undefined && object.signer !== null) {
+      message.signer = object.signer;
+    }
+    if (object.params !== undefined && object.params !== null) {
+      message.params = Params.fromAmino(object.params);
+    }
+    return message;
+  },
+  toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino {
+    const obj: any = {};
+    obj.signer = message.signer === "" ? undefined : message.signer;
+    obj.params = message.params ? Params.toAmino(message.params) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams {
+    return MsgUpdateParams.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgUpdateParams): MsgUpdateParamsAminoMsg {
+    return {
+      type: "cosmos-sdk/MsgUpdateParams",
+      value: MsgUpdateParams.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgUpdateParamsProtoMsg): MsgUpdateParams {
+    return MsgUpdateParams.decode(message.value);
+  },
+  toProto(message: MsgUpdateParams): Uint8Array {
+    return MsgUpdateParams.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateParams): MsgUpdateParamsProtoMsg {
+    return {
+      typeUrl: "/ibc.core.connection.v1.MsgUpdateParams",
+      value: MsgUpdateParams.encode(message).finish()
+    };
+  }
+};
+function createBaseMsgUpdateParamsResponse(): MsgUpdateParamsResponse {
+  return {};
+}
+export const MsgUpdateParamsResponse = {
+  typeUrl: "/ibc.core.connection.v1.MsgUpdateParamsResponse",
+  encode(_: MsgUpdateParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParamsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateParamsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgUpdateParamsResponse>): MsgUpdateParamsResponse {
+    const message = createBaseMsgUpdateParamsResponse();
+    return message;
+  },
+  fromAmino(_: MsgUpdateParamsResponseAmino): MsgUpdateParamsResponse {
+    const message = createBaseMsgUpdateParamsResponse();
+    return message;
+  },
+  toAmino(_: MsgUpdateParamsResponse): MsgUpdateParamsResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse {
+    return MsgUpdateParamsResponse.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseAminoMsg {
+    return {
+      type: "cosmos-sdk/MsgUpdateParamsResponse",
+      value: MsgUpdateParamsResponse.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgUpdateParamsResponseProtoMsg): MsgUpdateParamsResponse {
+    return MsgUpdateParamsResponse.decode(message.value);
+  },
+  toProto(message: MsgUpdateParamsResponse): Uint8Array {
+    return MsgUpdateParamsResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseProtoMsg {
+    return {
+      typeUrl: "/ibc.core.connection.v1.MsgUpdateParamsResponse",
+      value: MsgUpdateParamsResponse.encode(message).finish()
     };
   }
 };
