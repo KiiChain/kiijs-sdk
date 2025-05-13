@@ -78,7 +78,7 @@ KiiChain v3 supports both EVM JSON-RPC and Cosmos RPC interfaces. In order to ea
 | [Governance Precompile](#governance-precompile)     | Supports actions such as depositing funds into proposals, voting and interacting with proposals.                         |                        
 | [ICS20 Precompile](#ics20-precompile) | Facilitates conversion between hex address and bech32 
 | [Slashing Precompile](#slashing-precompile) | Provides management and query options for penalties                      |
-| [Staking Precompile](#staking-precompile)           | Enables staking functionalities like delegation and undelegation or obtaining information on validators.                            |                  
+| [Staking Precompile](#staking-precompile)           | Enables staking functionalities like delegation and undelegation or obtaining information on validators.                            |          | [Wasm Precompile](#wasm-precompile)           | Precompile for interacting with wasm contracts                           |         
 
 <br>
 
