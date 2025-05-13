@@ -271,3 +271,23 @@ The Staking precompile manages validator operations, delegations, and governance
 
 <br>
 <br>
+
+### Wasm Precompile
+
+The wasm precompile makes wasm contracts available to being used via evm, with instantiate, query and execute.
+
+#### Functions
+
+| Function Name       | Input Parameters                                                                 | Return Value                     | Description                                                                 |
+|---------------------|---------------------------------------------------------------------------------|----------------------------------|-----------------------------------------------------------------------------|
+| **`execute`**       | `contractAddress: string`<br>`msg: bytes` (JSON-encoded)<br>`coins: [{ denom: string, amount: string }]` | `success: boolean` | Executes a contract method with optional token transfer |
+| **`instantiate`**   | `admin: string` (address)<br>`codeID: number` (uint64)<br>`label: string`<br>`msg: bytes` (init msg)<br>`coins: [{ denom: string, amount: string }]` | `success: boolean` | Deploys a new contract instance from stored code |
+| **`queryRaw`**      | `contractAddress: string`<br>`queryData: bytes` (raw query)                     | `data: bytes` (raw response)     | Low-level contract query (returns raw bytes)                                |
+| **`querySmart`**    | `contractAddress: string`<br>`msg: bytes` (JSON-encoded query)                  | `data: bytes` (JSON response)    | Smart query (parses input/output as JSON)                                   |
+
+
+#### Precompile Addresses
+0x0000000000000000000000000000000000001001
+
+<br>
+<br>
