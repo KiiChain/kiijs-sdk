@@ -56,48 +56,34 @@ const contract = getBankPrecompileEthersV6Contract(signer);
 const cosmosAddress = await contract.balances();
 ```
 
-<br>
+An alternative without the popup is to directly use your private key to connect.
+```tsx
+import { ethers } from 'ethers';
+
+const provider = new ethers.JsonRpcProvider('https://json-rpc.dos.sentry.testnet.v3.kiivalidator.com/');
+const wallet = new ethers.Wallet("0xyourprivatekey", provider);
+```
 
 ### Usage with viem
 This package exports `viem` Chains and precompile ABI's for KiiChain. The ABI used in the ethers example above is a viem ABI instance and the `ARCTIC_1_VIEM_CHAIN` is a `viem Chain` instance.
 
 ## Interoperability with Cosmos
-KiiChain v2 supports both EVM JSON-RPC and Cosmos RPC interfaces. In order to easily interact with certain Cosmos modules, KiiChain v2 has a set of precompiled contracts that can be called from the EVM.
+KiiChain v3 supports both EVM JSON-RPC and Cosmos RPC interfaces. In order to easily interact with certain Cosmos modules, KiiChain v3 has a set of precompiled contracts that can be called from the EVM.
 
 | Precompile                                          | Description                                                                                  |
 |-----------------------------------------------------|----------------------------------------------------------------------------------------------|
-| [Address Precompile](#address-precompile)           | Enables the retrieval of associated EVM addresses for given Cosmos addresses and vice versa. |
-| [Bank Precompile](#bank-precompile)                 | Provides functionalities for managing balances, supply, symbols, and more.                   |
-| [Distribution Precompile](#distribution-precompile) | Facilitates operations related to rewards withdrawal and distribution.                       |
-| [Governance Precompile](#governance-precompile)     | Supports actions such as depositing funds into proposals and voting.                         |
-| [JSON Precompile](#json-precompile)                 | Facilitates interoperability between the EVM and Cosmos.                                     |
-| [Staking Precompile](#staking-precompile)           | Enables staking functionalities like delegation and undelegation.                            |
-| [WASM Precompile](#wasm-precompile)                 | Provides functionalities for executing WebAssembly (WASM) code.                              |
+| [Bank Precompile](#bank-precompile)                 | Provides functionalities for checking balances and supply.                   |
+| [Bech32 Precompile](#bech32-precompile) | Facilitates conversion between hex address and bech32                       |
+| [Distribution Precompile](#distribution-precompile) | Deals with reward distribution and related                      |                     |
+| [Governance Precompile](#governance-precompile)     | Supports actions such as depositing funds into proposals, voting and interacting with proposals.                         |                        
+| [ICS20 Precompile](#ics20-precompile) | Facilitates conversion between hex address and bech32 
+| [Slashing Precompile](#slashing-precompile) | Provides management and query options for penalties                      |
+| [Staking Precompile](#staking-precompile)           | Enables staking functionalities like delegation and undelegation or obtaining information on validators.                            |                  
 
 <br>
 
 ### Interoperability using Wagmi, viem, and ethers
 Each precompile has contract exports a typed 'ethers' contracts and provides the ABI and contract addresses for each precompile for usage with Wagmi and viem.
-
-<br>
-<br>
-
-
-### Address Precompile
-
-The Address precompile contract enables the retrieval of associated EVM addresses for given Cosmos addresses and vice versa.
-#### Functions
-
-| Function Name                                                                          | Input Parameters  | Return Value           | Description                                                      |
-|----------------------------------------------------------------------------------------|-------------------|------------------------|------------------------------------------------------------------|
-| `getEvmAddr` | `addr: ` `string` | `{ response: string }` | Retrieves the associated EVM address for a given Cosmos address. |
-| `getKiiAddr` | `addr: ` `string` | `{ response: string }` | Retrieves the associated Cosmos address for a given EVM address. |
-| `associate`   | `v: ` `string`, `r: ` `string`, `s: ` `string`, `customMessage: ` `string` | `{ response: string }` | Associates an EVM address with it's corresponding KiiChain Native address on chain using a signature. |
-| `associatePubKey`   | `pubKeyHex: ` `string` | `{ response: string }` | Associates an EVM address with it's corresponding Cosmos address on chain using the Hex-Encoded compressed pubkey (excluding the '0x'). |
-
-
-#### Precompile Address
-0x0000000000000000000000000000000000001004
 
 <br>
 <br>
@@ -109,16 +95,28 @@ The Bank precompile contract provides functionalities for managing balances, sup
 
 | Function Name                                                                       | Input Parameters                                                                          | Return Value           | Description                                                                |
 |-------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|------------------------|----------------------------------------------------------------------------|
-| `balance`       | `acc: ` `string`, `denom: ` `string`                                                      | `{ amount: string }`   | Retrieves the balance of the specified account for the given denomination. |
-| `decimals`     | `denom: ` `string`                                                                        | `{ response: string }` | Retrieves the number of decimal places for the specified denomination.     |
-| `name`            | `denom: ` `string`                                                                        | `{ response: string }` | Retrieves the name of the specified denomination.                          |
-| `send`             | `fromAddress: ` `string`, `toAddress: ` `string`, `denom: ` `string`, `amount: ` `number` | `{ success: boolean }` | Sends tokens from one address to another.                                  |
-| `supply`         | `denom: ` `string`                                                                        | `{ response: string }` | Retrieves the total supply of tokens for the specified denomination.       |
-| `symbol`        | `denom: ` `string`                                                                        | `{ response: string }` | Retrieves the symbol of the specified denomination.                        |
-| `sendNative` | `toNativeAddress: ` `string`, `value: ` `string`                                          | `{ success: boolean }` | Sends native tokens to a specified address.                                |
+| `balances`       | `acc: ` `string`                                                    | `balances : [{ denom: string, amount: string }]`   | Retrieves the balances of a given address |                               |
+| `supplyOf`         | `denom: ` `string`                                                                        | `{ response: string }` | Retrieves the total supply of tokens for the specified denomination.       |
+| `totalSupply`        | -                                                       | `balances : [{ denom: string, amount: string }]` | Retrieves all the supplies from the chain                       |                              |
 
 #### Precompile Addresses
-0x0000000000000000000000000000000000001001
+0x0000000000000000000000000000000000000804
+
+<br>
+<br>
+
+
+### Bech32 Precompile
+
+The bech32 precompile contract provides ways to turn a hex address to bech32 and vice-versa. There is also functions in the library under the precompile to do the same without using the contract.
+
+```tsx
+import { getBech32PrecompileEthersV6Contract } from '@kiichain/kiijs-evm/ethers'
+
+const kiiAddress = HexToBech32("0xyourhex")
+
+const evmAddress = Bech32ToHex("kiiYouraddress)
+```
 
 <br>
 <br>
@@ -129,96 +127,147 @@ The Distribution precompile contract facilitates operations related to rewards w
 
 #### Functions
 
-| Function Name                                                                                                                             | Input Parameters               | Return Value    | Description                                                                                                                                                       |
-|-------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `setWithdrawAddress`                               | `withdrawAddress: ` `string`   | `{ success: boolean }` | Sets the withdrawal address for rewards.                                                                                                                          |
-| `withdrawDelegationRewards`                 | `validator: ` `string`         | `{ success: boolean }` | Withdraws delegation rewards for a given validator.                                                                                                               |
-| `withdrawMultipleDelegationRewards` | `validators: ` `string[]`      | `{ success: boolean }` | Withdraws delegation rewards for given validators.                                                                                                                |
-| `rewards`                                                     | `delegatorAddress: ` `address` | `{ rewards: Rewards }` | Queries rewards available for a given delegator address. Rewards are usually returned as decimals. To calculate the actual amount, divide the amount by decimals. |
+Here's the table representation of your Distribution ABI:
+
+| Function Name | Input Parameters | Return Value | Description |
+|--------------|------------------|--------------|-------------|
+| `claimRewards` | `delegatorAddress: string` (address)<br>`maxRetrieve: number` (uint32) | `success: boolean` | Claims rewards for a delegator (up to maxRetrieve) |
+| `delegationRewards` | `delegatorAddress: string` (address)<br>`validatorAddress: string` | `rewards: [{ denom: string, amount: string, precision: number }]` | Gets rewards for a specific delegation |
+| `delegationTotalRewards` | `delegatorAddress: string` (address) | `rewards: [{ validatorAddress: string, reward: [{ denom: string, amount: string, precision: number }] }]`<br>`total: [{ denom: string, amount: string, precision: number }]` | Gets all rewards for a delegator with totals |
+| `delegatorValidators` | `delegatorAddress: string` (address) | `validators: string[]` | Lists all validators a delegator is staked with |
+| `delegatorWithdrawAddress` | `delegatorAddress: string` (address) | `withdrawAddress: string` | Gets the withdrawal address for a delegator |
+| `fundCommunityPool` | `depositor: string` (address)<br>`amount: string` (uint256) | `success: boolean` | Funds the community pool |
+| `setWithdrawAddress` | `delegatorAddress: string` (address)<br>`withdrawerAddress: string` | `success: boolean` | Sets the withdrawal address for rewards |
+| `validatorCommission` | `validatorAddress: string` | `commission: [{ denom: string, amount: string, precision: number }]` | Gets commission rewards for a validator |
+| `validatorDistributionInfo` | `validatorAddress: string` | `distributionInfo: { operatorAddress: string, selfBondRewards: [{ denom: string, amount: string, precision: number }], commission: [{ denom: string, amount: string, precision: number }] }` | Gets full distribution info for a validator |
+| `validatorOutstandingRewards` | `validatorAddress: string` | `rewards: [{ denom: string, amount: string, precision: number }]` | Gets outstanding rewards for a validator |
+| `validatorSlashes` | `validatorAddress: string`<br>`startingHeight: number` (uint64)<br>`endingHeight: number` (uint64)<br>`pageRequest: { key: bytes, offset: number, limit: number, countTotal: boolean, reverse: boolean }` | `slashes: [{ validatorPeriod: number, fraction: { value: string, precision: number } }]`<br>`pageResponse: { nextKey: bytes, total: number }` | Gets slash events for a validator with pagination |
+| `withdrawDelegatorRewards` | `delegatorAddress: string` (address)<br>`validatorAddress: string` | `amount: [{ denom: string, amount: string }]` | Withdraws delegator's rewards from a validator |
+| `withdrawValidatorCommission` | `validatorAddress: string` | `amount: [{ denom: string, amount: string }]` | Withdraws validator's commission rewards |
+
 
 #### Precompile Addresses
-0x0000000000000000000000000000000000001007
+0x0000000000000000000000000000000000000801
+
+<br>
+<br>
+
+
+### Evidence Precompile
+
+The Evidence precompile contract provides functionalities for dealing with evidences.
+
+#### Functions
+| Function Name     | Input Parameters                                                                 | Return Value                                                                 | Description                                                                 |
+|-------------------|---------------------------------------------------------------------------------|------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| `evidence`       | `evidenceHash: bytes`                                                           | `evidence: { height: number, time: number, power: number, consensusAddress: string }` | Retrieves evidence by its hash                                        |
+| `getAllEvidence` | `pageRequest: { key: bytes, offset: number, limit: number, countTotal: boolean, reverse: boolean }` | `evidence: [{ height: number, time: number, power: number, consensusAddress: string }]`<br>`pageResponse: { nextKey: bytes, total: number }` | Retrieves all evidence with pagination support                       |
+| `submitEvidence` | `evidence: { height: number, time: number, power: number, consensusAddress: string }` | `success: boolean`                                                          | Submits new evidence of validator equivocation                           |
+
+#### Precompile Addresses
+0x0000000000000000000000000000000000000807
 
 <br>
 <br>
 
 ### Governance Precompile
 
-The Governance precompile contract supports actions to deposit funds into proposals and vote on them.
+The Governance precompile contract supports actions to deposit funds into proposals, view them and interact with them.
+
 #### Functions
 
-| Function Name                                                                       | Input Parameters                             | Return Value           | Description                                |
-|-------------------------------------------------------------------------------------|----------------------------------------------|------------------------|--------------------------------------------|
-| `deposit` | `proposalID: ` `string`                     | `{ success: boolean }` | Deposits funds into a governance proposal. |
-| `vote`       | `proposalID: ` `string`, `option: ` `string` | `{ success: boolean }` | Votes on a governance proposal.            |
+| Function Name       | Input Parameters                                                                 | Return Value                                                                 | Description                                                                 |
+|---------------------|---------------------------------------------------------------------------------|------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| `getDeposit`        | `proposalId: number` (uint64)<br>`depositor: string` (address)                  | `deposit: { proposalId: number, depositor: string, amount: [{ denom: string, amount: string }] }` | Gets a specific deposit for a proposal |
+| `getDeposits`       | `proposalId: number` (uint64)<br>`pagination: { key: bytes, offset: number, limit: number, countTotal: boolean, reverse: boolean }` | `deposits: [{ proposalId: number, depositor: string, amount: [{ denom: string, amount: string }] }]`<br>`pageResponse: { nextKey: bytes, total: number }` | Gets all deposits for a proposal with pagination |
+| `getParams`         | -                                                                                | `params: { votingPeriod: number, minDeposit: [{ denom: string, amount: string }], maxDepositPeriod: number, quorum: string, threshold: string, vetoThreshold: string, ... }` | Returns governance parameters |
+| `getProposal`       | `proposalId: number` (uint64)                                                  | `proposal: { id: number, messages: string[], status: number, finalTallyResult: { yes: string, abstain: string, no: string, noWithVeto: string }, submitTime: number, ... }` | Gets full proposal details |
+| `getProposals`      | `proposalStatus: number` (uint32)<br>`voter: string` (address)<br>`depositor: string` (address)<br>`pagination: { ... }` | `proposals: [{ id: number, messages: string[], status: number, finalTallyResult: { ... }, ... }]`<br>`pageResponse: { nextKey: bytes, total: number }` | Lists proposals with filters and pagination |
+| `getTallyResult`    | `proposalId: number` (uint64)                                                  | `tallyResult: { yes: string, abstain: string, no: string, noWithVeto: string }` | Gets current tally results for a proposal |
+| `getVote`          | `proposalId: number` (uint64)<br>`voter: string` (address)                     | `vote: { proposalId: number, voter: string, options: [{ option: number, weight: string }], metadata: string }` | Gets an individual vote |
+| `getVotes`         | `proposalId: number` (uint64)<br>`pagination: { ... }`                         | `votes: [{ proposalId: number, voter: string, options: [{ option: number, weight: string }], metadata: string }]`<br>`pageResponse: { nextKey: bytes, total: number }` | Gets all votes for a proposal with pagination |
+| `vote`             | `voter: string` (address)<br>`proposalId: number` (uint64)<br>`option: number` (uint8)<br>`metadata: string` | `success: boolean`                                                          | Submits a vote on a proposal |
+| `voteWeighted`     | `voter: string` (address)<br>`proposalId: number` (uint64)<br>`options: [{ option: number, weight: string }]`<br>`metadata: string` | `success: boolean`                                                          | Submits a weighted vote on a proposal |
 
 #### Precompile Addresses
-0x0000000000000000000000000000000000001006
+0x0000000000000000000000000000000000000805
 
 <br>
 <br>
 
-### JSON Precompile
+### ICS20 Precompile
 
-The JSON precompile contract facilitates interoperability between the EVM and Cosmos by providing functions to extract data in various formats.
+Enables cross-chain token transfers via IBC with granular permission control over channels and denominations.
+
 #### Functions
 
-| Function Name                                                                                       | Input Parameters                     | Return Value             | Description                                                              |
-|-----------------------------------------------------------------------------------------------------|--------------------------------------|--------------------------|--------------------------------------------------------------------------|
-| `extractAsBytes`         | `input: ` `string`, `key: ` `string` | `{ response: string }`   | Extracts data as bytes from the input using the specified key.           |
-| `extractAsBytesList` | `input: ` `string`, `key: ` `string` | `{ response: string[] }` | Extracts data as a list of bytes from the input using the specified key. |
-| `extractAsUint256`     | `input: ` `string`, `key: ` `string` | `{ response: string }`   | Extracts data as a uint256 from the input using the specified key.       |
+| Function Name               | Input Parameters                                                                 | Return Value                                                                 | Description                                                                 |
+|-----------------------------|---------------------------------------------------------------------------------|------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| **`allowance`**             | `grantee: string` (address)<br>`granter: string` (address)                      | `allocations: [{ sourcePort: string, sourceChannel: string, spendLimit: [{ denom: string, amount: string }], allowList: string[], allowedPacketData: string[] }]` | Checks granted IBC transfer permissions |
+| **`approve`**               | `grantee: string` (address)<br>`allocations: [{ sourcePort: string, sourceChannel: string, spendLimit: [{ denom: string, amount: string }], ... }]` | `approved: boolean` | Grants IBC transfer permissions |
+| **`decreaseAllowance`**     | `grantee: string` (address)<br>`sourcePort: string`<br>`sourceChannel: string`<br>`denom: string`<br>`amount: string` (uint256) | `approved: boolean` | Reduces spend limit for a specific channel/denom |
+| **`denomHash`**             | `trace: string` (e.g., "transfer/channel-1/uatom")                              | `hash: string` (IBC denom hash)                                              | Converts IBC denom trace to hash (e.g., `ibc/27394FB092...`)                |
+| **`denomTrace`**            | `hash: string` (IBC denom hash)                                                 | `denomTrace: { path: string, baseDenom: string }`                            | Decodes IBC hash to original trace (e.g., `path: "transfer/channel-1"`, `baseDenom: "uatom"`) |
+| **`denomTraces`**           | `pageRequest: { key: bytes, offset: number, limit: number, ... }`               | `denomTraces: [{ path: string, baseDenom: string }]`<br>`pageResponse: { nextKey: bytes, total: number }` | Lists all registered denom traces with pagination |
+| **`increaseAllowance`**     | `grantee: string` (address)<br>`sourcePort: string`<br>`sourceChannel: string`<br>`denom: string`<br>`amount: string` (uint256) | `approved: boolean` | Increases spend limit for a specific channel/denom |
+| **`revoke`**                | `grantee: string` (address)                                                     | `revoked: boolean`                                                           | Revokes all IBC transfer permissions for a grantee                         |
+| **`transfer`**              | `sourcePort: string`<br>`sourceChannel: string`<br>`denom: string`<br>`amount: string` (uint256)<br>`sender: string` (address)<br>`receiver: string`<br>`timeoutHeight: { revisionNumber: number, revisionHeight: number }`<br>`timeoutTimestamp: number`<br>`memo: string` | `nextSequence: number` (uint64) | Initiates an IBC token transfer |
+
+#### Precompile Addresses
+0x0000000000000000000000000000000000000802
+
+<br>
+<br>
+
+
+### Slashing Precompile
+
+Enables query, interaction and management of validator penalties.
+
+#### Functions
+
+| Function Name       | Input Parameters                                                                 | Return Value                                                                 | Description                                                                 |
+|---------------------|---------------------------------------------------------------------------------|------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| `getParams`         | -                                                                               | `params: { signedBlocksWindow: number, minSignedPerWindow: string, downtimeJailDuration: number, slashFractionDoubleSign: string, slashFractionDowntime: string }` | Returns slashing module parameters |
+| `getSigningInfo`    | `consAddress: string` (address)                                                 | `signingInfo: { validatorAddress: string, startHeight: number, indexOffset: number, jailedUntil: number, tombstoned: boolean, missedBlocksCounter: number }` | Gets signing info for a validator |
+| `getSigningInfos`   | `pagination: { key: bytes, offset: number, limit: number, countTotal: boolean, reverse: boolean }` | `signingInfos: [{ validatorAddress: string, startHeight: number, indexOffset: number, jailedUntil: number, tombstoned: boolean, missedBlocksCounter: number }]`<br>`pageResponse: { nextKey: bytes, total: number }` | Gets all validator signing info with pagination |
+| `unjail`           | `validatorAddress: string` (address)                                            | `success: boolean`                                                          | Releases a validator from jail status |
+
+#### Precompile Addresses
+0x0000000000000000000000000000000000000806
+
 
 <br>
 <br>
 
 ### Staking Precompile
 
-The Staking precompile contract provides functions for delegation, re-delegation, and un-delegation staking operations.
+The Staking precompile manages validator operations, delegations, and governance permissions in a Cosmos-based blockchain with EVM compatibility.
 
 #### Functions
 
-| Function Name                                                                          | Input Parameters                                                      | Return Value                 | Description                                                                                                                                                                         |
-|----------------------------------------------------------------------------------------|-----------------------------------------------------------------------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `delegate`     | `valAddress: ` `string`                                               | `{ success: boolean }`       | Delegates tokens to the specified validator.                                                                                                                                        |
-| `redelegate` | `srcAddress: ` `string`, `dstAddress: ` `string`, `amount: ` `string` | `{ success: boolean }`       | Redelegates tokens from the source validator to the destination validator.                                                                                                          |
-| `undelegate` | `valAddress: ` `string`, `amount: ` `string`                          | `{ success: boolean }`       | Undelegates tokens from the specified validator.                                                                                                                                    |
-| `delegation` | `delegator`: `address`, `valAddress: ` `string`                       | `{ delegation: Delegation }` | Queries delegation by delegator and validator address. Shares in DelegationDetails are usually returned as decimals. To calculate the actual amount, divide the shares by decimals. |
+| Function Name               | Input Parameters                                                                 | Return Value                                                                 | Description                                                                 |
+|-----------------------------|---------------------------------------------------------------------------------|------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| **`allowance`**             | `grantee: string` (address)<br>`granter: string` (address)<br>`method: string`  | `remaining: string` (uint256)                                                | Checks remaining allowance for a grantee's staking actions                  |
+| **`approve`**               | `grantee: string` (address)<br>`amount: string` (uint256)<br>`methods: string[]` | `approved: boolean`                                                          | Grants staking permissions to another address                              |
+| **`cancelUnbondingDelegation`** | `delegatorAddress: string` (address)<br>`validatorAddress: string`<br>`amount: string` (uint256)<br>`creationHeight: string` (uint256) | `success: boolean` | Cancels an unbonding delegation before completion |
+| **`createValidator`**       | `description: { moniker: string, identity: string, ... }`<br>`commissionRates: { rate: string, maxRate: string, ... }`<br>`minSelfDelegation: string`<br>`validatorAddress: string` (address)<br>`pubkey: string`<br>`value: string` (uint256) | `success: boolean` | Registers a new validator |
+| **`decreaseAllowance`**     | `grantee: string` (address)<br>`amount: string` (uint256)<br>`methods: string[]` | `approved: boolean`                                                          | Reduces staking permissions for a grantee                                  |
+| **`delegate`**              | `delegatorAddress: string` (address)<br>`validatorAddress: string`<br>`amount: string` (uint256) | `success: boolean`                                                          | Delegates tokens to a validator                                            |
+| **`delegation`**            | `delegatorAddress: string` (address)<br>`validatorAddress: string`              | `shares: string` (uint256)<br>`balance: { denom: string, amount: string }`   | Returns delegation details between a delegator and validator               |
+| **`editValidator`**         | `description: { moniker: string, ... }`<br>`validatorAddress: string` (address)<br>`commissionRate: number` (int256)<br>`minSelfDelegation: number` (int256) | `success: boolean` | Modifies validator metadata/parameters |
+| **`increaseAllowance`**     | `grantee: string` (address)<br>`amount: string` (uint256)<br>`methods: string[]` | `approved: boolean`                                                          | Increases staking permissions for a grantee                                |
+| **`redelegate`**            | `delegatorAddress: string` (address)<br>`srcValidatorAddress: string`<br>`dstValidatorAddress: string`<br>`amount: string` (uint256) | `completionTime: number` (int64) | Transfers delegation between validators (with unbonding period) |
+| **`redelegation`**          | `delegatorAddress: string` (address)<br>`srcValidatorAddress: string`<br>`dstValidatorAddress: string` | `redelegation: { entries: [{ creationHeight: number, completionTime: number, ... }] }` | Returns redelegation details |
+| **`redelegations`**         | `delegatorAddress: string` (address)<br>`srcValidatorAddress: string`<br>`dstValidatorAddress: string`<br>`pageRequest: { key: bytes, ... }` | `response: [{ redelegation: { ... } }]`<br>`pageResponse: { nextKey: bytes, total: number }` | Paginated redelegation history |
+| **`revoke`**                | `grantee: string` (address)<br>`methods: string[]`                              | `revoked: boolean`                                                           | Revokes all staking permissions for a grantee                              |
+| **`unbondingDelegation`**   | `delegatorAddress: string` (address)<br>`validatorAddress: string`              | `unbondingDelegation: { entries: [{ creationHeight: number, completionTime: number, ... }] }` | Returns active unbonding delegations |
+| **`undelegate`**            | `delegatorAddress: string` (address)<br>`validatorAddress: string`<br>`amount: string` (uint256) | `completionTime: number` (int64) | Initiates token unbonding from a validator |
+| **`validator`**             | `validatorAddress: string` (address)                                            | `validator: { operatorAddress: string, jailed: boolean, tokens: string, ... }` | Returns validator details by address |
+| **`validators`**            | `status: string`<br>`pageRequest: { key: bytes, ... }`                          | `validators: [{ operatorAddress: string, jailed: boolean, ... }]`<br>`pageResponse: { ... }` | Lists validators (filtered by status) with pagination |
 
 #### Precompile Addresses
-0x0000000000000000000000000000000000001005
+0x0000000000000000000000000000000000000800
 
 <br>
 <br>
-
-### WASM Precompile
-
-The WASM precompile contract facilitates execution, instantiation, and querying of WebAssembly (WASM) contracts on the KiiChain platform.
-#### Functions
-
-| Function Name                                                                         | Input Parameters                                                                                          | Return Value                                 | Description                                                               |
-|---------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------|---------------------------------------------------------------------------|
-| `execute`         | `contractAddress: ` `string`, `msg: ` `Uint8Array`, `coins: ` `Uint8Array`                                | `{ response: Uint8Array }`                   | Executes a message on the specified contract with provided coins.         |
-| `instantiate` | `codeID: ` `string`, `admin: ` `string`, `msg: ` `Uint8Array`, `label: ` `string`, `coins: ` `Uint8Array` | `{ contractAddr: string; data: Uint8Array }` | Instantiates a new contract with the specified code ID, admin, and coins. |
-| `query`             | `contractAddress: ` `string`, `req: ` `Uint8Array`                                                        | `{ response: Uint8Array }`                   | Queries the specified contract with the provided request.                 |
-
-#### Precompile Addresses
-0x0000000000000000000000000000000000001002
-
-
-<br>
-<br>
-
-### IBC Precompile
-
-The IBC precompile contract facilitates messages exchange between KiiChain and other IBC compatible blockchains.
-#### Functions
-
-| Function Name                                                          | Input Parameters                                                                                                                                                                                                                   | Return Value           | Description                                                                                                                                                      |
-|------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `transfer` | `toAddress: ` `string`, `port: ` `string`, `channel: ` `string`, `denom: ` `string`, `amount: ` `ethers.BigNumberish`, `revisionNumber: ` `BigInt`, `revisionHeight: ` `BigInt`, `timeoutTimestamp: ` `BigInt`,  `memo: ` `String` | `{ success: boolean }` | Transfers tokens from the caller's address to another on a different (IBC compatible) chain.                                                                     |
-| `transferWithDefaultTimeout` | `toAddress: ` `string`, `port: ` `string`, `channel: ` `string`, `denom: ` `string`, `amount: ` `ethers.BigNumberish`,  `memo: ` `String`                                                                                                              | `{ success: boolean }` | Transfers tokens from the caller's address to another on a different (IBC compatible) chain. Calculates default timeout height as opposed to `transfer` function |
-
-#### Precompile Addresses
-0x0000000000000000000000000000000000001009
-
