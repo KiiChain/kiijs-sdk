@@ -12,31 +12,10 @@ yarn add @kiichain/kiijs-evm ethers viem
 <br>
 
 ## Wallet Connection
-This package provides exports for easily interacting with wagmi, viem, and ethers.js. You can interact with the KiiChain EVM using all the same hooks and helper functions these tools offer. Read the [Wagmi]('https://wagmi.sh/), [viem]('https://viem.sh/'), and [ethers v6]('https://docs.ethers.org/v6/) documentation for more information on how to use these tools.
+This package provides exports for easily interacting with viem, and ethers.js. You can interact with the KiiChain EVM using all the same hooks and helper functions these tools offer. Read the [Wagmi]('https://wagmi.sh/), [viem]('https://viem.sh/'), and [ethers v6]('https://docs.ethers.org/v6/) documentation for more information on how to use these tools.
 
 ### Wallet network setup
-Ensure that your EVM wallet has the KiiChain network enabled. Learn more on how to [set up your wallet]('https://v2.docs.sei.io/setting-up-a-wallet').
-
-<br>
-
-### Connection with Wagmi
-The WagmiProvider is a React context provider that allows you to easily interact with the EVM. It provides many useful hooks for reading and writing on KiiChain via the EVM JSON-RPC.
-```tsx
-import { ReactNode } from 'react';
-import { WagmiProvider } from 'wagmi';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ARCTIC_1_VIEM_CHAIN, createWagmiConfig } from '@kiichain/kiijs-evm';
-
-const queryClient = new QueryClient();
-
-export const WalletProvider = ({ children }: { children: ReactNode }) => {
- return (
-   <WagmiProvider config={createWagmiConfig([ARCTIC_1_VIEM_CHAIN])}>
-     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-   </WagmiProvider>
- );
-};
-```
+Ensure that your EVM wallet has the KiiChain network enabled.
 
 <br>
 
@@ -53,7 +32,7 @@ const accounts = await provider.send('eth_requestAccounts', []);
 
 const contract = getBankPrecompileEthersV6Contract(signer);
 
-const cosmosAddress = await contract.balances();
+const cosmosAddress = await contract.balances("youraddress");
 ```
 
 An alternative without the popup is to directly use your private key to connect.
