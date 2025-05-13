@@ -1,5 +1,8 @@
 import { Contract, ContractRunner, InterfaceAbi } from 'ethers';
 import { BECH32_PRECOMPILE_ABI, BECH32_PRECOMPILE_ADDRESS } from '../precompiles';
+import { fromBech32 } from '@cosmjs/encoding';
+import { isAddress } from 'ethers';
+import { toBech32 } from '@cosmjs/encoding';
 
 /**
  * The ABI for the Bech32 precompile contract, used to create an Ethers contract.
@@ -31,3 +34,39 @@ export const ETHERS_BECH32_PRECOMPILE_ABI = BECH32_PRECOMPILE_ABI as InterfaceAb
 export const getBech32PrecompileEthersV6Contract = (runner: ContractRunner) => {
 	return new Contract(BECH32_PRECOMPILE_ADDRESS, BECH32_PRECOMPILE_ABI, runner);
 };
+
+/**
+ * Function to turn a kii bech32 into an associated hex address
+ * @category Cosmos Interoperability
+ */
+export function Bech32ToHex(bechAddress: string): string | null {
+  try {
+    if (!bechAddress || typeof bechAddress !== 'string') return null;
+
+    const { prefix, data } = fromBech32(bechAddress);
+    if (prefix !== 'kii') return null;
+
+    const hex = '0x' + Buffer.from(data).toString('hex');
+    return hex;
+  } catch (error) {
+    console.error('Invalid bech32 address:', error);
+    return null;
+  }
+}
+
+/**
+ * Function to turn a hex address into a respective bech32 kii address
+ * @category Cosmos Interoperability
+ */
+export async function HexToBech32(wallet: string) {
+  if (!wallet || !wallet.startsWith('0x') || !isAddress(wallet)) {
+    return null;
+  }
+
+  const bytes = Buffer.from(wallet.slice(2), 'hex');
+  if (bytes.length !== 20) {
+    return null;
+  }
+
+  return toBech32('kii', bytes);
+}
