@@ -1,6 +1,6 @@
 // packages/proto/tests/integration/chain-info.test.ts
 import { StargateClient } from '@cosmjs/stargate';
-import { DEVNET_CONFIG, withRetry } from './utils';
+import { TESTNET_CONFIG as TESTNET_CONFIG, withRetry } from './utils';
 
 jest.setTimeout(30_000); // Total test timeout
 
@@ -12,13 +12,13 @@ describe('Chain Info Tests', () => {
       throw new Error("Missing TEST_MNEMONIC in .env");
     }
     client = await withRetry(() => 
-      StargateClient.connect(DEVNET_CONFIG.rpcEndpoint)
+      StargateClient.connect(TESTNET_CONFIG.rpcEndpoint)
     );
   });
 
   it('should match expected chain ID', async () => {
     const chainId = await client.getChainId();
-    expect(chainId).toBe(DEVNET_CONFIG.chainId);
+    expect(chainId).toBe(TESTNET_CONFIG.chainId);
     console.log('Chain ID:', chainId);
   });
 

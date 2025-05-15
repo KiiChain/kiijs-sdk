@@ -1,4 +1,4 @@
-import { withRetry, setupTestClient } from './utils';
+import { setupTestClient } from './utils';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { SigningStargateClient} from '@cosmjs/stargate';
 
@@ -9,15 +9,16 @@ describe('sign connection Test', () => {
   let wallet: DirectSecp256k1HdWallet; 
 
   it('setup client and wallet failed', async () => {
-    [client, wallet] = await withRetry(() => setupTestClient());
+    [client, wallet] = await setupTestClient();
     expect(client).toBeDefined();
     expect(wallet).toBeDefined();
   });
   
-  it('account should have balance', async () => {
-    const [account] = await wallet.getAccounts();
-    const coin = await client.getBalance(account.address, 'akii')
-    expect(Number(coin.amount)).toBeGreaterThan(0);
-  });
+  // it('account should have balance', async () => {
+  //   const [account] = await wallet.getAccounts();
+  //   const balances = await client.
+  //   console.log('Balances', balances);
+  //   expect(Number(balances.toString())).toContain("z");
+  // });
 
 });

@@ -1,18 +1,5 @@
 # kiijs-proto
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/545047/188804067-28e67e5e-0214-4449-ab04-2e0c564a6885.svg" width="80"><br />
-    JS SDK for kiichain
-</p>
-
-<p align="center" width="100%">
-  <a href="https://github.com/KiiChain/kiijs-sdk/actions/workflows/run-tests.yml">
-    <img height="20" src="https://github.com/KiiChain/kiijs-sdk/actions/workflows/run-tests.yml/badge.svg" />
-  </a>
-   <a href="https://github.com/KiiChain/kiijs-sdk/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
-</p>
-
-
 ## install
 
 ```sh
@@ -232,7 +219,7 @@ import {
 } from '@kiichain/kiijs-proto';
 
 const signer: OfflineSigner = /* create your signer (see above)  */
-const rpcEndpint = 'https://rpc.cosmos.directory/kiichain'; // or another URL
+const rpcEndpoint = 'https://rpc.dos.sentry.testnet.v3.kiivalidator.com/'; // or another URL
 
 const protoRegistry: ReadonlyArray<[string, GeneratedType]> = [
     ...cosmosProtoRegistry,

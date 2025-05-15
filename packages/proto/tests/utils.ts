@@ -1,12 +1,14 @@
 // packages/proto/tests/integration/devnet.setup.ts
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
-import { SigningStargateClient} from '@cosmjs/stargate';
+import { SigningStargateClient } from '@cosmjs/stargate';
+import { getSigningKiichainClient } from '@kiichain/kiijs-proto';
 
-export const DEVNET_CONFIG = {
-  rpcEndpoint: 'https://rpc.devnet.v3.kiivalidator.com/',
-  chainId: 'kiichain3', 
+export const TESTNET_CONFIG = {
+  rpcEndpoint: 'https://rpc.dos.sentry.testnet.v3.kiivalidator.com/',
+  chainId: 'oro_1336-1', 
   gasPrice: '0.025akii',
-  defaultMnemonic: process.env.TEST_MNEMONIC || "your test mnemonic password here" 
+  defaultKey: process.env.TEST_KEY,
+  defaultMnemonic: process.env.TEST_MNEMONIC
 };
 
 // Retry wrapper for flaky RPC connections
@@ -23,13 +25,15 @@ export async function withRetry<T>(fn: () => Promise<T>, retries = 5): Promise<T
   throw new Error('Unreachable');
 }
 
-export async function setupTestClient(mnemonic = DEVNET_CONFIG.defaultMnemonic) : Promise<[SigningStargateClient, DirectSecp256k1HdWallet]>{
+export async function setupTestClient(mnemonic = TESTNET_CONFIG.defaultMnemonic) : Promise<[SigningStargateClient, DirectSecp256k1HdWallet]>{
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
-    prefix: 'kii' // KiiChain prefix
+    prefix: "kii", // Kiichain prefix
   });
-  const client = await SigningStargateClient.connectWithSigner(
-    DEVNET_CONFIG.rpcEndpoint,
-    wallet
-  );
-  return [client, wallet]
+  
+  const client = await getSigningKiichainClient({
+    rpcEndpoint: TESTNET_CONFIG.rpcEndpoint, 
+    signer: wallet,
+  });
+  
+  return [client, wallet];
 }
