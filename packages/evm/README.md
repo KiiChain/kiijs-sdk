@@ -90,7 +90,7 @@ The Bank precompile contract provides functionalities for managing balances, sup
 The bech32 precompile contract provides ways to turn a hex address to bech32 and vice-versa. There is also functions in the library under the precompile to do the same without using the contract.
 
 ```tsx
-import { getBech32PrecompileEthersV6Contract } from '@kiichain/kiijs-evm/ethers'
+import { HexToBech32, Bech32ToHex } from '@kiichain/kiijs-evm'
 
 const kiiAddress = HexToBech32("0xyourhex")
 

@@ -5,33 +5,14 @@
 ```sh
 npm install @kiichain/kiijs-proto
 ```
-## Table of contents
-
-- [kiijs-proto](#kiijs-proto)
-  - [install](#install)
-  - [Table of contents](#table-of-contents)
-  - [Usage](#usage)
-    - [RPC Clients](#rpc-clients)
-    - [Composing Messages](#composing-messages)
-      - [CosmWasm Messages](#cosmwasm-messages)
-      - [IBC Messages](#ibc-messages)
-      - [Cosmos Messages](#cosmos-messages)
-  - [Connecting with Wallets and Signing Messages](#connecting-with-wallets-and-signing-messages)
-    - [Initializing the Stargate Client](#initializing-the-stargate-client)
-    - [Creating Signers](#creating-signers)
-    - [Amino Signer](#amino-signer)
-    - [Proto Signer](#proto-signer)
-    - [Broadcasting Messages](#broadcasting-messages)
-  - [Advanced Usage](#advanced-usage)
-  - [Developing](#developing)
-    - [Codegen](#codegen)
-    - [Publishing](#publishing)
-  - [Interchain JavaScript Stack](#interchain-javascript-stack)
-  - [Credits](#credits)
-  - [Disclaimer](#disclaimer)
 
 ## Usage
+
+You can utilize the types to build and send messages. To query, you can utilize an RPC query client, while for transactions you will need a wallet client paired with composing a message and then broadcasting it.
+
 ### RPC Clients
+
+To create an RPC client you can import the following helper and utilize it:
 
 ```js
 import { kiichain } from '@kiichain/kiijs-proto';
@@ -41,48 +22,30 @@ const client = await createRPCQueryClient({ rpcEndpoint: RPC_ENDPOINT });
 
 // now you can query the cosmos modules
 const balance = await client.cosmos.bank.v1beta1
-    .allBalances({ address: 'kiichain1addresshere' });
+    .balance({ address: 'kiichain1addresshere', denom: 'akii' });
 
 ```
 
+Explore the types to find out what types of queries are available and how to utilized them.
+
 ### Composing Messages
 
-Import the `kiichain` object from `@kiichain/kiijs-proto`. 
+To compose messages, you can utilize the message composer of the respective type you want to build. For instance, tokenfactory messages can be found like this:
 
 ```js
 import { kiichain } from '@kiichain/kiijs-proto';
 
 const {
-    createSpotLimitOrder,
-    createSpotMarketOrder,
-    deposit
-} = kiichain.exchange.v1beta1.MessageComposer.withTypeUrl;
+    createDenom,
+    mint,
+    burn,
+    changeAdmin,
+    setDenomMetadata,
+    forceTransfer,
+    updateParams
+} = kiichain.tokenfactory.v1beta1.MessageComposer.withTypeUrl;
 ```
-
-#### CosmWasm Messages
-
-```js
-import { cosmwasm } from "@kiichain/kiijs-proto";
-
-const {
-    clearAdmin,
-    executeContract,
-    instantiateContract,
-    migrateContract,
-    storeCode,
-    updateAdmin
-} = cosmwasm.wasm.v1.MessageComposer.withTypeUrl;
-```
-
-#### IBC Messages
-
-```js
-import { ibc } from '@kiichain/kiijs-proto';
-
-const {
-    transfer
-} = ibc.applications.transfer.v1.MessageComposer.withTypeUrl
-```
+We have a small section with a few more examples.
 
 #### Cosmos Messages
 
@@ -173,6 +136,8 @@ const mnemonic =
 Now that you have your `stargateClient`, you can broadcast messages:
 
 ```js
+import { cosmos } from '@kiichain/kiijs-proto'
+
 const { send } = cosmos.bank.v1beta1.MessageComposer.withTypeUrl;
 
 const msg = send({
@@ -196,6 +161,17 @@ const fee: StdFee = {
     gas: '86364'
 };
 const response = await stargateClient.signAndBroadcast(address, [msg], fee);
+```
+## Converting from Hex to Bech32 and vice-versa
+
+We have a few helper functions for converting Hex to Bech32 and vice versa on the @kiichain/kiijs-evm. We did not import them over here since the proto files are all generated.
+
+```tsx
+import { HexToBech32, Bech32ToHex } from '@kiichain/kiijs-evm'
+
+const kiiAddress = HexToBech32("0xyourhex")
+
+const evmAddress = Bech32ToHex("kiiYouraddress)
 ```
 
 ## Advanced Usage
@@ -260,45 +236,6 @@ Look inside of `scripts/codegen.ts` and configure the settings for bundling your
 ```
 yarn codegen
 ```
-
-### Publishing
-
-To publish, use `lerna`:
-
-```
-lerna publish
-```
-
-You can publish patch, minor, or major versions:
-
-```
-lerna publish minor
-```
-
-If you absolutely need to publish manually using npm, ensure to do it this way, and publish from the `dist/` directory for proper tree-shaking module paths:
-
-```
-cd ./packages/<your-telescope-module>
-yarn build
-cd dist
-npm publish
-```
-
-## Interchain JavaScript Stack 
-
-A unified toolkit for building applications and smart contracts in the Interchain ecosystem ⚛️
-
-| Category              | Tools                                                                                                                  | Description                                                                                           |
-|----------------------|------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| **Chain Information**   | [**Chain Registry**](https://github.com/hyperweb-io/chain-registry), [**Utils**](https://www.npmjs.com/package/@chain-registry/utils), [**Client**](https://www.npmjs.com/package/@chain-registry/client) | Everything from token symbols, logos, and IBC denominations for all assets you want to support in your application. |
-| **Wallet Connectors**| [**Interchain Kit**](https://github.com/hyperweb-io/interchain-kit)<sup>beta</sup>, [**Cosmos Kit**](https://github.com/hyperweb-io/cosmos-kit) | Experience the convenience of connecting with a variety of web3 wallets through a single, streamlined interface. |
-| **Signing Clients**          | [**InterchainJS**](https://github.com/hyperweb-io/interchainjs)<sup>beta</sup>, [**CosmJS**](https://github.com/cosmos/cosmjs) | A single, universal signing interface for any network |
-| **SDK Clients**              | [**Telescope**](https://github.com/hyperweb-io/telescope)                                                          | Your Frontend Companion for Building with TypeScript with Cosmos SDK Modules. |
-| **Starter Kits**     | [**Create Interchain App**](https://github.com/hyperweb-io/create-interchain-app)<sup>beta</sup>, [**Create Cosmos App**](https://github.com/hyperweb-io/create-cosmos-app) | Set up a modern Interchain app by running one command. |
-| **UI Kits**          | [**Interchain UI**](https://github.com/hyperweb-io/interchain-ui)                                                   | The Interchain Design System, empowering developers with a flexible, easy-to-use UI kit. |
-| **Testing Frameworks**          | [**Starship**](https://github.com/hyperweb-io/starship)                                                             | Unified Testing and Development for the Interchain. |
-| **TypeScript Smart Contracts** | [**Create Hyperweb App**](https://github.com/hyperweb-io/create-hyperweb-app)                              | Build and deploy full-stack blockchain applications with TypeScript |
-| **CosmWasm Contracts** | [**CosmWasm TS Codegen**](https://github.com/CosmWasm/ts-codegen)                                                   | Convert your CosmWasm smart contracts into dev-friendly TypeScript classes. |
 
 ## Credits
 
