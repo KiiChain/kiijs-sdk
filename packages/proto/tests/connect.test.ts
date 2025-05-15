@@ -25,6 +25,7 @@ describe('sign connection Test', () => {
     console.log("Account address:", address)
     const evmAddress = Bech32ToHex(address)
     console.log("Evm address:", evmAddress)
+
     const response = await queryClient.cosmos.bank.v1beta1.balance({address: address, denom: "akii"})
     console.log("Balance of akii: ", response.balance.amount)
     expect(Number(response.balance.amount)).toBeGreaterThan(0)
