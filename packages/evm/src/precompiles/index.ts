@@ -3,6 +3,7 @@ export * from './bech32';
 export * from './distribution';
 export * from './evidence';
 export * from './governance';
+export * from './ibc';
 export * from './ics20';
 export * from './slashing';
 export * from './staking';
