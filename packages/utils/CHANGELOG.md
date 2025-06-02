@@ -2,4 +2,4 @@
 
 ## UNRELEASED
 - Add bech23 conversion
-- Add helper to connect to contracts
+- Add helper to connect to keplr
