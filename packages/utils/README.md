@@ -1,11 +1,11 @@
-# @kiichain/kiijs-evm
+# @kiichain/kiijs-utils
 
-Typescript library containing helper functions for interacting with the EVM on KiiChain.
+Typescript library containing general utility functions for interacting with Kiichain.
 
 ## Installation
 
 ```bash
-yarn add @kiichain/kiijs-evm ethers viem
+yarn add @kiichain/kiijs-utils ethers viem
 ```
 
 <br>
