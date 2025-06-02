@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 import { getIBCPrecompileEthersV6Contract } from '@kiichain/kiijs-evm';
-import { TESTNET_CONFIG } from './utils';
+import 'dotenv/config'
 
 jest.setTimeout(60_000); // Total test timeout
 
@@ -11,7 +11,7 @@ const RECEIVER_KII_ADDRESS = 'kii1ver6l8fajk8se6w3dyfefx36jzu2gzn2qmu3t9'
 const PORT = 'transfer'; // Typically 'transfer' for IBC
 const CHANNEL = 'channel-0'; // Replace with your channel number
 const DENOM = 'akii'; // The denomination to transfer
-const AMOUNT = '1000000000000000000'; // 1 kii (18 decimals)
+const AMOUNT = '100000000000000000'; // 0.1 kii (17 decimals)
 const MEMO = 'Test transfer via IBC precompile'; // Optional memo
 
 describe('Execute IBC transfer Test', () => {
@@ -20,7 +20,13 @@ describe('Execute IBC transfer Test', () => {
       console.log("Doing transfer:");
       // Setup provider and wallet
       const provider = new ethers.JsonRpcProvider(RPC_ENDPOINT);
-      const wallet = new ethers.Wallet(TESTNET_CONFIG.defaultKey, provider);
+
+      const privateKey = process.env.TEST_PRIVATE_KEY
+      if (!privateKey) {
+        throw new Error("Missing TEST_PRIVATE_KEY in .env");
+      }    
+
+      const wallet = new ethers.Wallet(privateKey, provider);
       console.log('Wallet address:', wallet.address);
       console.log('Wallet balance:', await provider.getBalance(wallet.address));
     
