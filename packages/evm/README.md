@@ -55,9 +55,11 @@ KiiChain v3 supports both EVM JSON-RPC and Cosmos RPC interfaces. In order to ea
 | [Bech32 Precompile](#bech32-precompile) | Facilitates conversion between hex address and bech32                       |
 | [Distribution Precompile](#distribution-precompile) | Deals with reward distribution and related                      |                     |
 | [Governance Precompile](#governance-precompile)     | Supports actions such as depositing funds into proposals, voting and interacting with proposals.                         |                        
-| [ICS20 Precompile](#ics20-precompile) | Facilitates conversion between hex address and bech32 
+| [IBC Precompile](#ibc-precompile) | Allows ibc transfers  
+| [ICS20 Precompile](#ics20-precompile) | Facilitates usage of ICS20 
 | [Slashing Precompile](#slashing-precompile) | Provides management and query options for penalties                      |
-| [Staking Precompile](#staking-precompile)           | Enables staking functionalities like delegation and undelegation or obtaining information on validators.                            |          | [Wasm Precompile](#wasm-precompile)           | Precompile for interacting with wasm contracts                           |         
+| [Staking Precompile](#staking-precompile)           | Enables staking functionalities like delegation and undelegation or obtaining information on validators.                            |          
+| [Wasm Precompile](#wasm-precompile)           | Precompile for interacting with wasm contracts                           |         
 
 <br>
 
@@ -170,6 +172,24 @@ The Governance precompile contract supports actions to deposit funds into propos
 
 #### Precompile Addresses
 0x0000000000000000000000000000000000000805
+
+<br>
+<br>
+
+
+### IBC Precompile
+
+Enables cross-chain token transfers via IBC with simplified parameters
+
+#### Functions
+
+| Function Name               | Input Parameters                                                                 | Return Value | Description                                                                 |
+|-----------------------------|---------------------------------------------------------------------------------|--------------|-----------------------------------------------------------------------------|
+| **`transfer`**             | `receiver: string` (address)<br>`port: string`<br>`channel: string`<br>`denom: string`<br>`amount: string` (uint256)<br>`revisionNumber: number` (uint64)<br>`revisionHeight: number` (uint64)<br>`timeoutTimestamp: number` (uint64)<br>`memo: string` | `success: boolean` | Initiates an IBC token transfer with full timeout control (both height and timestamp) |
+| **`transferWithDefaultTimeout`** | `receiver: string` (address)<br>`port: string`<br>`channel: string`<br>`denom: string`<br>`amount: string` (uint256)<br>`memo: string` | `success: boolean` | Initiates an IBC transfer using default timeout values (simplified interface) |
+
+#### Precompile Addresses
+0x0000000000000000000000000000000000001002
 
 <br>
 <br>

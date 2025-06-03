@@ -1,7 +1,7 @@
 // packages/proto/tests/integration/devnet.setup.ts
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { SigningStargateClient } from '@cosmjs/stargate';
-import { getSigningKiichainClient } from '@kiichain/kiijs-proto';
+import { getSigningKiichainClient } from '../src';
 
 export const TESTNET_CONFIG = {
   rpcEndpoint: 'https://rpc.dos.sentry.testnet.v3.kiivalidator.com/',

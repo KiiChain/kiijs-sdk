@@ -2,7 +2,7 @@ import { AccountData, StdFee } from '@cosmjs/amino';
 import { setupTestClient } from './utils';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { SigningStargateClient} from '@cosmjs/stargate';
-import { cosmos } from '@kiichain/kiijs-proto';
+import { cosmos } from '../src/';
 
 jest.setTimeout(30_000); // Total test timeout
 
