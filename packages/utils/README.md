@@ -23,9 +23,10 @@ const kiiAddress = HexToBech32("0xyourhex")
 const evmAddress = Bech32ToHex("kiiYouraddress)
 ```
 
-## EthSECP signer
+## ETHSECP signer
 
 Some wallets do not recognize the ETHSECP256-1 PubKey signatures. We made a couple helpers to utilize it without problems.
+
 ### Signing a transaction
 
 1. Create the `SigningStargateClient` with the correct type
