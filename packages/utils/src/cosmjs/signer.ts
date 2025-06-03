@@ -107,9 +107,9 @@ export async function signWithEthsecpSigner(
   }).finish();
 }
 
-// customAccountParser is a function that parses the account from the Any type
+// ethsecpAccountParser is a function that parses the account from the Any type
 // and handles the ethsecp256k1 PubKey type
-export function customAccountParser(accountAny: Any): Account {
+export function ethsecpAccountParser(accountAny: Any): Account {
   // Check if the accountAny is of type BaseAccount or EthAccount
   if (
     accountAny.typeUrl === "/cosmos.auth.v1beta1.BaseAccount" ||
