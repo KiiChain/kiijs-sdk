@@ -1,8 +1,7 @@
 import { TESTNET_CONFIG, setupTestClient } from './utils';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { SigningStargateClient} from '@cosmjs/stargate';
-import { kiichain } from '@kiichain/kiijs-proto';
-import { Bech32ToHex } from '@kiichain/kiijs-evm';
+import { kiichain } from '../src';
 
 jest.setTimeout(30_000); // Total test timeout
 
@@ -23,8 +22,6 @@ describe('sign connection Test', () => {
     const accounts = await wallet.getAccounts()
     const address = accounts[0].address
     console.log("Account address:", address)
-    const evmAddress = Bech32ToHex(address)
-    console.log("Evm address:", evmAddress)
 
     const response = await queryClient.cosmos.bank.v1beta1.balance({address: address, denom: "akii"})
     console.log("Balance of akii: ", response.balance.amount)
