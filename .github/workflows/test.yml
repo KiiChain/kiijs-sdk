@@ -34,5 +34,5 @@ jobs:
           CI: true
           TEST_MNEMONIC: ${{ secrets.TEST_MNEMONIC }}
           TEST_PRIVATE_KEY: ${{ secrets.TEST_PRIVATE_KEY }}
-          TEST_HEX_ADDRESS: ${{ secrets.HEX_ADDRESS }}
+          TEST_HEX_ADDRESS: ${{ secrets.TEST_HEX_ADDRESS }}
         run: yarn test:ci
