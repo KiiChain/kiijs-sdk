@@ -26,6 +26,10 @@ export async function withRetry<T>(fn: () => Promise<T>, retries = 5): Promise<T
 }
 
 export async function setupTestClient(mnemonic = TESTNET_CONFIG.defaultMnemonic) : Promise<[SigningStargateClient, DirectSecp256k1HdWallet]>{
+  if (!mnemonic) {
+    throw new Error("Missing TEST_MNEMONIC in .env");
+  }
+  
   const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
     prefix: "kii", // Kiichain prefix
   });

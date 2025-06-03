@@ -24,6 +24,9 @@ describe('sign connection Test', () => {
     console.log("Account address:", address)
 
     const response = await queryClient.cosmos.bank.v1beta1.balance({address: address, denom: "akii"})
+    if (!response.balance) {
+      throw new Error("Balance was not returned");
+    }
     console.log("Balance of akii: ", response.balance.amount)
     expect(Number(response.balance.amount)).toBeGreaterThan(0)
   });
