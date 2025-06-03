@@ -21,7 +21,8 @@ jobs:
           node-version: '20'
           
       # Install Yarn (modern Berry)
-      - name: Setup Yarn
+      - name: Setup Yarn on ${{ matrix.package }}
+        working-directory: ./packages/${{ matrix.package }}
         run: |
           corepack enable
           yarn set version stable
