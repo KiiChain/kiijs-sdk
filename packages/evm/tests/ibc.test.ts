@@ -1,5 +1,5 @@
 import { ethers } from 'ethers';
-import { getIBCPrecompileEthersV6Contract } from '@kiichain/kiijs-evm';
+import { getIBCPrecompileEthersV6Contract } from '../src/ethers/ibcPrecompile';
 import 'dotenv/config'
 
 jest.setTimeout(60_000); // Total test timeout
