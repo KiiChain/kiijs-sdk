@@ -10,7 +10,7 @@ import { makeAuthInfoBytes, makeSignDoc } from "@cosmjs/proto-signing";
 
 import { Any } from "cosmjs-types/google/protobuf/any";
 import { TxRaw } from "cosmjs-types/cosmos/tx/v1beta1/tx";
-import { PubKey } from "@kiichain/kiijs-proto/dist/cosmos/evm/crypto/v1/ethsecp256k1/keys";
+import { PubKey } from "@kiichain/kiijs-proto/cosmos/evm/crypto/v1/ethsecp256k1/keys";
 import { BaseAccount } from "cosmjs-types/cosmos/auth/v1beta1/auth";
 
 // This function signs a transaction using the ethsecp256k1 signer
