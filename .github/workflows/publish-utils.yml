@@ -1,4 +1,4 @@
-name: Publish Proto package
+name: Publish Utils package
 
 on:
   workflow_dispatch: {}  # Manual trigger
