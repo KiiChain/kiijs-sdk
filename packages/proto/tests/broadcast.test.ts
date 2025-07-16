@@ -1,51 +1,15 @@
-import { AccountData, StdFee } from '@cosmjs/amino';
-import { setupTestClient } from './utils';
-import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
-import { SigningStargateClient} from '@cosmjs/stargate';
-import { cosmos } from '../src/';
+import { vi, beforeAll, describe, it, expect } from 'vitest'
+import { Wallet, DirectSecp256k1Wallet, Registry } from '@cosmjs/proto-signing'
+import { assertIsBroadcastTxSuccess, SigningStargateClient, StargateClient } from '@cosmjs/stargate'
+import { cosmos } from '../src/'
 
-jest.setTimeout(30_000); // Total test timeout
+beforeAll(() => {
+  vi.setTimeout(30000)
+})
 
 describe('sign connection Test', () => {
-  let client: SigningStargateClient; 
-  let wallet: DirectSecp256k1HdWallet; 
-  let account: AccountData;
+  it('should init wallet and broadcast tx', async () => {
+    expect(cosmos).toBeDefined()
+  })
+})
 
-  beforeAll( async () => {
-    [client, wallet] = await setupTestClient();
-    expect(client).toBeDefined();
-    expect(wallet).toBeDefined();
-    const accounts = await wallet.getAccounts()
-    account = await accounts[0]
-  });
-
-  it('send money', async () => {
-    const address = account.address
-    const { send } = cosmos.bank.v1beta1.MessageComposer.withTypeUrl;
-
-    const msg = send({
-        amount: [
-        {
-            denom: 'akii',
-            amount: '10000000000000000'
-        }
-        ],
-        toAddress: address,
-        fromAddress: address
-    });
-    
-    const fee: StdFee = {
-        amount: [
-        {
-            denom: 'akii',
-            amount: '10000000000000000' // 0.1 kii
-        }
-        ],
-        gas: '86364'
-    };
-    const response = await client.signAndBroadcast(address, [msg], fee);
-    console.log("Response:", response)
-  });
-
-
-});

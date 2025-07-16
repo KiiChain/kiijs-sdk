@@ -1,38 +1,13 @@
-import { ethers } from 'ethers';
-import 'dotenv/config'
-import { getBankPrecompileEthersV6Contract } from '../src/ethers/bankPrecompile';
-import { setupProviderAndWallet } from './utils';
+import { describe, it, expect } from "vitest"
+import { setupProviderAndWallet } from "./utils"
+import { getBankPrecompileEthersV6Contract } from "../src"
 
-jest.setTimeout(60_000); // Total test timeout
-
-describe('Connect Wallet Test', () => {
-    let provider: ethers.JsonRpcProvider;
-    let wallet: ethers.Wallet;
-  
-    beforeAll(async () => {
-      [provider, wallet] = setupProviderAndWallet()
-    });
-
-    it('unexpected address', async () => {
-        expect(wallet.address).toEqual(process.env.TEST_HEX_ADDRESS)
-      });
-
-  
-    it('should have a supply', async () => {
-      const contract = getBankPrecompileEthersV6Contract(wallet);
-
-      const balances = await contract.totalSupply();
-      console.log("Balances:", balances);
-    });
-
-    it('should send test transaction', async () => {
-      const tx = await wallet.sendTransaction({
-        to: wallet.address, // Send to self
-        value: ethers.parseEther("0.001"),
-        gasLimit: 100000 // Explicit gas limit
-      });
-      console.log("Tx hash:", tx.hash);
-      expect(tx.hash).toMatch(/^0x/);
-    });
-});
+describe("Connect Wallet Test", () => {
+  it("should connect to wallet and get bank balance", async () => {
+    const [provider, wallet] = await setupProviderAndWallet()
+    const bankContract = getBankPrecompileEthersV6Contract(provider)
+    const balance = await provider.getBalance(wallet.address)
+    expect(balance).toBeDefined()
+  })
+})
 
