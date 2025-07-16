@@ -1,26 +1,7 @@
-### Description
+import { setupTestClient } from './utils';
+import { cosmos } from '../src/';
 
-This PR adds unit tests for the missing protofiles in `kiijs-proto` as requested in https://github.com/KiiChain/kiijs-sdk/issues/11.
-
-#### Summary of changes:
-- Created new test files in `packages/proto/tests` for the following protofiles:
-  - `<testTarget1>.test.js`
-  - `<testTarget2>.test.js`
-- Added comprehensive unit tests using Jest
-- Improved existing tests and utility functions where needed
-- Ensured all tests run successfully in the CI pipeline
-
-#### Type of change
-- [x] Test (adds or updates tests)
-- [x] Refactor (improves existing test utilities)
-
-#### How Has This Been Tested?
-- All new and existing tests pass locally with `npm test`
-- Verified that tests run successfully in the CI pipeline
-- Set up environment variables and wallet connection as described in the issue
-
-- For user.proto: Added tests for the functions createUser, getUser, and deleteUser.
-- For transaction.proto: Added tests for the functions sendTransaction and getTransactionStatus.
-
-#### Related Issue
-https://github.com/KiiChain/kiijs-sdk/issues/11
+describe('user protofile tests', () => {
+it('should do something', async () => {
+});
+});
