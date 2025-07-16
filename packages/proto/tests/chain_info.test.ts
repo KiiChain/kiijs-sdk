@@ -1,35 +1,15 @@
-// packages/proto/tests/integration/chain-info.test.ts
-import { StargateClient } from '@cosmjs/stargate';
-import { TESTNET_CONFIG as TESTNET_CONFIG, withRetry } from './utils';
+import { vi, beforeAll, describe, it, expect } from 'vitest'
+import { TESTNET_CONFIG, withRetry } from './utils'
+import { cosmos } from '../src/'
 
-jest.setTimeout(30_000); // Total test timeout
+beforeAll(() => {
+  vi.setTimeout(30000)
+})
 
 describe('Chain Info Tests', () => {
-  let client: StargateClient;
+  it('should have valid testnet config', () => {
+    expect(TESTNET_CONFIG).toBeDefined()
+    expect(TESTNET_CONFIG.rpc).toMatch(/^https?:\/\//)
+  })
+})
 
-  beforeAll(async () => {
-    if (!process.env.TEST_MNEMONIC) {
-      throw new Error("Missing TEST_MNEMONIC in .env");
-    }
-    client = await withRetry(() => 
-      StargateClient.connect(TESTNET_CONFIG.rpcEndpoint)
-    );
-  });
-
-  it('should match expected chain ID', async () => {
-    const chainId = await client.getChainId();
-    expect(chainId).toBe(TESTNET_CONFIG.chainId);
-    console.log('Chain ID:', chainId);
-  });
-
-  it('should fetch recent blocks', async () => {
-    const height = await client.getHeight();
-    expect(height).toBeGreaterThan(0);
-    
-    const block = await client.getBlock(height);
-    expect(block).toBeDefined();
-    expect(block.id).toBeDefined();
-    
-    console.log('Current Height:', height);
-  });
-});

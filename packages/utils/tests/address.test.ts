@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { HexToBech32, Bech32ToHex } from '../src/ethers'
 
 describe('Connect Wallet Test', () => {

@@ -1,6 +1,6 @@
-
 {
   "name": "kiijs-sdk",
+  "type": "module",
   "version": "0.1.1",
   "author": "kiiglobal.io <dev@kiiglobal.io>",
   "private": true,
@@ -20,10 +20,10 @@
     "build": "lerna run build --stream",
     "lint": "lerna run lint --parallel",
     "test": "yarn test:evm && yarn test:proto",
-    "test:evm": "cd packages/evm && yarn test",
+    "test:evm": "cd packages/evm && vitest run",
     "test:proto": "cd packages/proto && yarn test",
     "test:ci": "yarn test:evm:ci && yarn test:proto:ci",
-    "test:evm:ci": "cd packages/evm && yarn test:ci",
+    "test:evm:ci": "cd packages/evm && vitest run --coverage",
     "test:proto:ci": "cd packages/proto && yarn test:ci",
     "codegen": "lerna run codegen --stream --scope kiijs-sdk",
     "symlink": "symlink-workspace --logLevel error",
@@ -35,11 +35,10 @@
     "@typescript-eslint/eslint-plugin": "^7.10.0",
     "@typescript-eslint/parser": "^7.10.0",
     "copyfiles": "^2.4.1",
+    "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-simple-import-sort": "^12.1.0",
     "eslint-plugin-unused-imports": "^4.0.0",
-    "eslint": "^8.56.0",
-    "jest": "^29.6.2",
     "lerna": "^6",
     "prettier": "^3.0.2",
     "rimraf": "4.4.1",
@@ -47,7 +46,13 @@
     "symlink-workspace": "^1.1.0",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.1.6"
+    "tsx": "^4.20.3",
+    "typescript": "^5.1.6",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
+
