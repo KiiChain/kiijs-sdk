@@ -1,7 +1,6 @@
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { ExecuteResponse, RwaClient } from "./client";
+import { RwaClient } from "./client";
 import { DeliverTxResponse } from "@cosmjs/stargate";
-import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
 
 export interface TransferMessageRequest {
   from: string;
@@ -25,7 +24,6 @@ export interface TokenInfo {
 export class TokenModule {
   constructor(
     private rwaClient: RwaClient,
-    private queryClient: CosmWasmClient,
     private tokenAddress: string
   ) {}
 
@@ -64,17 +62,11 @@ export class TokenModule {
       },
     };
 
-    try {
-      const result = await this.queryClient.queryContractSmart(
-        this.tokenAddress,
-        queryMsg
-      );
-      
-      return { balance: parseInt(result.balance) || 0 };
-    } catch (error) {
-      console.error("Error querying balance:", error);
-      return { balance: 0 };
-    }
+    const result = await this.rwaClient.query<{ balance: string }>(
+      this.tokenAddress,
+      queryMsg
+    );
+    return { balance: parseInt(result.balance) || 0 };
   }
 
   /**
@@ -82,13 +74,14 @@ export class TokenModule {
    * @returns Promise<TokenInfo> - Token information
    */
   public async tokenInfo(): Promise<TokenInfo> {
-    const queryMsg = {
-      token_info: {},
-    };
-    const result = await this.queryClient.queryContractSmart(
-      this.tokenAddress,
-      queryMsg
-    );
+    const queryMsg = { token_info: {} };
+    
+    const result = await this.rwaClient.query<{
+      name: string;
+      symbol: string;
+      decimals: number;
+      total_supply: string;
+    }>(this.tokenAddress, queryMsg);
     
     return {
       name: result.name || "",
@@ -107,16 +100,15 @@ export class TokenModule {
   public async allowance(owner: string, spender: string): Promise<{ allowance: number }> {
     const queryMsg = {
       allowance: {
-        owner: owner,
-        spender: spender,
+        owner,
+        spender,
       },
     };
 
-    const result = await this.queryClient.queryContractSmart(
+    const result = await this.rwaClient.query<{ allowance: string }>(
       this.tokenAddress,
       queryMsg
     );
-    
     return { allowance: parseInt(result.allowance) || 0 };
   }
 
