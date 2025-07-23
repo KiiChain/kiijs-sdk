@@ -6,7 +6,6 @@ export interface TransferMessageRequest {
   from: string;
   to: string;
   amount: number;
-  signer: DirectSecp256k1HdWallet;
   gas_limit: number;
 }
 
@@ -45,7 +44,6 @@ export class TokenModule {
       msg,
       this.tokenAddress,
       [],
-      request.signer,
       request.gas_limit
     );
   }
@@ -114,14 +112,13 @@ export class TokenModule {
 
   /**
    * Approves a spender to spend tokens on behalf of the owner.
-   * @param request - Contains from, spender, amount, signer, and gas_limit
+   * @param request - Contains from, spender, amount, and gas_limit
    * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
   public async approve(request: {
     from: string;
     spender: string;
     amount: number;
-    signer: DirectSecp256k1HdWallet;
     gas_limit: number;
   }): Promise<DeliverTxResponse> {
     const msg = {
@@ -136,7 +133,6 @@ export class TokenModule {
       msg,
       this.tokenAddress,
       [],
-      request.signer,
       request.gas_limit
     );
   }

@@ -1,11 +1,9 @@
-import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { RwaClient } from './client';
 import { DeliverTxResponse } from '@cosmjs/stargate';
 
 export interface ComplianceModuleRequest {
   from: string;
   module_addr: string;
-  signer: DirectSecp256k1HdWallet;
   gas_limit: number;
 }
 
@@ -33,7 +31,6 @@ export class ComplianceModule {
       msg,
       this.complianceAddress,
       [],
-      request.signer,
       request.gas_limit
     );
   }
@@ -56,7 +53,6 @@ export class ComplianceModule {
       msg,
       this.complianceAddress,
       [],
-      request.signer,
       request.gas_limit
     );
   }

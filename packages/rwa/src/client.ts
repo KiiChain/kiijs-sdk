@@ -77,7 +77,6 @@ export class RwaClient {
     msg: T,
     contractAddress: string,
     funds: Coin[],
-    signer: DirectSecp256k1HdWallet,
     gasLimit: number,
   ): Promise<DeliverTxResponse> {
     const executeContractMsg: MsgExecuteContract = {

@@ -1,11 +1,9 @@
-import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { RwaClient } from './client';
 import { DeliverTxResponse } from '@cosmjs/stargate';
 
 export interface AddIdentityRequest {
   from: string;
   country: string;
-  signer: DirectSecp256k1HdWallet;
   gas_limit: number;
 }
 
@@ -13,14 +11,12 @@ export interface UpdateIdentityRequest {
   from: string;
   new_country: string;
   identity_owner: string;
-  signer: DirectSecp256k1HdWallet;
   gas_limit: number;
 }
 
 export interface RemoveIdentityRequest {
   from: string;
   identity_owner: string;
-  signer: DirectSecp256k1HdWallet;
   gas_limit: number;
 }
 
@@ -48,7 +44,6 @@ export class IdentityModule {
       msg,
       this.identityAddress,
       [],
-      request.signer,
       request.gas_limit
     );
   }
@@ -72,7 +67,6 @@ export class IdentityModule {
       msg,
       this.identityAddress,
       [],
-      request.signer,
       request.gas_limit
     );
   }
@@ -95,7 +89,6 @@ export class IdentityModule {
       msg,
       this.identityAddress,
       [],
-      request.signer,
       request.gas_limit
     );
   }
