@@ -111,7 +111,6 @@ describe('RwaClient', () => {
         mockMsg,
         mockContractAddress,
         mockFunds,
-        mockSigner,
         mockGasLimit
       );
 
@@ -136,7 +135,6 @@ describe('RwaClient', () => {
           mockMsg,
           mockContractAddress,
           mockFunds,
-          mockSigner,
           mockGasLimit
         )
       ).rejects.toThrow('Execution failed');
