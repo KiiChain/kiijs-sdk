@@ -1,0 +1,51 @@
+name: Publish RWA package
+
+on:
+  workflow_dispatch: {}  # Manual trigger
+  push:
+    tags: ['v*']        # Auto-trigger on version tags
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+        if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v')
+      
+      # Setup Node.js and Yarn
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+          
+      # Configure Yarn and NPM registry
+      - name: Configure registry
+        run: |
+          npm config set registry https://registry.npmjs.org/
+          yarn config set npmRegistryServer "https://registry.npmjs.org"
+          yarn config set npmAuthToken ${{ secrets.npm_token }}
+          yarn config set unsafeHttpWhitelist --json '["*.npmjs.org"]'
+          
+      # Install Yarn and dependencies
+      - name: Install dependencies
+        run: |
+          corepack enable
+          yarn set version stable
+          YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install
+          
+      # Build packages
+      - name: Build packages
+        run: yarn build
+        
+      # Publish package with proper auth
+      - name: Publish RWA package
+        run: |
+          cd packages/rwa && yarn npm publish --access public
+        env:
+          NPM_CONFIG_REGISTRY: 'https://registry.npmjs.org'
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+          YARN_NPM_AUTH_TOKEN: ${{ secrets.npm_token }}
