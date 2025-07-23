@@ -1,16 +1,37 @@
 {
-  "name": "kiits-sdk",
-  "version": "1.0.0",
+  "name": "@kiichain/kiijs-rwa",
+  "version": "0.2.0",
+  "author": "kiiglobal.io <dev@kiiglobal.io>",
+  "description": "JS SDK for kiichain rwa",
   "main": "dist/index.js",
+  "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
-  "scripts": {
-    "test": "jest",
-    "build": "tsc"
+  "homepage": "https://github.com/KiiChain/kiijs-sdk",
+  "license": "SEE LICENSE IN LICENSE",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "directory": "dist"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KiiChain/kiijs-sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/KiiChain/kiijs-sdk/issues"
+  },
+  "scripts": {
+    "copy": "copyfiles -f ../../LICENSE README.md package.json dist",
+    "clean": "rimraf dist/**",
+    "prepare": "npm run build",
+    "codegen": "ts-node scripts/codegen.ts",
+    "build": "npm run clean; tsc; tsc -p tsconfig.esm.json; npm run copy",
+    "build:dev": "npm run clean; npm run codegen; tsc --declarationMap; tsc -p tsconfig.esm.json; npm run copy",
+    "lint": "eslint . --fix",
+    "test": "jest",
+    "test:ci": "jest",
+    "test:watch": "jest --watch"
+  },
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "jest": "^30.0.5",
