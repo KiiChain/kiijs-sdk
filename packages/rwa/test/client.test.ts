@@ -3,7 +3,6 @@ import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { SigningStargateClient, DeliverTxResponse } from '@cosmjs/stargate';
 import { Coin } from '@cosmjs/launchpad';
 import { CosmWasmClient } from '@cosmjs/cosmwasm-stargate';
-import { toUtf8 } from '@cosmjs/encoding';
 
 // Mock the external dependencies
 jest.mock('@cosmjs/proto-signing');
@@ -13,10 +12,10 @@ jest.mock('@cosmjs/cosmwasm-stargate');
 describe('RwaClient', () => {
   const mockRpcUrl = 'http://localhost:26657';
   const mockChainId = 'test-chain-1';
-  const mockDenom = 'utest';
+  const mockDenom = 'tkii';
   const mockGasPrice = '0.025';
-  const mockFromAddress = 'cosmos1abc...';
-  const mockContractAddress = 'cosmos123...';
+  const mockFromAddress = 'kii1abc...';
+  const mockContractAddress = 'kii123...';
 
   let mockSigner: jest.Mocked<DirectSecp256k1HdWallet>;
   let mockRpcClient: jest.Mocked<SigningStargateClient>;
@@ -102,7 +101,7 @@ describe('RwaClient', () => {
   });
 
   describe('execute()', () => {
-    const mockMsg = { transfer: { recipient: 'cosmos1def...', amount: '1000' } };
+    const mockMsg = { transfer: { recipient: 'kii1def...', amount: '1000' } };
     const mockFunds: Coin[] = [{ denom: mockDenom, amount: '1000' }];
     const mockGasLimit = 200_000;
 
