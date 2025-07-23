@@ -1,106 +1,186 @@
-import { IdentityModule, AddIdentityRequest, UpdateIdentityRequest, RemoveIdentityRequest } from "../src/raw-identity";
-import { SigningStargateClient, DeliverTxResponse } from "@cosmjs/stargate";
-import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
+// identity.test.ts
+import { IdentityModule } from '../src/raw-identity';
+import { RwaClient } from '../src/client';
+import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
+import { DeliverTxResponse } from '@cosmjs/stargate';
 
-describe("IdentityModule", () => {
-  let mockRpcClient: jest.Mocked<SigningStargateClient>;
-  let identityModule: IdentityModule;
-  let mockSigner: DirectSecp256k1HdWallet;
-
-  beforeEach(async () => {
-    mockRpcClient = {
-      signAndBroadcast: jest.fn(),
-      queryContractSmart: jest.fn(),
-    } as any;
-
-    mockSigner = await DirectSecp256k1HdWallet.fromMnemonic(
-      "guilt elder dance satisfy pencil chuckle bronze behave rate film tumble flash",
-      { prefix: "cosmos" }
-    );
-
-    identityModule = new IdentityModule(mockRpcClient, "identity_contract_address");
-  });
-
-  it("should add an identity", async () => {
-    const mockDeliverTxResponse: DeliverTxResponse = {
-      transactionHash: "tx_hash_add_identity",
-      rawLog: "",
-      gasUsed: BigInt(100),
-      gasWanted: BigInt(200),
-      events: [],
-      height: 123,
-      code: 0,
-      txIndex: 0,
-      msgResponses: [],
-    };
-    mockRpcClient.signAndBroadcast.mockResolvedValueOnce(mockDeliverTxResponse);
-
-    const request: AddIdentityRequest = {
-      from: "sender_address",
-      country: "US",
-      signer: mockSigner,
-      gas_limit: 500000,
-    };
-
-    const result = await identityModule.addIdentity(request);
-
-    expect(result.tx_hash).toBe("tx_hash_add_identity");
-    expect(mockRpcClient.signAndBroadcast).toHaveBeenCalledTimes(1);
-  });
-
-  it("should update an identity", async () => {
-    const mockDeliverTxResponse: DeliverTxResponse = {
-      transactionHash: "tx_hash_update_identity",
-      rawLog: "",
-      gasUsed: BigInt(100),
-      gasWanted: BigInt(200),
-      events: [],
-      height: 123,
-      code: 0,
-      txIndex: 0,
-      msgResponses: [],
-    };
-    mockRpcClient.signAndBroadcast.mockResolvedValueOnce(mockDeliverTxResponse);
-
-    const request: UpdateIdentityRequest = {
-      from: "sender_address",
-      new_country: "CA",
-      identity_owner: "identity_owner_address",
-      signer: mockSigner,
-      gas_limit: 500000,
-    };
-
-    const result = await identityModule.updateIdentity(request);
-
-    expect(result.tx_hash).toBe("tx_hash_update_identity");
-    expect(mockRpcClient.signAndBroadcast).toHaveBeenCalledTimes(1);
-  });
-
-  it("should remove an identity", async () => {
-    const mockDeliverTxResponse: DeliverTxResponse = {
-      transactionHash: "tx_hash_remove_identity",
-      rawLog: "",
-      gasUsed: BigInt(100),
-      gasWanted: BigInt(200),
-      events: [],
-      height: 123,
-      code: 0,
-      txIndex: 0,
-      msgResponses: [],
-    };
-    mockRpcClient.signAndBroadcast.mockResolvedValueOnce(mockDeliverTxResponse);
-
-    const request: RemoveIdentityRequest = {
-      from: "sender_address",
-      identity_owner: "identity_owner_address",
-      signer: mockSigner,
-      gas_limit: 500000,
-    };
-
-    const result = await identityModule.removeIdentity(request);
-
-    expect(result.tx_hash).toBe("tx_hash_remove_identity");
-    expect(mockRpcClient.signAndBroadcast).toHaveBeenCalledTimes(1);
-  });
+// Mock the entire RwaClient module
+jest.mock('../src/client', () => {
+  return {
+    RwaClient: {
+      new: jest.fn().mockResolvedValue({
+        execute: jest.fn(),
+        query: jest.fn(),
+      }),
+    },
+  };
 });
 
+describe('IdentityModule', () => {
+  let mockRwaClient: jest.Mocked<RwaClient>;
+  let identityModule: IdentityModule;
+  const mockIdentityAddress = 'kii1identityaddress';
+  const mockFromAddress = 'kii1fromaddress';
+  const mockIdentityOwner = 'kii1identityowner';
+  const mockCountry = 'BR';
+  const mockNewCountry = 'FR';
+  const mockSigner = {} as DirectSecp256k1HdWallet;
+  const mockGasLimit = 200000;
+  
+  const mockTxResponse: DeliverTxResponse = {
+      transactionHash: 'mockTxHash',
+      code: 0,
+      height: 100,
+      gasUsed: BigInt(100000),
+      events: [],
+      txIndex: 0,
+      msgResponses: [],
+      gasWanted: BigInt(100)
+  };
+
+  beforeEach(async () => {
+    jest.clearAllMocks();
+    
+    // Get the mocked instance by calling the static 'new' method
+    mockRwaClient = (await RwaClient.new(
+      'mock-rpc-url',
+      'test-chain',
+      'testdenom',
+      '0.025',
+      mockSigner
+    )) as jest.Mocked<RwaClient>;
+    
+    mockRwaClient.execute.mockResolvedValue(mockTxResponse);
+    
+    identityModule = new IdentityModule(mockRwaClient, mockIdentityAddress);
+  });
+
+  describe('addIdentity', () => {
+    it('should call RwaClient.execute with correct parameters', async () => {
+      const request = {
+        from: mockFromAddress,
+        country: mockCountry,
+        gas_limit: mockGasLimit,
+      };
+
+      const result = await identityModule.addIdentity(request);
+
+      expect(mockRwaClient.execute).toHaveBeenCalledTimes(1);
+      expect(mockRwaClient.execute).toHaveBeenCalledWith(
+        mockFromAddress,
+        {
+          add_identity: {
+            from: mockFromAddress,
+            country: mockCountry,
+          },
+        },
+        mockIdentityAddress,
+        [],
+        mockGasLimit
+      );
+
+      expect(result).toEqual(mockTxResponse);
+    });
+
+    it('should throw if RwaClient.execute throws', async () => {
+      const request = {
+        from: mockFromAddress,
+        country: mockCountry,
+        gas_limit: mockGasLimit,
+      };
+
+      const mockError = new Error('Execution failed');
+      mockRwaClient.execute.mockRejectedValue(mockError);
+
+      await expect(identityModule.addIdentity(request))
+        .rejects.toThrow(mockError);
+    });
+  });
+
+  describe('updateIdentity', () => {
+    it('should call RwaClient.execute with correct parameters', async () => {
+      const request = {
+        from: mockFromAddress,
+        new_country: mockNewCountry,
+        identity_owner: mockIdentityOwner,
+        gas_limit: mockGasLimit,
+      };
+
+      const result = await identityModule.updateIdentity(request);
+
+      expect(mockRwaClient.execute).toHaveBeenCalledTimes(1);
+      expect(mockRwaClient.execute).toHaveBeenCalledWith(
+        mockFromAddress,
+        {
+          update_identity: {
+            from: mockFromAddress,
+            new_country: mockNewCountry,
+            identity_owner: mockIdentityOwner,
+          },
+        },
+        mockIdentityAddress,
+        [],
+        mockGasLimit
+      );
+
+      expect(result).toEqual(mockTxResponse);
+    });
+
+    it('should throw if RwaClient.execute throws', async () => {
+      const request = {
+        from: mockFromAddress,
+        new_country: mockNewCountry,
+        identity_owner: mockIdentityOwner,
+        gas_limit: mockGasLimit,
+      };
+
+      const mockError = new Error('Execution failed');
+      mockRwaClient.execute.mockRejectedValue(mockError);
+
+      await expect(identityModule.updateIdentity(request))
+        .rejects.toThrow(mockError);
+    });
+  });
+
+  describe('removeIdentity', () => {
+    it('should call RwaClient.execute with correct parameters', async () => {
+      const request = {
+        from: mockFromAddress,
+        identity_owner: mockIdentityOwner,
+        gas_limit: mockGasLimit,
+      };
+
+      const result = await identityModule.removeIdentity(request);
+
+      expect(mockRwaClient.execute).toHaveBeenCalledTimes(1);
+      expect(mockRwaClient.execute).toHaveBeenCalledWith(
+        mockFromAddress,
+        {
+          remove_identity: {
+            from: mockFromAddress,
+            identity_owner: mockIdentityOwner,
+          },
+        },
+        mockIdentityAddress,
+        [],
+        mockGasLimit
+      );
+
+      expect(result).toEqual(mockTxResponse);
+    });
+
+    it('should throw if RwaClient.execute throws', async () => {
+      const request = {
+        from: mockFromAddress,
+        identity_owner: mockIdentityOwner,
+        gas_limit: mockGasLimit,
+      };
+
+      const mockError = new Error('Execution failed');
+      mockRwaClient.execute.mockRejectedValue(mockError);
+
+      await expect(identityModule.removeIdentity(request))
+        .rejects.toThrow(mockError);
+    });
+  });
+});
