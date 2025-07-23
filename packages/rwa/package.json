@@ -7,7 +7,7 @@
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "homepage": "https://github.com/KiiChain/kiijs-sdk",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "Apache-2.0",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",
