@@ -1,8 +1,6 @@
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { ExecuteResponse } from "./index";
-import { SigningStargateClient } from "@cosmjs/stargate";
-import { toUtf8 } from "@cosmjs/encoding";
-import { MsgExecuteContract } from "cosmjs-types/cosmwasm/wasm/v1/tx";
+import { ExecuteResponse, RwaClient } from "./client";
+import { DeliverTxResponse } from "@cosmjs/stargate";
 import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
 
 export interface TransferMessageRequest {
@@ -25,22 +23,18 @@ export interface TokenInfo {
 }
 
 export class TokenModule {
-  private rpcClient: SigningStargateClient;
-  private queryClient: CosmWasmClient;
-  private tokenAddress: string;
-
-  constructor(rpcClient: SigningStargateClient, queryClient: CosmWasmClient, tokenAddress: string) {
-    this.rpcClient = rpcClient;
-    this.queryClient = queryClient;
-    this.tokenAddress = tokenAddress;
-  }
+  constructor(
+    private rwaClient: RwaClient,
+    private queryClient: CosmWasmClient,
+    private tokenAddress: string
+  ) {}
 
   /**
    * Transfers tokens from one address to another.
    * @param request - A TransferMessageRequest containing transfer details
-   * @returns Promise<ExecuteResponse> - The response data from the contract execution
+   * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
-  public async transfer(request: TransferMessageRequest): Promise<ExecuteResponse> {
+  public async transfer(request: TransferMessageRequest): Promise<DeliverTxResponse> {
     const msg = {
       transfer: {
         recipient: request.to,
@@ -48,33 +42,14 @@ export class TokenModule {
       },
     };
 
-    const executeContractMsg: MsgExecuteContract = {
-      sender: request.from,
-      contract: this.tokenAddress,
-      msg: toUtf8(JSON.stringify(msg)),
-      funds: [],
-    };
-
-    const msgAny = {
-      typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
-      value: executeContractMsg,
-    };
-
-    const result = await this.rpcClient.signAndBroadcast(
+    return this.rwaClient.execute(
       request.from,
-      [msgAny],
-      "auto",
-      "Token Transfer",
+      msg,
+      this.tokenAddress,
+      [],
+      request.signer,
+      request.gas_limit
     );
-
-    return {
-      tx_hash: result.transactionHash,
-      data: result.events.toString() ? new TextEncoder().encode(result.events.toString()) : new Uint8Array(),
-      gas_used: Number(result.gasUsed),
-      gas_wanted: Number(result.gasWanted),
-      events: result.events || [],
-      height: result.height,
-    };
   }
 
   /**
@@ -136,7 +111,7 @@ export class TokenModule {
         spender: spender,
       },
     };
-    
+
     const result = await this.queryClient.queryContractSmart(
       this.tokenAddress,
       queryMsg
@@ -148,7 +123,7 @@ export class TokenModule {
   /**
    * Approves a spender to spend tokens on behalf of the owner.
    * @param request - Contains from, spender, amount, signer, and gas_limit
-   * @returns Promise<ExecuteResponse> - The response data from the contract execution
+   * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
   public async approve(request: {
     from: string;
@@ -156,7 +131,7 @@ export class TokenModule {
     amount: number;
     signer: DirectSecp256k1HdWallet;
     gas_limit: number;
-  }): Promise<ExecuteResponse> {
+  }): Promise<DeliverTxResponse> {
     const msg = {
       increase_allowance: {
         spender: request.spender,
@@ -164,32 +139,13 @@ export class TokenModule {
       },
     };
 
-    const executeContractMsg: MsgExecuteContract = {
-      sender: request.from,
-      contract: this.tokenAddress,
-      msg: toUtf8(JSON.stringify(msg)),
-      funds: [],
-    };
-
-    const msgAny = {
-      typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
-      value: executeContractMsg,
-    };
-    const result = await this.rpcClient.signAndBroadcast(
+    return this.rwaClient.execute(
       request.from,
-      [msgAny],
-      "auto",
-      "Approve Token",
+      msg,
+      this.tokenAddress,
+      [],
+      request.signer,
+      request.gas_limit
     );
-
-    return {
-      tx_hash: result.transactionHash,
-      data: result.events.toString() ? new TextEncoder().encode(result.events.toString()) : new Uint8Array(),
-      gas_used: Number(result.gasUsed),
-      gas_wanted: Number(result.gasWanted),
-      events: result.events || [],
-      height: result.height,
-    };
   }
 }
-

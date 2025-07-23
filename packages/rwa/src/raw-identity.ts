@@ -1,8 +1,6 @@
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
-import { ExecuteResponse } from './index';
-import { SigningStargateClient } from '@cosmjs/stargate';
-import { toUtf8 } from '@cosmjs/encoding';
-import { MsgExecuteContract } from 'cosmjs-types/cosmwasm/wasm/v1/tx';
+import { RwaClient } from './client';
+import { DeliverTxResponse } from '@cosmjs/stargate';
 
 export interface AddIdentityRequest {
   from: string;
@@ -27,20 +25,17 @@ export interface RemoveIdentityRequest {
 }
 
 export class IdentityModule {
-  private rpcClient: SigningStargateClient;
-  private identityAddress: string;
-
-  constructor(rpcClient: SigningStargateClient, identityAddress: string) {
-    this.rpcClient = rpcClient;
-    this.identityAddress = identityAddress;
-  }
+  constructor(
+    private rwaClient: RwaClient,
+    private identityAddress: string
+  ) {}
 
   /**
    * Adds a new identity to the chain.
    * @param request - An AddIdentityRequest containing identity details
-   * @returns Promise<ExecuteResponse> - The response data from the contract execution
+   * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
-  public async addIdentity(request: AddIdentityRequest): Promise<ExecuteResponse> {
+  public async addIdentity(request: AddIdentityRequest): Promise<DeliverTxResponse> {
     const msg = {
       add_identity: {
         from: request.from,
@@ -48,41 +43,22 @@ export class IdentityModule {
       },
     };
 
-    const executeContractMsg: MsgExecuteContract = {
-      sender: request.from,
-      contract: this.identityAddress,
-      msg: toUtf8(JSON.stringify(msg)),
-      funds: [],
-    };
-
-    const msgAny = {
-      typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
-      value: executeContractMsg,
-    };
-
-    const result = await this.rpcClient.signAndBroadcast(
+    return this.rwaClient.execute(
       request.from,
-      [msgAny],
-      "auto",
-      "Add Identity",
+      msg,
+      this.identityAddress,
+      [],
+      request.signer,
+      request.gas_limit
     );
-
-    return {
-      tx_hash: result.transactionHash,
-      data: result.rawLog ? new TextEncoder().encode(result.rawLog) : new Uint8Array(),
-      gas_used: Number(result.gasUsed),
-      gas_wanted: Number(result.gasWanted),
-      events: result.events || [],
-      height: result.height,
-    };
   }
 
   /**
    * Updates an existing identity.
    * @param request - An UpdateIdentityRequest containing updated identity details
-   * @returns Promise<ExecuteResponse> - The response data from the contract execution
+   * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
-  public async updateIdentity(request: UpdateIdentityRequest): Promise<ExecuteResponse> {
+  public async updateIdentity(request: UpdateIdentityRequest): Promise<DeliverTxResponse> {
     const msg = {
       update_identity: {
         from: request.from,
@@ -91,41 +67,22 @@ export class IdentityModule {
       },
     };
 
-    const executeContractMsg: MsgExecuteContract = {
-      sender: request.from,
-      contract: this.identityAddress,
-      msg: toUtf8(JSON.stringify(msg)),
-      funds: [],
-    };
-
-    const msgAny = {
-      typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
-      value: executeContractMsg,
-    };
-
-    const result = await this.rpcClient.signAndBroadcast(
+    return this.rwaClient.execute(
       request.from,
-      [msgAny],
-      "auto",
-      "Update Identity",
+      msg,
+      this.identityAddress,
+      [],
+      request.signer,
+      request.gas_limit
     );
-
-    return {
-      tx_hash: result.transactionHash,
-      data: result.rawLog ? new TextEncoder().encode(result.rawLog) : new Uint8Array(),
-      gas_used: Number(result.gasUsed),
-      gas_wanted: Number(result.gasWanted),
-      events: result.events || [],
-      height: result.height,
-    };
   }
 
   /**
    * Removes an identity from the chain.
    * @param request - A RemoveIdentityRequest containing identity details
-   * @returns Promise<ExecuteResponse> - The response data from the contract execution
+   * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
-  public async removeIdentity(request: RemoveIdentityRequest): Promise<ExecuteResponse> {
+  public async removeIdentity(request: RemoveIdentityRequest): Promise<DeliverTxResponse> {
     const msg = {
       remove_identity: {
         from: request.from,
@@ -133,33 +90,13 @@ export class IdentityModule {
       },
     };
 
-    const executeContractMsg: MsgExecuteContract = {
-      sender: request.from,
-      contract: this.identityAddress,
-      msg: toUtf8(JSON.stringify(msg)),
-      funds: [],
-    };
-
-    const msgAny = {
-      typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
-      value: executeContractMsg,
-    };
-
-    const result = await this.rpcClient.signAndBroadcast(
+    return this.rwaClient.execute(
       request.from,
-      [msgAny],
-      "auto",
-      "Remove Identity",
+      msg,
+      this.identityAddress,
+      [],
+      request.signer,
+      request.gas_limit
     );
-
-    return {
-      tx_hash: result.transactionHash,
-      data: result.rawLog ? new TextEncoder().encode(result.rawLog) : new Uint8Array(),
-      gas_used: Number(result.gasUsed),
-      gas_wanted: Number(result.gasWanted),
-      events: result.events || [],
-      height: result.height,
-    };
   }
 }
-
