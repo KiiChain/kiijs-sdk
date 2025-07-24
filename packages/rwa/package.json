@@ -1,8 +1,8 @@
 {
-  "name": "@kiichain/kiijs-proto",
+  "name": "@kiichain/kiijs-rwa",
   "version": "0.2.0",
   "author": "kiiglobal.io <dev@kiiglobal.io>",
-  "description": "JS SDK for kiichain protofiles",
+  "description": "JS SDK for kiichain rwa",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -33,19 +33,19 @@
     "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "@cosmology/telescope": "^1.10.0",
-		"@types/jest": "^29.5.14",
-		"jest": "^29.7.0",
-		"ts-jest": "^29.3.1",
-    "dotenv": "16.4.7"
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.5",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@cosmjs/encoding": "^0.33.1",
-    "@cosmjs/math": "^0.33.1",
-    "@cosmjs/amino": "^0.33.1",
-    "@cosmjs/proto-signing": "^0.33.1",
-    "@cosmjs/stargate": "^0.33.1",
-    "@cosmology/lcd": "^0.14.0"
-  },
-  "keywords": []
+    "@cosmjs/cosmwasm-stargate": "^0.34.0",
+    "@cosmjs/encoding": "^0.34.0",
+    "@cosmjs/launchpad": "^0.27.1",
+    "@cosmjs/proto-signing": "^0.34.0",
+    "@cosmjs/stargate": "^0.34.0",
+    "@cosmjs/tendermint-rpc": "^0.34.0",
+    "bip39": "^3.1.0",
+    "cosmjs-types": "^0.9.0"
+  }
 }
