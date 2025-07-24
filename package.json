@@ -20,6 +20,7 @@
     "build": "lerna run build --stream",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "pretty": "yarn prettier --write '**/*.{ts,tsx}' --ignore-path .prettierignore",
     "test": "yarn test:evm && yarn test:proto && yarn test:rwa && yarn test:utils",
     "test:evm": "cd packages/evm && yarn test",
     "test:proto": "cd packages/proto && yarn test",
