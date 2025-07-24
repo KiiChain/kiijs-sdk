@@ -1,11 +1,11 @@
-import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
-import { DeliverTxResponse, SigningStargateClient} from '@cosmjs/stargate';
-import { Coin, StdFee } from '@cosmjs/launchpad';
-import { MsgExecuteContract } from 'cosmjs-types/cosmwasm/wasm/v1/tx';
+import { CosmWasmClient, JsonObject } from '@cosmjs/cosmwasm-stargate';
 import { toUtf8 } from '@cosmjs/encoding';
+import { Coin, StdFee } from '@cosmjs/launchpad';
+import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { Registry } from '@cosmjs/proto-signing';
+import { DeliverTxResponse, SigningStargateClient } from '@cosmjs/stargate';
 import { defaultRegistryTypes } from '@cosmjs/stargate';
-import { CosmWasmClient } from '@cosmjs/cosmwasm-stargate';
+import { MsgExecuteContract } from 'cosmjs-types/cosmwasm/wasm/v1/tx';
 
 export interface AccountInfoResponse {
   account_number: number;
@@ -13,7 +13,7 @@ export interface AccountInfoResponse {
 }
 
 const myRegistry = new Registry(defaultRegistryTypes);
-myRegistry.register("/cosmwasm.wasm.v1.MsgExecuteContract", MsgExecuteContract);
+myRegistry.register('/cosmwasm.wasm.v1.MsgExecuteContract', MsgExecuteContract);
 
 export class RwaClient {
   private rpcClient: SigningStargateClient;
@@ -27,7 +27,7 @@ export class RwaClient {
     queryClient: CosmWasmClient,
     chainId: string,
     denom: string,
-    gasPrice: string,
+    gasPrice: string
   ) {
     this.rpcClient = rpcClient;
     this.queryClient = queryClient;
@@ -50,23 +50,17 @@ export class RwaClient {
     chainId: string,
     denom: string,
     gasPrice: string,
-    signer: DirectSecp256k1HdWallet,
+    signer: DirectSecp256k1HdWallet
   ): Promise<RwaClient> {
     const rpcClient = await SigningStargateClient.connectWithSigner(
       rpcUrl,
       signer,
-      { registry: myRegistry },
+      { registry: myRegistry }
     );
 
     const queryClient = await CosmWasmClient.connect(rpcUrl);
 
-    return new RwaClient(
-      rpcClient,
-      queryClient,
-      chainId,
-      denom,
-      gasPrice,
-    );
+    return new RwaClient(rpcClient, queryClient, chainId, denom, gasPrice);
   }
 
   /**
@@ -77,7 +71,7 @@ export class RwaClient {
     msg: T,
     contractAddress: string,
     funds: Coin[],
-    gasLimit: number,
+    gasLimit: number
   ): Promise<DeliverTxResponse> {
     const executeContractMsg: MsgExecuteContract = {
       sender: fromAddress,
@@ -87,7 +81,7 @@ export class RwaClient {
     };
 
     const msgAny = {
-      typeUrl: "/cosmwasm.wasm.v1.MsgExecuteContract",
+      typeUrl: '/cosmwasm.wasm.v1.MsgExecuteContract',
       value: executeContractMsg,
     };
 
@@ -105,7 +99,7 @@ export class RwaClient {
       fromAddress,
       [msgAny],
       fee,
-      "Execute Contract",
+      'Execute Contract'
     );
 
     return result;
@@ -114,7 +108,10 @@ export class RwaClient {
   /**
    * Generic contract query method.
    */
-  public async query<T>(contractAddress: string, queryMsg: any): Promise<T> {
+  public async query<T>(
+    contractAddress: string,
+    queryMsg: JsonObject
+  ): Promise<T> {
     return await this.queryClient.queryContractSmart(contractAddress, queryMsg);
   }
 

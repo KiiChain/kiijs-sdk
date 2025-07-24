@@ -1,0 +1,30 @@
+name: Lint and Format
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  lint:
+    name: Lint and Format
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile  # yarn equivalent of 'npm ci'
+        
+      - name: Run ESLint
+        run: yarn lint
+        
+      - name: Check formatting with Prettier
+        run: yarn prettier --check "**/*.{ts,tsx}" --ignore-path .prettierignore

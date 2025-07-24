@@ -1,6 +1,6 @@
 //@ts-nocheck
-import { TokenPair, TokenPairAmino, TokenPairSDKType } from "./erc20";
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
+import { TokenPair, TokenPairAmino, TokenPairSDKType } from './erc20';
 /** GenesisState defines the module's genesis state. */
 export interface GenesisState {
   /** params are the erc20 module parameters at genesis */
@@ -9,7 +9,7 @@ export interface GenesisState {
   tokenPairs: TokenPair[];
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.GenesisState";
+  typeUrl: '/cosmos.evm.erc20.v1.GenesisState';
   value: Uint8Array;
 }
 /** GenesisState defines the module's genesis state. */
@@ -20,7 +20,7 @@ export interface GenesisStateAmino {
   token_pairs: TokenPairAmino[];
 }
 export interface GenesisStateAminoMsg {
-  type: "cosmos-sdk/GenesisState";
+  type: 'cosmos-sdk/GenesisState';
   value: GenesisStateAmino;
 }
 /** GenesisState defines the module's genesis state. */
@@ -48,7 +48,7 @@ export interface Params {
   dynamicPrecompiles: string[];
 }
 export interface ParamsProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.Params";
+  typeUrl: '/cosmos.evm.erc20.v1.Params';
   value: Uint8Array;
 }
 /** Params defines the erc20 module params */
@@ -71,7 +71,7 @@ export interface ParamsAmino {
   dynamic_precompiles?: string[];
 }
 export interface ParamsAminoMsg {
-  type: "cosmos-sdk/Params";
+  type: 'cosmos-sdk/Params';
   value: ParamsAmino;
 }
 /** Params defines the erc20 module params */
@@ -83,12 +83,15 @@ export interface ParamsSDKType {
 function createBaseGenesisState(): GenesisState {
   return {
     params: Params.fromPartial({}),
-    tokenPairs: []
+    tokenPairs: [],
   };
 }
 export const GenesisState = {
-  typeUrl: "/cosmos.evm.erc20.v1.GenesisState",
-  encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.erc20.v1.GenesisState',
+  encode(
+    message: GenesisState,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -98,7 +101,8 @@ export const GenesisState = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {
@@ -119,8 +123,12 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.tokenPairs = object.tokenPairs?.map(e => TokenPair.fromPartial(e)) || [];
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
+    message.tokenPairs =
+      object.tokenPairs?.map((e) => TokenPair.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -128,14 +136,19 @@ export const GenesisState = {
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromAmino(object.params);
     }
-    message.tokenPairs = object.token_pairs?.map(e => TokenPair.fromAmino(e)) || [];
+    message.tokenPairs =
+      object.token_pairs?.map((e) => TokenPair.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
-    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.params = message.params
+      ? Params.toAmino(message.params)
+      : Params.toAmino(Params.fromPartial({}));
     if (message.tokenPairs) {
-      obj.token_pairs = message.tokenPairs.map(e => e ? TokenPair.toAmino(e) : undefined);
+      obj.token_pairs = message.tokenPairs.map((e) =>
+        e ? TokenPair.toAmino(e) : undefined
+      );
     } else {
       obj.token_pairs = message.tokenPairs;
     }
@@ -146,8 +159,8 @@ export const GenesisState = {
   },
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
-      type: "cosmos-sdk/GenesisState",
-      value: GenesisState.toAmino(message)
+      type: 'cosmos-sdk/GenesisState',
+      value: GenesisState.toAmino(message),
     };
   },
   fromProtoMsg(message: GenesisStateProtoMsg): GenesisState {
@@ -158,21 +171,24 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.GenesisState",
-      value: GenesisState.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.GenesisState',
+      value: GenesisState.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseParams(): Params {
   return {
     enableErc20: false,
     nativePrecompiles: [],
-    dynamicPrecompiles: []
+    dynamicPrecompiles: [],
   };
 }
 export const Params = {
-  typeUrl: "/cosmos.evm.erc20.v1.Params",
-  encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.erc20.v1.Params',
+  encode(
+    message: Params,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.enableErc20 === true) {
       writer.uint32(8).bool(message.enableErc20);
     }
@@ -185,7 +201,8 @@ export const Params = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Params {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParams();
     while (reader.pos < end) {
@@ -210,8 +227,8 @@ export const Params = {
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.enableErc20 = object.enableErc20 ?? false;
-    message.nativePrecompiles = object.nativePrecompiles?.map(e => e) || [];
-    message.dynamicPrecompiles = object.dynamicPrecompiles?.map(e => e) || [];
+    message.nativePrecompiles = object.nativePrecompiles?.map((e) => e) || [];
+    message.dynamicPrecompiles = object.dynamicPrecompiles?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
@@ -219,20 +236,22 @@ export const Params = {
     if (object.enable_erc20 !== undefined && object.enable_erc20 !== null) {
       message.enableErc20 = object.enable_erc20;
     }
-    message.nativePrecompiles = object.native_precompiles?.map(e => e) || [];
-    message.dynamicPrecompiles = object.dynamic_precompiles?.map(e => e) || [];
+    message.nativePrecompiles = object.native_precompiles?.map((e) => e) || [];
+    message.dynamicPrecompiles =
+      object.dynamic_precompiles?.map((e) => e) || [];
     return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.enable_erc20 = message.enableErc20 === false ? undefined : message.enableErc20;
+    obj.enable_erc20 =
+      message.enableErc20 === false ? undefined : message.enableErc20;
     if (message.nativePrecompiles) {
-      obj.native_precompiles = message.nativePrecompiles.map(e => e);
+      obj.native_precompiles = message.nativePrecompiles.map((e) => e);
     } else {
       obj.native_precompiles = message.nativePrecompiles;
     }
     if (message.dynamicPrecompiles) {
-      obj.dynamic_precompiles = message.dynamicPrecompiles.map(e => e);
+      obj.dynamic_precompiles = message.dynamicPrecompiles.map((e) => e);
     } else {
       obj.dynamic_precompiles = message.dynamicPrecompiles;
     }
@@ -243,8 +262,8 @@ export const Params = {
   },
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
-      type: "cosmos-sdk/Params",
-      value: Params.toAmino(message)
+      type: 'cosmos-sdk/Params',
+      value: Params.toAmino(message),
     };
   },
   fromProtoMsg(message: ParamsProtoMsg): Params {
@@ -255,8 +274,8 @@ export const Params = {
   },
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.Params",
-      value: Params.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.Params',
+      value: Params.encode(message).finish(),
     };
-  }
+  },
 };

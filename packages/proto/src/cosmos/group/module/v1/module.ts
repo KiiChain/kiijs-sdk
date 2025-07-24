@@ -1,6 +1,10 @@
 //@ts-nocheck
-import { Duration, DurationAmino, DurationSDKType } from "../../../../google/protobuf/duration";
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
+import {
+  Duration,
+  DurationAmino,
+  DurationSDKType,
+} from '../../../../google/protobuf/duration';
 /** Module is the config object of the group module. */
 export interface Module {
   /**
@@ -15,7 +19,7 @@ export interface Module {
   maxMetadataLen: bigint;
 }
 export interface ModuleProtoMsg {
-  typeUrl: "/cosmos.group.module.v1.Module";
+  typeUrl: '/cosmos.group.module.v1.Module';
   value: Uint8Array;
 }
 /** Module is the config object of the group module. */
@@ -32,7 +36,7 @@ export interface ModuleAmino {
   max_metadata_len?: string;
 }
 export interface ModuleAminoMsg {
-  type: "cosmos-sdk/Module";
+  type: 'cosmos-sdk/Module';
   value: ModuleAmino;
 }
 /** Module is the config object of the group module. */
@@ -43,14 +47,20 @@ export interface ModuleSDKType {
 function createBaseModule(): Module {
   return {
     maxExecutionPeriod: Duration.fromPartial({}),
-    maxMetadataLen: BigInt(0)
+    maxMetadataLen: BigInt(0),
   };
 }
 export const Module = {
-  typeUrl: "/cosmos.group.module.v1.Module",
-  encode(message: Module, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.group.module.v1.Module',
+  encode(
+    message: Module,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.maxExecutionPeriod !== undefined) {
-      Duration.encode(message.maxExecutionPeriod, writer.uint32(10).fork()).ldelim();
+      Duration.encode(
+        message.maxExecutionPeriod,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     if (message.maxMetadataLen !== BigInt(0)) {
       writer.uint32(16).uint64(message.maxMetadataLen);
@@ -58,7 +68,8 @@ export const Module = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Module {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseModule();
     while (reader.pos < end) {
@@ -79,24 +90,44 @@ export const Module = {
   },
   fromPartial(object: Partial<Module>): Module {
     const message = createBaseModule();
-    message.maxExecutionPeriod = object.maxExecutionPeriod !== undefined && object.maxExecutionPeriod !== null ? Duration.fromPartial(object.maxExecutionPeriod) : undefined;
-    message.maxMetadataLen = object.maxMetadataLen !== undefined && object.maxMetadataLen !== null ? BigInt(object.maxMetadataLen.toString()) : BigInt(0);
+    message.maxExecutionPeriod =
+      object.maxExecutionPeriod !== undefined &&
+      object.maxExecutionPeriod !== null
+        ? Duration.fromPartial(object.maxExecutionPeriod)
+        : undefined;
+    message.maxMetadataLen =
+      object.maxMetadataLen !== undefined && object.maxMetadataLen !== null
+        ? BigInt(object.maxMetadataLen.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: ModuleAmino): Module {
     const message = createBaseModule();
-    if (object.max_execution_period !== undefined && object.max_execution_period !== null) {
-      message.maxExecutionPeriod = Duration.fromAmino(object.max_execution_period);
+    if (
+      object.max_execution_period !== undefined &&
+      object.max_execution_period !== null
+    ) {
+      message.maxExecutionPeriod = Duration.fromAmino(
+        object.max_execution_period
+      );
     }
-    if (object.max_metadata_len !== undefined && object.max_metadata_len !== null) {
+    if (
+      object.max_metadata_len !== undefined &&
+      object.max_metadata_len !== null
+    ) {
       message.maxMetadataLen = BigInt(object.max_metadata_len);
     }
     return message;
   },
   toAmino(message: Module): ModuleAmino {
     const obj: any = {};
-    obj.max_execution_period = message.maxExecutionPeriod ? Duration.toAmino(message.maxExecutionPeriod) : Duration.toAmino(Duration.fromPartial({}));
-    obj.max_metadata_len = message.maxMetadataLen !== BigInt(0) ? message.maxMetadataLen?.toString() : undefined;
+    obj.max_execution_period = message.maxExecutionPeriod
+      ? Duration.toAmino(message.maxExecutionPeriod)
+      : Duration.toAmino(Duration.fromPartial({}));
+    obj.max_metadata_len =
+      message.maxMetadataLen !== BigInt(0)
+        ? message.maxMetadataLen?.toString()
+        : undefined;
     return obj;
   },
   fromAminoMsg(object: ModuleAminoMsg): Module {
@@ -104,8 +135,8 @@ export const Module = {
   },
   toAminoMsg(message: Module): ModuleAminoMsg {
     return {
-      type: "cosmos-sdk/Module",
-      value: Module.toAmino(message)
+      type: 'cosmos-sdk/Module',
+      value: Module.toAmino(message),
     };
   },
   fromProtoMsg(message: ModuleProtoMsg): Module {
@@ -116,8 +147,8 @@ export const Module = {
   },
   toProtoMsg(message: Module): ModuleProtoMsg {
     return {
-      typeUrl: "/cosmos.group.module.v1.Module",
-      value: Module.encode(message).finish()
+      typeUrl: '/cosmos.group.module.v1.Module',
+      value: Module.encode(message).finish(),
     };
-  }
+  },
 };

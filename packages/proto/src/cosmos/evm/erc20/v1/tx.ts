@@ -1,7 +1,7 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType } from "./genesis";
-import { Coin, CoinAmino, CoinSDKType } from "../../../base/v1beta1/coin";
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
+import { Coin, CoinAmino, CoinSDKType } from '../../../base/v1beta1/coin';
+import { Params, ParamsAmino, ParamsSDKType } from './genesis';
 /**
  * MsgConvertERC20 defines a Msg to convert a ERC20 token to a native Cosmos
  * coin.
@@ -20,7 +20,7 @@ export interface MsgConvertERC20 {
   sender: string;
 }
 export interface MsgConvertERC20ProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgConvertERC20";
+  typeUrl: '/cosmos.evm.erc20.v1.MsgConvertERC20';
   value: Uint8Array;
 }
 /**
@@ -41,7 +41,7 @@ export interface MsgConvertERC20Amino {
   sender?: string;
 }
 export interface MsgConvertERC20AminoMsg {
-  type: "cosmos/evm/MsgConvertERC20";
+  type: 'cosmos/evm/MsgConvertERC20';
   value: MsgConvertERC20Amino;
 }
 /**
@@ -57,13 +57,13 @@ export interface MsgConvertERC20SDKType {
 /** MsgConvertERC20Response returns no fields */
 export interface MsgConvertERC20Response {}
 export interface MsgConvertERC20ResponseProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgConvertERC20Response";
+  typeUrl: '/cosmos.evm.erc20.v1.MsgConvertERC20Response';
   value: Uint8Array;
 }
 /** MsgConvertERC20Response returns no fields */
 export interface MsgConvertERC20ResponseAmino {}
 export interface MsgConvertERC20ResponseAminoMsg {
-  type: "cosmos-sdk/MsgConvertERC20Response";
+  type: 'cosmos-sdk/MsgConvertERC20Response';
   value: MsgConvertERC20ResponseAmino;
 }
 /** MsgConvertERC20Response returns no fields */
@@ -84,7 +84,7 @@ export interface MsgConvertCoin {
   sender: string;
 }
 export interface MsgConvertCoinProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgConvertCoin";
+  typeUrl: '/cosmos.evm.erc20.v1.MsgConvertCoin';
   value: Uint8Array;
 }
 /** MsgConvertCoin defines a Msg to convert a native Cosmos coin to a ERC20 token */
@@ -103,7 +103,7 @@ export interface MsgConvertCoinAmino {
   sender?: string;
 }
 export interface MsgConvertCoinAminoMsg {
-  type: "cosmos-sdk/MsgConvertCoin";
+  type: 'cosmos-sdk/MsgConvertCoin';
   value: MsgConvertCoinAmino;
 }
 /** MsgConvertCoin defines a Msg to convert a native Cosmos coin to a ERC20 token */
@@ -115,13 +115,13 @@ export interface MsgConvertCoinSDKType {
 /** MsgConvertCoinResponse returns no fields */
 export interface MsgConvertCoinResponse {}
 export interface MsgConvertCoinResponseProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgConvertCoinResponse";
+  typeUrl: '/cosmos.evm.erc20.v1.MsgConvertCoinResponse';
   value: Uint8Array;
 }
 /** MsgConvertCoinResponse returns no fields */
 export interface MsgConvertCoinResponseAmino {}
 export interface MsgConvertCoinResponseAminoMsg {
-  type: "cosmos-sdk/MsgConvertCoinResponse";
+  type: 'cosmos-sdk/MsgConvertCoinResponse';
   value: MsgConvertCoinResponseAmino;
 }
 /** MsgConvertCoinResponse returns no fields */
@@ -140,7 +140,7 @@ export interface MsgUpdateParams {
   params: Params;
 }
 export interface MsgUpdateParamsProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgUpdateParams";
+  typeUrl: '/cosmos.evm.erc20.v1.MsgUpdateParams';
   value: Uint8Array;
 }
 /**
@@ -157,7 +157,7 @@ export interface MsgUpdateParamsAmino {
   params: ParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
-  type: "cosmos/evm/x/erc20/MsgUpdateParams";
+  type: 'cosmos/evm/x/erc20/MsgUpdateParams';
   value: MsgUpdateParamsAmino;
 }
 /**
@@ -175,7 +175,7 @@ export interface MsgUpdateParamsSDKType {
  */
 export interface MsgUpdateParamsResponse {}
 export interface MsgUpdateParamsResponseProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgUpdateParamsResponse";
+  typeUrl: '/cosmos.evm.erc20.v1.MsgUpdateParamsResponse';
   value: Uint8Array;
 }
 /**
@@ -185,7 +185,7 @@ export interface MsgUpdateParamsResponseProtoMsg {
  */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {
-  type: "cosmos-sdk/MsgUpdateParamsResponse";
+  type: 'cosmos-sdk/MsgUpdateParamsResponse';
   value: MsgUpdateParamsResponseAmino;
 }
 /**
@@ -205,7 +205,7 @@ export interface MsgRegisterERC20 {
   erc20addresses: string[];
 }
 export interface MsgRegisterERC20ProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgRegisterERC20";
+  typeUrl: '/cosmos.evm.erc20.v1.MsgRegisterERC20';
   value: Uint8Array;
 }
 /**
@@ -219,7 +219,7 @@ export interface MsgRegisterERC20Amino {
   erc20addresses?: string[];
 }
 export interface MsgRegisterERC20AminoMsg {
-  type: "cosmos/evm/x/erc20/MsgRegisterERC20";
+  type: 'cosmos/evm/x/erc20/MsgRegisterERC20';
   value: MsgRegisterERC20Amino;
 }
 /**
@@ -236,7 +236,7 @@ export interface MsgRegisterERC20SDKType {
  */
 export interface MsgRegisterERC20Response {}
 export interface MsgRegisterERC20ResponseProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgRegisterERC20Response";
+  typeUrl: '/cosmos.evm.erc20.v1.MsgRegisterERC20Response';
   value: Uint8Array;
 }
 /**
@@ -245,7 +245,7 @@ export interface MsgRegisterERC20ResponseProtoMsg {
  */
 export interface MsgRegisterERC20ResponseAmino {}
 export interface MsgRegisterERC20ResponseAminoMsg {
-  type: "cosmos-sdk/MsgRegisterERC20Response";
+  type: 'cosmos-sdk/MsgRegisterERC20Response';
   value: MsgRegisterERC20ResponseAmino;
 }
 /**
@@ -267,7 +267,7 @@ export interface MsgToggleConversion {
   token: string;
 }
 export interface MsgToggleConversionProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgToggleConversion";
+  typeUrl: '/cosmos.evm.erc20.v1.MsgToggleConversion';
   value: Uint8Array;
 }
 /**
@@ -284,7 +284,7 @@ export interface MsgToggleConversionAmino {
   token?: string;
 }
 export interface MsgToggleConversionAminoMsg {
-  type: "cosmos/evm/x/erc20/MsgToggleConversion";
+  type: 'cosmos/evm/x/erc20/MsgToggleConversion';
   value: MsgToggleConversionAmino;
 }
 /**
@@ -301,7 +301,7 @@ export interface MsgToggleConversionSDKType {
  */
 export interface MsgToggleConversionResponse {}
 export interface MsgToggleConversionResponseProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgToggleConversionResponse";
+  typeUrl: '/cosmos.evm.erc20.v1.MsgToggleConversionResponse';
   value: Uint8Array;
 }
 /**
@@ -310,7 +310,7 @@ export interface MsgToggleConversionResponseProtoMsg {
  */
 export interface MsgToggleConversionResponseAmino {}
 export interface MsgToggleConversionResponseAminoMsg {
-  type: "cosmos-sdk/MsgToggleConversionResponse";
+  type: 'cosmos-sdk/MsgToggleConversionResponse';
   value: MsgToggleConversionResponseAmino;
 }
 /**
@@ -320,31 +320,35 @@ export interface MsgToggleConversionResponseAminoMsg {
 export interface MsgToggleConversionResponseSDKType {}
 function createBaseMsgConvertERC20(): MsgConvertERC20 {
   return {
-    contractAddress: "",
-    amount: "",
-    receiver: "",
-    sender: ""
+    contractAddress: '',
+    amount: '',
+    receiver: '',
+    sender: '',
   };
 }
 export const MsgConvertERC20 = {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgConvertERC20",
-  encode(message: MsgConvertERC20, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.contractAddress !== "") {
+  typeUrl: '/cosmos.evm.erc20.v1.MsgConvertERC20',
+  encode(
+    message: MsgConvertERC20,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.contractAddress !== '') {
       writer.uint32(10).string(message.contractAddress);
     }
-    if (message.amount !== "") {
+    if (message.amount !== '') {
       writer.uint32(18).string(message.amount);
     }
-    if (message.receiver !== "") {
+    if (message.receiver !== '') {
       writer.uint32(26).string(message.receiver);
     }
-    if (message.sender !== "") {
+    if (message.sender !== '') {
       writer.uint32(34).string(message.sender);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgConvertERC20 {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgConvertERC20();
     while (reader.pos < end) {
@@ -371,15 +375,18 @@ export const MsgConvertERC20 = {
   },
   fromPartial(object: Partial<MsgConvertERC20>): MsgConvertERC20 {
     const message = createBaseMsgConvertERC20();
-    message.contractAddress = object.contractAddress ?? "";
-    message.amount = object.amount ?? "";
-    message.receiver = object.receiver ?? "";
-    message.sender = object.sender ?? "";
+    message.contractAddress = object.contractAddress ?? '';
+    message.amount = object.amount ?? '';
+    message.receiver = object.receiver ?? '';
+    message.sender = object.sender ?? '';
     return message;
   },
   fromAmino(object: MsgConvertERC20Amino): MsgConvertERC20 {
     const message = createBaseMsgConvertERC20();
-    if (object.contract_address !== undefined && object.contract_address !== null) {
+    if (
+      object.contract_address !== undefined &&
+      object.contract_address !== null
+    ) {
       message.contractAddress = object.contract_address;
     }
     if (object.amount !== undefined && object.amount !== null) {
@@ -395,10 +402,11 @@ export const MsgConvertERC20 = {
   },
   toAmino(message: MsgConvertERC20): MsgConvertERC20Amino {
     const obj: any = {};
-    obj.contract_address = message.contractAddress === "" ? undefined : message.contractAddress;
-    obj.amount = message.amount ?? "";
-    obj.receiver = message.receiver === "" ? undefined : message.receiver;
-    obj.sender = message.sender === "" ? undefined : message.sender;
+    obj.contract_address =
+      message.contractAddress === '' ? undefined : message.contractAddress;
+    obj.amount = message.amount ?? '';
+    obj.receiver = message.receiver === '' ? undefined : message.receiver;
+    obj.sender = message.sender === '' ? undefined : message.sender;
     return obj;
   },
   fromAminoMsg(object: MsgConvertERC20AminoMsg): MsgConvertERC20 {
@@ -406,8 +414,8 @@ export const MsgConvertERC20 = {
   },
   toAminoMsg(message: MsgConvertERC20): MsgConvertERC20AminoMsg {
     return {
-      type: "cosmos/evm/MsgConvertERC20",
-      value: MsgConvertERC20.toAmino(message)
+      type: 'cosmos/evm/MsgConvertERC20',
+      value: MsgConvertERC20.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgConvertERC20ProtoMsg): MsgConvertERC20 {
@@ -418,21 +426,28 @@ export const MsgConvertERC20 = {
   },
   toProtoMsg(message: MsgConvertERC20): MsgConvertERC20ProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.MsgConvertERC20",
-      value: MsgConvertERC20.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.MsgConvertERC20',
+      value: MsgConvertERC20.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgConvertERC20Response(): MsgConvertERC20Response {
   return {};
 }
 export const MsgConvertERC20Response = {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgConvertERC20Response",
-  encode(_: MsgConvertERC20Response, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.erc20.v1.MsgConvertERC20Response',
+  encode(
+    _: MsgConvertERC20Response,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgConvertERC20Response {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgConvertERC20Response {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgConvertERC20Response();
     while (reader.pos < end) {
@@ -457,51 +472,63 @@ export const MsgConvertERC20Response = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgConvertERC20ResponseAminoMsg): MsgConvertERC20Response {
+  fromAminoMsg(
+    object: MsgConvertERC20ResponseAminoMsg
+  ): MsgConvertERC20Response {
     return MsgConvertERC20Response.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgConvertERC20Response): MsgConvertERC20ResponseAminoMsg {
+  toAminoMsg(
+    message: MsgConvertERC20Response
+  ): MsgConvertERC20ResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgConvertERC20Response",
-      value: MsgConvertERC20Response.toAmino(message)
+      type: 'cosmos-sdk/MsgConvertERC20Response',
+      value: MsgConvertERC20Response.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgConvertERC20ResponseProtoMsg): MsgConvertERC20Response {
+  fromProtoMsg(
+    message: MsgConvertERC20ResponseProtoMsg
+  ): MsgConvertERC20Response {
     return MsgConvertERC20Response.decode(message.value);
   },
   toProto(message: MsgConvertERC20Response): Uint8Array {
     return MsgConvertERC20Response.encode(message).finish();
   },
-  toProtoMsg(message: MsgConvertERC20Response): MsgConvertERC20ResponseProtoMsg {
+  toProtoMsg(
+    message: MsgConvertERC20Response
+  ): MsgConvertERC20ResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.MsgConvertERC20Response",
-      value: MsgConvertERC20Response.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.MsgConvertERC20Response',
+      value: MsgConvertERC20Response.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgConvertCoin(): MsgConvertCoin {
   return {
     coin: Coin.fromPartial({}),
-    receiver: "",
-    sender: ""
+    receiver: '',
+    sender: '',
   };
 }
 export const MsgConvertCoin = {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgConvertCoin",
-  encode(message: MsgConvertCoin, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.erc20.v1.MsgConvertCoin',
+  encode(
+    message: MsgConvertCoin,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.coin !== undefined) {
       Coin.encode(message.coin, writer.uint32(10).fork()).ldelim();
     }
-    if (message.receiver !== "") {
+    if (message.receiver !== '') {
       writer.uint32(18).string(message.receiver);
     }
-    if (message.sender !== "") {
+    if (message.sender !== '') {
       writer.uint32(26).string(message.sender);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgConvertCoin {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgConvertCoin();
     while (reader.pos < end) {
@@ -525,9 +552,12 @@ export const MsgConvertCoin = {
   },
   fromPartial(object: Partial<MsgConvertCoin>): MsgConvertCoin {
     const message = createBaseMsgConvertCoin();
-    message.coin = object.coin !== undefined && object.coin !== null ? Coin.fromPartial(object.coin) : undefined;
-    message.receiver = object.receiver ?? "";
-    message.sender = object.sender ?? "";
+    message.coin =
+      object.coin !== undefined && object.coin !== null
+        ? Coin.fromPartial(object.coin)
+        : undefined;
+    message.receiver = object.receiver ?? '';
+    message.sender = object.sender ?? '';
     return message;
   },
   fromAmino(object: MsgConvertCoinAmino): MsgConvertCoin {
@@ -546,8 +576,8 @@ export const MsgConvertCoin = {
   toAmino(message: MsgConvertCoin): MsgConvertCoinAmino {
     const obj: any = {};
     obj.coin = message.coin ? Coin.toAmino(message.coin) : undefined;
-    obj.receiver = message.receiver === "" ? undefined : message.receiver;
-    obj.sender = message.sender === "" ? undefined : message.sender;
+    obj.receiver = message.receiver === '' ? undefined : message.receiver;
+    obj.sender = message.sender === '' ? undefined : message.sender;
     return obj;
   },
   fromAminoMsg(object: MsgConvertCoinAminoMsg): MsgConvertCoin {
@@ -555,8 +585,8 @@ export const MsgConvertCoin = {
   },
   toAminoMsg(message: MsgConvertCoin): MsgConvertCoinAminoMsg {
     return {
-      type: "cosmos-sdk/MsgConvertCoin",
-      value: MsgConvertCoin.toAmino(message)
+      type: 'cosmos-sdk/MsgConvertCoin',
+      value: MsgConvertCoin.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgConvertCoinProtoMsg): MsgConvertCoin {
@@ -567,21 +597,28 @@ export const MsgConvertCoin = {
   },
   toProtoMsg(message: MsgConvertCoin): MsgConvertCoinProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.MsgConvertCoin",
-      value: MsgConvertCoin.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.MsgConvertCoin',
+      value: MsgConvertCoin.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgConvertCoinResponse(): MsgConvertCoinResponse {
   return {};
 }
 export const MsgConvertCoinResponse = {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgConvertCoinResponse",
-  encode(_: MsgConvertCoinResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.erc20.v1.MsgConvertCoinResponse',
+  encode(
+    _: MsgConvertCoinResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgConvertCoinResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgConvertCoinResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgConvertCoinResponse();
     while (reader.pos < end) {
@@ -611,11 +648,13 @@ export const MsgConvertCoinResponse = {
   },
   toAminoMsg(message: MsgConvertCoinResponse): MsgConvertCoinResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgConvertCoinResponse",
-      value: MsgConvertCoinResponse.toAmino(message)
+      type: 'cosmos-sdk/MsgConvertCoinResponse',
+      value: MsgConvertCoinResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgConvertCoinResponseProtoMsg): MsgConvertCoinResponse {
+  fromProtoMsg(
+    message: MsgConvertCoinResponseProtoMsg
+  ): MsgConvertCoinResponse {
     return MsgConvertCoinResponse.decode(message.value);
   },
   toProto(message: MsgConvertCoinResponse): Uint8Array {
@@ -623,21 +662,24 @@ export const MsgConvertCoinResponse = {
   },
   toProtoMsg(message: MsgConvertCoinResponse): MsgConvertCoinResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.MsgConvertCoinResponse",
-      value: MsgConvertCoinResponse.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.MsgConvertCoinResponse',
+      value: MsgConvertCoinResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
-    authority: "",
-    params: Params.fromPartial({})
+    authority: '',
+    params: Params.fromPartial({}),
   };
 }
 export const MsgUpdateParams = {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgUpdateParams",
-  encode(message: MsgUpdateParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.authority !== "") {
+  typeUrl: '/cosmos.evm.erc20.v1.MsgUpdateParams',
+  encode(
+    message: MsgUpdateParams,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.authority !== '') {
       writer.uint32(10).string(message.authority);
     }
     if (message.params !== undefined) {
@@ -646,7 +688,8 @@ export const MsgUpdateParams = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParams {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateParams();
     while (reader.pos < end) {
@@ -667,8 +710,11 @@ export const MsgUpdateParams = {
   },
   fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams {
     const message = createBaseMsgUpdateParams();
-    message.authority = object.authority ?? "";
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.authority = object.authority ?? '';
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
@@ -683,8 +729,10 @@ export const MsgUpdateParams = {
   },
   toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino {
     const obj: any = {};
-    obj.authority = message.authority === "" ? undefined : message.authority;
-    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.authority = message.authority === '' ? undefined : message.authority;
+    obj.params = message.params
+      ? Params.toAmino(message.params)
+      : Params.toAmino(Params.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams {
@@ -692,8 +740,8 @@ export const MsgUpdateParams = {
   },
   toAminoMsg(message: MsgUpdateParams): MsgUpdateParamsAminoMsg {
     return {
-      type: "cosmos/evm/x/erc20/MsgUpdateParams",
-      value: MsgUpdateParams.toAmino(message)
+      type: 'cosmos/evm/x/erc20/MsgUpdateParams',
+      value: MsgUpdateParams.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgUpdateParamsProtoMsg): MsgUpdateParams {
@@ -704,21 +752,28 @@ export const MsgUpdateParams = {
   },
   toProtoMsg(message: MsgUpdateParams): MsgUpdateParamsProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.MsgUpdateParams",
-      value: MsgUpdateParams.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.MsgUpdateParams',
+      value: MsgUpdateParams.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateParamsResponse(): MsgUpdateParamsResponse {
   return {};
 }
 export const MsgUpdateParamsResponse = {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgUpdateParamsResponse",
-  encode(_: MsgUpdateParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.erc20.v1.MsgUpdateParamsResponse',
+  encode(
+    _: MsgUpdateParamsResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParamsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgUpdateParamsResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateParamsResponse();
     while (reader.pos < end) {
@@ -743,38 +798,49 @@ export const MsgUpdateParamsResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse {
+  fromAminoMsg(
+    object: MsgUpdateParamsResponseAminoMsg
+  ): MsgUpdateParamsResponse {
     return MsgUpdateParamsResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseAminoMsg {
+  toAminoMsg(
+    message: MsgUpdateParamsResponse
+  ): MsgUpdateParamsResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgUpdateParamsResponse",
-      value: MsgUpdateParamsResponse.toAmino(message)
+      type: 'cosmos-sdk/MsgUpdateParamsResponse',
+      value: MsgUpdateParamsResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgUpdateParamsResponseProtoMsg): MsgUpdateParamsResponse {
+  fromProtoMsg(
+    message: MsgUpdateParamsResponseProtoMsg
+  ): MsgUpdateParamsResponse {
     return MsgUpdateParamsResponse.decode(message.value);
   },
   toProto(message: MsgUpdateParamsResponse): Uint8Array {
     return MsgUpdateParamsResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseProtoMsg {
+  toProtoMsg(
+    message: MsgUpdateParamsResponse
+  ): MsgUpdateParamsResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.MsgUpdateParamsResponse",
-      value: MsgUpdateParamsResponse.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.MsgUpdateParamsResponse',
+      value: MsgUpdateParamsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgRegisterERC20(): MsgRegisterERC20 {
   return {
-    authority: "",
-    erc20addresses: []
+    authority: '',
+    erc20addresses: [],
   };
 }
 export const MsgRegisterERC20 = {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgRegisterERC20",
-  encode(message: MsgRegisterERC20, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.authority !== "") {
+  typeUrl: '/cosmos.evm.erc20.v1.MsgRegisterERC20',
+  encode(
+    message: MsgRegisterERC20,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.authority !== '') {
       writer.uint32(10).string(message.authority);
     }
     for (const v of message.erc20addresses) {
@@ -783,7 +849,8 @@ export const MsgRegisterERC20 = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterERC20 {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRegisterERC20();
     while (reader.pos < end) {
@@ -804,8 +871,8 @@ export const MsgRegisterERC20 = {
   },
   fromPartial(object: Partial<MsgRegisterERC20>): MsgRegisterERC20 {
     const message = createBaseMsgRegisterERC20();
-    message.authority = object.authority ?? "";
-    message.erc20addresses = object.erc20addresses?.map(e => e) || [];
+    message.authority = object.authority ?? '';
+    message.erc20addresses = object.erc20addresses?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: MsgRegisterERC20Amino): MsgRegisterERC20 {
@@ -813,14 +880,14 @@ export const MsgRegisterERC20 = {
     if (object.authority !== undefined && object.authority !== null) {
       message.authority = object.authority;
     }
-    message.erc20addresses = object.erc20addresses?.map(e => e) || [];
+    message.erc20addresses = object.erc20addresses?.map((e) => e) || [];
     return message;
   },
   toAmino(message: MsgRegisterERC20): MsgRegisterERC20Amino {
     const obj: any = {};
-    obj.authority = message.authority === "" ? undefined : message.authority;
+    obj.authority = message.authority === '' ? undefined : message.authority;
     if (message.erc20addresses) {
-      obj.erc20addresses = message.erc20addresses.map(e => e);
+      obj.erc20addresses = message.erc20addresses.map((e) => e);
     } else {
       obj.erc20addresses = message.erc20addresses;
     }
@@ -831,8 +898,8 @@ export const MsgRegisterERC20 = {
   },
   toAminoMsg(message: MsgRegisterERC20): MsgRegisterERC20AminoMsg {
     return {
-      type: "cosmos/evm/x/erc20/MsgRegisterERC20",
-      value: MsgRegisterERC20.toAmino(message)
+      type: 'cosmos/evm/x/erc20/MsgRegisterERC20',
+      value: MsgRegisterERC20.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgRegisterERC20ProtoMsg): MsgRegisterERC20 {
@@ -843,21 +910,28 @@ export const MsgRegisterERC20 = {
   },
   toProtoMsg(message: MsgRegisterERC20): MsgRegisterERC20ProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.MsgRegisterERC20",
-      value: MsgRegisterERC20.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.MsgRegisterERC20',
+      value: MsgRegisterERC20.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgRegisterERC20Response(): MsgRegisterERC20Response {
   return {};
 }
 export const MsgRegisterERC20Response = {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgRegisterERC20Response",
-  encode(_: MsgRegisterERC20Response, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.erc20.v1.MsgRegisterERC20Response',
+  encode(
+    _: MsgRegisterERC20Response,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterERC20Response {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgRegisterERC20Response {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRegisterERC20Response();
     while (reader.pos < end) {
@@ -882,47 +956,62 @@ export const MsgRegisterERC20Response = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgRegisterERC20ResponseAminoMsg): MsgRegisterERC20Response {
+  fromAminoMsg(
+    object: MsgRegisterERC20ResponseAminoMsg
+  ): MsgRegisterERC20Response {
     return MsgRegisterERC20Response.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgRegisterERC20Response): MsgRegisterERC20ResponseAminoMsg {
+  toAminoMsg(
+    message: MsgRegisterERC20Response
+  ): MsgRegisterERC20ResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgRegisterERC20Response",
-      value: MsgRegisterERC20Response.toAmino(message)
+      type: 'cosmos-sdk/MsgRegisterERC20Response',
+      value: MsgRegisterERC20Response.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgRegisterERC20ResponseProtoMsg): MsgRegisterERC20Response {
+  fromProtoMsg(
+    message: MsgRegisterERC20ResponseProtoMsg
+  ): MsgRegisterERC20Response {
     return MsgRegisterERC20Response.decode(message.value);
   },
   toProto(message: MsgRegisterERC20Response): Uint8Array {
     return MsgRegisterERC20Response.encode(message).finish();
   },
-  toProtoMsg(message: MsgRegisterERC20Response): MsgRegisterERC20ResponseProtoMsg {
+  toProtoMsg(
+    message: MsgRegisterERC20Response
+  ): MsgRegisterERC20ResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.MsgRegisterERC20Response",
-      value: MsgRegisterERC20Response.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.MsgRegisterERC20Response',
+      value: MsgRegisterERC20Response.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgToggleConversion(): MsgToggleConversion {
   return {
-    authority: "",
-    token: ""
+    authority: '',
+    token: '',
   };
 }
 export const MsgToggleConversion = {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgToggleConversion",
-  encode(message: MsgToggleConversion, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.authority !== "") {
+  typeUrl: '/cosmos.evm.erc20.v1.MsgToggleConversion',
+  encode(
+    message: MsgToggleConversion,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.authority !== '') {
       writer.uint32(10).string(message.authority);
     }
-    if (message.token !== "") {
+    if (message.token !== '') {
       writer.uint32(18).string(message.token);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgToggleConversion {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgToggleConversion {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgToggleConversion();
     while (reader.pos < end) {
@@ -943,8 +1032,8 @@ export const MsgToggleConversion = {
   },
   fromPartial(object: Partial<MsgToggleConversion>): MsgToggleConversion {
     const message = createBaseMsgToggleConversion();
-    message.authority = object.authority ?? "";
-    message.token = object.token ?? "";
+    message.authority = object.authority ?? '';
+    message.token = object.token ?? '';
     return message;
   },
   fromAmino(object: MsgToggleConversionAmino): MsgToggleConversion {
@@ -959,8 +1048,8 @@ export const MsgToggleConversion = {
   },
   toAmino(message: MsgToggleConversion): MsgToggleConversionAmino {
     const obj: any = {};
-    obj.authority = message.authority === "" ? undefined : message.authority;
-    obj.token = message.token === "" ? undefined : message.token;
+    obj.authority = message.authority === '' ? undefined : message.authority;
+    obj.token = message.token === '' ? undefined : message.token;
     return obj;
   },
   fromAminoMsg(object: MsgToggleConversionAminoMsg): MsgToggleConversion {
@@ -968,8 +1057,8 @@ export const MsgToggleConversion = {
   },
   toAminoMsg(message: MsgToggleConversion): MsgToggleConversionAminoMsg {
     return {
-      type: "cosmos/evm/x/erc20/MsgToggleConversion",
-      value: MsgToggleConversion.toAmino(message)
+      type: 'cosmos/evm/x/erc20/MsgToggleConversion',
+      value: MsgToggleConversion.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgToggleConversionProtoMsg): MsgToggleConversion {
@@ -980,21 +1069,28 @@ export const MsgToggleConversion = {
   },
   toProtoMsg(message: MsgToggleConversion): MsgToggleConversionProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.MsgToggleConversion",
-      value: MsgToggleConversion.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.MsgToggleConversion',
+      value: MsgToggleConversion.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgToggleConversionResponse(): MsgToggleConversionResponse {
   return {};
 }
 export const MsgToggleConversionResponse = {
-  typeUrl: "/cosmos.evm.erc20.v1.MsgToggleConversionResponse",
-  encode(_: MsgToggleConversionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.erc20.v1.MsgToggleConversionResponse',
+  encode(
+    _: MsgToggleConversionResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgToggleConversionResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgToggleConversionResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgToggleConversionResponse();
     while (reader.pos < end) {
@@ -1007,7 +1103,9 @@ export const MsgToggleConversionResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgToggleConversionResponse>): MsgToggleConversionResponse {
+  fromPartial(
+    _: Partial<MsgToggleConversionResponse>
+  ): MsgToggleConversionResponse {
     const message = createBaseMsgToggleConversionResponse();
     return message;
   },
@@ -1019,25 +1117,33 @@ export const MsgToggleConversionResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgToggleConversionResponseAminoMsg): MsgToggleConversionResponse {
+  fromAminoMsg(
+    object: MsgToggleConversionResponseAminoMsg
+  ): MsgToggleConversionResponse {
     return MsgToggleConversionResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgToggleConversionResponse): MsgToggleConversionResponseAminoMsg {
+  toAminoMsg(
+    message: MsgToggleConversionResponse
+  ): MsgToggleConversionResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgToggleConversionResponse",
-      value: MsgToggleConversionResponse.toAmino(message)
+      type: 'cosmos-sdk/MsgToggleConversionResponse',
+      value: MsgToggleConversionResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgToggleConversionResponseProtoMsg): MsgToggleConversionResponse {
+  fromProtoMsg(
+    message: MsgToggleConversionResponseProtoMsg
+  ): MsgToggleConversionResponse {
     return MsgToggleConversionResponse.decode(message.value);
   },
   toProto(message: MsgToggleConversionResponse): Uint8Array {
     return MsgToggleConversionResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgToggleConversionResponse): MsgToggleConversionResponseProtoMsg {
+  toProtoMsg(
+    message: MsgToggleConversionResponse
+  ): MsgToggleConversionResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.MsgToggleConversionResponse",
-      value: MsgToggleConversionResponse.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.MsgToggleConversionResponse',
+      value: MsgToggleConversionResponse.encode(message).finish(),
     };
-  }
+  },
 };

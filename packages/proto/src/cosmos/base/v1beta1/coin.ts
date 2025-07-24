@@ -1,9 +1,10 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../../binary";
-import { Decimal } from "@cosmjs/math";
+import { Decimal } from '@cosmjs/math';
+
+import { BinaryReader, BinaryWriter } from '../../../binary';
 /**
  * Coin defines a token with a denomination and an amount.
- * 
+ *
  * NOTE: The amount field is an Int which implements the custom method
  * signatures required by gogoproto.
  */
@@ -12,12 +13,12 @@ export interface Coin {
   amount: string;
 }
 export interface CoinProtoMsg {
-  typeUrl: "/cosmos.base.v1beta1.Coin";
+  typeUrl: '/cosmos.base.v1beta1.Coin';
   value: Uint8Array;
 }
 /**
  * Coin defines a token with a denomination and an amount.
- * 
+ *
  * NOTE: The amount field is an Int which implements the custom method
  * signatures required by gogoproto.
  */
@@ -26,12 +27,12 @@ export interface CoinAmino {
   amount: string;
 }
 export interface CoinAminoMsg {
-  type: "cosmos-sdk/Coin";
+  type: 'cosmos-sdk/Coin';
   value: CoinAmino;
 }
 /**
  * Coin defines a token with a denomination and an amount.
- * 
+ *
  * NOTE: The amount field is an Int which implements the custom method
  * signatures required by gogoproto.
  */
@@ -41,7 +42,7 @@ export interface CoinSDKType {
 }
 /**
  * DecCoin defines a token with a denomination and a decimal amount.
- * 
+ *
  * NOTE: The amount field is an Dec which implements the custom method
  * signatures required by gogoproto.
  */
@@ -50,12 +51,12 @@ export interface DecCoin {
   amount: string;
 }
 export interface DecCoinProtoMsg {
-  typeUrl: "/cosmos.base.v1beta1.DecCoin";
+  typeUrl: '/cosmos.base.v1beta1.DecCoin';
   value: Uint8Array;
 }
 /**
  * DecCoin defines a token with a denomination and a decimal amount.
- * 
+ *
  * NOTE: The amount field is an Dec which implements the custom method
  * signatures required by gogoproto.
  */
@@ -64,12 +65,12 @@ export interface DecCoinAmino {
   amount?: string;
 }
 export interface DecCoinAminoMsg {
-  type: "cosmos-sdk/DecCoin";
+  type: 'cosmos-sdk/DecCoin';
   value: DecCoinAmino;
 }
 /**
  * DecCoin defines a token with a denomination and a decimal amount.
- * 
+ *
  * NOTE: The amount field is an Dec which implements the custom method
  * signatures required by gogoproto.
  */
@@ -85,7 +86,7 @@ export interface IntProto {
   int: string;
 }
 export interface IntProtoProtoMsg {
-  typeUrl: "/cosmos.base.v1beta1.IntProto";
+  typeUrl: '/cosmos.base.v1beta1.IntProto';
   value: Uint8Array;
 }
 /**
@@ -96,7 +97,7 @@ export interface IntProtoAmino {
   int?: string;
 }
 export interface IntProtoAminoMsg {
-  type: "cosmos-sdk/IntProto";
+  type: 'cosmos-sdk/IntProto';
   value: IntProtoAmino;
 }
 /**
@@ -114,7 +115,7 @@ export interface DecProto {
   dec: string;
 }
 export interface DecProtoProtoMsg {
-  typeUrl: "/cosmos.base.v1beta1.DecProto";
+  typeUrl: '/cosmos.base.v1beta1.DecProto';
   value: Uint8Array;
 }
 /**
@@ -125,7 +126,7 @@ export interface DecProtoAmino {
   dec?: string;
 }
 export interface DecProtoAminoMsg {
-  type: "cosmos-sdk/DecProto";
+  type: 'cosmos-sdk/DecProto';
   value: DecProtoAmino;
 }
 /**
@@ -137,23 +138,27 @@ export interface DecProtoSDKType {
 }
 function createBaseCoin(): Coin {
   return {
-    denom: "",
-    amount: ""
+    denom: '',
+    amount: '',
   };
 }
 export const Coin = {
-  typeUrl: "/cosmos.base.v1beta1.Coin",
-  encode(message: Coin, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.denom !== "") {
+  typeUrl: '/cosmos.base.v1beta1.Coin',
+  encode(
+    message: Coin,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.denom !== '') {
       writer.uint32(10).string(message.denom);
     }
-    if (message.amount !== "") {
+    if (message.amount !== '') {
       writer.uint32(18).string(message.amount);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Coin {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCoin();
     while (reader.pos < end) {
@@ -174,8 +179,8 @@ export const Coin = {
   },
   fromPartial(object: Partial<Coin>): Coin {
     const message = createBaseCoin();
-    message.denom = object.denom ?? "";
-    message.amount = object.amount ?? "";
+    message.denom = object.denom ?? '';
+    message.amount = object.amount ?? '';
     return message;
   },
   fromAmino(object: CoinAmino): Coin {
@@ -190,8 +195,8 @@ export const Coin = {
   },
   toAmino(message: Coin): CoinAmino {
     const obj: any = {};
-    obj.denom = message.denom === "" ? undefined : message.denom;
-    obj.amount = message.amount ?? "";
+    obj.denom = message.denom === '' ? undefined : message.denom;
+    obj.amount = message.amount ?? '';
     return obj;
   },
   fromAminoMsg(object: CoinAminoMsg): Coin {
@@ -199,8 +204,8 @@ export const Coin = {
   },
   toAminoMsg(message: Coin): CoinAminoMsg {
     return {
-      type: "cosmos-sdk/Coin",
-      value: Coin.toAmino(message)
+      type: 'cosmos-sdk/Coin',
+      value: Coin.toAmino(message),
     };
   },
   fromProtoMsg(message: CoinProtoMsg): Coin {
@@ -211,30 +216,36 @@ export const Coin = {
   },
   toProtoMsg(message: Coin): CoinProtoMsg {
     return {
-      typeUrl: "/cosmos.base.v1beta1.Coin",
-      value: Coin.encode(message).finish()
+      typeUrl: '/cosmos.base.v1beta1.Coin',
+      value: Coin.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseDecCoin(): DecCoin {
   return {
-    denom: "",
-    amount: ""
+    denom: '',
+    amount: '',
   };
 }
 export const DecCoin = {
-  typeUrl: "/cosmos.base.v1beta1.DecCoin",
-  encode(message: DecCoin, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.denom !== "") {
+  typeUrl: '/cosmos.base.v1beta1.DecCoin',
+  encode(
+    message: DecCoin,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.denom !== '') {
       writer.uint32(10).string(message.denom);
     }
-    if (message.amount !== "") {
-      writer.uint32(18).string(Decimal.fromUserInput(message.amount, 18).atomics);
+    if (message.amount !== '') {
+      writer
+        .uint32(18)
+        .string(Decimal.fromUserInput(message.amount, 18).atomics);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): DecCoin {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDecCoin();
     while (reader.pos < end) {
@@ -255,8 +266,8 @@ export const DecCoin = {
   },
   fromPartial(object: Partial<DecCoin>): DecCoin {
     const message = createBaseDecCoin();
-    message.denom = object.denom ?? "";
-    message.amount = object.amount ?? "";
+    message.denom = object.denom ?? '';
+    message.amount = object.amount ?? '';
     return message;
   },
   fromAmino(object: DecCoinAmino): DecCoin {
@@ -271,8 +282,8 @@ export const DecCoin = {
   },
   toAmino(message: DecCoin): DecCoinAmino {
     const obj: any = {};
-    obj.denom = message.denom === "" ? undefined : message.denom;
-    obj.amount = message.amount === "" ? undefined : message.amount;
+    obj.denom = message.denom === '' ? undefined : message.denom;
+    obj.amount = message.amount === '' ? undefined : message.amount;
     return obj;
   },
   fromAminoMsg(object: DecCoinAminoMsg): DecCoin {
@@ -280,8 +291,8 @@ export const DecCoin = {
   },
   toAminoMsg(message: DecCoin): DecCoinAminoMsg {
     return {
-      type: "cosmos-sdk/DecCoin",
-      value: DecCoin.toAmino(message)
+      type: 'cosmos-sdk/DecCoin',
+      value: DecCoin.toAmino(message),
     };
   },
   fromProtoMsg(message: DecCoinProtoMsg): DecCoin {
@@ -292,26 +303,30 @@ export const DecCoin = {
   },
   toProtoMsg(message: DecCoin): DecCoinProtoMsg {
     return {
-      typeUrl: "/cosmos.base.v1beta1.DecCoin",
-      value: DecCoin.encode(message).finish()
+      typeUrl: '/cosmos.base.v1beta1.DecCoin',
+      value: DecCoin.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseIntProto(): IntProto {
   return {
-    int: ""
+    int: '',
   };
 }
 export const IntProto = {
-  typeUrl: "/cosmos.base.v1beta1.IntProto",
-  encode(message: IntProto, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.int !== "") {
+  typeUrl: '/cosmos.base.v1beta1.IntProto',
+  encode(
+    message: IntProto,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.int !== '') {
       writer.uint32(10).string(message.int);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): IntProto {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseIntProto();
     while (reader.pos < end) {
@@ -329,7 +344,7 @@ export const IntProto = {
   },
   fromPartial(object: Partial<IntProto>): IntProto {
     const message = createBaseIntProto();
-    message.int = object.int ?? "";
+    message.int = object.int ?? '';
     return message;
   },
   fromAmino(object: IntProtoAmino): IntProto {
@@ -341,7 +356,7 @@ export const IntProto = {
   },
   toAmino(message: IntProto): IntProtoAmino {
     const obj: any = {};
-    obj.int = message.int === "" ? undefined : message.int;
+    obj.int = message.int === '' ? undefined : message.int;
     return obj;
   },
   fromAminoMsg(object: IntProtoAminoMsg): IntProto {
@@ -349,8 +364,8 @@ export const IntProto = {
   },
   toAminoMsg(message: IntProto): IntProtoAminoMsg {
     return {
-      type: "cosmos-sdk/IntProto",
-      value: IntProto.toAmino(message)
+      type: 'cosmos-sdk/IntProto',
+      value: IntProto.toAmino(message),
     };
   },
   fromProtoMsg(message: IntProtoProtoMsg): IntProto {
@@ -361,26 +376,30 @@ export const IntProto = {
   },
   toProtoMsg(message: IntProto): IntProtoProtoMsg {
     return {
-      typeUrl: "/cosmos.base.v1beta1.IntProto",
-      value: IntProto.encode(message).finish()
+      typeUrl: '/cosmos.base.v1beta1.IntProto',
+      value: IntProto.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseDecProto(): DecProto {
   return {
-    dec: ""
+    dec: '',
   };
 }
 export const DecProto = {
-  typeUrl: "/cosmos.base.v1beta1.DecProto",
-  encode(message: DecProto, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.dec !== "") {
+  typeUrl: '/cosmos.base.v1beta1.DecProto',
+  encode(
+    message: DecProto,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.dec !== '') {
       writer.uint32(10).string(Decimal.fromUserInput(message.dec, 18).atomics);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): DecProto {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDecProto();
     while (reader.pos < end) {
@@ -398,7 +417,7 @@ export const DecProto = {
   },
   fromPartial(object: Partial<DecProto>): DecProto {
     const message = createBaseDecProto();
-    message.dec = object.dec ?? "";
+    message.dec = object.dec ?? '';
     return message;
   },
   fromAmino(object: DecProtoAmino): DecProto {
@@ -410,7 +429,7 @@ export const DecProto = {
   },
   toAmino(message: DecProto): DecProtoAmino {
     const obj: any = {};
-    obj.dec = message.dec === "" ? undefined : message.dec;
+    obj.dec = message.dec === '' ? undefined : message.dec;
     return obj;
   },
   fromAminoMsg(object: DecProtoAminoMsg): DecProto {
@@ -418,8 +437,8 @@ export const DecProto = {
   },
   toAminoMsg(message: DecProto): DecProtoAminoMsg {
     return {
-      type: "cosmos-sdk/DecProto",
-      value: DecProto.toAmino(message)
+      type: 'cosmos-sdk/DecProto',
+      value: DecProto.toAmino(message),
     };
   },
   fromProtoMsg(message: DecProtoProtoMsg): DecProto {
@@ -430,8 +449,8 @@ export const DecProto = {
   },
   toProtoMsg(message: DecProto): DecProtoProtoMsg {
     return {
-      typeUrl: "/cosmos.base.v1beta1.DecProto",
-      value: DecProto.encode(message).finish()
+      typeUrl: '/cosmos.base.v1beta1.DecProto',
+      value: DecProto.encode(message).finish(),
     };
-  }
+  },
 };

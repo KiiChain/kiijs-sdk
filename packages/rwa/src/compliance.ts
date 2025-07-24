@@ -1,5 +1,6 @@
-import { RwaClient } from './client';
 import { DeliverTxResponse } from '@cosmjs/stargate';
+
+import { RwaClient } from './client';
 
 export interface ComplianceModuleRequest {
   from: string;
@@ -18,7 +19,9 @@ export class ComplianceModule {
    * @param request - A ComplianceModuleRequest containing module details
    * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
-  public async addComplianceModule(request: ComplianceModuleRequest): Promise<DeliverTxResponse> {
+  public async addComplianceModule(
+    request: ComplianceModuleRequest
+  ): Promise<DeliverTxResponse> {
     const msg = {
       add_compliance_module: {
         token_address: request.from,
@@ -40,7 +43,9 @@ export class ComplianceModule {
    * @param request - A ComplianceModuleRequest containing module details
    * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
-  public async removeComplianceModule(request: ComplianceModuleRequest): Promise<DeliverTxResponse> {
+  public async removeComplianceModule(
+    request: ComplianceModuleRequest
+  ): Promise<DeliverTxResponse> {
     const msg = {
       remove_compliance_module: {
         token_address: request.from,

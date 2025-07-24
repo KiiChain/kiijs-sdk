@@ -1,7 +1,16 @@
 //@ts-nocheck
-import { Rpc } from "../../../../helpers";
-import { BinaryReader } from "../../../../binary";
-import { MsgConvertERC20, MsgConvertERC20Response, MsgUpdateParams, MsgUpdateParamsResponse, MsgRegisterERC20, MsgRegisterERC20Response, MsgToggleConversion, MsgToggleConversionResponse } from "./tx";
+import { BinaryReader } from '../../../../binary';
+import { Rpc } from '../../../../helpers';
+import {
+  MsgConvertERC20,
+  MsgConvertERC20Response,
+  MsgRegisterERC20,
+  MsgRegisterERC20Response,
+  MsgToggleConversion,
+  MsgToggleConversionResponse,
+  MsgUpdateParams,
+  MsgUpdateParamsResponse,
+} from './tx';
 /** Msg defines the erc20 Msg service. */
 export interface Msg {
   /**
@@ -26,7 +35,9 @@ export interface Msg {
    * token pair conversion. The authority is hard-coded to the Cosmos SDK x/gov
    * module account
    */
-  toggleConversion(request: MsgToggleConversion): Promise<MsgToggleConversionResponse>;
+  toggleConversion(
+    request: MsgToggleConversion
+  ): Promise<MsgToggleConversionResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -39,22 +50,48 @@ export class MsgClientImpl implements Msg {
   }
   convertERC20(request: MsgConvertERC20): Promise<MsgConvertERC20Response> {
     const data = MsgConvertERC20.encode(request).finish();
-    const promise = this.rpc.request("cosmos.evm.erc20.v1.Msg", "ConvertERC20", data);
-    return promise.then(data => MsgConvertERC20Response.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.evm.erc20.v1.Msg',
+      'ConvertERC20',
+      data
+    );
+    return promise.then((data) =>
+      MsgConvertERC20Response.decode(new BinaryReader(data))
+    );
   }
   updateParams(request: MsgUpdateParams): Promise<MsgUpdateParamsResponse> {
     const data = MsgUpdateParams.encode(request).finish();
-    const promise = this.rpc.request("cosmos.evm.erc20.v1.Msg", "UpdateParams", data);
-    return promise.then(data => MsgUpdateParamsResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.evm.erc20.v1.Msg',
+      'UpdateParams',
+      data
+    );
+    return promise.then((data) =>
+      MsgUpdateParamsResponse.decode(new BinaryReader(data))
+    );
   }
   registerERC20(request: MsgRegisterERC20): Promise<MsgRegisterERC20Response> {
     const data = MsgRegisterERC20.encode(request).finish();
-    const promise = this.rpc.request("cosmos.evm.erc20.v1.Msg", "RegisterERC20", data);
-    return promise.then(data => MsgRegisterERC20Response.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.evm.erc20.v1.Msg',
+      'RegisterERC20',
+      data
+    );
+    return promise.then((data) =>
+      MsgRegisterERC20Response.decode(new BinaryReader(data))
+    );
   }
-  toggleConversion(request: MsgToggleConversion): Promise<MsgToggleConversionResponse> {
+  toggleConversion(
+    request: MsgToggleConversion
+  ): Promise<MsgToggleConversionResponse> {
     const data = MsgToggleConversion.encode(request).finish();
-    const promise = this.rpc.request("cosmos.evm.erc20.v1.Msg", "ToggleConversion", data);
-    return promise.then(data => MsgToggleConversionResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.evm.erc20.v1.Msg',
+      'ToggleConversion',
+      data
+    );
+    return promise.then((data) =>
+      MsgToggleConversionResponse.decode(new BinaryReader(data))
+    );
   }
 }

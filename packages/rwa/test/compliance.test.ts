@@ -1,8 +1,9 @@
 // compliance.test.ts
-import { ComplianceModule } from '../src/compliance';
-import { RwaClient } from '../src/client';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { DeliverTxResponse } from '@cosmjs/stargate';
+
+import { RwaClient } from '../src/client';
+import { ComplianceModule } from '../src/compliance';
 
 // Mock the entire RwaClient module
 jest.mock('../src/client', () => {
@@ -25,7 +26,7 @@ describe('ComplianceModule', () => {
   const mockModuleAddress = 'kii1moduleaddress';
   const mockSigner = {} as DirectSecp256k1HdWallet;
   const mockGasLimit = 200000;
-  
+
   const mockTxResponse: DeliverTxResponse = {
     transactionHash: 'mockTxHash',
     code: 0,
@@ -34,13 +35,13 @@ describe('ComplianceModule', () => {
     events: [],
     txIndex: 0,
     msgResponses: [],
-    gasWanted: BigInt(0)
+    gasWanted: BigInt(0),
   };
 
   beforeEach(async () => {
     // Clear all mocks before each test
     jest.clearAllMocks();
-    
+
     // Get the mocked instance by calling the static 'new' method
     mockRwaClient = (await RwaClient.new(
       'mock-rpc-url',
@@ -48,12 +49,15 @@ describe('ComplianceModule', () => {
       'testdenom',
       '0.025',
       mockSigner
-    )) as jest.Mocked<RwaClient>;  
- 
+    )) as jest.Mocked<RwaClient>;
+
     // Mock the execute method to resolve with our test response
     mockRwaClient.execute.mockResolvedValue(mockTxResponse);
-    
-    complianceModule = new ComplianceModule(mockRwaClient, mockComplianceAddress);
+
+    complianceModule = new ComplianceModule(
+      mockRwaClient,
+      mockComplianceAddress
+    );
   });
 
   describe('addComplianceModule', () => {
@@ -93,7 +97,9 @@ describe('ComplianceModule', () => {
       const mockError = new Error('Execution failed');
       mockRwaClient.execute.mockRejectedValue(mockError);
 
-      await expect(complianceModule.addComplianceModule(request)).rejects.toThrow(mockError);
+      await expect(
+        complianceModule.addComplianceModule(request)
+      ).rejects.toThrow(mockError);
     });
   });
 
@@ -124,7 +130,6 @@ describe('ComplianceModule', () => {
       expect(result).toEqual(mockTxResponse);
     });
 
-
     it('should throw if RwaClient.execute throws', async () => {
       const request = {
         from: mockFromAddress,
@@ -135,7 +140,9 @@ describe('ComplianceModule', () => {
       const mockError = new Error('Execution failed');
       mockRwaClient.execute.mockRejectedValue(mockError);
 
-      await expect(complianceModule.removeComplianceModule(request)).rejects.toThrow(mockError);
+      await expect(
+        complianceModule.removeComplianceModule(request)
+      ).rejects.toThrow(mockError);
     });
   });
 });

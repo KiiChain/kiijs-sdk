@@ -8,5 +8,5 @@ import { IBC_PRECOMPILE_ABI, IBC_PRECOMPILE_ADDRESS } from '../precompiles';
 export const ETHERS_IBC_PRECOMPILE_ABI = IBC_PRECOMPILE_ABI as InterfaceAbi;
 
 export const getIBCPrecompileEthersV6Contract = (runner: ContractRunner) => {
-	return new Contract(IBC_PRECOMPILE_ADDRESS, IBC_PRECOMPILE_ABI, runner);
+  return new Contract(IBC_PRECOMPILE_ADDRESS, IBC_PRECOMPILE_ABI, runner);
 };

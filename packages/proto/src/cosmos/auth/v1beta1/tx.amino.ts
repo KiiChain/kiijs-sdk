@@ -1,9 +1,9 @@
 //@ts-nocheck
-import { MsgUpdateParams } from "./tx";
+import { MsgUpdateParams } from './tx';
 export const AminoConverter = {
-  "/cosmos.auth.v1beta1.MsgUpdateParams": {
-    aminoType: "cosmos-sdk/x/auth/MsgUpdateParams",
+  '/cosmos.auth.v1beta1.MsgUpdateParams': {
+    aminoType: 'cosmos-sdk/x/auth/MsgUpdateParams',
     toAmino: MsgUpdateParams.toAmino,
-    fromAmino: MsgUpdateParams.fromAmino
-  }
+    fromAmino: MsgUpdateParams.fromAmino,
+  },
 };

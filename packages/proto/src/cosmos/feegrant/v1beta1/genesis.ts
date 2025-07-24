@@ -1,12 +1,12 @@
 //@ts-nocheck
-import { Grant, GrantAmino, GrantSDKType } from "./feegrant";
-import { BinaryReader, BinaryWriter } from "../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../binary';
+import { Grant, GrantAmino, GrantSDKType } from './feegrant';
 /** GenesisState contains a set of fee allowances, persisted from the store */
 export interface GenesisState {
   allowances: Grant[];
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/cosmos.feegrant.v1beta1.GenesisState";
+  typeUrl: '/cosmos.feegrant.v1beta1.GenesisState';
   value: Uint8Array;
 }
 /** GenesisState contains a set of fee allowances, persisted from the store */
@@ -14,7 +14,7 @@ export interface GenesisStateAmino {
   allowances: GrantAmino[];
 }
 export interface GenesisStateAminoMsg {
-  type: "cosmos-sdk/GenesisState";
+  type: 'cosmos-sdk/GenesisState';
   value: GenesisStateAmino;
 }
 /** GenesisState contains a set of fee allowances, persisted from the store */
@@ -23,19 +23,23 @@ export interface GenesisStateSDKType {
 }
 function createBaseGenesisState(): GenesisState {
   return {
-    allowances: []
+    allowances: [],
   };
 }
 export const GenesisState = {
-  typeUrl: "/cosmos.feegrant.v1beta1.GenesisState",
-  encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.feegrant.v1beta1.GenesisState',
+  encode(
+    message: GenesisState,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.allowances) {
       Grant.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {
@@ -53,18 +57,22 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.allowances = object.allowances?.map(e => Grant.fromPartial(e)) || [];
+    message.allowances =
+      object.allowances?.map((e) => Grant.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
     const message = createBaseGenesisState();
-    message.allowances = object.allowances?.map(e => Grant.fromAmino(e)) || [];
+    message.allowances =
+      object.allowances?.map((e) => Grant.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
     if (message.allowances) {
-      obj.allowances = message.allowances.map(e => e ? Grant.toAmino(e) : undefined);
+      obj.allowances = message.allowances.map((e) =>
+        e ? Grant.toAmino(e) : undefined
+      );
     } else {
       obj.allowances = message.allowances;
     }
@@ -75,8 +83,8 @@ export const GenesisState = {
   },
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
-      type: "cosmos-sdk/GenesisState",
-      value: GenesisState.toAmino(message)
+      type: 'cosmos-sdk/GenesisState',
+      value: GenesisState.toAmino(message),
     };
   },
   fromProtoMsg(message: GenesisStateProtoMsg): GenesisState {
@@ -87,8 +95,8 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/cosmos.feegrant.v1beta1.GenesisState",
-      value: GenesisState.encode(message).finish()
+      typeUrl: '/cosmos.feegrant.v1beta1.GenesisState',
+      value: GenesisState.encode(message).finish(),
     };
-  }
+  },
 };

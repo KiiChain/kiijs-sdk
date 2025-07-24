@@ -7,20 +7,14 @@ import { toBech32 } from '@cosmjs/encoding';
  * @category Cosmos Interoperability
  */
 export function Bech32ToHex(bechAddress: string): string | null {
-  try {
-    if (!bechAddress || typeof bechAddress !== 'string') return null;
+  if (!bechAddress || typeof bechAddress !== 'string') return null;
 
-    const { prefix, data } = fromBech32(bechAddress);
-    if (prefix !== 'kii') return null;
+  const { prefix, data } = fromBech32(bechAddress);
+  if (prefix !== 'kii') return null;
 
-    const hex = '0x' + Buffer.from(data).toString('hex');
-    return hex;
-  } catch (error) {
-    console.error('Invalid bech32 address:', error);
-    return null;
-  }
+  const hex = '0x' + Buffer.from(data).toString('hex');
+  return hex;
 }
-
 /**
  * Function to turn a hex address into a respective bech32 kii address
  * @category Cosmos Interoperability

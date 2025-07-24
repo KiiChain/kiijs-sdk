@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { Decimal } from "@cosmjs/math";
+import { Decimal } from '@cosmjs/math';
+
+import { BinaryReader, BinaryWriter } from '../../../../binary';
 /** Params defines the EVM module parameters */
 export interface Params {
   /** no_base_fee forces the EIP-1559 base fee to 0 (needed for 0 price calls) */
@@ -34,7 +35,7 @@ export interface Params {
   minGasMultiplier: string;
 }
 export interface ParamsProtoMsg {
-  typeUrl: "/cosmos.evm.feemarket.v1.Params";
+  typeUrl: '/cosmos.evm.feemarket.v1.Params';
   value: Uint8Array;
 }
 /** Params defines the EVM module parameters */
@@ -70,7 +71,7 @@ export interface ParamsAmino {
   min_gas_multiplier: string;
 }
 export interface ParamsAminoMsg {
-  type: "cosmos/evm/x/feemarket/Params";
+  type: 'cosmos/evm/x/feemarket/Params';
   value: ParamsAmino;
 }
 /** Params defines the EVM module parameters */
@@ -89,14 +90,17 @@ function createBaseParams(): Params {
     baseFeeChangeDenominator: 0,
     elasticityMultiplier: 0,
     enableHeight: BigInt(0),
-    baseFee: "",
-    minGasPrice: "",
-    minGasMultiplier: ""
+    baseFee: '',
+    minGasPrice: '',
+    minGasMultiplier: '',
   };
 }
 export const Params = {
-  typeUrl: "/cosmos.evm.feemarket.v1.Params",
-  encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.feemarket.v1.Params',
+  encode(
+    message: Params,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.noBaseFee === true) {
       writer.uint32(8).bool(message.noBaseFee);
     }
@@ -109,19 +113,26 @@ export const Params = {
     if (message.enableHeight !== BigInt(0)) {
       writer.uint32(40).int64(message.enableHeight);
     }
-    if (message.baseFee !== "") {
-      writer.uint32(50).string(Decimal.fromUserInput(message.baseFee, 18).atomics);
+    if (message.baseFee !== '') {
+      writer
+        .uint32(50)
+        .string(Decimal.fromUserInput(message.baseFee, 18).atomics);
     }
-    if (message.minGasPrice !== "") {
-      writer.uint32(58).string(Decimal.fromUserInput(message.minGasPrice, 18).atomics);
+    if (message.minGasPrice !== '') {
+      writer
+        .uint32(58)
+        .string(Decimal.fromUserInput(message.minGasPrice, 18).atomics);
     }
-    if (message.minGasMultiplier !== "") {
-      writer.uint32(66).string(Decimal.fromUserInput(message.minGasMultiplier, 18).atomics);
+    if (message.minGasMultiplier !== '') {
+      writer
+        .uint32(66)
+        .string(Decimal.fromUserInput(message.minGasMultiplier, 18).atomics);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Params {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParams();
     while (reader.pos < end) {
@@ -143,10 +154,16 @@ export const Params = {
           message.baseFee = Decimal.fromAtomics(reader.string(), 18).toString();
           break;
         case 7:
-          message.minGasPrice = Decimal.fromAtomics(reader.string(), 18).toString();
+          message.minGasPrice = Decimal.fromAtomics(
+            reader.string(),
+            18
+          ).toString();
           break;
         case 8:
-          message.minGasMultiplier = Decimal.fromAtomics(reader.string(), 18).toString();
+          message.minGasMultiplier = Decimal.fromAtomics(
+            reader.string(),
+            18
+          ).toString();
           break;
         default:
           reader.skipType(tag & 7);
@@ -160,10 +177,13 @@ export const Params = {
     message.noBaseFee = object.noBaseFee ?? false;
     message.baseFeeChangeDenominator = object.baseFeeChangeDenominator ?? 0;
     message.elasticityMultiplier = object.elasticityMultiplier ?? 0;
-    message.enableHeight = object.enableHeight !== undefined && object.enableHeight !== null ? BigInt(object.enableHeight.toString()) : BigInt(0);
-    message.baseFee = object.baseFee ?? "";
-    message.minGasPrice = object.minGasPrice ?? "";
-    message.minGasMultiplier = object.minGasMultiplier ?? "";
+    message.enableHeight =
+      object.enableHeight !== undefined && object.enableHeight !== null
+        ? BigInt(object.enableHeight.toString())
+        : BigInt(0);
+    message.baseFee = object.baseFee ?? '';
+    message.minGasPrice = object.minGasPrice ?? '';
+    message.minGasMultiplier = object.minGasMultiplier ?? '';
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
@@ -171,10 +191,16 @@ export const Params = {
     if (object.no_base_fee !== undefined && object.no_base_fee !== null) {
       message.noBaseFee = object.no_base_fee;
     }
-    if (object.base_fee_change_denominator !== undefined && object.base_fee_change_denominator !== null) {
+    if (
+      object.base_fee_change_denominator !== undefined &&
+      object.base_fee_change_denominator !== null
+    ) {
       message.baseFeeChangeDenominator = object.base_fee_change_denominator;
     }
-    if (object.elasticity_multiplier !== undefined && object.elasticity_multiplier !== null) {
+    if (
+      object.elasticity_multiplier !== undefined &&
+      object.elasticity_multiplier !== null
+    ) {
       message.elasticityMultiplier = object.elasticity_multiplier;
     }
     if (object.enable_height !== undefined && object.enable_height !== null) {
@@ -186,20 +212,33 @@ export const Params = {
     if (object.min_gas_price !== undefined && object.min_gas_price !== null) {
       message.minGasPrice = object.min_gas_price;
     }
-    if (object.min_gas_multiplier !== undefined && object.min_gas_multiplier !== null) {
+    if (
+      object.min_gas_multiplier !== undefined &&
+      object.min_gas_multiplier !== null
+    ) {
       message.minGasMultiplier = object.min_gas_multiplier;
     }
     return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.no_base_fee = message.noBaseFee === false ? undefined : message.noBaseFee;
-    obj.base_fee_change_denominator = message.baseFeeChangeDenominator === 0 ? undefined : message.baseFeeChangeDenominator;
-    obj.elasticity_multiplier = message.elasticityMultiplier === 0 ? undefined : message.elasticityMultiplier;
-    obj.enable_height = message.enableHeight !== BigInt(0) ? message.enableHeight?.toString() : undefined;
-    obj.base_fee = message.baseFee ?? "";
-    obj.min_gas_price = message.minGasPrice ?? "";
-    obj.min_gas_multiplier = message.minGasMultiplier ?? "";
+    obj.no_base_fee =
+      message.noBaseFee === false ? undefined : message.noBaseFee;
+    obj.base_fee_change_denominator =
+      message.baseFeeChangeDenominator === 0
+        ? undefined
+        : message.baseFeeChangeDenominator;
+    obj.elasticity_multiplier =
+      message.elasticityMultiplier === 0
+        ? undefined
+        : message.elasticityMultiplier;
+    obj.enable_height =
+      message.enableHeight !== BigInt(0)
+        ? message.enableHeight?.toString()
+        : undefined;
+    obj.base_fee = message.baseFee ?? '';
+    obj.min_gas_price = message.minGasPrice ?? '';
+    obj.min_gas_multiplier = message.minGasMultiplier ?? '';
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {
@@ -207,8 +246,8 @@ export const Params = {
   },
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
-      type: "cosmos/evm/x/feemarket/Params",
-      value: Params.toAmino(message)
+      type: 'cosmos/evm/x/feemarket/Params',
+      value: Params.toAmino(message),
     };
   },
   fromProtoMsg(message: ParamsProtoMsg): Params {
@@ -219,8 +258,8 @@ export const Params = {
   },
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.feemarket.v1.Params",
-      value: Params.encode(message).finish()
+      typeUrl: '/cosmos.evm.feemarket.v1.Params',
+      value: Params.encode(message).finish(),
     };
-  }
+  },
 };

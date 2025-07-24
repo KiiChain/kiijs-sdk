@@ -1,8 +1,12 @@
 //@ts-nocheck
-import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
-import { Timestamp } from "../../google/protobuf/timestamp";
-import { BinaryReader, BinaryWriter } from "../../binary";
-import { toTimestamp, fromTimestamp } from "../../helpers";
+import { BinaryReader, BinaryWriter } from '../../binary';
+import {
+  Duration,
+  DurationAmino,
+  DurationSDKType,
+} from '../../google/protobuf/duration';
+import { Timestamp } from '../../google/protobuf/timestamp';
+import { fromTimestamp, toTimestamp } from '../../helpers';
 /**
  * PacketDirection defines whether the transfer packet is being sent from
  * this chain or is being received on this chain
@@ -17,13 +21,13 @@ export const PacketDirectionAmino = PacketDirection;
 export function packetDirectionFromJSON(object: any): PacketDirection {
   switch (object) {
     case 0:
-    case "PACKET_SEND":
+    case 'PACKET_SEND':
       return PacketDirection.PACKET_SEND;
     case 1:
-    case "PACKET_RECV":
+    case 'PACKET_RECV':
       return PacketDirection.PACKET_RECV;
     case -1:
-    case "UNRECOGNIZED":
+    case 'UNRECOGNIZED':
     default:
       return PacketDirection.UNRECOGNIZED;
   }
@@ -31,12 +35,12 @@ export function packetDirectionFromJSON(object: any): PacketDirection {
 export function packetDirectionToJSON(object: PacketDirection): string {
   switch (object) {
     case PacketDirection.PACKET_SEND:
-      return "PACKET_SEND";
+      return 'PACKET_SEND';
     case PacketDirection.PACKET_RECV:
-      return "PACKET_RECV";
+      return 'PACKET_RECV';
     case PacketDirection.UNRECOGNIZED:
     default:
-      return "UNRECOGNIZED";
+      return 'UNRECOGNIZED';
   }
 }
 /** Path holds the denom and channelID that define the rate limited route */
@@ -45,7 +49,7 @@ export interface Path {
   channelId: string;
 }
 export interface PathProtoMsg {
-  typeUrl: "/ratelimit.v1.Path";
+  typeUrl: '/ratelimit.v1.Path';
   value: Uint8Array;
 }
 /** Path holds the denom and channelID that define the rate limited route */
@@ -54,7 +58,7 @@ export interface PathAmino {
   channel_id?: string;
 }
 export interface PathAminoMsg {
-  type: "/ratelimit.v1.Path";
+  type: '/ratelimit.v1.Path';
   value: PathAmino;
 }
 /** Path holds the denom and channelID that define the rate limited route */
@@ -81,7 +85,7 @@ export interface Quota {
   durationHours: bigint;
 }
 export interface QuotaProtoMsg {
-  typeUrl: "/ratelimit.v1.Quota";
+  typeUrl: '/ratelimit.v1.Quota';
   value: Uint8Array;
 }
 /** Quota defines the rate limit thresholds for transfer packets */
@@ -103,7 +107,7 @@ export interface QuotaAmino {
   duration_hours?: string;
 }
 export interface QuotaAminoMsg {
-  type: "/ratelimit.v1.Quota";
+  type: '/ratelimit.v1.Quota';
   value: QuotaAmino;
 }
 /** Quota defines the rate limit thresholds for transfer packets */
@@ -132,7 +136,7 @@ export interface Flow {
   channelValue: string;
 }
 export interface FlowProtoMsg {
-  typeUrl: "/ratelimit.v1.Flow";
+  typeUrl: '/ratelimit.v1.Flow';
   value: Uint8Array;
 }
 export interface FlowAmino {
@@ -155,7 +159,7 @@ export interface FlowAmino {
   channel_value?: string;
 }
 export interface FlowAminoMsg {
-  type: "/ratelimit.v1.Flow";
+  type: '/ratelimit.v1.Flow';
   value: FlowAmino;
 }
 export interface FlowSDKType {
@@ -174,7 +178,7 @@ export interface RateLimit {
   flow?: Flow;
 }
 export interface RateLimitProtoMsg {
-  typeUrl: "/ratelimit.v1.RateLimit";
+  typeUrl: '/ratelimit.v1.RateLimit';
   value: Uint8Array;
 }
 /**
@@ -188,7 +192,7 @@ export interface RateLimitAmino {
   flow?: FlowAmino;
 }
 export interface RateLimitAminoMsg {
-  type: "/ratelimit.v1.RateLimit";
+  type: '/ratelimit.v1.RateLimit';
   value: RateLimitAmino;
 }
 /**
@@ -210,7 +214,7 @@ export interface WhitelistedAddressPair {
   receiver: string;
 }
 export interface WhitelistedAddressPairProtoMsg {
-  typeUrl: "/ratelimit.v1.WhitelistedAddressPair";
+  typeUrl: '/ratelimit.v1.WhitelistedAddressPair';
   value: Uint8Array;
 }
 /**
@@ -222,7 +226,7 @@ export interface WhitelistedAddressPairAmino {
   receiver?: string;
 }
 export interface WhitelistedAddressPairAminoMsg {
-  type: "/ratelimit.v1.WhitelistedAddressPair";
+  type: '/ratelimit.v1.WhitelistedAddressPair';
   value: WhitelistedAddressPairAmino;
 }
 /**
@@ -240,7 +244,7 @@ export interface HourEpoch {
   epochStartHeight: bigint;
 }
 export interface HourEpochProtoMsg {
-  typeUrl: "/ratelimit.v1.HourEpoch";
+  typeUrl: '/ratelimit.v1.HourEpoch';
   value: Uint8Array;
 }
 export interface HourEpochAmino {
@@ -250,7 +254,7 @@ export interface HourEpochAmino {
   epoch_start_height?: string;
 }
 export interface HourEpochAminoMsg {
-  type: "/ratelimit.v1.HourEpoch";
+  type: '/ratelimit.v1.HourEpoch';
   value: HourEpochAmino;
 }
 export interface HourEpochSDKType {
@@ -261,23 +265,27 @@ export interface HourEpochSDKType {
 }
 function createBasePath(): Path {
   return {
-    denom: "",
-    channelId: ""
+    denom: '',
+    channelId: '',
   };
 }
 export const Path = {
-  typeUrl: "/ratelimit.v1.Path",
-  encode(message: Path, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.denom !== "") {
+  typeUrl: '/ratelimit.v1.Path',
+  encode(
+    message: Path,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.denom !== '') {
       writer.uint32(10).string(message.denom);
     }
-    if (message.channelId !== "") {
+    if (message.channelId !== '') {
       writer.uint32(18).string(message.channelId);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Path {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePath();
     while (reader.pos < end) {
@@ -298,8 +306,8 @@ export const Path = {
   },
   fromPartial(object: Partial<Path>): Path {
     const message = createBasePath();
-    message.denom = object.denom ?? "";
-    message.channelId = object.channelId ?? "";
+    message.denom = object.denom ?? '';
+    message.channelId = object.channelId ?? '';
     return message;
   },
   fromAmino(object: PathAmino): Path {
@@ -314,8 +322,8 @@ export const Path = {
   },
   toAmino(message: Path): PathAmino {
     const obj: any = {};
-    obj.denom = message.denom === "" ? undefined : message.denom;
-    obj.channel_id = message.channelId === "" ? undefined : message.channelId;
+    obj.denom = message.denom === '' ? undefined : message.denom;
+    obj.channel_id = message.channelId === '' ? undefined : message.channelId;
     return obj;
   },
   fromAminoMsg(object: PathAminoMsg): Path {
@@ -329,25 +337,28 @@ export const Path = {
   },
   toProtoMsg(message: Path): PathProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.Path",
-      value: Path.encode(message).finish()
+      typeUrl: '/ratelimit.v1.Path',
+      value: Path.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQuota(): Quota {
   return {
-    maxPercentSend: "",
-    maxPercentRecv: "",
-    durationHours: BigInt(0)
+    maxPercentSend: '',
+    maxPercentRecv: '',
+    durationHours: BigInt(0),
   };
 }
 export const Quota = {
-  typeUrl: "/ratelimit.v1.Quota",
-  encode(message: Quota, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.maxPercentSend !== "") {
+  typeUrl: '/ratelimit.v1.Quota',
+  encode(
+    message: Quota,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.maxPercentSend !== '') {
       writer.uint32(10).string(message.maxPercentSend);
     }
-    if (message.maxPercentRecv !== "") {
+    if (message.maxPercentRecv !== '') {
       writer.uint32(18).string(message.maxPercentRecv);
     }
     if (message.durationHours !== BigInt(0)) {
@@ -356,7 +367,8 @@ export const Quota = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Quota {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQuota();
     while (reader.pos < end) {
@@ -380,17 +392,26 @@ export const Quota = {
   },
   fromPartial(object: Partial<Quota>): Quota {
     const message = createBaseQuota();
-    message.maxPercentSend = object.maxPercentSend ?? "";
-    message.maxPercentRecv = object.maxPercentRecv ?? "";
-    message.durationHours = object.durationHours !== undefined && object.durationHours !== null ? BigInt(object.durationHours.toString()) : BigInt(0);
+    message.maxPercentSend = object.maxPercentSend ?? '';
+    message.maxPercentRecv = object.maxPercentRecv ?? '';
+    message.durationHours =
+      object.durationHours !== undefined && object.durationHours !== null
+        ? BigInt(object.durationHours.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: QuotaAmino): Quota {
     const message = createBaseQuota();
-    if (object.max_percent_send !== undefined && object.max_percent_send !== null) {
+    if (
+      object.max_percent_send !== undefined &&
+      object.max_percent_send !== null
+    ) {
       message.maxPercentSend = object.max_percent_send;
     }
-    if (object.max_percent_recv !== undefined && object.max_percent_recv !== null) {
+    if (
+      object.max_percent_recv !== undefined &&
+      object.max_percent_recv !== null
+    ) {
       message.maxPercentRecv = object.max_percent_recv;
     }
     if (object.duration_hours !== undefined && object.duration_hours !== null) {
@@ -400,9 +421,14 @@ export const Quota = {
   },
   toAmino(message: Quota): QuotaAmino {
     const obj: any = {};
-    obj.max_percent_send = message.maxPercentSend === "" ? undefined : message.maxPercentSend;
-    obj.max_percent_recv = message.maxPercentRecv === "" ? undefined : message.maxPercentRecv;
-    obj.duration_hours = message.durationHours !== BigInt(0) ? message.durationHours?.toString() : undefined;
+    obj.max_percent_send =
+      message.maxPercentSend === '' ? undefined : message.maxPercentSend;
+    obj.max_percent_recv =
+      message.maxPercentRecv === '' ? undefined : message.maxPercentRecv;
+    obj.duration_hours =
+      message.durationHours !== BigInt(0)
+        ? message.durationHours?.toString()
+        : undefined;
     return obj;
   },
   fromAminoMsg(object: QuotaAminoMsg): Quota {
@@ -416,34 +442,38 @@ export const Quota = {
   },
   toProtoMsg(message: Quota): QuotaProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.Quota",
-      value: Quota.encode(message).finish()
+      typeUrl: '/ratelimit.v1.Quota',
+      value: Quota.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseFlow(): Flow {
   return {
-    inflow: "",
-    outflow: "",
-    channelValue: ""
+    inflow: '',
+    outflow: '',
+    channelValue: '',
   };
 }
 export const Flow = {
-  typeUrl: "/ratelimit.v1.Flow",
-  encode(message: Flow, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.inflow !== "") {
+  typeUrl: '/ratelimit.v1.Flow',
+  encode(
+    message: Flow,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.inflow !== '') {
       writer.uint32(10).string(message.inflow);
     }
-    if (message.outflow !== "") {
+    if (message.outflow !== '') {
       writer.uint32(18).string(message.outflow);
     }
-    if (message.channelValue !== "") {
+    if (message.channelValue !== '') {
       writer.uint32(26).string(message.channelValue);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Flow {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseFlow();
     while (reader.pos < end) {
@@ -467,9 +497,9 @@ export const Flow = {
   },
   fromPartial(object: Partial<Flow>): Flow {
     const message = createBaseFlow();
-    message.inflow = object.inflow ?? "";
-    message.outflow = object.outflow ?? "";
-    message.channelValue = object.channelValue ?? "";
+    message.inflow = object.inflow ?? '';
+    message.outflow = object.outflow ?? '';
+    message.channelValue = object.channelValue ?? '';
     return message;
   },
   fromAmino(object: FlowAmino): Flow {
@@ -487,9 +517,10 @@ export const Flow = {
   },
   toAmino(message: Flow): FlowAmino {
     const obj: any = {};
-    obj.inflow = message.inflow === "" ? undefined : message.inflow;
-    obj.outflow = message.outflow === "" ? undefined : message.outflow;
-    obj.channel_value = message.channelValue === "" ? undefined : message.channelValue;
+    obj.inflow = message.inflow === '' ? undefined : message.inflow;
+    obj.outflow = message.outflow === '' ? undefined : message.outflow;
+    obj.channel_value =
+      message.channelValue === '' ? undefined : message.channelValue;
     return obj;
   },
   fromAminoMsg(object: FlowAminoMsg): Flow {
@@ -503,21 +534,24 @@ export const Flow = {
   },
   toProtoMsg(message: Flow): FlowProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.Flow",
-      value: Flow.encode(message).finish()
+      typeUrl: '/ratelimit.v1.Flow',
+      value: Flow.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseRateLimit(): RateLimit {
   return {
     path: undefined,
     quota: undefined,
-    flow: undefined
+    flow: undefined,
   };
 }
 export const RateLimit = {
-  typeUrl: "/ratelimit.v1.RateLimit",
-  encode(message: RateLimit, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.RateLimit',
+  encode(
+    message: RateLimit,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.path !== undefined) {
       Path.encode(message.path, writer.uint32(10).fork()).ldelim();
     }
@@ -530,7 +564,8 @@ export const RateLimit = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): RateLimit {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseRateLimit();
     while (reader.pos < end) {
@@ -554,9 +589,18 @@ export const RateLimit = {
   },
   fromPartial(object: Partial<RateLimit>): RateLimit {
     const message = createBaseRateLimit();
-    message.path = object.path !== undefined && object.path !== null ? Path.fromPartial(object.path) : undefined;
-    message.quota = object.quota !== undefined && object.quota !== null ? Quota.fromPartial(object.quota) : undefined;
-    message.flow = object.flow !== undefined && object.flow !== null ? Flow.fromPartial(object.flow) : undefined;
+    message.path =
+      object.path !== undefined && object.path !== null
+        ? Path.fromPartial(object.path)
+        : undefined;
+    message.quota =
+      object.quota !== undefined && object.quota !== null
+        ? Quota.fromPartial(object.quota)
+        : undefined;
+    message.flow =
+      object.flow !== undefined && object.flow !== null
+        ? Flow.fromPartial(object.flow)
+        : undefined;
     return message;
   },
   fromAmino(object: RateLimitAmino): RateLimit {
@@ -590,30 +634,37 @@ export const RateLimit = {
   },
   toProtoMsg(message: RateLimit): RateLimitProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.RateLimit",
-      value: RateLimit.encode(message).finish()
+      typeUrl: '/ratelimit.v1.RateLimit',
+      value: RateLimit.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseWhitelistedAddressPair(): WhitelistedAddressPair {
   return {
-    sender: "",
-    receiver: ""
+    sender: '',
+    receiver: '',
   };
 }
 export const WhitelistedAddressPair = {
-  typeUrl: "/ratelimit.v1.WhitelistedAddressPair",
-  encode(message: WhitelistedAddressPair, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.sender !== "") {
+  typeUrl: '/ratelimit.v1.WhitelistedAddressPair',
+  encode(
+    message: WhitelistedAddressPair,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.sender !== '') {
       writer.uint32(10).string(message.sender);
     }
-    if (message.receiver !== "") {
+    if (message.receiver !== '') {
       writer.uint32(18).string(message.receiver);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): WhitelistedAddressPair {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): WhitelistedAddressPair {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseWhitelistedAddressPair();
     while (reader.pos < end) {
@@ -634,8 +685,8 @@ export const WhitelistedAddressPair = {
   },
   fromPartial(object: Partial<WhitelistedAddressPair>): WhitelistedAddressPair {
     const message = createBaseWhitelistedAddressPair();
-    message.sender = object.sender ?? "";
-    message.receiver = object.receiver ?? "";
+    message.sender = object.sender ?? '';
+    message.receiver = object.receiver ?? '';
     return message;
   },
   fromAmino(object: WhitelistedAddressPairAmino): WhitelistedAddressPair {
@@ -650,14 +701,16 @@ export const WhitelistedAddressPair = {
   },
   toAmino(message: WhitelistedAddressPair): WhitelistedAddressPairAmino {
     const obj: any = {};
-    obj.sender = message.sender === "" ? undefined : message.sender;
-    obj.receiver = message.receiver === "" ? undefined : message.receiver;
+    obj.sender = message.sender === '' ? undefined : message.sender;
+    obj.receiver = message.receiver === '' ? undefined : message.receiver;
     return obj;
   },
   fromAminoMsg(object: WhitelistedAddressPairAminoMsg): WhitelistedAddressPair {
     return WhitelistedAddressPair.fromAmino(object.value);
   },
-  fromProtoMsg(message: WhitelistedAddressPairProtoMsg): WhitelistedAddressPair {
+  fromProtoMsg(
+    message: WhitelistedAddressPairProtoMsg
+  ): WhitelistedAddressPair {
     return WhitelistedAddressPair.decode(message.value);
   },
   toProto(message: WhitelistedAddressPair): Uint8Array {
@@ -665,22 +718,25 @@ export const WhitelistedAddressPair = {
   },
   toProtoMsg(message: WhitelistedAddressPair): WhitelistedAddressPairProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.WhitelistedAddressPair",
-      value: WhitelistedAddressPair.encode(message).finish()
+      typeUrl: '/ratelimit.v1.WhitelistedAddressPair',
+      value: WhitelistedAddressPair.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseHourEpoch(): HourEpoch {
   return {
     epochNumber: BigInt(0),
     duration: Duration.fromPartial({}),
     epochStartTime: new Date(),
-    epochStartHeight: BigInt(0)
+    epochStartHeight: BigInt(0),
   };
 }
 export const HourEpoch = {
-  typeUrl: "/ratelimit.v1.HourEpoch",
-  encode(message: HourEpoch, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.HourEpoch',
+  encode(
+    message: HourEpoch,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.epochNumber !== BigInt(0)) {
       writer.uint32(8).uint64(message.epochNumber);
     }
@@ -688,7 +744,10 @@ export const HourEpoch = {
       Duration.encode(message.duration, writer.uint32(18).fork()).ldelim();
     }
     if (message.epochStartTime !== undefined) {
-      Timestamp.encode(toTimestamp(message.epochStartTime), writer.uint32(26).fork()).ldelim();
+      Timestamp.encode(
+        toTimestamp(message.epochStartTime),
+        writer.uint32(26).fork()
+      ).ldelim();
     }
     if (message.epochStartHeight !== BigInt(0)) {
       writer.uint32(32).int64(message.epochStartHeight);
@@ -696,7 +755,8 @@ export const HourEpoch = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): HourEpoch {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseHourEpoch();
     while (reader.pos < end) {
@@ -709,7 +769,9 @@ export const HourEpoch = {
           message.duration = Duration.decode(reader, reader.uint32());
           break;
         case 3:
-          message.epochStartTime = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.epochStartTime = fromTimestamp(
+            Timestamp.decode(reader, reader.uint32())
+          );
           break;
         case 4:
           message.epochStartHeight = reader.int64();
@@ -723,10 +785,19 @@ export const HourEpoch = {
   },
   fromPartial(object: Partial<HourEpoch>): HourEpoch {
     const message = createBaseHourEpoch();
-    message.epochNumber = object.epochNumber !== undefined && object.epochNumber !== null ? BigInt(object.epochNumber.toString()) : BigInt(0);
-    message.duration = object.duration !== undefined && object.duration !== null ? Duration.fromPartial(object.duration) : undefined;
+    message.epochNumber =
+      object.epochNumber !== undefined && object.epochNumber !== null
+        ? BigInt(object.epochNumber.toString())
+        : BigInt(0);
+    message.duration =
+      object.duration !== undefined && object.duration !== null
+        ? Duration.fromPartial(object.duration)
+        : undefined;
     message.epochStartTime = object.epochStartTime ?? undefined;
-    message.epochStartHeight = object.epochStartHeight !== undefined && object.epochStartHeight !== null ? BigInt(object.epochStartHeight.toString()) : BigInt(0);
+    message.epochStartHeight =
+      object.epochStartHeight !== undefined && object.epochStartHeight !== null
+        ? BigInt(object.epochStartHeight.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: HourEpochAmino): HourEpoch {
@@ -737,20 +808,38 @@ export const HourEpoch = {
     if (object.duration !== undefined && object.duration !== null) {
       message.duration = Duration.fromAmino(object.duration);
     }
-    if (object.epoch_start_time !== undefined && object.epoch_start_time !== null) {
-      message.epochStartTime = fromTimestamp(Timestamp.fromAmino(object.epoch_start_time));
+    if (
+      object.epoch_start_time !== undefined &&
+      object.epoch_start_time !== null
+    ) {
+      message.epochStartTime = fromTimestamp(
+        Timestamp.fromAmino(object.epoch_start_time)
+      );
     }
-    if (object.epoch_start_height !== undefined && object.epoch_start_height !== null) {
+    if (
+      object.epoch_start_height !== undefined &&
+      object.epoch_start_height !== null
+    ) {
       message.epochStartHeight = BigInt(object.epoch_start_height);
     }
     return message;
   },
   toAmino(message: HourEpoch): HourEpochAmino {
     const obj: any = {};
-    obj.epoch_number = message.epochNumber !== BigInt(0) ? message.epochNumber?.toString() : undefined;
-    obj.duration = message.duration ? Duration.toAmino(message.duration) : undefined;
-    obj.epoch_start_time = message.epochStartTime ? Timestamp.toAmino(toTimestamp(message.epochStartTime)) : undefined;
-    obj.epoch_start_height = message.epochStartHeight !== BigInt(0) ? message.epochStartHeight?.toString() : undefined;
+    obj.epoch_number =
+      message.epochNumber !== BigInt(0)
+        ? message.epochNumber?.toString()
+        : undefined;
+    obj.duration = message.duration
+      ? Duration.toAmino(message.duration)
+      : undefined;
+    obj.epoch_start_time = message.epochStartTime
+      ? Timestamp.toAmino(toTimestamp(message.epochStartTime))
+      : undefined;
+    obj.epoch_start_height =
+      message.epochStartHeight !== BigInt(0)
+        ? message.epochStartHeight?.toString()
+        : undefined;
     return obj;
   },
   fromAminoMsg(object: HourEpochAminoMsg): HourEpoch {
@@ -764,8 +853,8 @@ export const HourEpoch = {
   },
   toProtoMsg(message: HourEpoch): HourEpochProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.HourEpoch",
-      value: HourEpoch.encode(message).finish()
+      typeUrl: '/ratelimit.v1.HourEpoch',
+      value: HourEpoch.encode(message).finish(),
     };
-  }
+  },
 };

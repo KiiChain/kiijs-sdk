@@ -29,5 +29,5 @@ export const ETHERS_ICS20_PRECOMPILE_ABI = ICS20_PRECOMPILE_ABI as InterfaceAbi;
  * @category Cosmos Interoperability
  */
 export const getIcs20PrecompileEthersV6Contract = (runner: ContractRunner) => {
-	return new Contract(ICS20_PRECOMPILE_ADDRESS, ICS20_PRECOMPILE_ABI, runner);
+  return new Contract(ICS20_PRECOMPILE_ADDRESS, ICS20_PRECOMPILE_ABI, runner);
 };

@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../binary";
+import { BinaryReader, BinaryWriter } from '../../binary';
 /**
  * Capability defines an implementation of an object capability. The index
  * provided to a Capability must be globally unique.
@@ -8,7 +8,7 @@ export interface Capability {
   index: bigint;
 }
 export interface CapabilityProtoMsg {
-  typeUrl: "/capability.v1.Capability";
+  typeUrl: '/capability.v1.Capability';
   value: Uint8Array;
 }
 /**
@@ -19,7 +19,7 @@ export interface CapabilityAmino {
   index?: string;
 }
 export interface CapabilityAminoMsg {
-  type: "/capability.v1.Capability";
+  type: '/capability.v1.Capability';
   value: CapabilityAmino;
 }
 /**
@@ -38,7 +38,7 @@ export interface Owner {
   name: string;
 }
 export interface OwnerProtoMsg {
-  typeUrl: "/capability.v1.Owner";
+  typeUrl: '/capability.v1.Owner';
   value: Uint8Array;
 }
 /**
@@ -50,7 +50,7 @@ export interface OwnerAmino {
   name?: string;
 }
 export interface OwnerAminoMsg {
-  type: "/capability.v1.Owner";
+  type: '/capability.v1.Owner';
   value: OwnerAmino;
 }
 /**
@@ -69,7 +69,7 @@ export interface CapabilityOwners {
   owners: Owner[];
 }
 export interface CapabilityOwnersProtoMsg {
-  typeUrl: "/capability.v1.CapabilityOwners";
+  typeUrl: '/capability.v1.CapabilityOwners';
   value: Uint8Array;
 }
 /**
@@ -80,7 +80,7 @@ export interface CapabilityOwnersAmino {
   owners: OwnerAmino[];
 }
 export interface CapabilityOwnersAminoMsg {
-  type: "/capability.v1.CapabilityOwners";
+  type: '/capability.v1.CapabilityOwners';
   value: CapabilityOwnersAmino;
 }
 /**
@@ -92,19 +92,23 @@ export interface CapabilityOwnersSDKType {
 }
 function createBaseCapability(): Capability {
   return {
-    index: BigInt(0)
+    index: BigInt(0),
   };
 }
 export const Capability = {
-  typeUrl: "/capability.v1.Capability",
-  encode(message: Capability, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/capability.v1.Capability',
+  encode(
+    message: Capability,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.index !== BigInt(0)) {
       writer.uint32(8).uint64(message.index);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Capability {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCapability();
     while (reader.pos < end) {
@@ -122,7 +126,10 @@ export const Capability = {
   },
   fromPartial(object: Partial<Capability>): Capability {
     const message = createBaseCapability();
-    message.index = object.index !== undefined && object.index !== null ? BigInt(object.index.toString()) : BigInt(0);
+    message.index =
+      object.index !== undefined && object.index !== null
+        ? BigInt(object.index.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: CapabilityAmino): Capability {
@@ -134,7 +141,8 @@ export const Capability = {
   },
   toAmino(message: Capability): CapabilityAmino {
     const obj: any = {};
-    obj.index = message.index !== BigInt(0) ? message.index?.toString() : undefined;
+    obj.index =
+      message.index !== BigInt(0) ? message.index?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: CapabilityAminoMsg): Capability {
@@ -148,30 +156,34 @@ export const Capability = {
   },
   toProtoMsg(message: Capability): CapabilityProtoMsg {
     return {
-      typeUrl: "/capability.v1.Capability",
-      value: Capability.encode(message).finish()
+      typeUrl: '/capability.v1.Capability',
+      value: Capability.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseOwner(): Owner {
   return {
-    module: "",
-    name: ""
+    module: '',
+    name: '',
   };
 }
 export const Owner = {
-  typeUrl: "/capability.v1.Owner",
-  encode(message: Owner, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.module !== "") {
+  typeUrl: '/capability.v1.Owner',
+  encode(
+    message: Owner,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.module !== '') {
       writer.uint32(10).string(message.module);
     }
-    if (message.name !== "") {
+    if (message.name !== '') {
       writer.uint32(18).string(message.name);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Owner {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseOwner();
     while (reader.pos < end) {
@@ -192,8 +204,8 @@ export const Owner = {
   },
   fromPartial(object: Partial<Owner>): Owner {
     const message = createBaseOwner();
-    message.module = object.module ?? "";
-    message.name = object.name ?? "";
+    message.module = object.module ?? '';
+    message.name = object.name ?? '';
     return message;
   },
   fromAmino(object: OwnerAmino): Owner {
@@ -208,8 +220,8 @@ export const Owner = {
   },
   toAmino(message: Owner): OwnerAmino {
     const obj: any = {};
-    obj.module = message.module === "" ? undefined : message.module;
-    obj.name = message.name === "" ? undefined : message.name;
+    obj.module = message.module === '' ? undefined : message.module;
+    obj.name = message.name === '' ? undefined : message.name;
     return obj;
   },
   fromAminoMsg(object: OwnerAminoMsg): Owner {
@@ -223,26 +235,30 @@ export const Owner = {
   },
   toProtoMsg(message: Owner): OwnerProtoMsg {
     return {
-      typeUrl: "/capability.v1.Owner",
-      value: Owner.encode(message).finish()
+      typeUrl: '/capability.v1.Owner',
+      value: Owner.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseCapabilityOwners(): CapabilityOwners {
   return {
-    owners: []
+    owners: [],
   };
 }
 export const CapabilityOwners = {
-  typeUrl: "/capability.v1.CapabilityOwners",
-  encode(message: CapabilityOwners, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/capability.v1.CapabilityOwners',
+  encode(
+    message: CapabilityOwners,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.owners) {
       Owner.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): CapabilityOwners {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCapabilityOwners();
     while (reader.pos < end) {
@@ -260,18 +276,20 @@ export const CapabilityOwners = {
   },
   fromPartial(object: Partial<CapabilityOwners>): CapabilityOwners {
     const message = createBaseCapabilityOwners();
-    message.owners = object.owners?.map(e => Owner.fromPartial(e)) || [];
+    message.owners = object.owners?.map((e) => Owner.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: CapabilityOwnersAmino): CapabilityOwners {
     const message = createBaseCapabilityOwners();
-    message.owners = object.owners?.map(e => Owner.fromAmino(e)) || [];
+    message.owners = object.owners?.map((e) => Owner.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: CapabilityOwners): CapabilityOwnersAmino {
     const obj: any = {};
     if (message.owners) {
-      obj.owners = message.owners.map(e => e ? Owner.toAmino(e) : undefined);
+      obj.owners = message.owners.map((e) =>
+        e ? Owner.toAmino(e) : undefined
+      );
     } else {
       obj.owners = message.owners;
     }
@@ -288,8 +306,8 @@ export const CapabilityOwners = {
   },
   toProtoMsg(message: CapabilityOwners): CapabilityOwnersProtoMsg {
     return {
-      typeUrl: "/capability.v1.CapabilityOwners",
-      value: CapabilityOwners.encode(message).finish()
+      typeUrl: '/capability.v1.CapabilityOwners',
+      value: CapabilityOwners.encode(message).finish(),
     };
-  }
+  },
 };

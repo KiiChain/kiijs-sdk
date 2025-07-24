@@ -1,7 +1,7 @@
 //@ts-nocheck
-import { Rpc } from "../../../../helpers";
-import { BinaryReader } from "../../../../binary";
-import { MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
+import { BinaryReader } from '../../../../binary';
+import { Rpc } from '../../../../helpers';
+import { MsgUpdateParams, MsgUpdateParamsResponse } from './tx';
 /** Msg defines the feemarket Msg service. */
 export interface Msg {
   /**
@@ -19,7 +19,13 @@ export class MsgClientImpl implements Msg {
   }
   updateParams(request: MsgUpdateParams): Promise<MsgUpdateParamsResponse> {
     const data = MsgUpdateParams.encode(request).finish();
-    const promise = this.rpc.request("cosmos.evm.feemarket.v1.Msg", "UpdateParams", data);
-    return promise.then(data => MsgUpdateParamsResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.evm.feemarket.v1.Msg',
+      'UpdateParams',
+      data
+    );
+    return promise.then((data) =>
+      MsgUpdateParamsResponse.decode(new BinaryReader(data))
+    );
   }
 }

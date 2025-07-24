@@ -1,6 +1,10 @@
 //@ts-nocheck
-import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
+import {
+  Coin,
+  CoinAmino,
+  CoinSDKType,
+} from '../../../../cosmos/base/v1beta1/coin';
 /** Allocation defines the spend limit for a particular port and channel */
 export interface Allocation {
   /** the port on which the packet will be sent */
@@ -18,7 +22,7 @@ export interface Allocation {
   allowedPacketData: string[];
 }
 export interface AllocationProtoMsg {
-  typeUrl: "/ibc.applications.transfer.v1.Allocation";
+  typeUrl: '/ibc.applications.transfer.v1.Allocation';
   value: Uint8Array;
 }
 /** Allocation defines the spend limit for a particular port and channel */
@@ -38,7 +42,7 @@ export interface AllocationAmino {
   allowed_packet_data?: string[];
 }
 export interface AllocationAminoMsg {
-  type: "cosmos-sdk/Allocation";
+  type: 'cosmos-sdk/Allocation';
   value: AllocationAmino;
 }
 /** Allocation defines the spend limit for a particular port and channel */
@@ -54,12 +58,12 @@ export interface AllocationSDKType {
  * the granter's account for ibc transfer on a specific channel
  */
 export interface TransferAuthorization {
-  $typeUrl?: "/ibc.applications.transfer.v1.TransferAuthorization";
+  $typeUrl?: '/ibc.applications.transfer.v1.TransferAuthorization';
   /** port and channel amounts */
   allocations: Allocation[];
 }
 export interface TransferAuthorizationProtoMsg {
-  typeUrl: "/ibc.applications.transfer.v1.TransferAuthorization";
+  typeUrl: '/ibc.applications.transfer.v1.TransferAuthorization';
   value: Uint8Array;
 }
 /**
@@ -71,7 +75,7 @@ export interface TransferAuthorizationAmino {
   allocations?: AllocationAmino[];
 }
 export interface TransferAuthorizationAminoMsg {
-  type: "cosmos-sdk/TransferAuthorization";
+  type: 'cosmos-sdk/TransferAuthorization';
   value: TransferAuthorizationAmino;
 }
 /**
@@ -79,25 +83,28 @@ export interface TransferAuthorizationAminoMsg {
  * the granter's account for ibc transfer on a specific channel
  */
 export interface TransferAuthorizationSDKType {
-  $typeUrl?: "/ibc.applications.transfer.v1.TransferAuthorization";
+  $typeUrl?: '/ibc.applications.transfer.v1.TransferAuthorization';
   allocations: AllocationSDKType[];
 }
 function createBaseAllocation(): Allocation {
   return {
-    sourcePort: "",
-    sourceChannel: "",
+    sourcePort: '',
+    sourceChannel: '',
     spendLimit: [],
     allowList: [],
-    allowedPacketData: []
+    allowedPacketData: [],
   };
 }
 export const Allocation = {
-  typeUrl: "/ibc.applications.transfer.v1.Allocation",
-  encode(message: Allocation, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.sourcePort !== "") {
+  typeUrl: '/ibc.applications.transfer.v1.Allocation',
+  encode(
+    message: Allocation,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.sourcePort !== '') {
       writer.uint32(10).string(message.sourcePort);
     }
-    if (message.sourceChannel !== "") {
+    if (message.sourceChannel !== '') {
       writer.uint32(18).string(message.sourceChannel);
     }
     for (const v of message.spendLimit) {
@@ -112,7 +119,8 @@ export const Allocation = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Allocation {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAllocation();
     while (reader.pos < end) {
@@ -142,11 +150,12 @@ export const Allocation = {
   },
   fromPartial(object: Partial<Allocation>): Allocation {
     const message = createBaseAllocation();
-    message.sourcePort = object.sourcePort ?? "";
-    message.sourceChannel = object.sourceChannel ?? "";
-    message.spendLimit = object.spendLimit?.map(e => Coin.fromPartial(e)) || [];
-    message.allowList = object.allowList?.map(e => e) || [];
-    message.allowedPacketData = object.allowedPacketData?.map(e => e) || [];
+    message.sourcePort = object.sourcePort ?? '';
+    message.sourceChannel = object.sourceChannel ?? '';
+    message.spendLimit =
+      object.spendLimit?.map((e) => Coin.fromPartial(e)) || [];
+    message.allowList = object.allowList?.map((e) => e) || [];
+    message.allowedPacketData = object.allowedPacketData?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: AllocationAmino): Allocation {
@@ -157,27 +166,32 @@ export const Allocation = {
     if (object.source_channel !== undefined && object.source_channel !== null) {
       message.sourceChannel = object.source_channel;
     }
-    message.spendLimit = object.spend_limit?.map(e => Coin.fromAmino(e)) || [];
-    message.allowList = object.allow_list?.map(e => e) || [];
-    message.allowedPacketData = object.allowed_packet_data?.map(e => e) || [];
+    message.spendLimit =
+      object.spend_limit?.map((e) => Coin.fromAmino(e)) || [];
+    message.allowList = object.allow_list?.map((e) => e) || [];
+    message.allowedPacketData = object.allowed_packet_data?.map((e) => e) || [];
     return message;
   },
   toAmino(message: Allocation): AllocationAmino {
     const obj: any = {};
-    obj.source_port = message.sourcePort === "" ? undefined : message.sourcePort;
-    obj.source_channel = message.sourceChannel === "" ? undefined : message.sourceChannel;
+    obj.source_port =
+      message.sourcePort === '' ? undefined : message.sourcePort;
+    obj.source_channel =
+      message.sourceChannel === '' ? undefined : message.sourceChannel;
     if (message.spendLimit) {
-      obj.spend_limit = message.spendLimit.map(e => e ? Coin.toAmino(e) : undefined);
+      obj.spend_limit = message.spendLimit.map((e) =>
+        e ? Coin.toAmino(e) : undefined
+      );
     } else {
       obj.spend_limit = message.spendLimit;
     }
     if (message.allowList) {
-      obj.allow_list = message.allowList.map(e => e);
+      obj.allow_list = message.allowList.map((e) => e);
     } else {
       obj.allow_list = message.allowList;
     }
     if (message.allowedPacketData) {
-      obj.allowed_packet_data = message.allowedPacketData.map(e => e);
+      obj.allowed_packet_data = message.allowedPacketData.map((e) => e);
     } else {
       obj.allowed_packet_data = message.allowedPacketData;
     }
@@ -188,8 +202,8 @@ export const Allocation = {
   },
   toAminoMsg(message: Allocation): AllocationAminoMsg {
     return {
-      type: "cosmos-sdk/Allocation",
-      value: Allocation.toAmino(message)
+      type: 'cosmos-sdk/Allocation',
+      value: Allocation.toAmino(message),
     };
   },
   fromProtoMsg(message: AllocationProtoMsg): Allocation {
@@ -200,27 +214,34 @@ export const Allocation = {
   },
   toProtoMsg(message: Allocation): AllocationProtoMsg {
     return {
-      typeUrl: "/ibc.applications.transfer.v1.Allocation",
-      value: Allocation.encode(message).finish()
+      typeUrl: '/ibc.applications.transfer.v1.Allocation',
+      value: Allocation.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseTransferAuthorization(): TransferAuthorization {
   return {
-    $typeUrl: "/ibc.applications.transfer.v1.TransferAuthorization",
-    allocations: []
+    $typeUrl: '/ibc.applications.transfer.v1.TransferAuthorization',
+    allocations: [],
   };
 }
 export const TransferAuthorization = {
-  typeUrl: "/ibc.applications.transfer.v1.TransferAuthorization",
-  encode(message: TransferAuthorization, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ibc.applications.transfer.v1.TransferAuthorization',
+  encode(
+    message: TransferAuthorization,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.allocations) {
       Allocation.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): TransferAuthorization {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): TransferAuthorization {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTransferAuthorization();
     while (reader.pos < end) {
@@ -238,18 +259,22 @@ export const TransferAuthorization = {
   },
   fromPartial(object: Partial<TransferAuthorization>): TransferAuthorization {
     const message = createBaseTransferAuthorization();
-    message.allocations = object.allocations?.map(e => Allocation.fromPartial(e)) || [];
+    message.allocations =
+      object.allocations?.map((e) => Allocation.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: TransferAuthorizationAmino): TransferAuthorization {
     const message = createBaseTransferAuthorization();
-    message.allocations = object.allocations?.map(e => Allocation.fromAmino(e)) || [];
+    message.allocations =
+      object.allocations?.map((e) => Allocation.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: TransferAuthorization): TransferAuthorizationAmino {
     const obj: any = {};
     if (message.allocations) {
-      obj.allocations = message.allocations.map(e => e ? Allocation.toAmino(e) : undefined);
+      obj.allocations = message.allocations.map((e) =>
+        e ? Allocation.toAmino(e) : undefined
+      );
     } else {
       obj.allocations = message.allocations;
     }
@@ -260,8 +285,8 @@ export const TransferAuthorization = {
   },
   toAminoMsg(message: TransferAuthorization): TransferAuthorizationAminoMsg {
     return {
-      type: "cosmos-sdk/TransferAuthorization",
-      value: TransferAuthorization.toAmino(message)
+      type: 'cosmos-sdk/TransferAuthorization',
+      value: TransferAuthorization.toAmino(message),
     };
   },
   fromProtoMsg(message: TransferAuthorizationProtoMsg): TransferAuthorization {
@@ -272,8 +297,8 @@ export const TransferAuthorization = {
   },
   toProtoMsg(message: TransferAuthorization): TransferAuthorizationProtoMsg {
     return {
-      typeUrl: "/ibc.applications.transfer.v1.TransferAuthorization",
-      value: TransferAuthorization.encode(message).finish()
+      typeUrl: '/ibc.applications.transfer.v1.TransferAuthorization',
+      value: TransferAuthorization.encode(message).finish(),
     };
-  }
+  },
 };

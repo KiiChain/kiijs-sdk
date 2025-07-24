@@ -1,8 +1,12 @@
 //@ts-nocheck
-import { Order } from "../../../../core/channel/v1/channel";
-import { InterchainAccountPacketData, InterchainAccountPacketDataAmino, InterchainAccountPacketDataSDKType } from "../../v1/packet";
-import { Params, ParamsAmino, ParamsSDKType } from "./controller";
-import { BinaryReader, BinaryWriter } from "../../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../../binary';
+import { Order } from '../../../../core/channel/v1/channel';
+import {
+  InterchainAccountPacketData,
+  InterchainAccountPacketDataAmino,
+  InterchainAccountPacketDataSDKType,
+} from '../../v1/packet';
+import { Params, ParamsAmino, ParamsSDKType } from './controller';
 /** MsgRegisterInterchainAccount defines the payload for Msg/RegisterAccount */
 export interface MsgRegisterInterchainAccount {
   owner: string;
@@ -11,7 +15,7 @@ export interface MsgRegisterInterchainAccount {
   ordering: Order;
 }
 export interface MsgRegisterInterchainAccountProtoMsg {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccount";
+  typeUrl: '/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccount';
   value: Uint8Array;
 }
 /** MsgRegisterInterchainAccount defines the payload for Msg/RegisterAccount */
@@ -22,7 +26,7 @@ export interface MsgRegisterInterchainAccountAmino {
   ordering?: Order;
 }
 export interface MsgRegisterInterchainAccountAminoMsg {
-  type: "cosmos-sdk/MsgRegisterInterchainAccount";
+  type: 'cosmos-sdk/MsgRegisterInterchainAccount';
   value: MsgRegisterInterchainAccountAmino;
 }
 /** MsgRegisterInterchainAccount defines the payload for Msg/RegisterAccount */
@@ -38,7 +42,7 @@ export interface MsgRegisterInterchainAccountResponse {
   portId: string;
 }
 export interface MsgRegisterInterchainAccountResponseProtoMsg {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccountResponse";
+  typeUrl: '/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccountResponse';
   value: Uint8Array;
 }
 /** MsgRegisterInterchainAccountResponse defines the response for Msg/RegisterAccount */
@@ -47,7 +51,7 @@ export interface MsgRegisterInterchainAccountResponseAmino {
   port_id?: string;
 }
 export interface MsgRegisterInterchainAccountResponseAminoMsg {
-  type: "cosmos-sdk/MsgRegisterInterchainAccountResponse";
+  type: 'cosmos-sdk/MsgRegisterInterchainAccountResponse';
   value: MsgRegisterInterchainAccountResponseAmino;
 }
 /** MsgRegisterInterchainAccountResponse defines the response for Msg/RegisterAccount */
@@ -67,7 +71,7 @@ export interface MsgSendTx {
   relativeTimeout: bigint;
 }
 export interface MsgSendTxProtoMsg {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTx";
+  typeUrl: '/ibc.applications.interchain_accounts.controller.v1.MsgSendTx';
   value: Uint8Array;
 }
 /** MsgSendTx defines the payload for Msg/SendTx */
@@ -82,7 +86,7 @@ export interface MsgSendTxAmino {
   relative_timeout?: string;
 }
 export interface MsgSendTxAminoMsg {
-  type: "cosmos-sdk/MsgSendTx";
+  type: 'cosmos-sdk/MsgSendTx';
   value: MsgSendTxAmino;
 }
 /** MsgSendTx defines the payload for Msg/SendTx */
@@ -97,7 +101,7 @@ export interface MsgSendTxResponse {
   sequence: bigint;
 }
 export interface MsgSendTxResponseProtoMsg {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTxResponse";
+  typeUrl: '/ibc.applications.interchain_accounts.controller.v1.MsgSendTxResponse';
   value: Uint8Array;
 }
 /** MsgSendTxResponse defines the response for MsgSendTx */
@@ -105,7 +109,7 @@ export interface MsgSendTxResponseAmino {
   sequence?: string;
 }
 export interface MsgSendTxResponseAminoMsg {
-  type: "cosmos-sdk/MsgSendTxResponse";
+  type: 'cosmos-sdk/MsgSendTxResponse';
   value: MsgSendTxResponseAmino;
 }
 /** MsgSendTxResponse defines the response for MsgSendTx */
@@ -118,13 +122,13 @@ export interface MsgUpdateParams {
   signer: string;
   /**
    * params defines the 27-interchain-accounts/controller parameters to update.
-   * 
+   *
    * NOTE: All parameters must be supplied.
    */
   params: Params;
 }
 export interface MsgUpdateParamsProtoMsg {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParams";
+  typeUrl: '/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParams';
   value: Uint8Array;
 }
 /** MsgUpdateParams defines the payload for Msg/UpdateParams */
@@ -133,13 +137,13 @@ export interface MsgUpdateParamsAmino {
   signer?: string;
   /**
    * params defines the 27-interchain-accounts/controller parameters to update.
-   * 
+   *
    * NOTE: All parameters must be supplied.
    */
   params?: ParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
-  type: "cosmos-sdk/MsgUpdateParams";
+  type: 'cosmos-sdk/MsgUpdateParams';
   value: MsgUpdateParamsAmino;
 }
 /** MsgUpdateParams defines the payload for Msg/UpdateParams */
@@ -150,35 +154,39 @@ export interface MsgUpdateParamsSDKType {
 /** MsgUpdateParamsResponse defines the response for Msg/UpdateParams */
 export interface MsgUpdateParamsResponse {}
 export interface MsgUpdateParamsResponseProtoMsg {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParamsResponse";
+  typeUrl: '/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParamsResponse';
   value: Uint8Array;
 }
 /** MsgUpdateParamsResponse defines the response for Msg/UpdateParams */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {
-  type: "cosmos-sdk/MsgUpdateParamsResponse";
+  type: 'cosmos-sdk/MsgUpdateParamsResponse';
   value: MsgUpdateParamsResponseAmino;
 }
 /** MsgUpdateParamsResponse defines the response for Msg/UpdateParams */
 export interface MsgUpdateParamsResponseSDKType {}
 function createBaseMsgRegisterInterchainAccount(): MsgRegisterInterchainAccount {
   return {
-    owner: "",
-    connectionId: "",
-    version: "",
-    ordering: 0
+    owner: '',
+    connectionId: '',
+    version: '',
+    ordering: 0,
   };
 }
 export const MsgRegisterInterchainAccount = {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccount",
-  encode(message: MsgRegisterInterchainAccount, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.owner !== "") {
+  typeUrl:
+    '/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccount',
+  encode(
+    message: MsgRegisterInterchainAccount,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.owner !== '') {
       writer.uint32(10).string(message.owner);
     }
-    if (message.connectionId !== "") {
+    if (message.connectionId !== '') {
       writer.uint32(18).string(message.connectionId);
     }
-    if (message.version !== "") {
+    if (message.version !== '') {
       writer.uint32(26).string(message.version);
     }
     if (message.ordering !== 0) {
@@ -186,8 +194,12 @@ export const MsgRegisterInterchainAccount = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterInterchainAccount {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgRegisterInterchainAccount {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRegisterInterchainAccount();
     while (reader.pos < end) {
@@ -212,15 +224,19 @@ export const MsgRegisterInterchainAccount = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgRegisterInterchainAccount>): MsgRegisterInterchainAccount {
+  fromPartial(
+    object: Partial<MsgRegisterInterchainAccount>
+  ): MsgRegisterInterchainAccount {
     const message = createBaseMsgRegisterInterchainAccount();
-    message.owner = object.owner ?? "";
-    message.connectionId = object.connectionId ?? "";
-    message.version = object.version ?? "";
+    message.owner = object.owner ?? '';
+    message.connectionId = object.connectionId ?? '';
+    message.version = object.version ?? '';
     message.ordering = object.ordering ?? 0;
     return message;
   },
-  fromAmino(object: MsgRegisterInterchainAccountAmino): MsgRegisterInterchainAccount {
+  fromAmino(
+    object: MsgRegisterInterchainAccountAmino
+  ): MsgRegisterInterchainAccount {
     const message = createBaseMsgRegisterInterchainAccount();
     if (object.owner !== undefined && object.owner !== null) {
       message.owner = object.owner;
@@ -236,55 +252,75 @@ export const MsgRegisterInterchainAccount = {
     }
     return message;
   },
-  toAmino(message: MsgRegisterInterchainAccount): MsgRegisterInterchainAccountAmino {
+  toAmino(
+    message: MsgRegisterInterchainAccount
+  ): MsgRegisterInterchainAccountAmino {
     const obj: any = {};
-    obj.owner = message.owner === "" ? undefined : message.owner;
-    obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
-    obj.version = message.version === "" ? undefined : message.version;
+    obj.owner = message.owner === '' ? undefined : message.owner;
+    obj.connection_id =
+      message.connectionId === '' ? undefined : message.connectionId;
+    obj.version = message.version === '' ? undefined : message.version;
     obj.ordering = message.ordering === 0 ? undefined : message.ordering;
     return obj;
   },
-  fromAminoMsg(object: MsgRegisterInterchainAccountAminoMsg): MsgRegisterInterchainAccount {
+  fromAminoMsg(
+    object: MsgRegisterInterchainAccountAminoMsg
+  ): MsgRegisterInterchainAccount {
     return MsgRegisterInterchainAccount.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgRegisterInterchainAccount): MsgRegisterInterchainAccountAminoMsg {
+  toAminoMsg(
+    message: MsgRegisterInterchainAccount
+  ): MsgRegisterInterchainAccountAminoMsg {
     return {
-      type: "cosmos-sdk/MsgRegisterInterchainAccount",
-      value: MsgRegisterInterchainAccount.toAmino(message)
+      type: 'cosmos-sdk/MsgRegisterInterchainAccount',
+      value: MsgRegisterInterchainAccount.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgRegisterInterchainAccountProtoMsg): MsgRegisterInterchainAccount {
+  fromProtoMsg(
+    message: MsgRegisterInterchainAccountProtoMsg
+  ): MsgRegisterInterchainAccount {
     return MsgRegisterInterchainAccount.decode(message.value);
   },
   toProto(message: MsgRegisterInterchainAccount): Uint8Array {
     return MsgRegisterInterchainAccount.encode(message).finish();
   },
-  toProtoMsg(message: MsgRegisterInterchainAccount): MsgRegisterInterchainAccountProtoMsg {
+  toProtoMsg(
+    message: MsgRegisterInterchainAccount
+  ): MsgRegisterInterchainAccountProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccount",
-      value: MsgRegisterInterchainAccount.encode(message).finish()
+      typeUrl:
+        '/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccount',
+      value: MsgRegisterInterchainAccount.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgRegisterInterchainAccountResponse(): MsgRegisterInterchainAccountResponse {
   return {
-    channelId: "",
-    portId: ""
+    channelId: '',
+    portId: '',
   };
 }
 export const MsgRegisterInterchainAccountResponse = {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccountResponse",
-  encode(message: MsgRegisterInterchainAccountResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.channelId !== "") {
+  typeUrl:
+    '/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccountResponse',
+  encode(
+    message: MsgRegisterInterchainAccountResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.channelId !== '') {
       writer.uint32(10).string(message.channelId);
     }
-    if (message.portId !== "") {
+    if (message.portId !== '') {
       writer.uint32(18).string(message.portId);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgRegisterInterchainAccountResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgRegisterInterchainAccountResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRegisterInterchainAccountResponse();
     while (reader.pos < end) {
@@ -303,13 +339,17 @@ export const MsgRegisterInterchainAccountResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgRegisterInterchainAccountResponse>): MsgRegisterInterchainAccountResponse {
+  fromPartial(
+    object: Partial<MsgRegisterInterchainAccountResponse>
+  ): MsgRegisterInterchainAccountResponse {
     const message = createBaseMsgRegisterInterchainAccountResponse();
-    message.channelId = object.channelId ?? "";
-    message.portId = object.portId ?? "";
+    message.channelId = object.channelId ?? '';
+    message.portId = object.portId ?? '';
     return message;
   },
-  fromAmino(object: MsgRegisterInterchainAccountResponseAmino): MsgRegisterInterchainAccountResponse {
+  fromAmino(
+    object: MsgRegisterInterchainAccountResponseAmino
+  ): MsgRegisterInterchainAccountResponse {
     const message = createBaseMsgRegisterInterchainAccountResponse();
     if (object.channel_id !== undefined && object.channel_id !== null) {
       message.channelId = object.channel_id;
@@ -319,53 +359,70 @@ export const MsgRegisterInterchainAccountResponse = {
     }
     return message;
   },
-  toAmino(message: MsgRegisterInterchainAccountResponse): MsgRegisterInterchainAccountResponseAmino {
+  toAmino(
+    message: MsgRegisterInterchainAccountResponse
+  ): MsgRegisterInterchainAccountResponseAmino {
     const obj: any = {};
-    obj.channel_id = message.channelId === "" ? undefined : message.channelId;
-    obj.port_id = message.portId === "" ? undefined : message.portId;
+    obj.channel_id = message.channelId === '' ? undefined : message.channelId;
+    obj.port_id = message.portId === '' ? undefined : message.portId;
     return obj;
   },
-  fromAminoMsg(object: MsgRegisterInterchainAccountResponseAminoMsg): MsgRegisterInterchainAccountResponse {
+  fromAminoMsg(
+    object: MsgRegisterInterchainAccountResponseAminoMsg
+  ): MsgRegisterInterchainAccountResponse {
     return MsgRegisterInterchainAccountResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgRegisterInterchainAccountResponse): MsgRegisterInterchainAccountResponseAminoMsg {
+  toAminoMsg(
+    message: MsgRegisterInterchainAccountResponse
+  ): MsgRegisterInterchainAccountResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgRegisterInterchainAccountResponse",
-      value: MsgRegisterInterchainAccountResponse.toAmino(message)
+      type: 'cosmos-sdk/MsgRegisterInterchainAccountResponse',
+      value: MsgRegisterInterchainAccountResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgRegisterInterchainAccountResponseProtoMsg): MsgRegisterInterchainAccountResponse {
+  fromProtoMsg(
+    message: MsgRegisterInterchainAccountResponseProtoMsg
+  ): MsgRegisterInterchainAccountResponse {
     return MsgRegisterInterchainAccountResponse.decode(message.value);
   },
   toProto(message: MsgRegisterInterchainAccountResponse): Uint8Array {
     return MsgRegisterInterchainAccountResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgRegisterInterchainAccountResponse): MsgRegisterInterchainAccountResponseProtoMsg {
+  toProtoMsg(
+    message: MsgRegisterInterchainAccountResponse
+  ): MsgRegisterInterchainAccountResponseProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccountResponse",
-      value: MsgRegisterInterchainAccountResponse.encode(message).finish()
+      typeUrl:
+        '/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccountResponse',
+      value: MsgRegisterInterchainAccountResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgSendTx(): MsgSendTx {
   return {
-    owner: "",
-    connectionId: "",
+    owner: '',
+    connectionId: '',
     packetData: InterchainAccountPacketData.fromPartial({}),
-    relativeTimeout: BigInt(0)
+    relativeTimeout: BigInt(0),
   };
 }
 export const MsgSendTx = {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTx",
-  encode(message: MsgSendTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.owner !== "") {
+  typeUrl: '/ibc.applications.interchain_accounts.controller.v1.MsgSendTx',
+  encode(
+    message: MsgSendTx,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.owner !== '') {
       writer.uint32(10).string(message.owner);
     }
-    if (message.connectionId !== "") {
+    if (message.connectionId !== '') {
       writer.uint32(18).string(message.connectionId);
     }
     if (message.packetData !== undefined) {
-      InterchainAccountPacketData.encode(message.packetData, writer.uint32(26).fork()).ldelim();
+      InterchainAccountPacketData.encode(
+        message.packetData,
+        writer.uint32(26).fork()
+      ).ldelim();
     }
     if (message.relativeTimeout !== BigInt(0)) {
       writer.uint32(32).uint64(message.relativeTimeout);
@@ -373,7 +430,8 @@ export const MsgSendTx = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgSendTx {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSendTx();
     while (reader.pos < end) {
@@ -386,7 +444,10 @@ export const MsgSendTx = {
           message.connectionId = reader.string();
           break;
         case 3:
-          message.packetData = InterchainAccountPacketData.decode(reader, reader.uint32());
+          message.packetData = InterchainAccountPacketData.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         case 4:
           message.relativeTimeout = reader.uint64();
@@ -400,10 +461,16 @@ export const MsgSendTx = {
   },
   fromPartial(object: Partial<MsgSendTx>): MsgSendTx {
     const message = createBaseMsgSendTx();
-    message.owner = object.owner ?? "";
-    message.connectionId = object.connectionId ?? "";
-    message.packetData = object.packetData !== undefined && object.packetData !== null ? InterchainAccountPacketData.fromPartial(object.packetData) : undefined;
-    message.relativeTimeout = object.relativeTimeout !== undefined && object.relativeTimeout !== null ? BigInt(object.relativeTimeout.toString()) : BigInt(0);
+    message.owner = object.owner ?? '';
+    message.connectionId = object.connectionId ?? '';
+    message.packetData =
+      object.packetData !== undefined && object.packetData !== null
+        ? InterchainAccountPacketData.fromPartial(object.packetData)
+        : undefined;
+    message.relativeTimeout =
+      object.relativeTimeout !== undefined && object.relativeTimeout !== null
+        ? BigInt(object.relativeTimeout.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: MsgSendTxAmino): MsgSendTx {
@@ -415,19 +482,30 @@ export const MsgSendTx = {
       message.connectionId = object.connection_id;
     }
     if (object.packet_data !== undefined && object.packet_data !== null) {
-      message.packetData = InterchainAccountPacketData.fromAmino(object.packet_data);
+      message.packetData = InterchainAccountPacketData.fromAmino(
+        object.packet_data
+      );
     }
-    if (object.relative_timeout !== undefined && object.relative_timeout !== null) {
+    if (
+      object.relative_timeout !== undefined &&
+      object.relative_timeout !== null
+    ) {
       message.relativeTimeout = BigInt(object.relative_timeout);
     }
     return message;
   },
   toAmino(message: MsgSendTx): MsgSendTxAmino {
     const obj: any = {};
-    obj.owner = message.owner === "" ? undefined : message.owner;
-    obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
-    obj.packet_data = message.packetData ? InterchainAccountPacketData.toAmino(message.packetData) : undefined;
-    obj.relative_timeout = message.relativeTimeout !== BigInt(0) ? message.relativeTimeout?.toString() : undefined;
+    obj.owner = message.owner === '' ? undefined : message.owner;
+    obj.connection_id =
+      message.connectionId === '' ? undefined : message.connectionId;
+    obj.packet_data = message.packetData
+      ? InterchainAccountPacketData.toAmino(message.packetData)
+      : undefined;
+    obj.relative_timeout =
+      message.relativeTimeout !== BigInt(0)
+        ? message.relativeTimeout?.toString()
+        : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgSendTxAminoMsg): MsgSendTx {
@@ -435,8 +513,8 @@ export const MsgSendTx = {
   },
   toAminoMsg(message: MsgSendTx): MsgSendTxAminoMsg {
     return {
-      type: "cosmos-sdk/MsgSendTx",
-      value: MsgSendTx.toAmino(message)
+      type: 'cosmos-sdk/MsgSendTx',
+      value: MsgSendTx.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgSendTxProtoMsg): MsgSendTx {
@@ -447,26 +525,31 @@ export const MsgSendTx = {
   },
   toProtoMsg(message: MsgSendTx): MsgSendTxProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTx",
-      value: MsgSendTx.encode(message).finish()
+      typeUrl: '/ibc.applications.interchain_accounts.controller.v1.MsgSendTx',
+      value: MsgSendTx.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgSendTxResponse(): MsgSendTxResponse {
   return {
-    sequence: BigInt(0)
+    sequence: BigInt(0),
   };
 }
 export const MsgSendTxResponse = {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTxResponse",
-  encode(message: MsgSendTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl:
+    '/ibc.applications.interchain_accounts.controller.v1.MsgSendTxResponse',
+  encode(
+    message: MsgSendTxResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.sequence !== BigInt(0)) {
       writer.uint32(8).uint64(message.sequence);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgSendTxResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSendTxResponse();
     while (reader.pos < end) {
@@ -484,7 +567,10 @@ export const MsgSendTxResponse = {
   },
   fromPartial(object: Partial<MsgSendTxResponse>): MsgSendTxResponse {
     const message = createBaseMsgSendTxResponse();
-    message.sequence = object.sequence !== undefined && object.sequence !== null ? BigInt(object.sequence.toString()) : BigInt(0);
+    message.sequence =
+      object.sequence !== undefined && object.sequence !== null
+        ? BigInt(object.sequence.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: MsgSendTxResponseAmino): MsgSendTxResponse {
@@ -496,7 +582,8 @@ export const MsgSendTxResponse = {
   },
   toAmino(message: MsgSendTxResponse): MsgSendTxResponseAmino {
     const obj: any = {};
-    obj.sequence = message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
+    obj.sequence =
+      message.sequence !== BigInt(0) ? message.sequence?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgSendTxResponseAminoMsg): MsgSendTxResponse {
@@ -504,8 +591,8 @@ export const MsgSendTxResponse = {
   },
   toAminoMsg(message: MsgSendTxResponse): MsgSendTxResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgSendTxResponse",
-      value: MsgSendTxResponse.toAmino(message)
+      type: 'cosmos-sdk/MsgSendTxResponse',
+      value: MsgSendTxResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgSendTxResponseProtoMsg): MsgSendTxResponse {
@@ -516,21 +603,26 @@ export const MsgSendTxResponse = {
   },
   toProtoMsg(message: MsgSendTxResponse): MsgSendTxResponseProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTxResponse",
-      value: MsgSendTxResponse.encode(message).finish()
+      typeUrl:
+        '/ibc.applications.interchain_accounts.controller.v1.MsgSendTxResponse',
+      value: MsgSendTxResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
-    signer: "",
-    params: Params.fromPartial({})
+    signer: '',
+    params: Params.fromPartial({}),
   };
 }
 export const MsgUpdateParams = {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParams",
-  encode(message: MsgUpdateParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.signer !== "") {
+  typeUrl:
+    '/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParams',
+  encode(
+    message: MsgUpdateParams,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.signer !== '') {
       writer.uint32(10).string(message.signer);
     }
     if (message.params !== undefined) {
@@ -539,7 +631,8 @@ export const MsgUpdateParams = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParams {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateParams();
     while (reader.pos < end) {
@@ -560,8 +653,11 @@ export const MsgUpdateParams = {
   },
   fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams {
     const message = createBaseMsgUpdateParams();
-    message.signer = object.signer ?? "";
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.signer = object.signer ?? '';
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
@@ -576,7 +672,7 @@ export const MsgUpdateParams = {
   },
   toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino {
     const obj: any = {};
-    obj.signer = message.signer === "" ? undefined : message.signer;
+    obj.signer = message.signer === '' ? undefined : message.signer;
     obj.params = message.params ? Params.toAmino(message.params) : undefined;
     return obj;
   },
@@ -585,8 +681,8 @@ export const MsgUpdateParams = {
   },
   toAminoMsg(message: MsgUpdateParams): MsgUpdateParamsAminoMsg {
     return {
-      type: "cosmos-sdk/MsgUpdateParams",
-      value: MsgUpdateParams.toAmino(message)
+      type: 'cosmos-sdk/MsgUpdateParams',
+      value: MsgUpdateParams.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgUpdateParamsProtoMsg): MsgUpdateParams {
@@ -597,21 +693,30 @@ export const MsgUpdateParams = {
   },
   toProtoMsg(message: MsgUpdateParams): MsgUpdateParamsProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParams",
-      value: MsgUpdateParams.encode(message).finish()
+      typeUrl:
+        '/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParams',
+      value: MsgUpdateParams.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateParamsResponse(): MsgUpdateParamsResponse {
   return {};
 }
 export const MsgUpdateParamsResponse = {
-  typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParamsResponse",
-  encode(_: MsgUpdateParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl:
+    '/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParamsResponse',
+  encode(
+    _: MsgUpdateParamsResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParamsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgUpdateParamsResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateParamsResponse();
     while (reader.pos < end) {
@@ -636,25 +741,34 @@ export const MsgUpdateParamsResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse {
+  fromAminoMsg(
+    object: MsgUpdateParamsResponseAminoMsg
+  ): MsgUpdateParamsResponse {
     return MsgUpdateParamsResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseAminoMsg {
+  toAminoMsg(
+    message: MsgUpdateParamsResponse
+  ): MsgUpdateParamsResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgUpdateParamsResponse",
-      value: MsgUpdateParamsResponse.toAmino(message)
+      type: 'cosmos-sdk/MsgUpdateParamsResponse',
+      value: MsgUpdateParamsResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgUpdateParamsResponseProtoMsg): MsgUpdateParamsResponse {
+  fromProtoMsg(
+    message: MsgUpdateParamsResponseProtoMsg
+  ): MsgUpdateParamsResponse {
     return MsgUpdateParamsResponse.decode(message.value);
   },
   toProto(message: MsgUpdateParamsResponse): Uint8Array {
     return MsgUpdateParamsResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseProtoMsg {
+  toProtoMsg(
+    message: MsgUpdateParamsResponse
+  ): MsgUpdateParamsResponseProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParamsResponse",
-      value: MsgUpdateParamsResponse.encode(message).finish()
+      typeUrl:
+        '/ibc.applications.interchain_accounts.controller.v1.MsgUpdateParamsResponse',
+      value: MsgUpdateParamsResponse.encode(message).finish(),
     };
-  }
+  },
 };

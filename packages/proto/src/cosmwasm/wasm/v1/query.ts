@@ -1,9 +1,33 @@
 //@ts-nocheck
-import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../cosmos/base/query/v1beta1/pagination";
-import { ContractInfo, ContractInfoAmino, ContractInfoSDKType, ContractCodeHistoryEntry, ContractCodeHistoryEntryAmino, ContractCodeHistoryEntrySDKType, Model, ModelAmino, ModelSDKType, AccessConfig, AccessConfigAmino, AccessConfigSDKType, Params, ParamsAmino, ParamsSDKType } from "./types";
-import { BinaryReader, BinaryWriter } from "../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
-import { toUtf8, fromUtf8 } from "@cosmjs/encoding";
+import { fromUtf8, toUtf8 } from '@cosmjs/encoding';
+
+import { BinaryReader, BinaryWriter } from '../../../binary';
+import {
+  PageRequest,
+  PageRequestAmino,
+  PageRequestSDKType,
+  PageResponse,
+  PageResponseAmino,
+  PageResponseSDKType,
+} from '../../../cosmos/base/query/v1beta1/pagination';
+import { base64FromBytes, bytesFromBase64 } from '../../../helpers';
+import {
+  AccessConfig,
+  AccessConfigAmino,
+  AccessConfigSDKType,
+  ContractCodeHistoryEntry,
+  ContractCodeHistoryEntryAmino,
+  ContractCodeHistoryEntrySDKType,
+  ContractInfo,
+  ContractInfoAmino,
+  ContractInfoSDKType,
+  Model,
+  ModelAmino,
+  ModelSDKType,
+  Params,
+  ParamsAmino,
+  ParamsSDKType,
+} from './types';
 /**
  * QueryContractInfoRequest is the request type for the Query/ContractInfo RPC
  * method
@@ -13,7 +37,7 @@ export interface QueryContractInfoRequest {
   address: string;
 }
 export interface QueryContractInfoRequestProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractInfoRequest";
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractInfoRequest';
   value: Uint8Array;
 }
 /**
@@ -25,7 +49,7 @@ export interface QueryContractInfoRequestAmino {
   address?: string;
 }
 export interface QueryContractInfoRequestAminoMsg {
-  type: "wasm/QueryContractInfoRequest";
+  type: 'wasm/QueryContractInfoRequest';
   value: QueryContractInfoRequestAmino;
 }
 /**
@@ -45,7 +69,7 @@ export interface QueryContractInfoResponse {
   contractInfo: ContractInfo;
 }
 export interface QueryContractInfoResponseProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractInfoResponse";
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractInfoResponse';
   value: Uint8Array;
 }
 /**
@@ -58,7 +82,7 @@ export interface QueryContractInfoResponseAmino {
   contract_info: ContractInfoAmino;
 }
 export interface QueryContractInfoResponseAminoMsg {
-  type: "wasm/QueryContractInfoResponse";
+  type: 'wasm/QueryContractInfoResponse';
   value: QueryContractInfoResponseAmino;
 }
 /**
@@ -80,7 +104,7 @@ export interface QueryContractHistoryRequest {
   pagination?: PageRequest;
 }
 export interface QueryContractHistoryRequestProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractHistoryRequest";
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractHistoryRequest';
   value: Uint8Array;
 }
 /**
@@ -94,7 +118,7 @@ export interface QueryContractHistoryRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryContractHistoryRequestAminoMsg {
-  type: "wasm/QueryContractHistoryRequest";
+  type: 'wasm/QueryContractHistoryRequest';
   value: QueryContractHistoryRequestAmino;
 }
 /**
@@ -115,7 +139,7 @@ export interface QueryContractHistoryResponse {
   pagination?: PageResponse;
 }
 export interface QueryContractHistoryResponseProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractHistoryResponse";
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractHistoryResponse';
   value: Uint8Array;
 }
 /**
@@ -128,7 +152,7 @@ export interface QueryContractHistoryResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryContractHistoryResponseAminoMsg {
-  type: "wasm/QueryContractHistoryResponse";
+  type: 'wasm/QueryContractHistoryResponse';
   value: QueryContractHistoryResponseAmino;
 }
 /**
@@ -150,7 +174,7 @@ export interface QueryContractsByCodeRequest {
   pagination?: PageRequest;
 }
 export interface QueryContractsByCodeRequestProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCodeRequest";
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractsByCodeRequest';
   value: Uint8Array;
 }
 /**
@@ -164,7 +188,7 @@ export interface QueryContractsByCodeRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryContractsByCodeRequestAminoMsg {
-  type: "wasm/QueryContractsByCodeRequest";
+  type: 'wasm/QueryContractsByCodeRequest';
   value: QueryContractsByCodeRequestAmino;
 }
 /**
@@ -186,7 +210,7 @@ export interface QueryContractsByCodeResponse {
   pagination?: PageResponse;
 }
 export interface QueryContractsByCodeResponseProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCodeResponse";
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractsByCodeResponse';
   value: Uint8Array;
 }
 /**
@@ -200,7 +224,7 @@ export interface QueryContractsByCodeResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryContractsByCodeResponseAminoMsg {
-  type: "wasm/QueryContractsByCodeResponse";
+  type: 'wasm/QueryContractsByCodeResponse';
   value: QueryContractsByCodeResponseAmino;
 }
 /**
@@ -222,7 +246,7 @@ export interface QueryAllContractStateRequest {
   pagination?: PageRequest;
 }
 export interface QueryAllContractStateRequestProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryAllContractStateRequest";
+  typeUrl: '/cosmwasm.wasm.v1.QueryAllContractStateRequest';
   value: Uint8Array;
 }
 /**
@@ -236,7 +260,7 @@ export interface QueryAllContractStateRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryAllContractStateRequestAminoMsg {
-  type: "wasm/QueryAllContractStateRequest";
+  type: 'wasm/QueryAllContractStateRequest';
   value: QueryAllContractStateRequestAmino;
 }
 /**
@@ -257,7 +281,7 @@ export interface QueryAllContractStateResponse {
   pagination?: PageResponse;
 }
 export interface QueryAllContractStateResponseProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryAllContractStateResponse";
+  typeUrl: '/cosmwasm.wasm.v1.QueryAllContractStateResponse';
   value: Uint8Array;
 }
 /**
@@ -270,7 +294,7 @@ export interface QueryAllContractStateResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryAllContractStateResponseAminoMsg {
-  type: "wasm/QueryAllContractStateResponse";
+  type: 'wasm/QueryAllContractStateResponse';
   value: QueryAllContractStateResponseAmino;
 }
 /**
@@ -291,7 +315,7 @@ export interface QueryRawContractStateRequest {
   queryData: Uint8Array;
 }
 export interface QueryRawContractStateRequestProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryRawContractStateRequest";
+  typeUrl: '/cosmwasm.wasm.v1.QueryRawContractStateRequest';
   value: Uint8Array;
 }
 /**
@@ -304,7 +328,7 @@ export interface QueryRawContractStateRequestAmino {
   query_data?: string;
 }
 export interface QueryRawContractStateRequestAminoMsg {
-  type: "wasm/QueryRawContractStateRequest";
+  type: 'wasm/QueryRawContractStateRequest';
   value: QueryRawContractStateRequestAmino;
 }
 /**
@@ -324,7 +348,7 @@ export interface QueryRawContractStateResponse {
   data: Uint8Array;
 }
 export interface QueryRawContractStateResponseProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryRawContractStateResponse";
+  typeUrl: '/cosmwasm.wasm.v1.QueryRawContractStateResponse';
   value: Uint8Array;
 }
 /**
@@ -336,7 +360,7 @@ export interface QueryRawContractStateResponseAmino {
   data?: string;
 }
 export interface QueryRawContractStateResponseAminoMsg {
-  type: "wasm/QueryRawContractStateResponse";
+  type: 'wasm/QueryRawContractStateResponse';
   value: QueryRawContractStateResponseAmino;
 }
 /**
@@ -357,7 +381,7 @@ export interface QuerySmartContractStateRequest {
   queryData: Uint8Array;
 }
 export interface QuerySmartContractStateRequestProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QuerySmartContractStateRequest";
+  typeUrl: '/cosmwasm.wasm.v1.QuerySmartContractStateRequest';
   value: Uint8Array;
 }
 /**
@@ -371,7 +395,7 @@ export interface QuerySmartContractStateRequestAmino {
   query_data?: any;
 }
 export interface QuerySmartContractStateRequestAminoMsg {
-  type: "wasm/QuerySmartContractStateRequest";
+  type: 'wasm/QuerySmartContractStateRequest';
   value: QuerySmartContractStateRequestAmino;
 }
 /**
@@ -391,7 +415,7 @@ export interface QuerySmartContractStateResponse {
   data: Uint8Array;
 }
 export interface QuerySmartContractStateResponseProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QuerySmartContractStateResponse";
+  typeUrl: '/cosmwasm.wasm.v1.QuerySmartContractStateResponse';
   value: Uint8Array;
 }
 /**
@@ -403,7 +427,7 @@ export interface QuerySmartContractStateResponseAmino {
   data?: any;
 }
 export interface QuerySmartContractStateResponseAminoMsg {
-  type: "wasm/QuerySmartContractStateResponse";
+  type: 'wasm/QuerySmartContractStateResponse';
   value: QuerySmartContractStateResponseAmino;
 }
 /**
@@ -419,7 +443,7 @@ export interface QueryCodeRequest {
   codeId: bigint;
 }
 export interface QueryCodeRequestProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryCodeRequest";
+  typeUrl: '/cosmwasm.wasm.v1.QueryCodeRequest';
   value: Uint8Array;
 }
 /** QueryCodeRequest is the request type for the Query/Code RPC method */
@@ -428,7 +452,7 @@ export interface QueryCodeRequestAmino {
   code_id?: string;
 }
 export interface QueryCodeRequestAminoMsg {
-  type: "wasm/QueryCodeRequest";
+  type: 'wasm/QueryCodeRequest';
   value: QueryCodeRequestAmino;
 }
 /** QueryCodeRequest is the request type for the Query/Code RPC method */
@@ -443,7 +467,7 @@ export interface CodeInfoResponse {
   instantiatePermission: AccessConfig;
 }
 export interface CodeInfoResponseProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.CodeInfoResponse";
+  typeUrl: '/cosmwasm.wasm.v1.CodeInfoResponse';
   value: Uint8Array;
 }
 /** CodeInfoResponse contains code meta data from CodeInfo */
@@ -454,7 +478,7 @@ export interface CodeInfoResponseAmino {
   instantiate_permission: AccessConfigAmino;
 }
 export interface CodeInfoResponseAminoMsg {
-  type: "wasm/CodeInfoResponse";
+  type: 'wasm/CodeInfoResponse';
   value: CodeInfoResponseAmino;
 }
 /** CodeInfoResponse contains code meta data from CodeInfo */
@@ -470,7 +494,7 @@ export interface QueryCodeResponse {
   data: Uint8Array;
 }
 export interface QueryCodeResponseProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryCodeResponse";
+  typeUrl: '/cosmwasm.wasm.v1.QueryCodeResponse';
   value: Uint8Array;
 }
 /** QueryCodeResponse is the response type for the Query/Code RPC method */
@@ -479,7 +503,7 @@ export interface QueryCodeResponseAmino {
   data: string;
 }
 export interface QueryCodeResponseAminoMsg {
-  type: "wasm/QueryCodeResponse";
+  type: 'wasm/QueryCodeResponse';
   value: QueryCodeResponseAmino;
 }
 /** QueryCodeResponse is the response type for the Query/Code RPC method */
@@ -493,7 +517,7 @@ export interface QueryCodesRequest {
   pagination?: PageRequest;
 }
 export interface QueryCodesRequestProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryCodesRequest";
+  typeUrl: '/cosmwasm.wasm.v1.QueryCodesRequest';
   value: Uint8Array;
 }
 /** QueryCodesRequest is the request type for the Query/Codes RPC method */
@@ -502,7 +526,7 @@ export interface QueryCodesRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryCodesRequestAminoMsg {
-  type: "wasm/QueryCodesRequest";
+  type: 'wasm/QueryCodesRequest';
   value: QueryCodesRequestAmino;
 }
 /** QueryCodesRequest is the request type for the Query/Codes RPC method */
@@ -516,7 +540,7 @@ export interface QueryCodesResponse {
   pagination?: PageResponse;
 }
 export interface QueryCodesResponseProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryCodesResponse";
+  typeUrl: '/cosmwasm.wasm.v1.QueryCodesResponse';
   value: Uint8Array;
 }
 /** QueryCodesResponse is the response type for the Query/Codes RPC method */
@@ -526,7 +550,7 @@ export interface QueryCodesResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryCodesResponseAminoMsg {
-  type: "wasm/QueryCodesResponse";
+  type: 'wasm/QueryCodesResponse';
   value: QueryCodesResponseAmino;
 }
 /** QueryCodesResponse is the response type for the Query/Codes RPC method */
@@ -543,7 +567,7 @@ export interface QueryPinnedCodesRequest {
   pagination?: PageRequest;
 }
 export interface QueryPinnedCodesRequestProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryPinnedCodesRequest";
+  typeUrl: '/cosmwasm.wasm.v1.QueryPinnedCodesRequest';
   value: Uint8Array;
 }
 /**
@@ -555,7 +579,7 @@ export interface QueryPinnedCodesRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryPinnedCodesRequestAminoMsg {
-  type: "wasm/QueryPinnedCodesRequest";
+  type: 'wasm/QueryPinnedCodesRequest';
   value: QueryPinnedCodesRequestAmino;
 }
 /**
@@ -575,7 +599,7 @@ export interface QueryPinnedCodesResponse {
   pagination?: PageResponse;
 }
 export interface QueryPinnedCodesResponseProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryPinnedCodesResponse";
+  typeUrl: '/cosmwasm.wasm.v1.QueryPinnedCodesResponse';
   value: Uint8Array;
 }
 /**
@@ -588,7 +612,7 @@ export interface QueryPinnedCodesResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryPinnedCodesResponseAminoMsg {
-  type: "wasm/QueryPinnedCodesResponse";
+  type: 'wasm/QueryPinnedCodesResponse';
   value: QueryPinnedCodesResponseAmino;
 }
 /**
@@ -602,13 +626,13 @@ export interface QueryPinnedCodesResponseSDKType {
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryParamsRequest";
+  typeUrl: '/cosmwasm.wasm.v1.QueryParamsRequest';
   value: Uint8Array;
 }
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
-  type: "wasm/QueryParamsRequest";
+  type: 'wasm/QueryParamsRequest';
   value: QueryParamsRequestAmino;
 }
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
@@ -619,7 +643,7 @@ export interface QueryParamsResponse {
   params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryParamsResponse";
+  typeUrl: '/cosmwasm.wasm.v1.QueryParamsResponse';
   value: Uint8Array;
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
@@ -628,7 +652,7 @@ export interface QueryParamsResponseAmino {
   params: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
-  type: "wasm/QueryParamsResponse";
+  type: 'wasm/QueryParamsResponse';
   value: QueryParamsResponseAmino;
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
@@ -646,7 +670,7 @@ export interface QueryContractsByCreatorRequest {
   pagination?: PageRequest;
 }
 export interface QueryContractsByCreatorRequestProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCreatorRequest";
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractsByCreatorRequest';
   value: Uint8Array;
 }
 /**
@@ -660,7 +684,7 @@ export interface QueryContractsByCreatorRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryContractsByCreatorRequestAminoMsg {
-  type: "wasm/QueryContractsByCreatorRequest";
+  type: 'wasm/QueryContractsByCreatorRequest';
   value: QueryContractsByCreatorRequestAmino;
 }
 /**
@@ -682,7 +706,7 @@ export interface QueryContractsByCreatorResponse {
   pagination?: PageResponse;
 }
 export interface QueryContractsByCreatorResponseProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCreatorResponse";
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractsByCreatorResponse';
   value: Uint8Array;
 }
 /**
@@ -696,7 +720,7 @@ export interface QueryContractsByCreatorResponseAmino {
   pagination?: PageResponseAmino;
 }
 export interface QueryContractsByCreatorResponseAminoMsg {
-  type: "wasm/QueryContractsByCreatorResponse";
+  type: 'wasm/QueryContractsByCreatorResponse';
   value: QueryContractsByCreatorResponseAmino;
 }
 /**
@@ -725,7 +749,7 @@ export interface QueryBuildAddressRequest {
   initArgs: Uint8Array;
 }
 export interface QueryBuildAddressRequestProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryBuildAddressRequest";
+  typeUrl: '/cosmwasm.wasm.v1.QueryBuildAddressRequest';
   value: Uint8Array;
 }
 /**
@@ -746,7 +770,7 @@ export interface QueryBuildAddressRequestAmino {
   init_args?: string;
 }
 export interface QueryBuildAddressRequestAminoMsg {
-  type: "wasm/QueryBuildAddressRequest";
+  type: 'wasm/QueryBuildAddressRequest';
   value: QueryBuildAddressRequestAmino;
 }
 /**
@@ -768,7 +792,7 @@ export interface QueryBuildAddressResponse {
   address: string;
 }
 export interface QueryBuildAddressResponseProtoMsg {
-  typeUrl: "/cosmwasm.wasm.v1.QueryBuildAddressResponse";
+  typeUrl: '/cosmwasm.wasm.v1.QueryBuildAddressResponse';
   value: Uint8Array;
 }
 /**
@@ -780,7 +804,7 @@ export interface QueryBuildAddressResponseAmino {
   address?: string;
 }
 export interface QueryBuildAddressResponseAminoMsg {
-  type: "wasm/QueryBuildAddressResponse";
+  type: 'wasm/QueryBuildAddressResponse';
   value: QueryBuildAddressResponseAmino;
 }
 /**
@@ -792,19 +816,26 @@ export interface QueryBuildAddressResponseSDKType {
 }
 function createBaseQueryContractInfoRequest(): QueryContractInfoRequest {
   return {
-    address: ""
+    address: '',
   };
 }
 export const QueryContractInfoRequest = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractInfoRequest",
-  encode(message: QueryContractInfoRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.address !== "") {
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractInfoRequest',
+  encode(
+    message: QueryContractInfoRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryContractInfoRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryContractInfoRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryContractInfoRequest();
     while (reader.pos < end) {
@@ -820,9 +851,11 @@ export const QueryContractInfoRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryContractInfoRequest>): QueryContractInfoRequest {
+  fromPartial(
+    object: Partial<QueryContractInfoRequest>
+  ): QueryContractInfoRequest {
     const message = createBaseQueryContractInfoRequest();
-    message.address = object.address ?? "";
+    message.address = object.address ?? '';
     return message;
   },
   fromAmino(object: QueryContractInfoRequestAmino): QueryContractInfoRequest {
@@ -834,50 +867,68 @@ export const QueryContractInfoRequest = {
   },
   toAmino(message: QueryContractInfoRequest): QueryContractInfoRequestAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
+    obj.address = message.address === '' ? undefined : message.address;
     return obj;
   },
-  fromAminoMsg(object: QueryContractInfoRequestAminoMsg): QueryContractInfoRequest {
+  fromAminoMsg(
+    object: QueryContractInfoRequestAminoMsg
+  ): QueryContractInfoRequest {
     return QueryContractInfoRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryContractInfoRequest): QueryContractInfoRequestAminoMsg {
+  toAminoMsg(
+    message: QueryContractInfoRequest
+  ): QueryContractInfoRequestAminoMsg {
     return {
-      type: "wasm/QueryContractInfoRequest",
-      value: QueryContractInfoRequest.toAmino(message)
+      type: 'wasm/QueryContractInfoRequest',
+      value: QueryContractInfoRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryContractInfoRequestProtoMsg): QueryContractInfoRequest {
+  fromProtoMsg(
+    message: QueryContractInfoRequestProtoMsg
+  ): QueryContractInfoRequest {
     return QueryContractInfoRequest.decode(message.value);
   },
   toProto(message: QueryContractInfoRequest): Uint8Array {
     return QueryContractInfoRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryContractInfoRequest): QueryContractInfoRequestProtoMsg {
+  toProtoMsg(
+    message: QueryContractInfoRequest
+  ): QueryContractInfoRequestProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryContractInfoRequest",
-      value: QueryContractInfoRequest.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryContractInfoRequest',
+      value: QueryContractInfoRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryContractInfoResponse(): QueryContractInfoResponse {
   return {
-    address: "",
-    contractInfo: ContractInfo.fromPartial({})
+    address: '',
+    contractInfo: ContractInfo.fromPartial({}),
   };
 }
 export const QueryContractInfoResponse = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractInfoResponse",
-  encode(message: QueryContractInfoResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.address !== "") {
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractInfoResponse',
+  encode(
+    message: QueryContractInfoResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     if (message.contractInfo !== undefined) {
-      ContractInfo.encode(message.contractInfo, writer.uint32(18).fork()).ldelim();
+      ContractInfo.encode(
+        message.contractInfo,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryContractInfoResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryContractInfoResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryContractInfoResponse();
     while (reader.pos < end) {
@@ -896,10 +947,15 @@ export const QueryContractInfoResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryContractInfoResponse>): QueryContractInfoResponse {
+  fromPartial(
+    object: Partial<QueryContractInfoResponse>
+  ): QueryContractInfoResponse {
     const message = createBaseQueryContractInfoResponse();
-    message.address = object.address ?? "";
-    message.contractInfo = object.contractInfo !== undefined && object.contractInfo !== null ? ContractInfo.fromPartial(object.contractInfo) : undefined;
+    message.address = object.address ?? '';
+    message.contractInfo =
+      object.contractInfo !== undefined && object.contractInfo !== null
+        ? ContractInfo.fromPartial(object.contractInfo)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryContractInfoResponseAmino): QueryContractInfoResponse {
@@ -914,42 +970,55 @@ export const QueryContractInfoResponse = {
   },
   toAmino(message: QueryContractInfoResponse): QueryContractInfoResponseAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
-    obj.contract_info = message.contractInfo ? ContractInfo.toAmino(message.contractInfo) : ContractInfo.toAmino(ContractInfo.fromPartial({}));
+    obj.address = message.address === '' ? undefined : message.address;
+    obj.contract_info = message.contractInfo
+      ? ContractInfo.toAmino(message.contractInfo)
+      : ContractInfo.toAmino(ContractInfo.fromPartial({}));
     return obj;
   },
-  fromAminoMsg(object: QueryContractInfoResponseAminoMsg): QueryContractInfoResponse {
+  fromAminoMsg(
+    object: QueryContractInfoResponseAminoMsg
+  ): QueryContractInfoResponse {
     return QueryContractInfoResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryContractInfoResponse): QueryContractInfoResponseAminoMsg {
+  toAminoMsg(
+    message: QueryContractInfoResponse
+  ): QueryContractInfoResponseAminoMsg {
     return {
-      type: "wasm/QueryContractInfoResponse",
-      value: QueryContractInfoResponse.toAmino(message)
+      type: 'wasm/QueryContractInfoResponse',
+      value: QueryContractInfoResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryContractInfoResponseProtoMsg): QueryContractInfoResponse {
+  fromProtoMsg(
+    message: QueryContractInfoResponseProtoMsg
+  ): QueryContractInfoResponse {
     return QueryContractInfoResponse.decode(message.value);
   },
   toProto(message: QueryContractInfoResponse): Uint8Array {
     return QueryContractInfoResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryContractInfoResponse): QueryContractInfoResponseProtoMsg {
+  toProtoMsg(
+    message: QueryContractInfoResponse
+  ): QueryContractInfoResponseProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryContractInfoResponse",
-      value: QueryContractInfoResponse.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryContractInfoResponse',
+      value: QueryContractInfoResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryContractHistoryRequest(): QueryContractHistoryRequest {
   return {
-    address: "",
-    pagination: undefined
+    address: '',
+    pagination: undefined,
   };
 }
 export const QueryContractHistoryRequest = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractHistoryRequest",
-  encode(message: QueryContractHistoryRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.address !== "") {
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractHistoryRequest',
+  encode(
+    message: QueryContractHistoryRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     if (message.pagination !== undefined) {
@@ -957,8 +1026,12 @@ export const QueryContractHistoryRequest = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryContractHistoryRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryContractHistoryRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryContractHistoryRequest();
     while (reader.pos < end) {
@@ -977,13 +1050,20 @@ export const QueryContractHistoryRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryContractHistoryRequest>): QueryContractHistoryRequest {
+  fromPartial(
+    object: Partial<QueryContractHistoryRequest>
+  ): QueryContractHistoryRequest {
     const message = createBaseQueryContractHistoryRequest();
-    message.address = object.address ?? "";
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.address = object.address ?? '';
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryContractHistoryRequestAmino): QueryContractHistoryRequest {
+  fromAmino(
+    object: QueryContractHistoryRequestAmino
+  ): QueryContractHistoryRequest {
     const message = createBaseQueryContractHistoryRequest();
     if (object.address !== undefined && object.address !== null) {
       message.address = object.address;
@@ -993,60 +1073,84 @@ export const QueryContractHistoryRequest = {
     }
     return message;
   },
-  toAmino(message: QueryContractHistoryRequest): QueryContractHistoryRequestAmino {
+  toAmino(
+    message: QueryContractHistoryRequest
+  ): QueryContractHistoryRequestAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.address = message.address === '' ? undefined : message.address;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryContractHistoryRequestAminoMsg): QueryContractHistoryRequest {
+  fromAminoMsg(
+    object: QueryContractHistoryRequestAminoMsg
+  ): QueryContractHistoryRequest {
     return QueryContractHistoryRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryContractHistoryRequest): QueryContractHistoryRequestAminoMsg {
+  toAminoMsg(
+    message: QueryContractHistoryRequest
+  ): QueryContractHistoryRequestAminoMsg {
     return {
-      type: "wasm/QueryContractHistoryRequest",
-      value: QueryContractHistoryRequest.toAmino(message)
+      type: 'wasm/QueryContractHistoryRequest',
+      value: QueryContractHistoryRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryContractHistoryRequestProtoMsg): QueryContractHistoryRequest {
+  fromProtoMsg(
+    message: QueryContractHistoryRequestProtoMsg
+  ): QueryContractHistoryRequest {
     return QueryContractHistoryRequest.decode(message.value);
   },
   toProto(message: QueryContractHistoryRequest): Uint8Array {
     return QueryContractHistoryRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryContractHistoryRequest): QueryContractHistoryRequestProtoMsg {
+  toProtoMsg(
+    message: QueryContractHistoryRequest
+  ): QueryContractHistoryRequestProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryContractHistoryRequest",
-      value: QueryContractHistoryRequest.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryContractHistoryRequest',
+      value: QueryContractHistoryRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryContractHistoryResponse(): QueryContractHistoryResponse {
   return {
     entries: [],
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryContractHistoryResponse = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractHistoryResponse",
-  encode(message: QueryContractHistoryResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractHistoryResponse',
+  encode(
+    message: QueryContractHistoryResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.entries) {
       ContractCodeHistoryEntry.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryContractHistoryResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryContractHistoryResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryContractHistoryResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.entries.push(ContractCodeHistoryEntry.decode(reader, reader.uint32()));
+          message.entries.push(
+            ContractCodeHistoryEntry.decode(reader, reader.uint32())
+          );
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -1058,61 +1162,87 @@ export const QueryContractHistoryResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryContractHistoryResponse>): QueryContractHistoryResponse {
+  fromPartial(
+    object: Partial<QueryContractHistoryResponse>
+  ): QueryContractHistoryResponse {
     const message = createBaseQueryContractHistoryResponse();
-    message.entries = object.entries?.map(e => ContractCodeHistoryEntry.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    message.entries =
+      object.entries?.map((e) => ContractCodeHistoryEntry.fromPartial(e)) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryContractHistoryResponseAmino): QueryContractHistoryResponse {
+  fromAmino(
+    object: QueryContractHistoryResponseAmino
+  ): QueryContractHistoryResponse {
     const message = createBaseQueryContractHistoryResponse();
-    message.entries = object.entries?.map(e => ContractCodeHistoryEntry.fromAmino(e)) || [];
+    message.entries =
+      object.entries?.map((e) => ContractCodeHistoryEntry.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(message: QueryContractHistoryResponse): QueryContractHistoryResponseAmino {
+  toAmino(
+    message: QueryContractHistoryResponse
+  ): QueryContractHistoryResponseAmino {
     const obj: any = {};
     if (message.entries) {
-      obj.entries = message.entries.map(e => e ? ContractCodeHistoryEntry.toAmino(e) : undefined);
+      obj.entries = message.entries.map((e) =>
+        e ? ContractCodeHistoryEntry.toAmino(e) : undefined
+      );
     } else {
       obj.entries = message.entries;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryContractHistoryResponseAminoMsg): QueryContractHistoryResponse {
+  fromAminoMsg(
+    object: QueryContractHistoryResponseAminoMsg
+  ): QueryContractHistoryResponse {
     return QueryContractHistoryResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryContractHistoryResponse): QueryContractHistoryResponseAminoMsg {
+  toAminoMsg(
+    message: QueryContractHistoryResponse
+  ): QueryContractHistoryResponseAminoMsg {
     return {
-      type: "wasm/QueryContractHistoryResponse",
-      value: QueryContractHistoryResponse.toAmino(message)
+      type: 'wasm/QueryContractHistoryResponse',
+      value: QueryContractHistoryResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryContractHistoryResponseProtoMsg): QueryContractHistoryResponse {
+  fromProtoMsg(
+    message: QueryContractHistoryResponseProtoMsg
+  ): QueryContractHistoryResponse {
     return QueryContractHistoryResponse.decode(message.value);
   },
   toProto(message: QueryContractHistoryResponse): Uint8Array {
     return QueryContractHistoryResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryContractHistoryResponse): QueryContractHistoryResponseProtoMsg {
+  toProtoMsg(
+    message: QueryContractHistoryResponse
+  ): QueryContractHistoryResponseProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryContractHistoryResponse",
-      value: QueryContractHistoryResponse.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryContractHistoryResponse',
+      value: QueryContractHistoryResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryContractsByCodeRequest(): QueryContractsByCodeRequest {
   return {
     codeId: BigInt(0),
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryContractsByCodeRequest = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCodeRequest",
-  encode(message: QueryContractsByCodeRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractsByCodeRequest',
+  encode(
+    message: QueryContractsByCodeRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.codeId !== BigInt(0)) {
       writer.uint32(8).uint64(message.codeId);
     }
@@ -1121,8 +1251,12 @@ export const QueryContractsByCodeRequest = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryContractsByCodeRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryContractsByCodeRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryContractsByCodeRequest();
     while (reader.pos < end) {
@@ -1141,13 +1275,23 @@ export const QueryContractsByCodeRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryContractsByCodeRequest>): QueryContractsByCodeRequest {
+  fromPartial(
+    object: Partial<QueryContractsByCodeRequest>
+  ): QueryContractsByCodeRequest {
     const message = createBaseQueryContractsByCodeRequest();
-    message.codeId = object.codeId !== undefined && object.codeId !== null ? BigInt(object.codeId.toString()) : BigInt(0);
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.codeId =
+      object.codeId !== undefined && object.codeId !== null
+        ? BigInt(object.codeId.toString())
+        : BigInt(0);
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryContractsByCodeRequestAmino): QueryContractsByCodeRequest {
+  fromAmino(
+    object: QueryContractsByCodeRequestAmino
+  ): QueryContractsByCodeRequest {
     const message = createBaseQueryContractsByCodeRequest();
     if (object.code_id !== undefined && object.code_id !== null) {
       message.codeId = BigInt(object.code_id);
@@ -1157,53 +1301,76 @@ export const QueryContractsByCodeRequest = {
     }
     return message;
   },
-  toAmino(message: QueryContractsByCodeRequest): QueryContractsByCodeRequestAmino {
+  toAmino(
+    message: QueryContractsByCodeRequest
+  ): QueryContractsByCodeRequestAmino {
     const obj: any = {};
-    obj.code_id = message.codeId !== BigInt(0) ? message.codeId?.toString() : undefined;
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.code_id =
+      message.codeId !== BigInt(0) ? message.codeId?.toString() : undefined;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryContractsByCodeRequestAminoMsg): QueryContractsByCodeRequest {
+  fromAminoMsg(
+    object: QueryContractsByCodeRequestAminoMsg
+  ): QueryContractsByCodeRequest {
     return QueryContractsByCodeRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryContractsByCodeRequest): QueryContractsByCodeRequestAminoMsg {
+  toAminoMsg(
+    message: QueryContractsByCodeRequest
+  ): QueryContractsByCodeRequestAminoMsg {
     return {
-      type: "wasm/QueryContractsByCodeRequest",
-      value: QueryContractsByCodeRequest.toAmino(message)
+      type: 'wasm/QueryContractsByCodeRequest',
+      value: QueryContractsByCodeRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryContractsByCodeRequestProtoMsg): QueryContractsByCodeRequest {
+  fromProtoMsg(
+    message: QueryContractsByCodeRequestProtoMsg
+  ): QueryContractsByCodeRequest {
     return QueryContractsByCodeRequest.decode(message.value);
   },
   toProto(message: QueryContractsByCodeRequest): Uint8Array {
     return QueryContractsByCodeRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryContractsByCodeRequest): QueryContractsByCodeRequestProtoMsg {
+  toProtoMsg(
+    message: QueryContractsByCodeRequest
+  ): QueryContractsByCodeRequestProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCodeRequest",
-      value: QueryContractsByCodeRequest.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryContractsByCodeRequest',
+      value: QueryContractsByCodeRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryContractsByCodeResponse(): QueryContractsByCodeResponse {
   return {
     contracts: [],
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryContractsByCodeResponse = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCodeResponse",
-  encode(message: QueryContractsByCodeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractsByCodeResponse',
+  encode(
+    message: QueryContractsByCodeResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.contracts) {
       writer.uint32(10).string(v!);
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryContractsByCodeResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryContractsByCodeResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryContractsByCodeResponse();
     while (reader.pos < end) {
@@ -1222,62 +1389,84 @@ export const QueryContractsByCodeResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryContractsByCodeResponse>): QueryContractsByCodeResponse {
+  fromPartial(
+    object: Partial<QueryContractsByCodeResponse>
+  ): QueryContractsByCodeResponse {
     const message = createBaseQueryContractsByCodeResponse();
-    message.contracts = object.contracts?.map(e => e) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    message.contracts = object.contracts?.map((e) => e) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryContractsByCodeResponseAmino): QueryContractsByCodeResponse {
+  fromAmino(
+    object: QueryContractsByCodeResponseAmino
+  ): QueryContractsByCodeResponse {
     const message = createBaseQueryContractsByCodeResponse();
-    message.contracts = object.contracts?.map(e => e) || [];
+    message.contracts = object.contracts?.map((e) => e) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(message: QueryContractsByCodeResponse): QueryContractsByCodeResponseAmino {
+  toAmino(
+    message: QueryContractsByCodeResponse
+  ): QueryContractsByCodeResponseAmino {
     const obj: any = {};
     if (message.contracts) {
-      obj.contracts = message.contracts.map(e => e);
+      obj.contracts = message.contracts.map((e) => e);
     } else {
       obj.contracts = message.contracts;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryContractsByCodeResponseAminoMsg): QueryContractsByCodeResponse {
+  fromAminoMsg(
+    object: QueryContractsByCodeResponseAminoMsg
+  ): QueryContractsByCodeResponse {
     return QueryContractsByCodeResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryContractsByCodeResponse): QueryContractsByCodeResponseAminoMsg {
+  toAminoMsg(
+    message: QueryContractsByCodeResponse
+  ): QueryContractsByCodeResponseAminoMsg {
     return {
-      type: "wasm/QueryContractsByCodeResponse",
-      value: QueryContractsByCodeResponse.toAmino(message)
+      type: 'wasm/QueryContractsByCodeResponse',
+      value: QueryContractsByCodeResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryContractsByCodeResponseProtoMsg): QueryContractsByCodeResponse {
+  fromProtoMsg(
+    message: QueryContractsByCodeResponseProtoMsg
+  ): QueryContractsByCodeResponse {
     return QueryContractsByCodeResponse.decode(message.value);
   },
   toProto(message: QueryContractsByCodeResponse): Uint8Array {
     return QueryContractsByCodeResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryContractsByCodeResponse): QueryContractsByCodeResponseProtoMsg {
+  toProtoMsg(
+    message: QueryContractsByCodeResponse
+  ): QueryContractsByCodeResponseProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCodeResponse",
-      value: QueryContractsByCodeResponse.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryContractsByCodeResponse',
+      value: QueryContractsByCodeResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAllContractStateRequest(): QueryAllContractStateRequest {
   return {
-    address: "",
-    pagination: undefined
+    address: '',
+    pagination: undefined,
   };
 }
 export const QueryAllContractStateRequest = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryAllContractStateRequest",
-  encode(message: QueryAllContractStateRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.address !== "") {
+  typeUrl: '/cosmwasm.wasm.v1.QueryAllContractStateRequest',
+  encode(
+    message: QueryAllContractStateRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     if (message.pagination !== undefined) {
@@ -1285,8 +1474,12 @@ export const QueryAllContractStateRequest = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryAllContractStateRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryAllContractStateRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllContractStateRequest();
     while (reader.pos < end) {
@@ -1305,13 +1498,20 @@ export const QueryAllContractStateRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAllContractStateRequest>): QueryAllContractStateRequest {
+  fromPartial(
+    object: Partial<QueryAllContractStateRequest>
+  ): QueryAllContractStateRequest {
     const message = createBaseQueryAllContractStateRequest();
-    message.address = object.address ?? "";
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.address = object.address ?? '';
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryAllContractStateRequestAmino): QueryAllContractStateRequest {
+  fromAmino(
+    object: QueryAllContractStateRequestAmino
+  ): QueryAllContractStateRequest {
     const message = createBaseQueryAllContractStateRequest();
     if (object.address !== undefined && object.address !== null) {
       message.address = object.address;
@@ -1321,53 +1521,75 @@ export const QueryAllContractStateRequest = {
     }
     return message;
   },
-  toAmino(message: QueryAllContractStateRequest): QueryAllContractStateRequestAmino {
+  toAmino(
+    message: QueryAllContractStateRequest
+  ): QueryAllContractStateRequestAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.address = message.address === '' ? undefined : message.address;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryAllContractStateRequestAminoMsg): QueryAllContractStateRequest {
+  fromAminoMsg(
+    object: QueryAllContractStateRequestAminoMsg
+  ): QueryAllContractStateRequest {
     return QueryAllContractStateRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryAllContractStateRequest): QueryAllContractStateRequestAminoMsg {
+  toAminoMsg(
+    message: QueryAllContractStateRequest
+  ): QueryAllContractStateRequestAminoMsg {
     return {
-      type: "wasm/QueryAllContractStateRequest",
-      value: QueryAllContractStateRequest.toAmino(message)
+      type: 'wasm/QueryAllContractStateRequest',
+      value: QueryAllContractStateRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryAllContractStateRequestProtoMsg): QueryAllContractStateRequest {
+  fromProtoMsg(
+    message: QueryAllContractStateRequestProtoMsg
+  ): QueryAllContractStateRequest {
     return QueryAllContractStateRequest.decode(message.value);
   },
   toProto(message: QueryAllContractStateRequest): Uint8Array {
     return QueryAllContractStateRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllContractStateRequest): QueryAllContractStateRequestProtoMsg {
+  toProtoMsg(
+    message: QueryAllContractStateRequest
+  ): QueryAllContractStateRequestProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryAllContractStateRequest",
-      value: QueryAllContractStateRequest.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryAllContractStateRequest',
+      value: QueryAllContractStateRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAllContractStateResponse(): QueryAllContractStateResponse {
   return {
     models: [],
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryAllContractStateResponse = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryAllContractStateResponse",
-  encode(message: QueryAllContractStateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryAllContractStateResponse',
+  encode(
+    message: QueryAllContractStateResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.models) {
       Model.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryAllContractStateResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryAllContractStateResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllContractStateResponse();
     while (reader.pos < end) {
@@ -1386,62 +1608,86 @@ export const QueryAllContractStateResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAllContractStateResponse>): QueryAllContractStateResponse {
+  fromPartial(
+    object: Partial<QueryAllContractStateResponse>
+  ): QueryAllContractStateResponse {
     const message = createBaseQueryAllContractStateResponse();
-    message.models = object.models?.map(e => Model.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    message.models = object.models?.map((e) => Model.fromPartial(e)) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryAllContractStateResponseAmino): QueryAllContractStateResponse {
+  fromAmino(
+    object: QueryAllContractStateResponseAmino
+  ): QueryAllContractStateResponse {
     const message = createBaseQueryAllContractStateResponse();
-    message.models = object.models?.map(e => Model.fromAmino(e)) || [];
+    message.models = object.models?.map((e) => Model.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(message: QueryAllContractStateResponse): QueryAllContractStateResponseAmino {
+  toAmino(
+    message: QueryAllContractStateResponse
+  ): QueryAllContractStateResponseAmino {
     const obj: any = {};
     if (message.models) {
-      obj.models = message.models.map(e => e ? Model.toAmino(e) : undefined);
+      obj.models = message.models.map((e) =>
+        e ? Model.toAmino(e) : undefined
+      );
     } else {
       obj.models = message.models;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryAllContractStateResponseAminoMsg): QueryAllContractStateResponse {
+  fromAminoMsg(
+    object: QueryAllContractStateResponseAminoMsg
+  ): QueryAllContractStateResponse {
     return QueryAllContractStateResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryAllContractStateResponse): QueryAllContractStateResponseAminoMsg {
+  toAminoMsg(
+    message: QueryAllContractStateResponse
+  ): QueryAllContractStateResponseAminoMsg {
     return {
-      type: "wasm/QueryAllContractStateResponse",
-      value: QueryAllContractStateResponse.toAmino(message)
+      type: 'wasm/QueryAllContractStateResponse',
+      value: QueryAllContractStateResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryAllContractStateResponseProtoMsg): QueryAllContractStateResponse {
+  fromProtoMsg(
+    message: QueryAllContractStateResponseProtoMsg
+  ): QueryAllContractStateResponse {
     return QueryAllContractStateResponse.decode(message.value);
   },
   toProto(message: QueryAllContractStateResponse): Uint8Array {
     return QueryAllContractStateResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllContractStateResponse): QueryAllContractStateResponseProtoMsg {
+  toProtoMsg(
+    message: QueryAllContractStateResponse
+  ): QueryAllContractStateResponseProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryAllContractStateResponse",
-      value: QueryAllContractStateResponse.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryAllContractStateResponse',
+      value: QueryAllContractStateResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryRawContractStateRequest(): QueryRawContractStateRequest {
   return {
-    address: "",
-    queryData: new Uint8Array()
+    address: '',
+    queryData: new Uint8Array(),
   };
 }
 export const QueryRawContractStateRequest = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryRawContractStateRequest",
-  encode(message: QueryRawContractStateRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.address !== "") {
+  typeUrl: '/cosmwasm.wasm.v1.QueryRawContractStateRequest',
+  encode(
+    message: QueryRawContractStateRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     if (message.queryData.length !== 0) {
@@ -1449,8 +1695,12 @@ export const QueryRawContractStateRequest = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryRawContractStateRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryRawContractStateRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryRawContractStateRequest();
     while (reader.pos < end) {
@@ -1469,13 +1719,17 @@ export const QueryRawContractStateRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryRawContractStateRequest>): QueryRawContractStateRequest {
+  fromPartial(
+    object: Partial<QueryRawContractStateRequest>
+  ): QueryRawContractStateRequest {
     const message = createBaseQueryRawContractStateRequest();
-    message.address = object.address ?? "";
+    message.address = object.address ?? '';
     message.queryData = object.queryData ?? new Uint8Array();
     return message;
   },
-  fromAmino(object: QueryRawContractStateRequestAmino): QueryRawContractStateRequest {
+  fromAmino(
+    object: QueryRawContractStateRequestAmino
+  ): QueryRawContractStateRequest {
     const message = createBaseQueryRawContractStateRequest();
     if (object.address !== undefined && object.address !== null) {
       message.address = object.address;
@@ -1485,49 +1739,68 @@ export const QueryRawContractStateRequest = {
     }
     return message;
   },
-  toAmino(message: QueryRawContractStateRequest): QueryRawContractStateRequestAmino {
+  toAmino(
+    message: QueryRawContractStateRequest
+  ): QueryRawContractStateRequestAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
-    obj.query_data = message.queryData ? base64FromBytes(message.queryData) : undefined;
+    obj.address = message.address === '' ? undefined : message.address;
+    obj.query_data = message.queryData
+      ? base64FromBytes(message.queryData)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryRawContractStateRequestAminoMsg): QueryRawContractStateRequest {
+  fromAminoMsg(
+    object: QueryRawContractStateRequestAminoMsg
+  ): QueryRawContractStateRequest {
     return QueryRawContractStateRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryRawContractStateRequest): QueryRawContractStateRequestAminoMsg {
+  toAminoMsg(
+    message: QueryRawContractStateRequest
+  ): QueryRawContractStateRequestAminoMsg {
     return {
-      type: "wasm/QueryRawContractStateRequest",
-      value: QueryRawContractStateRequest.toAmino(message)
+      type: 'wasm/QueryRawContractStateRequest',
+      value: QueryRawContractStateRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryRawContractStateRequestProtoMsg): QueryRawContractStateRequest {
+  fromProtoMsg(
+    message: QueryRawContractStateRequestProtoMsg
+  ): QueryRawContractStateRequest {
     return QueryRawContractStateRequest.decode(message.value);
   },
   toProto(message: QueryRawContractStateRequest): Uint8Array {
     return QueryRawContractStateRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryRawContractStateRequest): QueryRawContractStateRequestProtoMsg {
+  toProtoMsg(
+    message: QueryRawContractStateRequest
+  ): QueryRawContractStateRequestProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryRawContractStateRequest",
-      value: QueryRawContractStateRequest.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryRawContractStateRequest',
+      value: QueryRawContractStateRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryRawContractStateResponse(): QueryRawContractStateResponse {
   return {
-    data: new Uint8Array()
+    data: new Uint8Array(),
   };
 }
 export const QueryRawContractStateResponse = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryRawContractStateResponse",
-  encode(message: QueryRawContractStateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryRawContractStateResponse',
+  encode(
+    message: QueryRawContractStateResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryRawContractStateResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryRawContractStateResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryRawContractStateResponse();
     while (reader.pos < end) {
@@ -1543,55 +1816,72 @@ export const QueryRawContractStateResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryRawContractStateResponse>): QueryRawContractStateResponse {
+  fromPartial(
+    object: Partial<QueryRawContractStateResponse>
+  ): QueryRawContractStateResponse {
     const message = createBaseQueryRawContractStateResponse();
     message.data = object.data ?? new Uint8Array();
     return message;
   },
-  fromAmino(object: QueryRawContractStateResponseAmino): QueryRawContractStateResponse {
+  fromAmino(
+    object: QueryRawContractStateResponseAmino
+  ): QueryRawContractStateResponse {
     const message = createBaseQueryRawContractStateResponse();
     if (object.data !== undefined && object.data !== null) {
       message.data = bytesFromBase64(object.data);
     }
     return message;
   },
-  toAmino(message: QueryRawContractStateResponse): QueryRawContractStateResponseAmino {
+  toAmino(
+    message: QueryRawContractStateResponse
+  ): QueryRawContractStateResponseAmino {
     const obj: any = {};
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryRawContractStateResponseAminoMsg): QueryRawContractStateResponse {
+  fromAminoMsg(
+    object: QueryRawContractStateResponseAminoMsg
+  ): QueryRawContractStateResponse {
     return QueryRawContractStateResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryRawContractStateResponse): QueryRawContractStateResponseAminoMsg {
+  toAminoMsg(
+    message: QueryRawContractStateResponse
+  ): QueryRawContractStateResponseAminoMsg {
     return {
-      type: "wasm/QueryRawContractStateResponse",
-      value: QueryRawContractStateResponse.toAmino(message)
+      type: 'wasm/QueryRawContractStateResponse',
+      value: QueryRawContractStateResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryRawContractStateResponseProtoMsg): QueryRawContractStateResponse {
+  fromProtoMsg(
+    message: QueryRawContractStateResponseProtoMsg
+  ): QueryRawContractStateResponse {
     return QueryRawContractStateResponse.decode(message.value);
   },
   toProto(message: QueryRawContractStateResponse): Uint8Array {
     return QueryRawContractStateResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryRawContractStateResponse): QueryRawContractStateResponseProtoMsg {
+  toProtoMsg(
+    message: QueryRawContractStateResponse
+  ): QueryRawContractStateResponseProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryRawContractStateResponse",
-      value: QueryRawContractStateResponse.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryRawContractStateResponse',
+      value: QueryRawContractStateResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQuerySmartContractStateRequest(): QuerySmartContractStateRequest {
   return {
-    address: "",
-    queryData: new Uint8Array()
+    address: '',
+    queryData: new Uint8Array(),
   };
 }
 export const QuerySmartContractStateRequest = {
-  typeUrl: "/cosmwasm.wasm.v1.QuerySmartContractStateRequest",
-  encode(message: QuerySmartContractStateRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.address !== "") {
+  typeUrl: '/cosmwasm.wasm.v1.QuerySmartContractStateRequest',
+  encode(
+    message: QuerySmartContractStateRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     if (message.queryData.length !== 0) {
@@ -1599,8 +1889,12 @@ export const QuerySmartContractStateRequest = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QuerySmartContractStateRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QuerySmartContractStateRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQuerySmartContractStateRequest();
     while (reader.pos < end) {
@@ -1619,13 +1913,17 @@ export const QuerySmartContractStateRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QuerySmartContractStateRequest>): QuerySmartContractStateRequest {
+  fromPartial(
+    object: Partial<QuerySmartContractStateRequest>
+  ): QuerySmartContractStateRequest {
     const message = createBaseQuerySmartContractStateRequest();
-    message.address = object.address ?? "";
+    message.address = object.address ?? '';
     message.queryData = object.queryData ?? new Uint8Array();
     return message;
   },
-  fromAmino(object: QuerySmartContractStateRequestAmino): QuerySmartContractStateRequest {
+  fromAmino(
+    object: QuerySmartContractStateRequestAmino
+  ): QuerySmartContractStateRequest {
     const message = createBaseQuerySmartContractStateRequest();
     if (object.address !== undefined && object.address !== null) {
       message.address = object.address;
@@ -1635,49 +1933,68 @@ export const QuerySmartContractStateRequest = {
     }
     return message;
   },
-  toAmino(message: QuerySmartContractStateRequest): QuerySmartContractStateRequestAmino {
+  toAmino(
+    message: QuerySmartContractStateRequest
+  ): QuerySmartContractStateRequestAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
-    obj.query_data = message.queryData ? JSON.parse(fromUtf8(message.queryData)) : undefined;
+    obj.address = message.address === '' ? undefined : message.address;
+    obj.query_data = message.queryData
+      ? JSON.parse(fromUtf8(message.queryData))
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QuerySmartContractStateRequestAminoMsg): QuerySmartContractStateRequest {
+  fromAminoMsg(
+    object: QuerySmartContractStateRequestAminoMsg
+  ): QuerySmartContractStateRequest {
     return QuerySmartContractStateRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QuerySmartContractStateRequest): QuerySmartContractStateRequestAminoMsg {
+  toAminoMsg(
+    message: QuerySmartContractStateRequest
+  ): QuerySmartContractStateRequestAminoMsg {
     return {
-      type: "wasm/QuerySmartContractStateRequest",
-      value: QuerySmartContractStateRequest.toAmino(message)
+      type: 'wasm/QuerySmartContractStateRequest',
+      value: QuerySmartContractStateRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QuerySmartContractStateRequestProtoMsg): QuerySmartContractStateRequest {
+  fromProtoMsg(
+    message: QuerySmartContractStateRequestProtoMsg
+  ): QuerySmartContractStateRequest {
     return QuerySmartContractStateRequest.decode(message.value);
   },
   toProto(message: QuerySmartContractStateRequest): Uint8Array {
     return QuerySmartContractStateRequest.encode(message).finish();
   },
-  toProtoMsg(message: QuerySmartContractStateRequest): QuerySmartContractStateRequestProtoMsg {
+  toProtoMsg(
+    message: QuerySmartContractStateRequest
+  ): QuerySmartContractStateRequestProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QuerySmartContractStateRequest",
-      value: QuerySmartContractStateRequest.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QuerySmartContractStateRequest',
+      value: QuerySmartContractStateRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQuerySmartContractStateResponse(): QuerySmartContractStateResponse {
   return {
-    data: new Uint8Array()
+    data: new Uint8Array(),
   };
 }
 export const QuerySmartContractStateResponse = {
-  typeUrl: "/cosmwasm.wasm.v1.QuerySmartContractStateResponse",
-  encode(message: QuerySmartContractStateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QuerySmartContractStateResponse',
+  encode(
+    message: QuerySmartContractStateResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.data.length !== 0) {
       writer.uint32(10).bytes(message.data);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QuerySmartContractStateResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QuerySmartContractStateResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQuerySmartContractStateResponse();
     while (reader.pos < end) {
@@ -1693,60 +2010,78 @@ export const QuerySmartContractStateResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QuerySmartContractStateResponse>): QuerySmartContractStateResponse {
+  fromPartial(
+    object: Partial<QuerySmartContractStateResponse>
+  ): QuerySmartContractStateResponse {
     const message = createBaseQuerySmartContractStateResponse();
     message.data = object.data ?? new Uint8Array();
     return message;
   },
-  fromAmino(object: QuerySmartContractStateResponseAmino): QuerySmartContractStateResponse {
+  fromAmino(
+    object: QuerySmartContractStateResponseAmino
+  ): QuerySmartContractStateResponse {
     const message = createBaseQuerySmartContractStateResponse();
     if (object.data !== undefined && object.data !== null) {
       message.data = toUtf8(JSON.stringify(object.data));
     }
     return message;
   },
-  toAmino(message: QuerySmartContractStateResponse): QuerySmartContractStateResponseAmino {
+  toAmino(
+    message: QuerySmartContractStateResponse
+  ): QuerySmartContractStateResponseAmino {
     const obj: any = {};
     obj.data = message.data ? JSON.parse(fromUtf8(message.data)) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QuerySmartContractStateResponseAminoMsg): QuerySmartContractStateResponse {
+  fromAminoMsg(
+    object: QuerySmartContractStateResponseAminoMsg
+  ): QuerySmartContractStateResponse {
     return QuerySmartContractStateResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QuerySmartContractStateResponse): QuerySmartContractStateResponseAminoMsg {
+  toAminoMsg(
+    message: QuerySmartContractStateResponse
+  ): QuerySmartContractStateResponseAminoMsg {
     return {
-      type: "wasm/QuerySmartContractStateResponse",
-      value: QuerySmartContractStateResponse.toAmino(message)
+      type: 'wasm/QuerySmartContractStateResponse',
+      value: QuerySmartContractStateResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QuerySmartContractStateResponseProtoMsg): QuerySmartContractStateResponse {
+  fromProtoMsg(
+    message: QuerySmartContractStateResponseProtoMsg
+  ): QuerySmartContractStateResponse {
     return QuerySmartContractStateResponse.decode(message.value);
   },
   toProto(message: QuerySmartContractStateResponse): Uint8Array {
     return QuerySmartContractStateResponse.encode(message).finish();
   },
-  toProtoMsg(message: QuerySmartContractStateResponse): QuerySmartContractStateResponseProtoMsg {
+  toProtoMsg(
+    message: QuerySmartContractStateResponse
+  ): QuerySmartContractStateResponseProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QuerySmartContractStateResponse",
-      value: QuerySmartContractStateResponse.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QuerySmartContractStateResponse',
+      value: QuerySmartContractStateResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryCodeRequest(): QueryCodeRequest {
   return {
-    codeId: BigInt(0)
+    codeId: BigInt(0),
   };
 }
 export const QueryCodeRequest = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryCodeRequest",
-  encode(message: QueryCodeRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryCodeRequest',
+  encode(
+    message: QueryCodeRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.codeId !== BigInt(0)) {
       writer.uint32(8).uint64(message.codeId);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): QueryCodeRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryCodeRequest();
     while (reader.pos < end) {
@@ -1764,7 +2099,10 @@ export const QueryCodeRequest = {
   },
   fromPartial(object: Partial<QueryCodeRequest>): QueryCodeRequest {
     const message = createBaseQueryCodeRequest();
-    message.codeId = object.codeId !== undefined && object.codeId !== null ? BigInt(object.codeId.toString()) : BigInt(0);
+    message.codeId =
+      object.codeId !== undefined && object.codeId !== null
+        ? BigInt(object.codeId.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: QueryCodeRequestAmino): QueryCodeRequest {
@@ -1776,7 +2114,8 @@ export const QueryCodeRequest = {
   },
   toAmino(message: QueryCodeRequest): QueryCodeRequestAmino {
     const obj: any = {};
-    obj.code_id = message.codeId !== BigInt(0) ? message.codeId?.toString() : undefined;
+    obj.code_id =
+      message.codeId !== BigInt(0) ? message.codeId?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryCodeRequestAminoMsg): QueryCodeRequest {
@@ -1784,8 +2123,8 @@ export const QueryCodeRequest = {
   },
   toAminoMsg(message: QueryCodeRequest): QueryCodeRequestAminoMsg {
     return {
-      type: "wasm/QueryCodeRequest",
-      value: QueryCodeRequest.toAmino(message)
+      type: 'wasm/QueryCodeRequest',
+      value: QueryCodeRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryCodeRequestProtoMsg): QueryCodeRequest {
@@ -1796,38 +2135,45 @@ export const QueryCodeRequest = {
   },
   toProtoMsg(message: QueryCodeRequest): QueryCodeRequestProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryCodeRequest",
-      value: QueryCodeRequest.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryCodeRequest',
+      value: QueryCodeRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseCodeInfoResponse(): CodeInfoResponse {
   return {
     codeId: BigInt(0),
-    creator: "",
+    creator: '',
     dataHash: new Uint8Array(),
-    instantiatePermission: AccessConfig.fromPartial({})
+    instantiatePermission: AccessConfig.fromPartial({}),
   };
 }
 export const CodeInfoResponse = {
-  typeUrl: "/cosmwasm.wasm.v1.CodeInfoResponse",
-  encode(message: CodeInfoResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.CodeInfoResponse',
+  encode(
+    message: CodeInfoResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.codeId !== BigInt(0)) {
       writer.uint32(8).uint64(message.codeId);
     }
-    if (message.creator !== "") {
+    if (message.creator !== '') {
       writer.uint32(18).string(message.creator);
     }
     if (message.dataHash.length !== 0) {
       writer.uint32(26).bytes(message.dataHash);
     }
     if (message.instantiatePermission !== undefined) {
-      AccessConfig.encode(message.instantiatePermission, writer.uint32(50).fork()).ldelim();
+      AccessConfig.encode(
+        message.instantiatePermission,
+        writer.uint32(50).fork()
+      ).ldelim();
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): CodeInfoResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseCodeInfoResponse();
     while (reader.pos < end) {
@@ -1843,7 +2189,10 @@ export const CodeInfoResponse = {
           message.dataHash = reader.bytes();
           break;
         case 6:
-          message.instantiatePermission = AccessConfig.decode(reader, reader.uint32());
+          message.instantiatePermission = AccessConfig.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -1854,10 +2203,17 @@ export const CodeInfoResponse = {
   },
   fromPartial(object: Partial<CodeInfoResponse>): CodeInfoResponse {
     const message = createBaseCodeInfoResponse();
-    message.codeId = object.codeId !== undefined && object.codeId !== null ? BigInt(object.codeId.toString()) : BigInt(0);
-    message.creator = object.creator ?? "";
+    message.codeId =
+      object.codeId !== undefined && object.codeId !== null
+        ? BigInt(object.codeId.toString())
+        : BigInt(0);
+    message.creator = object.creator ?? '';
     message.dataHash = object.dataHash ?? new Uint8Array();
-    message.instantiatePermission = object.instantiatePermission !== undefined && object.instantiatePermission !== null ? AccessConfig.fromPartial(object.instantiatePermission) : undefined;
+    message.instantiatePermission =
+      object.instantiatePermission !== undefined &&
+      object.instantiatePermission !== null
+        ? AccessConfig.fromPartial(object.instantiatePermission)
+        : undefined;
     return message;
   },
   fromAmino(object: CodeInfoResponseAmino): CodeInfoResponse {
@@ -1871,17 +2227,26 @@ export const CodeInfoResponse = {
     if (object.data_hash !== undefined && object.data_hash !== null) {
       message.dataHash = bytesFromBase64(object.data_hash);
     }
-    if (object.instantiate_permission !== undefined && object.instantiate_permission !== null) {
-      message.instantiatePermission = AccessConfig.fromAmino(object.instantiate_permission);
+    if (
+      object.instantiate_permission !== undefined &&
+      object.instantiate_permission !== null
+    ) {
+      message.instantiatePermission = AccessConfig.fromAmino(
+        object.instantiate_permission
+      );
     }
     return message;
   },
   toAmino(message: CodeInfoResponse): CodeInfoResponseAmino {
     const obj: any = {};
-    obj.code_id = message.codeId ? message.codeId?.toString() : "0";
-    obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.data_hash = message.dataHash ? base64FromBytes(message.dataHash) : undefined;
-    obj.instantiate_permission = message.instantiatePermission ? AccessConfig.toAmino(message.instantiatePermission) : AccessConfig.toAmino(AccessConfig.fromPartial({}));
+    obj.code_id = message.codeId ? message.codeId?.toString() : '0';
+    obj.creator = message.creator === '' ? undefined : message.creator;
+    obj.data_hash = message.dataHash
+      ? base64FromBytes(message.dataHash)
+      : undefined;
+    obj.instantiate_permission = message.instantiatePermission
+      ? AccessConfig.toAmino(message.instantiatePermission)
+      : AccessConfig.toAmino(AccessConfig.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: CodeInfoResponseAminoMsg): CodeInfoResponse {
@@ -1889,8 +2254,8 @@ export const CodeInfoResponse = {
   },
   toAminoMsg(message: CodeInfoResponse): CodeInfoResponseAminoMsg {
     return {
-      type: "wasm/CodeInfoResponse",
-      value: CodeInfoResponse.toAmino(message)
+      type: 'wasm/CodeInfoResponse',
+      value: CodeInfoResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: CodeInfoResponseProtoMsg): CodeInfoResponse {
@@ -1901,22 +2266,28 @@ export const CodeInfoResponse = {
   },
   toProtoMsg(message: CodeInfoResponse): CodeInfoResponseProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.CodeInfoResponse",
-      value: CodeInfoResponse.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.CodeInfoResponse',
+      value: CodeInfoResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryCodeResponse(): QueryCodeResponse {
   return {
     codeInfo: undefined,
-    data: new Uint8Array()
+    data: new Uint8Array(),
   };
 }
 export const QueryCodeResponse = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryCodeResponse",
-  encode(message: QueryCodeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryCodeResponse',
+  encode(
+    message: QueryCodeResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.codeInfo !== undefined) {
-      CodeInfoResponse.encode(message.codeInfo, writer.uint32(10).fork()).ldelim();
+      CodeInfoResponse.encode(
+        message.codeInfo,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     if (message.data.length !== 0) {
       writer.uint32(18).bytes(message.data);
@@ -1924,7 +2295,8 @@ export const QueryCodeResponse = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): QueryCodeResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryCodeResponse();
     while (reader.pos < end) {
@@ -1945,7 +2317,10 @@ export const QueryCodeResponse = {
   },
   fromPartial(object: Partial<QueryCodeResponse>): QueryCodeResponse {
     const message = createBaseQueryCodeResponse();
-    message.codeInfo = object.codeInfo !== undefined && object.codeInfo !== null ? CodeInfoResponse.fromPartial(object.codeInfo) : undefined;
+    message.codeInfo =
+      object.codeInfo !== undefined && object.codeInfo !== null
+        ? CodeInfoResponse.fromPartial(object.codeInfo)
+        : undefined;
     message.data = object.data ?? new Uint8Array();
     return message;
   },
@@ -1961,8 +2336,10 @@ export const QueryCodeResponse = {
   },
   toAmino(message: QueryCodeResponse): QueryCodeResponseAmino {
     const obj: any = {};
-    obj.code_info = message.codeInfo ? CodeInfoResponse.toAmino(message.codeInfo) : undefined;
-    obj.data = message.data ? base64FromBytes(message.data) : "";
+    obj.code_info = message.codeInfo
+      ? CodeInfoResponse.toAmino(message.codeInfo)
+      : undefined;
+    obj.data = message.data ? base64FromBytes(message.data) : '';
     return obj;
   },
   fromAminoMsg(object: QueryCodeResponseAminoMsg): QueryCodeResponse {
@@ -1970,8 +2347,8 @@ export const QueryCodeResponse = {
   },
   toAminoMsg(message: QueryCodeResponse): QueryCodeResponseAminoMsg {
     return {
-      type: "wasm/QueryCodeResponse",
-      value: QueryCodeResponse.toAmino(message)
+      type: 'wasm/QueryCodeResponse',
+      value: QueryCodeResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryCodeResponseProtoMsg): QueryCodeResponse {
@@ -1982,26 +2359,30 @@ export const QueryCodeResponse = {
   },
   toProtoMsg(message: QueryCodeResponse): QueryCodeResponseProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryCodeResponse",
-      value: QueryCodeResponse.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryCodeResponse',
+      value: QueryCodeResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryCodesRequest(): QueryCodesRequest {
   return {
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryCodesRequest = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryCodesRequest",
-  encode(message: QueryCodesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryCodesRequest',
+  encode(
+    message: QueryCodesRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): QueryCodesRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryCodesRequest();
     while (reader.pos < end) {
@@ -2019,7 +2400,10 @@ export const QueryCodesRequest = {
   },
   fromPartial(object: Partial<QueryCodesRequest>): QueryCodesRequest {
     const message = createBaseQueryCodesRequest();
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryCodesRequestAmino): QueryCodesRequest {
@@ -2031,7 +2415,9 @@ export const QueryCodesRequest = {
   },
   toAmino(message: QueryCodesRequest): QueryCodesRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryCodesRequestAminoMsg): QueryCodesRequest {
@@ -2039,8 +2425,8 @@ export const QueryCodesRequest = {
   },
   toAminoMsg(message: QueryCodesRequest): QueryCodesRequestAminoMsg {
     return {
-      type: "wasm/QueryCodesRequest",
-      value: QueryCodesRequest.toAmino(message)
+      type: 'wasm/QueryCodesRequest',
+      value: QueryCodesRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryCodesRequestProtoMsg): QueryCodesRequest {
@@ -2051,37 +2437,49 @@ export const QueryCodesRequest = {
   },
   toProtoMsg(message: QueryCodesRequest): QueryCodesRequestProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryCodesRequest",
-      value: QueryCodesRequest.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryCodesRequest',
+      value: QueryCodesRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryCodesResponse(): QueryCodesResponse {
   return {
     codeInfos: [],
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryCodesResponse = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryCodesResponse",
-  encode(message: QueryCodesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryCodesResponse',
+  encode(
+    message: QueryCodesResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.codeInfos) {
       CodeInfoResponse.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryCodesResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryCodesResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryCodesResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.codeInfos.push(CodeInfoResponse.decode(reader, reader.uint32()));
+          message.codeInfos.push(
+            CodeInfoResponse.decode(reader, reader.uint32())
+          );
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -2095,13 +2493,18 @@ export const QueryCodesResponse = {
   },
   fromPartial(object: Partial<QueryCodesResponse>): QueryCodesResponse {
     const message = createBaseQueryCodesResponse();
-    message.codeInfos = object.codeInfos?.map(e => CodeInfoResponse.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    message.codeInfos =
+      object.codeInfos?.map((e) => CodeInfoResponse.fromPartial(e)) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryCodesResponseAmino): QueryCodesResponse {
     const message = createBaseQueryCodesResponse();
-    message.codeInfos = object.code_infos?.map(e => CodeInfoResponse.fromAmino(e)) || [];
+    message.codeInfos =
+      object.code_infos?.map((e) => CodeInfoResponse.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -2110,11 +2513,15 @@ export const QueryCodesResponse = {
   toAmino(message: QueryCodesResponse): QueryCodesResponseAmino {
     const obj: any = {};
     if (message.codeInfos) {
-      obj.code_infos = message.codeInfos.map(e => e ? CodeInfoResponse.toAmino(e) : undefined);
+      obj.code_infos = message.codeInfos.map((e) =>
+        e ? CodeInfoResponse.toAmino(e) : undefined
+      );
     } else {
       obj.code_infos = message.codeInfos;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryCodesResponseAminoMsg): QueryCodesResponse {
@@ -2122,8 +2529,8 @@ export const QueryCodesResponse = {
   },
   toAminoMsg(message: QueryCodesResponse): QueryCodesResponseAminoMsg {
     return {
-      type: "wasm/QueryCodesResponse",
-      value: QueryCodesResponse.toAmino(message)
+      type: 'wasm/QueryCodesResponse',
+      value: QueryCodesResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryCodesResponseProtoMsg): QueryCodesResponse {
@@ -2134,26 +2541,33 @@ export const QueryCodesResponse = {
   },
   toProtoMsg(message: QueryCodesResponse): QueryCodesResponseProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryCodesResponse",
-      value: QueryCodesResponse.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryCodesResponse',
+      value: QueryCodesResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryPinnedCodesRequest(): QueryPinnedCodesRequest {
   return {
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryPinnedCodesRequest = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryPinnedCodesRequest",
-  encode(message: QueryPinnedCodesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryPinnedCodesRequest',
+  encode(
+    message: QueryPinnedCodesRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryPinnedCodesRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryPinnedCodesRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPinnedCodesRequest();
     while (reader.pos < end) {
@@ -2169,9 +2583,14 @@ export const QueryPinnedCodesRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryPinnedCodesRequest>): QueryPinnedCodesRequest {
+  fromPartial(
+    object: Partial<QueryPinnedCodesRequest>
+  ): QueryPinnedCodesRequest {
     const message = createBaseQueryPinnedCodesRequest();
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryPinnedCodesRequestAmino): QueryPinnedCodesRequest {
@@ -2183,52 +2602,72 @@ export const QueryPinnedCodesRequest = {
   },
   toAmino(message: QueryPinnedCodesRequest): QueryPinnedCodesRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryPinnedCodesRequestAminoMsg): QueryPinnedCodesRequest {
+  fromAminoMsg(
+    object: QueryPinnedCodesRequestAminoMsg
+  ): QueryPinnedCodesRequest {
     return QueryPinnedCodesRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryPinnedCodesRequest): QueryPinnedCodesRequestAminoMsg {
+  toAminoMsg(
+    message: QueryPinnedCodesRequest
+  ): QueryPinnedCodesRequestAminoMsg {
     return {
-      type: "wasm/QueryPinnedCodesRequest",
-      value: QueryPinnedCodesRequest.toAmino(message)
+      type: 'wasm/QueryPinnedCodesRequest',
+      value: QueryPinnedCodesRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryPinnedCodesRequestProtoMsg): QueryPinnedCodesRequest {
+  fromProtoMsg(
+    message: QueryPinnedCodesRequestProtoMsg
+  ): QueryPinnedCodesRequest {
     return QueryPinnedCodesRequest.decode(message.value);
   },
   toProto(message: QueryPinnedCodesRequest): Uint8Array {
     return QueryPinnedCodesRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryPinnedCodesRequest): QueryPinnedCodesRequestProtoMsg {
+  toProtoMsg(
+    message: QueryPinnedCodesRequest
+  ): QueryPinnedCodesRequestProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryPinnedCodesRequest",
-      value: QueryPinnedCodesRequest.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryPinnedCodesRequest',
+      value: QueryPinnedCodesRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryPinnedCodesResponse(): QueryPinnedCodesResponse {
   return {
     codeIds: [],
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryPinnedCodesResponse = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryPinnedCodesResponse",
-  encode(message: QueryPinnedCodesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryPinnedCodesResponse',
+  encode(
+    message: QueryPinnedCodesResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.codeIds) {
       writer.uint64(v);
     }
     writer.ldelim();
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryPinnedCodesResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryPinnedCodesResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryPinnedCodesResponse();
     while (reader.pos < end) {
@@ -2254,15 +2693,20 @@ export const QueryPinnedCodesResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryPinnedCodesResponse>): QueryPinnedCodesResponse {
+  fromPartial(
+    object: Partial<QueryPinnedCodesResponse>
+  ): QueryPinnedCodesResponse {
     const message = createBaseQueryPinnedCodesResponse();
-    message.codeIds = object.codeIds?.map(e => BigInt(e.toString())) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    message.codeIds = object.codeIds?.map((e) => BigInt(e.toString())) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryPinnedCodesResponseAmino): QueryPinnedCodesResponse {
     const message = createBaseQueryPinnedCodesResponse();
-    message.codeIds = object.code_ids?.map(e => BigInt(e)) || [];
+    message.codeIds = object.code_ids?.map((e) => BigInt(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -2271,45 +2715,62 @@ export const QueryPinnedCodesResponse = {
   toAmino(message: QueryPinnedCodesResponse): QueryPinnedCodesResponseAmino {
     const obj: any = {};
     if (message.codeIds) {
-      obj.code_ids = message.codeIds.map(e => e.toString());
+      obj.code_ids = message.codeIds.map((e) => e.toString());
     } else {
       obj.code_ids = message.codeIds;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryPinnedCodesResponseAminoMsg): QueryPinnedCodesResponse {
+  fromAminoMsg(
+    object: QueryPinnedCodesResponseAminoMsg
+  ): QueryPinnedCodesResponse {
     return QueryPinnedCodesResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryPinnedCodesResponse): QueryPinnedCodesResponseAminoMsg {
+  toAminoMsg(
+    message: QueryPinnedCodesResponse
+  ): QueryPinnedCodesResponseAminoMsg {
     return {
-      type: "wasm/QueryPinnedCodesResponse",
-      value: QueryPinnedCodesResponse.toAmino(message)
+      type: 'wasm/QueryPinnedCodesResponse',
+      value: QueryPinnedCodesResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryPinnedCodesResponseProtoMsg): QueryPinnedCodesResponse {
+  fromProtoMsg(
+    message: QueryPinnedCodesResponseProtoMsg
+  ): QueryPinnedCodesResponse {
     return QueryPinnedCodesResponse.decode(message.value);
   },
   toProto(message: QueryPinnedCodesResponse): Uint8Array {
     return QueryPinnedCodesResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryPinnedCodesResponse): QueryPinnedCodesResponseProtoMsg {
+  toProtoMsg(
+    message: QueryPinnedCodesResponse
+  ): QueryPinnedCodesResponseProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryPinnedCodesResponse",
-      value: QueryPinnedCodesResponse.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryPinnedCodesResponse',
+      value: QueryPinnedCodesResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryParamsRequest",
-  encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryParamsRequest',
+  encode(
+    _: QueryParamsRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryParamsRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsRequest();
     while (reader.pos < end) {
@@ -2339,8 +2800,8 @@ export const QueryParamsRequest = {
   },
   toAminoMsg(message: QueryParamsRequest): QueryParamsRequestAminoMsg {
     return {
-      type: "wasm/QueryParamsRequest",
-      value: QueryParamsRequest.toAmino(message)
+      type: 'wasm/QueryParamsRequest',
+      value: QueryParamsRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryParamsRequestProtoMsg): QueryParamsRequest {
@@ -2351,26 +2812,33 @@ export const QueryParamsRequest = {
   },
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryParamsRequest",
-      value: QueryParamsRequest.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryParamsRequest',
+      value: QueryParamsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
-    params: Params.fromPartial({})
+    params: Params.fromPartial({}),
   };
 }
 export const QueryParamsResponse = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryParamsResponse",
-  encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryParamsResponse',
+  encode(
+    message: QueryParamsResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryParamsResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
     while (reader.pos < end) {
@@ -2388,7 +2856,10 @@ export const QueryParamsResponse = {
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
@@ -2400,7 +2871,9 @@ export const QueryParamsResponse = {
   },
   toAmino(message: QueryParamsResponse): QueryParamsResponseAmino {
     const obj: any = {};
-    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.params = message.params
+      ? Params.toAmino(message.params)
+      : Params.toAmino(Params.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse {
@@ -2408,8 +2881,8 @@ export const QueryParamsResponse = {
   },
   toAminoMsg(message: QueryParamsResponse): QueryParamsResponseAminoMsg {
     return {
-      type: "wasm/QueryParamsResponse",
-      value: QueryParamsResponse.toAmino(message)
+      type: 'wasm/QueryParamsResponse',
+      value: QueryParamsResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryParamsResponseProtoMsg): QueryParamsResponse {
@@ -2420,21 +2893,24 @@ export const QueryParamsResponse = {
   },
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryParamsResponse",
-      value: QueryParamsResponse.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryParamsResponse',
+      value: QueryParamsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryContractsByCreatorRequest(): QueryContractsByCreatorRequest {
   return {
-    creatorAddress: "",
-    pagination: undefined
+    creatorAddress: '',
+    pagination: undefined,
   };
 }
 export const QueryContractsByCreatorRequest = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCreatorRequest",
-  encode(message: QueryContractsByCreatorRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.creatorAddress !== "") {
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractsByCreatorRequest',
+  encode(
+    message: QueryContractsByCreatorRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.creatorAddress !== '') {
       writer.uint32(10).string(message.creatorAddress);
     }
     if (message.pagination !== undefined) {
@@ -2442,8 +2918,12 @@ export const QueryContractsByCreatorRequest = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryContractsByCreatorRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryContractsByCreatorRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryContractsByCreatorRequest();
     while (reader.pos < end) {
@@ -2462,15 +2942,25 @@ export const QueryContractsByCreatorRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryContractsByCreatorRequest>): QueryContractsByCreatorRequest {
+  fromPartial(
+    object: Partial<QueryContractsByCreatorRequest>
+  ): QueryContractsByCreatorRequest {
     const message = createBaseQueryContractsByCreatorRequest();
-    message.creatorAddress = object.creatorAddress ?? "";
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.creatorAddress = object.creatorAddress ?? '';
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryContractsByCreatorRequestAmino): QueryContractsByCreatorRequest {
+  fromAmino(
+    object: QueryContractsByCreatorRequestAmino
+  ): QueryContractsByCreatorRequest {
     const message = createBaseQueryContractsByCreatorRequest();
-    if (object.creator_address !== undefined && object.creator_address !== null) {
+    if (
+      object.creator_address !== undefined &&
+      object.creator_address !== null
+    ) {
       message.creatorAddress = object.creator_address;
     }
     if (object.pagination !== undefined && object.pagination !== null) {
@@ -2478,53 +2968,76 @@ export const QueryContractsByCreatorRequest = {
     }
     return message;
   },
-  toAmino(message: QueryContractsByCreatorRequest): QueryContractsByCreatorRequestAmino {
+  toAmino(
+    message: QueryContractsByCreatorRequest
+  ): QueryContractsByCreatorRequestAmino {
     const obj: any = {};
-    obj.creator_address = message.creatorAddress === "" ? undefined : message.creatorAddress;
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.creator_address =
+      message.creatorAddress === '' ? undefined : message.creatorAddress;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryContractsByCreatorRequestAminoMsg): QueryContractsByCreatorRequest {
+  fromAminoMsg(
+    object: QueryContractsByCreatorRequestAminoMsg
+  ): QueryContractsByCreatorRequest {
     return QueryContractsByCreatorRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryContractsByCreatorRequest): QueryContractsByCreatorRequestAminoMsg {
+  toAminoMsg(
+    message: QueryContractsByCreatorRequest
+  ): QueryContractsByCreatorRequestAminoMsg {
     return {
-      type: "wasm/QueryContractsByCreatorRequest",
-      value: QueryContractsByCreatorRequest.toAmino(message)
+      type: 'wasm/QueryContractsByCreatorRequest',
+      value: QueryContractsByCreatorRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryContractsByCreatorRequestProtoMsg): QueryContractsByCreatorRequest {
+  fromProtoMsg(
+    message: QueryContractsByCreatorRequestProtoMsg
+  ): QueryContractsByCreatorRequest {
     return QueryContractsByCreatorRequest.decode(message.value);
   },
   toProto(message: QueryContractsByCreatorRequest): Uint8Array {
     return QueryContractsByCreatorRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryContractsByCreatorRequest): QueryContractsByCreatorRequestProtoMsg {
+  toProtoMsg(
+    message: QueryContractsByCreatorRequest
+  ): QueryContractsByCreatorRequestProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCreatorRequest",
-      value: QueryContractsByCreatorRequest.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryContractsByCreatorRequest',
+      value: QueryContractsByCreatorRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryContractsByCreatorResponse(): QueryContractsByCreatorResponse {
   return {
     contractAddresses: [],
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryContractsByCreatorResponse = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCreatorResponse",
-  encode(message: QueryContractsByCreatorResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmwasm.wasm.v1.QueryContractsByCreatorResponse',
+  encode(
+    message: QueryContractsByCreatorResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.contractAddresses) {
       writer.uint32(10).string(v!);
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryContractsByCreatorResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryContractsByCreatorResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryContractsByCreatorResponse();
     while (reader.pos < end) {
@@ -2543,70 +3056,92 @@ export const QueryContractsByCreatorResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryContractsByCreatorResponse>): QueryContractsByCreatorResponse {
+  fromPartial(
+    object: Partial<QueryContractsByCreatorResponse>
+  ): QueryContractsByCreatorResponse {
     const message = createBaseQueryContractsByCreatorResponse();
-    message.contractAddresses = object.contractAddresses?.map(e => e) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    message.contractAddresses = object.contractAddresses?.map((e) => e) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryContractsByCreatorResponseAmino): QueryContractsByCreatorResponse {
+  fromAmino(
+    object: QueryContractsByCreatorResponseAmino
+  ): QueryContractsByCreatorResponse {
     const message = createBaseQueryContractsByCreatorResponse();
-    message.contractAddresses = object.contract_addresses?.map(e => e) || [];
+    message.contractAddresses = object.contract_addresses?.map((e) => e) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
     return message;
   },
-  toAmino(message: QueryContractsByCreatorResponse): QueryContractsByCreatorResponseAmino {
+  toAmino(
+    message: QueryContractsByCreatorResponse
+  ): QueryContractsByCreatorResponseAmino {
     const obj: any = {};
     if (message.contractAddresses) {
-      obj.contract_addresses = message.contractAddresses.map(e => e);
+      obj.contract_addresses = message.contractAddresses.map((e) => e);
     } else {
       obj.contract_addresses = message.contractAddresses;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryContractsByCreatorResponseAminoMsg): QueryContractsByCreatorResponse {
+  fromAminoMsg(
+    object: QueryContractsByCreatorResponseAminoMsg
+  ): QueryContractsByCreatorResponse {
     return QueryContractsByCreatorResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryContractsByCreatorResponse): QueryContractsByCreatorResponseAminoMsg {
+  toAminoMsg(
+    message: QueryContractsByCreatorResponse
+  ): QueryContractsByCreatorResponseAminoMsg {
     return {
-      type: "wasm/QueryContractsByCreatorResponse",
-      value: QueryContractsByCreatorResponse.toAmino(message)
+      type: 'wasm/QueryContractsByCreatorResponse',
+      value: QueryContractsByCreatorResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryContractsByCreatorResponseProtoMsg): QueryContractsByCreatorResponse {
+  fromProtoMsg(
+    message: QueryContractsByCreatorResponseProtoMsg
+  ): QueryContractsByCreatorResponse {
     return QueryContractsByCreatorResponse.decode(message.value);
   },
   toProto(message: QueryContractsByCreatorResponse): Uint8Array {
     return QueryContractsByCreatorResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryContractsByCreatorResponse): QueryContractsByCreatorResponseProtoMsg {
+  toProtoMsg(
+    message: QueryContractsByCreatorResponse
+  ): QueryContractsByCreatorResponseProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryContractsByCreatorResponse",
-      value: QueryContractsByCreatorResponse.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryContractsByCreatorResponse',
+      value: QueryContractsByCreatorResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryBuildAddressRequest(): QueryBuildAddressRequest {
   return {
-    codeHash: "",
-    creatorAddress: "",
-    salt: "",
-    initArgs: new Uint8Array()
+    codeHash: '',
+    creatorAddress: '',
+    salt: '',
+    initArgs: new Uint8Array(),
   };
 }
 export const QueryBuildAddressRequest = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryBuildAddressRequest",
-  encode(message: QueryBuildAddressRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.codeHash !== "") {
+  typeUrl: '/cosmwasm.wasm.v1.QueryBuildAddressRequest',
+  encode(
+    message: QueryBuildAddressRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.codeHash !== '') {
       writer.uint32(10).string(message.codeHash);
     }
-    if (message.creatorAddress !== "") {
+    if (message.creatorAddress !== '') {
       writer.uint32(18).string(message.creatorAddress);
     }
-    if (message.salt !== "") {
+    if (message.salt !== '') {
       writer.uint32(26).string(message.salt);
     }
     if (message.initArgs.length !== 0) {
@@ -2614,8 +3149,12 @@ export const QueryBuildAddressRequest = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryBuildAddressRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryBuildAddressRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryBuildAddressRequest();
     while (reader.pos < end) {
@@ -2640,11 +3179,13 @@ export const QueryBuildAddressRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryBuildAddressRequest>): QueryBuildAddressRequest {
+  fromPartial(
+    object: Partial<QueryBuildAddressRequest>
+  ): QueryBuildAddressRequest {
     const message = createBaseQueryBuildAddressRequest();
-    message.codeHash = object.codeHash ?? "";
-    message.creatorAddress = object.creatorAddress ?? "";
-    message.salt = object.salt ?? "";
+    message.codeHash = object.codeHash ?? '';
+    message.creatorAddress = object.creatorAddress ?? '';
+    message.salt = object.salt ?? '';
     message.initArgs = object.initArgs ?? new Uint8Array();
     return message;
   },
@@ -2653,7 +3194,10 @@ export const QueryBuildAddressRequest = {
     if (object.code_hash !== undefined && object.code_hash !== null) {
       message.codeHash = object.code_hash;
     }
-    if (object.creator_address !== undefined && object.creator_address !== null) {
+    if (
+      object.creator_address !== undefined &&
+      object.creator_address !== null
+    ) {
       message.creatorAddress = object.creator_address;
     }
     if (object.salt !== undefined && object.salt !== null) {
@@ -2666,49 +3210,67 @@ export const QueryBuildAddressRequest = {
   },
   toAmino(message: QueryBuildAddressRequest): QueryBuildAddressRequestAmino {
     const obj: any = {};
-    obj.code_hash = message.codeHash === "" ? undefined : message.codeHash;
-    obj.creator_address = message.creatorAddress === "" ? undefined : message.creatorAddress;
-    obj.salt = message.salt === "" ? undefined : message.salt;
-    obj.init_args = message.initArgs ? base64FromBytes(message.initArgs) : undefined;
+    obj.code_hash = message.codeHash === '' ? undefined : message.codeHash;
+    obj.creator_address =
+      message.creatorAddress === '' ? undefined : message.creatorAddress;
+    obj.salt = message.salt === '' ? undefined : message.salt;
+    obj.init_args = message.initArgs
+      ? base64FromBytes(message.initArgs)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryBuildAddressRequestAminoMsg): QueryBuildAddressRequest {
+  fromAminoMsg(
+    object: QueryBuildAddressRequestAminoMsg
+  ): QueryBuildAddressRequest {
     return QueryBuildAddressRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryBuildAddressRequest): QueryBuildAddressRequestAminoMsg {
+  toAminoMsg(
+    message: QueryBuildAddressRequest
+  ): QueryBuildAddressRequestAminoMsg {
     return {
-      type: "wasm/QueryBuildAddressRequest",
-      value: QueryBuildAddressRequest.toAmino(message)
+      type: 'wasm/QueryBuildAddressRequest',
+      value: QueryBuildAddressRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryBuildAddressRequestProtoMsg): QueryBuildAddressRequest {
+  fromProtoMsg(
+    message: QueryBuildAddressRequestProtoMsg
+  ): QueryBuildAddressRequest {
     return QueryBuildAddressRequest.decode(message.value);
   },
   toProto(message: QueryBuildAddressRequest): Uint8Array {
     return QueryBuildAddressRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryBuildAddressRequest): QueryBuildAddressRequestProtoMsg {
+  toProtoMsg(
+    message: QueryBuildAddressRequest
+  ): QueryBuildAddressRequestProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryBuildAddressRequest",
-      value: QueryBuildAddressRequest.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryBuildAddressRequest',
+      value: QueryBuildAddressRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryBuildAddressResponse(): QueryBuildAddressResponse {
   return {
-    address: ""
+    address: '',
   };
 }
 export const QueryBuildAddressResponse = {
-  typeUrl: "/cosmwasm.wasm.v1.QueryBuildAddressResponse",
-  encode(message: QueryBuildAddressResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.address !== "") {
+  typeUrl: '/cosmwasm.wasm.v1.QueryBuildAddressResponse',
+  encode(
+    message: QueryBuildAddressResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryBuildAddressResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryBuildAddressResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryBuildAddressResponse();
     while (reader.pos < end) {
@@ -2724,9 +3286,11 @@ export const QueryBuildAddressResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryBuildAddressResponse>): QueryBuildAddressResponse {
+  fromPartial(
+    object: Partial<QueryBuildAddressResponse>
+  ): QueryBuildAddressResponse {
     const message = createBaseQueryBuildAddressResponse();
-    message.address = object.address ?? "";
+    message.address = object.address ?? '';
     return message;
   },
   fromAmino(object: QueryBuildAddressResponseAmino): QueryBuildAddressResponse {
@@ -2738,28 +3302,36 @@ export const QueryBuildAddressResponse = {
   },
   toAmino(message: QueryBuildAddressResponse): QueryBuildAddressResponseAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
+    obj.address = message.address === '' ? undefined : message.address;
     return obj;
   },
-  fromAminoMsg(object: QueryBuildAddressResponseAminoMsg): QueryBuildAddressResponse {
+  fromAminoMsg(
+    object: QueryBuildAddressResponseAminoMsg
+  ): QueryBuildAddressResponse {
     return QueryBuildAddressResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryBuildAddressResponse): QueryBuildAddressResponseAminoMsg {
+  toAminoMsg(
+    message: QueryBuildAddressResponse
+  ): QueryBuildAddressResponseAminoMsg {
     return {
-      type: "wasm/QueryBuildAddressResponse",
-      value: QueryBuildAddressResponse.toAmino(message)
+      type: 'wasm/QueryBuildAddressResponse',
+      value: QueryBuildAddressResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryBuildAddressResponseProtoMsg): QueryBuildAddressResponse {
+  fromProtoMsg(
+    message: QueryBuildAddressResponseProtoMsg
+  ): QueryBuildAddressResponse {
     return QueryBuildAddressResponse.decode(message.value);
   },
   toProto(message: QueryBuildAddressResponse): Uint8Array {
     return QueryBuildAddressResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryBuildAddressResponse): QueryBuildAddressResponseProtoMsg {
+  toProtoMsg(
+    message: QueryBuildAddressResponse
+  ): QueryBuildAddressResponseProtoMsg {
     return {
-      typeUrl: "/cosmwasm.wasm.v1.QueryBuildAddressResponse",
-      value: QueryBuildAddressResponse.encode(message).finish()
+      typeUrl: '/cosmwasm.wasm.v1.QueryBuildAddressResponse',
+      value: QueryBuildAddressResponse.encode(message).finish(),
     };
-  }
+  },
 };

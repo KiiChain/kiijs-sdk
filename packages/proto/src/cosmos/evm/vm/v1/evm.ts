@@ -1,6 +1,6 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
+import { base64FromBytes, bytesFromBase64 } from '../../../../helpers';
 /** AccessType defines the types of permissions for the operations */
 export enum AccessType {
   /** ACCESS_TYPE_PERMISSIONLESS - ACCESS_TYPE_PERMISSIONLESS does not restrict the operation to anyone */
@@ -16,16 +16,16 @@ export const AccessTypeAmino = AccessType;
 export function accessTypeFromJSON(object: any): AccessType {
   switch (object) {
     case 0:
-    case "ACCESS_TYPE_PERMISSIONLESS":
+    case 'ACCESS_TYPE_PERMISSIONLESS':
       return AccessType.ACCESS_TYPE_PERMISSIONLESS;
     case 1:
-    case "ACCESS_TYPE_RESTRICTED":
+    case 'ACCESS_TYPE_RESTRICTED':
       return AccessType.ACCESS_TYPE_RESTRICTED;
     case 2:
-    case "ACCESS_TYPE_PERMISSIONED":
+    case 'ACCESS_TYPE_PERMISSIONED':
       return AccessType.ACCESS_TYPE_PERMISSIONED;
     case -1:
-    case "UNRECOGNIZED":
+    case 'UNRECOGNIZED':
     default:
       return AccessType.UNRECOGNIZED;
   }
@@ -33,14 +33,14 @@ export function accessTypeFromJSON(object: any): AccessType {
 export function accessTypeToJSON(object: AccessType): string {
   switch (object) {
     case AccessType.ACCESS_TYPE_PERMISSIONLESS:
-      return "ACCESS_TYPE_PERMISSIONLESS";
+      return 'ACCESS_TYPE_PERMISSIONLESS';
     case AccessType.ACCESS_TYPE_RESTRICTED:
-      return "ACCESS_TYPE_RESTRICTED";
+      return 'ACCESS_TYPE_RESTRICTED';
     case AccessType.ACCESS_TYPE_PERMISSIONED:
-      return "ACCESS_TYPE_PERMISSIONED";
+      return 'ACCESS_TYPE_PERMISSIONED';
     case AccessType.UNRECOGNIZED:
     default:
-      return "UNRECOGNIZED";
+      return 'UNRECOGNIZED';
   }
 }
 /** Params defines the EVM module parameters */
@@ -70,7 +70,7 @@ export interface Params {
   activeStaticPrecompiles: string[];
 }
 export interface ParamsProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.Params";
+  typeUrl: '/cosmos.evm.vm.v1.Params';
   value: Uint8Array;
 }
 /** Params defines the EVM module parameters */
@@ -100,7 +100,7 @@ export interface ParamsAmino {
   active_static_precompiles?: string[];
 }
 export interface ParamsAminoMsg {
-  type: "cosmos/evm/x/vm/Params";
+  type: 'cosmos/evm/x/vm/Params';
   value: ParamsAmino;
 }
 /** Params defines the EVM module parameters */
@@ -124,7 +124,7 @@ export interface AccessControl {
   call: AccessControlType;
 }
 export interface AccessControlProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.AccessControl";
+  typeUrl: '/cosmos.evm.vm.v1.AccessControl';
   value: Uint8Array;
 }
 /**
@@ -138,7 +138,7 @@ export interface AccessControlAmino {
   call?: AccessControlTypeAmino;
 }
 export interface AccessControlAminoMsg {
-  type: "cosmos-sdk/AccessControl";
+  type: 'cosmos-sdk/AccessControl';
   value: AccessControlAmino;
 }
 /**
@@ -165,7 +165,7 @@ export interface AccessControlType {
   accessControlList: string[];
 }
 export interface AccessControlTypeProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.AccessControlType";
+  typeUrl: '/cosmos.evm.vm.v1.AccessControlType';
   value: Uint8Array;
 }
 /** AccessControlType defines the permission type for policies */
@@ -184,7 +184,7 @@ export interface AccessControlTypeAmino {
   access_control_list?: string[];
 }
 export interface AccessControlTypeAminoMsg {
-  type: "cosmos-sdk/AccessControlType";
+  type: 'cosmos-sdk/AccessControlType';
   value: AccessControlTypeAmino;
 }
 /** AccessControlType defines the permission type for policies */
@@ -273,7 +273,7 @@ export interface ChainConfig {
   decimals: bigint;
 }
 export interface ChainConfigProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.ChainConfig";
+  typeUrl: '/cosmos.evm.vm.v1.ChainConfig';
   value: Uint8Array;
 }
 /**
@@ -357,7 +357,7 @@ export interface ChainConfigAmino {
   decimals?: string;
 }
 export interface ChainConfigAminoMsg {
-  type: "cosmos-sdk/ChainConfig";
+  type: 'cosmos-sdk/ChainConfig';
   value: ChainConfigAmino;
 }
 /**
@@ -396,7 +396,7 @@ export interface State {
   value: string;
 }
 export interface StateProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.State";
+  typeUrl: '/cosmos.evm.vm.v1.State';
   value: Uint8Array;
 }
 /** State represents a single Storage key value pair item. */
@@ -407,7 +407,7 @@ export interface StateAmino {
   value?: string;
 }
 export interface StateAminoMsg {
-  type: "cosmos-sdk/State";
+  type: 'cosmos-sdk/State';
   value: StateAmino;
 }
 /** State represents a single Storage key value pair item. */
@@ -427,7 +427,7 @@ export interface TransactionLogs {
   logs: Log[];
 }
 export interface TransactionLogsProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.TransactionLogs";
+  typeUrl: '/cosmos.evm.vm.v1.TransactionLogs';
   value: Uint8Array;
 }
 /**
@@ -442,7 +442,7 @@ export interface TransactionLogsAmino {
   logs?: LogAmino[];
 }
 export interface TransactionLogsAminoMsg {
-  type: "cosmos-sdk/TransactionLogs";
+  type: 'cosmos-sdk/TransactionLogs';
   value: TransactionLogsAmino;
 }
 /**
@@ -458,7 +458,7 @@ export interface TransactionLogsSDKType {
  * Log represents an protobuf compatible Ethereum Log that defines a contract
  * log event. These events are generated by the LOG opcode and stored/indexed by
  * the node.
- * 
+ *
  * NOTE: address, topics and data are consensus fields. The rest of the fields
  * are derived, i.e. filled in by the nodes, but not secured by consensus.
  */
@@ -487,14 +487,14 @@ export interface Log {
   removed: boolean;
 }
 export interface LogProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.Log";
+  typeUrl: '/cosmos.evm.vm.v1.Log';
   value: Uint8Array;
 }
 /**
  * Log represents an protobuf compatible Ethereum Log that defines a contract
  * log event. These events are generated by the LOG opcode and stored/indexed by
  * the node.
- * 
+ *
  * NOTE: address, topics and data are consensus fields. The rest of the fields
  * are derived, i.e. filled in by the nodes, but not secured by consensus.
  */
@@ -523,14 +523,14 @@ export interface LogAmino {
   removed?: boolean;
 }
 export interface LogAminoMsg {
-  type: "cosmos-sdk/Log";
+  type: 'cosmos-sdk/Log';
   value: LogAmino;
 }
 /**
  * Log represents an protobuf compatible Ethereum Log that defines a contract
  * log event. These events are generated by the LOG opcode and stored/indexed by
  * the node.
- * 
+ *
  * NOTE: address, topics and data are consensus fields. The rest of the fields
  * are derived, i.e. filled in by the nodes, but not secured by consensus.
  */
@@ -568,7 +568,7 @@ export interface TxResult {
   gasUsed: bigint;
 }
 export interface TxResultProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.TxResult";
+  typeUrl: '/cosmos.evm.vm.v1.TxResult';
   value: Uint8Array;
 }
 /** TxResult stores results of Tx execution. */
@@ -594,7 +594,7 @@ export interface TxResultAmino {
   gas_used?: string;
 }
 export interface TxResultAminoMsg {
-  type: "cosmos-sdk/TxResult";
+  type: 'cosmos-sdk/TxResult';
   value: TxResultAmino;
 }
 /** TxResult stores results of Tx execution. */
@@ -614,7 +614,7 @@ export interface AccessTuple {
   storageKeys: string[];
 }
 export interface AccessTupleProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.AccessTuple";
+  typeUrl: '/cosmos.evm.vm.v1.AccessTuple';
   value: Uint8Array;
 }
 /** AccessTuple is the element type of an access list. */
@@ -625,7 +625,7 @@ export interface AccessTupleAmino {
   storage_keys: string[];
 }
 export interface AccessTupleAminoMsg {
-  type: "cosmos-sdk/AccessTuple";
+  type: 'cosmos-sdk/AccessTuple';
   value: AccessTupleAmino;
 }
 /** AccessTuple is the element type of an access list. */
@@ -662,7 +662,7 @@ export interface TraceConfig {
   tracerJsonConfig: string;
 }
 export interface TraceConfigProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.TraceConfig";
+  typeUrl: '/cosmos.evm.vm.v1.TraceConfig';
   value: Uint8Array;
 }
 /** TraceConfig holds extra parameters to trace functions. */
@@ -694,7 +694,7 @@ export interface TraceConfigAmino {
   tracer_json_config: string;
 }
 export interface TraceConfigAminoMsg {
-  type: "cosmos-sdk/TraceConfig";
+  type: 'cosmos-sdk/TraceConfig';
   value: TraceConfigAmino;
 }
 /** TraceConfig holds extra parameters to trace functions. */
@@ -713,26 +713,32 @@ export interface TraceConfigSDKType {
 }
 function createBaseParams(): Params {
   return {
-    evmDenom: "",
+    evmDenom: '',
     extraEips: [],
     chainConfig: ChainConfig.fromPartial({}),
     allowUnprotectedTxs: false,
     evmChannels: [],
     accessControl: AccessControl.fromPartial({}),
-    activeStaticPrecompiles: []
+    activeStaticPrecompiles: [],
   };
 }
 export const Params = {
-  typeUrl: "/cosmos.evm.vm.v1.Params",
-  encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.evmDenom !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.Params',
+  encode(
+    message: Params,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.evmDenom !== '') {
       writer.uint32(10).string(message.evmDenom);
     }
     for (const v of message.extraEips) {
       writer.uint32(34).string(v!);
     }
     if (message.chainConfig !== undefined) {
-      ChainConfig.encode(message.chainConfig, writer.uint32(42).fork()).ldelim();
+      ChainConfig.encode(
+        message.chainConfig,
+        writer.uint32(42).fork()
+      ).ldelim();
     }
     if (message.allowUnprotectedTxs === true) {
       writer.uint32(48).bool(message.allowUnprotectedTxs);
@@ -741,7 +747,10 @@ export const Params = {
       writer.uint32(66).string(v!);
     }
     if (message.accessControl !== undefined) {
-      AccessControl.encode(message.accessControl, writer.uint32(74).fork()).ldelim();
+      AccessControl.encode(
+        message.accessControl,
+        writer.uint32(74).fork()
+      ).ldelim();
     }
     for (const v of message.activeStaticPrecompiles) {
       writer.uint32(82).string(v!);
@@ -749,7 +758,8 @@ export const Params = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Params {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParams();
     while (reader.pos < end) {
@@ -785,13 +795,20 @@ export const Params = {
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
-    message.evmDenom = object.evmDenom ?? "";
-    message.extraEips = object.extraEips?.map(e => e) || [];
-    message.chainConfig = object.chainConfig !== undefined && object.chainConfig !== null ? ChainConfig.fromPartial(object.chainConfig) : undefined;
+    message.evmDenom = object.evmDenom ?? '';
+    message.extraEips = object.extraEips?.map((e) => e) || [];
+    message.chainConfig =
+      object.chainConfig !== undefined && object.chainConfig !== null
+        ? ChainConfig.fromPartial(object.chainConfig)
+        : undefined;
     message.allowUnprotectedTxs = object.allowUnprotectedTxs ?? false;
-    message.evmChannels = object.evmChannels?.map(e => e) || [];
-    message.accessControl = object.accessControl !== undefined && object.accessControl !== null ? AccessControl.fromPartial(object.accessControl) : undefined;
-    message.activeStaticPrecompiles = object.activeStaticPrecompiles?.map(e => e) || [];
+    message.evmChannels = object.evmChannels?.map((e) => e) || [];
+    message.accessControl =
+      object.accessControl !== undefined && object.accessControl !== null
+        ? AccessControl.fromPartial(object.accessControl)
+        : undefined;
+    message.activeStaticPrecompiles =
+      object.activeStaticPrecompiles?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
@@ -799,38 +816,51 @@ export const Params = {
     if (object.evm_denom !== undefined && object.evm_denom !== null) {
       message.evmDenom = object.evm_denom;
     }
-    message.extraEips = object.extra_eips?.map(e => e) || [];
+    message.extraEips = object.extra_eips?.map((e) => e) || [];
     if (object.chain_config !== undefined && object.chain_config !== null) {
       message.chainConfig = ChainConfig.fromAmino(object.chain_config);
     }
-    if (object.allow_unprotected_txs !== undefined && object.allow_unprotected_txs !== null) {
+    if (
+      object.allow_unprotected_txs !== undefined &&
+      object.allow_unprotected_txs !== null
+    ) {
       message.allowUnprotectedTxs = object.allow_unprotected_txs;
     }
-    message.evmChannels = object.evm_channels?.map(e => e) || [];
+    message.evmChannels = object.evm_channels?.map((e) => e) || [];
     if (object.access_control !== undefined && object.access_control !== null) {
       message.accessControl = AccessControl.fromAmino(object.access_control);
     }
-    message.activeStaticPrecompiles = object.active_static_precompiles?.map(e => e) || [];
+    message.activeStaticPrecompiles =
+      object.active_static_precompiles?.map((e) => e) || [];
     return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.evm_denom = message.evmDenom === "" ? undefined : message.evmDenom;
+    obj.evm_denom = message.evmDenom === '' ? undefined : message.evmDenom;
     if (message.extraEips) {
-      obj.extra_eips = message.extraEips.map(e => e);
+      obj.extra_eips = message.extraEips.map((e) => e);
     } else {
       obj.extra_eips = message.extraEips;
     }
-    obj.chain_config = message.chainConfig ? ChainConfig.toAmino(message.chainConfig) : ChainConfig.toAmino(ChainConfig.fromPartial({}));
-    obj.allow_unprotected_txs = message.allowUnprotectedTxs === false ? undefined : message.allowUnprotectedTxs;
+    obj.chain_config = message.chainConfig
+      ? ChainConfig.toAmino(message.chainConfig)
+      : ChainConfig.toAmino(ChainConfig.fromPartial({}));
+    obj.allow_unprotected_txs =
+      message.allowUnprotectedTxs === false
+        ? undefined
+        : message.allowUnprotectedTxs;
     if (message.evmChannels) {
-      obj.evm_channels = message.evmChannels.map(e => e);
+      obj.evm_channels = message.evmChannels.map((e) => e);
     } else {
       obj.evm_channels = message.evmChannels;
     }
-    obj.access_control = message.accessControl ? AccessControl.toAmino(message.accessControl) : undefined;
+    obj.access_control = message.accessControl
+      ? AccessControl.toAmino(message.accessControl)
+      : undefined;
     if (message.activeStaticPrecompiles) {
-      obj.active_static_precompiles = message.activeStaticPrecompiles.map(e => e);
+      obj.active_static_precompiles = message.activeStaticPrecompiles.map(
+        (e) => e
+      );
     } else {
       obj.active_static_precompiles = message.activeStaticPrecompiles;
     }
@@ -841,8 +871,8 @@ export const Params = {
   },
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
-      type: "cosmos/evm/x/vm/Params",
-      value: Params.toAmino(message)
+      type: 'cosmos/evm/x/vm/Params',
+      value: Params.toAmino(message),
     };
   },
   fromProtoMsg(message: ParamsProtoMsg): Params {
@@ -853,22 +883,28 @@ export const Params = {
   },
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.Params",
-      value: Params.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.Params',
+      value: Params.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseAccessControl(): AccessControl {
   return {
     create: AccessControlType.fromPartial({}),
-    call: AccessControlType.fromPartial({})
+    call: AccessControlType.fromPartial({}),
   };
 }
 export const AccessControl = {
-  typeUrl: "/cosmos.evm.vm.v1.AccessControl",
-  encode(message: AccessControl, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.vm.v1.AccessControl',
+  encode(
+    message: AccessControl,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.create !== undefined) {
-      AccessControlType.encode(message.create, writer.uint32(10).fork()).ldelim();
+      AccessControlType.encode(
+        message.create,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     if (message.call !== undefined) {
       AccessControlType.encode(message.call, writer.uint32(18).fork()).ldelim();
@@ -876,7 +912,8 @@ export const AccessControl = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): AccessControl {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAccessControl();
     while (reader.pos < end) {
@@ -897,8 +934,14 @@ export const AccessControl = {
   },
   fromPartial(object: Partial<AccessControl>): AccessControl {
     const message = createBaseAccessControl();
-    message.create = object.create !== undefined && object.create !== null ? AccessControlType.fromPartial(object.create) : undefined;
-    message.call = object.call !== undefined && object.call !== null ? AccessControlType.fromPartial(object.call) : undefined;
+    message.create =
+      object.create !== undefined && object.create !== null
+        ? AccessControlType.fromPartial(object.create)
+        : undefined;
+    message.call =
+      object.call !== undefined && object.call !== null
+        ? AccessControlType.fromPartial(object.call)
+        : undefined;
     return message;
   },
   fromAmino(object: AccessControlAmino): AccessControl {
@@ -913,8 +956,12 @@ export const AccessControl = {
   },
   toAmino(message: AccessControl): AccessControlAmino {
     const obj: any = {};
-    obj.create = message.create ? AccessControlType.toAmino(message.create) : undefined;
-    obj.call = message.call ? AccessControlType.toAmino(message.call) : undefined;
+    obj.create = message.create
+      ? AccessControlType.toAmino(message.create)
+      : undefined;
+    obj.call = message.call
+      ? AccessControlType.toAmino(message.call)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: AccessControlAminoMsg): AccessControl {
@@ -922,8 +969,8 @@ export const AccessControl = {
   },
   toAminoMsg(message: AccessControl): AccessControlAminoMsg {
     return {
-      type: "cosmos-sdk/AccessControl",
-      value: AccessControl.toAmino(message)
+      type: 'cosmos-sdk/AccessControl',
+      value: AccessControl.toAmino(message),
     };
   },
   fromProtoMsg(message: AccessControlProtoMsg): AccessControl {
@@ -934,20 +981,23 @@ export const AccessControl = {
   },
   toProtoMsg(message: AccessControl): AccessControlProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.AccessControl",
-      value: AccessControl.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.AccessControl',
+      value: AccessControl.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseAccessControlType(): AccessControlType {
   return {
     accessType: 0,
-    accessControlList: []
+    accessControlList: [],
   };
 }
 export const AccessControlType = {
-  typeUrl: "/cosmos.evm.vm.v1.AccessControlType",
-  encode(message: AccessControlType, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.vm.v1.AccessControlType',
+  encode(
+    message: AccessControlType,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.accessType !== 0) {
       writer.uint32(8).int32(message.accessType);
     }
@@ -957,7 +1007,8 @@ export const AccessControlType = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): AccessControlType {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAccessControlType();
     while (reader.pos < end) {
@@ -979,7 +1030,7 @@ export const AccessControlType = {
   fromPartial(object: Partial<AccessControlType>): AccessControlType {
     const message = createBaseAccessControlType();
     message.accessType = object.accessType ?? 0;
-    message.accessControlList = object.accessControlList?.map(e => e) || [];
+    message.accessControlList = object.accessControlList?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: AccessControlTypeAmino): AccessControlType {
@@ -987,14 +1038,14 @@ export const AccessControlType = {
     if (object.access_type !== undefined && object.access_type !== null) {
       message.accessType = object.access_type;
     }
-    message.accessControlList = object.access_control_list?.map(e => e) || [];
+    message.accessControlList = object.access_control_list?.map((e) => e) || [];
     return message;
   },
   toAmino(message: AccessControlType): AccessControlTypeAmino {
     const obj: any = {};
     obj.access_type = message.accessType === 0 ? undefined : message.accessType;
     if (message.accessControlList) {
-      obj.access_control_list = message.accessControlList.map(e => e);
+      obj.access_control_list = message.accessControlList.map((e) => e);
     } else {
       obj.access_control_list = message.accessControlList;
     }
@@ -1005,8 +1056,8 @@ export const AccessControlType = {
   },
   toAminoMsg(message: AccessControlType): AccessControlTypeAminoMsg {
     return {
-      type: "cosmos-sdk/AccessControlType",
-      value: AccessControlType.toAmino(message)
+      type: 'cosmos-sdk/AccessControlType',
+      value: AccessControlType.toAmino(message),
     };
   },
   fromProtoMsg(message: AccessControlTypeProtoMsg): AccessControlType {
@@ -1017,101 +1068,104 @@ export const AccessControlType = {
   },
   toProtoMsg(message: AccessControlType): AccessControlTypeProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.AccessControlType",
-      value: AccessControlType.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.AccessControlType',
+      value: AccessControlType.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseChainConfig(): ChainConfig {
   return {
-    homesteadBlock: "",
-    daoForkBlock: "",
+    homesteadBlock: '',
+    daoForkBlock: '',
     daoForkSupport: false,
-    eip150Block: "",
-    eip150Hash: "",
-    eip155Block: "",
-    eip158Block: "",
-    byzantiumBlock: "",
-    constantinopleBlock: "",
-    petersburgBlock: "",
-    istanbulBlock: "",
-    muirGlacierBlock: "",
-    berlinBlock: "",
-    londonBlock: "",
-    arrowGlacierBlock: "",
-    grayGlacierBlock: "",
-    mergeNetsplitBlock: "",
-    shanghaiBlock: "",
-    cancunBlock: "",
+    eip150Block: '',
+    eip150Hash: '',
+    eip155Block: '',
+    eip158Block: '',
+    byzantiumBlock: '',
+    constantinopleBlock: '',
+    petersburgBlock: '',
+    istanbulBlock: '',
+    muirGlacierBlock: '',
+    berlinBlock: '',
+    londonBlock: '',
+    arrowGlacierBlock: '',
+    grayGlacierBlock: '',
+    mergeNetsplitBlock: '',
+    shanghaiBlock: '',
+    cancunBlock: '',
     chainId: BigInt(0),
-    denom: "",
-    decimals: BigInt(0)
+    denom: '',
+    decimals: BigInt(0),
   };
 }
 export const ChainConfig = {
-  typeUrl: "/cosmos.evm.vm.v1.ChainConfig",
-  encode(message: ChainConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.homesteadBlock !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.ChainConfig',
+  encode(
+    message: ChainConfig,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.homesteadBlock !== '') {
       writer.uint32(10).string(message.homesteadBlock);
     }
-    if (message.daoForkBlock !== "") {
+    if (message.daoForkBlock !== '') {
       writer.uint32(18).string(message.daoForkBlock);
     }
     if (message.daoForkSupport === true) {
       writer.uint32(24).bool(message.daoForkSupport);
     }
-    if (message.eip150Block !== "") {
+    if (message.eip150Block !== '') {
       writer.uint32(34).string(message.eip150Block);
     }
-    if (message.eip150Hash !== "") {
+    if (message.eip150Hash !== '') {
       writer.uint32(42).string(message.eip150Hash);
     }
-    if (message.eip155Block !== "") {
+    if (message.eip155Block !== '') {
       writer.uint32(50).string(message.eip155Block);
     }
-    if (message.eip158Block !== "") {
+    if (message.eip158Block !== '') {
       writer.uint32(58).string(message.eip158Block);
     }
-    if (message.byzantiumBlock !== "") {
+    if (message.byzantiumBlock !== '') {
       writer.uint32(66).string(message.byzantiumBlock);
     }
-    if (message.constantinopleBlock !== "") {
+    if (message.constantinopleBlock !== '') {
       writer.uint32(74).string(message.constantinopleBlock);
     }
-    if (message.petersburgBlock !== "") {
+    if (message.petersburgBlock !== '') {
       writer.uint32(82).string(message.petersburgBlock);
     }
-    if (message.istanbulBlock !== "") {
+    if (message.istanbulBlock !== '') {
       writer.uint32(90).string(message.istanbulBlock);
     }
-    if (message.muirGlacierBlock !== "") {
+    if (message.muirGlacierBlock !== '') {
       writer.uint32(98).string(message.muirGlacierBlock);
     }
-    if (message.berlinBlock !== "") {
+    if (message.berlinBlock !== '') {
       writer.uint32(106).string(message.berlinBlock);
     }
-    if (message.londonBlock !== "") {
+    if (message.londonBlock !== '') {
       writer.uint32(138).string(message.londonBlock);
     }
-    if (message.arrowGlacierBlock !== "") {
+    if (message.arrowGlacierBlock !== '') {
       writer.uint32(146).string(message.arrowGlacierBlock);
     }
-    if (message.grayGlacierBlock !== "") {
+    if (message.grayGlacierBlock !== '') {
       writer.uint32(162).string(message.grayGlacierBlock);
     }
-    if (message.mergeNetsplitBlock !== "") {
+    if (message.mergeNetsplitBlock !== '') {
       writer.uint32(170).string(message.mergeNetsplitBlock);
     }
-    if (message.shanghaiBlock !== "") {
+    if (message.shanghaiBlock !== '') {
       writer.uint32(178).string(message.shanghaiBlock);
     }
-    if (message.cancunBlock !== "") {
+    if (message.cancunBlock !== '') {
       writer.uint32(186).string(message.cancunBlock);
     }
     if (message.chainId !== BigInt(0)) {
       writer.uint32(192).uint64(message.chainId);
     }
-    if (message.denom !== "") {
+    if (message.denom !== '') {
       writer.uint32(202).string(message.denom);
     }
     if (message.decimals !== BigInt(0)) {
@@ -1120,7 +1174,8 @@ export const ChainConfig = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): ChainConfig {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseChainConfig();
     while (reader.pos < end) {
@@ -1201,39 +1256,51 @@ export const ChainConfig = {
   },
   fromPartial(object: Partial<ChainConfig>): ChainConfig {
     const message = createBaseChainConfig();
-    message.homesteadBlock = object.homesteadBlock ?? "";
-    message.daoForkBlock = object.daoForkBlock ?? "";
+    message.homesteadBlock = object.homesteadBlock ?? '';
+    message.daoForkBlock = object.daoForkBlock ?? '';
     message.daoForkSupport = object.daoForkSupport ?? false;
-    message.eip150Block = object.eip150Block ?? "";
-    message.eip150Hash = object.eip150Hash ?? "";
-    message.eip155Block = object.eip155Block ?? "";
-    message.eip158Block = object.eip158Block ?? "";
-    message.byzantiumBlock = object.byzantiumBlock ?? "";
-    message.constantinopleBlock = object.constantinopleBlock ?? "";
-    message.petersburgBlock = object.petersburgBlock ?? "";
-    message.istanbulBlock = object.istanbulBlock ?? "";
-    message.muirGlacierBlock = object.muirGlacierBlock ?? "";
-    message.berlinBlock = object.berlinBlock ?? "";
-    message.londonBlock = object.londonBlock ?? "";
-    message.arrowGlacierBlock = object.arrowGlacierBlock ?? "";
-    message.grayGlacierBlock = object.grayGlacierBlock ?? "";
-    message.mergeNetsplitBlock = object.mergeNetsplitBlock ?? "";
-    message.shanghaiBlock = object.shanghaiBlock ?? "";
-    message.cancunBlock = object.cancunBlock ?? "";
-    message.chainId = object.chainId !== undefined && object.chainId !== null ? BigInt(object.chainId.toString()) : BigInt(0);
-    message.denom = object.denom ?? "";
-    message.decimals = object.decimals !== undefined && object.decimals !== null ? BigInt(object.decimals.toString()) : BigInt(0);
+    message.eip150Block = object.eip150Block ?? '';
+    message.eip150Hash = object.eip150Hash ?? '';
+    message.eip155Block = object.eip155Block ?? '';
+    message.eip158Block = object.eip158Block ?? '';
+    message.byzantiumBlock = object.byzantiumBlock ?? '';
+    message.constantinopleBlock = object.constantinopleBlock ?? '';
+    message.petersburgBlock = object.petersburgBlock ?? '';
+    message.istanbulBlock = object.istanbulBlock ?? '';
+    message.muirGlacierBlock = object.muirGlacierBlock ?? '';
+    message.berlinBlock = object.berlinBlock ?? '';
+    message.londonBlock = object.londonBlock ?? '';
+    message.arrowGlacierBlock = object.arrowGlacierBlock ?? '';
+    message.grayGlacierBlock = object.grayGlacierBlock ?? '';
+    message.mergeNetsplitBlock = object.mergeNetsplitBlock ?? '';
+    message.shanghaiBlock = object.shanghaiBlock ?? '';
+    message.cancunBlock = object.cancunBlock ?? '';
+    message.chainId =
+      object.chainId !== undefined && object.chainId !== null
+        ? BigInt(object.chainId.toString())
+        : BigInt(0);
+    message.denom = object.denom ?? '';
+    message.decimals =
+      object.decimals !== undefined && object.decimals !== null
+        ? BigInt(object.decimals.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: ChainConfigAmino): ChainConfig {
     const message = createBaseChainConfig();
-    if (object.homestead_block !== undefined && object.homestead_block !== null) {
+    if (
+      object.homestead_block !== undefined &&
+      object.homestead_block !== null
+    ) {
       message.homesteadBlock = object.homestead_block;
     }
     if (object.dao_fork_block !== undefined && object.dao_fork_block !== null) {
       message.daoForkBlock = object.dao_fork_block;
     }
-    if (object.dao_fork_support !== undefined && object.dao_fork_support !== null) {
+    if (
+      object.dao_fork_support !== undefined &&
+      object.dao_fork_support !== null
+    ) {
       message.daoForkSupport = object.dao_fork_support;
     }
     if (object.eip150_block !== undefined && object.eip150_block !== null) {
@@ -1248,19 +1315,31 @@ export const ChainConfig = {
     if (object.eip158_block !== undefined && object.eip158_block !== null) {
       message.eip158Block = object.eip158_block;
     }
-    if (object.byzantium_block !== undefined && object.byzantium_block !== null) {
+    if (
+      object.byzantium_block !== undefined &&
+      object.byzantium_block !== null
+    ) {
       message.byzantiumBlock = object.byzantium_block;
     }
-    if (object.constantinople_block !== undefined && object.constantinople_block !== null) {
+    if (
+      object.constantinople_block !== undefined &&
+      object.constantinople_block !== null
+    ) {
       message.constantinopleBlock = object.constantinople_block;
     }
-    if (object.petersburg_block !== undefined && object.petersburg_block !== null) {
+    if (
+      object.petersburg_block !== undefined &&
+      object.petersburg_block !== null
+    ) {
       message.petersburgBlock = object.petersburg_block;
     }
     if (object.istanbul_block !== undefined && object.istanbul_block !== null) {
       message.istanbulBlock = object.istanbul_block;
     }
-    if (object.muir_glacier_block !== undefined && object.muir_glacier_block !== null) {
+    if (
+      object.muir_glacier_block !== undefined &&
+      object.muir_glacier_block !== null
+    ) {
       message.muirGlacierBlock = object.muir_glacier_block;
     }
     if (object.berlin_block !== undefined && object.berlin_block !== null) {
@@ -1269,13 +1348,22 @@ export const ChainConfig = {
     if (object.london_block !== undefined && object.london_block !== null) {
       message.londonBlock = object.london_block;
     }
-    if (object.arrow_glacier_block !== undefined && object.arrow_glacier_block !== null) {
+    if (
+      object.arrow_glacier_block !== undefined &&
+      object.arrow_glacier_block !== null
+    ) {
       message.arrowGlacierBlock = object.arrow_glacier_block;
     }
-    if (object.gray_glacier_block !== undefined && object.gray_glacier_block !== null) {
+    if (
+      object.gray_glacier_block !== undefined &&
+      object.gray_glacier_block !== null
+    ) {
       message.grayGlacierBlock = object.gray_glacier_block;
     }
-    if (object.merge_netsplit_block !== undefined && object.merge_netsplit_block !== null) {
+    if (
+      object.merge_netsplit_block !== undefined &&
+      object.merge_netsplit_block !== null
+    ) {
       message.mergeNetsplitBlock = object.merge_netsplit_block;
     }
     if (object.shanghai_block !== undefined && object.shanghai_block !== null) {
@@ -1297,28 +1385,53 @@ export const ChainConfig = {
   },
   toAmino(message: ChainConfig): ChainConfigAmino {
     const obj: any = {};
-    obj.homestead_block = message.homesteadBlock === "" ? undefined : message.homesteadBlock;
-    obj.dao_fork_block = message.daoForkBlock === "" ? undefined : message.daoForkBlock;
-    obj.dao_fork_support = message.daoForkSupport === false ? undefined : message.daoForkSupport;
-    obj.eip150_block = message.eip150Block === "" ? undefined : message.eip150Block;
-    obj.eip150_hash = message.eip150Hash === "" ? undefined : message.eip150Hash;
-    obj.eip155_block = message.eip155Block === "" ? undefined : message.eip155Block;
-    obj.eip158_block = message.eip158Block === "" ? undefined : message.eip158Block;
-    obj.byzantium_block = message.byzantiumBlock === "" ? undefined : message.byzantiumBlock;
-    obj.constantinople_block = message.constantinopleBlock === "" ? undefined : message.constantinopleBlock;
-    obj.petersburg_block = message.petersburgBlock === "" ? undefined : message.petersburgBlock;
-    obj.istanbul_block = message.istanbulBlock === "" ? undefined : message.istanbulBlock;
-    obj.muir_glacier_block = message.muirGlacierBlock === "" ? undefined : message.muirGlacierBlock;
-    obj.berlin_block = message.berlinBlock === "" ? undefined : message.berlinBlock;
-    obj.london_block = message.londonBlock === "" ? undefined : message.londonBlock;
-    obj.arrow_glacier_block = message.arrowGlacierBlock === "" ? undefined : message.arrowGlacierBlock;
-    obj.gray_glacier_block = message.grayGlacierBlock === "" ? undefined : message.grayGlacierBlock;
-    obj.merge_netsplit_block = message.mergeNetsplitBlock === "" ? undefined : message.mergeNetsplitBlock;
-    obj.shanghai_block = message.shanghaiBlock === "" ? undefined : message.shanghaiBlock;
-    obj.cancun_block = message.cancunBlock === "" ? undefined : message.cancunBlock;
-    obj.chain_id = message.chainId !== BigInt(0) ? message.chainId?.toString() : undefined;
-    obj.denom = message.denom === "" ? undefined : message.denom;
-    obj.decimals = message.decimals !== BigInt(0) ? message.decimals?.toString() : undefined;
+    obj.homestead_block =
+      message.homesteadBlock === '' ? undefined : message.homesteadBlock;
+    obj.dao_fork_block =
+      message.daoForkBlock === '' ? undefined : message.daoForkBlock;
+    obj.dao_fork_support =
+      message.daoForkSupport === false ? undefined : message.daoForkSupport;
+    obj.eip150_block =
+      message.eip150Block === '' ? undefined : message.eip150Block;
+    obj.eip150_hash =
+      message.eip150Hash === '' ? undefined : message.eip150Hash;
+    obj.eip155_block =
+      message.eip155Block === '' ? undefined : message.eip155Block;
+    obj.eip158_block =
+      message.eip158Block === '' ? undefined : message.eip158Block;
+    obj.byzantium_block =
+      message.byzantiumBlock === '' ? undefined : message.byzantiumBlock;
+    obj.constantinople_block =
+      message.constantinopleBlock === ''
+        ? undefined
+        : message.constantinopleBlock;
+    obj.petersburg_block =
+      message.petersburgBlock === '' ? undefined : message.petersburgBlock;
+    obj.istanbul_block =
+      message.istanbulBlock === '' ? undefined : message.istanbulBlock;
+    obj.muir_glacier_block =
+      message.muirGlacierBlock === '' ? undefined : message.muirGlacierBlock;
+    obj.berlin_block =
+      message.berlinBlock === '' ? undefined : message.berlinBlock;
+    obj.london_block =
+      message.londonBlock === '' ? undefined : message.londonBlock;
+    obj.arrow_glacier_block =
+      message.arrowGlacierBlock === '' ? undefined : message.arrowGlacierBlock;
+    obj.gray_glacier_block =
+      message.grayGlacierBlock === '' ? undefined : message.grayGlacierBlock;
+    obj.merge_netsplit_block =
+      message.mergeNetsplitBlock === ''
+        ? undefined
+        : message.mergeNetsplitBlock;
+    obj.shanghai_block =
+      message.shanghaiBlock === '' ? undefined : message.shanghaiBlock;
+    obj.cancun_block =
+      message.cancunBlock === '' ? undefined : message.cancunBlock;
+    obj.chain_id =
+      message.chainId !== BigInt(0) ? message.chainId?.toString() : undefined;
+    obj.denom = message.denom === '' ? undefined : message.denom;
+    obj.decimals =
+      message.decimals !== BigInt(0) ? message.decimals?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ChainConfigAminoMsg): ChainConfig {
@@ -1326,8 +1439,8 @@ export const ChainConfig = {
   },
   toAminoMsg(message: ChainConfig): ChainConfigAminoMsg {
     return {
-      type: "cosmos-sdk/ChainConfig",
-      value: ChainConfig.toAmino(message)
+      type: 'cosmos-sdk/ChainConfig',
+      value: ChainConfig.toAmino(message),
     };
   },
   fromProtoMsg(message: ChainConfigProtoMsg): ChainConfig {
@@ -1338,30 +1451,34 @@ export const ChainConfig = {
   },
   toProtoMsg(message: ChainConfig): ChainConfigProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.ChainConfig",
-      value: ChainConfig.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.ChainConfig',
+      value: ChainConfig.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseState(): State {
   return {
-    key: "",
-    value: ""
+    key: '',
+    value: '',
   };
 }
 export const State = {
-  typeUrl: "/cosmos.evm.vm.v1.State",
-  encode(message: State, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.key !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.State',
+  encode(
+    message: State,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.key !== '') {
       writer.uint32(10).string(message.key);
     }
-    if (message.value !== "") {
+    if (message.value !== '') {
       writer.uint32(18).string(message.value);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): State {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseState();
     while (reader.pos < end) {
@@ -1382,8 +1499,8 @@ export const State = {
   },
   fromPartial(object: Partial<State>): State {
     const message = createBaseState();
-    message.key = object.key ?? "";
-    message.value = object.value ?? "";
+    message.key = object.key ?? '';
+    message.value = object.value ?? '';
     return message;
   },
   fromAmino(object: StateAmino): State {
@@ -1398,8 +1515,8 @@ export const State = {
   },
   toAmino(message: State): StateAmino {
     const obj: any = {};
-    obj.key = message.key === "" ? undefined : message.key;
-    obj.value = message.value === "" ? undefined : message.value;
+    obj.key = message.key === '' ? undefined : message.key;
+    obj.value = message.value === '' ? undefined : message.value;
     return obj;
   },
   fromAminoMsg(object: StateAminoMsg): State {
@@ -1407,8 +1524,8 @@ export const State = {
   },
   toAminoMsg(message: State): StateAminoMsg {
     return {
-      type: "cosmos-sdk/State",
-      value: State.toAmino(message)
+      type: 'cosmos-sdk/State',
+      value: State.toAmino(message),
     };
   },
   fromProtoMsg(message: StateProtoMsg): State {
@@ -1419,21 +1536,24 @@ export const State = {
   },
   toProtoMsg(message: State): StateProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.State",
-      value: State.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.State',
+      value: State.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseTransactionLogs(): TransactionLogs {
   return {
-    hash: "",
-    logs: []
+    hash: '',
+    logs: [],
   };
 }
 export const TransactionLogs = {
-  typeUrl: "/cosmos.evm.vm.v1.TransactionLogs",
-  encode(message: TransactionLogs, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.hash !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.TransactionLogs',
+  encode(
+    message: TransactionLogs,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.hash !== '') {
       writer.uint32(10).string(message.hash);
     }
     for (const v of message.logs) {
@@ -1442,7 +1562,8 @@ export const TransactionLogs = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): TransactionLogs {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTransactionLogs();
     while (reader.pos < end) {
@@ -1463,8 +1584,8 @@ export const TransactionLogs = {
   },
   fromPartial(object: Partial<TransactionLogs>): TransactionLogs {
     const message = createBaseTransactionLogs();
-    message.hash = object.hash ?? "";
-    message.logs = object.logs?.map(e => Log.fromPartial(e)) || [];
+    message.hash = object.hash ?? '';
+    message.logs = object.logs?.map((e) => Log.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: TransactionLogsAmino): TransactionLogs {
@@ -1472,14 +1593,14 @@ export const TransactionLogs = {
     if (object.hash !== undefined && object.hash !== null) {
       message.hash = object.hash;
     }
-    message.logs = object.logs?.map(e => Log.fromAmino(e)) || [];
+    message.logs = object.logs?.map((e) => Log.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: TransactionLogs): TransactionLogsAmino {
     const obj: any = {};
-    obj.hash = message.hash === "" ? undefined : message.hash;
+    obj.hash = message.hash === '' ? undefined : message.hash;
     if (message.logs) {
-      obj.logs = message.logs.map(e => e ? Log.toAmino(e) : undefined);
+      obj.logs = message.logs.map((e) => (e ? Log.toAmino(e) : undefined));
     } else {
       obj.logs = message.logs;
     }
@@ -1490,8 +1611,8 @@ export const TransactionLogs = {
   },
   toAminoMsg(message: TransactionLogs): TransactionLogsAminoMsg {
     return {
-      type: "cosmos-sdk/TransactionLogs",
-      value: TransactionLogs.toAmino(message)
+      type: 'cosmos-sdk/TransactionLogs',
+      value: TransactionLogs.toAmino(message),
     };
   },
   fromProtoMsg(message: TransactionLogsProtoMsg): TransactionLogs {
@@ -1502,28 +1623,31 @@ export const TransactionLogs = {
   },
   toProtoMsg(message: TransactionLogs): TransactionLogsProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.TransactionLogs",
-      value: TransactionLogs.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.TransactionLogs',
+      value: TransactionLogs.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseLog(): Log {
   return {
-    address: "",
+    address: '',
     topics: [],
     data: new Uint8Array(),
     blockNumber: BigInt(0),
-    txHash: "",
+    txHash: '',
     txIndex: BigInt(0),
-    blockHash: "",
+    blockHash: '',
     index: BigInt(0),
-    removed: false
+    removed: false,
   };
 }
 export const Log = {
-  typeUrl: "/cosmos.evm.vm.v1.Log",
-  encode(message: Log, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.address !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.Log',
+  encode(
+    message: Log,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     for (const v of message.topics) {
@@ -1535,13 +1659,13 @@ export const Log = {
     if (message.blockNumber !== BigInt(0)) {
       writer.uint32(32).uint64(message.blockNumber);
     }
-    if (message.txHash !== "") {
+    if (message.txHash !== '') {
       writer.uint32(42).string(message.txHash);
     }
     if (message.txIndex !== BigInt(0)) {
       writer.uint32(48).uint64(message.txIndex);
     }
-    if (message.blockHash !== "") {
+    if (message.blockHash !== '') {
       writer.uint32(58).string(message.blockHash);
     }
     if (message.index !== BigInt(0)) {
@@ -1553,7 +1677,8 @@ export const Log = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Log {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseLog();
     while (reader.pos < end) {
@@ -1595,14 +1720,23 @@ export const Log = {
   },
   fromPartial(object: Partial<Log>): Log {
     const message = createBaseLog();
-    message.address = object.address ?? "";
-    message.topics = object.topics?.map(e => e) || [];
+    message.address = object.address ?? '';
+    message.topics = object.topics?.map((e) => e) || [];
     message.data = object.data ?? new Uint8Array();
-    message.blockNumber = object.blockNumber !== undefined && object.blockNumber !== null ? BigInt(object.blockNumber.toString()) : BigInt(0);
-    message.txHash = object.txHash ?? "";
-    message.txIndex = object.txIndex !== undefined && object.txIndex !== null ? BigInt(object.txIndex.toString()) : BigInt(0);
-    message.blockHash = object.blockHash ?? "";
-    message.index = object.index !== undefined && object.index !== null ? BigInt(object.index.toString()) : BigInt(0);
+    message.blockNumber =
+      object.blockNumber !== undefined && object.blockNumber !== null
+        ? BigInt(object.blockNumber.toString())
+        : BigInt(0);
+    message.txHash = object.txHash ?? '';
+    message.txIndex =
+      object.txIndex !== undefined && object.txIndex !== null
+        ? BigInt(object.txIndex.toString())
+        : BigInt(0);
+    message.blockHash = object.blockHash ?? '';
+    message.index =
+      object.index !== undefined && object.index !== null
+        ? BigInt(object.index.toString())
+        : BigInt(0);
     message.removed = object.removed ?? false;
     return message;
   },
@@ -1611,7 +1745,7 @@ export const Log = {
     if (object.address !== undefined && object.address !== null) {
       message.address = object.address;
     }
-    message.topics = object.topics?.map(e => e) || [];
+    message.topics = object.topics?.map((e) => e) || [];
     if (object.data !== undefined && object.data !== null) {
       message.data = bytesFromBase64(object.data);
     }
@@ -1637,18 +1771,20 @@ export const Log = {
   },
   toAmino(message: Log): LogAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
+    obj.address = message.address === '' ? undefined : message.address;
     if (message.topics) {
-      obj.topics = message.topics.map(e => e);
+      obj.topics = message.topics.map((e) => e);
     } else {
       obj.topics = message.topics;
     }
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
-    obj.block_number = message.blockNumber ? message.blockNumber?.toString() : "0";
-    obj.tx_hash = message.txHash ?? "";
-    obj.tx_index = message.txIndex ? message.txIndex?.toString() : "0";
-    obj.block_hash = message.blockHash ?? "";
-    obj.index = message.index ? message.index?.toString() : "0";
+    obj.block_number = message.blockNumber
+      ? message.blockNumber?.toString()
+      : '0';
+    obj.tx_hash = message.txHash ?? '';
+    obj.tx_index = message.txIndex ? message.txIndex?.toString() : '0';
+    obj.block_hash = message.blockHash ?? '';
+    obj.index = message.index ? message.index?.toString() : '0';
     obj.removed = message.removed === false ? undefined : message.removed;
     return obj;
   },
@@ -1657,8 +1793,8 @@ export const Log = {
   },
   toAminoMsg(message: Log): LogAminoMsg {
     return {
-      type: "cosmos-sdk/Log",
-      value: Log.toAmino(message)
+      type: 'cosmos-sdk/Log',
+      value: Log.toAmino(message),
     };
   },
   fromProtoMsg(message: LogProtoMsg): Log {
@@ -1669,25 +1805,28 @@ export const Log = {
   },
   toProtoMsg(message: Log): LogProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.Log",
-      value: Log.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.Log',
+      value: Log.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseTxResult(): TxResult {
   return {
-    contractAddress: "",
+    contractAddress: '',
     bloom: new Uint8Array(),
     txLogs: TransactionLogs.fromPartial({}),
     ret: new Uint8Array(),
     reverted: false,
-    gasUsed: BigInt(0)
+    gasUsed: BigInt(0),
   };
 }
 export const TxResult = {
-  typeUrl: "/cosmos.evm.vm.v1.TxResult",
-  encode(message: TxResult, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.contractAddress !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.TxResult',
+  encode(
+    message: TxResult,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.contractAddress !== '') {
       writer.uint32(10).string(message.contractAddress);
     }
     if (message.bloom.length !== 0) {
@@ -1708,7 +1847,8 @@ export const TxResult = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): TxResult {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTxResult();
     while (reader.pos < end) {
@@ -1741,17 +1881,26 @@ export const TxResult = {
   },
   fromPartial(object: Partial<TxResult>): TxResult {
     const message = createBaseTxResult();
-    message.contractAddress = object.contractAddress ?? "";
+    message.contractAddress = object.contractAddress ?? '';
     message.bloom = object.bloom ?? new Uint8Array();
-    message.txLogs = object.txLogs !== undefined && object.txLogs !== null ? TransactionLogs.fromPartial(object.txLogs) : undefined;
+    message.txLogs =
+      object.txLogs !== undefined && object.txLogs !== null
+        ? TransactionLogs.fromPartial(object.txLogs)
+        : undefined;
     message.ret = object.ret ?? new Uint8Array();
     message.reverted = object.reverted ?? false;
-    message.gasUsed = object.gasUsed !== undefined && object.gasUsed !== null ? BigInt(object.gasUsed.toString()) : BigInt(0);
+    message.gasUsed =
+      object.gasUsed !== undefined && object.gasUsed !== null
+        ? BigInt(object.gasUsed.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: TxResultAmino): TxResult {
     const message = createBaseTxResult();
-    if (object.contract_address !== undefined && object.contract_address !== null) {
+    if (
+      object.contract_address !== undefined &&
+      object.contract_address !== null
+    ) {
       message.contractAddress = object.contract_address;
     }
     if (object.bloom !== undefined && object.bloom !== null) {
@@ -1773,12 +1922,16 @@ export const TxResult = {
   },
   toAmino(message: TxResult): TxResultAmino {
     const obj: any = {};
-    obj.contract_address = message.contractAddress === "" ? undefined : message.contractAddress;
+    obj.contract_address =
+      message.contractAddress === '' ? undefined : message.contractAddress;
     obj.bloom = message.bloom ? base64FromBytes(message.bloom) : undefined;
-    obj.tx_logs = message.txLogs ? TransactionLogs.toAmino(message.txLogs) : TransactionLogs.toAmino(TransactionLogs.fromPartial({}));
+    obj.tx_logs = message.txLogs
+      ? TransactionLogs.toAmino(message.txLogs)
+      : TransactionLogs.toAmino(TransactionLogs.fromPartial({}));
     obj.ret = message.ret ? base64FromBytes(message.ret) : undefined;
     obj.reverted = message.reverted === false ? undefined : message.reverted;
-    obj.gas_used = message.gasUsed !== BigInt(0) ? message.gasUsed?.toString() : undefined;
+    obj.gas_used =
+      message.gasUsed !== BigInt(0) ? message.gasUsed?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: TxResultAminoMsg): TxResult {
@@ -1786,8 +1939,8 @@ export const TxResult = {
   },
   toAminoMsg(message: TxResult): TxResultAminoMsg {
     return {
-      type: "cosmos-sdk/TxResult",
-      value: TxResult.toAmino(message)
+      type: 'cosmos-sdk/TxResult',
+      value: TxResult.toAmino(message),
     };
   },
   fromProtoMsg(message: TxResultProtoMsg): TxResult {
@@ -1798,21 +1951,24 @@ export const TxResult = {
   },
   toProtoMsg(message: TxResult): TxResultProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.TxResult",
-      value: TxResult.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.TxResult',
+      value: TxResult.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseAccessTuple(): AccessTuple {
   return {
-    address: "",
-    storageKeys: []
+    address: '',
+    storageKeys: [],
   };
 }
 export const AccessTuple = {
-  typeUrl: "/cosmos.evm.vm.v1.AccessTuple",
-  encode(message: AccessTuple, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.address !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.AccessTuple',
+  encode(
+    message: AccessTuple,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
     for (const v of message.storageKeys) {
@@ -1821,7 +1977,8 @@ export const AccessTuple = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): AccessTuple {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAccessTuple();
     while (reader.pos < end) {
@@ -1842,8 +1999,8 @@ export const AccessTuple = {
   },
   fromPartial(object: Partial<AccessTuple>): AccessTuple {
     const message = createBaseAccessTuple();
-    message.address = object.address ?? "";
-    message.storageKeys = object.storageKeys?.map(e => e) || [];
+    message.address = object.address ?? '';
+    message.storageKeys = object.storageKeys?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: AccessTupleAmino): AccessTuple {
@@ -1851,14 +2008,14 @@ export const AccessTuple = {
     if (object.address !== undefined && object.address !== null) {
       message.address = object.address;
     }
-    message.storageKeys = object.storage_keys?.map(e => e) || [];
+    message.storageKeys = object.storage_keys?.map((e) => e) || [];
     return message;
   },
   toAmino(message: AccessTuple): AccessTupleAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
+    obj.address = message.address === '' ? undefined : message.address;
     if (message.storageKeys) {
-      obj.storage_keys = message.storageKeys.map(e => e);
+      obj.storage_keys = message.storageKeys.map((e) => e);
     } else {
       obj.storage_keys = message.storageKeys;
     }
@@ -1869,8 +2026,8 @@ export const AccessTuple = {
   },
   toAminoMsg(message: AccessTuple): AccessTupleAminoMsg {
     return {
-      type: "cosmos-sdk/AccessTuple",
-      value: AccessTuple.toAmino(message)
+      type: 'cosmos-sdk/AccessTuple',
+      value: AccessTuple.toAmino(message),
     };
   },
   fromProtoMsg(message: AccessTupleProtoMsg): AccessTuple {
@@ -1881,15 +2038,15 @@ export const AccessTuple = {
   },
   toProtoMsg(message: AccessTuple): AccessTupleProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.AccessTuple",
-      value: AccessTuple.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.AccessTuple',
+      value: AccessTuple.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseTraceConfig(): TraceConfig {
   return {
-    tracer: "",
-    timeout: "",
+    tracer: '',
+    timeout: '',
     reexec: BigInt(0),
     disableStack: false,
     disableStorage: false,
@@ -1898,16 +2055,19 @@ function createBaseTraceConfig(): TraceConfig {
     overrides: undefined,
     enableMemory: false,
     enableReturnData: false,
-    tracerJsonConfig: ""
+    tracerJsonConfig: '',
   };
 }
 export const TraceConfig = {
-  typeUrl: "/cosmos.evm.vm.v1.TraceConfig",
-  encode(message: TraceConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.tracer !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.TraceConfig',
+  encode(
+    message: TraceConfig,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.tracer !== '') {
       writer.uint32(10).string(message.tracer);
     }
-    if (message.timeout !== "") {
+    if (message.timeout !== '') {
       writer.uint32(18).string(message.timeout);
     }
     if (message.reexec !== BigInt(0)) {
@@ -1934,13 +2094,14 @@ export const TraceConfig = {
     if (message.enableReturnData === true) {
       writer.uint32(96).bool(message.enableReturnData);
     }
-    if (message.tracerJsonConfig !== "") {
+    if (message.tracerJsonConfig !== '') {
       writer.uint32(106).string(message.tracerJsonConfig);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): TraceConfig {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTraceConfig();
     while (reader.pos < end) {
@@ -1988,17 +2149,23 @@ export const TraceConfig = {
   },
   fromPartial(object: Partial<TraceConfig>): TraceConfig {
     const message = createBaseTraceConfig();
-    message.tracer = object.tracer ?? "";
-    message.timeout = object.timeout ?? "";
-    message.reexec = object.reexec !== undefined && object.reexec !== null ? BigInt(object.reexec.toString()) : BigInt(0);
+    message.tracer = object.tracer ?? '';
+    message.timeout = object.timeout ?? '';
+    message.reexec =
+      object.reexec !== undefined && object.reexec !== null
+        ? BigInt(object.reexec.toString())
+        : BigInt(0);
     message.disableStack = object.disableStack ?? false;
     message.disableStorage = object.disableStorage ?? false;
     message.debug = object.debug ?? false;
     message.limit = object.limit ?? 0;
-    message.overrides = object.overrides !== undefined && object.overrides !== null ? ChainConfig.fromPartial(object.overrides) : undefined;
+    message.overrides =
+      object.overrides !== undefined && object.overrides !== null
+        ? ChainConfig.fromPartial(object.overrides)
+        : undefined;
     message.enableMemory = object.enableMemory ?? false;
     message.enableReturnData = object.enableReturnData ?? false;
-    message.tracerJsonConfig = object.tracerJsonConfig ?? "";
+    message.tracerJsonConfig = object.tracerJsonConfig ?? '';
     return message;
   },
   fromAmino(object: TraceConfigAmino): TraceConfig {
@@ -2015,7 +2182,10 @@ export const TraceConfig = {
     if (object.disable_stack !== undefined && object.disable_stack !== null) {
       message.disableStack = object.disable_stack;
     }
-    if (object.disable_storage !== undefined && object.disable_storage !== null) {
+    if (
+      object.disable_storage !== undefined &&
+      object.disable_storage !== null
+    ) {
       message.disableStorage = object.disable_storage;
     }
     if (object.debug !== undefined && object.debug !== null) {
@@ -2030,27 +2200,36 @@ export const TraceConfig = {
     if (object.enable_memory !== undefined && object.enable_memory !== null) {
       message.enableMemory = object.enable_memory;
     }
-    if (object.enable_return_data !== undefined && object.enable_return_data !== null) {
+    if (
+      object.enable_return_data !== undefined &&
+      object.enable_return_data !== null
+    ) {
       message.enableReturnData = object.enable_return_data;
     }
-    if (object.tracer_json_config !== undefined && object.tracer_json_config !== null) {
+    if (
+      object.tracer_json_config !== undefined &&
+      object.tracer_json_config !== null
+    ) {
       message.tracerJsonConfig = object.tracer_json_config;
     }
     return message;
   },
   toAmino(message: TraceConfig): TraceConfigAmino {
     const obj: any = {};
-    obj.tracer = message.tracer === "" ? undefined : message.tracer;
-    obj.timeout = message.timeout === "" ? undefined : message.timeout;
-    obj.reexec = message.reexec !== BigInt(0) ? message.reexec?.toString() : undefined;
+    obj.tracer = message.tracer === '' ? undefined : message.tracer;
+    obj.timeout = message.timeout === '' ? undefined : message.timeout;
+    obj.reexec =
+      message.reexec !== BigInt(0) ? message.reexec?.toString() : undefined;
     obj.disable_stack = message.disableStack ?? false;
     obj.disable_storage = message.disableStorage ?? false;
     obj.debug = message.debug === false ? undefined : message.debug;
     obj.limit = message.limit === 0 ? undefined : message.limit;
-    obj.overrides = message.overrides ? ChainConfig.toAmino(message.overrides) : undefined;
+    obj.overrides = message.overrides
+      ? ChainConfig.toAmino(message.overrides)
+      : undefined;
     obj.enable_memory = message.enableMemory ?? false;
     obj.enable_return_data = message.enableReturnData ?? false;
-    obj.tracer_json_config = message.tracerJsonConfig ?? "";
+    obj.tracer_json_config = message.tracerJsonConfig ?? '';
     return obj;
   },
   fromAminoMsg(object: TraceConfigAminoMsg): TraceConfig {
@@ -2058,8 +2237,8 @@ export const TraceConfig = {
   },
   toAminoMsg(message: TraceConfig): TraceConfigAminoMsg {
     return {
-      type: "cosmos-sdk/TraceConfig",
-      value: TraceConfig.toAmino(message)
+      type: 'cosmos-sdk/TraceConfig',
+      value: TraceConfig.toAmino(message),
     };
   },
   fromProtoMsg(message: TraceConfigProtoMsg): TraceConfig {
@@ -2070,8 +2249,8 @@ export const TraceConfig = {
   },
   toProtoMsg(message: TraceConfig): TraceConfigProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.TraceConfig",
-      value: TraceConfig.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.TraceConfig',
+      value: TraceConfig.encode(message).finish(),
     };
-  }
+  },
 };

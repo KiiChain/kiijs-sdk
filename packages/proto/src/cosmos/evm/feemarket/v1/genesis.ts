@@ -1,6 +1,6 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType } from "./feemarket";
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
+import { Params, ParamsAmino, ParamsSDKType } from './feemarket';
 /** GenesisState defines the feemarket module's genesis state. */
 export interface GenesisState {
   /** params defines all the parameters of the feemarket module. */
@@ -12,7 +12,7 @@ export interface GenesisState {
   blockGas: bigint;
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/cosmos.evm.feemarket.v1.GenesisState";
+  typeUrl: '/cosmos.evm.feemarket.v1.GenesisState';
   value: Uint8Array;
 }
 /** GenesisState defines the feemarket module's genesis state. */
@@ -26,7 +26,7 @@ export interface GenesisStateAmino {
   block_gas?: string;
 }
 export interface GenesisStateAminoMsg {
-  type: "cosmos-sdk/GenesisState";
+  type: 'cosmos-sdk/GenesisState';
   value: GenesisStateAmino;
 }
 /** GenesisState defines the feemarket module's genesis state. */
@@ -37,12 +37,15 @@ export interface GenesisStateSDKType {
 function createBaseGenesisState(): GenesisState {
   return {
     params: Params.fromPartial({}),
-    blockGas: BigInt(0)
+    blockGas: BigInt(0),
   };
 }
 export const GenesisState = {
-  typeUrl: "/cosmos.evm.feemarket.v1.GenesisState",
-  encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.feemarket.v1.GenesisState',
+  encode(
+    message: GenesisState,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -52,7 +55,8 @@ export const GenesisState = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {
@@ -73,8 +77,14 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.blockGas = object.blockGas !== undefined && object.blockGas !== null ? BigInt(object.blockGas.toString()) : BigInt(0);
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
+    message.blockGas =
+      object.blockGas !== undefined && object.blockGas !== null
+        ? BigInt(object.blockGas.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -89,8 +99,11 @@ export const GenesisState = {
   },
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
-    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
-    obj.block_gas = message.blockGas !== BigInt(0) ? message.blockGas?.toString() : undefined;
+    obj.params = message.params
+      ? Params.toAmino(message.params)
+      : Params.toAmino(Params.fromPartial({}));
+    obj.block_gas =
+      message.blockGas !== BigInt(0) ? message.blockGas?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -98,8 +111,8 @@ export const GenesisState = {
   },
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
-      type: "cosmos-sdk/GenesisState",
-      value: GenesisState.toAmino(message)
+      type: 'cosmos-sdk/GenesisState',
+      value: GenesisState.toAmino(message),
     };
   },
   fromProtoMsg(message: GenesisStateProtoMsg): GenesisState {
@@ -110,8 +123,8 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.feemarket.v1.GenesisState",
-      value: GenesisState.encode(message).finish()
+      typeUrl: '/cosmos.evm.feemarket.v1.GenesisState',
+      value: GenesisState.encode(message).finish(),
     };
-  }
+  },
 };

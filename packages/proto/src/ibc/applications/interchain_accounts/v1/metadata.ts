@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
 /**
  * Metadata defines a set of protocol specific data encoded into the ICS27 channel version bytestring
  * See ICS004: https://github.com/cosmos/ibc/tree/master/spec/core/ics-004-channel-and-packet-semantics#Versioning
@@ -22,7 +22,7 @@ export interface Metadata {
   txType: string;
 }
 export interface MetadataProtoMsg {
-  typeUrl: "/ibc.applications.interchain_accounts.v1.Metadata";
+  typeUrl: '/ibc.applications.interchain_accounts.v1.Metadata';
   value: Uint8Array;
 }
 /**
@@ -47,7 +47,7 @@ export interface MetadataAmino {
   tx_type?: string;
 }
 export interface MetadataAminoMsg {
-  type: "cosmos-sdk/Metadata";
+  type: 'cosmos-sdk/Metadata';
   value: MetadataAmino;
 }
 /**
@@ -64,39 +64,43 @@ export interface MetadataSDKType {
 }
 function createBaseMetadata(): Metadata {
   return {
-    version: "",
-    controllerConnectionId: "",
-    hostConnectionId: "",
-    address: "",
-    encoding: "",
-    txType: ""
+    version: '',
+    controllerConnectionId: '',
+    hostConnectionId: '',
+    address: '',
+    encoding: '',
+    txType: '',
   };
 }
 export const Metadata = {
-  typeUrl: "/ibc.applications.interchain_accounts.v1.Metadata",
-  encode(message: Metadata, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.version !== "") {
+  typeUrl: '/ibc.applications.interchain_accounts.v1.Metadata',
+  encode(
+    message: Metadata,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.version !== '') {
       writer.uint32(10).string(message.version);
     }
-    if (message.controllerConnectionId !== "") {
+    if (message.controllerConnectionId !== '') {
       writer.uint32(18).string(message.controllerConnectionId);
     }
-    if (message.hostConnectionId !== "") {
+    if (message.hostConnectionId !== '') {
       writer.uint32(26).string(message.hostConnectionId);
     }
-    if (message.address !== "") {
+    if (message.address !== '') {
       writer.uint32(34).string(message.address);
     }
-    if (message.encoding !== "") {
+    if (message.encoding !== '') {
       writer.uint32(42).string(message.encoding);
     }
-    if (message.txType !== "") {
+    if (message.txType !== '') {
       writer.uint32(50).string(message.txType);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Metadata {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMetadata();
     while (reader.pos < end) {
@@ -129,12 +133,12 @@ export const Metadata = {
   },
   fromPartial(object: Partial<Metadata>): Metadata {
     const message = createBaseMetadata();
-    message.version = object.version ?? "";
-    message.controllerConnectionId = object.controllerConnectionId ?? "";
-    message.hostConnectionId = object.hostConnectionId ?? "";
-    message.address = object.address ?? "";
-    message.encoding = object.encoding ?? "";
-    message.txType = object.txType ?? "";
+    message.version = object.version ?? '';
+    message.controllerConnectionId = object.controllerConnectionId ?? '';
+    message.hostConnectionId = object.hostConnectionId ?? '';
+    message.address = object.address ?? '';
+    message.encoding = object.encoding ?? '';
+    message.txType = object.txType ?? '';
     return message;
   },
   fromAmino(object: MetadataAmino): Metadata {
@@ -142,10 +146,16 @@ export const Metadata = {
     if (object.version !== undefined && object.version !== null) {
       message.version = object.version;
     }
-    if (object.controller_connection_id !== undefined && object.controller_connection_id !== null) {
+    if (
+      object.controller_connection_id !== undefined &&
+      object.controller_connection_id !== null
+    ) {
       message.controllerConnectionId = object.controller_connection_id;
     }
-    if (object.host_connection_id !== undefined && object.host_connection_id !== null) {
+    if (
+      object.host_connection_id !== undefined &&
+      object.host_connection_id !== null
+    ) {
       message.hostConnectionId = object.host_connection_id;
     }
     if (object.address !== undefined && object.address !== null) {
@@ -161,12 +171,16 @@ export const Metadata = {
   },
   toAmino(message: Metadata): MetadataAmino {
     const obj: any = {};
-    obj.version = message.version === "" ? undefined : message.version;
-    obj.controller_connection_id = message.controllerConnectionId === "" ? undefined : message.controllerConnectionId;
-    obj.host_connection_id = message.hostConnectionId === "" ? undefined : message.hostConnectionId;
-    obj.address = message.address === "" ? undefined : message.address;
-    obj.encoding = message.encoding === "" ? undefined : message.encoding;
-    obj.tx_type = message.txType === "" ? undefined : message.txType;
+    obj.version = message.version === '' ? undefined : message.version;
+    obj.controller_connection_id =
+      message.controllerConnectionId === ''
+        ? undefined
+        : message.controllerConnectionId;
+    obj.host_connection_id =
+      message.hostConnectionId === '' ? undefined : message.hostConnectionId;
+    obj.address = message.address === '' ? undefined : message.address;
+    obj.encoding = message.encoding === '' ? undefined : message.encoding;
+    obj.tx_type = message.txType === '' ? undefined : message.txType;
     return obj;
   },
   fromAminoMsg(object: MetadataAminoMsg): Metadata {
@@ -174,8 +188,8 @@ export const Metadata = {
   },
   toAminoMsg(message: Metadata): MetadataAminoMsg {
     return {
-      type: "cosmos-sdk/Metadata",
-      value: Metadata.toAmino(message)
+      type: 'cosmos-sdk/Metadata',
+      value: Metadata.toAmino(message),
     };
   },
   fromProtoMsg(message: MetadataProtoMsg): Metadata {
@@ -186,8 +200,8 @@ export const Metadata = {
   },
   toProtoMsg(message: Metadata): MetadataProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.v1.Metadata",
-      value: Metadata.encode(message).finish()
+      typeUrl: '/ibc.applications.interchain_accounts.v1.Metadata',
+      value: Metadata.encode(message).finish(),
     };
-  }
+  },
 };

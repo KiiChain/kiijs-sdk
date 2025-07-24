@@ -1,11 +1,15 @@
 import { Contract, ContractRunner, InterfaceAbi } from 'ethers';
-import { STAKING_PRECOMPILE_ABI, STAKING_PRECOMPILE_ADDRESS } from '../precompiles';
+import {
+  STAKING_PRECOMPILE_ABI,
+  STAKING_PRECOMPILE_ADDRESS,
+} from '../precompiles';
 
 /**
  * The ABI for the Staking precompile contract, used to create an Ethers contract.
  * @category Cosmos Interoperability
  */
-export const ETHERS_STAKING_PRECOMPILE_ABI = STAKING_PRECOMPILE_ABI as InterfaceAbi;
+export const ETHERS_STAKING_PRECOMPILE_ABI =
+  STAKING_PRECOMPILE_ABI as InterfaceAbi;
 
 /**
  * Creates and returns a typed Ethers v6 contract instance for the Staking precompile contract.
@@ -31,6 +35,12 @@ export const ETHERS_STAKING_PRECOMPILE_ABI = STAKING_PRECOMPILE_ABI as Interface
  * @returns The typed contract instance for interacting with the Staking precompile contract.
  * @category Cosmos Interoperability
  */
-export const getStakingPrecompileEthersV6Contract = (runner: ContractRunner) => {
-	return new Contract(STAKING_PRECOMPILE_ADDRESS, ETHERS_STAKING_PRECOMPILE_ABI, runner);
+export const getStakingPrecompileEthersV6Contract = (
+  runner: ContractRunner
+) => {
+  return new Contract(
+    STAKING_PRECOMPILE_ADDRESS,
+    ETHERS_STAKING_PRECOMPILE_ABI,
+    runner
+  );
 };

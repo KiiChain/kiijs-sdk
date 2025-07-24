@@ -1,89 +1,107 @@
 //@ts-nocheck
-import { MsgStoreCode, MsgInstantiateContract, MsgInstantiateContract2, MsgExecuteContract, MsgMigrateContract, MsgUpdateAdmin, MsgClearAdmin, MsgUpdateInstantiateConfig, MsgUpdateParams, MsgSudoContract, MsgPinCodes, MsgUnpinCodes, MsgStoreAndInstantiateContract, MsgRemoveCodeUploadParamsAddresses, MsgAddCodeUploadParamsAddresses, MsgStoreAndMigrateContract, MsgUpdateContractLabel } from "./tx";
+import {
+  MsgAddCodeUploadParamsAddresses,
+  MsgClearAdmin,
+  MsgExecuteContract,
+  MsgInstantiateContract,
+  MsgInstantiateContract2,
+  MsgMigrateContract,
+  MsgPinCodes,
+  MsgRemoveCodeUploadParamsAddresses,
+  MsgStoreAndInstantiateContract,
+  MsgStoreAndMigrateContract,
+  MsgStoreCode,
+  MsgSudoContract,
+  MsgUnpinCodes,
+  MsgUpdateAdmin,
+  MsgUpdateContractLabel,
+  MsgUpdateInstantiateConfig,
+  MsgUpdateParams,
+} from './tx';
 export const AminoConverter = {
-  "/cosmwasm.wasm.v1.MsgStoreCode": {
-    aminoType: "wasm/MsgStoreCode",
+  '/cosmwasm.wasm.v1.MsgStoreCode': {
+    aminoType: 'wasm/MsgStoreCode',
     toAmino: MsgStoreCode.toAmino,
-    fromAmino: MsgStoreCode.fromAmino
+    fromAmino: MsgStoreCode.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgInstantiateContract": {
-    aminoType: "wasm/MsgInstantiateContract",
+  '/cosmwasm.wasm.v1.MsgInstantiateContract': {
+    aminoType: 'wasm/MsgInstantiateContract',
     toAmino: MsgInstantiateContract.toAmino,
-    fromAmino: MsgInstantiateContract.fromAmino
+    fromAmino: MsgInstantiateContract.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgInstantiateContract2": {
-    aminoType: "wasm/MsgInstantiateContract2",
+  '/cosmwasm.wasm.v1.MsgInstantiateContract2': {
+    aminoType: 'wasm/MsgInstantiateContract2',
     toAmino: MsgInstantiateContract2.toAmino,
-    fromAmino: MsgInstantiateContract2.fromAmino
+    fromAmino: MsgInstantiateContract2.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgExecuteContract": {
-    aminoType: "wasm/MsgExecuteContract",
+  '/cosmwasm.wasm.v1.MsgExecuteContract': {
+    aminoType: 'wasm/MsgExecuteContract',
     toAmino: MsgExecuteContract.toAmino,
-    fromAmino: MsgExecuteContract.fromAmino
+    fromAmino: MsgExecuteContract.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgMigrateContract": {
-    aminoType: "wasm/MsgMigrateContract",
+  '/cosmwasm.wasm.v1.MsgMigrateContract': {
+    aminoType: 'wasm/MsgMigrateContract',
     toAmino: MsgMigrateContract.toAmino,
-    fromAmino: MsgMigrateContract.fromAmino
+    fromAmino: MsgMigrateContract.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgUpdateAdmin": {
-    aminoType: "wasm/MsgUpdateAdmin",
+  '/cosmwasm.wasm.v1.MsgUpdateAdmin': {
+    aminoType: 'wasm/MsgUpdateAdmin',
     toAmino: MsgUpdateAdmin.toAmino,
-    fromAmino: MsgUpdateAdmin.fromAmino
+    fromAmino: MsgUpdateAdmin.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgClearAdmin": {
-    aminoType: "wasm/MsgClearAdmin",
+  '/cosmwasm.wasm.v1.MsgClearAdmin': {
+    aminoType: 'wasm/MsgClearAdmin',
     toAmino: MsgClearAdmin.toAmino,
-    fromAmino: MsgClearAdmin.fromAmino
+    fromAmino: MsgClearAdmin.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgUpdateInstantiateConfig": {
-    aminoType: "wasm/MsgUpdateInstantiateConfig",
+  '/cosmwasm.wasm.v1.MsgUpdateInstantiateConfig': {
+    aminoType: 'wasm/MsgUpdateInstantiateConfig',
     toAmino: MsgUpdateInstantiateConfig.toAmino,
-    fromAmino: MsgUpdateInstantiateConfig.fromAmino
+    fromAmino: MsgUpdateInstantiateConfig.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgUpdateParams": {
-    aminoType: "wasm/MsgUpdateParams",
+  '/cosmwasm.wasm.v1.MsgUpdateParams': {
+    aminoType: 'wasm/MsgUpdateParams',
     toAmino: MsgUpdateParams.toAmino,
-    fromAmino: MsgUpdateParams.fromAmino
+    fromAmino: MsgUpdateParams.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgSudoContract": {
-    aminoType: "wasm/MsgSudoContract",
+  '/cosmwasm.wasm.v1.MsgSudoContract': {
+    aminoType: 'wasm/MsgSudoContract',
     toAmino: MsgSudoContract.toAmino,
-    fromAmino: MsgSudoContract.fromAmino
+    fromAmino: MsgSudoContract.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgPinCodes": {
-    aminoType: "wasm/MsgPinCodes",
+  '/cosmwasm.wasm.v1.MsgPinCodes': {
+    aminoType: 'wasm/MsgPinCodes',
     toAmino: MsgPinCodes.toAmino,
-    fromAmino: MsgPinCodes.fromAmino
+    fromAmino: MsgPinCodes.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgUnpinCodes": {
-    aminoType: "wasm/MsgUnpinCodes",
+  '/cosmwasm.wasm.v1.MsgUnpinCodes': {
+    aminoType: 'wasm/MsgUnpinCodes',
     toAmino: MsgUnpinCodes.toAmino,
-    fromAmino: MsgUnpinCodes.fromAmino
+    fromAmino: MsgUnpinCodes.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgStoreAndInstantiateContract": {
-    aminoType: "wasm/MsgStoreAndInstantiateContract",
+  '/cosmwasm.wasm.v1.MsgStoreAndInstantiateContract': {
+    aminoType: 'wasm/MsgStoreAndInstantiateContract',
     toAmino: MsgStoreAndInstantiateContract.toAmino,
-    fromAmino: MsgStoreAndInstantiateContract.fromAmino
+    fromAmino: MsgStoreAndInstantiateContract.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgRemoveCodeUploadParamsAddresses": {
-    aminoType: "wasm/MsgRemoveCodeUploadParamsAddresses",
+  '/cosmwasm.wasm.v1.MsgRemoveCodeUploadParamsAddresses': {
+    aminoType: 'wasm/MsgRemoveCodeUploadParamsAddresses',
     toAmino: MsgRemoveCodeUploadParamsAddresses.toAmino,
-    fromAmino: MsgRemoveCodeUploadParamsAddresses.fromAmino
+    fromAmino: MsgRemoveCodeUploadParamsAddresses.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgAddCodeUploadParamsAddresses": {
-    aminoType: "wasm/MsgAddCodeUploadParamsAddresses",
+  '/cosmwasm.wasm.v1.MsgAddCodeUploadParamsAddresses': {
+    aminoType: 'wasm/MsgAddCodeUploadParamsAddresses',
     toAmino: MsgAddCodeUploadParamsAddresses.toAmino,
-    fromAmino: MsgAddCodeUploadParamsAddresses.fromAmino
+    fromAmino: MsgAddCodeUploadParamsAddresses.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgStoreAndMigrateContract": {
-    aminoType: "wasm/MsgStoreAndMigrateContract",
+  '/cosmwasm.wasm.v1.MsgStoreAndMigrateContract': {
+    aminoType: 'wasm/MsgStoreAndMigrateContract',
     toAmino: MsgStoreAndMigrateContract.toAmino,
-    fromAmino: MsgStoreAndMigrateContract.fromAmino
+    fromAmino: MsgStoreAndMigrateContract.fromAmino,
   },
-  "/cosmwasm.wasm.v1.MsgUpdateContractLabel": {
-    aminoType: "wasm/MsgUpdateContractLabel",
+  '/cosmwasm.wasm.v1.MsgUpdateContractLabel': {
+    aminoType: 'wasm/MsgUpdateContractLabel',
     toAmino: MsgUpdateContractLabel.toAmino,
-    fromAmino: MsgUpdateContractLabel.fromAmino
-  }
+    fromAmino: MsgUpdateContractLabel.fromAmino,
+  },
 };
