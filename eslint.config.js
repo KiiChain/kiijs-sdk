@@ -39,6 +39,12 @@ export default [
     },
   },
   {
+    files: ['**/*.test.ts', '**/*.spec.ts', '**/*example.js'],
+    rules: {
+      'no-console': 'off',
+    },
+  },
+  {
     // Ignore patterns
     ignores: [
       '**/node_modules',

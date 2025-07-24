@@ -11,6 +11,7 @@ describe('Connect Wallet Test', () => {
 
   beforeAll(async () => {
     [provider, wallet] = setupProviderAndWallet();
+    console.log(provider);
   });
 
   it('unexpected address', async () => {

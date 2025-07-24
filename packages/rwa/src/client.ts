@@ -1,4 +1,4 @@
-import { CosmWasmClient } from '@cosmjs/cosmwasm-stargate';
+import { CosmWasmClient, JsonObject } from '@cosmjs/cosmwasm-stargate';
 import { toUtf8 } from '@cosmjs/encoding';
 import { Coin, StdFee } from '@cosmjs/launchpad';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
@@ -108,7 +108,10 @@ export class RwaClient {
   /**
    * Generic contract query method.
    */
-  public async query<T>(contractAddress: string, queryMsg: any): Promise<T> {
+  public async query<T>(
+    contractAddress: string,
+    queryMsg: JsonObject
+  ): Promise<T> {
     return await this.queryClient.queryContractSmart(contractAddress, queryMsg);
   }
 

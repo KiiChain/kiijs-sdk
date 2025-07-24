@@ -5,9 +5,9 @@ dotenv.config();
 const RPC_URL = process.env.RPC_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
-// Contoh ABI dan Bytecode (Dummy)
+// Contract ABI
 const contractABI = [
-  // Contoh kosong, sesuaikan dengan ABI kontrak kamu
+  // Fill with ABI
 ];
 const contractBytecode =
   '0x6080604052348015600f57600080fd5b50604a80601d6000396000f3fe60806040...';
