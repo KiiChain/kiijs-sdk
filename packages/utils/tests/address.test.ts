@@ -1,4 +1,4 @@
-import { HexToBech32, Bech32ToHex } from '../src/ethers';
+import { Bech32ToHex } from '../src/ethers';
 
 describe('Connect Wallet Test', () => {
   const hex_address = '0x6647af9d3d958f0ce9d16913949a3a90b8a40a6a';

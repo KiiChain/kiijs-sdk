@@ -1,7 +1,7 @@
 import { CosmWasmClient } from '@cosmjs/cosmwasm-stargate';
 import { Coin } from '@cosmjs/launchpad';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
-import { DeliverTxResponse,SigningStargateClient } from '@cosmjs/stargate';
+import { DeliverTxResponse, SigningStargateClient } from '@cosmjs/stargate';
 
 import { RwaClient } from '../src/client';
 
