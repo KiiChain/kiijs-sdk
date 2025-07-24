@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "author": "kiiglobal.io <dev@kiiglobal.io>",
   "private": true,
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/KiiChain/kiijs-sdk"
@@ -17,7 +18,8 @@
   "scripts": {
     "clean": "lerna run clean",
     "build": "lerna run build --stream",
-    "lint": "lerna run lint --parallel",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "test": "yarn test:evm && yarn test:proto && yarn test:rwa && yarn test:utils",
     "test:evm": "cd packages/evm && yarn test",
     "test:proto": "cd packages/proto && yarn test",
@@ -33,11 +35,12 @@
   "devDependencies": {
     "@types/jest": "^29.5.11",
     "@types/node": "^20.12.7",
-    "@typescript-eslint/eslint-plugin": "^7.10.0",
-    "@typescript-eslint/parser": "^7.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
     "copyfiles": "^2.4.1",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
     "eslint-plugin-simple-import-sort": "^12.1.0",
     "eslint-plugin-unused-imports": "^4.0.0",
     "jest": "^29.6.2",
