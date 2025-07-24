@@ -14,6 +14,7 @@ KiiJS consists of smaller NPM packages within the @kiichain namespace. For more 
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | [@kiichain/kiijs-evm](packages/evm)                             | Typescript library containing helper functions for interacting with the EVM on Kiichain.                                             |
 | [@kiichain/kiijs-proto](packages/proto)               | Typescript support for KiiChain protofiles, generated with Telescope                                   |
+| [@kiichain/kiijs-rwa](packages/rwa)               | Typescript support for KiiChain RWA transactions                                   |
 | [@kiichain/kiijs-utils](packages/utils)               | Typescript support for a few generic Kiichain fucntions, like address conversion or ethscp256-1 signer                                    |
 
 ## Contributing
