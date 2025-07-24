@@ -1,8 +1,9 @@
-import { RwaClient } from '../src/client';
-import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
-import { SigningStargateClient, DeliverTxResponse } from '@cosmjs/stargate';
-import { Coin } from '@cosmjs/launchpad';
 import { CosmWasmClient } from '@cosmjs/cosmwasm-stargate';
+import { Coin } from '@cosmjs/launchpad';
+import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
+import { DeliverTxResponse,SigningStargateClient } from '@cosmjs/stargate';
+
+import { RwaClient } from '../src/client';
 
 // Mock the external dependencies
 jest.mock('@cosmjs/proto-signing');
@@ -24,15 +25,15 @@ describe('RwaClient', () => {
 
   // Sample test data
   const mockDeliverTxResponse: DeliverTxResponse = {
-      transactionHash: 'mockTxHash',
-      gasUsed: BigInt(100000),
-      gasWanted: BigInt(200000),
-      height: 12345,
-      events: [],
-      rawLog: '',
-      txIndex: 0,
-      code: 0,
-      msgResponses: []
+    transactionHash: 'mockTxHash',
+    gasUsed: BigInt(100000),
+    gasWanted: BigInt(200000),
+    height: 12345,
+    events: [],
+    rawLog: '',
+    txIndex: 0,
+    code: 0,
+    msgResponses: [],
   };
 
   const mockAccountInfo = {
@@ -61,7 +62,9 @@ describe('RwaClient', () => {
     } as unknown as jest.Mocked<CosmWasmClient>;
 
     // Mock the static methods
-    (SigningStargateClient.connectWithSigner as jest.Mock).mockResolvedValue(mockRpcClient);
+    (SigningStargateClient.connectWithSigner as jest.Mock).mockResolvedValue(
+      mockRpcClient
+    );
     (CosmWasmClient.connect as jest.Mock).mockResolvedValue(mockQueryClient);
 
     // Create a real instance with mocked dependencies
@@ -86,8 +89,10 @@ describe('RwaClient', () => {
     });
 
     it('should throw when initialization fails', async () => {
-      (SigningStargateClient.connectWithSigner as jest.Mock).mockRejectedValue(new Error('Connection failed'));
-      
+      (SigningStargateClient.connectWithSigner as jest.Mock).mockRejectedValue(
+        new Error('Connection failed')
+      );
+
       await expect(
         RwaClient.new(
           mockRpcUrl,
@@ -127,7 +132,9 @@ describe('RwaClient', () => {
     });
 
     it('should handle execution errors', async () => {
-      mockRpcClient.signAndBroadcast.mockRejectedValue(new Error('Execution failed'));
+      mockRpcClient.signAndBroadcast.mockRejectedValue(
+        new Error('Execution failed')
+      );
 
       await expect(
         rwaClient.execute(
@@ -161,7 +168,9 @@ describe('RwaClient', () => {
     });
 
     it('should handle query errors', async () => {
-      mockQueryClient.queryContractSmart.mockRejectedValue(new Error('Query failed'));
+      mockQueryClient.queryContractSmart.mockRejectedValue(
+        new Error('Query failed')
+      );
 
       await expect(
         rwaClient.query(mockContractAddress, mockQueryMsg)

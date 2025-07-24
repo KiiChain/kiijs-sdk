@@ -1,10 +1,34 @@
 //@ts-nocheck
-import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../../cosmos/base/query/v1beta1/pagination";
-import { ConnectionEnd, ConnectionEndAmino, ConnectionEndSDKType, IdentifiedConnection, IdentifiedConnectionAmino, IdentifiedConnectionSDKType } from "./connection";
-import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType, Params, ParamsAmino, ParamsSDKType } from "../../client/v1/client";
-import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
-import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
+import {
+  PageRequest,
+  PageRequestAmino,
+  PageRequestSDKType,
+  PageResponse,
+  PageResponseAmino,
+  PageResponseSDKType,
+} from '../../../../cosmos/base/query/v1beta1/pagination';
+import { Any, AnyAmino, AnySDKType } from '../../../../google/protobuf/any';
+import { base64FromBytes, bytesFromBase64 } from '../../../../helpers';
+import {
+  Height,
+  HeightAmino,
+  HeightSDKType,
+  IdentifiedClientState,
+  IdentifiedClientStateAmino,
+  IdentifiedClientStateSDKType,
+  Params,
+  ParamsAmino,
+  ParamsSDKType,
+} from '../../client/v1/client';
+import {
+  ConnectionEnd,
+  ConnectionEndAmino,
+  ConnectionEndSDKType,
+  IdentifiedConnection,
+  IdentifiedConnectionAmino,
+  IdentifiedConnectionSDKType,
+} from './connection';
 /**
  * QueryConnectionRequest is the request type for the Query/Connection RPC
  * method
@@ -14,7 +38,7 @@ export interface QueryConnectionRequest {
   connectionId: string;
 }
 export interface QueryConnectionRequestProtoMsg {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionRequest";
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionRequest';
   value: Uint8Array;
 }
 /**
@@ -26,7 +50,7 @@ export interface QueryConnectionRequestAmino {
   connection_id?: string;
 }
 export interface QueryConnectionRequestAminoMsg {
-  type: "cosmos-sdk/QueryConnectionRequest";
+  type: 'cosmos-sdk/QueryConnectionRequest';
   value: QueryConnectionRequestAmino;
 }
 /**
@@ -50,7 +74,7 @@ export interface QueryConnectionResponse {
   proofHeight: Height;
 }
 export interface QueryConnectionResponseProtoMsg {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionResponse";
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionResponse';
   value: Uint8Array;
 }
 /**
@@ -67,7 +91,7 @@ export interface QueryConnectionResponseAmino {
   proof_height?: HeightAmino;
 }
 export interface QueryConnectionResponseAminoMsg {
-  type: "cosmos-sdk/QueryConnectionResponse";
+  type: 'cosmos-sdk/QueryConnectionResponse';
   value: QueryConnectionResponseAmino;
 }
 /**
@@ -88,7 +112,7 @@ export interface QueryConnectionsRequest {
   pagination?: PageRequest;
 }
 export interface QueryConnectionsRequestProtoMsg {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionsRequest";
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionsRequest';
   value: Uint8Array;
 }
 /**
@@ -99,7 +123,7 @@ export interface QueryConnectionsRequestAmino {
   pagination?: PageRequestAmino;
 }
 export interface QueryConnectionsRequestAminoMsg {
-  type: "cosmos-sdk/QueryConnectionsRequest";
+  type: 'cosmos-sdk/QueryConnectionsRequest';
   value: QueryConnectionsRequestAmino;
 }
 /**
@@ -122,7 +146,7 @@ export interface QueryConnectionsResponse {
   height: Height;
 }
 export interface QueryConnectionsResponseProtoMsg {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionsResponse";
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionsResponse';
   value: Uint8Array;
 }
 /**
@@ -138,7 +162,7 @@ export interface QueryConnectionsResponseAmino {
   height?: HeightAmino;
 }
 export interface QueryConnectionsResponseAminoMsg {
-  type: "cosmos-sdk/QueryConnectionsResponse";
+  type: 'cosmos-sdk/QueryConnectionsResponse';
   value: QueryConnectionsResponseAmino;
 }
 /**
@@ -159,7 +183,7 @@ export interface QueryClientConnectionsRequest {
   clientId: string;
 }
 export interface QueryClientConnectionsRequestProtoMsg {
-  typeUrl: "/ibc.core.connection.v1.QueryClientConnectionsRequest";
+  typeUrl: '/ibc.core.connection.v1.QueryClientConnectionsRequest';
   value: Uint8Array;
 }
 /**
@@ -171,7 +195,7 @@ export interface QueryClientConnectionsRequestAmino {
   client_id?: string;
 }
 export interface QueryClientConnectionsRequestAminoMsg {
-  type: "cosmos-sdk/QueryClientConnectionsRequest";
+  type: 'cosmos-sdk/QueryClientConnectionsRequest';
   value: QueryClientConnectionsRequestAmino;
 }
 /**
@@ -194,7 +218,7 @@ export interface QueryClientConnectionsResponse {
   proofHeight: Height;
 }
 export interface QueryClientConnectionsResponseProtoMsg {
-  typeUrl: "/ibc.core.connection.v1.QueryClientConnectionsResponse";
+  typeUrl: '/ibc.core.connection.v1.QueryClientConnectionsResponse';
   value: Uint8Array;
 }
 /**
@@ -210,7 +234,7 @@ export interface QueryClientConnectionsResponseAmino {
   proof_height?: HeightAmino;
 }
 export interface QueryClientConnectionsResponseAminoMsg {
-  type: "cosmos-sdk/QueryClientConnectionsResponse";
+  type: 'cosmos-sdk/QueryClientConnectionsResponse';
   value: QueryClientConnectionsResponseAmino;
 }
 /**
@@ -231,7 +255,7 @@ export interface QueryConnectionClientStateRequest {
   connectionId: string;
 }
 export interface QueryConnectionClientStateRequestProtoMsg {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionClientStateRequest";
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionClientStateRequest';
   value: Uint8Array;
 }
 /**
@@ -243,7 +267,7 @@ export interface QueryConnectionClientStateRequestAmino {
   connection_id?: string;
 }
 export interface QueryConnectionClientStateRequestAminoMsg {
-  type: "cosmos-sdk/QueryConnectionClientStateRequest";
+  type: 'cosmos-sdk/QueryConnectionClientStateRequest';
   value: QueryConnectionClientStateRequestAmino;
 }
 /**
@@ -266,7 +290,7 @@ export interface QueryConnectionClientStateResponse {
   proofHeight: Height;
 }
 export interface QueryConnectionClientStateResponseProtoMsg {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionClientStateResponse";
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionClientStateResponse';
   value: Uint8Array;
 }
 /**
@@ -282,7 +306,7 @@ export interface QueryConnectionClientStateResponseAmino {
   proof_height?: HeightAmino;
 }
 export interface QueryConnectionClientStateResponseAminoMsg {
-  type: "cosmos-sdk/QueryConnectionClientStateResponse";
+  type: 'cosmos-sdk/QueryConnectionClientStateResponse';
   value: QueryConnectionClientStateResponseAmino;
 }
 /**
@@ -305,7 +329,7 @@ export interface QueryConnectionConsensusStateRequest {
   revisionHeight: bigint;
 }
 export interface QueryConnectionConsensusStateRequestProtoMsg {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionConsensusStateRequest";
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionConsensusStateRequest';
   value: Uint8Array;
 }
 /**
@@ -319,7 +343,7 @@ export interface QueryConnectionConsensusStateRequestAmino {
   revision_height?: string;
 }
 export interface QueryConnectionConsensusStateRequestAminoMsg {
-  type: "cosmos-sdk/QueryConnectionConsensusStateRequest";
+  type: 'cosmos-sdk/QueryConnectionConsensusStateRequest';
   value: QueryConnectionConsensusStateRequestAmino;
 }
 /**
@@ -346,7 +370,7 @@ export interface QueryConnectionConsensusStateResponse {
   proofHeight: Height;
 }
 export interface QueryConnectionConsensusStateResponseProtoMsg {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionConsensusStateResponse";
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionConsensusStateResponse';
   value: Uint8Array;
 }
 /**
@@ -364,7 +388,7 @@ export interface QueryConnectionConsensusStateResponseAmino {
   proof_height?: HeightAmino;
 }
 export interface QueryConnectionConsensusStateResponseAminoMsg {
-  type: "cosmos-sdk/QueryConnectionConsensusStateResponse";
+  type: 'cosmos-sdk/QueryConnectionConsensusStateResponse';
   value: QueryConnectionConsensusStateResponseAmino;
 }
 /**
@@ -380,13 +404,13 @@ export interface QueryConnectionConsensusStateResponseSDKType {
 /** QueryConnectionParamsRequest is the request type for the Query/ConnectionParams RPC method. */
 export interface QueryConnectionParamsRequest {}
 export interface QueryConnectionParamsRequestProtoMsg {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsRequest";
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionParamsRequest';
   value: Uint8Array;
 }
 /** QueryConnectionParamsRequest is the request type for the Query/ConnectionParams RPC method. */
 export interface QueryConnectionParamsRequestAmino {}
 export interface QueryConnectionParamsRequestAminoMsg {
-  type: "cosmos-sdk/QueryConnectionParamsRequest";
+  type: 'cosmos-sdk/QueryConnectionParamsRequest';
   value: QueryConnectionParamsRequestAmino;
 }
 /** QueryConnectionParamsRequest is the request type for the Query/ConnectionParams RPC method. */
@@ -397,7 +421,7 @@ export interface QueryConnectionParamsResponse {
   params?: Params;
 }
 export interface QueryConnectionParamsResponseProtoMsg {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsResponse";
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionParamsResponse';
   value: Uint8Array;
 }
 /** QueryConnectionParamsResponse is the response type for the Query/ConnectionParams RPC method. */
@@ -406,7 +430,7 @@ export interface QueryConnectionParamsResponseAmino {
   params?: ParamsAmino;
 }
 export interface QueryConnectionParamsResponseAminoMsg {
-  type: "cosmos-sdk/QueryConnectionParamsResponse";
+  type: 'cosmos-sdk/QueryConnectionParamsResponse';
   value: QueryConnectionParamsResponseAmino;
 }
 /** QueryConnectionParamsResponse is the response type for the Query/ConnectionParams RPC method. */
@@ -415,19 +439,26 @@ export interface QueryConnectionParamsResponseSDKType {
 }
 function createBaseQueryConnectionRequest(): QueryConnectionRequest {
   return {
-    connectionId: ""
+    connectionId: '',
   };
 }
 export const QueryConnectionRequest = {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionRequest",
-  encode(message: QueryConnectionRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.connectionId !== "") {
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionRequest',
+  encode(
+    message: QueryConnectionRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.connectionId !== '') {
       writer.uint32(10).string(message.connectionId);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryConnectionRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConnectionRequest();
     while (reader.pos < end) {
@@ -445,7 +476,7 @@ export const QueryConnectionRequest = {
   },
   fromPartial(object: Partial<QueryConnectionRequest>): QueryConnectionRequest {
     const message = createBaseQueryConnectionRequest();
-    message.connectionId = object.connectionId ?? "";
+    message.connectionId = object.connectionId ?? '';
     return message;
   },
   fromAmino(object: QueryConnectionRequestAmino): QueryConnectionRequest {
@@ -457,7 +488,8 @@ export const QueryConnectionRequest = {
   },
   toAmino(message: QueryConnectionRequest): QueryConnectionRequestAmino {
     const obj: any = {};
-    obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
+    obj.connection_id =
+      message.connectionId === '' ? undefined : message.connectionId;
     return obj;
   },
   fromAminoMsg(object: QueryConnectionRequestAminoMsg): QueryConnectionRequest {
@@ -465,11 +497,13 @@ export const QueryConnectionRequest = {
   },
   toAminoMsg(message: QueryConnectionRequest): QueryConnectionRequestAminoMsg {
     return {
-      type: "cosmos-sdk/QueryConnectionRequest",
-      value: QueryConnectionRequest.toAmino(message)
+      type: 'cosmos-sdk/QueryConnectionRequest',
+      value: QueryConnectionRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryConnectionRequestProtoMsg): QueryConnectionRequest {
+  fromProtoMsg(
+    message: QueryConnectionRequestProtoMsg
+  ): QueryConnectionRequest {
     return QueryConnectionRequest.decode(message.value);
   },
   toProto(message: QueryConnectionRequest): Uint8Array {
@@ -477,23 +511,29 @@ export const QueryConnectionRequest = {
   },
   toProtoMsg(message: QueryConnectionRequest): QueryConnectionRequestProtoMsg {
     return {
-      typeUrl: "/ibc.core.connection.v1.QueryConnectionRequest",
-      value: QueryConnectionRequest.encode(message).finish()
+      typeUrl: '/ibc.core.connection.v1.QueryConnectionRequest',
+      value: QueryConnectionRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryConnectionResponse(): QueryConnectionResponse {
   return {
     connection: undefined,
     proof: new Uint8Array(),
-    proofHeight: Height.fromPartial({})
+    proofHeight: Height.fromPartial({}),
   };
 }
 export const QueryConnectionResponse = {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionResponse",
-  encode(message: QueryConnectionResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionResponse',
+  encode(
+    message: QueryConnectionResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.connection !== undefined) {
-      ConnectionEnd.encode(message.connection, writer.uint32(10).fork()).ldelim();
+      ConnectionEnd.encode(
+        message.connection,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     if (message.proof.length !== 0) {
       writer.uint32(18).bytes(message.proof);
@@ -503,8 +543,12 @@ export const QueryConnectionResponse = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryConnectionResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConnectionResponse();
     while (reader.pos < end) {
@@ -526,11 +570,19 @@ export const QueryConnectionResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryConnectionResponse>): QueryConnectionResponse {
+  fromPartial(
+    object: Partial<QueryConnectionResponse>
+  ): QueryConnectionResponse {
     const message = createBaseQueryConnectionResponse();
-    message.connection = object.connection !== undefined && object.connection !== null ? ConnectionEnd.fromPartial(object.connection) : undefined;
+    message.connection =
+      object.connection !== undefined && object.connection !== null
+        ? ConnectionEnd.fromPartial(object.connection)
+        : undefined;
     message.proof = object.proof ?? new Uint8Array();
-    message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
+    message.proofHeight =
+      object.proofHeight !== undefined && object.proofHeight !== null
+        ? Height.fromPartial(object.proofHeight)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryConnectionResponseAmino): QueryConnectionResponse {
@@ -548,48 +600,67 @@ export const QueryConnectionResponse = {
   },
   toAmino(message: QueryConnectionResponse): QueryConnectionResponseAmino {
     const obj: any = {};
-    obj.connection = message.connection ? ConnectionEnd.toAmino(message.connection) : undefined;
+    obj.connection = message.connection
+      ? ConnectionEnd.toAmino(message.connection)
+      : undefined;
     obj.proof = message.proof ? base64FromBytes(message.proof) : undefined;
-    obj.proof_height = message.proofHeight ? Height.toAmino(message.proofHeight) : {};
+    obj.proof_height = message.proofHeight
+      ? Height.toAmino(message.proofHeight)
+      : {};
     return obj;
   },
-  fromAminoMsg(object: QueryConnectionResponseAminoMsg): QueryConnectionResponse {
+  fromAminoMsg(
+    object: QueryConnectionResponseAminoMsg
+  ): QueryConnectionResponse {
     return QueryConnectionResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryConnectionResponse): QueryConnectionResponseAminoMsg {
+  toAminoMsg(
+    message: QueryConnectionResponse
+  ): QueryConnectionResponseAminoMsg {
     return {
-      type: "cosmos-sdk/QueryConnectionResponse",
-      value: QueryConnectionResponse.toAmino(message)
+      type: 'cosmos-sdk/QueryConnectionResponse',
+      value: QueryConnectionResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryConnectionResponseProtoMsg): QueryConnectionResponse {
+  fromProtoMsg(
+    message: QueryConnectionResponseProtoMsg
+  ): QueryConnectionResponse {
     return QueryConnectionResponse.decode(message.value);
   },
   toProto(message: QueryConnectionResponse): Uint8Array {
     return QueryConnectionResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryConnectionResponse): QueryConnectionResponseProtoMsg {
+  toProtoMsg(
+    message: QueryConnectionResponse
+  ): QueryConnectionResponseProtoMsg {
     return {
-      typeUrl: "/ibc.core.connection.v1.QueryConnectionResponse",
-      value: QueryConnectionResponse.encode(message).finish()
+      typeUrl: '/ibc.core.connection.v1.QueryConnectionResponse',
+      value: QueryConnectionResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryConnectionsRequest(): QueryConnectionsRequest {
   return {
-    pagination: undefined
+    pagination: undefined,
   };
 }
 export const QueryConnectionsRequest = {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionsRequest",
-  encode(message: QueryConnectionsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionsRequest',
+  encode(
+    message: QueryConnectionsRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.pagination !== undefined) {
       PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionsRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryConnectionsRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConnectionsRequest();
     while (reader.pos < end) {
@@ -605,9 +676,14 @@ export const QueryConnectionsRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryConnectionsRequest>): QueryConnectionsRequest {
+  fromPartial(
+    object: Partial<QueryConnectionsRequest>
+  ): QueryConnectionsRequest {
     const message = createBaseQueryConnectionsRequest();
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageRequest.fromPartial(object.pagination)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryConnectionsRequestAmino): QueryConnectionsRequest {
@@ -619,61 +695,83 @@ export const QueryConnectionsRequest = {
   },
   toAmino(message: QueryConnectionsRequest): QueryConnectionsRequestAmino {
     const obj: any = {};
-    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageRequest.toAmino(message.pagination)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryConnectionsRequestAminoMsg): QueryConnectionsRequest {
+  fromAminoMsg(
+    object: QueryConnectionsRequestAminoMsg
+  ): QueryConnectionsRequest {
     return QueryConnectionsRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryConnectionsRequest): QueryConnectionsRequestAminoMsg {
+  toAminoMsg(
+    message: QueryConnectionsRequest
+  ): QueryConnectionsRequestAminoMsg {
     return {
-      type: "cosmos-sdk/QueryConnectionsRequest",
-      value: QueryConnectionsRequest.toAmino(message)
+      type: 'cosmos-sdk/QueryConnectionsRequest',
+      value: QueryConnectionsRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryConnectionsRequestProtoMsg): QueryConnectionsRequest {
+  fromProtoMsg(
+    message: QueryConnectionsRequestProtoMsg
+  ): QueryConnectionsRequest {
     return QueryConnectionsRequest.decode(message.value);
   },
   toProto(message: QueryConnectionsRequest): Uint8Array {
     return QueryConnectionsRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryConnectionsRequest): QueryConnectionsRequestProtoMsg {
+  toProtoMsg(
+    message: QueryConnectionsRequest
+  ): QueryConnectionsRequestProtoMsg {
     return {
-      typeUrl: "/ibc.core.connection.v1.QueryConnectionsRequest",
-      value: QueryConnectionsRequest.encode(message).finish()
+      typeUrl: '/ibc.core.connection.v1.QueryConnectionsRequest',
+      value: QueryConnectionsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryConnectionsResponse(): QueryConnectionsResponse {
   return {
     connections: [],
     pagination: undefined,
-    height: Height.fromPartial({})
+    height: Height.fromPartial({}),
   };
 }
 export const QueryConnectionsResponse = {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionsResponse",
-  encode(message: QueryConnectionsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionsResponse',
+  encode(
+    message: QueryConnectionsResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.connections) {
       IdentifiedConnection.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     if (message.pagination !== undefined) {
-      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     if (message.height !== undefined) {
       Height.encode(message.height, writer.uint32(26).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryConnectionsResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConnectionsResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.connections.push(IdentifiedConnection.decode(reader, reader.uint32()));
+          message.connections.push(
+            IdentifiedConnection.decode(reader, reader.uint32())
+          );
           break;
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32());
@@ -688,16 +786,26 @@ export const QueryConnectionsResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryConnectionsResponse>): QueryConnectionsResponse {
+  fromPartial(
+    object: Partial<QueryConnectionsResponse>
+  ): QueryConnectionsResponse {
     const message = createBaseQueryConnectionsResponse();
-    message.connections = object.connections?.map(e => IdentifiedConnection.fromPartial(e)) || [];
-    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
-    message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
+    message.connections =
+      object.connections?.map((e) => IdentifiedConnection.fromPartial(e)) || [];
+    message.pagination =
+      object.pagination !== undefined && object.pagination !== null
+        ? PageResponse.fromPartial(object.pagination)
+        : undefined;
+    message.height =
+      object.height !== undefined && object.height !== null
+        ? Height.fromPartial(object.height)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryConnectionsResponseAmino): QueryConnectionsResponse {
     const message = createBaseQueryConnectionsResponse();
-    message.connections = object.connections?.map(e => IdentifiedConnection.fromAmino(e)) || [];
+    message.connections =
+      object.connections?.map((e) => IdentifiedConnection.fromAmino(e)) || [];
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageResponse.fromAmino(object.pagination);
     }
@@ -709,51 +817,70 @@ export const QueryConnectionsResponse = {
   toAmino(message: QueryConnectionsResponse): QueryConnectionsResponseAmino {
     const obj: any = {};
     if (message.connections) {
-      obj.connections = message.connections.map(e => e ? IdentifiedConnection.toAmino(e) : undefined);
+      obj.connections = message.connections.map((e) =>
+        e ? IdentifiedConnection.toAmino(e) : undefined
+      );
     } else {
       obj.connections = message.connections;
     }
-    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    obj.pagination = message.pagination
+      ? PageResponse.toAmino(message.pagination)
+      : undefined;
     obj.height = message.height ? Height.toAmino(message.height) : {};
     return obj;
   },
-  fromAminoMsg(object: QueryConnectionsResponseAminoMsg): QueryConnectionsResponse {
+  fromAminoMsg(
+    object: QueryConnectionsResponseAminoMsg
+  ): QueryConnectionsResponse {
     return QueryConnectionsResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryConnectionsResponse): QueryConnectionsResponseAminoMsg {
+  toAminoMsg(
+    message: QueryConnectionsResponse
+  ): QueryConnectionsResponseAminoMsg {
     return {
-      type: "cosmos-sdk/QueryConnectionsResponse",
-      value: QueryConnectionsResponse.toAmino(message)
+      type: 'cosmos-sdk/QueryConnectionsResponse',
+      value: QueryConnectionsResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryConnectionsResponseProtoMsg): QueryConnectionsResponse {
+  fromProtoMsg(
+    message: QueryConnectionsResponseProtoMsg
+  ): QueryConnectionsResponse {
     return QueryConnectionsResponse.decode(message.value);
   },
   toProto(message: QueryConnectionsResponse): Uint8Array {
     return QueryConnectionsResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryConnectionsResponse): QueryConnectionsResponseProtoMsg {
+  toProtoMsg(
+    message: QueryConnectionsResponse
+  ): QueryConnectionsResponseProtoMsg {
     return {
-      typeUrl: "/ibc.core.connection.v1.QueryConnectionsResponse",
-      value: QueryConnectionsResponse.encode(message).finish()
+      typeUrl: '/ibc.core.connection.v1.QueryConnectionsResponse',
+      value: QueryConnectionsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryClientConnectionsRequest(): QueryClientConnectionsRequest {
   return {
-    clientId: ""
+    clientId: '',
   };
 }
 export const QueryClientConnectionsRequest = {
-  typeUrl: "/ibc.core.connection.v1.QueryClientConnectionsRequest",
-  encode(message: QueryClientConnectionsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.clientId !== "") {
+  typeUrl: '/ibc.core.connection.v1.QueryClientConnectionsRequest',
+  encode(
+    message: QueryClientConnectionsRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.clientId !== '') {
       writer.uint32(10).string(message.clientId);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryClientConnectionsRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryClientConnectionsRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryClientConnectionsRequest();
     while (reader.pos < end) {
@@ -769,55 +896,72 @@ export const QueryClientConnectionsRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryClientConnectionsRequest>): QueryClientConnectionsRequest {
+  fromPartial(
+    object: Partial<QueryClientConnectionsRequest>
+  ): QueryClientConnectionsRequest {
     const message = createBaseQueryClientConnectionsRequest();
-    message.clientId = object.clientId ?? "";
+    message.clientId = object.clientId ?? '';
     return message;
   },
-  fromAmino(object: QueryClientConnectionsRequestAmino): QueryClientConnectionsRequest {
+  fromAmino(
+    object: QueryClientConnectionsRequestAmino
+  ): QueryClientConnectionsRequest {
     const message = createBaseQueryClientConnectionsRequest();
     if (object.client_id !== undefined && object.client_id !== null) {
       message.clientId = object.client_id;
     }
     return message;
   },
-  toAmino(message: QueryClientConnectionsRequest): QueryClientConnectionsRequestAmino {
+  toAmino(
+    message: QueryClientConnectionsRequest
+  ): QueryClientConnectionsRequestAmino {
     const obj: any = {};
-    obj.client_id = message.clientId === "" ? undefined : message.clientId;
+    obj.client_id = message.clientId === '' ? undefined : message.clientId;
     return obj;
   },
-  fromAminoMsg(object: QueryClientConnectionsRequestAminoMsg): QueryClientConnectionsRequest {
+  fromAminoMsg(
+    object: QueryClientConnectionsRequestAminoMsg
+  ): QueryClientConnectionsRequest {
     return QueryClientConnectionsRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryClientConnectionsRequest): QueryClientConnectionsRequestAminoMsg {
+  toAminoMsg(
+    message: QueryClientConnectionsRequest
+  ): QueryClientConnectionsRequestAminoMsg {
     return {
-      type: "cosmos-sdk/QueryClientConnectionsRequest",
-      value: QueryClientConnectionsRequest.toAmino(message)
+      type: 'cosmos-sdk/QueryClientConnectionsRequest',
+      value: QueryClientConnectionsRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryClientConnectionsRequestProtoMsg): QueryClientConnectionsRequest {
+  fromProtoMsg(
+    message: QueryClientConnectionsRequestProtoMsg
+  ): QueryClientConnectionsRequest {
     return QueryClientConnectionsRequest.decode(message.value);
   },
   toProto(message: QueryClientConnectionsRequest): Uint8Array {
     return QueryClientConnectionsRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryClientConnectionsRequest): QueryClientConnectionsRequestProtoMsg {
+  toProtoMsg(
+    message: QueryClientConnectionsRequest
+  ): QueryClientConnectionsRequestProtoMsg {
     return {
-      typeUrl: "/ibc.core.connection.v1.QueryClientConnectionsRequest",
-      value: QueryClientConnectionsRequest.encode(message).finish()
+      typeUrl: '/ibc.core.connection.v1.QueryClientConnectionsRequest',
+      value: QueryClientConnectionsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryClientConnectionsResponse(): QueryClientConnectionsResponse {
   return {
     connectionPaths: [],
     proof: new Uint8Array(),
-    proofHeight: Height.fromPartial({})
+    proofHeight: Height.fromPartial({}),
   };
 }
 export const QueryClientConnectionsResponse = {
-  typeUrl: "/ibc.core.connection.v1.QueryClientConnectionsResponse",
-  encode(message: QueryClientConnectionsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ibc.core.connection.v1.QueryClientConnectionsResponse',
+  encode(
+    message: QueryClientConnectionsResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.connectionPaths) {
       writer.uint32(10).string(v!);
     }
@@ -829,8 +973,12 @@ export const QueryClientConnectionsResponse = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryClientConnectionsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryClientConnectionsResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryClientConnectionsResponse();
     while (reader.pos < end) {
@@ -852,16 +1000,23 @@ export const QueryClientConnectionsResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryClientConnectionsResponse>): QueryClientConnectionsResponse {
+  fromPartial(
+    object: Partial<QueryClientConnectionsResponse>
+  ): QueryClientConnectionsResponse {
     const message = createBaseQueryClientConnectionsResponse();
-    message.connectionPaths = object.connectionPaths?.map(e => e) || [];
+    message.connectionPaths = object.connectionPaths?.map((e) => e) || [];
     message.proof = object.proof ?? new Uint8Array();
-    message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
+    message.proofHeight =
+      object.proofHeight !== undefined && object.proofHeight !== null
+        ? Height.fromPartial(object.proofHeight)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryClientConnectionsResponseAmino): QueryClientConnectionsResponse {
+  fromAmino(
+    object: QueryClientConnectionsResponseAmino
+  ): QueryClientConnectionsResponse {
     const message = createBaseQueryClientConnectionsResponse();
-    message.connectionPaths = object.connection_paths?.map(e => e) || [];
+    message.connectionPaths = object.connection_paths?.map((e) => e) || [];
     if (object.proof !== undefined && object.proof !== null) {
       message.proof = bytesFromBase64(object.proof);
     }
@@ -870,54 +1025,73 @@ export const QueryClientConnectionsResponse = {
     }
     return message;
   },
-  toAmino(message: QueryClientConnectionsResponse): QueryClientConnectionsResponseAmino {
+  toAmino(
+    message: QueryClientConnectionsResponse
+  ): QueryClientConnectionsResponseAmino {
     const obj: any = {};
     if (message.connectionPaths) {
-      obj.connection_paths = message.connectionPaths.map(e => e);
+      obj.connection_paths = message.connectionPaths.map((e) => e);
     } else {
       obj.connection_paths = message.connectionPaths;
     }
     obj.proof = message.proof ? base64FromBytes(message.proof) : undefined;
-    obj.proof_height = message.proofHeight ? Height.toAmino(message.proofHeight) : {};
+    obj.proof_height = message.proofHeight
+      ? Height.toAmino(message.proofHeight)
+      : {};
     return obj;
   },
-  fromAminoMsg(object: QueryClientConnectionsResponseAminoMsg): QueryClientConnectionsResponse {
+  fromAminoMsg(
+    object: QueryClientConnectionsResponseAminoMsg
+  ): QueryClientConnectionsResponse {
     return QueryClientConnectionsResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryClientConnectionsResponse): QueryClientConnectionsResponseAminoMsg {
+  toAminoMsg(
+    message: QueryClientConnectionsResponse
+  ): QueryClientConnectionsResponseAminoMsg {
     return {
-      type: "cosmos-sdk/QueryClientConnectionsResponse",
-      value: QueryClientConnectionsResponse.toAmino(message)
+      type: 'cosmos-sdk/QueryClientConnectionsResponse',
+      value: QueryClientConnectionsResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryClientConnectionsResponseProtoMsg): QueryClientConnectionsResponse {
+  fromProtoMsg(
+    message: QueryClientConnectionsResponseProtoMsg
+  ): QueryClientConnectionsResponse {
     return QueryClientConnectionsResponse.decode(message.value);
   },
   toProto(message: QueryClientConnectionsResponse): Uint8Array {
     return QueryClientConnectionsResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryClientConnectionsResponse): QueryClientConnectionsResponseProtoMsg {
+  toProtoMsg(
+    message: QueryClientConnectionsResponse
+  ): QueryClientConnectionsResponseProtoMsg {
     return {
-      typeUrl: "/ibc.core.connection.v1.QueryClientConnectionsResponse",
-      value: QueryClientConnectionsResponse.encode(message).finish()
+      typeUrl: '/ibc.core.connection.v1.QueryClientConnectionsResponse',
+      value: QueryClientConnectionsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryConnectionClientStateRequest(): QueryConnectionClientStateRequest {
   return {
-    connectionId: ""
+    connectionId: '',
   };
 }
 export const QueryConnectionClientStateRequest = {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionClientStateRequest",
-  encode(message: QueryConnectionClientStateRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.connectionId !== "") {
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionClientStateRequest',
+  encode(
+    message: QueryConnectionClientStateRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.connectionId !== '') {
       writer.uint32(10).string(message.connectionId);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionClientStateRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryConnectionClientStateRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConnectionClientStateRequest();
     while (reader.pos < end) {
@@ -933,57 +1107,78 @@ export const QueryConnectionClientStateRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryConnectionClientStateRequest>): QueryConnectionClientStateRequest {
+  fromPartial(
+    object: Partial<QueryConnectionClientStateRequest>
+  ): QueryConnectionClientStateRequest {
     const message = createBaseQueryConnectionClientStateRequest();
-    message.connectionId = object.connectionId ?? "";
+    message.connectionId = object.connectionId ?? '';
     return message;
   },
-  fromAmino(object: QueryConnectionClientStateRequestAmino): QueryConnectionClientStateRequest {
+  fromAmino(
+    object: QueryConnectionClientStateRequestAmino
+  ): QueryConnectionClientStateRequest {
     const message = createBaseQueryConnectionClientStateRequest();
     if (object.connection_id !== undefined && object.connection_id !== null) {
       message.connectionId = object.connection_id;
     }
     return message;
   },
-  toAmino(message: QueryConnectionClientStateRequest): QueryConnectionClientStateRequestAmino {
+  toAmino(
+    message: QueryConnectionClientStateRequest
+  ): QueryConnectionClientStateRequestAmino {
     const obj: any = {};
-    obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
+    obj.connection_id =
+      message.connectionId === '' ? undefined : message.connectionId;
     return obj;
   },
-  fromAminoMsg(object: QueryConnectionClientStateRequestAminoMsg): QueryConnectionClientStateRequest {
+  fromAminoMsg(
+    object: QueryConnectionClientStateRequestAminoMsg
+  ): QueryConnectionClientStateRequest {
     return QueryConnectionClientStateRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryConnectionClientStateRequest): QueryConnectionClientStateRequestAminoMsg {
+  toAminoMsg(
+    message: QueryConnectionClientStateRequest
+  ): QueryConnectionClientStateRequestAminoMsg {
     return {
-      type: "cosmos-sdk/QueryConnectionClientStateRequest",
-      value: QueryConnectionClientStateRequest.toAmino(message)
+      type: 'cosmos-sdk/QueryConnectionClientStateRequest',
+      value: QueryConnectionClientStateRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryConnectionClientStateRequestProtoMsg): QueryConnectionClientStateRequest {
+  fromProtoMsg(
+    message: QueryConnectionClientStateRequestProtoMsg
+  ): QueryConnectionClientStateRequest {
     return QueryConnectionClientStateRequest.decode(message.value);
   },
   toProto(message: QueryConnectionClientStateRequest): Uint8Array {
     return QueryConnectionClientStateRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryConnectionClientStateRequest): QueryConnectionClientStateRequestProtoMsg {
+  toProtoMsg(
+    message: QueryConnectionClientStateRequest
+  ): QueryConnectionClientStateRequestProtoMsg {
     return {
-      typeUrl: "/ibc.core.connection.v1.QueryConnectionClientStateRequest",
-      value: QueryConnectionClientStateRequest.encode(message).finish()
+      typeUrl: '/ibc.core.connection.v1.QueryConnectionClientStateRequest',
+      value: QueryConnectionClientStateRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryConnectionClientStateResponse(): QueryConnectionClientStateResponse {
   return {
     identifiedClientState: undefined,
     proof: new Uint8Array(),
-    proofHeight: Height.fromPartial({})
+    proofHeight: Height.fromPartial({}),
   };
 }
 export const QueryConnectionClientStateResponse = {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionClientStateResponse",
-  encode(message: QueryConnectionClientStateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionClientStateResponse',
+  encode(
+    message: QueryConnectionClientStateResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.identifiedClientState !== undefined) {
-      IdentifiedClientState.encode(message.identifiedClientState, writer.uint32(10).fork()).ldelim();
+      IdentifiedClientState.encode(
+        message.identifiedClientState,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     if (message.proof.length !== 0) {
       writer.uint32(18).bytes(message.proof);
@@ -993,15 +1188,22 @@ export const QueryConnectionClientStateResponse = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionClientStateResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryConnectionClientStateResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConnectionClientStateResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.identifiedClientState = IdentifiedClientState.decode(reader, reader.uint32());
+          message.identifiedClientState = IdentifiedClientState.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         case 2:
           message.proof = reader.bytes();
@@ -1016,17 +1218,33 @@ export const QueryConnectionClientStateResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryConnectionClientStateResponse>): QueryConnectionClientStateResponse {
+  fromPartial(
+    object: Partial<QueryConnectionClientStateResponse>
+  ): QueryConnectionClientStateResponse {
     const message = createBaseQueryConnectionClientStateResponse();
-    message.identifiedClientState = object.identifiedClientState !== undefined && object.identifiedClientState !== null ? IdentifiedClientState.fromPartial(object.identifiedClientState) : undefined;
+    message.identifiedClientState =
+      object.identifiedClientState !== undefined &&
+      object.identifiedClientState !== null
+        ? IdentifiedClientState.fromPartial(object.identifiedClientState)
+        : undefined;
     message.proof = object.proof ?? new Uint8Array();
-    message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
+    message.proofHeight =
+      object.proofHeight !== undefined && object.proofHeight !== null
+        ? Height.fromPartial(object.proofHeight)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryConnectionClientStateResponseAmino): QueryConnectionClientStateResponse {
+  fromAmino(
+    object: QueryConnectionClientStateResponseAmino
+  ): QueryConnectionClientStateResponse {
     const message = createBaseQueryConnectionClientStateResponse();
-    if (object.identified_client_state !== undefined && object.identified_client_state !== null) {
-      message.identifiedClientState = IdentifiedClientState.fromAmino(object.identified_client_state);
+    if (
+      object.identified_client_state !== undefined &&
+      object.identified_client_state !== null
+    ) {
+      message.identifiedClientState = IdentifiedClientState.fromAmino(
+        object.identified_client_state
+      );
     }
     if (object.proof !== undefined && object.proof !== null) {
       message.proof = bytesFromBase64(object.proof);
@@ -1036,46 +1254,63 @@ export const QueryConnectionClientStateResponse = {
     }
     return message;
   },
-  toAmino(message: QueryConnectionClientStateResponse): QueryConnectionClientStateResponseAmino {
+  toAmino(
+    message: QueryConnectionClientStateResponse
+  ): QueryConnectionClientStateResponseAmino {
     const obj: any = {};
-    obj.identified_client_state = message.identifiedClientState ? IdentifiedClientState.toAmino(message.identifiedClientState) : undefined;
+    obj.identified_client_state = message.identifiedClientState
+      ? IdentifiedClientState.toAmino(message.identifiedClientState)
+      : undefined;
     obj.proof = message.proof ? base64FromBytes(message.proof) : undefined;
-    obj.proof_height = message.proofHeight ? Height.toAmino(message.proofHeight) : {};
+    obj.proof_height = message.proofHeight
+      ? Height.toAmino(message.proofHeight)
+      : {};
     return obj;
   },
-  fromAminoMsg(object: QueryConnectionClientStateResponseAminoMsg): QueryConnectionClientStateResponse {
+  fromAminoMsg(
+    object: QueryConnectionClientStateResponseAminoMsg
+  ): QueryConnectionClientStateResponse {
     return QueryConnectionClientStateResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryConnectionClientStateResponse): QueryConnectionClientStateResponseAminoMsg {
+  toAminoMsg(
+    message: QueryConnectionClientStateResponse
+  ): QueryConnectionClientStateResponseAminoMsg {
     return {
-      type: "cosmos-sdk/QueryConnectionClientStateResponse",
-      value: QueryConnectionClientStateResponse.toAmino(message)
+      type: 'cosmos-sdk/QueryConnectionClientStateResponse',
+      value: QueryConnectionClientStateResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryConnectionClientStateResponseProtoMsg): QueryConnectionClientStateResponse {
+  fromProtoMsg(
+    message: QueryConnectionClientStateResponseProtoMsg
+  ): QueryConnectionClientStateResponse {
     return QueryConnectionClientStateResponse.decode(message.value);
   },
   toProto(message: QueryConnectionClientStateResponse): Uint8Array {
     return QueryConnectionClientStateResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryConnectionClientStateResponse): QueryConnectionClientStateResponseProtoMsg {
+  toProtoMsg(
+    message: QueryConnectionClientStateResponse
+  ): QueryConnectionClientStateResponseProtoMsg {
     return {
-      typeUrl: "/ibc.core.connection.v1.QueryConnectionClientStateResponse",
-      value: QueryConnectionClientStateResponse.encode(message).finish()
+      typeUrl: '/ibc.core.connection.v1.QueryConnectionClientStateResponse',
+      value: QueryConnectionClientStateResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryConnectionConsensusStateRequest(): QueryConnectionConsensusStateRequest {
   return {
-    connectionId: "",
+    connectionId: '',
     revisionNumber: BigInt(0),
-    revisionHeight: BigInt(0)
+    revisionHeight: BigInt(0),
   };
 }
 export const QueryConnectionConsensusStateRequest = {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionConsensusStateRequest",
-  encode(message: QueryConnectionConsensusStateRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.connectionId !== "") {
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionConsensusStateRequest',
+  encode(
+    message: QueryConnectionConsensusStateRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.connectionId !== '') {
       writer.uint32(10).string(message.connectionId);
     }
     if (message.revisionNumber !== BigInt(0)) {
@@ -1086,8 +1321,12 @@ export const QueryConnectionConsensusStateRequest = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionConsensusStateRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryConnectionConsensusStateRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConnectionConsensusStateRequest();
     while (reader.pos < end) {
@@ -1109,70 +1348,106 @@ export const QueryConnectionConsensusStateRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryConnectionConsensusStateRequest>): QueryConnectionConsensusStateRequest {
+  fromPartial(
+    object: Partial<QueryConnectionConsensusStateRequest>
+  ): QueryConnectionConsensusStateRequest {
     const message = createBaseQueryConnectionConsensusStateRequest();
-    message.connectionId = object.connectionId ?? "";
-    message.revisionNumber = object.revisionNumber !== undefined && object.revisionNumber !== null ? BigInt(object.revisionNumber.toString()) : BigInt(0);
-    message.revisionHeight = object.revisionHeight !== undefined && object.revisionHeight !== null ? BigInt(object.revisionHeight.toString()) : BigInt(0);
+    message.connectionId = object.connectionId ?? '';
+    message.revisionNumber =
+      object.revisionNumber !== undefined && object.revisionNumber !== null
+        ? BigInt(object.revisionNumber.toString())
+        : BigInt(0);
+    message.revisionHeight =
+      object.revisionHeight !== undefined && object.revisionHeight !== null
+        ? BigInt(object.revisionHeight.toString())
+        : BigInt(0);
     return message;
   },
-  fromAmino(object: QueryConnectionConsensusStateRequestAmino): QueryConnectionConsensusStateRequest {
+  fromAmino(
+    object: QueryConnectionConsensusStateRequestAmino
+  ): QueryConnectionConsensusStateRequest {
     const message = createBaseQueryConnectionConsensusStateRequest();
     if (object.connection_id !== undefined && object.connection_id !== null) {
       message.connectionId = object.connection_id;
     }
-    if (object.revision_number !== undefined && object.revision_number !== null) {
+    if (
+      object.revision_number !== undefined &&
+      object.revision_number !== null
+    ) {
       message.revisionNumber = BigInt(object.revision_number);
     }
-    if (object.revision_height !== undefined && object.revision_height !== null) {
+    if (
+      object.revision_height !== undefined &&
+      object.revision_height !== null
+    ) {
       message.revisionHeight = BigInt(object.revision_height);
     }
     return message;
   },
-  toAmino(message: QueryConnectionConsensusStateRequest): QueryConnectionConsensusStateRequestAmino {
+  toAmino(
+    message: QueryConnectionConsensusStateRequest
+  ): QueryConnectionConsensusStateRequestAmino {
     const obj: any = {};
-    obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
-    obj.revision_number = message.revisionNumber !== BigInt(0) ? message.revisionNumber?.toString() : undefined;
-    obj.revision_height = message.revisionHeight !== BigInt(0) ? message.revisionHeight?.toString() : undefined;
+    obj.connection_id =
+      message.connectionId === '' ? undefined : message.connectionId;
+    obj.revision_number =
+      message.revisionNumber !== BigInt(0)
+        ? message.revisionNumber?.toString()
+        : undefined;
+    obj.revision_height =
+      message.revisionHeight !== BigInt(0)
+        ? message.revisionHeight?.toString()
+        : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryConnectionConsensusStateRequestAminoMsg): QueryConnectionConsensusStateRequest {
+  fromAminoMsg(
+    object: QueryConnectionConsensusStateRequestAminoMsg
+  ): QueryConnectionConsensusStateRequest {
     return QueryConnectionConsensusStateRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryConnectionConsensusStateRequest): QueryConnectionConsensusStateRequestAminoMsg {
+  toAminoMsg(
+    message: QueryConnectionConsensusStateRequest
+  ): QueryConnectionConsensusStateRequestAminoMsg {
     return {
-      type: "cosmos-sdk/QueryConnectionConsensusStateRequest",
-      value: QueryConnectionConsensusStateRequest.toAmino(message)
+      type: 'cosmos-sdk/QueryConnectionConsensusStateRequest',
+      value: QueryConnectionConsensusStateRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryConnectionConsensusStateRequestProtoMsg): QueryConnectionConsensusStateRequest {
+  fromProtoMsg(
+    message: QueryConnectionConsensusStateRequestProtoMsg
+  ): QueryConnectionConsensusStateRequest {
     return QueryConnectionConsensusStateRequest.decode(message.value);
   },
   toProto(message: QueryConnectionConsensusStateRequest): Uint8Array {
     return QueryConnectionConsensusStateRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryConnectionConsensusStateRequest): QueryConnectionConsensusStateRequestProtoMsg {
+  toProtoMsg(
+    message: QueryConnectionConsensusStateRequest
+  ): QueryConnectionConsensusStateRequestProtoMsg {
     return {
-      typeUrl: "/ibc.core.connection.v1.QueryConnectionConsensusStateRequest",
-      value: QueryConnectionConsensusStateRequest.encode(message).finish()
+      typeUrl: '/ibc.core.connection.v1.QueryConnectionConsensusStateRequest',
+      value: QueryConnectionConsensusStateRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryConnectionConsensusStateResponse(): QueryConnectionConsensusStateResponse {
   return {
     consensusState: undefined,
-    clientId: "",
+    clientId: '',
     proof: new Uint8Array(),
-    proofHeight: Height.fromPartial({})
+    proofHeight: Height.fromPartial({}),
   };
 }
 export const QueryConnectionConsensusStateResponse = {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionConsensusStateResponse",
-  encode(message: QueryConnectionConsensusStateResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionConsensusStateResponse',
+  encode(
+    message: QueryConnectionConsensusStateResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.consensusState !== undefined) {
       Any.encode(message.consensusState, writer.uint32(10).fork()).ldelim();
     }
-    if (message.clientId !== "") {
+    if (message.clientId !== '') {
       writer.uint32(18).string(message.clientId);
     }
     if (message.proof.length !== 0) {
@@ -1183,8 +1458,12 @@ export const QueryConnectionConsensusStateResponse = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionConsensusStateResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryConnectionConsensusStateResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConnectionConsensusStateResponse();
     while (reader.pos < end) {
@@ -1209,17 +1488,30 @@ export const QueryConnectionConsensusStateResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryConnectionConsensusStateResponse>): QueryConnectionConsensusStateResponse {
+  fromPartial(
+    object: Partial<QueryConnectionConsensusStateResponse>
+  ): QueryConnectionConsensusStateResponse {
     const message = createBaseQueryConnectionConsensusStateResponse();
-    message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
-    message.clientId = object.clientId ?? "";
+    message.consensusState =
+      object.consensusState !== undefined && object.consensusState !== null
+        ? Any.fromPartial(object.consensusState)
+        : undefined;
+    message.clientId = object.clientId ?? '';
     message.proof = object.proof ?? new Uint8Array();
-    message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
+    message.proofHeight =
+      object.proofHeight !== undefined && object.proofHeight !== null
+        ? Height.fromPartial(object.proofHeight)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryConnectionConsensusStateResponseAmino): QueryConnectionConsensusStateResponse {
+  fromAmino(
+    object: QueryConnectionConsensusStateResponseAmino
+  ): QueryConnectionConsensusStateResponse {
     const message = createBaseQueryConnectionConsensusStateResponse();
-    if (object.consensus_state !== undefined && object.consensus_state !== null) {
+    if (
+      object.consensus_state !== undefined &&
+      object.consensus_state !== null
+    ) {
       message.consensusState = Any.fromAmino(object.consensus_state);
     }
     if (object.client_id !== undefined && object.client_id !== null) {
@@ -1233,46 +1525,67 @@ export const QueryConnectionConsensusStateResponse = {
     }
     return message;
   },
-  toAmino(message: QueryConnectionConsensusStateResponse): QueryConnectionConsensusStateResponseAmino {
+  toAmino(
+    message: QueryConnectionConsensusStateResponse
+  ): QueryConnectionConsensusStateResponseAmino {
     const obj: any = {};
-    obj.consensus_state = message.consensusState ? Any.toAmino(message.consensusState) : undefined;
-    obj.client_id = message.clientId === "" ? undefined : message.clientId;
+    obj.consensus_state = message.consensusState
+      ? Any.toAmino(message.consensusState)
+      : undefined;
+    obj.client_id = message.clientId === '' ? undefined : message.clientId;
     obj.proof = message.proof ? base64FromBytes(message.proof) : undefined;
-    obj.proof_height = message.proofHeight ? Height.toAmino(message.proofHeight) : {};
+    obj.proof_height = message.proofHeight
+      ? Height.toAmino(message.proofHeight)
+      : {};
     return obj;
   },
-  fromAminoMsg(object: QueryConnectionConsensusStateResponseAminoMsg): QueryConnectionConsensusStateResponse {
+  fromAminoMsg(
+    object: QueryConnectionConsensusStateResponseAminoMsg
+  ): QueryConnectionConsensusStateResponse {
     return QueryConnectionConsensusStateResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryConnectionConsensusStateResponse): QueryConnectionConsensusStateResponseAminoMsg {
+  toAminoMsg(
+    message: QueryConnectionConsensusStateResponse
+  ): QueryConnectionConsensusStateResponseAminoMsg {
     return {
-      type: "cosmos-sdk/QueryConnectionConsensusStateResponse",
-      value: QueryConnectionConsensusStateResponse.toAmino(message)
+      type: 'cosmos-sdk/QueryConnectionConsensusStateResponse',
+      value: QueryConnectionConsensusStateResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryConnectionConsensusStateResponseProtoMsg): QueryConnectionConsensusStateResponse {
+  fromProtoMsg(
+    message: QueryConnectionConsensusStateResponseProtoMsg
+  ): QueryConnectionConsensusStateResponse {
     return QueryConnectionConsensusStateResponse.decode(message.value);
   },
   toProto(message: QueryConnectionConsensusStateResponse): Uint8Array {
     return QueryConnectionConsensusStateResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryConnectionConsensusStateResponse): QueryConnectionConsensusStateResponseProtoMsg {
+  toProtoMsg(
+    message: QueryConnectionConsensusStateResponse
+  ): QueryConnectionConsensusStateResponseProtoMsg {
     return {
-      typeUrl: "/ibc.core.connection.v1.QueryConnectionConsensusStateResponse",
-      value: QueryConnectionConsensusStateResponse.encode(message).finish()
+      typeUrl: '/ibc.core.connection.v1.QueryConnectionConsensusStateResponse',
+      value: QueryConnectionConsensusStateResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryConnectionParamsRequest(): QueryConnectionParamsRequest {
   return {};
 }
 export const QueryConnectionParamsRequest = {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsRequest",
-  encode(_: QueryConnectionParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionParamsRequest',
+  encode(
+    _: QueryConnectionParamsRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionParamsRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryConnectionParamsRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConnectionParamsRequest();
     while (reader.pos < end) {
@@ -1285,11 +1598,15 @@ export const QueryConnectionParamsRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<QueryConnectionParamsRequest>): QueryConnectionParamsRequest {
+  fromPartial(
+    _: Partial<QueryConnectionParamsRequest>
+  ): QueryConnectionParamsRequest {
     const message = createBaseQueryConnectionParamsRequest();
     return message;
   },
-  fromAmino(_: QueryConnectionParamsRequestAmino): QueryConnectionParamsRequest {
+  fromAmino(
+    _: QueryConnectionParamsRequestAmino
+  ): QueryConnectionParamsRequest {
     const message = createBaseQueryConnectionParamsRequest();
     return message;
   },
@@ -1297,43 +1614,58 @@ export const QueryConnectionParamsRequest = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: QueryConnectionParamsRequestAminoMsg): QueryConnectionParamsRequest {
+  fromAminoMsg(
+    object: QueryConnectionParamsRequestAminoMsg
+  ): QueryConnectionParamsRequest {
     return QueryConnectionParamsRequest.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryConnectionParamsRequest): QueryConnectionParamsRequestAminoMsg {
+  toAminoMsg(
+    message: QueryConnectionParamsRequest
+  ): QueryConnectionParamsRequestAminoMsg {
     return {
-      type: "cosmos-sdk/QueryConnectionParamsRequest",
-      value: QueryConnectionParamsRequest.toAmino(message)
+      type: 'cosmos-sdk/QueryConnectionParamsRequest',
+      value: QueryConnectionParamsRequest.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryConnectionParamsRequestProtoMsg): QueryConnectionParamsRequest {
+  fromProtoMsg(
+    message: QueryConnectionParamsRequestProtoMsg
+  ): QueryConnectionParamsRequest {
     return QueryConnectionParamsRequest.decode(message.value);
   },
   toProto(message: QueryConnectionParamsRequest): Uint8Array {
     return QueryConnectionParamsRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryConnectionParamsRequest): QueryConnectionParamsRequestProtoMsg {
+  toProtoMsg(
+    message: QueryConnectionParamsRequest
+  ): QueryConnectionParamsRequestProtoMsg {
     return {
-      typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsRequest",
-      value: QueryConnectionParamsRequest.encode(message).finish()
+      typeUrl: '/ibc.core.connection.v1.QueryConnectionParamsRequest',
+      value: QueryConnectionParamsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryConnectionParamsResponse(): QueryConnectionParamsResponse {
   return {
-    params: undefined
+    params: undefined,
   };
 }
 export const QueryConnectionParamsResponse = {
-  typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsResponse",
-  encode(message: QueryConnectionParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ibc.core.connection.v1.QueryConnectionParamsResponse',
+  encode(
+    message: QueryConnectionParamsResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryConnectionParamsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryConnectionParamsResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConnectionParamsResponse();
     while (reader.pos < end) {
@@ -1349,42 +1681,59 @@ export const QueryConnectionParamsResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryConnectionParamsResponse>): QueryConnectionParamsResponse {
+  fromPartial(
+    object: Partial<QueryConnectionParamsResponse>
+  ): QueryConnectionParamsResponse {
     const message = createBaseQueryConnectionParamsResponse();
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryConnectionParamsResponseAmino): QueryConnectionParamsResponse {
+  fromAmino(
+    object: QueryConnectionParamsResponseAmino
+  ): QueryConnectionParamsResponse {
     const message = createBaseQueryConnectionParamsResponse();
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromAmino(object.params);
     }
     return message;
   },
-  toAmino(message: QueryConnectionParamsResponse): QueryConnectionParamsResponseAmino {
+  toAmino(
+    message: QueryConnectionParamsResponse
+  ): QueryConnectionParamsResponseAmino {
     const obj: any = {};
     obj.params = message.params ? Params.toAmino(message.params) : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryConnectionParamsResponseAminoMsg): QueryConnectionParamsResponse {
+  fromAminoMsg(
+    object: QueryConnectionParamsResponseAminoMsg
+  ): QueryConnectionParamsResponse {
     return QueryConnectionParamsResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: QueryConnectionParamsResponse): QueryConnectionParamsResponseAminoMsg {
+  toAminoMsg(
+    message: QueryConnectionParamsResponse
+  ): QueryConnectionParamsResponseAminoMsg {
     return {
-      type: "cosmos-sdk/QueryConnectionParamsResponse",
-      value: QueryConnectionParamsResponse.toAmino(message)
+      type: 'cosmos-sdk/QueryConnectionParamsResponse',
+      value: QueryConnectionParamsResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: QueryConnectionParamsResponseProtoMsg): QueryConnectionParamsResponse {
+  fromProtoMsg(
+    message: QueryConnectionParamsResponseProtoMsg
+  ): QueryConnectionParamsResponse {
     return QueryConnectionParamsResponse.decode(message.value);
   },
   toProto(message: QueryConnectionParamsResponse): Uint8Array {
     return QueryConnectionParamsResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryConnectionParamsResponse): QueryConnectionParamsResponseProtoMsg {
+  toProtoMsg(
+    message: QueryConnectionParamsResponse
+  ): QueryConnectionParamsResponseProtoMsg {
     return {
-      typeUrl: "/ibc.core.connection.v1.QueryConnectionParamsResponse",
-      value: QueryConnectionParamsResponse.encode(message).finish()
+      typeUrl: '/ibc.core.connection.v1.QueryConnectionParamsResponse',
+      value: QueryConnectionParamsResponse.encode(message).finish(),
     };
-  }
+  },
 };

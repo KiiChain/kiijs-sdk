@@ -1,11 +1,15 @@
 import { Contract, ContractRunner, InterfaceAbi } from 'ethers';
-import { EVIDENCE_PRECOMPILE_ABI, EVIDENCE_PRECOMPILE_ADDRESS } from '../precompiles';
+import {
+  EVIDENCE_PRECOMPILE_ABI,
+  EVIDENCE_PRECOMPILE_ADDRESS,
+} from '../precompiles';
 
 /**
  * The ABI for the Evidence precompile contract, used to create an Ethers contract.
  * @category Cosmos Interoperability
  */
-export const ETHERS_EVIDENCE_PRECOMPILE_ABI = EVIDENCE_PRECOMPILE_ABI as InterfaceAbi;
+export const ETHERS_EVIDENCE_PRECOMPILE_ABI =
+  EVIDENCE_PRECOMPILE_ABI as InterfaceAbi;
 
 /**
  * Creates and returns a typed Ethers v6 contract instance for the Evidence precompile contract.
@@ -28,6 +32,12 @@ export const ETHERS_EVIDENCE_PRECOMPILE_ABI = EVIDENCE_PRECOMPILE_ABI as Interfa
  * @returns The typed contract instance for interacting with the Evidence precompile contract.
  * @category Cosmos Interoperability
  */
-export const getEvidencePrecompileEthersV6Contract = (runner: ContractRunner) => {
-	return new Contract(EVIDENCE_PRECOMPILE_ADDRESS, EVIDENCE_PRECOMPILE_ABI, runner);
+export const getEvidencePrecompileEthersV6Contract = (
+  runner: ContractRunner
+) => {
+  return new Contract(
+    EVIDENCE_PRECOMPILE_ADDRESS,
+    EVIDENCE_PRECOMPILE_ABI,
+    runner
+  );
 };

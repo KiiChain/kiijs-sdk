@@ -1,15 +1,15 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../binary";
+import { BinaryReader, BinaryWriter } from '../../binary';
 /** Params defines the ratelimit module's parameters. */
 export interface Params {}
 export interface ParamsProtoMsg {
-  typeUrl: "/ratelimit.v1.Params";
+  typeUrl: '/ratelimit.v1.Params';
   value: Uint8Array;
 }
 /** Params defines the ratelimit module's parameters. */
 export interface ParamsAmino {}
 export interface ParamsAminoMsg {
-  type: "/ratelimit.v1.Params";
+  type: '/ratelimit.v1.Params';
   value: ParamsAmino;
 }
 /** Params defines the ratelimit module's parameters. */
@@ -18,12 +18,16 @@ function createBaseParams(): Params {
   return {};
 }
 export const Params = {
-  typeUrl: "/ratelimit.v1.Params",
-  encode(_: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.Params',
+  encode(
+    _: Params,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Params {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParams();
     while (reader.pos < end) {
@@ -59,8 +63,8 @@ export const Params = {
   },
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.Params",
-      value: Params.encode(message).finish()
+      typeUrl: '/ratelimit.v1.Params',
+      value: Params.encode(message).finish(),
     };
-  }
+  },
 };

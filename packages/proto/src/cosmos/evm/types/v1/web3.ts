@@ -1,6 +1,6 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
+import { base64FromBytes, bytesFromBase64 } from '../../../../helpers';
 /**
  * ExtensionOptionsWeb3Tx is an extension option that specifies the typed chain
  * id, the fee payer as well as its signature data.
@@ -23,7 +23,7 @@ export interface ExtensionOptionsWeb3Tx {
   feePayerSig: Uint8Array;
 }
 export interface ExtensionOptionsWeb3TxProtoMsg {
-  typeUrl: "/cosmos.evm.types.v1.ExtensionOptionsWeb3Tx";
+  typeUrl: '/cosmos.evm.types.v1.ExtensionOptionsWeb3Tx';
   value: Uint8Array;
 }
 /**
@@ -48,7 +48,7 @@ export interface ExtensionOptionsWeb3TxAmino {
   fee_payer_sig?: string;
 }
 export interface ExtensionOptionsWeb3TxAminoMsg {
-  type: "cosmos-sdk/ExtensionOptionsWeb3Tx";
+  type: 'cosmos-sdk/ExtensionOptionsWeb3Tx';
   value: ExtensionOptionsWeb3TxAmino;
 }
 /**
@@ -63,17 +63,20 @@ export interface ExtensionOptionsWeb3TxSDKType {
 function createBaseExtensionOptionsWeb3Tx(): ExtensionOptionsWeb3Tx {
   return {
     typedDataChainId: BigInt(0),
-    feePayer: "",
-    feePayerSig: new Uint8Array()
+    feePayer: '',
+    feePayerSig: new Uint8Array(),
   };
 }
 export const ExtensionOptionsWeb3Tx = {
-  typeUrl: "/cosmos.evm.types.v1.ExtensionOptionsWeb3Tx",
-  encode(message: ExtensionOptionsWeb3Tx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.types.v1.ExtensionOptionsWeb3Tx',
+  encode(
+    message: ExtensionOptionsWeb3Tx,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.typedDataChainId !== BigInt(0)) {
       writer.uint32(8).uint64(message.typedDataChainId);
     }
-    if (message.feePayer !== "") {
+    if (message.feePayer !== '') {
       writer.uint32(18).string(message.feePayer);
     }
     if (message.feePayerSig.length !== 0) {
@@ -81,8 +84,12 @@ export const ExtensionOptionsWeb3Tx = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): ExtensionOptionsWeb3Tx {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): ExtensionOptionsWeb3Tx {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseExtensionOptionsWeb3Tx();
     while (reader.pos < end) {
@@ -106,14 +113,20 @@ export const ExtensionOptionsWeb3Tx = {
   },
   fromPartial(object: Partial<ExtensionOptionsWeb3Tx>): ExtensionOptionsWeb3Tx {
     const message = createBaseExtensionOptionsWeb3Tx();
-    message.typedDataChainId = object.typedDataChainId !== undefined && object.typedDataChainId !== null ? BigInt(object.typedDataChainId.toString()) : BigInt(0);
-    message.feePayer = object.feePayer ?? "";
+    message.typedDataChainId =
+      object.typedDataChainId !== undefined && object.typedDataChainId !== null
+        ? BigInt(object.typedDataChainId.toString())
+        : BigInt(0);
+    message.feePayer = object.feePayer ?? '';
     message.feePayerSig = object.feePayerSig ?? new Uint8Array();
     return message;
   },
   fromAmino(object: ExtensionOptionsWeb3TxAmino): ExtensionOptionsWeb3Tx {
     const message = createBaseExtensionOptionsWeb3Tx();
-    if (object.typed_data_chain_id !== undefined && object.typed_data_chain_id !== null) {
+    if (
+      object.typed_data_chain_id !== undefined &&
+      object.typed_data_chain_id !== null
+    ) {
       message.typedDataChainId = BigInt(object.typed_data_chain_id);
     }
     if (object.fee_payer !== undefined && object.fee_payer !== null) {
@@ -126,9 +139,14 @@ export const ExtensionOptionsWeb3Tx = {
   },
   toAmino(message: ExtensionOptionsWeb3Tx): ExtensionOptionsWeb3TxAmino {
     const obj: any = {};
-    obj.typed_data_chain_id = message.typedDataChainId !== BigInt(0) ? message.typedDataChainId?.toString() : undefined;
-    obj.fee_payer = message.feePayer === "" ? undefined : message.feePayer;
-    obj.fee_payer_sig = message.feePayerSig ? base64FromBytes(message.feePayerSig) : undefined;
+    obj.typed_data_chain_id =
+      message.typedDataChainId !== BigInt(0)
+        ? message.typedDataChainId?.toString()
+        : undefined;
+    obj.fee_payer = message.feePayer === '' ? undefined : message.feePayer;
+    obj.fee_payer_sig = message.feePayerSig
+      ? base64FromBytes(message.feePayerSig)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: ExtensionOptionsWeb3TxAminoMsg): ExtensionOptionsWeb3Tx {
@@ -136,11 +154,13 @@ export const ExtensionOptionsWeb3Tx = {
   },
   toAminoMsg(message: ExtensionOptionsWeb3Tx): ExtensionOptionsWeb3TxAminoMsg {
     return {
-      type: "cosmos-sdk/ExtensionOptionsWeb3Tx",
-      value: ExtensionOptionsWeb3Tx.toAmino(message)
+      type: 'cosmos-sdk/ExtensionOptionsWeb3Tx',
+      value: ExtensionOptionsWeb3Tx.toAmino(message),
     };
   },
-  fromProtoMsg(message: ExtensionOptionsWeb3TxProtoMsg): ExtensionOptionsWeb3Tx {
+  fromProtoMsg(
+    message: ExtensionOptionsWeb3TxProtoMsg
+  ): ExtensionOptionsWeb3Tx {
     return ExtensionOptionsWeb3Tx.decode(message.value);
   },
   toProto(message: ExtensionOptionsWeb3Tx): Uint8Array {
@@ -148,8 +168,8 @@ export const ExtensionOptionsWeb3Tx = {
   },
   toProtoMsg(message: ExtensionOptionsWeb3Tx): ExtensionOptionsWeb3TxProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.types.v1.ExtensionOptionsWeb3Tx",
-      value: ExtensionOptionsWeb3Tx.encode(message).finish()
+      typeUrl: '/cosmos.evm.types.v1.ExtensionOptionsWeb3Tx',
+      value: ExtensionOptionsWeb3Tx.encode(message).finish(),
     };
-  }
+  },
 };

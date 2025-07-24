@@ -1,24 +1,29 @@
 //@ts-nocheck
-import { MsgSend, MsgMultiSend, MsgUpdateParams, MsgSetSendEnabled } from "./tx";
+import {
+  MsgMultiSend,
+  MsgSend,
+  MsgSetSendEnabled,
+  MsgUpdateParams,
+} from './tx';
 export const AminoConverter = {
-  "/cosmos.bank.v1beta1.MsgSend": {
-    aminoType: "cosmos-sdk/MsgSend",
+  '/cosmos.bank.v1beta1.MsgSend': {
+    aminoType: 'cosmos-sdk/MsgSend',
     toAmino: MsgSend.toAmino,
-    fromAmino: MsgSend.fromAmino
+    fromAmino: MsgSend.fromAmino,
   },
-  "/cosmos.bank.v1beta1.MsgMultiSend": {
-    aminoType: "cosmos-sdk/MsgMultiSend",
+  '/cosmos.bank.v1beta1.MsgMultiSend': {
+    aminoType: 'cosmos-sdk/MsgMultiSend',
     toAmino: MsgMultiSend.toAmino,
-    fromAmino: MsgMultiSend.fromAmino
+    fromAmino: MsgMultiSend.fromAmino,
   },
-  "/cosmos.bank.v1beta1.MsgUpdateParams": {
-    aminoType: "cosmos-sdk/x/bank/MsgUpdateParams",
+  '/cosmos.bank.v1beta1.MsgUpdateParams': {
+    aminoType: 'cosmos-sdk/x/bank/MsgUpdateParams',
     toAmino: MsgUpdateParams.toAmino,
-    fromAmino: MsgUpdateParams.fromAmino
+    fromAmino: MsgUpdateParams.fromAmino,
   },
-  "/cosmos.bank.v1beta1.MsgSetSendEnabled": {
-    aminoType: "cosmos-sdk/MsgSetSendEnabled",
+  '/cosmos.bank.v1beta1.MsgSetSendEnabled': {
+    aminoType: 'cosmos-sdk/MsgSetSendEnabled',
     toAmino: MsgSetSendEnabled.toAmino,
-    fromAmino: MsgSetSendEnabled.fromAmino
-  }
+    fromAmino: MsgSetSendEnabled.fromAmino,
+  },
 };

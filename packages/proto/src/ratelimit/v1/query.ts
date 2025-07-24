@@ -1,16 +1,23 @@
 //@ts-nocheck
-import { RateLimit, RateLimitAmino, RateLimitSDKType, WhitelistedAddressPair, WhitelistedAddressPairAmino, WhitelistedAddressPairSDKType } from "./ratelimit";
-import { BinaryReader, BinaryWriter } from "../../binary";
+import { BinaryReader, BinaryWriter } from '../../binary';
+import {
+  RateLimit,
+  RateLimitAmino,
+  RateLimitSDKType,
+  WhitelistedAddressPair,
+  WhitelistedAddressPairAmino,
+  WhitelistedAddressPairSDKType,
+} from './ratelimit';
 /** Queries all rate limits */
 export interface QueryAllRateLimitsRequest {}
 export interface QueryAllRateLimitsRequestProtoMsg {
-  typeUrl: "/ratelimit.v1.QueryAllRateLimitsRequest";
+  typeUrl: '/ratelimit.v1.QueryAllRateLimitsRequest';
   value: Uint8Array;
 }
 /** Queries all rate limits */
 export interface QueryAllRateLimitsRequestAmino {}
 export interface QueryAllRateLimitsRequestAminoMsg {
-  type: "/ratelimit.v1.QueryAllRateLimitsRequest";
+  type: '/ratelimit.v1.QueryAllRateLimitsRequest';
   value: QueryAllRateLimitsRequestAmino;
 }
 /** Queries all rate limits */
@@ -19,14 +26,14 @@ export interface QueryAllRateLimitsResponse {
   rateLimits: RateLimit[];
 }
 export interface QueryAllRateLimitsResponseProtoMsg {
-  typeUrl: "/ratelimit.v1.QueryAllRateLimitsResponse";
+  typeUrl: '/ratelimit.v1.QueryAllRateLimitsResponse';
   value: Uint8Array;
 }
 export interface QueryAllRateLimitsResponseAmino {
   rate_limits?: RateLimitAmino[];
 }
 export interface QueryAllRateLimitsResponseAminoMsg {
-  type: "/ratelimit.v1.QueryAllRateLimitsResponse";
+  type: '/ratelimit.v1.QueryAllRateLimitsResponse';
   value: QueryAllRateLimitsResponseAmino;
 }
 export interface QueryAllRateLimitsResponseSDKType {
@@ -38,7 +45,7 @@ export interface QueryRateLimitRequest {
   channelId: string;
 }
 export interface QueryRateLimitRequestProtoMsg {
-  typeUrl: "/ratelimit.v1.QueryRateLimitRequest";
+  typeUrl: '/ratelimit.v1.QueryRateLimitRequest';
   value: Uint8Array;
 }
 /** Queries a specific rate limit by channel ID and denom */
@@ -47,7 +54,7 @@ export interface QueryRateLimitRequestAmino {
   channel_id?: string;
 }
 export interface QueryRateLimitRequestAminoMsg {
-  type: "/ratelimit.v1.QueryRateLimitRequest";
+  type: '/ratelimit.v1.QueryRateLimitRequest';
   value: QueryRateLimitRequestAmino;
 }
 /** Queries a specific rate limit by channel ID and denom */
@@ -59,14 +66,14 @@ export interface QueryRateLimitResponse {
   rateLimit?: RateLimit;
 }
 export interface QueryRateLimitResponseProtoMsg {
-  typeUrl: "/ratelimit.v1.QueryRateLimitResponse";
+  typeUrl: '/ratelimit.v1.QueryRateLimitResponse';
   value: Uint8Array;
 }
 export interface QueryRateLimitResponseAmino {
   rate_limit?: RateLimitAmino;
 }
 export interface QueryRateLimitResponseAminoMsg {
-  type: "/ratelimit.v1.QueryRateLimitResponse";
+  type: '/ratelimit.v1.QueryRateLimitResponse';
   value: QueryRateLimitResponseAmino;
 }
 export interface QueryRateLimitResponseSDKType {
@@ -77,7 +84,7 @@ export interface QueryRateLimitsByChainIdRequest {
   chainId: string;
 }
 export interface QueryRateLimitsByChainIdRequestProtoMsg {
-  typeUrl: "/ratelimit.v1.QueryRateLimitsByChainIdRequest";
+  typeUrl: '/ratelimit.v1.QueryRateLimitsByChainIdRequest';
   value: Uint8Array;
 }
 /** Queries all the rate limits for a given chain */
@@ -85,7 +92,7 @@ export interface QueryRateLimitsByChainIdRequestAmino {
   chain_id?: string;
 }
 export interface QueryRateLimitsByChainIdRequestAminoMsg {
-  type: "/ratelimit.v1.QueryRateLimitsByChainIdRequest";
+  type: '/ratelimit.v1.QueryRateLimitsByChainIdRequest';
   value: QueryRateLimitsByChainIdRequestAmino;
 }
 /** Queries all the rate limits for a given chain */
@@ -96,14 +103,14 @@ export interface QueryRateLimitsByChainIdResponse {
   rateLimits: RateLimit[];
 }
 export interface QueryRateLimitsByChainIdResponseProtoMsg {
-  typeUrl: "/ratelimit.v1.QueryRateLimitsByChainIdResponse";
+  typeUrl: '/ratelimit.v1.QueryRateLimitsByChainIdResponse';
   value: Uint8Array;
 }
 export interface QueryRateLimitsByChainIdResponseAmino {
   rate_limits?: RateLimitAmino[];
 }
 export interface QueryRateLimitsByChainIdResponseAminoMsg {
-  type: "/ratelimit.v1.QueryRateLimitsByChainIdResponse";
+  type: '/ratelimit.v1.QueryRateLimitsByChainIdResponse';
   value: QueryRateLimitsByChainIdResponseAmino;
 }
 export interface QueryRateLimitsByChainIdResponseSDKType {
@@ -114,7 +121,7 @@ export interface QueryRateLimitsByChannelIdRequest {
   channelId: string;
 }
 export interface QueryRateLimitsByChannelIdRequestProtoMsg {
-  typeUrl: "/ratelimit.v1.QueryRateLimitsByChannelIdRequest";
+  typeUrl: '/ratelimit.v1.QueryRateLimitsByChannelIdRequest';
   value: Uint8Array;
 }
 /** Queries all the rate limits for a given channel ID */
@@ -122,7 +129,7 @@ export interface QueryRateLimitsByChannelIdRequestAmino {
   channel_id?: string;
 }
 export interface QueryRateLimitsByChannelIdRequestAminoMsg {
-  type: "/ratelimit.v1.QueryRateLimitsByChannelIdRequest";
+  type: '/ratelimit.v1.QueryRateLimitsByChannelIdRequest';
   value: QueryRateLimitsByChannelIdRequestAmino;
 }
 /** Queries all the rate limits for a given channel ID */
@@ -133,14 +140,14 @@ export interface QueryRateLimitsByChannelIdResponse {
   rateLimits: RateLimit[];
 }
 export interface QueryRateLimitsByChannelIdResponseProtoMsg {
-  typeUrl: "/ratelimit.v1.QueryRateLimitsByChannelIdResponse";
+  typeUrl: '/ratelimit.v1.QueryRateLimitsByChannelIdResponse';
   value: Uint8Array;
 }
 export interface QueryRateLimitsByChannelIdResponseAmino {
   rate_limits?: RateLimitAmino[];
 }
 export interface QueryRateLimitsByChannelIdResponseAminoMsg {
-  type: "/ratelimit.v1.QueryRateLimitsByChannelIdResponse";
+  type: '/ratelimit.v1.QueryRateLimitsByChannelIdResponse';
   value: QueryRateLimitsByChannelIdResponseAmino;
 }
 export interface QueryRateLimitsByChannelIdResponseSDKType {
@@ -149,13 +156,13 @@ export interface QueryRateLimitsByChannelIdResponseSDKType {
 /** Queries all blacklisted denoms */
 export interface QueryAllBlacklistedDenomsRequest {}
 export interface QueryAllBlacklistedDenomsRequestProtoMsg {
-  typeUrl: "/ratelimit.v1.QueryAllBlacklistedDenomsRequest";
+  typeUrl: '/ratelimit.v1.QueryAllBlacklistedDenomsRequest';
   value: Uint8Array;
 }
 /** Queries all blacklisted denoms */
 export interface QueryAllBlacklistedDenomsRequestAmino {}
 export interface QueryAllBlacklistedDenomsRequestAminoMsg {
-  type: "/ratelimit.v1.QueryAllBlacklistedDenomsRequest";
+  type: '/ratelimit.v1.QueryAllBlacklistedDenomsRequest';
   value: QueryAllBlacklistedDenomsRequestAmino;
 }
 /** Queries all blacklisted denoms */
@@ -164,14 +171,14 @@ export interface QueryAllBlacklistedDenomsResponse {
   denoms: string[];
 }
 export interface QueryAllBlacklistedDenomsResponseProtoMsg {
-  typeUrl: "/ratelimit.v1.QueryAllBlacklistedDenomsResponse";
+  typeUrl: '/ratelimit.v1.QueryAllBlacklistedDenomsResponse';
   value: Uint8Array;
 }
 export interface QueryAllBlacklistedDenomsResponseAmino {
   denoms?: string[];
 }
 export interface QueryAllBlacklistedDenomsResponseAminoMsg {
-  type: "/ratelimit.v1.QueryAllBlacklistedDenomsResponse";
+  type: '/ratelimit.v1.QueryAllBlacklistedDenomsResponse';
   value: QueryAllBlacklistedDenomsResponseAmino;
 }
 export interface QueryAllBlacklistedDenomsResponseSDKType {
@@ -180,13 +187,13 @@ export interface QueryAllBlacklistedDenomsResponseSDKType {
 /** Queries all whitelisted address pairs */
 export interface QueryAllWhitelistedAddressesRequest {}
 export interface QueryAllWhitelistedAddressesRequestProtoMsg {
-  typeUrl: "/ratelimit.v1.QueryAllWhitelistedAddressesRequest";
+  typeUrl: '/ratelimit.v1.QueryAllWhitelistedAddressesRequest';
   value: Uint8Array;
 }
 /** Queries all whitelisted address pairs */
 export interface QueryAllWhitelistedAddressesRequestAmino {}
 export interface QueryAllWhitelistedAddressesRequestAminoMsg {
-  type: "/ratelimit.v1.QueryAllWhitelistedAddressesRequest";
+  type: '/ratelimit.v1.QueryAllWhitelistedAddressesRequest';
   value: QueryAllWhitelistedAddressesRequestAmino;
 }
 /** Queries all whitelisted address pairs */
@@ -195,14 +202,14 @@ export interface QueryAllWhitelistedAddressesResponse {
   addressPairs: WhitelistedAddressPair[];
 }
 export interface QueryAllWhitelistedAddressesResponseProtoMsg {
-  typeUrl: "/ratelimit.v1.QueryAllWhitelistedAddressesResponse";
+  typeUrl: '/ratelimit.v1.QueryAllWhitelistedAddressesResponse';
   value: Uint8Array;
 }
 export interface QueryAllWhitelistedAddressesResponseAmino {
   address_pairs?: WhitelistedAddressPairAmino[];
 }
 export interface QueryAllWhitelistedAddressesResponseAminoMsg {
-  type: "/ratelimit.v1.QueryAllWhitelistedAddressesResponse";
+  type: '/ratelimit.v1.QueryAllWhitelistedAddressesResponse';
   value: QueryAllWhitelistedAddressesResponseAmino;
 }
 export interface QueryAllWhitelistedAddressesResponseSDKType {
@@ -212,12 +219,19 @@ function createBaseQueryAllRateLimitsRequest(): QueryAllRateLimitsRequest {
   return {};
 }
 export const QueryAllRateLimitsRequest = {
-  typeUrl: "/ratelimit.v1.QueryAllRateLimitsRequest",
-  encode(_: QueryAllRateLimitsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.QueryAllRateLimitsRequest',
+  encode(
+    _: QueryAllRateLimitsRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryAllRateLimitsRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryAllRateLimitsRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllRateLimitsRequest();
     while (reader.pos < end) {
@@ -230,7 +244,9 @@ export const QueryAllRateLimitsRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<QueryAllRateLimitsRequest>): QueryAllRateLimitsRequest {
+  fromPartial(
+    _: Partial<QueryAllRateLimitsRequest>
+  ): QueryAllRateLimitsRequest {
     const message = createBaseQueryAllRateLimitsRequest();
     return message;
   },
@@ -242,37 +258,50 @@ export const QueryAllRateLimitsRequest = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: QueryAllRateLimitsRequestAminoMsg): QueryAllRateLimitsRequest {
+  fromAminoMsg(
+    object: QueryAllRateLimitsRequestAminoMsg
+  ): QueryAllRateLimitsRequest {
     return QueryAllRateLimitsRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryAllRateLimitsRequestProtoMsg): QueryAllRateLimitsRequest {
+  fromProtoMsg(
+    message: QueryAllRateLimitsRequestProtoMsg
+  ): QueryAllRateLimitsRequest {
     return QueryAllRateLimitsRequest.decode(message.value);
   },
   toProto(message: QueryAllRateLimitsRequest): Uint8Array {
     return QueryAllRateLimitsRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllRateLimitsRequest): QueryAllRateLimitsRequestProtoMsg {
+  toProtoMsg(
+    message: QueryAllRateLimitsRequest
+  ): QueryAllRateLimitsRequestProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.QueryAllRateLimitsRequest",
-      value: QueryAllRateLimitsRequest.encode(message).finish()
+      typeUrl: '/ratelimit.v1.QueryAllRateLimitsRequest',
+      value: QueryAllRateLimitsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAllRateLimitsResponse(): QueryAllRateLimitsResponse {
   return {
-    rateLimits: []
+    rateLimits: [],
   };
 }
 export const QueryAllRateLimitsResponse = {
-  typeUrl: "/ratelimit.v1.QueryAllRateLimitsResponse",
-  encode(message: QueryAllRateLimitsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.QueryAllRateLimitsResponse',
+  encode(
+    message: QueryAllRateLimitsResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.rateLimits) {
       RateLimit.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryAllRateLimitsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryAllRateLimitsResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllRateLimitsResponse();
     while (reader.pos < end) {
@@ -288,60 +317,83 @@ export const QueryAllRateLimitsResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAllRateLimitsResponse>): QueryAllRateLimitsResponse {
+  fromPartial(
+    object: Partial<QueryAllRateLimitsResponse>
+  ): QueryAllRateLimitsResponse {
     const message = createBaseQueryAllRateLimitsResponse();
-    message.rateLimits = object.rateLimits?.map(e => RateLimit.fromPartial(e)) || [];
+    message.rateLimits =
+      object.rateLimits?.map((e) => RateLimit.fromPartial(e)) || [];
     return message;
   },
-  fromAmino(object: QueryAllRateLimitsResponseAmino): QueryAllRateLimitsResponse {
+  fromAmino(
+    object: QueryAllRateLimitsResponseAmino
+  ): QueryAllRateLimitsResponse {
     const message = createBaseQueryAllRateLimitsResponse();
-    message.rateLimits = object.rate_limits?.map(e => RateLimit.fromAmino(e)) || [];
+    message.rateLimits =
+      object.rate_limits?.map((e) => RateLimit.fromAmino(e)) || [];
     return message;
   },
-  toAmino(message: QueryAllRateLimitsResponse): QueryAllRateLimitsResponseAmino {
+  toAmino(
+    message: QueryAllRateLimitsResponse
+  ): QueryAllRateLimitsResponseAmino {
     const obj: any = {};
     if (message.rateLimits) {
-      obj.rate_limits = message.rateLimits.map(e => e ? RateLimit.toAmino(e) : undefined);
+      obj.rate_limits = message.rateLimits.map((e) =>
+        e ? RateLimit.toAmino(e) : undefined
+      );
     } else {
       obj.rate_limits = message.rateLimits;
     }
     return obj;
   },
-  fromAminoMsg(object: QueryAllRateLimitsResponseAminoMsg): QueryAllRateLimitsResponse {
+  fromAminoMsg(
+    object: QueryAllRateLimitsResponseAminoMsg
+  ): QueryAllRateLimitsResponse {
     return QueryAllRateLimitsResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryAllRateLimitsResponseProtoMsg): QueryAllRateLimitsResponse {
+  fromProtoMsg(
+    message: QueryAllRateLimitsResponseProtoMsg
+  ): QueryAllRateLimitsResponse {
     return QueryAllRateLimitsResponse.decode(message.value);
   },
   toProto(message: QueryAllRateLimitsResponse): Uint8Array {
     return QueryAllRateLimitsResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllRateLimitsResponse): QueryAllRateLimitsResponseProtoMsg {
+  toProtoMsg(
+    message: QueryAllRateLimitsResponse
+  ): QueryAllRateLimitsResponseProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.QueryAllRateLimitsResponse",
-      value: QueryAllRateLimitsResponse.encode(message).finish()
+      typeUrl: '/ratelimit.v1.QueryAllRateLimitsResponse',
+      value: QueryAllRateLimitsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryRateLimitRequest(): QueryRateLimitRequest {
   return {
-    denom: "",
-    channelId: ""
+    denom: '',
+    channelId: '',
   };
 }
 export const QueryRateLimitRequest = {
-  typeUrl: "/ratelimit.v1.QueryRateLimitRequest",
-  encode(message: QueryRateLimitRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.denom !== "") {
+  typeUrl: '/ratelimit.v1.QueryRateLimitRequest',
+  encode(
+    message: QueryRateLimitRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.denom !== '') {
       writer.uint32(10).string(message.denom);
     }
-    if (message.channelId !== "") {
+    if (message.channelId !== '') {
       writer.uint32(18).string(message.channelId);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryRateLimitRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryRateLimitRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryRateLimitRequest();
     while (reader.pos < end) {
@@ -362,8 +414,8 @@ export const QueryRateLimitRequest = {
   },
   fromPartial(object: Partial<QueryRateLimitRequest>): QueryRateLimitRequest {
     const message = createBaseQueryRateLimitRequest();
-    message.denom = object.denom ?? "";
-    message.channelId = object.channelId ?? "";
+    message.denom = object.denom ?? '';
+    message.channelId = object.channelId ?? '';
     return message;
   },
   fromAmino(object: QueryRateLimitRequestAmino): QueryRateLimitRequest {
@@ -378,8 +430,8 @@ export const QueryRateLimitRequest = {
   },
   toAmino(message: QueryRateLimitRequest): QueryRateLimitRequestAmino {
     const obj: any = {};
-    obj.denom = message.denom === "" ? undefined : message.denom;
-    obj.channel_id = message.channelId === "" ? undefined : message.channelId;
+    obj.denom = message.denom === '' ? undefined : message.denom;
+    obj.channel_id = message.channelId === '' ? undefined : message.channelId;
     return obj;
   },
   fromAminoMsg(object: QueryRateLimitRequestAminoMsg): QueryRateLimitRequest {
@@ -393,26 +445,33 @@ export const QueryRateLimitRequest = {
   },
   toProtoMsg(message: QueryRateLimitRequest): QueryRateLimitRequestProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.QueryRateLimitRequest",
-      value: QueryRateLimitRequest.encode(message).finish()
+      typeUrl: '/ratelimit.v1.QueryRateLimitRequest',
+      value: QueryRateLimitRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryRateLimitResponse(): QueryRateLimitResponse {
   return {
-    rateLimit: undefined
+    rateLimit: undefined,
   };
 }
 export const QueryRateLimitResponse = {
-  typeUrl: "/ratelimit.v1.QueryRateLimitResponse",
-  encode(message: QueryRateLimitResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.QueryRateLimitResponse',
+  encode(
+    message: QueryRateLimitResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.rateLimit !== undefined) {
       RateLimit.encode(message.rateLimit, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryRateLimitResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryRateLimitResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryRateLimitResponse();
     while (reader.pos < end) {
@@ -430,7 +489,10 @@ export const QueryRateLimitResponse = {
   },
   fromPartial(object: Partial<QueryRateLimitResponse>): QueryRateLimitResponse {
     const message = createBaseQueryRateLimitResponse();
-    message.rateLimit = object.rateLimit !== undefined && object.rateLimit !== null ? RateLimit.fromPartial(object.rateLimit) : undefined;
+    message.rateLimit =
+      object.rateLimit !== undefined && object.rateLimit !== null
+        ? RateLimit.fromPartial(object.rateLimit)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryRateLimitResponseAmino): QueryRateLimitResponse {
@@ -442,13 +504,17 @@ export const QueryRateLimitResponse = {
   },
   toAmino(message: QueryRateLimitResponse): QueryRateLimitResponseAmino {
     const obj: any = {};
-    obj.rate_limit = message.rateLimit ? RateLimit.toAmino(message.rateLimit) : undefined;
+    obj.rate_limit = message.rateLimit
+      ? RateLimit.toAmino(message.rateLimit)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryRateLimitResponseAminoMsg): QueryRateLimitResponse {
     return QueryRateLimitResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryRateLimitResponseProtoMsg): QueryRateLimitResponse {
+  fromProtoMsg(
+    message: QueryRateLimitResponseProtoMsg
+  ): QueryRateLimitResponse {
     return QueryRateLimitResponse.decode(message.value);
   },
   toProto(message: QueryRateLimitResponse): Uint8Array {
@@ -456,26 +522,33 @@ export const QueryRateLimitResponse = {
   },
   toProtoMsg(message: QueryRateLimitResponse): QueryRateLimitResponseProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.QueryRateLimitResponse",
-      value: QueryRateLimitResponse.encode(message).finish()
+      typeUrl: '/ratelimit.v1.QueryRateLimitResponse',
+      value: QueryRateLimitResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryRateLimitsByChainIdRequest(): QueryRateLimitsByChainIdRequest {
   return {
-    chainId: ""
+    chainId: '',
   };
 }
 export const QueryRateLimitsByChainIdRequest = {
-  typeUrl: "/ratelimit.v1.QueryRateLimitsByChainIdRequest",
-  encode(message: QueryRateLimitsByChainIdRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.chainId !== "") {
+  typeUrl: '/ratelimit.v1.QueryRateLimitsByChainIdRequest',
+  encode(
+    message: QueryRateLimitsByChainIdRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.chainId !== '') {
       writer.uint32(10).string(message.chainId);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryRateLimitsByChainIdRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryRateLimitsByChainIdRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryRateLimitsByChainIdRequest();
     while (reader.pos < end) {
@@ -491,54 +564,73 @@ export const QueryRateLimitsByChainIdRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryRateLimitsByChainIdRequest>): QueryRateLimitsByChainIdRequest {
+  fromPartial(
+    object: Partial<QueryRateLimitsByChainIdRequest>
+  ): QueryRateLimitsByChainIdRequest {
     const message = createBaseQueryRateLimitsByChainIdRequest();
-    message.chainId = object.chainId ?? "";
+    message.chainId = object.chainId ?? '';
     return message;
   },
-  fromAmino(object: QueryRateLimitsByChainIdRequestAmino): QueryRateLimitsByChainIdRequest {
+  fromAmino(
+    object: QueryRateLimitsByChainIdRequestAmino
+  ): QueryRateLimitsByChainIdRequest {
     const message = createBaseQueryRateLimitsByChainIdRequest();
     if (object.chain_id !== undefined && object.chain_id !== null) {
       message.chainId = object.chain_id;
     }
     return message;
   },
-  toAmino(message: QueryRateLimitsByChainIdRequest): QueryRateLimitsByChainIdRequestAmino {
+  toAmino(
+    message: QueryRateLimitsByChainIdRequest
+  ): QueryRateLimitsByChainIdRequestAmino {
     const obj: any = {};
-    obj.chain_id = message.chainId === "" ? undefined : message.chainId;
+    obj.chain_id = message.chainId === '' ? undefined : message.chainId;
     return obj;
   },
-  fromAminoMsg(object: QueryRateLimitsByChainIdRequestAminoMsg): QueryRateLimitsByChainIdRequest {
+  fromAminoMsg(
+    object: QueryRateLimitsByChainIdRequestAminoMsg
+  ): QueryRateLimitsByChainIdRequest {
     return QueryRateLimitsByChainIdRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryRateLimitsByChainIdRequestProtoMsg): QueryRateLimitsByChainIdRequest {
+  fromProtoMsg(
+    message: QueryRateLimitsByChainIdRequestProtoMsg
+  ): QueryRateLimitsByChainIdRequest {
     return QueryRateLimitsByChainIdRequest.decode(message.value);
   },
   toProto(message: QueryRateLimitsByChainIdRequest): Uint8Array {
     return QueryRateLimitsByChainIdRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryRateLimitsByChainIdRequest): QueryRateLimitsByChainIdRequestProtoMsg {
+  toProtoMsg(
+    message: QueryRateLimitsByChainIdRequest
+  ): QueryRateLimitsByChainIdRequestProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.QueryRateLimitsByChainIdRequest",
-      value: QueryRateLimitsByChainIdRequest.encode(message).finish()
+      typeUrl: '/ratelimit.v1.QueryRateLimitsByChainIdRequest',
+      value: QueryRateLimitsByChainIdRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryRateLimitsByChainIdResponse(): QueryRateLimitsByChainIdResponse {
   return {
-    rateLimits: []
+    rateLimits: [],
   };
 }
 export const QueryRateLimitsByChainIdResponse = {
-  typeUrl: "/ratelimit.v1.QueryRateLimitsByChainIdResponse",
-  encode(message: QueryRateLimitsByChainIdResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.QueryRateLimitsByChainIdResponse',
+  encode(
+    message: QueryRateLimitsByChainIdResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.rateLimits) {
       RateLimit.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryRateLimitsByChainIdResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryRateLimitsByChainIdResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryRateLimitsByChainIdResponse();
     while (reader.pos < end) {
@@ -554,56 +646,79 @@ export const QueryRateLimitsByChainIdResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryRateLimitsByChainIdResponse>): QueryRateLimitsByChainIdResponse {
+  fromPartial(
+    object: Partial<QueryRateLimitsByChainIdResponse>
+  ): QueryRateLimitsByChainIdResponse {
     const message = createBaseQueryRateLimitsByChainIdResponse();
-    message.rateLimits = object.rateLimits?.map(e => RateLimit.fromPartial(e)) || [];
+    message.rateLimits =
+      object.rateLimits?.map((e) => RateLimit.fromPartial(e)) || [];
     return message;
   },
-  fromAmino(object: QueryRateLimitsByChainIdResponseAmino): QueryRateLimitsByChainIdResponse {
+  fromAmino(
+    object: QueryRateLimitsByChainIdResponseAmino
+  ): QueryRateLimitsByChainIdResponse {
     const message = createBaseQueryRateLimitsByChainIdResponse();
-    message.rateLimits = object.rate_limits?.map(e => RateLimit.fromAmino(e)) || [];
+    message.rateLimits =
+      object.rate_limits?.map((e) => RateLimit.fromAmino(e)) || [];
     return message;
   },
-  toAmino(message: QueryRateLimitsByChainIdResponse): QueryRateLimitsByChainIdResponseAmino {
+  toAmino(
+    message: QueryRateLimitsByChainIdResponse
+  ): QueryRateLimitsByChainIdResponseAmino {
     const obj: any = {};
     if (message.rateLimits) {
-      obj.rate_limits = message.rateLimits.map(e => e ? RateLimit.toAmino(e) : undefined);
+      obj.rate_limits = message.rateLimits.map((e) =>
+        e ? RateLimit.toAmino(e) : undefined
+      );
     } else {
       obj.rate_limits = message.rateLimits;
     }
     return obj;
   },
-  fromAminoMsg(object: QueryRateLimitsByChainIdResponseAminoMsg): QueryRateLimitsByChainIdResponse {
+  fromAminoMsg(
+    object: QueryRateLimitsByChainIdResponseAminoMsg
+  ): QueryRateLimitsByChainIdResponse {
     return QueryRateLimitsByChainIdResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryRateLimitsByChainIdResponseProtoMsg): QueryRateLimitsByChainIdResponse {
+  fromProtoMsg(
+    message: QueryRateLimitsByChainIdResponseProtoMsg
+  ): QueryRateLimitsByChainIdResponse {
     return QueryRateLimitsByChainIdResponse.decode(message.value);
   },
   toProto(message: QueryRateLimitsByChainIdResponse): Uint8Array {
     return QueryRateLimitsByChainIdResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryRateLimitsByChainIdResponse): QueryRateLimitsByChainIdResponseProtoMsg {
+  toProtoMsg(
+    message: QueryRateLimitsByChainIdResponse
+  ): QueryRateLimitsByChainIdResponseProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.QueryRateLimitsByChainIdResponse",
-      value: QueryRateLimitsByChainIdResponse.encode(message).finish()
+      typeUrl: '/ratelimit.v1.QueryRateLimitsByChainIdResponse',
+      value: QueryRateLimitsByChainIdResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryRateLimitsByChannelIdRequest(): QueryRateLimitsByChannelIdRequest {
   return {
-    channelId: ""
+    channelId: '',
   };
 }
 export const QueryRateLimitsByChannelIdRequest = {
-  typeUrl: "/ratelimit.v1.QueryRateLimitsByChannelIdRequest",
-  encode(message: QueryRateLimitsByChannelIdRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.channelId !== "") {
+  typeUrl: '/ratelimit.v1.QueryRateLimitsByChannelIdRequest',
+  encode(
+    message: QueryRateLimitsByChannelIdRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.channelId !== '') {
       writer.uint32(10).string(message.channelId);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryRateLimitsByChannelIdRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryRateLimitsByChannelIdRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryRateLimitsByChannelIdRequest();
     while (reader.pos < end) {
@@ -619,54 +734,73 @@ export const QueryRateLimitsByChannelIdRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryRateLimitsByChannelIdRequest>): QueryRateLimitsByChannelIdRequest {
+  fromPartial(
+    object: Partial<QueryRateLimitsByChannelIdRequest>
+  ): QueryRateLimitsByChannelIdRequest {
     const message = createBaseQueryRateLimitsByChannelIdRequest();
-    message.channelId = object.channelId ?? "";
+    message.channelId = object.channelId ?? '';
     return message;
   },
-  fromAmino(object: QueryRateLimitsByChannelIdRequestAmino): QueryRateLimitsByChannelIdRequest {
+  fromAmino(
+    object: QueryRateLimitsByChannelIdRequestAmino
+  ): QueryRateLimitsByChannelIdRequest {
     const message = createBaseQueryRateLimitsByChannelIdRequest();
     if (object.channel_id !== undefined && object.channel_id !== null) {
       message.channelId = object.channel_id;
     }
     return message;
   },
-  toAmino(message: QueryRateLimitsByChannelIdRequest): QueryRateLimitsByChannelIdRequestAmino {
+  toAmino(
+    message: QueryRateLimitsByChannelIdRequest
+  ): QueryRateLimitsByChannelIdRequestAmino {
     const obj: any = {};
-    obj.channel_id = message.channelId === "" ? undefined : message.channelId;
+    obj.channel_id = message.channelId === '' ? undefined : message.channelId;
     return obj;
   },
-  fromAminoMsg(object: QueryRateLimitsByChannelIdRequestAminoMsg): QueryRateLimitsByChannelIdRequest {
+  fromAminoMsg(
+    object: QueryRateLimitsByChannelIdRequestAminoMsg
+  ): QueryRateLimitsByChannelIdRequest {
     return QueryRateLimitsByChannelIdRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryRateLimitsByChannelIdRequestProtoMsg): QueryRateLimitsByChannelIdRequest {
+  fromProtoMsg(
+    message: QueryRateLimitsByChannelIdRequestProtoMsg
+  ): QueryRateLimitsByChannelIdRequest {
     return QueryRateLimitsByChannelIdRequest.decode(message.value);
   },
   toProto(message: QueryRateLimitsByChannelIdRequest): Uint8Array {
     return QueryRateLimitsByChannelIdRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryRateLimitsByChannelIdRequest): QueryRateLimitsByChannelIdRequestProtoMsg {
+  toProtoMsg(
+    message: QueryRateLimitsByChannelIdRequest
+  ): QueryRateLimitsByChannelIdRequestProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.QueryRateLimitsByChannelIdRequest",
-      value: QueryRateLimitsByChannelIdRequest.encode(message).finish()
+      typeUrl: '/ratelimit.v1.QueryRateLimitsByChannelIdRequest',
+      value: QueryRateLimitsByChannelIdRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryRateLimitsByChannelIdResponse(): QueryRateLimitsByChannelIdResponse {
   return {
-    rateLimits: []
+    rateLimits: [],
   };
 }
 export const QueryRateLimitsByChannelIdResponse = {
-  typeUrl: "/ratelimit.v1.QueryRateLimitsByChannelIdResponse",
-  encode(message: QueryRateLimitsByChannelIdResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.QueryRateLimitsByChannelIdResponse',
+  encode(
+    message: QueryRateLimitsByChannelIdResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.rateLimits) {
       RateLimit.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryRateLimitsByChannelIdResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryRateLimitsByChannelIdResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryRateLimitsByChannelIdResponse();
     while (reader.pos < end) {
@@ -682,51 +816,74 @@ export const QueryRateLimitsByChannelIdResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryRateLimitsByChannelIdResponse>): QueryRateLimitsByChannelIdResponse {
+  fromPartial(
+    object: Partial<QueryRateLimitsByChannelIdResponse>
+  ): QueryRateLimitsByChannelIdResponse {
     const message = createBaseQueryRateLimitsByChannelIdResponse();
-    message.rateLimits = object.rateLimits?.map(e => RateLimit.fromPartial(e)) || [];
+    message.rateLimits =
+      object.rateLimits?.map((e) => RateLimit.fromPartial(e)) || [];
     return message;
   },
-  fromAmino(object: QueryRateLimitsByChannelIdResponseAmino): QueryRateLimitsByChannelIdResponse {
+  fromAmino(
+    object: QueryRateLimitsByChannelIdResponseAmino
+  ): QueryRateLimitsByChannelIdResponse {
     const message = createBaseQueryRateLimitsByChannelIdResponse();
-    message.rateLimits = object.rate_limits?.map(e => RateLimit.fromAmino(e)) || [];
+    message.rateLimits =
+      object.rate_limits?.map((e) => RateLimit.fromAmino(e)) || [];
     return message;
   },
-  toAmino(message: QueryRateLimitsByChannelIdResponse): QueryRateLimitsByChannelIdResponseAmino {
+  toAmino(
+    message: QueryRateLimitsByChannelIdResponse
+  ): QueryRateLimitsByChannelIdResponseAmino {
     const obj: any = {};
     if (message.rateLimits) {
-      obj.rate_limits = message.rateLimits.map(e => e ? RateLimit.toAmino(e) : undefined);
+      obj.rate_limits = message.rateLimits.map((e) =>
+        e ? RateLimit.toAmino(e) : undefined
+      );
     } else {
       obj.rate_limits = message.rateLimits;
     }
     return obj;
   },
-  fromAminoMsg(object: QueryRateLimitsByChannelIdResponseAminoMsg): QueryRateLimitsByChannelIdResponse {
+  fromAminoMsg(
+    object: QueryRateLimitsByChannelIdResponseAminoMsg
+  ): QueryRateLimitsByChannelIdResponse {
     return QueryRateLimitsByChannelIdResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryRateLimitsByChannelIdResponseProtoMsg): QueryRateLimitsByChannelIdResponse {
+  fromProtoMsg(
+    message: QueryRateLimitsByChannelIdResponseProtoMsg
+  ): QueryRateLimitsByChannelIdResponse {
     return QueryRateLimitsByChannelIdResponse.decode(message.value);
   },
   toProto(message: QueryRateLimitsByChannelIdResponse): Uint8Array {
     return QueryRateLimitsByChannelIdResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryRateLimitsByChannelIdResponse): QueryRateLimitsByChannelIdResponseProtoMsg {
+  toProtoMsg(
+    message: QueryRateLimitsByChannelIdResponse
+  ): QueryRateLimitsByChannelIdResponseProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.QueryRateLimitsByChannelIdResponse",
-      value: QueryRateLimitsByChannelIdResponse.encode(message).finish()
+      typeUrl: '/ratelimit.v1.QueryRateLimitsByChannelIdResponse',
+      value: QueryRateLimitsByChannelIdResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAllBlacklistedDenomsRequest(): QueryAllBlacklistedDenomsRequest {
   return {};
 }
 export const QueryAllBlacklistedDenomsRequest = {
-  typeUrl: "/ratelimit.v1.QueryAllBlacklistedDenomsRequest",
-  encode(_: QueryAllBlacklistedDenomsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.QueryAllBlacklistedDenomsRequest',
+  encode(
+    _: QueryAllBlacklistedDenomsRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryAllBlacklistedDenomsRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryAllBlacklistedDenomsRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllBlacklistedDenomsRequest();
     while (reader.pos < end) {
@@ -739,49 +896,68 @@ export const QueryAllBlacklistedDenomsRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<QueryAllBlacklistedDenomsRequest>): QueryAllBlacklistedDenomsRequest {
+  fromPartial(
+    _: Partial<QueryAllBlacklistedDenomsRequest>
+  ): QueryAllBlacklistedDenomsRequest {
     const message = createBaseQueryAllBlacklistedDenomsRequest();
     return message;
   },
-  fromAmino(_: QueryAllBlacklistedDenomsRequestAmino): QueryAllBlacklistedDenomsRequest {
+  fromAmino(
+    _: QueryAllBlacklistedDenomsRequestAmino
+  ): QueryAllBlacklistedDenomsRequest {
     const message = createBaseQueryAllBlacklistedDenomsRequest();
     return message;
   },
-  toAmino(_: QueryAllBlacklistedDenomsRequest): QueryAllBlacklistedDenomsRequestAmino {
+  toAmino(
+    _: QueryAllBlacklistedDenomsRequest
+  ): QueryAllBlacklistedDenomsRequestAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: QueryAllBlacklistedDenomsRequestAminoMsg): QueryAllBlacklistedDenomsRequest {
+  fromAminoMsg(
+    object: QueryAllBlacklistedDenomsRequestAminoMsg
+  ): QueryAllBlacklistedDenomsRequest {
     return QueryAllBlacklistedDenomsRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryAllBlacklistedDenomsRequestProtoMsg): QueryAllBlacklistedDenomsRequest {
+  fromProtoMsg(
+    message: QueryAllBlacklistedDenomsRequestProtoMsg
+  ): QueryAllBlacklistedDenomsRequest {
     return QueryAllBlacklistedDenomsRequest.decode(message.value);
   },
   toProto(message: QueryAllBlacklistedDenomsRequest): Uint8Array {
     return QueryAllBlacklistedDenomsRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllBlacklistedDenomsRequest): QueryAllBlacklistedDenomsRequestProtoMsg {
+  toProtoMsg(
+    message: QueryAllBlacklistedDenomsRequest
+  ): QueryAllBlacklistedDenomsRequestProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.QueryAllBlacklistedDenomsRequest",
-      value: QueryAllBlacklistedDenomsRequest.encode(message).finish()
+      typeUrl: '/ratelimit.v1.QueryAllBlacklistedDenomsRequest',
+      value: QueryAllBlacklistedDenomsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAllBlacklistedDenomsResponse(): QueryAllBlacklistedDenomsResponse {
   return {
-    denoms: []
+    denoms: [],
   };
 }
 export const QueryAllBlacklistedDenomsResponse = {
-  typeUrl: "/ratelimit.v1.QueryAllBlacklistedDenomsResponse",
-  encode(message: QueryAllBlacklistedDenomsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.QueryAllBlacklistedDenomsResponse',
+  encode(
+    message: QueryAllBlacklistedDenomsResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.denoms) {
       writer.uint32(10).string(v!);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryAllBlacklistedDenomsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryAllBlacklistedDenomsResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllBlacklistedDenomsResponse();
     while (reader.pos < end) {
@@ -797,51 +973,70 @@ export const QueryAllBlacklistedDenomsResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAllBlacklistedDenomsResponse>): QueryAllBlacklistedDenomsResponse {
+  fromPartial(
+    object: Partial<QueryAllBlacklistedDenomsResponse>
+  ): QueryAllBlacklistedDenomsResponse {
     const message = createBaseQueryAllBlacklistedDenomsResponse();
-    message.denoms = object.denoms?.map(e => e) || [];
+    message.denoms = object.denoms?.map((e) => e) || [];
     return message;
   },
-  fromAmino(object: QueryAllBlacklistedDenomsResponseAmino): QueryAllBlacklistedDenomsResponse {
+  fromAmino(
+    object: QueryAllBlacklistedDenomsResponseAmino
+  ): QueryAllBlacklistedDenomsResponse {
     const message = createBaseQueryAllBlacklistedDenomsResponse();
-    message.denoms = object.denoms?.map(e => e) || [];
+    message.denoms = object.denoms?.map((e) => e) || [];
     return message;
   },
-  toAmino(message: QueryAllBlacklistedDenomsResponse): QueryAllBlacklistedDenomsResponseAmino {
+  toAmino(
+    message: QueryAllBlacklistedDenomsResponse
+  ): QueryAllBlacklistedDenomsResponseAmino {
     const obj: any = {};
     if (message.denoms) {
-      obj.denoms = message.denoms.map(e => e);
+      obj.denoms = message.denoms.map((e) => e);
     } else {
       obj.denoms = message.denoms;
     }
     return obj;
   },
-  fromAminoMsg(object: QueryAllBlacklistedDenomsResponseAminoMsg): QueryAllBlacklistedDenomsResponse {
+  fromAminoMsg(
+    object: QueryAllBlacklistedDenomsResponseAminoMsg
+  ): QueryAllBlacklistedDenomsResponse {
     return QueryAllBlacklistedDenomsResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryAllBlacklistedDenomsResponseProtoMsg): QueryAllBlacklistedDenomsResponse {
+  fromProtoMsg(
+    message: QueryAllBlacklistedDenomsResponseProtoMsg
+  ): QueryAllBlacklistedDenomsResponse {
     return QueryAllBlacklistedDenomsResponse.decode(message.value);
   },
   toProto(message: QueryAllBlacklistedDenomsResponse): Uint8Array {
     return QueryAllBlacklistedDenomsResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllBlacklistedDenomsResponse): QueryAllBlacklistedDenomsResponseProtoMsg {
+  toProtoMsg(
+    message: QueryAllBlacklistedDenomsResponse
+  ): QueryAllBlacklistedDenomsResponseProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.QueryAllBlacklistedDenomsResponse",
-      value: QueryAllBlacklistedDenomsResponse.encode(message).finish()
+      typeUrl: '/ratelimit.v1.QueryAllBlacklistedDenomsResponse',
+      value: QueryAllBlacklistedDenomsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAllWhitelistedAddressesRequest(): QueryAllWhitelistedAddressesRequest {
   return {};
 }
 export const QueryAllWhitelistedAddressesRequest = {
-  typeUrl: "/ratelimit.v1.QueryAllWhitelistedAddressesRequest",
-  encode(_: QueryAllWhitelistedAddressesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.QueryAllWhitelistedAddressesRequest',
+  encode(
+    _: QueryAllWhitelistedAddressesRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryAllWhitelistedAddressesRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryAllWhitelistedAddressesRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllWhitelistedAddressesRequest();
     while (reader.pos < end) {
@@ -854,56 +1049,77 @@ export const QueryAllWhitelistedAddressesRequest = {
     }
     return message;
   },
-  fromPartial(_: Partial<QueryAllWhitelistedAddressesRequest>): QueryAllWhitelistedAddressesRequest {
+  fromPartial(
+    _: Partial<QueryAllWhitelistedAddressesRequest>
+  ): QueryAllWhitelistedAddressesRequest {
     const message = createBaseQueryAllWhitelistedAddressesRequest();
     return message;
   },
-  fromAmino(_: QueryAllWhitelistedAddressesRequestAmino): QueryAllWhitelistedAddressesRequest {
+  fromAmino(
+    _: QueryAllWhitelistedAddressesRequestAmino
+  ): QueryAllWhitelistedAddressesRequest {
     const message = createBaseQueryAllWhitelistedAddressesRequest();
     return message;
   },
-  toAmino(_: QueryAllWhitelistedAddressesRequest): QueryAllWhitelistedAddressesRequestAmino {
+  toAmino(
+    _: QueryAllWhitelistedAddressesRequest
+  ): QueryAllWhitelistedAddressesRequestAmino {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: QueryAllWhitelistedAddressesRequestAminoMsg): QueryAllWhitelistedAddressesRequest {
+  fromAminoMsg(
+    object: QueryAllWhitelistedAddressesRequestAminoMsg
+  ): QueryAllWhitelistedAddressesRequest {
     return QueryAllWhitelistedAddressesRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryAllWhitelistedAddressesRequestProtoMsg): QueryAllWhitelistedAddressesRequest {
+  fromProtoMsg(
+    message: QueryAllWhitelistedAddressesRequestProtoMsg
+  ): QueryAllWhitelistedAddressesRequest {
     return QueryAllWhitelistedAddressesRequest.decode(message.value);
   },
   toProto(message: QueryAllWhitelistedAddressesRequest): Uint8Array {
     return QueryAllWhitelistedAddressesRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllWhitelistedAddressesRequest): QueryAllWhitelistedAddressesRequestProtoMsg {
+  toProtoMsg(
+    message: QueryAllWhitelistedAddressesRequest
+  ): QueryAllWhitelistedAddressesRequestProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.QueryAllWhitelistedAddressesRequest",
-      value: QueryAllWhitelistedAddressesRequest.encode(message).finish()
+      typeUrl: '/ratelimit.v1.QueryAllWhitelistedAddressesRequest',
+      value: QueryAllWhitelistedAddressesRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryAllWhitelistedAddressesResponse(): QueryAllWhitelistedAddressesResponse {
   return {
-    addressPairs: []
+    addressPairs: [],
   };
 }
 export const QueryAllWhitelistedAddressesResponse = {
-  typeUrl: "/ratelimit.v1.QueryAllWhitelistedAddressesResponse",
-  encode(message: QueryAllWhitelistedAddressesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.QueryAllWhitelistedAddressesResponse',
+  encode(
+    message: QueryAllWhitelistedAddressesResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.addressPairs) {
       WhitelistedAddressPair.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryAllWhitelistedAddressesResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryAllWhitelistedAddressesResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAllWhitelistedAddressesResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.addressPairs.push(WhitelistedAddressPair.decode(reader, reader.uint32()));
+          message.addressPairs.push(
+            WhitelistedAddressPair.decode(reader, reader.uint32())
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -912,38 +1128,56 @@ export const QueryAllWhitelistedAddressesResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryAllWhitelistedAddressesResponse>): QueryAllWhitelistedAddressesResponse {
+  fromPartial(
+    object: Partial<QueryAllWhitelistedAddressesResponse>
+  ): QueryAllWhitelistedAddressesResponse {
     const message = createBaseQueryAllWhitelistedAddressesResponse();
-    message.addressPairs = object.addressPairs?.map(e => WhitelistedAddressPair.fromPartial(e)) || [];
+    message.addressPairs =
+      object.addressPairs?.map((e) => WhitelistedAddressPair.fromPartial(e)) ||
+      [];
     return message;
   },
-  fromAmino(object: QueryAllWhitelistedAddressesResponseAmino): QueryAllWhitelistedAddressesResponse {
+  fromAmino(
+    object: QueryAllWhitelistedAddressesResponseAmino
+  ): QueryAllWhitelistedAddressesResponse {
     const message = createBaseQueryAllWhitelistedAddressesResponse();
-    message.addressPairs = object.address_pairs?.map(e => WhitelistedAddressPair.fromAmino(e)) || [];
+    message.addressPairs =
+      object.address_pairs?.map((e) => WhitelistedAddressPair.fromAmino(e)) ||
+      [];
     return message;
   },
-  toAmino(message: QueryAllWhitelistedAddressesResponse): QueryAllWhitelistedAddressesResponseAmino {
+  toAmino(
+    message: QueryAllWhitelistedAddressesResponse
+  ): QueryAllWhitelistedAddressesResponseAmino {
     const obj: any = {};
     if (message.addressPairs) {
-      obj.address_pairs = message.addressPairs.map(e => e ? WhitelistedAddressPair.toAmino(e) : undefined);
+      obj.address_pairs = message.addressPairs.map((e) =>
+        e ? WhitelistedAddressPair.toAmino(e) : undefined
+      );
     } else {
       obj.address_pairs = message.addressPairs;
     }
     return obj;
   },
-  fromAminoMsg(object: QueryAllWhitelistedAddressesResponseAminoMsg): QueryAllWhitelistedAddressesResponse {
+  fromAminoMsg(
+    object: QueryAllWhitelistedAddressesResponseAminoMsg
+  ): QueryAllWhitelistedAddressesResponse {
     return QueryAllWhitelistedAddressesResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryAllWhitelistedAddressesResponseProtoMsg): QueryAllWhitelistedAddressesResponse {
+  fromProtoMsg(
+    message: QueryAllWhitelistedAddressesResponseProtoMsg
+  ): QueryAllWhitelistedAddressesResponse {
     return QueryAllWhitelistedAddressesResponse.decode(message.value);
   },
   toProto(message: QueryAllWhitelistedAddressesResponse): Uint8Array {
     return QueryAllWhitelistedAddressesResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryAllWhitelistedAddressesResponse): QueryAllWhitelistedAddressesResponseProtoMsg {
+  toProtoMsg(
+    message: QueryAllWhitelistedAddressesResponse
+  ): QueryAllWhitelistedAddressesResponseProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.QueryAllWhitelistedAddressesResponse",
-      value: QueryAllWhitelistedAddressesResponse.encode(message).finish()
+      typeUrl: '/ratelimit.v1.QueryAllWhitelistedAddressesResponse',
+      value: QueryAllWhitelistedAddressesResponse.encode(message).finish(),
     };
-  }
+  },
 };

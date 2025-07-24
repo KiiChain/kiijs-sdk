@@ -1,8 +1,9 @@
 // token.test.ts
-import { TokenModule } from '../src/token';
-import { RwaClient } from '../src/client';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { DeliverTxResponse } from '@cosmjs/stargate';
+
+import { RwaClient } from '../src/client';
+import { TokenModule } from '../src/token';
 
 // Mock the entire RwaClient module
 jest.mock('../src/client', () => {
@@ -27,16 +28,16 @@ describe('TokenModule', () => {
   const mockAmount = 1000;
   const mockSigner = {} as DirectSecp256k1HdWallet;
   const mockGasLimit = 200000;
-  
+
   const mockTxResponse: DeliverTxResponse = {
-      transactionHash: 'mockTxHash',
-      code: 0,
-      height: 100,
-      gasUsed: BigInt(100000),
-      events: [],
-      txIndex: 0,
-      msgResponses: [],
-      gasWanted: BigInt(1000)
+    transactionHash: 'mockTxHash',
+    code: 0,
+    height: 100,
+    gasUsed: BigInt(100000),
+    events: [],
+    txIndex: 0,
+    msgResponses: [],
+    gasWanted: BigInt(1000),
   };
 
   const mockTokenInfo = {
@@ -48,7 +49,7 @@ describe('TokenModule', () => {
 
   beforeEach(async () => {
     jest.clearAllMocks();
-    
+
     // Get the mocked instance by calling the static 'new' method
     mockRwaClient = (await RwaClient.new(
       'mock-rpc-url',
@@ -57,9 +58,9 @@ describe('TokenModule', () => {
       '0.025',
       mockSigner
     )) as jest.Mocked<RwaClient>;
-    
+
     mockRwaClient.execute.mockResolvedValue(mockTxResponse);
-    
+
     tokenModule = new TokenModule(mockRwaClient, mockTokenAddress);
   });
 
@@ -102,8 +103,7 @@ describe('TokenModule', () => {
       const mockError = new Error('Transfer failed');
       mockRwaClient.execute.mockRejectedValue(mockError);
 
-      await expect(tokenModule.transfer(request))
-        .rejects.toThrow(mockError);
+      await expect(tokenModule.transfer(request)).rejects.toThrow(mockError);
     });
   });
 
@@ -119,14 +119,11 @@ describe('TokenModule', () => {
       const result = await tokenModule.balance(request);
 
       expect(mockRwaClient.query).toHaveBeenCalledTimes(1);
-      expect(mockRwaClient.query).toHaveBeenCalledWith(
-        mockTokenAddress,
-        {
-          balance: {
-            address: mockFromAddress,
-          },
-        }
-      );
+      expect(mockRwaClient.query).toHaveBeenCalledWith(mockTokenAddress, {
+        balance: {
+          address: mockFromAddress,
+        },
+      });
 
       expect(result).toEqual({ balance: 5000 });
     });
@@ -150,10 +147,9 @@ describe('TokenModule', () => {
       const result = await tokenModule.tokenInfo();
 
       expect(mockRwaClient.query).toHaveBeenCalledTimes(1);
-      expect(mockRwaClient.query).toHaveBeenCalledWith(
-        mockTokenAddress,
-        { token_info: {} }
-      );
+      expect(mockRwaClient.query).toHaveBeenCalledWith(mockTokenAddress, {
+        token_info: {},
+      });
 
       expect(result).toEqual(mockTokenInfo);
     });
@@ -176,18 +172,18 @@ describe('TokenModule', () => {
       const mockAllowanceResponse = { allowance: '2000' };
       mockRwaClient.query.mockResolvedValue(mockAllowanceResponse);
 
-      const result = await tokenModule.allowance(mockOwnerAddress, mockSpenderAddress);
+      const result = await tokenModule.allowance(
+        mockOwnerAddress,
+        mockSpenderAddress
+      );
 
       expect(mockRwaClient.query).toHaveBeenCalledTimes(1);
-      expect(mockRwaClient.query).toHaveBeenCalledWith(
-        mockTokenAddress,
-        {
-          allowance: {
-            owner: mockOwnerAddress,
-            spender: mockSpenderAddress,
-          },
-        }
-      );
+      expect(mockRwaClient.query).toHaveBeenCalledWith(mockTokenAddress, {
+        allowance: {
+          owner: mockOwnerAddress,
+          spender: mockSpenderAddress,
+        },
+      });
 
       expect(result).toEqual({ allowance: 2000 });
     });
@@ -195,7 +191,10 @@ describe('TokenModule', () => {
     it('should return 0 allowance if query returns invalid value', async () => {
       mockRwaClient.query.mockResolvedValue({ allowance: 'invalid' });
 
-      const result = await tokenModule.allowance(mockOwnerAddress, mockSpenderAddress);
+      const result = await tokenModule.allowance(
+        mockOwnerAddress,
+        mockSpenderAddress
+      );
       expect(result).toEqual({ allowance: 0 });
     });
   });
@@ -239,8 +238,7 @@ describe('TokenModule', () => {
       const mockError = new Error('Approval failed');
       mockRwaClient.execute.mockRejectedValue(mockError);
 
-      await expect(tokenModule.approve(request))
-        .rejects.toThrow(mockError);
+      await expect(tokenModule.approve(request)).rejects.toThrow(mockError);
     });
   });
 });

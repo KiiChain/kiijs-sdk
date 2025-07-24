@@ -1,17 +1,18 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType } from "./feemarket";
-import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { Decimal } from "@cosmjs/math";
+import { Decimal } from '@cosmjs/math';
+
+import { BinaryReader, BinaryWriter } from '../../../../binary';
+import { Params, ParamsAmino, ParamsSDKType } from './feemarket';
 /** QueryParamsRequest defines the request type for querying x/vm parameters. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
-  typeUrl: "/cosmos.evm.feemarket.v1.QueryParamsRequest";
+  typeUrl: '/cosmos.evm.feemarket.v1.QueryParamsRequest';
   value: Uint8Array;
 }
 /** QueryParamsRequest defines the request type for querying x/vm parameters. */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
-  type: "cosmos-sdk/QueryParamsRequest";
+  type: 'cosmos-sdk/QueryParamsRequest';
   value: QueryParamsRequestAmino;
 }
 /** QueryParamsRequest defines the request type for querying x/vm parameters. */
@@ -22,7 +23,7 @@ export interface QueryParamsResponse {
   params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
-  typeUrl: "/cosmos.evm.feemarket.v1.QueryParamsResponse";
+  typeUrl: '/cosmos.evm.feemarket.v1.QueryParamsResponse';
   value: Uint8Array;
 }
 /** QueryParamsResponse defines the response type for querying x/vm parameters. */
@@ -31,7 +32,7 @@ export interface QueryParamsResponseAmino {
   params: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
-  type: "cosmos-sdk/QueryParamsResponse";
+  type: 'cosmos-sdk/QueryParamsResponse';
   value: QueryParamsResponseAmino;
 }
 /** QueryParamsResponse defines the response type for querying x/vm parameters. */
@@ -44,7 +45,7 @@ export interface QueryParamsResponseSDKType {
  */
 export interface QueryBaseFeeRequest {}
 export interface QueryBaseFeeRequestProtoMsg {
-  typeUrl: "/cosmos.evm.feemarket.v1.QueryBaseFeeRequest";
+  typeUrl: '/cosmos.evm.feemarket.v1.QueryBaseFeeRequest';
   value: Uint8Array;
 }
 /**
@@ -53,7 +54,7 @@ export interface QueryBaseFeeRequestProtoMsg {
  */
 export interface QueryBaseFeeRequestAmino {}
 export interface QueryBaseFeeRequestAminoMsg {
-  type: "cosmos-sdk/QueryBaseFeeRequest";
+  type: 'cosmos-sdk/QueryBaseFeeRequest';
   value: QueryBaseFeeRequestAmino;
 }
 /**
@@ -67,7 +68,7 @@ export interface QueryBaseFeeResponse {
   baseFee: string;
 }
 export interface QueryBaseFeeResponseProtoMsg {
-  typeUrl: "/cosmos.evm.feemarket.v1.QueryBaseFeeResponse";
+  typeUrl: '/cosmos.evm.feemarket.v1.QueryBaseFeeResponse';
   value: Uint8Array;
 }
 /** QueryBaseFeeResponse returns the EIP1559 base fee. */
@@ -76,7 +77,7 @@ export interface QueryBaseFeeResponseAmino {
   base_fee?: string;
 }
 export interface QueryBaseFeeResponseAminoMsg {
-  type: "cosmos-sdk/QueryBaseFeeResponse";
+  type: 'cosmos-sdk/QueryBaseFeeResponse';
   value: QueryBaseFeeResponseAmino;
 }
 /** QueryBaseFeeResponse returns the EIP1559 base fee. */
@@ -89,7 +90,7 @@ export interface QueryBaseFeeResponseSDKType {
  */
 export interface QueryBlockGasRequest {}
 export interface QueryBlockGasRequestProtoMsg {
-  typeUrl: "/cosmos.evm.feemarket.v1.QueryBlockGasRequest";
+  typeUrl: '/cosmos.evm.feemarket.v1.QueryBlockGasRequest';
   value: Uint8Array;
 }
 /**
@@ -98,7 +99,7 @@ export interface QueryBlockGasRequestProtoMsg {
  */
 export interface QueryBlockGasRequestAmino {}
 export interface QueryBlockGasRequestAminoMsg {
-  type: "cosmos-sdk/QueryBlockGasRequest";
+  type: 'cosmos-sdk/QueryBlockGasRequest';
   value: QueryBlockGasRequestAmino;
 }
 /**
@@ -112,7 +113,7 @@ export interface QueryBlockGasResponse {
   gas: bigint;
 }
 export interface QueryBlockGasResponseProtoMsg {
-  typeUrl: "/cosmos.evm.feemarket.v1.QueryBlockGasResponse";
+  typeUrl: '/cosmos.evm.feemarket.v1.QueryBlockGasResponse';
   value: Uint8Array;
 }
 /** QueryBlockGasResponse returns block gas used for a given height. */
@@ -121,7 +122,7 @@ export interface QueryBlockGasResponseAmino {
   gas?: string;
 }
 export interface QueryBlockGasResponseAminoMsg {
-  type: "cosmos-sdk/QueryBlockGasResponse";
+  type: 'cosmos-sdk/QueryBlockGasResponse';
   value: QueryBlockGasResponseAmino;
 }
 /** QueryBlockGasResponse returns block gas used for a given height. */
@@ -132,12 +133,19 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
-  typeUrl: "/cosmos.evm.feemarket.v1.QueryParamsRequest",
-  encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.feemarket.v1.QueryParamsRequest',
+  encode(
+    _: QueryParamsRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryParamsRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsRequest();
     while (reader.pos < end) {
@@ -167,8 +175,8 @@ export const QueryParamsRequest = {
   },
   toAminoMsg(message: QueryParamsRequest): QueryParamsRequestAminoMsg {
     return {
-      type: "cosmos-sdk/QueryParamsRequest",
-      value: QueryParamsRequest.toAmino(message)
+      type: 'cosmos-sdk/QueryParamsRequest',
+      value: QueryParamsRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryParamsRequestProtoMsg): QueryParamsRequest {
@@ -179,26 +187,33 @@ export const QueryParamsRequest = {
   },
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.feemarket.v1.QueryParamsRequest",
-      value: QueryParamsRequest.encode(message).finish()
+      typeUrl: '/cosmos.evm.feemarket.v1.QueryParamsRequest',
+      value: QueryParamsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
-    params: Params.fromPartial({})
+    params: Params.fromPartial({}),
   };
 }
 export const QueryParamsResponse = {
-  typeUrl: "/cosmos.evm.feemarket.v1.QueryParamsResponse",
-  encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.feemarket.v1.QueryParamsResponse',
+  encode(
+    message: QueryParamsResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryParamsResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
     while (reader.pos < end) {
@@ -216,7 +231,10 @@ export const QueryParamsResponse = {
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
@@ -228,7 +246,9 @@ export const QueryParamsResponse = {
   },
   toAmino(message: QueryParamsResponse): QueryParamsResponseAmino {
     const obj: any = {};
-    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.params = message.params
+      ? Params.toAmino(message.params)
+      : Params.toAmino(Params.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: QueryParamsResponseAminoMsg): QueryParamsResponse {
@@ -236,8 +256,8 @@ export const QueryParamsResponse = {
   },
   toAminoMsg(message: QueryParamsResponse): QueryParamsResponseAminoMsg {
     return {
-      type: "cosmos-sdk/QueryParamsResponse",
-      value: QueryParamsResponse.toAmino(message)
+      type: 'cosmos-sdk/QueryParamsResponse',
+      value: QueryParamsResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryParamsResponseProtoMsg): QueryParamsResponse {
@@ -248,21 +268,28 @@ export const QueryParamsResponse = {
   },
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.feemarket.v1.QueryParamsResponse",
-      value: QueryParamsResponse.encode(message).finish()
+      typeUrl: '/cosmos.evm.feemarket.v1.QueryParamsResponse',
+      value: QueryParamsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryBaseFeeRequest(): QueryBaseFeeRequest {
   return {};
 }
 export const QueryBaseFeeRequest = {
-  typeUrl: "/cosmos.evm.feemarket.v1.QueryBaseFeeRequest",
-  encode(_: QueryBaseFeeRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.feemarket.v1.QueryBaseFeeRequest',
+  encode(
+    _: QueryBaseFeeRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryBaseFeeRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryBaseFeeRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryBaseFeeRequest();
     while (reader.pos < end) {
@@ -292,8 +319,8 @@ export const QueryBaseFeeRequest = {
   },
   toAminoMsg(message: QueryBaseFeeRequest): QueryBaseFeeRequestAminoMsg {
     return {
-      type: "cosmos-sdk/QueryBaseFeeRequest",
-      value: QueryBaseFeeRequest.toAmino(message)
+      type: 'cosmos-sdk/QueryBaseFeeRequest',
+      value: QueryBaseFeeRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryBaseFeeRequestProtoMsg): QueryBaseFeeRequest {
@@ -304,26 +331,35 @@ export const QueryBaseFeeRequest = {
   },
   toProtoMsg(message: QueryBaseFeeRequest): QueryBaseFeeRequestProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.feemarket.v1.QueryBaseFeeRequest",
-      value: QueryBaseFeeRequest.encode(message).finish()
+      typeUrl: '/cosmos.evm.feemarket.v1.QueryBaseFeeRequest',
+      value: QueryBaseFeeRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryBaseFeeResponse(): QueryBaseFeeResponse {
   return {
-    baseFee: ""
+    baseFee: '',
   };
 }
 export const QueryBaseFeeResponse = {
-  typeUrl: "/cosmos.evm.feemarket.v1.QueryBaseFeeResponse",
-  encode(message: QueryBaseFeeResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.baseFee !== "") {
-      writer.uint32(10).string(Decimal.fromUserInput(message.baseFee, 18).atomics);
+  typeUrl: '/cosmos.evm.feemarket.v1.QueryBaseFeeResponse',
+  encode(
+    message: QueryBaseFeeResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.baseFee !== '') {
+      writer
+        .uint32(10)
+        .string(Decimal.fromUserInput(message.baseFee, 18).atomics);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryBaseFeeResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryBaseFeeResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryBaseFeeResponse();
     while (reader.pos < end) {
@@ -341,7 +377,7 @@ export const QueryBaseFeeResponse = {
   },
   fromPartial(object: Partial<QueryBaseFeeResponse>): QueryBaseFeeResponse {
     const message = createBaseQueryBaseFeeResponse();
-    message.baseFee = object.baseFee ?? "";
+    message.baseFee = object.baseFee ?? '';
     return message;
   },
   fromAmino(object: QueryBaseFeeResponseAmino): QueryBaseFeeResponse {
@@ -353,7 +389,7 @@ export const QueryBaseFeeResponse = {
   },
   toAmino(message: QueryBaseFeeResponse): QueryBaseFeeResponseAmino {
     const obj: any = {};
-    obj.base_fee = message.baseFee === "" ? undefined : message.baseFee;
+    obj.base_fee = message.baseFee === '' ? undefined : message.baseFee;
     return obj;
   },
   fromAminoMsg(object: QueryBaseFeeResponseAminoMsg): QueryBaseFeeResponse {
@@ -361,8 +397,8 @@ export const QueryBaseFeeResponse = {
   },
   toAminoMsg(message: QueryBaseFeeResponse): QueryBaseFeeResponseAminoMsg {
     return {
-      type: "cosmos-sdk/QueryBaseFeeResponse",
-      value: QueryBaseFeeResponse.toAmino(message)
+      type: 'cosmos-sdk/QueryBaseFeeResponse',
+      value: QueryBaseFeeResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryBaseFeeResponseProtoMsg): QueryBaseFeeResponse {
@@ -373,21 +409,28 @@ export const QueryBaseFeeResponse = {
   },
   toProtoMsg(message: QueryBaseFeeResponse): QueryBaseFeeResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.feemarket.v1.QueryBaseFeeResponse",
-      value: QueryBaseFeeResponse.encode(message).finish()
+      typeUrl: '/cosmos.evm.feemarket.v1.QueryBaseFeeResponse',
+      value: QueryBaseFeeResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryBlockGasRequest(): QueryBlockGasRequest {
   return {};
 }
 export const QueryBlockGasRequest = {
-  typeUrl: "/cosmos.evm.feemarket.v1.QueryBlockGasRequest",
-  encode(_: QueryBlockGasRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.feemarket.v1.QueryBlockGasRequest',
+  encode(
+    _: QueryBlockGasRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryBlockGasRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryBlockGasRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryBlockGasRequest();
     while (reader.pos < end) {
@@ -417,8 +460,8 @@ export const QueryBlockGasRequest = {
   },
   toAminoMsg(message: QueryBlockGasRequest): QueryBlockGasRequestAminoMsg {
     return {
-      type: "cosmos-sdk/QueryBlockGasRequest",
-      value: QueryBlockGasRequest.toAmino(message)
+      type: 'cosmos-sdk/QueryBlockGasRequest',
+      value: QueryBlockGasRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryBlockGasRequestProtoMsg): QueryBlockGasRequest {
@@ -429,26 +472,33 @@ export const QueryBlockGasRequest = {
   },
   toProtoMsg(message: QueryBlockGasRequest): QueryBlockGasRequestProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.feemarket.v1.QueryBlockGasRequest",
-      value: QueryBlockGasRequest.encode(message).finish()
+      typeUrl: '/cosmos.evm.feemarket.v1.QueryBlockGasRequest',
+      value: QueryBlockGasRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryBlockGasResponse(): QueryBlockGasResponse {
   return {
-    gas: BigInt(0)
+    gas: BigInt(0),
   };
 }
 export const QueryBlockGasResponse = {
-  typeUrl: "/cosmos.evm.feemarket.v1.QueryBlockGasResponse",
-  encode(message: QueryBlockGasResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.feemarket.v1.QueryBlockGasResponse',
+  encode(
+    message: QueryBlockGasResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.gas !== BigInt(0)) {
       writer.uint32(8).int64(message.gas);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryBlockGasResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryBlockGasResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryBlockGasResponse();
     while (reader.pos < end) {
@@ -466,7 +516,10 @@ export const QueryBlockGasResponse = {
   },
   fromPartial(object: Partial<QueryBlockGasResponse>): QueryBlockGasResponse {
     const message = createBaseQueryBlockGasResponse();
-    message.gas = object.gas !== undefined && object.gas !== null ? BigInt(object.gas.toString()) : BigInt(0);
+    message.gas =
+      object.gas !== undefined && object.gas !== null
+        ? BigInt(object.gas.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: QueryBlockGasResponseAmino): QueryBlockGasResponse {
@@ -486,8 +539,8 @@ export const QueryBlockGasResponse = {
   },
   toAminoMsg(message: QueryBlockGasResponse): QueryBlockGasResponseAminoMsg {
     return {
-      type: "cosmos-sdk/QueryBlockGasResponse",
-      value: QueryBlockGasResponse.toAmino(message)
+      type: 'cosmos-sdk/QueryBlockGasResponse',
+      value: QueryBlockGasResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryBlockGasResponseProtoMsg): QueryBlockGasResponse {
@@ -498,8 +551,8 @@ export const QueryBlockGasResponse = {
   },
   toProtoMsg(message: QueryBlockGasResponse): QueryBlockGasResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.feemarket.v1.QueryBlockGasResponse",
-      value: QueryBlockGasResponse.encode(message).finish()
+      typeUrl: '/cosmos.evm.feemarket.v1.QueryBlockGasResponse',
+      value: QueryBlockGasResponse.encode(message).finish(),
     };
-  }
+  },
 };

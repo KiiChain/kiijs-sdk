@@ -1,8 +1,28 @@
 //@ts-nocheck
-import { Rpc } from "../../../helpers";
-import { BinaryReader } from "../../../binary";
-import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { SimulateRequest, SimulateResponse, GetTxRequest, GetTxResponse, BroadcastTxRequest, BroadcastTxResponse, GetTxsEventRequest, GetTxsEventResponse, GetBlockWithTxsRequest, GetBlockWithTxsResponse, TxDecodeRequest, TxDecodeResponse, TxEncodeRequest, TxEncodeResponse, TxEncodeAminoRequest, TxEncodeAminoResponse, TxDecodeAminoRequest, TxDecodeAminoResponse } from "./service";
+import { createProtobufRpcClient, QueryClient } from '@cosmjs/stargate';
+
+import { BinaryReader } from '../../../binary';
+import { Rpc } from '../../../helpers';
+import {
+  BroadcastTxRequest,
+  BroadcastTxResponse,
+  GetBlockWithTxsRequest,
+  GetBlockWithTxsResponse,
+  GetTxRequest,
+  GetTxResponse,
+  GetTxsEventRequest,
+  GetTxsEventResponse,
+  SimulateRequest,
+  SimulateResponse,
+  TxDecodeAminoRequest,
+  TxDecodeAminoResponse,
+  TxDecodeRequest,
+  TxDecodeResponse,
+  TxEncodeAminoRequest,
+  TxEncodeAminoResponse,
+  TxEncodeRequest,
+  TxEncodeResponse,
+} from './service';
 /** Service defines a gRPC service for interacting with transactions. */
 export interface Service {
   /** Simulate simulates executing a transaction for estimating gas usage. */
@@ -15,31 +35,33 @@ export interface Service {
   getTxsEvent(request: GetTxsEventRequest): Promise<GetTxsEventResponse>;
   /**
    * GetBlockWithTxs fetches a block with decoded txs.
-   * 
+   *
    * Since: cosmos-sdk 0.45.2
    */
-  getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponse>;
+  getBlockWithTxs(
+    request: GetBlockWithTxsRequest
+  ): Promise<GetBlockWithTxsResponse>;
   /**
    * TxDecode decodes the transaction.
-   * 
+   *
    * Since: cosmos-sdk 0.47
    */
   txDecode(request: TxDecodeRequest): Promise<TxDecodeResponse>;
   /**
    * TxEncode encodes the transaction.
-   * 
+   *
    * Since: cosmos-sdk 0.47
    */
   txEncode(request: TxEncodeRequest): Promise<TxEncodeResponse>;
   /**
    * TxEncodeAmino encodes an Amino transaction from JSON to encoded bytes.
-   * 
+   *
    * Since: cosmos-sdk 0.47
    */
   txEncodeAmino(request: TxEncodeAminoRequest): Promise<TxEncodeAminoResponse>;
   /**
    * TxDecodeAmino decodes an Amino transaction from encoded bytes to JSON.
-   * 
+   *
    * Since: cosmos-sdk 0.47
    */
   txDecodeAmino(request: TxDecodeAminoRequest): Promise<TxDecodeAminoResponse>;
@@ -60,48 +82,102 @@ export class ServiceClientImpl implements Service {
   }
   simulate(request: SimulateRequest): Promise<SimulateResponse> {
     const data = SimulateRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "Simulate", data);
-    return promise.then(data => SimulateResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.tx.v1beta1.Service',
+      'Simulate',
+      data
+    );
+    return promise.then((data) =>
+      SimulateResponse.decode(new BinaryReader(data))
+    );
   }
   getTx(request: GetTxRequest): Promise<GetTxResponse> {
     const data = GetTxRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "GetTx", data);
-    return promise.then(data => GetTxResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.tx.v1beta1.Service',
+      'GetTx',
+      data
+    );
+    return promise.then((data) => GetTxResponse.decode(new BinaryReader(data)));
   }
   broadcastTx(request: BroadcastTxRequest): Promise<BroadcastTxResponse> {
     const data = BroadcastTxRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "BroadcastTx", data);
-    return promise.then(data => BroadcastTxResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.tx.v1beta1.Service',
+      'BroadcastTx',
+      data
+    );
+    return promise.then((data) =>
+      BroadcastTxResponse.decode(new BinaryReader(data))
+    );
   }
   getTxsEvent(request: GetTxsEventRequest): Promise<GetTxsEventResponse> {
     const data = GetTxsEventRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "GetTxsEvent", data);
-    return promise.then(data => GetTxsEventResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.tx.v1beta1.Service',
+      'GetTxsEvent',
+      data
+    );
+    return promise.then((data) =>
+      GetTxsEventResponse.decode(new BinaryReader(data))
+    );
   }
-  getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponse> {
+  getBlockWithTxs(
+    request: GetBlockWithTxsRequest
+  ): Promise<GetBlockWithTxsResponse> {
     const data = GetBlockWithTxsRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "GetBlockWithTxs", data);
-    return promise.then(data => GetBlockWithTxsResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.tx.v1beta1.Service',
+      'GetBlockWithTxs',
+      data
+    );
+    return promise.then((data) =>
+      GetBlockWithTxsResponse.decode(new BinaryReader(data))
+    );
   }
   txDecode(request: TxDecodeRequest): Promise<TxDecodeResponse> {
     const data = TxDecodeRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "TxDecode", data);
-    return promise.then(data => TxDecodeResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.tx.v1beta1.Service',
+      'TxDecode',
+      data
+    );
+    return promise.then((data) =>
+      TxDecodeResponse.decode(new BinaryReader(data))
+    );
   }
   txEncode(request: TxEncodeRequest): Promise<TxEncodeResponse> {
     const data = TxEncodeRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "TxEncode", data);
-    return promise.then(data => TxEncodeResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.tx.v1beta1.Service',
+      'TxEncode',
+      data
+    );
+    return promise.then((data) =>
+      TxEncodeResponse.decode(new BinaryReader(data))
+    );
   }
   txEncodeAmino(request: TxEncodeAminoRequest): Promise<TxEncodeAminoResponse> {
     const data = TxEncodeAminoRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "TxEncodeAmino", data);
-    return promise.then(data => TxEncodeAminoResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.tx.v1beta1.Service',
+      'TxEncodeAmino',
+      data
+    );
+    return promise.then((data) =>
+      TxEncodeAminoResponse.decode(new BinaryReader(data))
+    );
   }
   txDecodeAmino(request: TxDecodeAminoRequest): Promise<TxDecodeAminoResponse> {
     const data = TxDecodeAminoRequest.encode(request).finish();
-    const promise = this.rpc.request("cosmos.tx.v1beta1.Service", "TxDecodeAmino", data);
-    return promise.then(data => TxDecodeAminoResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.tx.v1beta1.Service',
+      'TxDecodeAmino',
+      data
+    );
+    return promise.then((data) =>
+      TxDecodeAminoResponse.decode(new BinaryReader(data))
+    );
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
@@ -120,7 +196,9 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     getTxsEvent(request: GetTxsEventRequest): Promise<GetTxsEventResponse> {
       return queryService.getTxsEvent(request);
     },
-    getBlockWithTxs(request: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponse> {
+    getBlockWithTxs(
+      request: GetBlockWithTxsRequest
+    ): Promise<GetBlockWithTxsResponse> {
       return queryService.getBlockWithTxs(request);
     },
     txDecode(request: TxDecodeRequest): Promise<TxDecodeResponse> {
@@ -129,11 +207,15 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     txEncode(request: TxEncodeRequest): Promise<TxEncodeResponse> {
       return queryService.txEncode(request);
     },
-    txEncodeAmino(request: TxEncodeAminoRequest): Promise<TxEncodeAminoResponse> {
+    txEncodeAmino(
+      request: TxEncodeAminoRequest
+    ): Promise<TxEncodeAminoResponse> {
       return queryService.txEncodeAmino(request);
     },
-    txDecodeAmino(request: TxDecodeAminoRequest): Promise<TxDecodeAminoResponse> {
+    txDecodeAmino(
+      request: TxDecodeAminoRequest
+    ): Promise<TxDecodeAminoResponse> {
       return queryService.txDecodeAmino(request);
-    }
+    },
   };
 };

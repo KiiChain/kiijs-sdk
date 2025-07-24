@@ -1,6 +1,10 @@
 //@ts-nocheck
-import { Metadata, MetadataAmino, MetadataSDKType } from "../../../bank/v1beta1/bank";
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
+import {
+  Metadata,
+  MetadataAmino,
+  MetadataSDKType,
+} from '../../../bank/v1beta1/bank';
 /** Owner enumerates the ownership of a ERC20 contract. */
 export enum Owner {
   /** OWNER_UNSPECIFIED - OWNER_UNSPECIFIED defines an invalid/undefined owner. */
@@ -16,16 +20,16 @@ export const OwnerAmino = Owner;
 export function ownerFromJSON(object: any): Owner {
   switch (object) {
     case 0:
-    case "OWNER_UNSPECIFIED":
+    case 'OWNER_UNSPECIFIED':
       return Owner.OWNER_UNSPECIFIED;
     case 1:
-    case "OWNER_MODULE":
+    case 'OWNER_MODULE':
       return Owner.OWNER_MODULE;
     case 2:
-    case "OWNER_EXTERNAL":
+    case 'OWNER_EXTERNAL':
       return Owner.OWNER_EXTERNAL;
     case -1:
-    case "UNRECOGNIZED":
+    case 'UNRECOGNIZED':
     default:
       return Owner.UNRECOGNIZED;
   }
@@ -33,14 +37,14 @@ export function ownerFromJSON(object: any): Owner {
 export function ownerToJSON(object: Owner): string {
   switch (object) {
     case Owner.OWNER_UNSPECIFIED:
-      return "OWNER_UNSPECIFIED";
+      return 'OWNER_UNSPECIFIED';
     case Owner.OWNER_MODULE:
-      return "OWNER_MODULE";
+      return 'OWNER_MODULE';
     case Owner.OWNER_EXTERNAL:
-      return "OWNER_EXTERNAL";
+      return 'OWNER_EXTERNAL';
     case Owner.UNRECOGNIZED:
     default:
-      return "UNRECOGNIZED";
+      return 'UNRECOGNIZED';
   }
 }
 /**
@@ -61,7 +65,7 @@ export interface TokenPair {
   contractOwner: Owner;
 }
 export interface TokenPairProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.TokenPair";
+  typeUrl: '/cosmos.evm.erc20.v1.TokenPair';
   value: Uint8Array;
 }
 /**
@@ -82,7 +86,7 @@ export interface TokenPairAmino {
   contract_owner?: Owner;
 }
 export interface TokenPairAminoMsg {
-  type: "cosmos-sdk/TokenPair";
+  type: 'cosmos-sdk/TokenPair';
   value: TokenPairAmino;
 }
 /**
@@ -99,7 +103,7 @@ export interface TokenPairSDKType {
  * Deprecated: RegisterCoinProposal is a gov Content type to register a token
  * pair for a native Cosmos coin. We're keeping it to remove the existing
  * proposals from store. After that, remove this message.
- * 
+ *
  * NOTE: Keep this message for backwards compatibility on proposals query
  */
 export interface RegisterCoinProposal {
@@ -111,14 +115,14 @@ export interface RegisterCoinProposal {
   metadata: Metadata[];
 }
 export interface RegisterCoinProposalProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.RegisterCoinProposal";
+  typeUrl: '/cosmos.evm.erc20.v1.RegisterCoinProposal';
   value: Uint8Array;
 }
 /**
  * Deprecated: RegisterCoinProposal is a gov Content type to register a token
  * pair for a native Cosmos coin. We're keeping it to remove the existing
  * proposals from store. After that, remove this message.
- * 
+ *
  * NOTE: Keep this message for backwards compatibility on proposals query
  */
 export interface RegisterCoinProposalAmino {
@@ -130,14 +134,14 @@ export interface RegisterCoinProposalAmino {
   metadata?: MetadataAmino[];
 }
 export interface RegisterCoinProposalAminoMsg {
-  type: "cosmos-sdk/RegisterCoinProposal";
+  type: 'cosmos-sdk/RegisterCoinProposal';
   value: RegisterCoinProposalAmino;
 }
 /**
  * Deprecated: RegisterCoinProposal is a gov Content type to register a token
  * pair for a native Cosmos coin. We're keeping it to remove the existing
  * proposals from store. After that, remove this message.
- * 
+ *
  * NOTE: Keep this message for backwards compatibility on proposals query
  */
 export interface RegisterCoinProposalSDKType {
@@ -155,7 +159,7 @@ export interface ProposalMetadata {
   metadata: Metadata[];
 }
 export interface ProposalMetadataProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.ProposalMetadata";
+  typeUrl: '/cosmos.evm.erc20.v1.ProposalMetadata';
   value: Uint8Array;
 }
 /**
@@ -168,7 +172,7 @@ export interface ProposalMetadataAmino {
   metadata?: MetadataAmino[];
 }
 export interface ProposalMetadataAminoMsg {
-  type: "cosmos-sdk/ProposalMetadata";
+  type: 'cosmos-sdk/ProposalMetadata';
   value: ProposalMetadataAmino;
 }
 /**
@@ -182,7 +186,7 @@ export interface ProposalMetadataSDKType {
 /**
  * Deprecated: RegisterERC20Proposal is a gov Content type to register a token
  * pair for an ERC20 token.
- * 
+ *
  * NOTE: Keep this message for backwards compatibility on proposals query
  */
 export interface RegisterERC20Proposal {
@@ -194,13 +198,13 @@ export interface RegisterERC20Proposal {
   erc20addresses: string[];
 }
 export interface RegisterERC20ProposalProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.RegisterERC20Proposal";
+  typeUrl: '/cosmos.evm.erc20.v1.RegisterERC20Proposal';
   value: Uint8Array;
 }
 /**
  * Deprecated: RegisterERC20Proposal is a gov Content type to register a token
  * pair for an ERC20 token.
- * 
+ *
  * NOTE: Keep this message for backwards compatibility on proposals query
  */
 export interface RegisterERC20ProposalAmino {
@@ -212,13 +216,13 @@ export interface RegisterERC20ProposalAmino {
   erc20addresses?: string[];
 }
 export interface RegisterERC20ProposalAminoMsg {
-  type: "cosmos-sdk/RegisterERC20Proposal";
+  type: 'cosmos-sdk/RegisterERC20Proposal';
   value: RegisterERC20ProposalAmino;
 }
 /**
  * Deprecated: RegisterERC20Proposal is a gov Content type to register a token
  * pair for an ERC20 token.
- * 
+ *
  * NOTE: Keep this message for backwards compatibility on proposals query
  */
 export interface RegisterERC20ProposalSDKType {
@@ -229,7 +233,7 @@ export interface RegisterERC20ProposalSDKType {
 /**
  * Deprecated: ToggleTokenConversionProposal is a gov Content type to toggle the
  * conversion of a token pair.
- * 
+ *
  * NOTE: Keep this message for backwards compatibility on proposals query
  */
 export interface ToggleTokenConversionProposal {
@@ -244,13 +248,13 @@ export interface ToggleTokenConversionProposal {
   token: string;
 }
 export interface ToggleTokenConversionProposalProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.ToggleTokenConversionProposal";
+  typeUrl: '/cosmos.evm.erc20.v1.ToggleTokenConversionProposal';
   value: Uint8Array;
 }
 /**
  * Deprecated: ToggleTokenConversionProposal is a gov Content type to toggle the
  * conversion of a token pair.
- * 
+ *
  * NOTE: Keep this message for backwards compatibility on proposals query
  */
 export interface ToggleTokenConversionProposalAmino {
@@ -265,13 +269,13 @@ export interface ToggleTokenConversionProposalAmino {
   token?: string;
 }
 export interface ToggleTokenConversionProposalAminoMsg {
-  type: "cosmos-sdk/ToggleTokenConversionProposal";
+  type: 'cosmos-sdk/ToggleTokenConversionProposal';
   value: ToggleTokenConversionProposalAmino;
 }
 /**
  * Deprecated: ToggleTokenConversionProposal is a gov Content type to toggle the
  * conversion of a token pair.
- * 
+ *
  * NOTE: Keep this message for backwards compatibility on proposals query
  */
 export interface ToggleTokenConversionProposalSDKType {
@@ -281,19 +285,22 @@ export interface ToggleTokenConversionProposalSDKType {
 }
 function createBaseTokenPair(): TokenPair {
   return {
-    erc20Address: "",
-    denom: "",
+    erc20Address: '',
+    denom: '',
     enabled: false,
-    contractOwner: 0
+    contractOwner: 0,
   };
 }
 export const TokenPair = {
-  typeUrl: "/cosmos.evm.erc20.v1.TokenPair",
-  encode(message: TokenPair, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.erc20Address !== "") {
+  typeUrl: '/cosmos.evm.erc20.v1.TokenPair',
+  encode(
+    message: TokenPair,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.erc20Address !== '') {
       writer.uint32(10).string(message.erc20Address);
     }
-    if (message.denom !== "") {
+    if (message.denom !== '') {
       writer.uint32(18).string(message.denom);
     }
     if (message.enabled === true) {
@@ -305,7 +312,8 @@ export const TokenPair = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): TokenPair {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTokenPair();
     while (reader.pos < end) {
@@ -332,8 +340,8 @@ export const TokenPair = {
   },
   fromPartial(object: Partial<TokenPair>): TokenPair {
     const message = createBaseTokenPair();
-    message.erc20Address = object.erc20Address ?? "";
-    message.denom = object.denom ?? "";
+    message.erc20Address = object.erc20Address ?? '';
+    message.denom = object.denom ?? '';
     message.enabled = object.enabled ?? false;
     message.contractOwner = object.contractOwner ?? 0;
     return message;
@@ -356,10 +364,12 @@ export const TokenPair = {
   },
   toAmino(message: TokenPair): TokenPairAmino {
     const obj: any = {};
-    obj.erc20_address = message.erc20Address === "" ? undefined : message.erc20Address;
-    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.erc20_address =
+      message.erc20Address === '' ? undefined : message.erc20Address;
+    obj.denom = message.denom === '' ? undefined : message.denom;
     obj.enabled = message.enabled === false ? undefined : message.enabled;
-    obj.contract_owner = message.contractOwner === 0 ? undefined : message.contractOwner;
+    obj.contract_owner =
+      message.contractOwner === 0 ? undefined : message.contractOwner;
     return obj;
   },
   fromAminoMsg(object: TokenPairAminoMsg): TokenPair {
@@ -367,8 +377,8 @@ export const TokenPair = {
   },
   toAminoMsg(message: TokenPair): TokenPairAminoMsg {
     return {
-      type: "cosmos-sdk/TokenPair",
-      value: TokenPair.toAmino(message)
+      type: 'cosmos-sdk/TokenPair',
+      value: TokenPair.toAmino(message),
     };
   },
   fromProtoMsg(message: TokenPairProtoMsg): TokenPair {
@@ -379,25 +389,28 @@ export const TokenPair = {
   },
   toProtoMsg(message: TokenPair): TokenPairProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.TokenPair",
-      value: TokenPair.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.TokenPair',
+      value: TokenPair.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseRegisterCoinProposal(): RegisterCoinProposal {
   return {
-    title: "",
-    description: "",
-    metadata: []
+    title: '',
+    description: '',
+    metadata: [],
   };
 }
 export const RegisterCoinProposal = {
-  typeUrl: "/cosmos.evm.erc20.v1.RegisterCoinProposal",
-  encode(message: RegisterCoinProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.title !== "") {
+  typeUrl: '/cosmos.evm.erc20.v1.RegisterCoinProposal',
+  encode(
+    message: RegisterCoinProposal,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.title !== '') {
       writer.uint32(10).string(message.title);
     }
-    if (message.description !== "") {
+    if (message.description !== '') {
       writer.uint32(18).string(message.description);
     }
     for (const v of message.metadata) {
@@ -405,8 +418,12 @@ export const RegisterCoinProposal = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): RegisterCoinProposal {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): RegisterCoinProposal {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseRegisterCoinProposal();
     while (reader.pos < end) {
@@ -430,9 +447,10 @@ export const RegisterCoinProposal = {
   },
   fromPartial(object: Partial<RegisterCoinProposal>): RegisterCoinProposal {
     const message = createBaseRegisterCoinProposal();
-    message.title = object.title ?? "";
-    message.description = object.description ?? "";
-    message.metadata = object.metadata?.map(e => Metadata.fromPartial(e)) || [];
+    message.title = object.title ?? '';
+    message.description = object.description ?? '';
+    message.metadata =
+      object.metadata?.map((e) => Metadata.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: RegisterCoinProposalAmino): RegisterCoinProposal {
@@ -443,15 +461,18 @@ export const RegisterCoinProposal = {
     if (object.description !== undefined && object.description !== null) {
       message.description = object.description;
     }
-    message.metadata = object.metadata?.map(e => Metadata.fromAmino(e)) || [];
+    message.metadata = object.metadata?.map((e) => Metadata.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: RegisterCoinProposal): RegisterCoinProposalAmino {
     const obj: any = {};
-    obj.title = message.title === "" ? undefined : message.title;
-    obj.description = message.description === "" ? undefined : message.description;
+    obj.title = message.title === '' ? undefined : message.title;
+    obj.description =
+      message.description === '' ? undefined : message.description;
     if (message.metadata) {
-      obj.metadata = message.metadata.map(e => e ? Metadata.toAmino(e) : undefined);
+      obj.metadata = message.metadata.map((e) =>
+        e ? Metadata.toAmino(e) : undefined
+      );
     } else {
       obj.metadata = message.metadata;
     }
@@ -462,8 +483,8 @@ export const RegisterCoinProposal = {
   },
   toAminoMsg(message: RegisterCoinProposal): RegisterCoinProposalAminoMsg {
     return {
-      type: "cosmos-sdk/RegisterCoinProposal",
-      value: RegisterCoinProposal.toAmino(message)
+      type: 'cosmos-sdk/RegisterCoinProposal',
+      value: RegisterCoinProposal.toAmino(message),
     };
   },
   fromProtoMsg(message: RegisterCoinProposalProtoMsg): RegisterCoinProposal {
@@ -474,26 +495,30 @@ export const RegisterCoinProposal = {
   },
   toProtoMsg(message: RegisterCoinProposal): RegisterCoinProposalProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.RegisterCoinProposal",
-      value: RegisterCoinProposal.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.RegisterCoinProposal',
+      value: RegisterCoinProposal.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseProposalMetadata(): ProposalMetadata {
   return {
-    metadata: []
+    metadata: [],
   };
 }
 export const ProposalMetadata = {
-  typeUrl: "/cosmos.evm.erc20.v1.ProposalMetadata",
-  encode(message: ProposalMetadata, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.erc20.v1.ProposalMetadata',
+  encode(
+    message: ProposalMetadata,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.metadata) {
       Metadata.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): ProposalMetadata {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseProposalMetadata();
     while (reader.pos < end) {
@@ -511,18 +536,21 @@ export const ProposalMetadata = {
   },
   fromPartial(object: Partial<ProposalMetadata>): ProposalMetadata {
     const message = createBaseProposalMetadata();
-    message.metadata = object.metadata?.map(e => Metadata.fromPartial(e)) || [];
+    message.metadata =
+      object.metadata?.map((e) => Metadata.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: ProposalMetadataAmino): ProposalMetadata {
     const message = createBaseProposalMetadata();
-    message.metadata = object.metadata?.map(e => Metadata.fromAmino(e)) || [];
+    message.metadata = object.metadata?.map((e) => Metadata.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: ProposalMetadata): ProposalMetadataAmino {
     const obj: any = {};
     if (message.metadata) {
-      obj.metadata = message.metadata.map(e => e ? Metadata.toAmino(e) : undefined);
+      obj.metadata = message.metadata.map((e) =>
+        e ? Metadata.toAmino(e) : undefined
+      );
     } else {
       obj.metadata = message.metadata;
     }
@@ -533,8 +561,8 @@ export const ProposalMetadata = {
   },
   toAminoMsg(message: ProposalMetadata): ProposalMetadataAminoMsg {
     return {
-      type: "cosmos-sdk/ProposalMetadata",
-      value: ProposalMetadata.toAmino(message)
+      type: 'cosmos-sdk/ProposalMetadata',
+      value: ProposalMetadata.toAmino(message),
     };
   },
   fromProtoMsg(message: ProposalMetadataProtoMsg): ProposalMetadata {
@@ -545,25 +573,28 @@ export const ProposalMetadata = {
   },
   toProtoMsg(message: ProposalMetadata): ProposalMetadataProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.ProposalMetadata",
-      value: ProposalMetadata.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.ProposalMetadata',
+      value: ProposalMetadata.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseRegisterERC20Proposal(): RegisterERC20Proposal {
   return {
-    title: "",
-    description: "",
-    erc20addresses: []
+    title: '',
+    description: '',
+    erc20addresses: [],
   };
 }
 export const RegisterERC20Proposal = {
-  typeUrl: "/cosmos.evm.erc20.v1.RegisterERC20Proposal",
-  encode(message: RegisterERC20Proposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.title !== "") {
+  typeUrl: '/cosmos.evm.erc20.v1.RegisterERC20Proposal',
+  encode(
+    message: RegisterERC20Proposal,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.title !== '') {
       writer.uint32(10).string(message.title);
     }
-    if (message.description !== "") {
+    if (message.description !== '') {
       writer.uint32(18).string(message.description);
     }
     for (const v of message.erc20addresses) {
@@ -571,8 +602,12 @@ export const RegisterERC20Proposal = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): RegisterERC20Proposal {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): RegisterERC20Proposal {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseRegisterERC20Proposal();
     while (reader.pos < end) {
@@ -596,9 +631,9 @@ export const RegisterERC20Proposal = {
   },
   fromPartial(object: Partial<RegisterERC20Proposal>): RegisterERC20Proposal {
     const message = createBaseRegisterERC20Proposal();
-    message.title = object.title ?? "";
-    message.description = object.description ?? "";
-    message.erc20addresses = object.erc20addresses?.map(e => e) || [];
+    message.title = object.title ?? '';
+    message.description = object.description ?? '';
+    message.erc20addresses = object.erc20addresses?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: RegisterERC20ProposalAmino): RegisterERC20Proposal {
@@ -609,15 +644,16 @@ export const RegisterERC20Proposal = {
     if (object.description !== undefined && object.description !== null) {
       message.description = object.description;
     }
-    message.erc20addresses = object.erc20addresses?.map(e => e) || [];
+    message.erc20addresses = object.erc20addresses?.map((e) => e) || [];
     return message;
   },
   toAmino(message: RegisterERC20Proposal): RegisterERC20ProposalAmino {
     const obj: any = {};
-    obj.title = message.title === "" ? undefined : message.title;
-    obj.description = message.description === "" ? undefined : message.description;
+    obj.title = message.title === '' ? undefined : message.title;
+    obj.description =
+      message.description === '' ? undefined : message.description;
     if (message.erc20addresses) {
-      obj.erc20addresses = message.erc20addresses.map(e => e);
+      obj.erc20addresses = message.erc20addresses.map((e) => e);
     } else {
       obj.erc20addresses = message.erc20addresses;
     }
@@ -628,8 +664,8 @@ export const RegisterERC20Proposal = {
   },
   toAminoMsg(message: RegisterERC20Proposal): RegisterERC20ProposalAminoMsg {
     return {
-      type: "cosmos-sdk/RegisterERC20Proposal",
-      value: RegisterERC20Proposal.toAmino(message)
+      type: 'cosmos-sdk/RegisterERC20Proposal',
+      value: RegisterERC20Proposal.toAmino(message),
     };
   },
   fromProtoMsg(message: RegisterERC20ProposalProtoMsg): RegisterERC20Proposal {
@@ -640,34 +676,41 @@ export const RegisterERC20Proposal = {
   },
   toProtoMsg(message: RegisterERC20Proposal): RegisterERC20ProposalProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.RegisterERC20Proposal",
-      value: RegisterERC20Proposal.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.RegisterERC20Proposal',
+      value: RegisterERC20Proposal.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseToggleTokenConversionProposal(): ToggleTokenConversionProposal {
   return {
-    title: "",
-    description: "",
-    token: ""
+    title: '',
+    description: '',
+    token: '',
   };
 }
 export const ToggleTokenConversionProposal = {
-  typeUrl: "/cosmos.evm.erc20.v1.ToggleTokenConversionProposal",
-  encode(message: ToggleTokenConversionProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.title !== "") {
+  typeUrl: '/cosmos.evm.erc20.v1.ToggleTokenConversionProposal',
+  encode(
+    message: ToggleTokenConversionProposal,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.title !== '') {
       writer.uint32(10).string(message.title);
     }
-    if (message.description !== "") {
+    if (message.description !== '') {
       writer.uint32(18).string(message.description);
     }
-    if (message.token !== "") {
+    if (message.token !== '') {
       writer.uint32(26).string(message.token);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): ToggleTokenConversionProposal {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): ToggleTokenConversionProposal {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseToggleTokenConversionProposal();
     while (reader.pos < end) {
@@ -689,14 +732,18 @@ export const ToggleTokenConversionProposal = {
     }
     return message;
   },
-  fromPartial(object: Partial<ToggleTokenConversionProposal>): ToggleTokenConversionProposal {
+  fromPartial(
+    object: Partial<ToggleTokenConversionProposal>
+  ): ToggleTokenConversionProposal {
     const message = createBaseToggleTokenConversionProposal();
-    message.title = object.title ?? "";
-    message.description = object.description ?? "";
-    message.token = object.token ?? "";
+    message.title = object.title ?? '';
+    message.description = object.description ?? '';
+    message.token = object.token ?? '';
     return message;
   },
-  fromAmino(object: ToggleTokenConversionProposalAmino): ToggleTokenConversionProposal {
+  fromAmino(
+    object: ToggleTokenConversionProposalAmino
+  ): ToggleTokenConversionProposal {
     const message = createBaseToggleTokenConversionProposal();
     if (object.title !== undefined && object.title !== null) {
       message.title = object.title;
@@ -709,32 +756,43 @@ export const ToggleTokenConversionProposal = {
     }
     return message;
   },
-  toAmino(message: ToggleTokenConversionProposal): ToggleTokenConversionProposalAmino {
+  toAmino(
+    message: ToggleTokenConversionProposal
+  ): ToggleTokenConversionProposalAmino {
     const obj: any = {};
-    obj.title = message.title === "" ? undefined : message.title;
-    obj.description = message.description === "" ? undefined : message.description;
-    obj.token = message.token === "" ? undefined : message.token;
+    obj.title = message.title === '' ? undefined : message.title;
+    obj.description =
+      message.description === '' ? undefined : message.description;
+    obj.token = message.token === '' ? undefined : message.token;
     return obj;
   },
-  fromAminoMsg(object: ToggleTokenConversionProposalAminoMsg): ToggleTokenConversionProposal {
+  fromAminoMsg(
+    object: ToggleTokenConversionProposalAminoMsg
+  ): ToggleTokenConversionProposal {
     return ToggleTokenConversionProposal.fromAmino(object.value);
   },
-  toAminoMsg(message: ToggleTokenConversionProposal): ToggleTokenConversionProposalAminoMsg {
+  toAminoMsg(
+    message: ToggleTokenConversionProposal
+  ): ToggleTokenConversionProposalAminoMsg {
     return {
-      type: "cosmos-sdk/ToggleTokenConversionProposal",
-      value: ToggleTokenConversionProposal.toAmino(message)
+      type: 'cosmos-sdk/ToggleTokenConversionProposal',
+      value: ToggleTokenConversionProposal.toAmino(message),
     };
   },
-  fromProtoMsg(message: ToggleTokenConversionProposalProtoMsg): ToggleTokenConversionProposal {
+  fromProtoMsg(
+    message: ToggleTokenConversionProposalProtoMsg
+  ): ToggleTokenConversionProposal {
     return ToggleTokenConversionProposal.decode(message.value);
   },
   toProto(message: ToggleTokenConversionProposal): Uint8Array {
     return ToggleTokenConversionProposal.encode(message).finish();
   },
-  toProtoMsg(message: ToggleTokenConversionProposal): ToggleTokenConversionProposalProtoMsg {
+  toProtoMsg(
+    message: ToggleTokenConversionProposal
+  ): ToggleTokenConversionProposalProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.ToggleTokenConversionProposal",
-      value: ToggleTokenConversionProposal.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.ToggleTokenConversionProposal',
+      value: ToggleTokenConversionProposal.encode(message).finish(),
     };
-  }
+  },
 };

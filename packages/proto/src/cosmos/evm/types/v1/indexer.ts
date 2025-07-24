@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
 /** TxResult is the value stored in eth tx indexer */
 export interface TxResult {
   /** height of the blockchain */
@@ -27,7 +27,7 @@ export interface TxResult {
   cumulativeGasUsed: bigint;
 }
 export interface TxResultProtoMsg {
-  typeUrl: "/cosmos.evm.types.v1.TxResult";
+  typeUrl: '/cosmos.evm.types.v1.TxResult';
   value: Uint8Array;
 }
 /** TxResult is the value stored in eth tx indexer */
@@ -57,7 +57,7 @@ export interface TxResultAmino {
   cumulative_gas_used?: string;
 }
 export interface TxResultAminoMsg {
-  type: "cosmos-sdk/TxResult";
+  type: 'cosmos-sdk/TxResult';
   value: TxResultAmino;
 }
 /** TxResult is the value stored in eth tx indexer */
@@ -78,12 +78,15 @@ function createBaseTxResult(): TxResult {
     ethTxIndex: 0,
     failed: false,
     gasUsed: BigInt(0),
-    cumulativeGasUsed: BigInt(0)
+    cumulativeGasUsed: BigInt(0),
   };
 }
 export const TxResult = {
-  typeUrl: "/cosmos.evm.types.v1.TxResult",
-  encode(message: TxResult, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.types.v1.TxResult',
+  encode(
+    message: TxResult,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.height !== BigInt(0)) {
       writer.uint32(8).int64(message.height);
     }
@@ -108,7 +111,8 @@ export const TxResult = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): TxResult {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseTxResult();
     while (reader.pos < end) {
@@ -144,13 +148,23 @@ export const TxResult = {
   },
   fromPartial(object: Partial<TxResult>): TxResult {
     const message = createBaseTxResult();
-    message.height = object.height !== undefined && object.height !== null ? BigInt(object.height.toString()) : BigInt(0);
+    message.height =
+      object.height !== undefined && object.height !== null
+        ? BigInt(object.height.toString())
+        : BigInt(0);
     message.txIndex = object.txIndex ?? 0;
     message.msgIndex = object.msgIndex ?? 0;
     message.ethTxIndex = object.ethTxIndex ?? 0;
     message.failed = object.failed ?? false;
-    message.gasUsed = object.gasUsed !== undefined && object.gasUsed !== null ? BigInt(object.gasUsed.toString()) : BigInt(0);
-    message.cumulativeGasUsed = object.cumulativeGasUsed !== undefined && object.cumulativeGasUsed !== null ? BigInt(object.cumulativeGasUsed.toString()) : BigInt(0);
+    message.gasUsed =
+      object.gasUsed !== undefined && object.gasUsed !== null
+        ? BigInt(object.gasUsed.toString())
+        : BigInt(0);
+    message.cumulativeGasUsed =
+      object.cumulativeGasUsed !== undefined &&
+      object.cumulativeGasUsed !== null
+        ? BigInt(object.cumulativeGasUsed.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: TxResultAmino): TxResult {
@@ -173,20 +187,29 @@ export const TxResult = {
     if (object.gas_used !== undefined && object.gas_used !== null) {
       message.gasUsed = BigInt(object.gas_used);
     }
-    if (object.cumulative_gas_used !== undefined && object.cumulative_gas_used !== null) {
+    if (
+      object.cumulative_gas_used !== undefined &&
+      object.cumulative_gas_used !== null
+    ) {
       message.cumulativeGasUsed = BigInt(object.cumulative_gas_used);
     }
     return message;
   },
   toAmino(message: TxResult): TxResultAmino {
     const obj: any = {};
-    obj.height = message.height !== BigInt(0) ? message.height?.toString() : undefined;
+    obj.height =
+      message.height !== BigInt(0) ? message.height?.toString() : undefined;
     obj.tx_index = message.txIndex === 0 ? undefined : message.txIndex;
     obj.msg_index = message.msgIndex === 0 ? undefined : message.msgIndex;
-    obj.eth_tx_index = message.ethTxIndex === 0 ? undefined : message.ethTxIndex;
+    obj.eth_tx_index =
+      message.ethTxIndex === 0 ? undefined : message.ethTxIndex;
     obj.failed = message.failed === false ? undefined : message.failed;
-    obj.gas_used = message.gasUsed !== BigInt(0) ? message.gasUsed?.toString() : undefined;
-    obj.cumulative_gas_used = message.cumulativeGasUsed !== BigInt(0) ? message.cumulativeGasUsed?.toString() : undefined;
+    obj.gas_used =
+      message.gasUsed !== BigInt(0) ? message.gasUsed?.toString() : undefined;
+    obj.cumulative_gas_used =
+      message.cumulativeGasUsed !== BigInt(0)
+        ? message.cumulativeGasUsed?.toString()
+        : undefined;
     return obj;
   },
   fromAminoMsg(object: TxResultAminoMsg): TxResult {
@@ -194,8 +217,8 @@ export const TxResult = {
   },
   toAminoMsg(message: TxResult): TxResultAminoMsg {
     return {
-      type: "cosmos-sdk/TxResult",
-      value: TxResult.toAmino(message)
+      type: 'cosmos-sdk/TxResult',
+      value: TxResult.toAmino(message),
     };
   },
   fromProtoMsg(message: TxResultProtoMsg): TxResult {
@@ -206,8 +229,8 @@ export const TxResult = {
   },
   toProtoMsg(message: TxResult): TxResultProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.types.v1.TxResult",
-      value: TxResult.encode(message).finish()
+      typeUrl: '/cosmos.evm.types.v1.TxResult',
+      value: TxResult.encode(message).finish(),
     };
-  }
+  },
 };

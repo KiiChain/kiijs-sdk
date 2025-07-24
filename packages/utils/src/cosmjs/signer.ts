@@ -1,17 +1,17 @@
-import { SigningStargateClient, type Account } from "@cosmjs/stargate";
+import { SigningStargateClient, type Account } from '@cosmjs/stargate';
 import {
   type Coin,
   type EncodeObject,
   type OfflineDirectSigner,
-} from "@cosmjs/proto-signing";
+} from '@cosmjs/proto-signing';
 
-import { fromBase64 } from "@cosmjs/encoding";
-import { makeAuthInfoBytes, makeSignDoc } from "@cosmjs/proto-signing";
+import { fromBase64 } from '@cosmjs/encoding';
+import { makeAuthInfoBytes, makeSignDoc } from '@cosmjs/proto-signing';
 
-import { Any } from "cosmjs-types/google/protobuf/any";
-import { TxRaw } from "cosmjs-types/cosmos/tx/v1beta1/tx";
-import { PubKey } from "@kiichain/kiijs-proto/cosmos/evm/crypto/v1/ethsecp256k1/keys";
-import { BaseAccount } from "cosmjs-types/cosmos/auth/v1beta1/auth";
+import { Any } from 'cosmjs-types/google/protobuf/any';
+import { TxRaw } from 'cosmjs-types/cosmos/tx/v1beta1/tx';
+import { PubKey } from '@kiichain/kiijs-proto/cosmos/evm/crypto/v1/ethsecp256k1/keys';
+import { BaseAccount } from 'cosmjs-types/cosmos/auth/v1beta1/auth';
 
 // This function signs a transaction using the ethsecp256k1 signer
 // The most important part is that it rewrites the PubKey to the ethsecp256k1 format
@@ -40,12 +40,12 @@ export async function signWithEthsecpSigner(
     (account) => account.address === signerAddress
   );
   if (!accountFromSigner)
-    throw new Error("Failed to retrieve account from signer");
+    throw new Error('Failed to retrieve account from signer');
 
   // Get the pubkey bytes from the account
   const pubkeyBytes = accountFromSigner.pubkey;
   if (!pubkeyBytes || pubkeyBytes.length === 0)
-    throw new Error("Public key not available from signer");
+    throw new Error('Public key not available from signer');
 
   // This is the important part
   // It rewrites the PubKey to the ethsecp256k1 format
@@ -61,7 +61,7 @@ export async function signWithEthsecpSigner(
 
   // Create the TX body
   const txBodyEncodeObject = {
-    typeUrl: "/cosmos.tx.v1beta1.TxBody",
+    typeUrl: '/cosmos.tx.v1beta1.TxBody',
     value: {
       messages: messages,
       memo: memo,
@@ -78,7 +78,7 @@ export async function signWithEthsecpSigner(
   // Calculate the fee amount
   const feeAmount = Math.ceil(gasLimit * gasPricePerUnit).toString();
   const fee: Coin = {
-    denom: "akii",
+    denom: 'akii',
     amount: feeAmount,
   };
 
@@ -112,15 +112,15 @@ export async function signWithEthsecpSigner(
 export function ethsecpAccountParser(accountAny: Any): Account {
   // Check if the accountAny is of type BaseAccount or EthAccount
   if (
-    accountAny.typeUrl === "/cosmos.auth.v1beta1.BaseAccount" ||
-    accountAny.typeUrl === "/ethermint.types.v1.EthAccount" // handle EthAccount too
+    accountAny.typeUrl === '/cosmos.auth.v1beta1.BaseAccount' ||
+    accountAny.typeUrl === '/ethermint.types.v1.EthAccount' // handle EthAccount too
   ) {
     // Decode the BaseAccount from the Any type
     const account = BaseAccount.decode(accountAny.value);
 
     // Here we patch the public key parser
     if (
-      account.pubKey?.typeUrl === "/cosmos.evm.crypto.v1.ethsecp256k1.PubKey"
+      account.pubKey?.typeUrl === '/cosmos.evm.crypto.v1.ethsecp256k1.PubKey'
     ) {
       // Decode the PubKey from the Any type
       account.pubKey.value = PubKey.decode(account.pubKey.value).key;

@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
 /** EventRegisterPair is an event emitted when a coin is registered. */
 export interface EventRegisterPair {
   /** denom is the coin's denomination. */
@@ -8,7 +8,7 @@ export interface EventRegisterPair {
   erc20Address: string;
 }
 export interface EventRegisterPairProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.EventRegisterPair";
+  typeUrl: '/cosmos.evm.erc20.v1.EventRegisterPair';
   value: Uint8Array;
 }
 /** EventRegisterPair is an event emitted when a coin is registered. */
@@ -19,7 +19,7 @@ export interface EventRegisterPairAmino {
   erc20_address?: string;
 }
 export interface EventRegisterPairAminoMsg {
-  type: "cosmos-sdk/EventRegisterPair";
+  type: 'cosmos-sdk/EventRegisterPair';
   value: EventRegisterPairAmino;
 }
 /** EventRegisterPair is an event emitted when a coin is registered. */
@@ -38,7 +38,7 @@ export interface EventToggleTokenConversion {
   erc20Address: string;
 }
 export interface EventToggleTokenConversionProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.EventToggleTokenConversion";
+  typeUrl: '/cosmos.evm.erc20.v1.EventToggleTokenConversion';
   value: Uint8Array;
 }
 /**
@@ -52,7 +52,7 @@ export interface EventToggleTokenConversionAmino {
   erc20_address?: string;
 }
 export interface EventToggleTokenConversionAminoMsg {
-  type: "cosmos-sdk/EventToggleTokenConversion";
+  type: 'cosmos-sdk/EventToggleTokenConversion';
   value: EventToggleTokenConversionAmino;
 }
 /**
@@ -77,7 +77,7 @@ export interface EventConvertCoin {
   erc20Address: string;
 }
 export interface EventConvertCoinProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.EventConvertCoin";
+  typeUrl: '/cosmos.evm.erc20.v1.EventConvertCoin';
   value: Uint8Array;
 }
 /** EventConvertCoin is an event emitted when a coin is converted. */
@@ -94,7 +94,7 @@ export interface EventConvertCoinAmino {
   erc20_address?: string;
 }
 export interface EventConvertCoinAminoMsg {
-  type: "cosmos-sdk/EventConvertCoin";
+  type: 'cosmos-sdk/EventConvertCoin';
   value: EventConvertCoinAmino;
 }
 /** EventConvertCoin is an event emitted when a coin is converted. */
@@ -122,7 +122,7 @@ export interface EventConvertERC20 {
   contractAddress: string;
 }
 export interface EventConvertERC20ProtoMsg {
-  typeUrl: "/cosmos.evm.erc20.v1.EventConvertERC20";
+  typeUrl: '/cosmos.evm.erc20.v1.EventConvertERC20';
   value: Uint8Array;
 }
 /** EventConvertERC20 is an event emitted when an ERC20 is converted. */
@@ -142,7 +142,7 @@ export interface EventConvertERC20Amino {
   contract_address?: string;
 }
 export interface EventConvertERC20AminoMsg {
-  type: "cosmos-sdk/EventConvertERC20";
+  type: 'cosmos-sdk/EventConvertERC20';
   value: EventConvertERC20Amino;
 }
 /** EventConvertERC20 is an event emitted when an ERC20 is converted. */
@@ -155,23 +155,27 @@ export interface EventConvertERC20SDKType {
 }
 function createBaseEventRegisterPair(): EventRegisterPair {
   return {
-    denom: "",
-    erc20Address: ""
+    denom: '',
+    erc20Address: '',
   };
 }
 export const EventRegisterPair = {
-  typeUrl: "/cosmos.evm.erc20.v1.EventRegisterPair",
-  encode(message: EventRegisterPair, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.denom !== "") {
+  typeUrl: '/cosmos.evm.erc20.v1.EventRegisterPair',
+  encode(
+    message: EventRegisterPair,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.denom !== '') {
       writer.uint32(10).string(message.denom);
     }
-    if (message.erc20Address !== "") {
+    if (message.erc20Address !== '') {
       writer.uint32(18).string(message.erc20Address);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): EventRegisterPair {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEventRegisterPair();
     while (reader.pos < end) {
@@ -192,8 +196,8 @@ export const EventRegisterPair = {
   },
   fromPartial(object: Partial<EventRegisterPair>): EventRegisterPair {
     const message = createBaseEventRegisterPair();
-    message.denom = object.denom ?? "";
-    message.erc20Address = object.erc20Address ?? "";
+    message.denom = object.denom ?? '';
+    message.erc20Address = object.erc20Address ?? '';
     return message;
   },
   fromAmino(object: EventRegisterPairAmino): EventRegisterPair {
@@ -208,8 +212,9 @@ export const EventRegisterPair = {
   },
   toAmino(message: EventRegisterPair): EventRegisterPairAmino {
     const obj: any = {};
-    obj.denom = message.denom === "" ? undefined : message.denom;
-    obj.erc20_address = message.erc20Address === "" ? undefined : message.erc20Address;
+    obj.denom = message.denom === '' ? undefined : message.denom;
+    obj.erc20_address =
+      message.erc20Address === '' ? undefined : message.erc20Address;
     return obj;
   },
   fromAminoMsg(object: EventRegisterPairAminoMsg): EventRegisterPair {
@@ -217,8 +222,8 @@ export const EventRegisterPair = {
   },
   toAminoMsg(message: EventRegisterPair): EventRegisterPairAminoMsg {
     return {
-      type: "cosmos-sdk/EventRegisterPair",
-      value: EventRegisterPair.toAmino(message)
+      type: 'cosmos-sdk/EventRegisterPair',
+      value: EventRegisterPair.toAmino(message),
     };
   },
   fromProtoMsg(message: EventRegisterPairProtoMsg): EventRegisterPair {
@@ -229,30 +234,37 @@ export const EventRegisterPair = {
   },
   toProtoMsg(message: EventRegisterPair): EventRegisterPairProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.EventRegisterPair",
-      value: EventRegisterPair.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.EventRegisterPair',
+      value: EventRegisterPair.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseEventToggleTokenConversion(): EventToggleTokenConversion {
   return {
-    denom: "",
-    erc20Address: ""
+    denom: '',
+    erc20Address: '',
   };
 }
 export const EventToggleTokenConversion = {
-  typeUrl: "/cosmos.evm.erc20.v1.EventToggleTokenConversion",
-  encode(message: EventToggleTokenConversion, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.denom !== "") {
+  typeUrl: '/cosmos.evm.erc20.v1.EventToggleTokenConversion',
+  encode(
+    message: EventToggleTokenConversion,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.denom !== '') {
       writer.uint32(10).string(message.denom);
     }
-    if (message.erc20Address !== "") {
+    if (message.erc20Address !== '') {
       writer.uint32(18).string(message.erc20Address);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): EventToggleTokenConversion {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): EventToggleTokenConversion {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEventToggleTokenConversion();
     while (reader.pos < end) {
@@ -271,13 +283,17 @@ export const EventToggleTokenConversion = {
     }
     return message;
   },
-  fromPartial(object: Partial<EventToggleTokenConversion>): EventToggleTokenConversion {
+  fromPartial(
+    object: Partial<EventToggleTokenConversion>
+  ): EventToggleTokenConversion {
     const message = createBaseEventToggleTokenConversion();
-    message.denom = object.denom ?? "";
-    message.erc20Address = object.erc20Address ?? "";
+    message.denom = object.denom ?? '';
+    message.erc20Address = object.erc20Address ?? '';
     return message;
   },
-  fromAmino(object: EventToggleTokenConversionAmino): EventToggleTokenConversion {
+  fromAmino(
+    object: EventToggleTokenConversionAmino
+  ): EventToggleTokenConversion {
     const message = createBaseEventToggleTokenConversion();
     if (object.denom !== undefined && object.denom !== null) {
       message.denom = object.denom;
@@ -287,65 +303,80 @@ export const EventToggleTokenConversion = {
     }
     return message;
   },
-  toAmino(message: EventToggleTokenConversion): EventToggleTokenConversionAmino {
+  toAmino(
+    message: EventToggleTokenConversion
+  ): EventToggleTokenConversionAmino {
     const obj: any = {};
-    obj.denom = message.denom === "" ? undefined : message.denom;
-    obj.erc20_address = message.erc20Address === "" ? undefined : message.erc20Address;
+    obj.denom = message.denom === '' ? undefined : message.denom;
+    obj.erc20_address =
+      message.erc20Address === '' ? undefined : message.erc20Address;
     return obj;
   },
-  fromAminoMsg(object: EventToggleTokenConversionAminoMsg): EventToggleTokenConversion {
+  fromAminoMsg(
+    object: EventToggleTokenConversionAminoMsg
+  ): EventToggleTokenConversion {
     return EventToggleTokenConversion.fromAmino(object.value);
   },
-  toAminoMsg(message: EventToggleTokenConversion): EventToggleTokenConversionAminoMsg {
+  toAminoMsg(
+    message: EventToggleTokenConversion
+  ): EventToggleTokenConversionAminoMsg {
     return {
-      type: "cosmos-sdk/EventToggleTokenConversion",
-      value: EventToggleTokenConversion.toAmino(message)
+      type: 'cosmos-sdk/EventToggleTokenConversion',
+      value: EventToggleTokenConversion.toAmino(message),
     };
   },
-  fromProtoMsg(message: EventToggleTokenConversionProtoMsg): EventToggleTokenConversion {
+  fromProtoMsg(
+    message: EventToggleTokenConversionProtoMsg
+  ): EventToggleTokenConversion {
     return EventToggleTokenConversion.decode(message.value);
   },
   toProto(message: EventToggleTokenConversion): Uint8Array {
     return EventToggleTokenConversion.encode(message).finish();
   },
-  toProtoMsg(message: EventToggleTokenConversion): EventToggleTokenConversionProtoMsg {
+  toProtoMsg(
+    message: EventToggleTokenConversion
+  ): EventToggleTokenConversionProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.EventToggleTokenConversion",
-      value: EventToggleTokenConversion.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.EventToggleTokenConversion',
+      value: EventToggleTokenConversion.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseEventConvertCoin(): EventConvertCoin {
   return {
-    sender: "",
-    receiver: "",
-    amount: "",
-    denom: "",
-    erc20Address: ""
+    sender: '',
+    receiver: '',
+    amount: '',
+    denom: '',
+    erc20Address: '',
   };
 }
 export const EventConvertCoin = {
-  typeUrl: "/cosmos.evm.erc20.v1.EventConvertCoin",
-  encode(message: EventConvertCoin, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.sender !== "") {
+  typeUrl: '/cosmos.evm.erc20.v1.EventConvertCoin',
+  encode(
+    message: EventConvertCoin,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.sender !== '') {
       writer.uint32(10).string(message.sender);
     }
-    if (message.receiver !== "") {
+    if (message.receiver !== '') {
       writer.uint32(18).string(message.receiver);
     }
-    if (message.amount !== "") {
+    if (message.amount !== '') {
       writer.uint32(26).string(message.amount);
     }
-    if (message.denom !== "") {
+    if (message.denom !== '') {
       writer.uint32(34).string(message.denom);
     }
-    if (message.erc20Address !== "") {
+    if (message.erc20Address !== '') {
       writer.uint32(42).string(message.erc20Address);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): EventConvertCoin {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEventConvertCoin();
     while (reader.pos < end) {
@@ -375,11 +406,11 @@ export const EventConvertCoin = {
   },
   fromPartial(object: Partial<EventConvertCoin>): EventConvertCoin {
     const message = createBaseEventConvertCoin();
-    message.sender = object.sender ?? "";
-    message.receiver = object.receiver ?? "";
-    message.amount = object.amount ?? "";
-    message.denom = object.denom ?? "";
-    message.erc20Address = object.erc20Address ?? "";
+    message.sender = object.sender ?? '';
+    message.receiver = object.receiver ?? '';
+    message.amount = object.amount ?? '';
+    message.denom = object.denom ?? '';
+    message.erc20Address = object.erc20Address ?? '';
     return message;
   },
   fromAmino(object: EventConvertCoinAmino): EventConvertCoin {
@@ -403,11 +434,12 @@ export const EventConvertCoin = {
   },
   toAmino(message: EventConvertCoin): EventConvertCoinAmino {
     const obj: any = {};
-    obj.sender = message.sender === "" ? undefined : message.sender;
-    obj.receiver = message.receiver === "" ? undefined : message.receiver;
-    obj.amount = message.amount === "" ? undefined : message.amount;
-    obj.denom = message.denom === "" ? undefined : message.denom;
-    obj.erc20_address = message.erc20Address === "" ? undefined : message.erc20Address;
+    obj.sender = message.sender === '' ? undefined : message.sender;
+    obj.receiver = message.receiver === '' ? undefined : message.receiver;
+    obj.amount = message.amount === '' ? undefined : message.amount;
+    obj.denom = message.denom === '' ? undefined : message.denom;
+    obj.erc20_address =
+      message.erc20Address === '' ? undefined : message.erc20Address;
     return obj;
   },
   fromAminoMsg(object: EventConvertCoinAminoMsg): EventConvertCoin {
@@ -415,8 +447,8 @@ export const EventConvertCoin = {
   },
   toAminoMsg(message: EventConvertCoin): EventConvertCoinAminoMsg {
     return {
-      type: "cosmos-sdk/EventConvertCoin",
-      value: EventConvertCoin.toAmino(message)
+      type: 'cosmos-sdk/EventConvertCoin',
+      value: EventConvertCoin.toAmino(message),
     };
   },
   fromProtoMsg(message: EventConvertCoinProtoMsg): EventConvertCoin {
@@ -427,42 +459,46 @@ export const EventConvertCoin = {
   },
   toProtoMsg(message: EventConvertCoin): EventConvertCoinProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.EventConvertCoin",
-      value: EventConvertCoin.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.EventConvertCoin',
+      value: EventConvertCoin.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseEventConvertERC20(): EventConvertERC20 {
   return {
-    sender: "",
-    receiver: "",
-    amount: "",
-    denom: "",
-    contractAddress: ""
+    sender: '',
+    receiver: '',
+    amount: '',
+    denom: '',
+    contractAddress: '',
   };
 }
 export const EventConvertERC20 = {
-  typeUrl: "/cosmos.evm.erc20.v1.EventConvertERC20",
-  encode(message: EventConvertERC20, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.sender !== "") {
+  typeUrl: '/cosmos.evm.erc20.v1.EventConvertERC20',
+  encode(
+    message: EventConvertERC20,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.sender !== '') {
       writer.uint32(10).string(message.sender);
     }
-    if (message.receiver !== "") {
+    if (message.receiver !== '') {
       writer.uint32(18).string(message.receiver);
     }
-    if (message.amount !== "") {
+    if (message.amount !== '') {
       writer.uint32(26).string(message.amount);
     }
-    if (message.denom !== "") {
+    if (message.denom !== '') {
       writer.uint32(34).string(message.denom);
     }
-    if (message.contractAddress !== "") {
+    if (message.contractAddress !== '') {
       writer.uint32(42).string(message.contractAddress);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): EventConvertERC20 {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEventConvertERC20();
     while (reader.pos < end) {
@@ -492,11 +528,11 @@ export const EventConvertERC20 = {
   },
   fromPartial(object: Partial<EventConvertERC20>): EventConvertERC20 {
     const message = createBaseEventConvertERC20();
-    message.sender = object.sender ?? "";
-    message.receiver = object.receiver ?? "";
-    message.amount = object.amount ?? "";
-    message.denom = object.denom ?? "";
-    message.contractAddress = object.contractAddress ?? "";
+    message.sender = object.sender ?? '';
+    message.receiver = object.receiver ?? '';
+    message.amount = object.amount ?? '';
+    message.denom = object.denom ?? '';
+    message.contractAddress = object.contractAddress ?? '';
     return message;
   },
   fromAmino(object: EventConvertERC20Amino): EventConvertERC20 {
@@ -513,18 +549,22 @@ export const EventConvertERC20 = {
     if (object.denom !== undefined && object.denom !== null) {
       message.denom = object.denom;
     }
-    if (object.contract_address !== undefined && object.contract_address !== null) {
+    if (
+      object.contract_address !== undefined &&
+      object.contract_address !== null
+    ) {
       message.contractAddress = object.contract_address;
     }
     return message;
   },
   toAmino(message: EventConvertERC20): EventConvertERC20Amino {
     const obj: any = {};
-    obj.sender = message.sender === "" ? undefined : message.sender;
-    obj.receiver = message.receiver === "" ? undefined : message.receiver;
-    obj.amount = message.amount === "" ? undefined : message.amount;
-    obj.denom = message.denom === "" ? undefined : message.denom;
-    obj.contract_address = message.contractAddress === "" ? undefined : message.contractAddress;
+    obj.sender = message.sender === '' ? undefined : message.sender;
+    obj.receiver = message.receiver === '' ? undefined : message.receiver;
+    obj.amount = message.amount === '' ? undefined : message.amount;
+    obj.denom = message.denom === '' ? undefined : message.denom;
+    obj.contract_address =
+      message.contractAddress === '' ? undefined : message.contractAddress;
     return obj;
   },
   fromAminoMsg(object: EventConvertERC20AminoMsg): EventConvertERC20 {
@@ -532,8 +572,8 @@ export const EventConvertERC20 = {
   },
   toAminoMsg(message: EventConvertERC20): EventConvertERC20AminoMsg {
     return {
-      type: "cosmos-sdk/EventConvertERC20",
-      value: EventConvertERC20.toAmino(message)
+      type: 'cosmos-sdk/EventConvertERC20',
+      value: EventConvertERC20.toAmino(message),
     };
   },
   fromProtoMsg(message: EventConvertERC20ProtoMsg): EventConvertERC20 {
@@ -544,8 +584,8 @@ export const EventConvertERC20 = {
   },
   toProtoMsg(message: EventConvertERC20): EventConvertERC20ProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.erc20.v1.EventConvertERC20",
-      value: EventConvertERC20.encode(message).finish()
+      typeUrl: '/cosmos.evm.erc20.v1.EventConvertERC20',
+      value: EventConvertERC20.encode(message).finish(),
     };
-  }
+  },
 };

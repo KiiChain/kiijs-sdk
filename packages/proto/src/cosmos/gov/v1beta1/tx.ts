@@ -1,31 +1,150 @@
 //@ts-nocheck
-import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
-import { Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
-import { VoteOption, WeightedVoteOption, WeightedVoteOptionAmino, WeightedVoteOptionSDKType, TextProposal, TextProposalProtoMsg, TextProposalSDKType } from "./gov";
-import { CommunityPoolSpendProposal, CommunityPoolSpendProposalProtoMsg, CommunityPoolSpendProposalSDKType, CommunityPoolSpendProposalWithDeposit, CommunityPoolSpendProposalWithDepositProtoMsg, CommunityPoolSpendProposalWithDepositSDKType } from "../../distribution/v1beta1/distribution";
-import { ParameterChangeProposal, ParameterChangeProposalProtoMsg, ParameterChangeProposalSDKType } from "../../params/v1beta1/params";
-import { SoftwareUpgradeProposal, SoftwareUpgradeProposalProtoMsg, SoftwareUpgradeProposalSDKType, CancelSoftwareUpgradeProposal, CancelSoftwareUpgradeProposalProtoMsg, CancelSoftwareUpgradeProposalSDKType } from "../../upgrade/v1beta1/upgrade";
-import { StoreCodeProposal, StoreCodeProposalProtoMsg, StoreCodeProposalSDKType, InstantiateContractProposal, InstantiateContractProposalProtoMsg, InstantiateContractProposalSDKType, InstantiateContract2Proposal, InstantiateContract2ProposalProtoMsg, InstantiateContract2ProposalSDKType, MigrateContractProposal, MigrateContractProposalProtoMsg, MigrateContractProposalSDKType, SudoContractProposal, SudoContractProposalProtoMsg, SudoContractProposalSDKType, ExecuteContractProposal, ExecuteContractProposalProtoMsg, ExecuteContractProposalSDKType, UpdateAdminProposal, UpdateAdminProposalProtoMsg, UpdateAdminProposalSDKType, ClearAdminProposal, ClearAdminProposalProtoMsg, ClearAdminProposalSDKType, PinCodesProposal, PinCodesProposalProtoMsg, PinCodesProposalSDKType, UnpinCodesProposal, UnpinCodesProposalProtoMsg, UnpinCodesProposalSDKType, UpdateInstantiateConfigProposal, UpdateInstantiateConfigProposalProtoMsg, UpdateInstantiateConfigProposalSDKType, StoreAndInstantiateContractProposal, StoreAndInstantiateContractProposalProtoMsg, StoreAndInstantiateContractProposalSDKType } from "../../../cosmwasm/wasm/v1/proposal_legacy";
-import { ClientUpdateProposal, ClientUpdateProposalProtoMsg, ClientUpdateProposalSDKType, UpgradeProposal, UpgradeProposalProtoMsg, UpgradeProposalSDKType } from "../../../ibc/core/client/v1/client";
-import { BinaryReader, BinaryWriter } from "../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../binary';
+import {
+  ClearAdminProposal,
+  ClearAdminProposalProtoMsg,
+  ClearAdminProposalSDKType,
+  ExecuteContractProposal,
+  ExecuteContractProposalProtoMsg,
+  ExecuteContractProposalSDKType,
+  InstantiateContract2Proposal,
+  InstantiateContract2ProposalProtoMsg,
+  InstantiateContract2ProposalSDKType,
+  InstantiateContractProposal,
+  InstantiateContractProposalProtoMsg,
+  InstantiateContractProposalSDKType,
+  MigrateContractProposal,
+  MigrateContractProposalProtoMsg,
+  MigrateContractProposalSDKType,
+  PinCodesProposal,
+  PinCodesProposalProtoMsg,
+  PinCodesProposalSDKType,
+  StoreAndInstantiateContractProposal,
+  StoreAndInstantiateContractProposalProtoMsg,
+  StoreAndInstantiateContractProposalSDKType,
+  StoreCodeProposal,
+  StoreCodeProposalProtoMsg,
+  StoreCodeProposalSDKType,
+  SudoContractProposal,
+  SudoContractProposalProtoMsg,
+  SudoContractProposalSDKType,
+  UnpinCodesProposal,
+  UnpinCodesProposalProtoMsg,
+  UnpinCodesProposalSDKType,
+  UpdateAdminProposal,
+  UpdateAdminProposalProtoMsg,
+  UpdateAdminProposalSDKType,
+  UpdateInstantiateConfigProposal,
+  UpdateInstantiateConfigProposalProtoMsg,
+  UpdateInstantiateConfigProposalSDKType,
+} from '../../../cosmwasm/wasm/v1/proposal_legacy';
+import {
+  Any,
+  AnyAmino,
+  AnyProtoMsg,
+  AnySDKType,
+} from '../../../google/protobuf/any';
+import {
+  ClientUpdateProposal,
+  ClientUpdateProposalProtoMsg,
+  ClientUpdateProposalSDKType,
+  UpgradeProposal,
+  UpgradeProposalProtoMsg,
+  UpgradeProposalSDKType,
+} from '../../../ibc/core/client/v1/client';
+import { Coin, CoinAmino, CoinSDKType } from '../../base/v1beta1/coin';
+import {
+  CommunityPoolSpendProposal,
+  CommunityPoolSpendProposalProtoMsg,
+  CommunityPoolSpendProposalSDKType,
+  CommunityPoolSpendProposalWithDeposit,
+  CommunityPoolSpendProposalWithDepositProtoMsg,
+  CommunityPoolSpendProposalWithDepositSDKType,
+} from '../../distribution/v1beta1/distribution';
+import {
+  ParameterChangeProposal,
+  ParameterChangeProposalProtoMsg,
+  ParameterChangeProposalSDKType,
+} from '../../params/v1beta1/params';
+import {
+  CancelSoftwareUpgradeProposal,
+  CancelSoftwareUpgradeProposalProtoMsg,
+  CancelSoftwareUpgradeProposalSDKType,
+  SoftwareUpgradeProposal,
+  SoftwareUpgradeProposalProtoMsg,
+  SoftwareUpgradeProposalSDKType,
+} from '../../upgrade/v1beta1/upgrade';
+import {
+  TextProposal,
+  TextProposalProtoMsg,
+  TextProposalSDKType,
+  VoteOption,
+  WeightedVoteOption,
+  WeightedVoteOptionAmino,
+  WeightedVoteOptionSDKType,
+} from './gov';
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
  * proposal Content.
  */
 export interface MsgSubmitProposal {
   /** content is the proposal's content. */
-  content?: CommunityPoolSpendProposal | CommunityPoolSpendProposalWithDeposit | TextProposal | ParameterChangeProposal | SoftwareUpgradeProposal | CancelSoftwareUpgradeProposal | StoreCodeProposal | InstantiateContractProposal | InstantiateContract2Proposal | MigrateContractProposal | SudoContractProposal | ExecuteContractProposal | UpdateAdminProposal | ClearAdminProposal | PinCodesProposal | UnpinCodesProposal | UpdateInstantiateConfigProposal | StoreAndInstantiateContractProposal | ClientUpdateProposal | UpgradeProposal | Any | undefined;
+  content?:
+    | CommunityPoolSpendProposal
+    | CommunityPoolSpendProposalWithDeposit
+    | TextProposal
+    | ParameterChangeProposal
+    | SoftwareUpgradeProposal
+    | CancelSoftwareUpgradeProposal
+    | StoreCodeProposal
+    | InstantiateContractProposal
+    | InstantiateContract2Proposal
+    | MigrateContractProposal
+    | SudoContractProposal
+    | ExecuteContractProposal
+    | UpdateAdminProposal
+    | ClearAdminProposal
+    | PinCodesProposal
+    | UnpinCodesProposal
+    | UpdateInstantiateConfigProposal
+    | StoreAndInstantiateContractProposal
+    | ClientUpdateProposal
+    | UpgradeProposal
+    | Any
+    | undefined;
   /** initial_deposit is the deposit value that must be paid at proposal submission. */
   initialDeposit: Coin[];
   /** proposer is the account address of the proposer. */
   proposer: string;
 }
 export interface MsgSubmitProposalProtoMsg {
-  typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal";
+  typeUrl: '/cosmos.gov.v1beta1.MsgSubmitProposal';
   value: Uint8Array;
 }
-export type MsgSubmitProposalEncoded = Omit<MsgSubmitProposal, "content"> & {
-  /** content is the proposal's content. */content?: CommunityPoolSpendProposalProtoMsg | CommunityPoolSpendProposalWithDepositProtoMsg | TextProposalProtoMsg | ParameterChangeProposalProtoMsg | SoftwareUpgradeProposalProtoMsg | CancelSoftwareUpgradeProposalProtoMsg | StoreCodeProposalProtoMsg | InstantiateContractProposalProtoMsg | InstantiateContract2ProposalProtoMsg | MigrateContractProposalProtoMsg | SudoContractProposalProtoMsg | ExecuteContractProposalProtoMsg | UpdateAdminProposalProtoMsg | ClearAdminProposalProtoMsg | PinCodesProposalProtoMsg | UnpinCodesProposalProtoMsg | UpdateInstantiateConfigProposalProtoMsg | StoreAndInstantiateContractProposalProtoMsg | ClientUpdateProposalProtoMsg | UpgradeProposalProtoMsg | AnyProtoMsg | undefined;
+export type MsgSubmitProposalEncoded = Omit<MsgSubmitProposal, 'content'> & {
+  /** content is the proposal's content. */ content?:
+    | CommunityPoolSpendProposalProtoMsg
+    | CommunityPoolSpendProposalWithDepositProtoMsg
+    | TextProposalProtoMsg
+    | ParameterChangeProposalProtoMsg
+    | SoftwareUpgradeProposalProtoMsg
+    | CancelSoftwareUpgradeProposalProtoMsg
+    | StoreCodeProposalProtoMsg
+    | InstantiateContractProposalProtoMsg
+    | InstantiateContract2ProposalProtoMsg
+    | MigrateContractProposalProtoMsg
+    | SudoContractProposalProtoMsg
+    | ExecuteContractProposalProtoMsg
+    | UpdateAdminProposalProtoMsg
+    | ClearAdminProposalProtoMsg
+    | PinCodesProposalProtoMsg
+    | UnpinCodesProposalProtoMsg
+    | UpdateInstantiateConfigProposalProtoMsg
+    | StoreAndInstantiateContractProposalProtoMsg
+    | ClientUpdateProposalProtoMsg
+    | UpgradeProposalProtoMsg
+    | AnyProtoMsg
+    | undefined;
 };
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
@@ -40,7 +159,7 @@ export interface MsgSubmitProposalAmino {
   proposer?: string;
 }
 export interface MsgSubmitProposalAminoMsg {
-  type: "cosmos-sdk/MsgSubmitProposal";
+  type: 'cosmos-sdk/MsgSubmitProposal';
   value: MsgSubmitProposalAmino;
 }
 /**
@@ -48,7 +167,29 @@ export interface MsgSubmitProposalAminoMsg {
  * proposal Content.
  */
 export interface MsgSubmitProposalSDKType {
-  content?: CommunityPoolSpendProposalSDKType | CommunityPoolSpendProposalWithDepositSDKType | TextProposalSDKType | ParameterChangeProposalSDKType | SoftwareUpgradeProposalSDKType | CancelSoftwareUpgradeProposalSDKType | StoreCodeProposalSDKType | InstantiateContractProposalSDKType | InstantiateContract2ProposalSDKType | MigrateContractProposalSDKType | SudoContractProposalSDKType | ExecuteContractProposalSDKType | UpdateAdminProposalSDKType | ClearAdminProposalSDKType | PinCodesProposalSDKType | UnpinCodesProposalSDKType | UpdateInstantiateConfigProposalSDKType | StoreAndInstantiateContractProposalSDKType | ClientUpdateProposalSDKType | UpgradeProposalSDKType | AnySDKType | undefined;
+  content?:
+    | CommunityPoolSpendProposalSDKType
+    | CommunityPoolSpendProposalWithDepositSDKType
+    | TextProposalSDKType
+    | ParameterChangeProposalSDKType
+    | SoftwareUpgradeProposalSDKType
+    | CancelSoftwareUpgradeProposalSDKType
+    | StoreCodeProposalSDKType
+    | InstantiateContractProposalSDKType
+    | InstantiateContract2ProposalSDKType
+    | MigrateContractProposalSDKType
+    | SudoContractProposalSDKType
+    | ExecuteContractProposalSDKType
+    | UpdateAdminProposalSDKType
+    | ClearAdminProposalSDKType
+    | PinCodesProposalSDKType
+    | UnpinCodesProposalSDKType
+    | UpdateInstantiateConfigProposalSDKType
+    | StoreAndInstantiateContractProposalSDKType
+    | ClientUpdateProposalSDKType
+    | UpgradeProposalSDKType
+    | AnySDKType
+    | undefined;
   initial_deposit: CoinSDKType[];
   proposer: string;
 }
@@ -58,7 +199,7 @@ export interface MsgSubmitProposalResponse {
   proposalId: bigint;
 }
 export interface MsgSubmitProposalResponseProtoMsg {
-  typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposalResponse";
+  typeUrl: '/cosmos.gov.v1beta1.MsgSubmitProposalResponse';
   value: Uint8Array;
 }
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
@@ -67,7 +208,7 @@ export interface MsgSubmitProposalResponseAmino {
   proposal_id: string;
 }
 export interface MsgSubmitProposalResponseAminoMsg {
-  type: "cosmos-sdk/MsgSubmitProposalResponse";
+  type: 'cosmos-sdk/MsgSubmitProposalResponse';
   value: MsgSubmitProposalResponseAmino;
 }
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
@@ -84,7 +225,7 @@ export interface MsgVote {
   option: VoteOption;
 }
 export interface MsgVoteProtoMsg {
-  typeUrl: "/cosmos.gov.v1beta1.MsgVote";
+  typeUrl: '/cosmos.gov.v1beta1.MsgVote';
   value: Uint8Array;
 }
 /** MsgVote defines a message to cast a vote. */
@@ -97,7 +238,7 @@ export interface MsgVoteAmino {
   option?: VoteOption;
 }
 export interface MsgVoteAminoMsg {
-  type: "cosmos-sdk/MsgVote";
+  type: 'cosmos-sdk/MsgVote';
   value: MsgVoteAmino;
 }
 /** MsgVote defines a message to cast a vote. */
@@ -109,20 +250,20 @@ export interface MsgVoteSDKType {
 /** MsgVoteResponse defines the Msg/Vote response type. */
 export interface MsgVoteResponse {}
 export interface MsgVoteResponseProtoMsg {
-  typeUrl: "/cosmos.gov.v1beta1.MsgVoteResponse";
+  typeUrl: '/cosmos.gov.v1beta1.MsgVoteResponse';
   value: Uint8Array;
 }
 /** MsgVoteResponse defines the Msg/Vote response type. */
 export interface MsgVoteResponseAmino {}
 export interface MsgVoteResponseAminoMsg {
-  type: "cosmos-sdk/MsgVoteResponse";
+  type: 'cosmos-sdk/MsgVoteResponse';
   value: MsgVoteResponseAmino;
 }
 /** MsgVoteResponse defines the Msg/Vote response type. */
 export interface MsgVoteResponseSDKType {}
 /**
  * MsgVoteWeighted defines a message to cast a vote.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeighted {
@@ -134,12 +275,12 @@ export interface MsgVoteWeighted {
   options: WeightedVoteOption[];
 }
 export interface MsgVoteWeightedProtoMsg {
-  typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeighted";
+  typeUrl: '/cosmos.gov.v1beta1.MsgVoteWeighted';
   value: Uint8Array;
 }
 /**
  * MsgVoteWeighted defines a message to cast a vote.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeightedAmino {
@@ -151,12 +292,12 @@ export interface MsgVoteWeightedAmino {
   options: WeightedVoteOptionAmino[];
 }
 export interface MsgVoteWeightedAminoMsg {
-  type: "cosmos-sdk/MsgVoteWeighted";
+  type: 'cosmos-sdk/MsgVoteWeighted';
   value: MsgVoteWeightedAmino;
 }
 /**
  * MsgVoteWeighted defines a message to cast a vote.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeightedSDKType {
@@ -166,27 +307,27 @@ export interface MsgVoteWeightedSDKType {
 }
 /**
  * MsgVoteWeightedResponse defines the Msg/VoteWeighted response type.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeightedResponse {}
 export interface MsgVoteWeightedResponseProtoMsg {
-  typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeightedResponse";
+  typeUrl: '/cosmos.gov.v1beta1.MsgVoteWeightedResponse';
   value: Uint8Array;
 }
 /**
  * MsgVoteWeightedResponse defines the Msg/VoteWeighted response type.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeightedResponseAmino {}
 export interface MsgVoteWeightedResponseAminoMsg {
-  type: "cosmos-sdk/MsgVoteWeightedResponse";
+  type: 'cosmos-sdk/MsgVoteWeightedResponse';
   value: MsgVoteWeightedResponseAmino;
 }
 /**
  * MsgVoteWeightedResponse defines the Msg/VoteWeighted response type.
- * 
+ *
  * Since: cosmos-sdk 0.43
  */
 export interface MsgVoteWeightedResponseSDKType {}
@@ -200,7 +341,7 @@ export interface MsgDeposit {
   amount: Coin[];
 }
 export interface MsgDepositProtoMsg {
-  typeUrl: "/cosmos.gov.v1beta1.MsgDeposit";
+  typeUrl: '/cosmos.gov.v1beta1.MsgDeposit';
   value: Uint8Array;
 }
 /** MsgDeposit defines a message to submit a deposit to an existing proposal. */
@@ -213,7 +354,7 @@ export interface MsgDepositAmino {
   amount: CoinAmino[];
 }
 export interface MsgDepositAminoMsg {
-  type: "cosmos-sdk/MsgDeposit";
+  type: 'cosmos-sdk/MsgDeposit';
   value: MsgDepositAmino;
 }
 /** MsgDeposit defines a message to submit a deposit to an existing proposal. */
@@ -225,13 +366,13 @@ export interface MsgDepositSDKType {
 /** MsgDepositResponse defines the Msg/Deposit response type. */
 export interface MsgDepositResponse {}
 export interface MsgDepositResponseProtoMsg {
-  typeUrl: "/cosmos.gov.v1beta1.MsgDepositResponse";
+  typeUrl: '/cosmos.gov.v1beta1.MsgDepositResponse';
   value: Uint8Array;
 }
 /** MsgDepositResponse defines the Msg/Deposit response type. */
 export interface MsgDepositResponseAmino {}
 export interface MsgDepositResponseAminoMsg {
-  type: "cosmos-sdk/MsgDepositResponse";
+  type: 'cosmos-sdk/MsgDepositResponse';
   value: MsgDepositResponseAmino;
 }
 /** MsgDepositResponse defines the Msg/Deposit response type. */
@@ -240,32 +381,38 @@ function createBaseMsgSubmitProposal(): MsgSubmitProposal {
   return {
     content: undefined,
     initialDeposit: [],
-    proposer: ""
+    proposer: '',
   };
 }
 export const MsgSubmitProposal = {
-  typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal",
-  encode(message: MsgSubmitProposal, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.gov.v1beta1.MsgSubmitProposal',
+  encode(
+    message: MsgSubmitProposal,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.content !== undefined) {
       Any.encode(message.content as Any, writer.uint32(10).fork()).ldelim();
     }
     for (const v of message.initialDeposit) {
       Coin.encode(v!, writer.uint32(18).fork()).ldelim();
     }
-    if (message.proposer !== "") {
+    if (message.proposer !== '') {
       writer.uint32(26).string(message.proposer);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitProposal {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSubmitProposal();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.content = Cosmos_govv1beta1Content_InterfaceDecoder(reader) as Any;
+          message.content = Cosmos_govv1beta1Content_InterfaceDecoder(
+            reader
+          ) as Any;
           break;
         case 2:
           message.initialDeposit.push(Coin.decode(reader, reader.uint32()));
@@ -282,9 +429,13 @@ export const MsgSubmitProposal = {
   },
   fromPartial(object: Partial<MsgSubmitProposal>): MsgSubmitProposal {
     const message = createBaseMsgSubmitProposal();
-    message.content = object.content !== undefined && object.content !== null ? Any.fromPartial(object.content) : undefined;
-    message.initialDeposit = object.initialDeposit?.map(e => Coin.fromPartial(e)) || [];
-    message.proposer = object.proposer ?? "";
+    message.content =
+      object.content !== undefined && object.content !== null
+        ? Any.fromPartial(object.content)
+        : undefined;
+    message.initialDeposit =
+      object.initialDeposit?.map((e) => Coin.fromPartial(e)) || [];
+    message.proposer = object.proposer ?? '';
     return message;
   },
   fromAmino(object: MsgSubmitProposalAmino): MsgSubmitProposal {
@@ -292,7 +443,8 @@ export const MsgSubmitProposal = {
     if (object.content !== undefined && object.content !== null) {
       message.content = Cosmos_govv1beta1Content_FromAmino(object.content);
     }
-    message.initialDeposit = object.initial_deposit?.map(e => Coin.fromAmino(e)) || [];
+    message.initialDeposit =
+      object.initial_deposit?.map((e) => Coin.fromAmino(e)) || [];
     if (object.proposer !== undefined && object.proposer !== null) {
       message.proposer = object.proposer;
     }
@@ -300,13 +452,17 @@ export const MsgSubmitProposal = {
   },
   toAmino(message: MsgSubmitProposal): MsgSubmitProposalAmino {
     const obj: any = {};
-    obj.content = message.content ? Cosmos_govv1beta1Content_ToAmino(message.content as Any) : undefined;
+    obj.content = message.content
+      ? Cosmos_govv1beta1Content_ToAmino(message.content as Any)
+      : undefined;
     if (message.initialDeposit) {
-      obj.initial_deposit = message.initialDeposit.map(e => e ? Coin.toAmino(e) : undefined);
+      obj.initial_deposit = message.initialDeposit.map((e) =>
+        e ? Coin.toAmino(e) : undefined
+      );
     } else {
       obj.initial_deposit = message.initialDeposit;
     }
-    obj.proposer = message.proposer === "" ? undefined : message.proposer;
+    obj.proposer = message.proposer === '' ? undefined : message.proposer;
     return obj;
   },
   fromAminoMsg(object: MsgSubmitProposalAminoMsg): MsgSubmitProposal {
@@ -314,8 +470,8 @@ export const MsgSubmitProposal = {
   },
   toAminoMsg(message: MsgSubmitProposal): MsgSubmitProposalAminoMsg {
     return {
-      type: "cosmos-sdk/MsgSubmitProposal",
-      value: MsgSubmitProposal.toAmino(message)
+      type: 'cosmos-sdk/MsgSubmitProposal',
+      value: MsgSubmitProposal.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgSubmitProposalProtoMsg): MsgSubmitProposal {
@@ -326,26 +482,33 @@ export const MsgSubmitProposal = {
   },
   toProtoMsg(message: MsgSubmitProposal): MsgSubmitProposalProtoMsg {
     return {
-      typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal",
-      value: MsgSubmitProposal.encode(message).finish()
+      typeUrl: '/cosmos.gov.v1beta1.MsgSubmitProposal',
+      value: MsgSubmitProposal.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgSubmitProposalResponse(): MsgSubmitProposalResponse {
   return {
-    proposalId: BigInt(0)
+    proposalId: BigInt(0),
   };
 }
 export const MsgSubmitProposalResponse = {
-  typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposalResponse",
-  encode(message: MsgSubmitProposalResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.gov.v1beta1.MsgSubmitProposalResponse',
+  encode(
+    message: MsgSubmitProposalResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.proposalId !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposalId);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitProposalResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgSubmitProposalResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSubmitProposalResponse();
     while (reader.pos < end) {
@@ -361,9 +524,14 @@ export const MsgSubmitProposalResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse {
+  fromPartial(
+    object: Partial<MsgSubmitProposalResponse>
+  ): MsgSubmitProposalResponse {
     const message = createBaseMsgSubmitProposalResponse();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? BigInt(object.proposalId.toString()) : BigInt(0);
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? BigInt(object.proposalId.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: MsgSubmitProposalResponseAmino): MsgSubmitProposalResponse {
@@ -375,45 +543,56 @@ export const MsgSubmitProposalResponse = {
   },
   toAmino(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? message.proposalId?.toString() : "0";
+    obj.proposal_id = message.proposalId ? message.proposalId?.toString() : '0';
     return obj;
   },
-  fromAminoMsg(object: MsgSubmitProposalResponseAminoMsg): MsgSubmitProposalResponse {
+  fromAminoMsg(
+    object: MsgSubmitProposalResponseAminoMsg
+  ): MsgSubmitProposalResponse {
     return MsgSubmitProposalResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseAminoMsg {
+  toAminoMsg(
+    message: MsgSubmitProposalResponse
+  ): MsgSubmitProposalResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgSubmitProposalResponse",
-      value: MsgSubmitProposalResponse.toAmino(message)
+      type: 'cosmos-sdk/MsgSubmitProposalResponse',
+      value: MsgSubmitProposalResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgSubmitProposalResponseProtoMsg): MsgSubmitProposalResponse {
+  fromProtoMsg(
+    message: MsgSubmitProposalResponseProtoMsg
+  ): MsgSubmitProposalResponse {
     return MsgSubmitProposalResponse.decode(message.value);
   },
   toProto(message: MsgSubmitProposalResponse): Uint8Array {
     return MsgSubmitProposalResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseProtoMsg {
+  toProtoMsg(
+    message: MsgSubmitProposalResponse
+  ): MsgSubmitProposalResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposalResponse",
-      value: MsgSubmitProposalResponse.encode(message).finish()
+      typeUrl: '/cosmos.gov.v1beta1.MsgSubmitProposalResponse',
+      value: MsgSubmitProposalResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgVote(): MsgVote {
   return {
     proposalId: BigInt(0),
-    voter: "",
-    option: 0
+    voter: '',
+    option: 0,
   };
 }
 export const MsgVote = {
-  typeUrl: "/cosmos.gov.v1beta1.MsgVote",
-  encode(message: MsgVote, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.gov.v1beta1.MsgVote',
+  encode(
+    message: MsgVote,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.proposalId !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposalId);
     }
-    if (message.voter !== "") {
+    if (message.voter !== '') {
       writer.uint32(18).string(message.voter);
     }
     if (message.option !== 0) {
@@ -422,7 +601,8 @@ export const MsgVote = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgVote {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgVote();
     while (reader.pos < end) {
@@ -446,8 +626,11 @@ export const MsgVote = {
   },
   fromPartial(object: Partial<MsgVote>): MsgVote {
     const message = createBaseMsgVote();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? BigInt(object.proposalId.toString()) : BigInt(0);
-    message.voter = object.voter ?? "";
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? BigInt(object.proposalId.toString())
+        : BigInt(0);
+    message.voter = object.voter ?? '';
     message.option = object.option ?? 0;
     return message;
   },
@@ -466,8 +649,11 @@ export const MsgVote = {
   },
   toAmino(message: MsgVote): MsgVoteAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId?.toString() : undefined;
-    obj.voter = message.voter === "" ? undefined : message.voter;
+    obj.proposal_id =
+      message.proposalId !== BigInt(0)
+        ? message.proposalId?.toString()
+        : undefined;
+    obj.voter = message.voter === '' ? undefined : message.voter;
     obj.option = message.option === 0 ? undefined : message.option;
     return obj;
   },
@@ -476,8 +662,8 @@ export const MsgVote = {
   },
   toAminoMsg(message: MsgVote): MsgVoteAminoMsg {
     return {
-      type: "cosmos-sdk/MsgVote",
-      value: MsgVote.toAmino(message)
+      type: 'cosmos-sdk/MsgVote',
+      value: MsgVote.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgVoteProtoMsg): MsgVote {
@@ -488,21 +674,25 @@ export const MsgVote = {
   },
   toProtoMsg(message: MsgVote): MsgVoteProtoMsg {
     return {
-      typeUrl: "/cosmos.gov.v1beta1.MsgVote",
-      value: MsgVote.encode(message).finish()
+      typeUrl: '/cosmos.gov.v1beta1.MsgVote',
+      value: MsgVote.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgVoteResponse(): MsgVoteResponse {
   return {};
 }
 export const MsgVoteResponse = {
-  typeUrl: "/cosmos.gov.v1beta1.MsgVoteResponse",
-  encode(_: MsgVoteResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.gov.v1beta1.MsgVoteResponse',
+  encode(
+    _: MsgVoteResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgVoteResponse();
     while (reader.pos < end) {
@@ -532,8 +722,8 @@ export const MsgVoteResponse = {
   },
   toAminoMsg(message: MsgVoteResponse): MsgVoteResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgVoteResponse",
-      value: MsgVoteResponse.toAmino(message)
+      type: 'cosmos-sdk/MsgVoteResponse',
+      value: MsgVoteResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgVoteResponseProtoMsg): MsgVoteResponse {
@@ -544,25 +734,28 @@ export const MsgVoteResponse = {
   },
   toProtoMsg(message: MsgVoteResponse): MsgVoteResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.gov.v1beta1.MsgVoteResponse",
-      value: MsgVoteResponse.encode(message).finish()
+      typeUrl: '/cosmos.gov.v1beta1.MsgVoteResponse',
+      value: MsgVoteResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgVoteWeighted(): MsgVoteWeighted {
   return {
     proposalId: BigInt(0),
-    voter: "",
-    options: []
+    voter: '',
+    options: [],
   };
 }
 export const MsgVoteWeighted = {
-  typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeighted",
-  encode(message: MsgVoteWeighted, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.gov.v1beta1.MsgVoteWeighted',
+  encode(
+    message: MsgVoteWeighted,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.proposalId !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposalId);
     }
-    if (message.voter !== "") {
+    if (message.voter !== '') {
       writer.uint32(18).string(message.voter);
     }
     for (const v of message.options) {
@@ -571,7 +764,8 @@ export const MsgVoteWeighted = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteWeighted {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgVoteWeighted();
     while (reader.pos < end) {
@@ -584,7 +778,9 @@ export const MsgVoteWeighted = {
           message.voter = reader.string();
           break;
         case 3:
-          message.options.push(WeightedVoteOption.decode(reader, reader.uint32()));
+          message.options.push(
+            WeightedVoteOption.decode(reader, reader.uint32())
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -595,9 +791,13 @@ export const MsgVoteWeighted = {
   },
   fromPartial(object: Partial<MsgVoteWeighted>): MsgVoteWeighted {
     const message = createBaseMsgVoteWeighted();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? BigInt(object.proposalId.toString()) : BigInt(0);
-    message.voter = object.voter ?? "";
-    message.options = object.options?.map(e => WeightedVoteOption.fromPartial(e)) || [];
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? BigInt(object.proposalId.toString())
+        : BigInt(0);
+    message.voter = object.voter ?? '';
+    message.options =
+      object.options?.map((e) => WeightedVoteOption.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: MsgVoteWeightedAmino): MsgVoteWeighted {
@@ -608,15 +808,18 @@ export const MsgVoteWeighted = {
     if (object.voter !== undefined && object.voter !== null) {
       message.voter = object.voter;
     }
-    message.options = object.options?.map(e => WeightedVoteOption.fromAmino(e)) || [];
+    message.options =
+      object.options?.map((e) => WeightedVoteOption.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: MsgVoteWeighted): MsgVoteWeightedAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? message.proposalId?.toString() : "0";
-    obj.voter = message.voter === "" ? undefined : message.voter;
+    obj.proposal_id = message.proposalId ? message.proposalId?.toString() : '0';
+    obj.voter = message.voter === '' ? undefined : message.voter;
     if (message.options) {
-      obj.options = message.options.map(e => e ? WeightedVoteOption.toAmino(e) : undefined);
+      obj.options = message.options.map((e) =>
+        e ? WeightedVoteOption.toAmino(e) : undefined
+      );
     } else {
       obj.options = message.options;
     }
@@ -627,8 +830,8 @@ export const MsgVoteWeighted = {
   },
   toAminoMsg(message: MsgVoteWeighted): MsgVoteWeightedAminoMsg {
     return {
-      type: "cosmos-sdk/MsgVoteWeighted",
-      value: MsgVoteWeighted.toAmino(message)
+      type: 'cosmos-sdk/MsgVoteWeighted',
+      value: MsgVoteWeighted.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgVoteWeightedProtoMsg): MsgVoteWeighted {
@@ -639,21 +842,28 @@ export const MsgVoteWeighted = {
   },
   toProtoMsg(message: MsgVoteWeighted): MsgVoteWeightedProtoMsg {
     return {
-      typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeighted",
-      value: MsgVoteWeighted.encode(message).finish()
+      typeUrl: '/cosmos.gov.v1beta1.MsgVoteWeighted',
+      value: MsgVoteWeighted.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgVoteWeightedResponse(): MsgVoteWeightedResponse {
   return {};
 }
 export const MsgVoteWeightedResponse = {
-  typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeightedResponse",
-  encode(_: MsgVoteWeightedResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.gov.v1beta1.MsgVoteWeightedResponse',
+  encode(
+    _: MsgVoteWeightedResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgVoteWeightedResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgVoteWeightedResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgVoteWeightedResponse();
     while (reader.pos < end) {
@@ -678,42 +888,53 @@ export const MsgVoteWeightedResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgVoteWeightedResponseAminoMsg): MsgVoteWeightedResponse {
+  fromAminoMsg(
+    object: MsgVoteWeightedResponseAminoMsg
+  ): MsgVoteWeightedResponse {
     return MsgVoteWeightedResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgVoteWeightedResponse): MsgVoteWeightedResponseAminoMsg {
+  toAminoMsg(
+    message: MsgVoteWeightedResponse
+  ): MsgVoteWeightedResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgVoteWeightedResponse",
-      value: MsgVoteWeightedResponse.toAmino(message)
+      type: 'cosmos-sdk/MsgVoteWeightedResponse',
+      value: MsgVoteWeightedResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgVoteWeightedResponseProtoMsg): MsgVoteWeightedResponse {
+  fromProtoMsg(
+    message: MsgVoteWeightedResponseProtoMsg
+  ): MsgVoteWeightedResponse {
     return MsgVoteWeightedResponse.decode(message.value);
   },
   toProto(message: MsgVoteWeightedResponse): Uint8Array {
     return MsgVoteWeightedResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgVoteWeightedResponse): MsgVoteWeightedResponseProtoMsg {
+  toProtoMsg(
+    message: MsgVoteWeightedResponse
+  ): MsgVoteWeightedResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeightedResponse",
-      value: MsgVoteWeightedResponse.encode(message).finish()
+      typeUrl: '/cosmos.gov.v1beta1.MsgVoteWeightedResponse',
+      value: MsgVoteWeightedResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgDeposit(): MsgDeposit {
   return {
     proposalId: BigInt(0),
-    depositor: "",
-    amount: []
+    depositor: '',
+    amount: [],
   };
 }
 export const MsgDeposit = {
-  typeUrl: "/cosmos.gov.v1beta1.MsgDeposit",
-  encode(message: MsgDeposit, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.gov.v1beta1.MsgDeposit',
+  encode(
+    message: MsgDeposit,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.proposalId !== BigInt(0)) {
       writer.uint32(8).uint64(message.proposalId);
     }
-    if (message.depositor !== "") {
+    if (message.depositor !== '') {
       writer.uint32(18).string(message.depositor);
     }
     for (const v of message.amount) {
@@ -722,7 +943,8 @@ export const MsgDeposit = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgDeposit {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgDeposit();
     while (reader.pos < end) {
@@ -746,9 +968,12 @@ export const MsgDeposit = {
   },
   fromPartial(object: Partial<MsgDeposit>): MsgDeposit {
     const message = createBaseMsgDeposit();
-    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? BigInt(object.proposalId.toString()) : BigInt(0);
-    message.depositor = object.depositor ?? "";
-    message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
+    message.proposalId =
+      object.proposalId !== undefined && object.proposalId !== null
+        ? BigInt(object.proposalId.toString())
+        : BigInt(0);
+    message.depositor = object.depositor ?? '';
+    message.amount = object.amount?.map((e) => Coin.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: MsgDepositAmino): MsgDeposit {
@@ -759,15 +984,15 @@ export const MsgDeposit = {
     if (object.depositor !== undefined && object.depositor !== null) {
       message.depositor = object.depositor;
     }
-    message.amount = object.amount?.map(e => Coin.fromAmino(e)) || [];
+    message.amount = object.amount?.map((e) => Coin.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: MsgDeposit): MsgDepositAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? message.proposalId?.toString() : "0";
-    obj.depositor = message.depositor === "" ? undefined : message.depositor;
+    obj.proposal_id = message.proposalId ? message.proposalId?.toString() : '0';
+    obj.depositor = message.depositor === '' ? undefined : message.depositor;
     if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toAmino(e) : undefined);
+      obj.amount = message.amount.map((e) => (e ? Coin.toAmino(e) : undefined));
     } else {
       obj.amount = message.amount;
     }
@@ -778,8 +1003,8 @@ export const MsgDeposit = {
   },
   toAminoMsg(message: MsgDeposit): MsgDepositAminoMsg {
     return {
-      type: "cosmos-sdk/MsgDeposit",
-      value: MsgDeposit.toAmino(message)
+      type: 'cosmos-sdk/MsgDeposit',
+      value: MsgDeposit.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgDepositProtoMsg): MsgDeposit {
@@ -790,21 +1015,28 @@ export const MsgDeposit = {
   },
   toProtoMsg(message: MsgDeposit): MsgDepositProtoMsg {
     return {
-      typeUrl: "/cosmos.gov.v1beta1.MsgDeposit",
-      value: MsgDeposit.encode(message).finish()
+      typeUrl: '/cosmos.gov.v1beta1.MsgDeposit',
+      value: MsgDeposit.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgDepositResponse(): MsgDepositResponse {
   return {};
 }
 export const MsgDepositResponse = {
-  typeUrl: "/cosmos.gov.v1beta1.MsgDepositResponse",
-  encode(_: MsgDepositResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.gov.v1beta1.MsgDepositResponse',
+  encode(
+    _: MsgDepositResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgDepositResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgDepositResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgDepositResponse();
     while (reader.pos < end) {
@@ -834,8 +1066,8 @@ export const MsgDepositResponse = {
   },
   toAminoMsg(message: MsgDepositResponse): MsgDepositResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgDepositResponse",
-      value: MsgDepositResponse.toAmino(message)
+      type: 'cosmos-sdk/MsgDepositResponse',
+      value: MsgDepositResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgDepositResponseProtoMsg): MsgDepositResponse {
@@ -846,54 +1078,78 @@ export const MsgDepositResponse = {
   },
   toProtoMsg(message: MsgDepositResponse): MsgDepositResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.gov.v1beta1.MsgDepositResponse",
-      value: MsgDepositResponse.encode(message).finish()
+      typeUrl: '/cosmos.gov.v1beta1.MsgDepositResponse',
+      value: MsgDepositResponse.encode(message).finish(),
     };
-  }
+  },
 };
-export const Cosmos_govv1beta1Content_InterfaceDecoder = (input: BinaryReader | Uint8Array): CommunityPoolSpendProposal | CommunityPoolSpendProposalWithDeposit | TextProposal | ParameterChangeProposal | SoftwareUpgradeProposal | CancelSoftwareUpgradeProposal | StoreCodeProposal | InstantiateContractProposal | InstantiateContract2Proposal | MigrateContractProposal | SudoContractProposal | ExecuteContractProposal | UpdateAdminProposal | ClearAdminProposal | PinCodesProposal | UnpinCodesProposal | UpdateInstantiateConfigProposal | StoreAndInstantiateContractProposal | ClientUpdateProposal | UpgradeProposal | Any => {
-  const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+export const Cosmos_govv1beta1Content_InterfaceDecoder = (
+  input: BinaryReader | Uint8Array
+):
+  | CommunityPoolSpendProposal
+  | CommunityPoolSpendProposalWithDeposit
+  | TextProposal
+  | ParameterChangeProposal
+  | SoftwareUpgradeProposal
+  | CancelSoftwareUpgradeProposal
+  | StoreCodeProposal
+  | InstantiateContractProposal
+  | InstantiateContract2Proposal
+  | MigrateContractProposal
+  | SudoContractProposal
+  | ExecuteContractProposal
+  | UpdateAdminProposal
+  | ClearAdminProposal
+  | PinCodesProposal
+  | UnpinCodesProposal
+  | UpdateInstantiateConfigProposal
+  | StoreAndInstantiateContractProposal
+  | ClientUpdateProposal
+  | UpgradeProposal
+  | Any => {
+  const reader =
+    input instanceof BinaryReader ? input : new BinaryReader(input);
   const data = Any.decode(reader, reader.uint32());
   switch (data.typeUrl) {
-    case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal":
+    case '/cosmos.distribution.v1beta1.CommunityPoolSpendProposal':
       return CommunityPoolSpendProposal.decode(data.value);
-    case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit":
+    case '/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit':
       return CommunityPoolSpendProposalWithDeposit.decode(data.value);
-    case "/cosmos.gov.v1beta1.TextProposal":
+    case '/cosmos.gov.v1beta1.TextProposal':
       return TextProposal.decode(data.value);
-    case "/cosmos.params.v1beta1.ParameterChangeProposal":
+    case '/cosmos.params.v1beta1.ParameterChangeProposal':
       return ParameterChangeProposal.decode(data.value);
-    case "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal":
+    case '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal':
       return SoftwareUpgradeProposal.decode(data.value);
-    case "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal":
+    case '/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal':
       return CancelSoftwareUpgradeProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.StoreCodeProposal":
+    case '/cosmwasm.wasm.v1.StoreCodeProposal':
       return StoreCodeProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.InstantiateContractProposal":
+    case '/cosmwasm.wasm.v1.InstantiateContractProposal':
       return InstantiateContractProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.InstantiateContract2Proposal":
+    case '/cosmwasm.wasm.v1.InstantiateContract2Proposal':
       return InstantiateContract2Proposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.MigrateContractProposal":
+    case '/cosmwasm.wasm.v1.MigrateContractProposal':
       return MigrateContractProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.SudoContractProposal":
+    case '/cosmwasm.wasm.v1.SudoContractProposal':
       return SudoContractProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.ExecuteContractProposal":
+    case '/cosmwasm.wasm.v1.ExecuteContractProposal':
       return ExecuteContractProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.UpdateAdminProposal":
+    case '/cosmwasm.wasm.v1.UpdateAdminProposal':
       return UpdateAdminProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.ClearAdminProposal":
+    case '/cosmwasm.wasm.v1.ClearAdminProposal':
       return ClearAdminProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.PinCodesProposal":
+    case '/cosmwasm.wasm.v1.PinCodesProposal':
       return PinCodesProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.UnpinCodesProposal":
+    case '/cosmwasm.wasm.v1.UnpinCodesProposal':
       return UnpinCodesProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal":
+    case '/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal':
       return UpdateInstantiateConfigProposal.decode(data.value);
-    case "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal":
+    case '/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal':
       return StoreAndInstantiateContractProposal.decode(data.value);
-    case "/ibc.core.client.v1.ClientUpdateProposal":
+    case '/ibc.core.client.v1.ClientUpdateProposal':
       return ClientUpdateProposal.decode(data.value);
-    case "/ibc.core.client.v1.UpgradeProposal":
+    case '/ibc.core.client.v1.UpgradeProposal':
       return UpgradeProposal.decode(data.value);
     default:
       return data;
@@ -901,105 +1157,182 @@ export const Cosmos_govv1beta1Content_InterfaceDecoder = (input: BinaryReader | 
 };
 export const Cosmos_govv1beta1Content_FromAmino = (content: AnyAmino): Any => {
   switch (content.type) {
-    case "cosmos-sdk/CommunityPoolSpendProposal":
+    case 'cosmos-sdk/CommunityPoolSpendProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal",
-        value: CommunityPoolSpendProposal.encode(CommunityPoolSpendProposal.fromPartial(CommunityPoolSpendProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmos.distribution.v1beta1.CommunityPoolSpendProposal',
+        value: CommunityPoolSpendProposal.encode(
+          CommunityPoolSpendProposal.fromPartial(
+            CommunityPoolSpendProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "cosmos-sdk/CommunityPoolSpendProposalWithDeposit":
+    case 'cosmos-sdk/CommunityPoolSpendProposalWithDeposit':
       return Any.fromPartial({
-        typeUrl: "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit",
-        value: CommunityPoolSpendProposalWithDeposit.encode(CommunityPoolSpendProposalWithDeposit.fromPartial(CommunityPoolSpendProposalWithDeposit.fromAmino(content.value))).finish()
+        typeUrl:
+          '/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit',
+        value: CommunityPoolSpendProposalWithDeposit.encode(
+          CommunityPoolSpendProposalWithDeposit.fromPartial(
+            CommunityPoolSpendProposalWithDeposit.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "cosmos-sdk/TextProposal":
+    case 'cosmos-sdk/TextProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmos.gov.v1beta1.TextProposal",
-        value: TextProposal.encode(TextProposal.fromPartial(TextProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmos.gov.v1beta1.TextProposal',
+        value: TextProposal.encode(
+          TextProposal.fromPartial(TextProposal.fromAmino(content.value))
+        ).finish(),
       });
-    case "cosmos-sdk/ParameterChangeProposal":
+    case 'cosmos-sdk/ParameterChangeProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmos.params.v1beta1.ParameterChangeProposal",
-        value: ParameterChangeProposal.encode(ParameterChangeProposal.fromPartial(ParameterChangeProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmos.params.v1beta1.ParameterChangeProposal',
+        value: ParameterChangeProposal.encode(
+          ParameterChangeProposal.fromPartial(
+            ParameterChangeProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "cosmos-sdk/SoftwareUpgradeProposal":
+    case 'cosmos-sdk/SoftwareUpgradeProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
-        value: SoftwareUpgradeProposal.encode(SoftwareUpgradeProposal.fromPartial(SoftwareUpgradeProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal',
+        value: SoftwareUpgradeProposal.encode(
+          SoftwareUpgradeProposal.fromPartial(
+            SoftwareUpgradeProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "cosmos-sdk/CancelSoftwareUpgradeProposal":
+    case 'cosmos-sdk/CancelSoftwareUpgradeProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal",
-        value: CancelSoftwareUpgradeProposal.encode(CancelSoftwareUpgradeProposal.fromPartial(CancelSoftwareUpgradeProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal',
+        value: CancelSoftwareUpgradeProposal.encode(
+          CancelSoftwareUpgradeProposal.fromPartial(
+            CancelSoftwareUpgradeProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "wasm/StoreCodeProposal":
+    case 'wasm/StoreCodeProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.StoreCodeProposal",
-        value: StoreCodeProposal.encode(StoreCodeProposal.fromPartial(StoreCodeProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmwasm.wasm.v1.StoreCodeProposal',
+        value: StoreCodeProposal.encode(
+          StoreCodeProposal.fromPartial(
+            StoreCodeProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "wasm/InstantiateContractProposal":
+    case 'wasm/InstantiateContractProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.InstantiateContractProposal",
-        value: InstantiateContractProposal.encode(InstantiateContractProposal.fromPartial(InstantiateContractProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmwasm.wasm.v1.InstantiateContractProposal',
+        value: InstantiateContractProposal.encode(
+          InstantiateContractProposal.fromPartial(
+            InstantiateContractProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "wasm/InstantiateContract2Proposal":
+    case 'wasm/InstantiateContract2Proposal':
       return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.InstantiateContract2Proposal",
-        value: InstantiateContract2Proposal.encode(InstantiateContract2Proposal.fromPartial(InstantiateContract2Proposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmwasm.wasm.v1.InstantiateContract2Proposal',
+        value: InstantiateContract2Proposal.encode(
+          InstantiateContract2Proposal.fromPartial(
+            InstantiateContract2Proposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "wasm/MigrateContractProposal":
+    case 'wasm/MigrateContractProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.MigrateContractProposal",
-        value: MigrateContractProposal.encode(MigrateContractProposal.fromPartial(MigrateContractProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmwasm.wasm.v1.MigrateContractProposal',
+        value: MigrateContractProposal.encode(
+          MigrateContractProposal.fromPartial(
+            MigrateContractProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "wasm/SudoContractProposal":
+    case 'wasm/SudoContractProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.SudoContractProposal",
-        value: SudoContractProposal.encode(SudoContractProposal.fromPartial(SudoContractProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmwasm.wasm.v1.SudoContractProposal',
+        value: SudoContractProposal.encode(
+          SudoContractProposal.fromPartial(
+            SudoContractProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "wasm/ExecuteContractProposal":
+    case 'wasm/ExecuteContractProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.ExecuteContractProposal",
-        value: ExecuteContractProposal.encode(ExecuteContractProposal.fromPartial(ExecuteContractProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmwasm.wasm.v1.ExecuteContractProposal',
+        value: ExecuteContractProposal.encode(
+          ExecuteContractProposal.fromPartial(
+            ExecuteContractProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "wasm/UpdateAdminProposal":
+    case 'wasm/UpdateAdminProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.UpdateAdminProposal",
-        value: UpdateAdminProposal.encode(UpdateAdminProposal.fromPartial(UpdateAdminProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmwasm.wasm.v1.UpdateAdminProposal',
+        value: UpdateAdminProposal.encode(
+          UpdateAdminProposal.fromPartial(
+            UpdateAdminProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "wasm/ClearAdminProposal":
+    case 'wasm/ClearAdminProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.ClearAdminProposal",
-        value: ClearAdminProposal.encode(ClearAdminProposal.fromPartial(ClearAdminProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmwasm.wasm.v1.ClearAdminProposal',
+        value: ClearAdminProposal.encode(
+          ClearAdminProposal.fromPartial(
+            ClearAdminProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "wasm/PinCodesProposal":
+    case 'wasm/PinCodesProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.PinCodesProposal",
-        value: PinCodesProposal.encode(PinCodesProposal.fromPartial(PinCodesProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmwasm.wasm.v1.PinCodesProposal',
+        value: PinCodesProposal.encode(
+          PinCodesProposal.fromPartial(
+            PinCodesProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "wasm/UnpinCodesProposal":
+    case 'wasm/UnpinCodesProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.UnpinCodesProposal",
-        value: UnpinCodesProposal.encode(UnpinCodesProposal.fromPartial(UnpinCodesProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmwasm.wasm.v1.UnpinCodesProposal',
+        value: UnpinCodesProposal.encode(
+          UnpinCodesProposal.fromPartial(
+            UnpinCodesProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "wasm/UpdateInstantiateConfigProposal":
+    case 'wasm/UpdateInstantiateConfigProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal",
-        value: UpdateInstantiateConfigProposal.encode(UpdateInstantiateConfigProposal.fromPartial(UpdateInstantiateConfigProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal',
+        value: UpdateInstantiateConfigProposal.encode(
+          UpdateInstantiateConfigProposal.fromPartial(
+            UpdateInstantiateConfigProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "wasm/StoreAndInstantiateContractProposal":
+    case 'wasm/StoreAndInstantiateContractProposal':
       return Any.fromPartial({
-        typeUrl: "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal",
-        value: StoreAndInstantiateContractProposal.encode(StoreAndInstantiateContractProposal.fromPartial(StoreAndInstantiateContractProposal.fromAmino(content.value))).finish()
+        typeUrl: '/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal',
+        value: StoreAndInstantiateContractProposal.encode(
+          StoreAndInstantiateContractProposal.fromPartial(
+            StoreAndInstantiateContractProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "cosmos-sdk/ClientUpdateProposal":
+    case 'cosmos-sdk/ClientUpdateProposal':
       return Any.fromPartial({
-        typeUrl: "/ibc.core.client.v1.ClientUpdateProposal",
-        value: ClientUpdateProposal.encode(ClientUpdateProposal.fromPartial(ClientUpdateProposal.fromAmino(content.value))).finish()
+        typeUrl: '/ibc.core.client.v1.ClientUpdateProposal',
+        value: ClientUpdateProposal.encode(
+          ClientUpdateProposal.fromPartial(
+            ClientUpdateProposal.fromAmino(content.value)
+          )
+        ).finish(),
       });
-    case "cosmos-sdk/UpgradeProposal":
+    case 'cosmos-sdk/UpgradeProposal':
       return Any.fromPartial({
-        typeUrl: "/ibc.core.client.v1.UpgradeProposal",
-        value: UpgradeProposal.encode(UpgradeProposal.fromPartial(UpgradeProposal.fromAmino(content.value))).finish()
+        typeUrl: '/ibc.core.client.v1.UpgradeProposal',
+        value: UpgradeProposal.encode(
+          UpgradeProposal.fromPartial(UpgradeProposal.fromAmino(content.value))
+        ).finish(),
       });
     default:
       return Any.fromAmino(content);
@@ -1007,105 +1340,145 @@ export const Cosmos_govv1beta1Content_FromAmino = (content: AnyAmino): Any => {
 };
 export const Cosmos_govv1beta1Content_ToAmino = (content: Any) => {
   switch (content.typeUrl) {
-    case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal":
+    case '/cosmos.distribution.v1beta1.CommunityPoolSpendProposal':
       return {
-        type: "cosmos-sdk/CommunityPoolSpendProposal",
-        value: CommunityPoolSpendProposal.toAmino(CommunityPoolSpendProposal.decode(content.value, undefined))
+        type: 'cosmos-sdk/CommunityPoolSpendProposal',
+        value: CommunityPoolSpendProposal.toAmino(
+          CommunityPoolSpendProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit":
+    case '/cosmos.distribution.v1beta1.CommunityPoolSpendProposalWithDeposit':
       return {
-        type: "cosmos-sdk/CommunityPoolSpendProposalWithDeposit",
-        value: CommunityPoolSpendProposalWithDeposit.toAmino(CommunityPoolSpendProposalWithDeposit.decode(content.value, undefined))
+        type: 'cosmos-sdk/CommunityPoolSpendProposalWithDeposit',
+        value: CommunityPoolSpendProposalWithDeposit.toAmino(
+          CommunityPoolSpendProposalWithDeposit.decode(content.value, undefined)
+        ),
       };
-    case "/cosmos.gov.v1beta1.TextProposal":
+    case '/cosmos.gov.v1beta1.TextProposal':
       return {
-        type: "cosmos-sdk/TextProposal",
-        value: TextProposal.toAmino(TextProposal.decode(content.value, undefined))
+        type: 'cosmos-sdk/TextProposal',
+        value: TextProposal.toAmino(
+          TextProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmos.params.v1beta1.ParameterChangeProposal":
+    case '/cosmos.params.v1beta1.ParameterChangeProposal':
       return {
-        type: "cosmos-sdk/ParameterChangeProposal",
-        value: ParameterChangeProposal.toAmino(ParameterChangeProposal.decode(content.value, undefined))
+        type: 'cosmos-sdk/ParameterChangeProposal',
+        value: ParameterChangeProposal.toAmino(
+          ParameterChangeProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal":
+    case '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal':
       return {
-        type: "cosmos-sdk/SoftwareUpgradeProposal",
-        value: SoftwareUpgradeProposal.toAmino(SoftwareUpgradeProposal.decode(content.value, undefined))
+        type: 'cosmos-sdk/SoftwareUpgradeProposal',
+        value: SoftwareUpgradeProposal.toAmino(
+          SoftwareUpgradeProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal":
+    case '/cosmos.upgrade.v1beta1.CancelSoftwareUpgradeProposal':
       return {
-        type: "cosmos-sdk/CancelSoftwareUpgradeProposal",
-        value: CancelSoftwareUpgradeProposal.toAmino(CancelSoftwareUpgradeProposal.decode(content.value, undefined))
+        type: 'cosmos-sdk/CancelSoftwareUpgradeProposal',
+        value: CancelSoftwareUpgradeProposal.toAmino(
+          CancelSoftwareUpgradeProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmwasm.wasm.v1.StoreCodeProposal":
+    case '/cosmwasm.wasm.v1.StoreCodeProposal':
       return {
-        type: "wasm/StoreCodeProposal",
-        value: StoreCodeProposal.toAmino(StoreCodeProposal.decode(content.value, undefined))
+        type: 'wasm/StoreCodeProposal',
+        value: StoreCodeProposal.toAmino(
+          StoreCodeProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmwasm.wasm.v1.InstantiateContractProposal":
+    case '/cosmwasm.wasm.v1.InstantiateContractProposal':
       return {
-        type: "wasm/InstantiateContractProposal",
-        value: InstantiateContractProposal.toAmino(InstantiateContractProposal.decode(content.value, undefined))
+        type: 'wasm/InstantiateContractProposal',
+        value: InstantiateContractProposal.toAmino(
+          InstantiateContractProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmwasm.wasm.v1.InstantiateContract2Proposal":
+    case '/cosmwasm.wasm.v1.InstantiateContract2Proposal':
       return {
-        type: "wasm/InstantiateContract2Proposal",
-        value: InstantiateContract2Proposal.toAmino(InstantiateContract2Proposal.decode(content.value, undefined))
+        type: 'wasm/InstantiateContract2Proposal',
+        value: InstantiateContract2Proposal.toAmino(
+          InstantiateContract2Proposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmwasm.wasm.v1.MigrateContractProposal":
+    case '/cosmwasm.wasm.v1.MigrateContractProposal':
       return {
-        type: "wasm/MigrateContractProposal",
-        value: MigrateContractProposal.toAmino(MigrateContractProposal.decode(content.value, undefined))
+        type: 'wasm/MigrateContractProposal',
+        value: MigrateContractProposal.toAmino(
+          MigrateContractProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmwasm.wasm.v1.SudoContractProposal":
+    case '/cosmwasm.wasm.v1.SudoContractProposal':
       return {
-        type: "wasm/SudoContractProposal",
-        value: SudoContractProposal.toAmino(SudoContractProposal.decode(content.value, undefined))
+        type: 'wasm/SudoContractProposal',
+        value: SudoContractProposal.toAmino(
+          SudoContractProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmwasm.wasm.v1.ExecuteContractProposal":
+    case '/cosmwasm.wasm.v1.ExecuteContractProposal':
       return {
-        type: "wasm/ExecuteContractProposal",
-        value: ExecuteContractProposal.toAmino(ExecuteContractProposal.decode(content.value, undefined))
+        type: 'wasm/ExecuteContractProposal',
+        value: ExecuteContractProposal.toAmino(
+          ExecuteContractProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmwasm.wasm.v1.UpdateAdminProposal":
+    case '/cosmwasm.wasm.v1.UpdateAdminProposal':
       return {
-        type: "wasm/UpdateAdminProposal",
-        value: UpdateAdminProposal.toAmino(UpdateAdminProposal.decode(content.value, undefined))
+        type: 'wasm/UpdateAdminProposal',
+        value: UpdateAdminProposal.toAmino(
+          UpdateAdminProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmwasm.wasm.v1.ClearAdminProposal":
+    case '/cosmwasm.wasm.v1.ClearAdminProposal':
       return {
-        type: "wasm/ClearAdminProposal",
-        value: ClearAdminProposal.toAmino(ClearAdminProposal.decode(content.value, undefined))
+        type: 'wasm/ClearAdminProposal',
+        value: ClearAdminProposal.toAmino(
+          ClearAdminProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmwasm.wasm.v1.PinCodesProposal":
+    case '/cosmwasm.wasm.v1.PinCodesProposal':
       return {
-        type: "wasm/PinCodesProposal",
-        value: PinCodesProposal.toAmino(PinCodesProposal.decode(content.value, undefined))
+        type: 'wasm/PinCodesProposal',
+        value: PinCodesProposal.toAmino(
+          PinCodesProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmwasm.wasm.v1.UnpinCodesProposal":
+    case '/cosmwasm.wasm.v1.UnpinCodesProposal':
       return {
-        type: "wasm/UnpinCodesProposal",
-        value: UnpinCodesProposal.toAmino(UnpinCodesProposal.decode(content.value, undefined))
+        type: 'wasm/UnpinCodesProposal',
+        value: UnpinCodesProposal.toAmino(
+          UnpinCodesProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal":
+    case '/cosmwasm.wasm.v1.UpdateInstantiateConfigProposal':
       return {
-        type: "wasm/UpdateInstantiateConfigProposal",
-        value: UpdateInstantiateConfigProposal.toAmino(UpdateInstantiateConfigProposal.decode(content.value, undefined))
+        type: 'wasm/UpdateInstantiateConfigProposal',
+        value: UpdateInstantiateConfigProposal.toAmino(
+          UpdateInstantiateConfigProposal.decode(content.value, undefined)
+        ),
       };
-    case "/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal":
+    case '/cosmwasm.wasm.v1.StoreAndInstantiateContractProposal':
       return {
-        type: "wasm/StoreAndInstantiateContractProposal",
-        value: StoreAndInstantiateContractProposal.toAmino(StoreAndInstantiateContractProposal.decode(content.value, undefined))
+        type: 'wasm/StoreAndInstantiateContractProposal',
+        value: StoreAndInstantiateContractProposal.toAmino(
+          StoreAndInstantiateContractProposal.decode(content.value, undefined)
+        ),
       };
-    case "/ibc.core.client.v1.ClientUpdateProposal":
+    case '/ibc.core.client.v1.ClientUpdateProposal':
       return {
-        type: "cosmos-sdk/ClientUpdateProposal",
-        value: ClientUpdateProposal.toAmino(ClientUpdateProposal.decode(content.value, undefined))
+        type: 'cosmos-sdk/ClientUpdateProposal',
+        value: ClientUpdateProposal.toAmino(
+          ClientUpdateProposal.decode(content.value, undefined)
+        ),
       };
-    case "/ibc.core.client.v1.UpgradeProposal":
+    case '/ibc.core.client.v1.UpgradeProposal':
       return {
-        type: "cosmos-sdk/UpgradeProposal",
-        value: UpgradeProposal.toAmino(UpgradeProposal.decode(content.value, undefined))
+        type: 'cosmos-sdk/UpgradeProposal',
+        value: UpgradeProposal.toAmino(
+          UpgradeProposal.decode(content.value, undefined)
+        ),
       };
     default:
       return Any.toAmino(content);

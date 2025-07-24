@@ -1,6 +1,6 @@
-import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { RwaClient } from "./client";
-import { DeliverTxResponse } from "@cosmjs/stargate";
+import { DeliverTxResponse } from '@cosmjs/stargate';
+
+import { RwaClient } from './client';
 
 export interface TransferMessageRequest {
   from: string;
@@ -31,7 +31,9 @@ export class TokenModule {
    * @param request - A TransferMessageRequest containing transfer details
    * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
-  public async transfer(request: TransferMessageRequest): Promise<DeliverTxResponse> {
+  public async transfer(
+    request: TransferMessageRequest
+  ): Promise<DeliverTxResponse> {
     const msg = {
       transfer: {
         recipient: request.to,
@@ -53,7 +55,9 @@ export class TokenModule {
    * @param request - A TokenInfoRequest containing the address to query
    * @returns Promise<{ balance: number }> - The balance of the address
    */
-  public async balance(request: TokenInfoRequest): Promise<{ balance: number }> {
+  public async balance(
+    request: TokenInfoRequest
+  ): Promise<{ balance: number }> {
     const queryMsg = {
       balance: {
         address: request.address,
@@ -73,19 +77,19 @@ export class TokenModule {
    */
   public async tokenInfo(): Promise<TokenInfo> {
     const queryMsg = { token_info: {} };
-    
+
     const result = await this.rwaClient.query<{
       name: string;
       symbol: string;
       decimals: number;
       total_supply: string;
     }>(this.tokenAddress, queryMsg);
-    
+
     return {
-      name: result.name || "",
-      symbol: result.symbol || "",
+      name: result.name || '',
+      symbol: result.symbol || '',
       decimals: result.decimals || 0,
-      total_supply: result.total_supply || "0",
+      total_supply: result.total_supply || '0',
     };
   }
 
@@ -95,7 +99,10 @@ export class TokenModule {
    * @param spender - The spender address
    * @returns Promise<{ allowance: number }> - The allowance amount
    */
-  public async allowance(owner: string, spender: string): Promise<{ allowance: number }> {
+  public async allowance(
+    owner: string,
+    spender: string
+  ): Promise<{ allowance: number }> {
     const queryMsg = {
       allowance: {
         owner,

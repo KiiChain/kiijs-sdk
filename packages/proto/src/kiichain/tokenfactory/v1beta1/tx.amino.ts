@@ -1,39 +1,47 @@
 //@ts-nocheck
-import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata, MsgForceTransfer, MsgUpdateParams } from "./tx";
+import {
+  MsgBurn,
+  MsgChangeAdmin,
+  MsgCreateDenom,
+  MsgForceTransfer,
+  MsgMint,
+  MsgSetDenomMetadata,
+  MsgUpdateParams,
+} from './tx';
 export const AminoConverter = {
-  "/kiichain.tokenfactory.v1beta1.MsgCreateDenom": {
-    aminoType: "tokenfactory/create-denom",
+  '/kiichain.tokenfactory.v1beta1.MsgCreateDenom': {
+    aminoType: 'tokenfactory/create-denom',
     toAmino: MsgCreateDenom.toAmino,
-    fromAmino: MsgCreateDenom.fromAmino
+    fromAmino: MsgCreateDenom.fromAmino,
   },
-  "/kiichain.tokenfactory.v1beta1.MsgMint": {
-    aminoType: "tokenfactory/mint",
+  '/kiichain.tokenfactory.v1beta1.MsgMint': {
+    aminoType: 'tokenfactory/mint',
     toAmino: MsgMint.toAmino,
-    fromAmino: MsgMint.fromAmino
+    fromAmino: MsgMint.fromAmino,
   },
-  "/kiichain.tokenfactory.v1beta1.MsgBurn": {
-    aminoType: "tokenfactory/burn",
+  '/kiichain.tokenfactory.v1beta1.MsgBurn': {
+    aminoType: 'tokenfactory/burn',
     toAmino: MsgBurn.toAmino,
-    fromAmino: MsgBurn.fromAmino
+    fromAmino: MsgBurn.fromAmino,
   },
-  "/kiichain.tokenfactory.v1beta1.MsgChangeAdmin": {
-    aminoType: "tokenfactory/change-admin",
+  '/kiichain.tokenfactory.v1beta1.MsgChangeAdmin': {
+    aminoType: 'tokenfactory/change-admin',
     toAmino: MsgChangeAdmin.toAmino,
-    fromAmino: MsgChangeAdmin.fromAmino
+    fromAmino: MsgChangeAdmin.fromAmino,
   },
-  "/kiichain.tokenfactory.v1beta1.MsgSetDenomMetadata": {
-    aminoType: "tokenfactory/set-denom-metadata",
+  '/kiichain.tokenfactory.v1beta1.MsgSetDenomMetadata': {
+    aminoType: 'tokenfactory/set-denom-metadata',
     toAmino: MsgSetDenomMetadata.toAmino,
-    fromAmino: MsgSetDenomMetadata.fromAmino
+    fromAmino: MsgSetDenomMetadata.fromAmino,
   },
-  "/kiichain.tokenfactory.v1beta1.MsgForceTransfer": {
-    aminoType: "tokenfactory/force-transfer",
+  '/kiichain.tokenfactory.v1beta1.MsgForceTransfer': {
+    aminoType: 'tokenfactory/force-transfer',
     toAmino: MsgForceTransfer.toAmino,
-    fromAmino: MsgForceTransfer.fromAmino
+    fromAmino: MsgForceTransfer.fromAmino,
   },
-  "/kiichain.tokenfactory.v1beta1.MsgUpdateParams": {
-    aminoType: "tokenfactory/update-params",
+  '/kiichain.tokenfactory.v1beta1.MsgUpdateParams': {
+    aminoType: 'tokenfactory/update-params',
     toAmino: MsgUpdateParams.toAmino,
-    fromAmino: MsgUpdateParams.fromAmino
-  }
+    fromAmino: MsgUpdateParams.fromAmino,
+  },
 };

@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
 /** EventEthereumTx defines the event for an Ethereum transaction */
 export interface EventEthereumTx {
   /** amount */
@@ -18,7 +18,7 @@ export interface EventEthereumTx {
   ethTxFailed: string;
 }
 export interface EventEthereumTxProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.EventEthereumTx";
+  typeUrl: '/cosmos.evm.vm.v1.EventEthereumTx';
   value: Uint8Array;
 }
 /** EventEthereumTx defines the event for an Ethereum transaction */
@@ -39,7 +39,7 @@ export interface EventEthereumTxAmino {
   eth_tx_failed?: string;
 }
 export interface EventEthereumTxAminoMsg {
-  type: "cosmos-sdk/EventEthereumTx";
+  type: 'cosmos-sdk/EventEthereumTx';
   value: EventEthereumTxAmino;
 }
 /** EventEthereumTx defines the event for an Ethereum transaction */
@@ -58,7 +58,7 @@ export interface EventTxLog {
   txLogs: string[];
 }
 export interface EventTxLogProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.EventTxLog";
+  typeUrl: '/cosmos.evm.vm.v1.EventTxLog';
   value: Uint8Array;
 }
 /** EventTxLog defines the event for an Ethereum transaction log */
@@ -67,7 +67,7 @@ export interface EventTxLogAmino {
   tx_logs?: string[];
 }
 export interface EventTxLogAminoMsg {
-  type: "cosmos-sdk/EventTxLog";
+  type: 'cosmos-sdk/EventTxLog';
   value: EventTxLogAmino;
 }
 /** EventTxLog defines the event for an Ethereum transaction log */
@@ -84,7 +84,7 @@ export interface EventMessage {
   txType: string;
 }
 export interface EventMessageProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.EventMessage";
+  typeUrl: '/cosmos.evm.vm.v1.EventMessage';
   value: Uint8Array;
 }
 /** EventMessage */
@@ -97,7 +97,7 @@ export interface EventMessageAmino {
   tx_type?: string;
 }
 export interface EventMessageAminoMsg {
-  type: "cosmos-sdk/EventMessage";
+  type: 'cosmos-sdk/EventMessage';
   value: EventMessageAmino;
 }
 /** EventMessage */
@@ -112,7 +112,7 @@ export interface EventBlockBloom {
   bloom: string;
 }
 export interface EventBlockBloomProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.EventBlockBloom";
+  typeUrl: '/cosmos.evm.vm.v1.EventBlockBloom';
   value: Uint8Array;
 }
 /** EventBlockBloom defines an Ethereum block bloom filter event */
@@ -121,7 +121,7 @@ export interface EventBlockBloomAmino {
   bloom?: string;
 }
 export interface EventBlockBloomAminoMsg {
-  type: "cosmos-sdk/EventBlockBloom";
+  type: 'cosmos-sdk/EventBlockBloom';
   value: EventBlockBloomAmino;
 }
 /** EventBlockBloom defines an Ethereum block bloom filter event */
@@ -130,43 +130,47 @@ export interface EventBlockBloomSDKType {
 }
 function createBaseEventEthereumTx(): EventEthereumTx {
   return {
-    amount: "",
-    ethHash: "",
-    index: "",
-    gasUsed: "",
-    hash: "",
-    recipient: "",
-    ethTxFailed: ""
+    amount: '',
+    ethHash: '',
+    index: '',
+    gasUsed: '',
+    hash: '',
+    recipient: '',
+    ethTxFailed: '',
   };
 }
 export const EventEthereumTx = {
-  typeUrl: "/cosmos.evm.vm.v1.EventEthereumTx",
-  encode(message: EventEthereumTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.amount !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.EventEthereumTx',
+  encode(
+    message: EventEthereumTx,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.amount !== '') {
       writer.uint32(10).string(message.amount);
     }
-    if (message.ethHash !== "") {
+    if (message.ethHash !== '') {
       writer.uint32(18).string(message.ethHash);
     }
-    if (message.index !== "") {
+    if (message.index !== '') {
       writer.uint32(26).string(message.index);
     }
-    if (message.gasUsed !== "") {
+    if (message.gasUsed !== '') {
       writer.uint32(34).string(message.gasUsed);
     }
-    if (message.hash !== "") {
+    if (message.hash !== '') {
       writer.uint32(42).string(message.hash);
     }
-    if (message.recipient !== "") {
+    if (message.recipient !== '') {
       writer.uint32(50).string(message.recipient);
     }
-    if (message.ethTxFailed !== "") {
+    if (message.ethTxFailed !== '') {
       writer.uint32(58).string(message.ethTxFailed);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): EventEthereumTx {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEventEthereumTx();
     while (reader.pos < end) {
@@ -202,13 +206,13 @@ export const EventEthereumTx = {
   },
   fromPartial(object: Partial<EventEthereumTx>): EventEthereumTx {
     const message = createBaseEventEthereumTx();
-    message.amount = object.amount ?? "";
-    message.ethHash = object.ethHash ?? "";
-    message.index = object.index ?? "";
-    message.gasUsed = object.gasUsed ?? "";
-    message.hash = object.hash ?? "";
-    message.recipient = object.recipient ?? "";
-    message.ethTxFailed = object.ethTxFailed ?? "";
+    message.amount = object.amount ?? '';
+    message.ethHash = object.ethHash ?? '';
+    message.index = object.index ?? '';
+    message.gasUsed = object.gasUsed ?? '';
+    message.hash = object.hash ?? '';
+    message.recipient = object.recipient ?? '';
+    message.ethTxFailed = object.ethTxFailed ?? '';
     return message;
   },
   fromAmino(object: EventEthereumTxAmino): EventEthereumTx {
@@ -238,13 +242,14 @@ export const EventEthereumTx = {
   },
   toAmino(message: EventEthereumTx): EventEthereumTxAmino {
     const obj: any = {};
-    obj.amount = message.amount === "" ? undefined : message.amount;
-    obj.eth_hash = message.ethHash === "" ? undefined : message.ethHash;
-    obj.index = message.index === "" ? undefined : message.index;
-    obj.gas_used = message.gasUsed === "" ? undefined : message.gasUsed;
-    obj.hash = message.hash === "" ? undefined : message.hash;
-    obj.recipient = message.recipient === "" ? undefined : message.recipient;
-    obj.eth_tx_failed = message.ethTxFailed === "" ? undefined : message.ethTxFailed;
+    obj.amount = message.amount === '' ? undefined : message.amount;
+    obj.eth_hash = message.ethHash === '' ? undefined : message.ethHash;
+    obj.index = message.index === '' ? undefined : message.index;
+    obj.gas_used = message.gasUsed === '' ? undefined : message.gasUsed;
+    obj.hash = message.hash === '' ? undefined : message.hash;
+    obj.recipient = message.recipient === '' ? undefined : message.recipient;
+    obj.eth_tx_failed =
+      message.ethTxFailed === '' ? undefined : message.ethTxFailed;
     return obj;
   },
   fromAminoMsg(object: EventEthereumTxAminoMsg): EventEthereumTx {
@@ -252,8 +257,8 @@ export const EventEthereumTx = {
   },
   toAminoMsg(message: EventEthereumTx): EventEthereumTxAminoMsg {
     return {
-      type: "cosmos-sdk/EventEthereumTx",
-      value: EventEthereumTx.toAmino(message)
+      type: 'cosmos-sdk/EventEthereumTx',
+      value: EventEthereumTx.toAmino(message),
     };
   },
   fromProtoMsg(message: EventEthereumTxProtoMsg): EventEthereumTx {
@@ -264,26 +269,30 @@ export const EventEthereumTx = {
   },
   toProtoMsg(message: EventEthereumTx): EventEthereumTxProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.EventEthereumTx",
-      value: EventEthereumTx.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.EventEthereumTx',
+      value: EventEthereumTx.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseEventTxLog(): EventTxLog {
   return {
-    txLogs: []
+    txLogs: [],
   };
 }
 export const EventTxLog = {
-  typeUrl: "/cosmos.evm.vm.v1.EventTxLog",
-  encode(message: EventTxLog, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.vm.v1.EventTxLog',
+  encode(
+    message: EventTxLog,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.txLogs) {
       writer.uint32(10).string(v!);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): EventTxLog {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEventTxLog();
     while (reader.pos < end) {
@@ -301,18 +310,18 @@ export const EventTxLog = {
   },
   fromPartial(object: Partial<EventTxLog>): EventTxLog {
     const message = createBaseEventTxLog();
-    message.txLogs = object.txLogs?.map(e => e) || [];
+    message.txLogs = object.txLogs?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: EventTxLogAmino): EventTxLog {
     const message = createBaseEventTxLog();
-    message.txLogs = object.tx_logs?.map(e => e) || [];
+    message.txLogs = object.tx_logs?.map((e) => e) || [];
     return message;
   },
   toAmino(message: EventTxLog): EventTxLogAmino {
     const obj: any = {};
     if (message.txLogs) {
-      obj.tx_logs = message.txLogs.map(e => e);
+      obj.tx_logs = message.txLogs.map((e) => e);
     } else {
       obj.tx_logs = message.txLogs;
     }
@@ -323,8 +332,8 @@ export const EventTxLog = {
   },
   toAminoMsg(message: EventTxLog): EventTxLogAminoMsg {
     return {
-      type: "cosmos-sdk/EventTxLog",
-      value: EventTxLog.toAmino(message)
+      type: 'cosmos-sdk/EventTxLog',
+      value: EventTxLog.toAmino(message),
     };
   },
   fromProtoMsg(message: EventTxLogProtoMsg): EventTxLog {
@@ -335,34 +344,38 @@ export const EventTxLog = {
   },
   toProtoMsg(message: EventTxLog): EventTxLogProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.EventTxLog",
-      value: EventTxLog.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.EventTxLog',
+      value: EventTxLog.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseEventMessage(): EventMessage {
   return {
-    module: "",
-    sender: "",
-    txType: ""
+    module: '',
+    sender: '',
+    txType: '',
   };
 }
 export const EventMessage = {
-  typeUrl: "/cosmos.evm.vm.v1.EventMessage",
-  encode(message: EventMessage, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.module !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.EventMessage',
+  encode(
+    message: EventMessage,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.module !== '') {
       writer.uint32(10).string(message.module);
     }
-    if (message.sender !== "") {
+    if (message.sender !== '') {
       writer.uint32(18).string(message.sender);
     }
-    if (message.txType !== "") {
+    if (message.txType !== '') {
       writer.uint32(26).string(message.txType);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): EventMessage {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEventMessage();
     while (reader.pos < end) {
@@ -386,9 +399,9 @@ export const EventMessage = {
   },
   fromPartial(object: Partial<EventMessage>): EventMessage {
     const message = createBaseEventMessage();
-    message.module = object.module ?? "";
-    message.sender = object.sender ?? "";
-    message.txType = object.txType ?? "";
+    message.module = object.module ?? '';
+    message.sender = object.sender ?? '';
+    message.txType = object.txType ?? '';
     return message;
   },
   fromAmino(object: EventMessageAmino): EventMessage {
@@ -406,9 +419,9 @@ export const EventMessage = {
   },
   toAmino(message: EventMessage): EventMessageAmino {
     const obj: any = {};
-    obj.module = message.module === "" ? undefined : message.module;
-    obj.sender = message.sender === "" ? undefined : message.sender;
-    obj.tx_type = message.txType === "" ? undefined : message.txType;
+    obj.module = message.module === '' ? undefined : message.module;
+    obj.sender = message.sender === '' ? undefined : message.sender;
+    obj.tx_type = message.txType === '' ? undefined : message.txType;
     return obj;
   },
   fromAminoMsg(object: EventMessageAminoMsg): EventMessage {
@@ -416,8 +429,8 @@ export const EventMessage = {
   },
   toAminoMsg(message: EventMessage): EventMessageAminoMsg {
     return {
-      type: "cosmos-sdk/EventMessage",
-      value: EventMessage.toAmino(message)
+      type: 'cosmos-sdk/EventMessage',
+      value: EventMessage.toAmino(message),
     };
   },
   fromProtoMsg(message: EventMessageProtoMsg): EventMessage {
@@ -428,26 +441,30 @@ export const EventMessage = {
   },
   toProtoMsg(message: EventMessage): EventMessageProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.EventMessage",
-      value: EventMessage.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.EventMessage',
+      value: EventMessage.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseEventBlockBloom(): EventBlockBloom {
   return {
-    bloom: ""
+    bloom: '',
   };
 }
 export const EventBlockBloom = {
-  typeUrl: "/cosmos.evm.vm.v1.EventBlockBloom",
-  encode(message: EventBlockBloom, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.bloom !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.EventBlockBloom',
+  encode(
+    message: EventBlockBloom,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.bloom !== '') {
       writer.uint32(10).string(message.bloom);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): EventBlockBloom {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEventBlockBloom();
     while (reader.pos < end) {
@@ -465,7 +482,7 @@ export const EventBlockBloom = {
   },
   fromPartial(object: Partial<EventBlockBloom>): EventBlockBloom {
     const message = createBaseEventBlockBloom();
-    message.bloom = object.bloom ?? "";
+    message.bloom = object.bloom ?? '';
     return message;
   },
   fromAmino(object: EventBlockBloomAmino): EventBlockBloom {
@@ -477,7 +494,7 @@ export const EventBlockBloom = {
   },
   toAmino(message: EventBlockBloom): EventBlockBloomAmino {
     const obj: any = {};
-    obj.bloom = message.bloom === "" ? undefined : message.bloom;
+    obj.bloom = message.bloom === '' ? undefined : message.bloom;
     return obj;
   },
   fromAminoMsg(object: EventBlockBloomAminoMsg): EventBlockBloom {
@@ -485,8 +502,8 @@ export const EventBlockBloom = {
   },
   toAminoMsg(message: EventBlockBloom): EventBlockBloomAminoMsg {
     return {
-      type: "cosmos-sdk/EventBlockBloom",
-      value: EventBlockBloom.toAmino(message)
+      type: 'cosmos-sdk/EventBlockBloom',
+      value: EventBlockBloom.toAmino(message),
     };
   },
   fromProtoMsg(message: EventBlockBloomProtoMsg): EventBlockBloom {
@@ -497,8 +514,8 @@ export const EventBlockBloom = {
   },
   toProtoMsg(message: EventBlockBloom): EventBlockBloomProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.EventBlockBloom",
-      value: EventBlockBloom.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.EventBlockBloom',
+      value: EventBlockBloom.encode(message).finish(),
     };
-  }
+  },
 };

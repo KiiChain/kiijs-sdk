@@ -15,7 +15,7 @@ export const options: TelescopeInput = {
   options: {
     interfaces: {
       enabled: true,
-      useUnionTypes: true
+      useUnionTypes: true,
     },
     prototypes: {
       enabled: true,
@@ -41,63 +41,62 @@ export const options: TelescopeInput = {
           'cosmos.slashing.v1beta1',
           'google.api',
           'ibc.core.port.v1',
-          'ibc.core.types.v1'
-        ]
+          'ibc.core.types.v1',
+        ],
       },
     },
 
     bundle: {
-      enabled: true
+      enabled: true,
     },
 
     tsDisable: {
       files: [],
       patterns: [],
-      disableAll: true
+      disableAll: true,
     },
 
     eslintDisable: {
       files: [],
       patterns: [],
-      disableAll: false
+      disableAll: false,
     },
 
     stargateClients: {
       enabled: true,
-      includeCosmosDefaultTypes: true
+      includeCosmosDefaultTypes: true,
     },
 
     aminoEncoding: {
       enabled: true,
       customTypes: {
-        useCosmosSDKDec: false
+        useCosmosSDKDec: false,
       },
       exceptions: {
-        ...AMINO_MAP
+        ...AMINO_MAP,
       },
     },
     lcdClients: {
-      enabled: false
+      enabled: false,
     },
     rpcClients: {
       type: 'tendermint',
-      enabled: true
+      enabled: true,
     },
 
     reactQuery: {
-      enabled: false
+      enabled: false,
     },
 
     mobx: {
-      enabled: false
+      enabled: false,
     },
 
     pinia: {
-      enabled: false
-    }
-  }
+      enabled: false,
+    },
+  },
 };
-
 
 telescope(options)
   .then(() => {

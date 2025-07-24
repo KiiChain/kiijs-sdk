@@ -1,33 +1,56 @@
 //@ts-nocheck
-import { Rpc } from "../../../helpers";
-import { BinaryReader } from "../../../binary";
-import { MsgSetWithdrawAddress, MsgSetWithdrawAddressResponse, MsgWithdrawDelegatorReward, MsgWithdrawDelegatorRewardResponse, MsgWithdrawValidatorCommission, MsgWithdrawValidatorCommissionResponse, MsgFundCommunityPool, MsgFundCommunityPoolResponse, MsgUpdateParams, MsgUpdateParamsResponse, MsgCommunityPoolSpend, MsgCommunityPoolSpendResponse, MsgDepositValidatorRewardsPool, MsgDepositValidatorRewardsPoolResponse } from "./tx";
+import { BinaryReader } from '../../../binary';
+import { Rpc } from '../../../helpers';
+import {
+  MsgCommunityPoolSpend,
+  MsgCommunityPoolSpendResponse,
+  MsgDepositValidatorRewardsPool,
+  MsgDepositValidatorRewardsPoolResponse,
+  MsgFundCommunityPool,
+  MsgFundCommunityPoolResponse,
+  MsgSetWithdrawAddress,
+  MsgSetWithdrawAddressResponse,
+  MsgUpdateParams,
+  MsgUpdateParamsResponse,
+  MsgWithdrawDelegatorReward,
+  MsgWithdrawDelegatorRewardResponse,
+  MsgWithdrawValidatorCommission,
+  MsgWithdrawValidatorCommissionResponse,
+} from './tx';
 /** Msg defines the distribution Msg service. */
 export interface Msg {
   /**
    * SetWithdrawAddress defines a method to change the withdraw address
    * for a delegator (or validator self-delegation).
    */
-  setWithdrawAddress(request: MsgSetWithdrawAddress): Promise<MsgSetWithdrawAddressResponse>;
+  setWithdrawAddress(
+    request: MsgSetWithdrawAddress
+  ): Promise<MsgSetWithdrawAddressResponse>;
   /**
    * WithdrawDelegatorReward defines a method to withdraw rewards of delegator
    * from a single validator.
    */
-  withdrawDelegatorReward(request: MsgWithdrawDelegatorReward): Promise<MsgWithdrawDelegatorRewardResponse>;
+  withdrawDelegatorReward(
+    request: MsgWithdrawDelegatorReward
+  ): Promise<MsgWithdrawDelegatorRewardResponse>;
   /**
    * WithdrawValidatorCommission defines a method to withdraw the
    * full commission to the validator address.
    */
-  withdrawValidatorCommission(request: MsgWithdrawValidatorCommission): Promise<MsgWithdrawValidatorCommissionResponse>;
+  withdrawValidatorCommission(
+    request: MsgWithdrawValidatorCommission
+  ): Promise<MsgWithdrawValidatorCommissionResponse>;
   /**
    * FundCommunityPool defines a method to allow an account to directly
    * fund the community pool.
    */
-  fundCommunityPool(request: MsgFundCommunityPool): Promise<MsgFundCommunityPoolResponse>;
+  fundCommunityPool(
+    request: MsgFundCommunityPool
+  ): Promise<MsgFundCommunityPoolResponse>;
   /**
    * UpdateParams defines a governance operation for updating the x/distribution
    * module parameters. The authority is defined in the keeper.
-   * 
+   *
    * Since: cosmos-sdk 0.47
    */
   updateParams(request: MsgUpdateParams): Promise<MsgUpdateParamsResponse>;
@@ -36,17 +59,21 @@ export interface Msg {
    * the community pool in the x/distribution module to another account, which
    * could be the governance module itself. The authority is defined in the
    * keeper.
-   * 
+   *
    * Since: cosmos-sdk 0.47
    */
-  communityPoolSpend(request: MsgCommunityPoolSpend): Promise<MsgCommunityPoolSpendResponse>;
+  communityPoolSpend(
+    request: MsgCommunityPoolSpend
+  ): Promise<MsgCommunityPoolSpendResponse>;
   /**
    * DepositValidatorRewardsPool defines a method to provide additional rewards
    * to delegators to a specific validator.
-   * 
+   *
    * Since: cosmos-sdk 0.50
    */
-  depositValidatorRewardsPool(request: MsgDepositValidatorRewardsPool): Promise<MsgDepositValidatorRewardsPoolResponse>;
+  depositValidatorRewardsPool(
+    request: MsgDepositValidatorRewardsPool
+  ): Promise<MsgDepositValidatorRewardsPoolResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -54,45 +81,101 @@ export class MsgClientImpl implements Msg {
     this.rpc = rpc;
     this.setWithdrawAddress = this.setWithdrawAddress.bind(this);
     this.withdrawDelegatorReward = this.withdrawDelegatorReward.bind(this);
-    this.withdrawValidatorCommission = this.withdrawValidatorCommission.bind(this);
+    this.withdrawValidatorCommission =
+      this.withdrawValidatorCommission.bind(this);
     this.fundCommunityPool = this.fundCommunityPool.bind(this);
     this.updateParams = this.updateParams.bind(this);
     this.communityPoolSpend = this.communityPoolSpend.bind(this);
-    this.depositValidatorRewardsPool = this.depositValidatorRewardsPool.bind(this);
+    this.depositValidatorRewardsPool =
+      this.depositValidatorRewardsPool.bind(this);
   }
-  setWithdrawAddress(request: MsgSetWithdrawAddress): Promise<MsgSetWithdrawAddressResponse> {
+  setWithdrawAddress(
+    request: MsgSetWithdrawAddress
+  ): Promise<MsgSetWithdrawAddressResponse> {
     const data = MsgSetWithdrawAddress.encode(request).finish();
-    const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "SetWithdrawAddress", data);
-    return promise.then(data => MsgSetWithdrawAddressResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.distribution.v1beta1.Msg',
+      'SetWithdrawAddress',
+      data
+    );
+    return promise.then((data) =>
+      MsgSetWithdrawAddressResponse.decode(new BinaryReader(data))
+    );
   }
-  withdrawDelegatorReward(request: MsgWithdrawDelegatorReward): Promise<MsgWithdrawDelegatorRewardResponse> {
+  withdrawDelegatorReward(
+    request: MsgWithdrawDelegatorReward
+  ): Promise<MsgWithdrawDelegatorRewardResponse> {
     const data = MsgWithdrawDelegatorReward.encode(request).finish();
-    const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "WithdrawDelegatorReward", data);
-    return promise.then(data => MsgWithdrawDelegatorRewardResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.distribution.v1beta1.Msg',
+      'WithdrawDelegatorReward',
+      data
+    );
+    return promise.then((data) =>
+      MsgWithdrawDelegatorRewardResponse.decode(new BinaryReader(data))
+    );
   }
-  withdrawValidatorCommission(request: MsgWithdrawValidatorCommission): Promise<MsgWithdrawValidatorCommissionResponse> {
+  withdrawValidatorCommission(
+    request: MsgWithdrawValidatorCommission
+  ): Promise<MsgWithdrawValidatorCommissionResponse> {
     const data = MsgWithdrawValidatorCommission.encode(request).finish();
-    const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "WithdrawValidatorCommission", data);
-    return promise.then(data => MsgWithdrawValidatorCommissionResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.distribution.v1beta1.Msg',
+      'WithdrawValidatorCommission',
+      data
+    );
+    return promise.then((data) =>
+      MsgWithdrawValidatorCommissionResponse.decode(new BinaryReader(data))
+    );
   }
-  fundCommunityPool(request: MsgFundCommunityPool): Promise<MsgFundCommunityPoolResponse> {
+  fundCommunityPool(
+    request: MsgFundCommunityPool
+  ): Promise<MsgFundCommunityPoolResponse> {
     const data = MsgFundCommunityPool.encode(request).finish();
-    const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "FundCommunityPool", data);
-    return promise.then(data => MsgFundCommunityPoolResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.distribution.v1beta1.Msg',
+      'FundCommunityPool',
+      data
+    );
+    return promise.then((data) =>
+      MsgFundCommunityPoolResponse.decode(new BinaryReader(data))
+    );
   }
   updateParams(request: MsgUpdateParams): Promise<MsgUpdateParamsResponse> {
     const data = MsgUpdateParams.encode(request).finish();
-    const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "UpdateParams", data);
-    return promise.then(data => MsgUpdateParamsResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.distribution.v1beta1.Msg',
+      'UpdateParams',
+      data
+    );
+    return promise.then((data) =>
+      MsgUpdateParamsResponse.decode(new BinaryReader(data))
+    );
   }
-  communityPoolSpend(request: MsgCommunityPoolSpend): Promise<MsgCommunityPoolSpendResponse> {
+  communityPoolSpend(
+    request: MsgCommunityPoolSpend
+  ): Promise<MsgCommunityPoolSpendResponse> {
     const data = MsgCommunityPoolSpend.encode(request).finish();
-    const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "CommunityPoolSpend", data);
-    return promise.then(data => MsgCommunityPoolSpendResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.distribution.v1beta1.Msg',
+      'CommunityPoolSpend',
+      data
+    );
+    return promise.then((data) =>
+      MsgCommunityPoolSpendResponse.decode(new BinaryReader(data))
+    );
   }
-  depositValidatorRewardsPool(request: MsgDepositValidatorRewardsPool): Promise<MsgDepositValidatorRewardsPoolResponse> {
+  depositValidatorRewardsPool(
+    request: MsgDepositValidatorRewardsPool
+  ): Promise<MsgDepositValidatorRewardsPoolResponse> {
     const data = MsgDepositValidatorRewardsPool.encode(request).finish();
-    const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "DepositValidatorRewardsPool", data);
-    return promise.then(data => MsgDepositValidatorRewardsPoolResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.distribution.v1beta1.Msg',
+      'DepositValidatorRewardsPool',
+      data
+    );
+    return promise.then((data) =>
+      MsgDepositValidatorRewardsPoolResponse.decode(new BinaryReader(data))
+    );
   }
 }

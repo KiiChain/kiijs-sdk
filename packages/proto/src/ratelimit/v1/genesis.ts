@@ -1,7 +1,17 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { RateLimit, RateLimitAmino, RateLimitSDKType, WhitelistedAddressPair, WhitelistedAddressPairAmino, WhitelistedAddressPairSDKType, HourEpoch, HourEpochAmino, HourEpochSDKType } from "./ratelimit";
-import { BinaryReader, BinaryWriter } from "../../binary";
+import { BinaryReader, BinaryWriter } from '../../binary';
+import { Params, ParamsAmino, ParamsSDKType } from './params';
+import {
+  HourEpoch,
+  HourEpochAmino,
+  HourEpochSDKType,
+  RateLimit,
+  RateLimitAmino,
+  RateLimitSDKType,
+  WhitelistedAddressPair,
+  WhitelistedAddressPairAmino,
+  WhitelistedAddressPairSDKType,
+} from './ratelimit';
 /** GenesisState defines the ratelimit module's genesis state. */
 export interface GenesisState {
   params: Params;
@@ -12,7 +22,7 @@ export interface GenesisState {
   hourEpoch: HourEpoch;
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/ratelimit.v1.GenesisState";
+  typeUrl: '/ratelimit.v1.GenesisState';
   value: Uint8Array;
 }
 /** GenesisState defines the ratelimit module's genesis state. */
@@ -25,7 +35,7 @@ export interface GenesisStateAmino {
   hour_epoch?: HourEpochAmino;
 }
 export interface GenesisStateAminoMsg {
-  type: "/ratelimit.v1.GenesisState";
+  type: '/ratelimit.v1.GenesisState';
   value: GenesisStateAmino;
 }
 /** GenesisState defines the ratelimit module's genesis state. */
@@ -44,12 +54,15 @@ function createBaseGenesisState(): GenesisState {
     whitelistedAddressPairs: [],
     blacklistedDenoms: [],
     pendingSendPacketSequenceNumbers: [],
-    hourEpoch: HourEpoch.fromPartial({})
+    hourEpoch: HourEpoch.fromPartial({}),
   };
 }
 export const GenesisState = {
-  typeUrl: "/ratelimit.v1.GenesisState",
-  encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.GenesisState',
+  encode(
+    message: GenesisState,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
@@ -71,7 +84,8 @@ export const GenesisState = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {
@@ -84,7 +98,9 @@ export const GenesisState = {
           message.rateLimits.push(RateLimit.decode(reader, reader.uint32()));
           break;
         case 3:
-          message.whitelistedAddressPairs.push(WhitelistedAddressPair.decode(reader, reader.uint32()));
+          message.whitelistedAddressPairs.push(
+            WhitelistedAddressPair.decode(reader, reader.uint32())
+          );
           break;
         case 4:
           message.blacklistedDenoms.push(reader.string());
@@ -104,12 +120,23 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.rateLimits = object.rateLimits?.map(e => RateLimit.fromPartial(e)) || [];
-    message.whitelistedAddressPairs = object.whitelistedAddressPairs?.map(e => WhitelistedAddressPair.fromPartial(e)) || [];
-    message.blacklistedDenoms = object.blacklistedDenoms?.map(e => e) || [];
-    message.pendingSendPacketSequenceNumbers = object.pendingSendPacketSequenceNumbers?.map(e => e) || [];
-    message.hourEpoch = object.hourEpoch !== undefined && object.hourEpoch !== null ? HourEpoch.fromPartial(object.hourEpoch) : undefined;
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
+    message.rateLimits =
+      object.rateLimits?.map((e) => RateLimit.fromPartial(e)) || [];
+    message.whitelistedAddressPairs =
+      object.whitelistedAddressPairs?.map((e) =>
+        WhitelistedAddressPair.fromPartial(e)
+      ) || [];
+    message.blacklistedDenoms = object.blacklistedDenoms?.map((e) => e) || [];
+    message.pendingSendPacketSequenceNumbers =
+      object.pendingSendPacketSequenceNumbers?.map((e) => e) || [];
+    message.hourEpoch =
+      object.hourEpoch !== undefined && object.hourEpoch !== null
+        ? HourEpoch.fromPartial(object.hourEpoch)
+        : undefined;
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -117,10 +144,15 @@ export const GenesisState = {
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromAmino(object.params);
     }
-    message.rateLimits = object.rate_limits?.map(e => RateLimit.fromAmino(e)) || [];
-    message.whitelistedAddressPairs = object.whitelisted_address_pairs?.map(e => WhitelistedAddressPair.fromAmino(e)) || [];
-    message.blacklistedDenoms = object.blacklisted_denoms?.map(e => e) || [];
-    message.pendingSendPacketSequenceNumbers = object.pending_send_packet_sequence_numbers?.map(e => e) || [];
+    message.rateLimits =
+      object.rate_limits?.map((e) => RateLimit.fromAmino(e)) || [];
+    message.whitelistedAddressPairs =
+      object.whitelisted_address_pairs?.map((e) =>
+        WhitelistedAddressPair.fromAmino(e)
+      ) || [];
+    message.blacklistedDenoms = object.blacklisted_denoms?.map((e) => e) || [];
+    message.pendingSendPacketSequenceNumbers =
+      object.pending_send_packet_sequence_numbers?.map((e) => e) || [];
     if (object.hour_epoch !== undefined && object.hour_epoch !== null) {
       message.hourEpoch = HourEpoch.fromAmino(object.hour_epoch);
     }
@@ -130,26 +162,34 @@ export const GenesisState = {
     const obj: any = {};
     obj.params = message.params ? Params.toAmino(message.params) : undefined;
     if (message.rateLimits) {
-      obj.rate_limits = message.rateLimits.map(e => e ? RateLimit.toAmino(e) : undefined);
+      obj.rate_limits = message.rateLimits.map((e) =>
+        e ? RateLimit.toAmino(e) : undefined
+      );
     } else {
       obj.rate_limits = message.rateLimits;
     }
     if (message.whitelistedAddressPairs) {
-      obj.whitelisted_address_pairs = message.whitelistedAddressPairs.map(e => e ? WhitelistedAddressPair.toAmino(e) : undefined);
+      obj.whitelisted_address_pairs = message.whitelistedAddressPairs.map(
+        (e) => (e ? WhitelistedAddressPair.toAmino(e) : undefined)
+      );
     } else {
       obj.whitelisted_address_pairs = message.whitelistedAddressPairs;
     }
     if (message.blacklistedDenoms) {
-      obj.blacklisted_denoms = message.blacklistedDenoms.map(e => e);
+      obj.blacklisted_denoms = message.blacklistedDenoms.map((e) => e);
     } else {
       obj.blacklisted_denoms = message.blacklistedDenoms;
     }
     if (message.pendingSendPacketSequenceNumbers) {
-      obj.pending_send_packet_sequence_numbers = message.pendingSendPacketSequenceNumbers.map(e => e);
+      obj.pending_send_packet_sequence_numbers =
+        message.pendingSendPacketSequenceNumbers.map((e) => e);
     } else {
-      obj.pending_send_packet_sequence_numbers = message.pendingSendPacketSequenceNumbers;
+      obj.pending_send_packet_sequence_numbers =
+        message.pendingSendPacketSequenceNumbers;
     }
-    obj.hour_epoch = message.hourEpoch ? HourEpoch.toAmino(message.hourEpoch) : undefined;
+    obj.hour_epoch = message.hourEpoch
+      ? HourEpoch.toAmino(message.hourEpoch)
+      : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -163,8 +203,8 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.GenesisState",
-      value: GenesisState.encode(message).finish()
+      typeUrl: '/ratelimit.v1.GenesisState',
+      value: GenesisState.encode(message).finish(),
     };
-  }
+  },
 };

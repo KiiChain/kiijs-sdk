@@ -1,11 +1,15 @@
 import { Contract, ContractRunner, InterfaceAbi } from 'ethers';
-import { SLASHING_PRECOMPILE_ABI, SLASHING_PRECOMPILE_ADDRESS } from '../precompiles';
+import {
+  SLASHING_PRECOMPILE_ABI,
+  SLASHING_PRECOMPILE_ADDRESS,
+} from '../precompiles';
 
 /**
  * The ABI for the Slashing precompile contract, used to create an Ethers contract.
  * @category Cosmos Interoperability
  */
-export const ETHERS_SLASHING_PRECOMPILE_ABI = SLASHING_PRECOMPILE_ABI as InterfaceAbi;
+export const ETHERS_SLASHING_PRECOMPILE_ABI =
+  SLASHING_PRECOMPILE_ABI as InterfaceAbi;
 
 /**
  * Creates and returns a typed Ethers v6 contract instance for the Slashing precompile contract.
@@ -28,6 +32,12 @@ export const ETHERS_SLASHING_PRECOMPILE_ABI = SLASHING_PRECOMPILE_ABI as Interfa
  * @returns The typed contract instance for interacting with the Slashing precompile contract.
  * @category Cosmos Interoperability
  */
-export const getSlashingPrecompileEthersV6Contract = (runner: ContractRunner) => {
-	return new Contract(SLASHING_PRECOMPILE_ADDRESS, SLASHING_PRECOMPILE_ABI, runner);
+export const getSlashingPrecompileEthersV6Contract = (
+  runner: ContractRunner
+) => {
+  return new Contract(
+    SLASHING_PRECOMPILE_ADDRESS,
+    SLASHING_PRECOMPILE_ABI,
+    runner
+  );
 };

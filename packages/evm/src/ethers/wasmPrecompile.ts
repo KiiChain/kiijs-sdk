@@ -8,5 +8,5 @@ import { WASM_PRECOMPILE_ABI, WASM_PRECOMPILE_ADDRESS } from '../precompiles';
 export const ETHERS_WASM_PRECOMPILE_ABI = WASM_PRECOMPILE_ABI as InterfaceAbi;
 
 export const getWASMPrecompileEthersV6Contract = (runner: ContractRunner) => {
-	return new Contract(WASM_PRECOMPILE_ADDRESS, WASM_PRECOMPILE_ABI, runner);
+  return new Contract(WASM_PRECOMPILE_ADDRESS, WASM_PRECOMPILE_ABI, runner);
 };

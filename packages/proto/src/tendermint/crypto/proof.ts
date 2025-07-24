@@ -1,6 +1,6 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../helpers";
+import { BinaryReader, BinaryWriter } from '../../binary';
+import { base64FromBytes, bytesFromBase64 } from '../../helpers';
 export interface Proof {
   total: bigint;
   index: bigint;
@@ -8,7 +8,7 @@ export interface Proof {
   aunts: Uint8Array[];
 }
 export interface ProofProtoMsg {
-  typeUrl: "/tendermint.crypto.Proof";
+  typeUrl: '/tendermint.crypto.Proof';
   value: Uint8Array;
 }
 export interface ProofAmino {
@@ -18,7 +18,7 @@ export interface ProofAmino {
   aunts?: string[];
 }
 export interface ProofAminoMsg {
-  type: "/tendermint.crypto.Proof";
+  type: '/tendermint.crypto.Proof';
   value: ProofAmino;
 }
 export interface ProofSDKType {
@@ -34,7 +34,7 @@ export interface ValueOp {
   proof?: Proof;
 }
 export interface ValueOpProtoMsg {
-  typeUrl: "/tendermint.crypto.ValueOp";
+  typeUrl: '/tendermint.crypto.ValueOp';
   value: Uint8Array;
 }
 export interface ValueOpAmino {
@@ -44,7 +44,7 @@ export interface ValueOpAmino {
   proof?: ProofAmino;
 }
 export interface ValueOpAminoMsg {
-  type: "/tendermint.crypto.ValueOp";
+  type: '/tendermint.crypto.ValueOp';
   value: ValueOpAmino;
 }
 export interface ValueOpSDKType {
@@ -57,7 +57,7 @@ export interface DominoOp {
   output: string;
 }
 export interface DominoOpProtoMsg {
-  typeUrl: "/tendermint.crypto.DominoOp";
+  typeUrl: '/tendermint.crypto.DominoOp';
   value: Uint8Array;
 }
 export interface DominoOpAmino {
@@ -66,7 +66,7 @@ export interface DominoOpAmino {
   output?: string;
 }
 export interface DominoOpAminoMsg {
-  type: "/tendermint.crypto.DominoOp";
+  type: '/tendermint.crypto.DominoOp';
   value: DominoOpAmino;
 }
 export interface DominoOpSDKType {
@@ -85,7 +85,7 @@ export interface ProofOp {
   data: Uint8Array;
 }
 export interface ProofOpProtoMsg {
-  typeUrl: "/tendermint.crypto.ProofOp";
+  typeUrl: '/tendermint.crypto.ProofOp';
   value: Uint8Array;
 }
 /**
@@ -99,7 +99,7 @@ export interface ProofOpAmino {
   data?: string;
 }
 export interface ProofOpAminoMsg {
-  type: "/tendermint.crypto.ProofOp";
+  type: '/tendermint.crypto.ProofOp';
   value: ProofOpAmino;
 }
 /**
@@ -117,7 +117,7 @@ export interface ProofOps {
   ops: ProofOp[];
 }
 export interface ProofOpsProtoMsg {
-  typeUrl: "/tendermint.crypto.ProofOps";
+  typeUrl: '/tendermint.crypto.ProofOps';
   value: Uint8Array;
 }
 /** ProofOps is Merkle proof defined by the list of ProofOps */
@@ -125,7 +125,7 @@ export interface ProofOpsAmino {
   ops?: ProofOpAmino[];
 }
 export interface ProofOpsAminoMsg {
-  type: "/tendermint.crypto.ProofOps";
+  type: '/tendermint.crypto.ProofOps';
   value: ProofOpsAmino;
 }
 /** ProofOps is Merkle proof defined by the list of ProofOps */
@@ -137,12 +137,15 @@ function createBaseProof(): Proof {
     total: BigInt(0),
     index: BigInt(0),
     leafHash: new Uint8Array(),
-    aunts: []
+    aunts: [],
   };
 }
 export const Proof = {
-  typeUrl: "/tendermint.crypto.Proof",
-  encode(message: Proof, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/tendermint.crypto.Proof',
+  encode(
+    message: Proof,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.total !== BigInt(0)) {
       writer.uint32(8).int64(message.total);
     }
@@ -158,7 +161,8 @@ export const Proof = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Proof {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseProof();
     while (reader.pos < end) {
@@ -185,10 +189,16 @@ export const Proof = {
   },
   fromPartial(object: Partial<Proof>): Proof {
     const message = createBaseProof();
-    message.total = object.total !== undefined && object.total !== null ? BigInt(object.total.toString()) : BigInt(0);
-    message.index = object.index !== undefined && object.index !== null ? BigInt(object.index.toString()) : BigInt(0);
+    message.total =
+      object.total !== undefined && object.total !== null
+        ? BigInt(object.total.toString())
+        : BigInt(0);
+    message.index =
+      object.index !== undefined && object.index !== null
+        ? BigInt(object.index.toString())
+        : BigInt(0);
     message.leafHash = object.leafHash ?? new Uint8Array();
-    message.aunts = object.aunts?.map(e => e) || [];
+    message.aunts = object.aunts?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: ProofAmino): Proof {
@@ -202,16 +212,20 @@ export const Proof = {
     if (object.leaf_hash !== undefined && object.leaf_hash !== null) {
       message.leafHash = bytesFromBase64(object.leaf_hash);
     }
-    message.aunts = object.aunts?.map(e => bytesFromBase64(e)) || [];
+    message.aunts = object.aunts?.map((e) => bytesFromBase64(e)) || [];
     return message;
   },
   toAmino(message: Proof): ProofAmino {
     const obj: any = {};
-    obj.total = message.total !== BigInt(0) ? message.total?.toString() : undefined;
-    obj.index = message.index !== BigInt(0) ? message.index?.toString() : undefined;
-    obj.leaf_hash = message.leafHash ? base64FromBytes(message.leafHash) : undefined;
+    obj.total =
+      message.total !== BigInt(0) ? message.total?.toString() : undefined;
+    obj.index =
+      message.index !== BigInt(0) ? message.index?.toString() : undefined;
+    obj.leaf_hash = message.leafHash
+      ? base64FromBytes(message.leafHash)
+      : undefined;
     if (message.aunts) {
-      obj.aunts = message.aunts.map(e => base64FromBytes(e));
+      obj.aunts = message.aunts.map((e) => base64FromBytes(e));
     } else {
       obj.aunts = message.aunts;
     }
@@ -228,20 +242,23 @@ export const Proof = {
   },
   toProtoMsg(message: Proof): ProofProtoMsg {
     return {
-      typeUrl: "/tendermint.crypto.Proof",
-      value: Proof.encode(message).finish()
+      typeUrl: '/tendermint.crypto.Proof',
+      value: Proof.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseValueOp(): ValueOp {
   return {
     key: new Uint8Array(),
-    proof: undefined
+    proof: undefined,
   };
 }
 export const ValueOp = {
-  typeUrl: "/tendermint.crypto.ValueOp",
-  encode(message: ValueOp, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/tendermint.crypto.ValueOp',
+  encode(
+    message: ValueOp,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.key.length !== 0) {
       writer.uint32(10).bytes(message.key);
     }
@@ -251,7 +268,8 @@ export const ValueOp = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): ValueOp {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseValueOp();
     while (reader.pos < end) {
@@ -273,7 +291,10 @@ export const ValueOp = {
   fromPartial(object: Partial<ValueOp>): ValueOp {
     const message = createBaseValueOp();
     message.key = object.key ?? new Uint8Array();
-    message.proof = object.proof !== undefined && object.proof !== null ? Proof.fromPartial(object.proof) : undefined;
+    message.proof =
+      object.proof !== undefined && object.proof !== null
+        ? Proof.fromPartial(object.proof)
+        : undefined;
     return message;
   },
   fromAmino(object: ValueOpAmino): ValueOp {
@@ -303,34 +324,38 @@ export const ValueOp = {
   },
   toProtoMsg(message: ValueOp): ValueOpProtoMsg {
     return {
-      typeUrl: "/tendermint.crypto.ValueOp",
-      value: ValueOp.encode(message).finish()
+      typeUrl: '/tendermint.crypto.ValueOp',
+      value: ValueOp.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseDominoOp(): DominoOp {
   return {
-    key: "",
-    input: "",
-    output: ""
+    key: '',
+    input: '',
+    output: '',
   };
 }
 export const DominoOp = {
-  typeUrl: "/tendermint.crypto.DominoOp",
-  encode(message: DominoOp, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.key !== "") {
+  typeUrl: '/tendermint.crypto.DominoOp',
+  encode(
+    message: DominoOp,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.key !== '') {
       writer.uint32(10).string(message.key);
     }
-    if (message.input !== "") {
+    if (message.input !== '') {
       writer.uint32(18).string(message.input);
     }
-    if (message.output !== "") {
+    if (message.output !== '') {
       writer.uint32(26).string(message.output);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): DominoOp {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDominoOp();
     while (reader.pos < end) {
@@ -354,9 +379,9 @@ export const DominoOp = {
   },
   fromPartial(object: Partial<DominoOp>): DominoOp {
     const message = createBaseDominoOp();
-    message.key = object.key ?? "";
-    message.input = object.input ?? "";
-    message.output = object.output ?? "";
+    message.key = object.key ?? '';
+    message.input = object.input ?? '';
+    message.output = object.output ?? '';
     return message;
   },
   fromAmino(object: DominoOpAmino): DominoOp {
@@ -374,9 +399,9 @@ export const DominoOp = {
   },
   toAmino(message: DominoOp): DominoOpAmino {
     const obj: any = {};
-    obj.key = message.key === "" ? undefined : message.key;
-    obj.input = message.input === "" ? undefined : message.input;
-    obj.output = message.output === "" ? undefined : message.output;
+    obj.key = message.key === '' ? undefined : message.key;
+    obj.input = message.input === '' ? undefined : message.input;
+    obj.output = message.output === '' ? undefined : message.output;
     return obj;
   },
   fromAminoMsg(object: DominoOpAminoMsg): DominoOp {
@@ -390,22 +415,25 @@ export const DominoOp = {
   },
   toProtoMsg(message: DominoOp): DominoOpProtoMsg {
     return {
-      typeUrl: "/tendermint.crypto.DominoOp",
-      value: DominoOp.encode(message).finish()
+      typeUrl: '/tendermint.crypto.DominoOp',
+      value: DominoOp.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseProofOp(): ProofOp {
   return {
-    type: "",
+    type: '',
     key: new Uint8Array(),
-    data: new Uint8Array()
+    data: new Uint8Array(),
   };
 }
 export const ProofOp = {
-  typeUrl: "/tendermint.crypto.ProofOp",
-  encode(message: ProofOp, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.type !== "") {
+  typeUrl: '/tendermint.crypto.ProofOp',
+  encode(
+    message: ProofOp,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.type !== '') {
       writer.uint32(10).string(message.type);
     }
     if (message.key.length !== 0) {
@@ -417,7 +445,8 @@ export const ProofOp = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): ProofOp {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseProofOp();
     while (reader.pos < end) {
@@ -441,7 +470,7 @@ export const ProofOp = {
   },
   fromPartial(object: Partial<ProofOp>): ProofOp {
     const message = createBaseProofOp();
-    message.type = object.type ?? "";
+    message.type = object.type ?? '';
     message.key = object.key ?? new Uint8Array();
     message.data = object.data ?? new Uint8Array();
     return message;
@@ -461,7 +490,7 @@ export const ProofOp = {
   },
   toAmino(message: ProofOp): ProofOpAmino {
     const obj: any = {};
-    obj.type = message.type === "" ? undefined : message.type;
+    obj.type = message.type === '' ? undefined : message.type;
     obj.key = message.key ? base64FromBytes(message.key) : undefined;
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
     return obj;
@@ -477,26 +506,30 @@ export const ProofOp = {
   },
   toProtoMsg(message: ProofOp): ProofOpProtoMsg {
     return {
-      typeUrl: "/tendermint.crypto.ProofOp",
-      value: ProofOp.encode(message).finish()
+      typeUrl: '/tendermint.crypto.ProofOp',
+      value: ProofOp.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseProofOps(): ProofOps {
   return {
-    ops: []
+    ops: [],
   };
 }
 export const ProofOps = {
-  typeUrl: "/tendermint.crypto.ProofOps",
-  encode(message: ProofOps, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/tendermint.crypto.ProofOps',
+  encode(
+    message: ProofOps,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.ops) {
       ProofOp.encode(v!, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): ProofOps {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseProofOps();
     while (reader.pos < end) {
@@ -514,18 +547,18 @@ export const ProofOps = {
   },
   fromPartial(object: Partial<ProofOps>): ProofOps {
     const message = createBaseProofOps();
-    message.ops = object.ops?.map(e => ProofOp.fromPartial(e)) || [];
+    message.ops = object.ops?.map((e) => ProofOp.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: ProofOpsAmino): ProofOps {
     const message = createBaseProofOps();
-    message.ops = object.ops?.map(e => ProofOp.fromAmino(e)) || [];
+    message.ops = object.ops?.map((e) => ProofOp.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: ProofOps): ProofOpsAmino {
     const obj: any = {};
     if (message.ops) {
-      obj.ops = message.ops.map(e => e ? ProofOp.toAmino(e) : undefined);
+      obj.ops = message.ops.map((e) => (e ? ProofOp.toAmino(e) : undefined));
     } else {
       obj.ops = message.ops;
     }
@@ -542,8 +575,8 @@ export const ProofOps = {
   },
   toProtoMsg(message: ProofOps): ProofOpsProtoMsg {
     return {
-      typeUrl: "/tendermint.crypto.ProofOps",
-      value: ProofOps.encode(message).finish()
+      typeUrl: '/tendermint.crypto.ProofOps',
+      value: ProofOps.encode(message).finish(),
     };
-  }
+  },
 };

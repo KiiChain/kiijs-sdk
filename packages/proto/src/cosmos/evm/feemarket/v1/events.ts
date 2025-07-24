@@ -1,12 +1,12 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
 /** EventFeeMarket is the event type for the feemarket module */
 export interface EventFeeMarket {
   /** base_fee for EIP-1559 blocks */
   baseFee: string;
 }
 export interface EventFeeMarketProtoMsg {
-  typeUrl: "/cosmos.evm.feemarket.v1.EventFeeMarket";
+  typeUrl: '/cosmos.evm.feemarket.v1.EventFeeMarket';
   value: Uint8Array;
 }
 /** EventFeeMarket is the event type for the feemarket module */
@@ -15,7 +15,7 @@ export interface EventFeeMarketAmino {
   base_fee?: string;
 }
 export interface EventFeeMarketAminoMsg {
-  type: "cosmos-sdk/EventFeeMarket";
+  type: 'cosmos-sdk/EventFeeMarket';
   value: EventFeeMarketAmino;
 }
 /** EventFeeMarket is the event type for the feemarket module */
@@ -30,7 +30,7 @@ export interface EventBlockGas {
   amount: string;
 }
 export interface EventBlockGasProtoMsg {
-  typeUrl: "/cosmos.evm.feemarket.v1.EventBlockGas";
+  typeUrl: '/cosmos.evm.feemarket.v1.EventBlockGas';
   value: Uint8Array;
 }
 /** EventBlockGas defines an Ethereum block gas event */
@@ -41,7 +41,7 @@ export interface EventBlockGasAmino {
   amount?: string;
 }
 export interface EventBlockGasAminoMsg {
-  type: "cosmos-sdk/EventBlockGas";
+  type: 'cosmos-sdk/EventBlockGas';
   value: EventBlockGasAmino;
 }
 /** EventBlockGas defines an Ethereum block gas event */
@@ -51,19 +51,23 @@ export interface EventBlockGasSDKType {
 }
 function createBaseEventFeeMarket(): EventFeeMarket {
   return {
-    baseFee: ""
+    baseFee: '',
   };
 }
 export const EventFeeMarket = {
-  typeUrl: "/cosmos.evm.feemarket.v1.EventFeeMarket",
-  encode(message: EventFeeMarket, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.baseFee !== "") {
+  typeUrl: '/cosmos.evm.feemarket.v1.EventFeeMarket',
+  encode(
+    message: EventFeeMarket,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.baseFee !== '') {
       writer.uint32(10).string(message.baseFee);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): EventFeeMarket {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEventFeeMarket();
     while (reader.pos < end) {
@@ -81,7 +85,7 @@ export const EventFeeMarket = {
   },
   fromPartial(object: Partial<EventFeeMarket>): EventFeeMarket {
     const message = createBaseEventFeeMarket();
-    message.baseFee = object.baseFee ?? "";
+    message.baseFee = object.baseFee ?? '';
     return message;
   },
   fromAmino(object: EventFeeMarketAmino): EventFeeMarket {
@@ -93,7 +97,7 @@ export const EventFeeMarket = {
   },
   toAmino(message: EventFeeMarket): EventFeeMarketAmino {
     const obj: any = {};
-    obj.base_fee = message.baseFee === "" ? undefined : message.baseFee;
+    obj.base_fee = message.baseFee === '' ? undefined : message.baseFee;
     return obj;
   },
   fromAminoMsg(object: EventFeeMarketAminoMsg): EventFeeMarket {
@@ -101,8 +105,8 @@ export const EventFeeMarket = {
   },
   toAminoMsg(message: EventFeeMarket): EventFeeMarketAminoMsg {
     return {
-      type: "cosmos-sdk/EventFeeMarket",
-      value: EventFeeMarket.toAmino(message)
+      type: 'cosmos-sdk/EventFeeMarket',
+      value: EventFeeMarket.toAmino(message),
     };
   },
   fromProtoMsg(message: EventFeeMarketProtoMsg): EventFeeMarket {
@@ -113,30 +117,34 @@ export const EventFeeMarket = {
   },
   toProtoMsg(message: EventFeeMarket): EventFeeMarketProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.feemarket.v1.EventFeeMarket",
-      value: EventFeeMarket.encode(message).finish()
+      typeUrl: '/cosmos.evm.feemarket.v1.EventFeeMarket',
+      value: EventFeeMarket.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseEventBlockGas(): EventBlockGas {
   return {
-    height: "",
-    amount: ""
+    height: '',
+    amount: '',
   };
 }
 export const EventBlockGas = {
-  typeUrl: "/cosmos.evm.feemarket.v1.EventBlockGas",
-  encode(message: EventBlockGas, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.height !== "") {
+  typeUrl: '/cosmos.evm.feemarket.v1.EventBlockGas',
+  encode(
+    message: EventBlockGas,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.height !== '') {
       writer.uint32(10).string(message.height);
     }
-    if (message.amount !== "") {
+    if (message.amount !== '') {
       writer.uint32(18).string(message.amount);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): EventBlockGas {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEventBlockGas();
     while (reader.pos < end) {
@@ -157,8 +165,8 @@ export const EventBlockGas = {
   },
   fromPartial(object: Partial<EventBlockGas>): EventBlockGas {
     const message = createBaseEventBlockGas();
-    message.height = object.height ?? "";
-    message.amount = object.amount ?? "";
+    message.height = object.height ?? '';
+    message.amount = object.amount ?? '';
     return message;
   },
   fromAmino(object: EventBlockGasAmino): EventBlockGas {
@@ -173,8 +181,8 @@ export const EventBlockGas = {
   },
   toAmino(message: EventBlockGas): EventBlockGasAmino {
     const obj: any = {};
-    obj.height = message.height === "" ? undefined : message.height;
-    obj.amount = message.amount === "" ? undefined : message.amount;
+    obj.height = message.height === '' ? undefined : message.height;
+    obj.amount = message.amount === '' ? undefined : message.amount;
     return obj;
   },
   fromAminoMsg(object: EventBlockGasAminoMsg): EventBlockGas {
@@ -182,8 +190,8 @@ export const EventBlockGas = {
   },
   toAminoMsg(message: EventBlockGas): EventBlockGasAminoMsg {
     return {
-      type: "cosmos-sdk/EventBlockGas",
-      value: EventBlockGas.toAmino(message)
+      type: 'cosmos-sdk/EventBlockGas',
+      value: EventBlockGas.toAmino(message),
     };
   },
   fromProtoMsg(message: EventBlockGasProtoMsg): EventBlockGas {
@@ -194,8 +202,8 @@ export const EventBlockGas = {
   },
   toProtoMsg(message: EventBlockGas): EventBlockGasProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.feemarket.v1.EventBlockGas",
-      value: EventBlockGas.encode(message).finish()
+      typeUrl: '/cosmos.evm.feemarket.v1.EventBlockGas',
+      value: EventBlockGas.encode(message).finish(),
     };
-  }
+  },
 };

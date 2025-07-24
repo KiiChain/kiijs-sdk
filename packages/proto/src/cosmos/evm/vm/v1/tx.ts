@@ -1,8 +1,18 @@
 //@ts-nocheck
-import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
-import { Params, ParamsAmino, ParamsSDKType, AccessTuple, AccessTupleAmino, AccessTupleSDKType, Log, LogAmino, LogSDKType } from "./evm";
-import { BinaryReader, BinaryWriter } from "../../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../../helpers";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
+import { Any, AnyAmino, AnySDKType } from '../../../../google/protobuf/any';
+import { base64FromBytes, bytesFromBase64 } from '../../../../helpers';
+import {
+  AccessTuple,
+  AccessTupleAmino,
+  AccessTupleSDKType,
+  Log,
+  LogAmino,
+  LogSDKType,
+  Params,
+  ParamsAmino,
+  ParamsSDKType,
+} from './evm';
 /** MsgEthereumTx encapsulates an Ethereum transaction as an SDK message. */
 export interface MsgEthereumTx {
   /** data is inner transaction data of the Ethereum transaction */
@@ -19,7 +29,7 @@ export interface MsgEthereumTx {
   from: string;
 }
 export interface MsgEthereumTxProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.MsgEthereumTx";
+  typeUrl: '/cosmos.evm.vm.v1.MsgEthereumTx';
   value: Uint8Array;
 }
 /** MsgEthereumTx encapsulates an Ethereum transaction as an SDK message. */
@@ -38,7 +48,7 @@ export interface MsgEthereumTxAmino {
   from?: string;
 }
 export interface MsgEthereumTxAminoMsg {
-  type: "cosmos/evm/MsgEthereumTx";
+  type: 'cosmos/evm/MsgEthereumTx';
   value: MsgEthereumTxAmino;
 }
 /** MsgEthereumTx encapsulates an Ethereum transaction as an SDK message. */
@@ -54,7 +64,7 @@ export interface MsgEthereumTxSDKType {
  * AllowUnprotectedTxs parameter is disabled.
  */
 export interface LegacyTx {
-  $typeUrl?: "/cosmos.evm.vm.v1.LegacyTx";
+  $typeUrl?: '/cosmos.evm.vm.v1.LegacyTx';
   /** nonce corresponds to the account nonce (transaction sequence). */
   nonce: bigint;
   /** gas_price defines the value for each gas unit */
@@ -75,7 +85,7 @@ export interface LegacyTx {
   s: Uint8Array;
 }
 export interface LegacyTxProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.LegacyTx";
+  typeUrl: '/cosmos.evm.vm.v1.LegacyTx';
   value: Uint8Array;
 }
 /**
@@ -104,7 +114,7 @@ export interface LegacyTxAmino {
   s?: string;
 }
 export interface LegacyTxAminoMsg {
-  type: "cosmos/evm/LegacyTx";
+  type: 'cosmos/evm/LegacyTx';
   value: LegacyTxAmino;
 }
 /**
@@ -113,7 +123,7 @@ export interface LegacyTxAminoMsg {
  * AllowUnprotectedTxs parameter is disabled.
  */
 export interface LegacyTxSDKType {
-  $typeUrl?: "/cosmos.evm.vm.v1.LegacyTx";
+  $typeUrl?: '/cosmos.evm.vm.v1.LegacyTx';
   nonce: bigint;
   gas_price: string;
   gas: bigint;
@@ -126,7 +136,7 @@ export interface LegacyTxSDKType {
 }
 /** AccessListTx is the data of EIP-2930 access list transactions. */
 export interface AccessListTx {
-  $typeUrl?: "/cosmos.evm.vm.v1.AccessListTx";
+  $typeUrl?: '/cosmos.evm.vm.v1.AccessListTx';
   /** chain_id of the destination EVM chain */
   chainId: string;
   /** nonce corresponds to the account nonce (transaction sequence). */
@@ -151,7 +161,7 @@ export interface AccessListTx {
   s: Uint8Array;
 }
 export interface AccessListTxProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.AccessListTx";
+  typeUrl: '/cosmos.evm.vm.v1.AccessListTx';
   value: Uint8Array;
 }
 /** AccessListTx is the data of EIP-2930 access list transactions. */
@@ -180,12 +190,12 @@ export interface AccessListTxAmino {
   s?: string;
 }
 export interface AccessListTxAminoMsg {
-  type: "cosmos/evm/AccessListTx";
+  type: 'cosmos/evm/AccessListTx';
   value: AccessListTxAmino;
 }
 /** AccessListTx is the data of EIP-2930 access list transactions. */
 export interface AccessListTxSDKType {
-  $typeUrl?: "/cosmos.evm.vm.v1.AccessListTx";
+  $typeUrl?: '/cosmos.evm.vm.v1.AccessListTx';
   chain_id: string;
   nonce: bigint;
   gas_price: string;
@@ -200,7 +210,7 @@ export interface AccessListTxSDKType {
 }
 /** DynamicFeeTx is the data of EIP-1559 dynamic fee transactions. */
 export interface DynamicFeeTx {
-  $typeUrl?: "/cosmos.evm.vm.v1.DynamicFeeTx";
+  $typeUrl?: '/cosmos.evm.vm.v1.DynamicFeeTx';
   /** chain_id of the destination EVM chain */
   chainId: string;
   /** nonce corresponds to the account nonce (transaction sequence). */
@@ -227,7 +237,7 @@ export interface DynamicFeeTx {
   s: Uint8Array;
 }
 export interface DynamicFeeTxProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.DynamicFeeTx";
+  typeUrl: '/cosmos.evm.vm.v1.DynamicFeeTx';
   value: Uint8Array;
 }
 /** DynamicFeeTx is the data of EIP-1559 dynamic fee transactions. */
@@ -258,12 +268,12 @@ export interface DynamicFeeTxAmino {
   s?: string;
 }
 export interface DynamicFeeTxAminoMsg {
-  type: "cosmos/evm/DynamicFeeTx";
+  type: 'cosmos/evm/DynamicFeeTx';
   value: DynamicFeeTxAmino;
 }
 /** DynamicFeeTx is the data of EIP-1559 dynamic fee transactions. */
 export interface DynamicFeeTxSDKType {
-  $typeUrl?: "/cosmos.evm.vm.v1.DynamicFeeTx";
+  $typeUrl?: '/cosmos.evm.vm.v1.DynamicFeeTx';
   chain_id: string;
   nonce: bigint;
   gas_tip_cap: string;
@@ -280,13 +290,13 @@ export interface DynamicFeeTxSDKType {
 /** ExtensionOptionsEthereumTx is an extension option for ethereum transactions */
 export interface ExtensionOptionsEthereumTx {}
 export interface ExtensionOptionsEthereumTxProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.ExtensionOptionsEthereumTx";
+  typeUrl: '/cosmos.evm.vm.v1.ExtensionOptionsEthereumTx';
   value: Uint8Array;
 }
 /** ExtensionOptionsEthereumTx is an extension option for ethereum transactions */
 export interface ExtensionOptionsEthereumTxAmino {}
 export interface ExtensionOptionsEthereumTxAminoMsg {
-  type: "cosmos-sdk/ExtensionOptionsEthereumTx";
+  type: 'cosmos-sdk/ExtensionOptionsEthereumTx';
   value: ExtensionOptionsEthereumTxAmino;
 }
 /** ExtensionOptionsEthereumTx is an extension option for ethereum transactions */
@@ -315,7 +325,7 @@ export interface MsgEthereumTxResponse {
   gasUsed: bigint;
 }
 export interface MsgEthereumTxResponseProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.MsgEthereumTxResponse";
+  typeUrl: '/cosmos.evm.vm.v1.MsgEthereumTxResponse';
   value: Uint8Array;
 }
 /** MsgEthereumTxResponse defines the Msg/EthereumTx response type. */
@@ -342,7 +352,7 @@ export interface MsgEthereumTxResponseAmino {
   gas_used?: string;
 }
 export interface MsgEthereumTxResponseAminoMsg {
-  type: "cosmos-sdk/MsgEthereumTxResponse";
+  type: 'cosmos-sdk/MsgEthereumTxResponse';
   value: MsgEthereumTxResponseAmino;
 }
 /** MsgEthereumTxResponse defines the Msg/EthereumTx response type. */
@@ -364,7 +374,7 @@ export interface MsgUpdateParams {
   params: Params;
 }
 export interface MsgUpdateParamsProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.MsgUpdateParams";
+  typeUrl: '/cosmos.evm.vm.v1.MsgUpdateParams';
   value: Uint8Array;
 }
 /** MsgUpdateParams defines a Msg for updating the x/vm module parameters. */
@@ -378,7 +388,7 @@ export interface MsgUpdateParamsAmino {
   params: ParamsAmino;
 }
 export interface MsgUpdateParamsAminoMsg {
-  type: "cosmos/evm/x/vm/MsgUpdateParams";
+  type: 'cosmos/evm/x/vm/MsgUpdateParams';
   value: MsgUpdateParamsAmino;
 }
 /** MsgUpdateParams defines a Msg for updating the x/vm module parameters. */
@@ -392,7 +402,7 @@ export interface MsgUpdateParamsSDKType {
  */
 export interface MsgUpdateParamsResponse {}
 export interface MsgUpdateParamsResponseProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.MsgUpdateParamsResponse";
+  typeUrl: '/cosmos.evm.vm.v1.MsgUpdateParamsResponse';
   value: Uint8Array;
 }
 /**
@@ -401,7 +411,7 @@ export interface MsgUpdateParamsResponseProtoMsg {
  */
 export interface MsgUpdateParamsResponseAmino {}
 export interface MsgUpdateParamsResponseAminoMsg {
-  type: "cosmos-sdk/MsgUpdateParamsResponse";
+  type: 'cosmos-sdk/MsgUpdateParamsResponse';
   value: MsgUpdateParamsResponseAmino;
 }
 /**
@@ -413,29 +423,33 @@ function createBaseMsgEthereumTx(): MsgEthereumTx {
   return {
     data: undefined,
     size: 0,
-    hash: "",
-    from: ""
+    hash: '',
+    from: '',
   };
 }
 export const MsgEthereumTx = {
-  typeUrl: "/cosmos.evm.vm.v1.MsgEthereumTx",
-  encode(message: MsgEthereumTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.vm.v1.MsgEthereumTx',
+  encode(
+    message: MsgEthereumTx,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.data !== undefined) {
       Any.encode(message.data, writer.uint32(10).fork()).ldelim();
     }
     if (message.size !== 0) {
       writer.uint32(17).double(message.size);
     }
-    if (message.hash !== "") {
+    if (message.hash !== '') {
       writer.uint32(26).string(message.hash);
     }
-    if (message.from !== "") {
+    if (message.from !== '') {
       writer.uint32(34).string(message.from);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgEthereumTx {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgEthereumTx();
     while (reader.pos < end) {
@@ -462,10 +476,13 @@ export const MsgEthereumTx = {
   },
   fromPartial(object: Partial<MsgEthereumTx>): MsgEthereumTx {
     const message = createBaseMsgEthereumTx();
-    message.data = object.data !== undefined && object.data !== null ? Any.fromPartial(object.data) : undefined;
+    message.data =
+      object.data !== undefined && object.data !== null
+        ? Any.fromPartial(object.data)
+        : undefined;
     message.size = object.size ?? 0;
-    message.hash = object.hash ?? "";
-    message.from = object.from ?? "";
+    message.hash = object.hash ?? '';
+    message.from = object.from ?? '';
     return message;
   },
   fromAmino(object: MsgEthereumTxAmino): MsgEthereumTx {
@@ -488,8 +505,8 @@ export const MsgEthereumTx = {
     const obj: any = {};
     obj.data = message.data ? Any.toAmino(message.data) : undefined;
     obj.size = message.size ?? 0;
-    obj.hash = message.hash ?? "";
-    obj.from = message.from === "" ? undefined : message.from;
+    obj.hash = message.hash ?? '';
+    obj.from = message.from === '' ? undefined : message.from;
     return obj;
   },
   fromAminoMsg(object: MsgEthereumTxAminoMsg): MsgEthereumTx {
@@ -497,8 +514,8 @@ export const MsgEthereumTx = {
   },
   toAminoMsg(message: MsgEthereumTx): MsgEthereumTxAminoMsg {
     return {
-      type: "cosmos/evm/MsgEthereumTx",
-      value: MsgEthereumTx.toAmino(message)
+      type: 'cosmos/evm/MsgEthereumTx',
+      value: MsgEthereumTx.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgEthereumTxProtoMsg): MsgEthereumTx {
@@ -509,41 +526,44 @@ export const MsgEthereumTx = {
   },
   toProtoMsg(message: MsgEthereumTx): MsgEthereumTxProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.MsgEthereumTx",
-      value: MsgEthereumTx.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.MsgEthereumTx',
+      value: MsgEthereumTx.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseLegacyTx(): LegacyTx {
   return {
-    $typeUrl: "/cosmos.evm.vm.v1.LegacyTx",
+    $typeUrl: '/cosmos.evm.vm.v1.LegacyTx',
     nonce: BigInt(0),
-    gasPrice: "",
+    gasPrice: '',
     gas: BigInt(0),
-    to: "",
-    value: "",
+    to: '',
+    value: '',
     data: new Uint8Array(),
     v: new Uint8Array(),
     r: new Uint8Array(),
-    s: new Uint8Array()
+    s: new Uint8Array(),
   };
 }
 export const LegacyTx = {
-  typeUrl: "/cosmos.evm.vm.v1.LegacyTx",
-  encode(message: LegacyTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.vm.v1.LegacyTx',
+  encode(
+    message: LegacyTx,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.nonce !== BigInt(0)) {
       writer.uint32(8).uint64(message.nonce);
     }
-    if (message.gasPrice !== "") {
+    if (message.gasPrice !== '') {
       writer.uint32(18).string(message.gasPrice);
     }
     if (message.gas !== BigInt(0)) {
       writer.uint32(24).uint64(message.gas);
     }
-    if (message.to !== "") {
+    if (message.to !== '') {
       writer.uint32(34).string(message.to);
     }
-    if (message.value !== "") {
+    if (message.value !== '') {
       writer.uint32(42).string(message.value);
     }
     if (message.data.length !== 0) {
@@ -561,7 +581,8 @@ export const LegacyTx = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): LegacyTx {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseLegacyTx();
     while (reader.pos < end) {
@@ -603,11 +624,17 @@ export const LegacyTx = {
   },
   fromPartial(object: Partial<LegacyTx>): LegacyTx {
     const message = createBaseLegacyTx();
-    message.nonce = object.nonce !== undefined && object.nonce !== null ? BigInt(object.nonce.toString()) : BigInt(0);
-    message.gasPrice = object.gasPrice ?? "";
-    message.gas = object.gas !== undefined && object.gas !== null ? BigInt(object.gas.toString()) : BigInt(0);
-    message.to = object.to ?? "";
-    message.value = object.value ?? "";
+    message.nonce =
+      object.nonce !== undefined && object.nonce !== null
+        ? BigInt(object.nonce.toString())
+        : BigInt(0);
+    message.gasPrice = object.gasPrice ?? '';
+    message.gas =
+      object.gas !== undefined && object.gas !== null
+        ? BigInt(object.gas.toString())
+        : BigInt(0);
+    message.to = object.to ?? '';
+    message.value = object.value ?? '';
     message.data = object.data ?? new Uint8Array();
     message.v = object.v ?? new Uint8Array();
     message.r = object.r ?? new Uint8Array();
@@ -647,11 +674,12 @@ export const LegacyTx = {
   },
   toAmino(message: LegacyTx): LegacyTxAmino {
     const obj: any = {};
-    obj.nonce = message.nonce !== BigInt(0) ? message.nonce?.toString() : undefined;
-    obj.gas_price = message.gasPrice === "" ? undefined : message.gasPrice;
+    obj.nonce =
+      message.nonce !== BigInt(0) ? message.nonce?.toString() : undefined;
+    obj.gas_price = message.gasPrice === '' ? undefined : message.gasPrice;
     obj.gas = message.gas !== BigInt(0) ? message.gas?.toString() : undefined;
-    obj.to = message.to === "" ? undefined : message.to;
-    obj.value = message.value === "" ? undefined : message.value;
+    obj.to = message.to === '' ? undefined : message.to;
+    obj.value = message.value === '' ? undefined : message.value;
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
     obj.v = message.v ? base64FromBytes(message.v) : undefined;
     obj.r = message.r ? base64FromBytes(message.r) : undefined;
@@ -663,8 +691,8 @@ export const LegacyTx = {
   },
   toAminoMsg(message: LegacyTx): LegacyTxAminoMsg {
     return {
-      type: "cosmos/evm/LegacyTx",
-      value: LegacyTx.toAmino(message)
+      type: 'cosmos/evm/LegacyTx',
+      value: LegacyTx.toAmino(message),
     };
   },
   fromProtoMsg(message: LegacyTxProtoMsg): LegacyTx {
@@ -675,46 +703,49 @@ export const LegacyTx = {
   },
   toProtoMsg(message: LegacyTx): LegacyTxProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.LegacyTx",
-      value: LegacyTx.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.LegacyTx',
+      value: LegacyTx.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseAccessListTx(): AccessListTx {
   return {
-    $typeUrl: "/cosmos.evm.vm.v1.AccessListTx",
-    chainId: "",
+    $typeUrl: '/cosmos.evm.vm.v1.AccessListTx',
+    chainId: '',
     nonce: BigInt(0),
-    gasPrice: "",
+    gasPrice: '',
     gas: BigInt(0),
-    to: "",
-    value: "",
+    to: '',
+    value: '',
     data: new Uint8Array(),
     accesses: [],
     v: new Uint8Array(),
     r: new Uint8Array(),
-    s: new Uint8Array()
+    s: new Uint8Array(),
   };
 }
 export const AccessListTx = {
-  typeUrl: "/cosmos.evm.vm.v1.AccessListTx",
-  encode(message: AccessListTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.chainId !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.AccessListTx',
+  encode(
+    message: AccessListTx,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.chainId !== '') {
       writer.uint32(10).string(message.chainId);
     }
     if (message.nonce !== BigInt(0)) {
       writer.uint32(16).uint64(message.nonce);
     }
-    if (message.gasPrice !== "") {
+    if (message.gasPrice !== '') {
       writer.uint32(26).string(message.gasPrice);
     }
     if (message.gas !== BigInt(0)) {
       writer.uint32(32).uint64(message.gas);
     }
-    if (message.to !== "") {
+    if (message.to !== '') {
       writer.uint32(42).string(message.to);
     }
-    if (message.value !== "") {
+    if (message.value !== '') {
       writer.uint32(50).string(message.value);
     }
     if (message.data.length !== 0) {
@@ -735,7 +766,8 @@ export const AccessListTx = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): AccessListTx {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAccessListTx();
     while (reader.pos < end) {
@@ -783,14 +815,21 @@ export const AccessListTx = {
   },
   fromPartial(object: Partial<AccessListTx>): AccessListTx {
     const message = createBaseAccessListTx();
-    message.chainId = object.chainId ?? "";
-    message.nonce = object.nonce !== undefined && object.nonce !== null ? BigInt(object.nonce.toString()) : BigInt(0);
-    message.gasPrice = object.gasPrice ?? "";
-    message.gas = object.gas !== undefined && object.gas !== null ? BigInt(object.gas.toString()) : BigInt(0);
-    message.to = object.to ?? "";
-    message.value = object.value ?? "";
+    message.chainId = object.chainId ?? '';
+    message.nonce =
+      object.nonce !== undefined && object.nonce !== null
+        ? BigInt(object.nonce.toString())
+        : BigInt(0);
+    message.gasPrice = object.gasPrice ?? '';
+    message.gas =
+      object.gas !== undefined && object.gas !== null
+        ? BigInt(object.gas.toString())
+        : BigInt(0);
+    message.to = object.to ?? '';
+    message.value = object.value ?? '';
     message.data = object.data ?? new Uint8Array();
-    message.accesses = object.accesses?.map(e => AccessTuple.fromPartial(e)) || [];
+    message.accesses =
+      object.accesses?.map((e) => AccessTuple.fromPartial(e)) || [];
     message.v = object.v ?? new Uint8Array();
     message.r = object.r ?? new Uint8Array();
     message.s = object.s ?? new Uint8Array();
@@ -819,7 +858,8 @@ export const AccessListTx = {
     if (object.data !== undefined && object.data !== null) {
       message.data = bytesFromBase64(object.data);
     }
-    message.accesses = object.accesses?.map(e => AccessTuple.fromAmino(e)) || [];
+    message.accesses =
+      object.accesses?.map((e) => AccessTuple.fromAmino(e)) || [];
     if (object.v !== undefined && object.v !== null) {
       message.v = bytesFromBase64(object.v);
     }
@@ -833,15 +873,18 @@ export const AccessListTx = {
   },
   toAmino(message: AccessListTx): AccessListTxAmino {
     const obj: any = {};
-    obj.chain_id = message.chainId ?? "";
-    obj.nonce = message.nonce !== BigInt(0) ? message.nonce?.toString() : undefined;
-    obj.gas_price = message.gasPrice === "" ? undefined : message.gasPrice;
+    obj.chain_id = message.chainId ?? '';
+    obj.nonce =
+      message.nonce !== BigInt(0) ? message.nonce?.toString() : undefined;
+    obj.gas_price = message.gasPrice === '' ? undefined : message.gasPrice;
     obj.gas = message.gas !== BigInt(0) ? message.gas?.toString() : undefined;
-    obj.to = message.to === "" ? undefined : message.to;
-    obj.value = message.value === "" ? undefined : message.value;
+    obj.to = message.to === '' ? undefined : message.to;
+    obj.value = message.value === '' ? undefined : message.value;
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
     if (message.accesses) {
-      obj.accesses = message.accesses.map(e => e ? AccessTuple.toAmino(e) : undefined);
+      obj.accesses = message.accesses.map((e) =>
+        e ? AccessTuple.toAmino(e) : undefined
+      );
     } else {
       obj.accesses = message.accesses;
     }
@@ -855,8 +898,8 @@ export const AccessListTx = {
   },
   toAminoMsg(message: AccessListTx): AccessListTxAminoMsg {
     return {
-      type: "cosmos/evm/AccessListTx",
-      value: AccessListTx.toAmino(message)
+      type: 'cosmos/evm/AccessListTx',
+      value: AccessListTx.toAmino(message),
     };
   },
   fromProtoMsg(message: AccessListTxProtoMsg): AccessListTx {
@@ -867,50 +910,53 @@ export const AccessListTx = {
   },
   toProtoMsg(message: AccessListTx): AccessListTxProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.AccessListTx",
-      value: AccessListTx.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.AccessListTx',
+      value: AccessListTx.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseDynamicFeeTx(): DynamicFeeTx {
   return {
-    $typeUrl: "/cosmos.evm.vm.v1.DynamicFeeTx",
-    chainId: "",
+    $typeUrl: '/cosmos.evm.vm.v1.DynamicFeeTx',
+    chainId: '',
     nonce: BigInt(0),
-    gasTipCap: "",
-    gasFeeCap: "",
+    gasTipCap: '',
+    gasFeeCap: '',
     gas: BigInt(0),
-    to: "",
-    value: "",
+    to: '',
+    value: '',
     data: new Uint8Array(),
     accesses: [],
     v: new Uint8Array(),
     r: new Uint8Array(),
-    s: new Uint8Array()
+    s: new Uint8Array(),
   };
 }
 export const DynamicFeeTx = {
-  typeUrl: "/cosmos.evm.vm.v1.DynamicFeeTx",
-  encode(message: DynamicFeeTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.chainId !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.DynamicFeeTx',
+  encode(
+    message: DynamicFeeTx,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.chainId !== '') {
       writer.uint32(10).string(message.chainId);
     }
     if (message.nonce !== BigInt(0)) {
       writer.uint32(16).uint64(message.nonce);
     }
-    if (message.gasTipCap !== "") {
+    if (message.gasTipCap !== '') {
       writer.uint32(26).string(message.gasTipCap);
     }
-    if (message.gasFeeCap !== "") {
+    if (message.gasFeeCap !== '') {
       writer.uint32(34).string(message.gasFeeCap);
     }
     if (message.gas !== BigInt(0)) {
       writer.uint32(40).uint64(message.gas);
     }
-    if (message.to !== "") {
+    if (message.to !== '') {
       writer.uint32(50).string(message.to);
     }
-    if (message.value !== "") {
+    if (message.value !== '') {
       writer.uint32(58).string(message.value);
     }
     if (message.data.length !== 0) {
@@ -931,7 +977,8 @@ export const DynamicFeeTx = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): DynamicFeeTx {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseDynamicFeeTx();
     while (reader.pos < end) {
@@ -982,15 +1029,22 @@ export const DynamicFeeTx = {
   },
   fromPartial(object: Partial<DynamicFeeTx>): DynamicFeeTx {
     const message = createBaseDynamicFeeTx();
-    message.chainId = object.chainId ?? "";
-    message.nonce = object.nonce !== undefined && object.nonce !== null ? BigInt(object.nonce.toString()) : BigInt(0);
-    message.gasTipCap = object.gasTipCap ?? "";
-    message.gasFeeCap = object.gasFeeCap ?? "";
-    message.gas = object.gas !== undefined && object.gas !== null ? BigInt(object.gas.toString()) : BigInt(0);
-    message.to = object.to ?? "";
-    message.value = object.value ?? "";
+    message.chainId = object.chainId ?? '';
+    message.nonce =
+      object.nonce !== undefined && object.nonce !== null
+        ? BigInt(object.nonce.toString())
+        : BigInt(0);
+    message.gasTipCap = object.gasTipCap ?? '';
+    message.gasFeeCap = object.gasFeeCap ?? '';
+    message.gas =
+      object.gas !== undefined && object.gas !== null
+        ? BigInt(object.gas.toString())
+        : BigInt(0);
+    message.to = object.to ?? '';
+    message.value = object.value ?? '';
     message.data = object.data ?? new Uint8Array();
-    message.accesses = object.accesses?.map(e => AccessTuple.fromPartial(e)) || [];
+    message.accesses =
+      object.accesses?.map((e) => AccessTuple.fromPartial(e)) || [];
     message.v = object.v ?? new Uint8Array();
     message.r = object.r ?? new Uint8Array();
     message.s = object.s ?? new Uint8Array();
@@ -1022,7 +1076,8 @@ export const DynamicFeeTx = {
     if (object.data !== undefined && object.data !== null) {
       message.data = bytesFromBase64(object.data);
     }
-    message.accesses = object.accesses?.map(e => AccessTuple.fromAmino(e)) || [];
+    message.accesses =
+      object.accesses?.map((e) => AccessTuple.fromAmino(e)) || [];
     if (object.v !== undefined && object.v !== null) {
       message.v = bytesFromBase64(object.v);
     }
@@ -1036,16 +1091,19 @@ export const DynamicFeeTx = {
   },
   toAmino(message: DynamicFeeTx): DynamicFeeTxAmino {
     const obj: any = {};
-    obj.chain_id = message.chainId ?? "";
-    obj.nonce = message.nonce !== BigInt(0) ? message.nonce?.toString() : undefined;
-    obj.gas_tip_cap = message.gasTipCap === "" ? undefined : message.gasTipCap;
-    obj.gas_fee_cap = message.gasFeeCap === "" ? undefined : message.gasFeeCap;
+    obj.chain_id = message.chainId ?? '';
+    obj.nonce =
+      message.nonce !== BigInt(0) ? message.nonce?.toString() : undefined;
+    obj.gas_tip_cap = message.gasTipCap === '' ? undefined : message.gasTipCap;
+    obj.gas_fee_cap = message.gasFeeCap === '' ? undefined : message.gasFeeCap;
     obj.gas = message.gas !== BigInt(0) ? message.gas?.toString() : undefined;
-    obj.to = message.to === "" ? undefined : message.to;
-    obj.value = message.value === "" ? undefined : message.value;
+    obj.to = message.to === '' ? undefined : message.to;
+    obj.value = message.value === '' ? undefined : message.value;
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
     if (message.accesses) {
-      obj.accesses = message.accesses.map(e => e ? AccessTuple.toAmino(e) : undefined);
+      obj.accesses = message.accesses.map((e) =>
+        e ? AccessTuple.toAmino(e) : undefined
+      );
     } else {
       obj.accesses = message.accesses;
     }
@@ -1059,8 +1117,8 @@ export const DynamicFeeTx = {
   },
   toAminoMsg(message: DynamicFeeTx): DynamicFeeTxAminoMsg {
     return {
-      type: "cosmos/evm/DynamicFeeTx",
-      value: DynamicFeeTx.toAmino(message)
+      type: 'cosmos/evm/DynamicFeeTx',
+      value: DynamicFeeTx.toAmino(message),
     };
   },
   fromProtoMsg(message: DynamicFeeTxProtoMsg): DynamicFeeTx {
@@ -1071,21 +1129,28 @@ export const DynamicFeeTx = {
   },
   toProtoMsg(message: DynamicFeeTx): DynamicFeeTxProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.DynamicFeeTx",
-      value: DynamicFeeTx.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.DynamicFeeTx',
+      value: DynamicFeeTx.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseExtensionOptionsEthereumTx(): ExtensionOptionsEthereumTx {
   return {};
 }
 export const ExtensionOptionsEthereumTx = {
-  typeUrl: "/cosmos.evm.vm.v1.ExtensionOptionsEthereumTx",
-  encode(_: ExtensionOptionsEthereumTx, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.vm.v1.ExtensionOptionsEthereumTx',
+  encode(
+    _: ExtensionOptionsEthereumTx,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): ExtensionOptionsEthereumTx {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): ExtensionOptionsEthereumTx {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseExtensionOptionsEthereumTx();
     while (reader.pos < end) {
@@ -1098,7 +1163,9 @@ export const ExtensionOptionsEthereumTx = {
     }
     return message;
   },
-  fromPartial(_: Partial<ExtensionOptionsEthereumTx>): ExtensionOptionsEthereumTx {
+  fromPartial(
+    _: Partial<ExtensionOptionsEthereumTx>
+  ): ExtensionOptionsEthereumTx {
     const message = createBaseExtensionOptionsEthereumTx();
     return message;
   },
@@ -1110,41 +1177,52 @@ export const ExtensionOptionsEthereumTx = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: ExtensionOptionsEthereumTxAminoMsg): ExtensionOptionsEthereumTx {
+  fromAminoMsg(
+    object: ExtensionOptionsEthereumTxAminoMsg
+  ): ExtensionOptionsEthereumTx {
     return ExtensionOptionsEthereumTx.fromAmino(object.value);
   },
-  toAminoMsg(message: ExtensionOptionsEthereumTx): ExtensionOptionsEthereumTxAminoMsg {
+  toAminoMsg(
+    message: ExtensionOptionsEthereumTx
+  ): ExtensionOptionsEthereumTxAminoMsg {
     return {
-      type: "cosmos-sdk/ExtensionOptionsEthereumTx",
-      value: ExtensionOptionsEthereumTx.toAmino(message)
+      type: 'cosmos-sdk/ExtensionOptionsEthereumTx',
+      value: ExtensionOptionsEthereumTx.toAmino(message),
     };
   },
-  fromProtoMsg(message: ExtensionOptionsEthereumTxProtoMsg): ExtensionOptionsEthereumTx {
+  fromProtoMsg(
+    message: ExtensionOptionsEthereumTxProtoMsg
+  ): ExtensionOptionsEthereumTx {
     return ExtensionOptionsEthereumTx.decode(message.value);
   },
   toProto(message: ExtensionOptionsEthereumTx): Uint8Array {
     return ExtensionOptionsEthereumTx.encode(message).finish();
   },
-  toProtoMsg(message: ExtensionOptionsEthereumTx): ExtensionOptionsEthereumTxProtoMsg {
+  toProtoMsg(
+    message: ExtensionOptionsEthereumTx
+  ): ExtensionOptionsEthereumTxProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.ExtensionOptionsEthereumTx",
-      value: ExtensionOptionsEthereumTx.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.ExtensionOptionsEthereumTx',
+      value: ExtensionOptionsEthereumTx.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgEthereumTxResponse(): MsgEthereumTxResponse {
   return {
-    hash: "",
+    hash: '',
     logs: [],
     ret: new Uint8Array(),
-    vmError: "",
-    gasUsed: BigInt(0)
+    vmError: '',
+    gasUsed: BigInt(0),
   };
 }
 export const MsgEthereumTxResponse = {
-  typeUrl: "/cosmos.evm.vm.v1.MsgEthereumTxResponse",
-  encode(message: MsgEthereumTxResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.hash !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.MsgEthereumTxResponse',
+  encode(
+    message: MsgEthereumTxResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.hash !== '') {
       writer.uint32(10).string(message.hash);
     }
     for (const v of message.logs) {
@@ -1153,7 +1231,7 @@ export const MsgEthereumTxResponse = {
     if (message.ret.length !== 0) {
       writer.uint32(26).bytes(message.ret);
     }
-    if (message.vmError !== "") {
+    if (message.vmError !== '') {
       writer.uint32(34).string(message.vmError);
     }
     if (message.gasUsed !== BigInt(0)) {
@@ -1161,8 +1239,12 @@ export const MsgEthereumTxResponse = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgEthereumTxResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgEthereumTxResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgEthereumTxResponse();
     while (reader.pos < end) {
@@ -1192,11 +1274,14 @@ export const MsgEthereumTxResponse = {
   },
   fromPartial(object: Partial<MsgEthereumTxResponse>): MsgEthereumTxResponse {
     const message = createBaseMsgEthereumTxResponse();
-    message.hash = object.hash ?? "";
-    message.logs = object.logs?.map(e => Log.fromPartial(e)) || [];
+    message.hash = object.hash ?? '';
+    message.logs = object.logs?.map((e) => Log.fromPartial(e)) || [];
     message.ret = object.ret ?? new Uint8Array();
-    message.vmError = object.vmError ?? "";
-    message.gasUsed = object.gasUsed !== undefined && object.gasUsed !== null ? BigInt(object.gasUsed.toString()) : BigInt(0);
+    message.vmError = object.vmError ?? '';
+    message.gasUsed =
+      object.gasUsed !== undefined && object.gasUsed !== null
+        ? BigInt(object.gasUsed.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: MsgEthereumTxResponseAmino): MsgEthereumTxResponse {
@@ -1204,7 +1289,7 @@ export const MsgEthereumTxResponse = {
     if (object.hash !== undefined && object.hash !== null) {
       message.hash = object.hash;
     }
-    message.logs = object.logs?.map(e => Log.fromAmino(e)) || [];
+    message.logs = object.logs?.map((e) => Log.fromAmino(e)) || [];
     if (object.ret !== undefined && object.ret !== null) {
       message.ret = bytesFromBase64(object.ret);
     }
@@ -1218,15 +1303,16 @@ export const MsgEthereumTxResponse = {
   },
   toAmino(message: MsgEthereumTxResponse): MsgEthereumTxResponseAmino {
     const obj: any = {};
-    obj.hash = message.hash === "" ? undefined : message.hash;
+    obj.hash = message.hash === '' ? undefined : message.hash;
     if (message.logs) {
-      obj.logs = message.logs.map(e => e ? Log.toAmino(e) : undefined);
+      obj.logs = message.logs.map((e) => (e ? Log.toAmino(e) : undefined));
     } else {
       obj.logs = message.logs;
     }
     obj.ret = message.ret ? base64FromBytes(message.ret) : undefined;
-    obj.vm_error = message.vmError === "" ? undefined : message.vmError;
-    obj.gas_used = message.gasUsed !== BigInt(0) ? message.gasUsed?.toString() : undefined;
+    obj.vm_error = message.vmError === '' ? undefined : message.vmError;
+    obj.gas_used =
+      message.gasUsed !== BigInt(0) ? message.gasUsed?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgEthereumTxResponseAminoMsg): MsgEthereumTxResponse {
@@ -1234,8 +1320,8 @@ export const MsgEthereumTxResponse = {
   },
   toAminoMsg(message: MsgEthereumTxResponse): MsgEthereumTxResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgEthereumTxResponse",
-      value: MsgEthereumTxResponse.toAmino(message)
+      type: 'cosmos-sdk/MsgEthereumTxResponse',
+      value: MsgEthereumTxResponse.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgEthereumTxResponseProtoMsg): MsgEthereumTxResponse {
@@ -1246,21 +1332,24 @@ export const MsgEthereumTxResponse = {
   },
   toProtoMsg(message: MsgEthereumTxResponse): MsgEthereumTxResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.MsgEthereumTxResponse",
-      value: MsgEthereumTxResponse.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.MsgEthereumTxResponse',
+      value: MsgEthereumTxResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
-    authority: "",
-    params: Params.fromPartial({})
+    authority: '',
+    params: Params.fromPartial({}),
   };
 }
 export const MsgUpdateParams = {
-  typeUrl: "/cosmos.evm.vm.v1.MsgUpdateParams",
-  encode(message: MsgUpdateParams, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.authority !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.MsgUpdateParams',
+  encode(
+    message: MsgUpdateParams,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.authority !== '') {
       writer.uint32(10).string(message.authority);
     }
     if (message.params !== undefined) {
@@ -1269,7 +1358,8 @@ export const MsgUpdateParams = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParams {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateParams();
     while (reader.pos < end) {
@@ -1290,8 +1380,11 @@ export const MsgUpdateParams = {
   },
   fromPartial(object: Partial<MsgUpdateParams>): MsgUpdateParams {
     const message = createBaseMsgUpdateParams();
-    message.authority = object.authority ?? "";
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.authority = object.authority ?? '';
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
   fromAmino(object: MsgUpdateParamsAmino): MsgUpdateParams {
@@ -1306,8 +1399,10 @@ export const MsgUpdateParams = {
   },
   toAmino(message: MsgUpdateParams): MsgUpdateParamsAmino {
     const obj: any = {};
-    obj.authority = message.authority === "" ? undefined : message.authority;
-    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.authority = message.authority === '' ? undefined : message.authority;
+    obj.params = message.params
+      ? Params.toAmino(message.params)
+      : Params.toAmino(Params.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: MsgUpdateParamsAminoMsg): MsgUpdateParams {
@@ -1315,8 +1410,8 @@ export const MsgUpdateParams = {
   },
   toAminoMsg(message: MsgUpdateParams): MsgUpdateParamsAminoMsg {
     return {
-      type: "cosmos/evm/x/vm/MsgUpdateParams",
-      value: MsgUpdateParams.toAmino(message)
+      type: 'cosmos/evm/x/vm/MsgUpdateParams',
+      value: MsgUpdateParams.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgUpdateParamsProtoMsg): MsgUpdateParams {
@@ -1327,21 +1422,28 @@ export const MsgUpdateParams = {
   },
   toProtoMsg(message: MsgUpdateParams): MsgUpdateParamsProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.MsgUpdateParams",
-      value: MsgUpdateParams.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.MsgUpdateParams',
+      value: MsgUpdateParams.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateParamsResponse(): MsgUpdateParamsResponse {
   return {};
 }
 export const MsgUpdateParamsResponse = {
-  typeUrl: "/cosmos.evm.vm.v1.MsgUpdateParamsResponse",
-  encode(_: MsgUpdateParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.vm.v1.MsgUpdateParamsResponse',
+  encode(
+    _: MsgUpdateParamsResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateParamsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgUpdateParamsResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateParamsResponse();
     while (reader.pos < end) {
@@ -1366,25 +1468,33 @@ export const MsgUpdateParamsResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgUpdateParamsResponseAminoMsg): MsgUpdateParamsResponse {
+  fromAminoMsg(
+    object: MsgUpdateParamsResponseAminoMsg
+  ): MsgUpdateParamsResponse {
     return MsgUpdateParamsResponse.fromAmino(object.value);
   },
-  toAminoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseAminoMsg {
+  toAminoMsg(
+    message: MsgUpdateParamsResponse
+  ): MsgUpdateParamsResponseAminoMsg {
     return {
-      type: "cosmos-sdk/MsgUpdateParamsResponse",
-      value: MsgUpdateParamsResponse.toAmino(message)
+      type: 'cosmos-sdk/MsgUpdateParamsResponse',
+      value: MsgUpdateParamsResponse.toAmino(message),
     };
   },
-  fromProtoMsg(message: MsgUpdateParamsResponseProtoMsg): MsgUpdateParamsResponse {
+  fromProtoMsg(
+    message: MsgUpdateParamsResponseProtoMsg
+  ): MsgUpdateParamsResponse {
     return MsgUpdateParamsResponse.decode(message.value);
   },
   toProto(message: MsgUpdateParamsResponse): Uint8Array {
     return MsgUpdateParamsResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgUpdateParamsResponse): MsgUpdateParamsResponseProtoMsg {
+  toProtoMsg(
+    message: MsgUpdateParamsResponse
+  ): MsgUpdateParamsResponseProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.MsgUpdateParamsResponse",
-      value: MsgUpdateParamsResponse.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.MsgUpdateParamsResponse',
+      value: MsgUpdateParamsResponse.encode(message).finish(),
     };
-  }
+  },
 };

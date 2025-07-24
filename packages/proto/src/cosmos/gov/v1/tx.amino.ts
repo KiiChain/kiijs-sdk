@@ -1,39 +1,47 @@
 //@ts-nocheck
-import { MsgSubmitProposal, MsgExecLegacyContent, MsgVote, MsgVoteWeighted, MsgDeposit, MsgUpdateParams, MsgCancelProposal } from "./tx";
+import {
+  MsgCancelProposal,
+  MsgDeposit,
+  MsgExecLegacyContent,
+  MsgSubmitProposal,
+  MsgUpdateParams,
+  MsgVote,
+  MsgVoteWeighted,
+} from './tx';
 export const AminoConverter = {
-  "/cosmos.gov.v1.MsgSubmitProposal": {
-    aminoType: "cosmos-sdk/v1/MsgSubmitProposal",
+  '/cosmos.gov.v1.MsgSubmitProposal': {
+    aminoType: 'cosmos-sdk/v1/MsgSubmitProposal',
     toAmino: MsgSubmitProposal.toAmino,
-    fromAmino: MsgSubmitProposal.fromAmino
+    fromAmino: MsgSubmitProposal.fromAmino,
   },
-  "/cosmos.gov.v1.MsgExecLegacyContent": {
-    aminoType: "cosmos-sdk/v1/MsgExecLegacyContent",
+  '/cosmos.gov.v1.MsgExecLegacyContent': {
+    aminoType: 'cosmos-sdk/v1/MsgExecLegacyContent',
     toAmino: MsgExecLegacyContent.toAmino,
-    fromAmino: MsgExecLegacyContent.fromAmino
+    fromAmino: MsgExecLegacyContent.fromAmino,
   },
-  "/cosmos.gov.v1.MsgVote": {
-    aminoType: "cosmos-sdk/v1/MsgVote",
+  '/cosmos.gov.v1.MsgVote': {
+    aminoType: 'cosmos-sdk/v1/MsgVote',
     toAmino: MsgVote.toAmino,
-    fromAmino: MsgVote.fromAmino
+    fromAmino: MsgVote.fromAmino,
   },
-  "/cosmos.gov.v1.MsgVoteWeighted": {
-    aminoType: "cosmos-sdk/v1/MsgVoteWeighted",
+  '/cosmos.gov.v1.MsgVoteWeighted': {
+    aminoType: 'cosmos-sdk/v1/MsgVoteWeighted',
     toAmino: MsgVoteWeighted.toAmino,
-    fromAmino: MsgVoteWeighted.fromAmino
+    fromAmino: MsgVoteWeighted.fromAmino,
   },
-  "/cosmos.gov.v1.MsgDeposit": {
-    aminoType: "cosmos-sdk/v1/MsgDeposit",
+  '/cosmos.gov.v1.MsgDeposit': {
+    aminoType: 'cosmos-sdk/v1/MsgDeposit',
     toAmino: MsgDeposit.toAmino,
-    fromAmino: MsgDeposit.fromAmino
+    fromAmino: MsgDeposit.fromAmino,
   },
-  "/cosmos.gov.v1.MsgUpdateParams": {
-    aminoType: "cosmos-sdk/x/gov/v1/MsgUpdateParams",
+  '/cosmos.gov.v1.MsgUpdateParams': {
+    aminoType: 'cosmos-sdk/x/gov/v1/MsgUpdateParams',
     toAmino: MsgUpdateParams.toAmino,
-    fromAmino: MsgUpdateParams.fromAmino
+    fromAmino: MsgUpdateParams.fromAmino,
   },
-  "/cosmos.gov.v1.MsgCancelProposal": {
-    aminoType: "cosmos-sdk/v1/MsgCancelProposal",
+  '/cosmos.gov.v1.MsgCancelProposal': {
+    aminoType: 'cosmos-sdk/v1/MsgCancelProposal',
     toAmino: MsgCancelProposal.toAmino,
-    fromAmino: MsgCancelProposal.fromAmino
-  }
+    fromAmino: MsgCancelProposal.fromAmino,
+  },
 };

@@ -1,5 +1,8 @@
 import { Contract, ContractRunner, InterfaceAbi } from 'ethers';
-import { BECH32_PRECOMPILE_ABI, BECH32_PRECOMPILE_ADDRESS } from '../precompiles';
+import {
+  BECH32_PRECOMPILE_ABI,
+  BECH32_PRECOMPILE_ADDRESS,
+} from '../precompiles';
 import { fromBech32 } from '@cosmjs/encoding';
 import { isAddress } from 'ethers';
 import { toBech32 } from '@cosmjs/encoding';
@@ -8,7 +11,8 @@ import { toBech32 } from '@cosmjs/encoding';
  * The ABI for the Bech32 precompile contract, used to create an Ethers contract.
  * @category Cosmos Interoperability
  */
-export const ETHERS_BECH32_PRECOMPILE_ABI = BECH32_PRECOMPILE_ABI as InterfaceAbi;
+export const ETHERS_BECH32_PRECOMPILE_ABI =
+  BECH32_PRECOMPILE_ABI as InterfaceAbi;
 
 /**
  * Creates and returns a typed Ethers v6 contract instance for the Bech32 precompile contract.
@@ -32,7 +36,7 @@ export const ETHERS_BECH32_PRECOMPILE_ABI = BECH32_PRECOMPILE_ABI as InterfaceAb
  * @category Cosmos Interoperability
  */
 export const getBech32PrecompileEthersV6Contract = (runner: ContractRunner) => {
-	return new Contract(BECH32_PRECOMPILE_ADDRESS, BECH32_PRECOMPILE_ABI, runner);
+  return new Contract(BECH32_PRECOMPILE_ADDRESS, BECH32_PRECOMPILE_ABI, runner);
 };
 
 /**

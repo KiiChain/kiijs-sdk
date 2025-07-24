@@ -1,8 +1,9 @@
 //@ts-nocheck
-import { Rpc } from "../../../../../helpers";
-import { BinaryReader } from "../../../../../binary";
-import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse } from "./query";
+import { createProtobufRpcClient, QueryClient } from '@cosmjs/stargate';
+
+import { BinaryReader } from '../../../../../binary';
+import { Rpc } from '../../../../../helpers';
+import { QueryParamsRequest, QueryParamsResponse } from './query';
 /** Query provides defines the gRPC querier service. */
 export interface Query {
   /** Params queries all parameters of the ICA host submodule. */
@@ -16,8 +17,14 @@ export class QueryClientImpl implements Query {
   }
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
     const data = QueryParamsRequest.encode(request).finish();
-    const promise = this.rpc.request("ibc.applications.interchain_accounts.host.v1.Query", "Params", data);
-    return promise.then(data => QueryParamsResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'ibc.applications.interchain_accounts.host.v1.Query',
+      'Params',
+      data
+    );
+    return promise.then((data) =>
+      QueryParamsResponse.decode(new BinaryReader(data))
+    );
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
@@ -26,6 +33,6 @@ export const createRpcQueryExtension = (base: QueryClient) => {
   return {
     params(request?: QueryParamsRequest): Promise<QueryParamsResponse> {
       return queryService.params(request);
-    }
+    },
   };
 };

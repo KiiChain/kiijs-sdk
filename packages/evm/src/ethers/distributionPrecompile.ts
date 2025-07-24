@@ -1,11 +1,15 @@
 import { Contract, ContractRunner, InterfaceAbi } from 'ethers';
-import { DISTRIBUTION_PRECOMPILE_ADDRESS, DISTRIBUTION_PRECOMPILE_ABI } from '../precompiles';
+import {
+  DISTRIBUTION_PRECOMPILE_ADDRESS,
+  DISTRIBUTION_PRECOMPILE_ABI,
+} from '../precompiles';
 
 /**
  * The ABI for the Distribution precompile contract, used to create an Ethers contract.
  * @category Cosmos Interoperability
  */
-export const ETHERS_DISTRIBUTION_PRECOMPILE_ABI = DISTRIBUTION_PRECOMPILE_ABI as InterfaceAbi;
+export const ETHERS_DISTRIBUTION_PRECOMPILE_ABI =
+  DISTRIBUTION_PRECOMPILE_ABI as InterfaceAbi;
 
 /**
  * Creates and returns a typed Ethers v6 contract instance for the Distribution precompile contract.
@@ -29,6 +33,12 @@ export const ETHERS_DISTRIBUTION_PRECOMPILE_ABI = DISTRIBUTION_PRECOMPILE_ABI as
  * @returns The typed contract instance for interacting with the Distribution precompile contract.
  * @category Cosmos Interoperability
  */
-export const getDistributionPrecompileEthersV6Contract = (runner: ContractRunner) => {
-	return new Contract(DISTRIBUTION_PRECOMPILE_ADDRESS, ETHERS_DISTRIBUTION_PRECOMPILE_ABI, runner);
+export const getDistributionPrecompileEthersV6Contract = (
+  runner: ContractRunner
+) => {
+  return new Contract(
+    DISTRIBUTION_PRECOMPILE_ADDRESS,
+    ETHERS_DISTRIBUTION_PRECOMPILE_ABI,
+    runner
+  );
 };

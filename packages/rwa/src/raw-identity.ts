@@ -1,5 +1,6 @@
-import { RwaClient } from './client';
 import { DeliverTxResponse } from '@cosmjs/stargate';
+
+import { RwaClient } from './client';
 
 export interface AddIdentityRequest {
   from: string;
@@ -31,7 +32,9 @@ export class IdentityModule {
    * @param request - An AddIdentityRequest containing identity details
    * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
-  public async addIdentity(request: AddIdentityRequest): Promise<DeliverTxResponse> {
+  public async addIdentity(
+    request: AddIdentityRequest
+  ): Promise<DeliverTxResponse> {
     const msg = {
       add_identity: {
         from: request.from,
@@ -53,7 +56,9 @@ export class IdentityModule {
    * @param request - An UpdateIdentityRequest containing updated identity details
    * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
-  public async updateIdentity(request: UpdateIdentityRequest): Promise<DeliverTxResponse> {
+  public async updateIdentity(
+    request: UpdateIdentityRequest
+  ): Promise<DeliverTxResponse> {
     const msg = {
       update_identity: {
         from: request.from,
@@ -76,7 +81,9 @@ export class IdentityModule {
    * @param request - A RemoveIdentityRequest containing identity details
    * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
-  public async removeIdentity(request: RemoveIdentityRequest): Promise<DeliverTxResponse> {
+  public async removeIdentity(
+    request: RemoveIdentityRequest
+  ): Promise<DeliverTxResponse> {
     const msg = {
       remove_identity: {
         from: request.from,

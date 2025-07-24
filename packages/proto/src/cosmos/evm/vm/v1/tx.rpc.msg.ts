@@ -1,7 +1,12 @@
 //@ts-nocheck
-import { Rpc } from "../../../../helpers";
-import { BinaryReader } from "../../../../binary";
-import { MsgEthereumTx, MsgEthereumTxResponse, MsgUpdateParams, MsgUpdateParamsResponse } from "./tx";
+import { BinaryReader } from '../../../../binary';
+import { Rpc } from '../../../../helpers';
+import {
+  MsgEthereumTx,
+  MsgEthereumTxResponse,
+  MsgUpdateParams,
+  MsgUpdateParamsResponse,
+} from './tx';
 /** Msg defines the evm Msg service. */
 export interface Msg {
   /** EthereumTx defines a method submitting Ethereum transactions. */
@@ -22,12 +27,24 @@ export class MsgClientImpl implements Msg {
   }
   ethereumTx(request: MsgEthereumTx): Promise<MsgEthereumTxResponse> {
     const data = MsgEthereumTx.encode(request).finish();
-    const promise = this.rpc.request("cosmos.evm.vm.v1.Msg", "EthereumTx", data);
-    return promise.then(data => MsgEthereumTxResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.evm.vm.v1.Msg',
+      'EthereumTx',
+      data
+    );
+    return promise.then((data) =>
+      MsgEthereumTxResponse.decode(new BinaryReader(data))
+    );
   }
   updateParams(request: MsgUpdateParams): Promise<MsgUpdateParamsResponse> {
     const data = MsgUpdateParams.encode(request).finish();
-    const promise = this.rpc.request("cosmos.evm.vm.v1.Msg", "UpdateParams", data);
-    return promise.then(data => MsgUpdateParamsResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'cosmos.evm.vm.v1.Msg',
+      'UpdateParams',
+      data
+    );
+    return promise.then((data) =>
+      MsgUpdateParamsResponse.decode(new BinaryReader(data))
+    );
   }
 }

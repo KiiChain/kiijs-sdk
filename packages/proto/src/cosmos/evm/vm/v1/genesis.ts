@@ -1,6 +1,13 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType, State, StateAmino, StateSDKType } from "./evm";
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
+import {
+  Params,
+  ParamsAmino,
+  ParamsSDKType,
+  State,
+  StateAmino,
+  StateSDKType,
+} from './evm';
 /** GenesisState defines the evm module's genesis state. */
 export interface GenesisState {
   /** accounts is an array containing the ethereum genesis accounts. */
@@ -9,7 +16,7 @@ export interface GenesisState {
   params: Params;
 }
 export interface GenesisStateProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.GenesisState";
+  typeUrl: '/cosmos.evm.vm.v1.GenesisState';
   value: Uint8Array;
 }
 /** GenesisState defines the evm module's genesis state. */
@@ -20,7 +27,7 @@ export interface GenesisStateAmino {
   params: ParamsAmino;
 }
 export interface GenesisStateAminoMsg {
-  type: "cosmos-sdk/GenesisState";
+  type: 'cosmos-sdk/GenesisState';
   value: GenesisStateAmino;
 }
 /** GenesisState defines the evm module's genesis state. */
@@ -42,7 +49,7 @@ export interface GenesisAccount {
   storage: State[];
 }
 export interface GenesisAccountProtoMsg {
-  typeUrl: "/cosmos.evm.vm.v1.GenesisAccount";
+  typeUrl: '/cosmos.evm.vm.v1.GenesisAccount';
   value: Uint8Array;
 }
 /**
@@ -59,7 +66,7 @@ export interface GenesisAccountAmino {
   storage: StateAmino[];
 }
 export interface GenesisAccountAminoMsg {
-  type: "cosmos-sdk/GenesisAccount";
+  type: 'cosmos-sdk/GenesisAccount';
   value: GenesisAccountAmino;
 }
 /**
@@ -75,12 +82,15 @@ export interface GenesisAccountSDKType {
 function createBaseGenesisState(): GenesisState {
   return {
     accounts: [],
-    params: Params.fromPartial({})
+    params: Params.fromPartial({}),
   };
 }
 export const GenesisState = {
-  typeUrl: "/cosmos.evm.vm.v1.GenesisState",
-  encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/cosmos.evm.vm.v1.GenesisState',
+  encode(
+    message: GenesisState,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.accounts) {
       GenesisAccount.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -90,7 +100,8 @@ export const GenesisState = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisState();
     while (reader.pos < end) {
@@ -111,13 +122,18 @@ export const GenesisState = {
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
-    message.accounts = object.accounts?.map(e => GenesisAccount.fromPartial(e)) || [];
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.accounts =
+      object.accounts?.map((e) => GenesisAccount.fromPartial(e)) || [];
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
     const message = createBaseGenesisState();
-    message.accounts = object.accounts?.map(e => GenesisAccount.fromAmino(e)) || [];
+    message.accounts =
+      object.accounts?.map((e) => GenesisAccount.fromAmino(e)) || [];
     if (object.params !== undefined && object.params !== null) {
       message.params = Params.fromAmino(object.params);
     }
@@ -126,11 +142,15 @@ export const GenesisState = {
   toAmino(message: GenesisState): GenesisStateAmino {
     const obj: any = {};
     if (message.accounts) {
-      obj.accounts = message.accounts.map(e => e ? GenesisAccount.toAmino(e) : undefined);
+      obj.accounts = message.accounts.map((e) =>
+        e ? GenesisAccount.toAmino(e) : undefined
+      );
     } else {
       obj.accounts = message.accounts;
     }
-    obj.params = message.params ? Params.toAmino(message.params) : Params.toAmino(Params.fromPartial({}));
+    obj.params = message.params
+      ? Params.toAmino(message.params)
+      : Params.toAmino(Params.fromPartial({}));
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -138,8 +158,8 @@ export const GenesisState = {
   },
   toAminoMsg(message: GenesisState): GenesisStateAminoMsg {
     return {
-      type: "cosmos-sdk/GenesisState",
-      value: GenesisState.toAmino(message)
+      type: 'cosmos-sdk/GenesisState',
+      value: GenesisState.toAmino(message),
     };
   },
   fromProtoMsg(message: GenesisStateProtoMsg): GenesisState {
@@ -150,25 +170,28 @@ export const GenesisState = {
   },
   toProtoMsg(message: GenesisState): GenesisStateProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.GenesisState",
-      value: GenesisState.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.GenesisState',
+      value: GenesisState.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseGenesisAccount(): GenesisAccount {
   return {
-    address: "",
-    code: "",
-    storage: []
+    address: '',
+    code: '',
+    storage: [],
   };
 }
 export const GenesisAccount = {
-  typeUrl: "/cosmos.evm.vm.v1.GenesisAccount",
-  encode(message: GenesisAccount, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.address !== "") {
+  typeUrl: '/cosmos.evm.vm.v1.GenesisAccount',
+  encode(
+    message: GenesisAccount,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.address !== '') {
       writer.uint32(10).string(message.address);
     }
-    if (message.code !== "") {
+    if (message.code !== '') {
       writer.uint32(18).string(message.code);
     }
     for (const v of message.storage) {
@@ -177,7 +200,8 @@ export const GenesisAccount = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): GenesisAccount {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGenesisAccount();
     while (reader.pos < end) {
@@ -201,9 +225,9 @@ export const GenesisAccount = {
   },
   fromPartial(object: Partial<GenesisAccount>): GenesisAccount {
     const message = createBaseGenesisAccount();
-    message.address = object.address ?? "";
-    message.code = object.code ?? "";
-    message.storage = object.storage?.map(e => State.fromPartial(e)) || [];
+    message.address = object.address ?? '';
+    message.code = object.code ?? '';
+    message.storage = object.storage?.map((e) => State.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisAccountAmino): GenesisAccount {
@@ -214,15 +238,17 @@ export const GenesisAccount = {
     if (object.code !== undefined && object.code !== null) {
       message.code = object.code;
     }
-    message.storage = object.storage?.map(e => State.fromAmino(e)) || [];
+    message.storage = object.storage?.map((e) => State.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisAccount): GenesisAccountAmino {
     const obj: any = {};
-    obj.address = message.address === "" ? undefined : message.address;
-    obj.code = message.code === "" ? undefined : message.code;
+    obj.address = message.address === '' ? undefined : message.address;
+    obj.code = message.code === '' ? undefined : message.code;
     if (message.storage) {
-      obj.storage = message.storage.map(e => e ? State.toAmino(e) : undefined);
+      obj.storage = message.storage.map((e) =>
+        e ? State.toAmino(e) : undefined
+      );
     } else {
       obj.storage = message.storage;
     }
@@ -233,8 +259,8 @@ export const GenesisAccount = {
   },
   toAminoMsg(message: GenesisAccount): GenesisAccountAminoMsg {
     return {
-      type: "cosmos-sdk/GenesisAccount",
-      value: GenesisAccount.toAmino(message)
+      type: 'cosmos-sdk/GenesisAccount',
+      value: GenesisAccount.toAmino(message),
     };
   },
   fromProtoMsg(message: GenesisAccountProtoMsg): GenesisAccount {
@@ -245,8 +271,8 @@ export const GenesisAccount = {
   },
   toProtoMsg(message: GenesisAccount): GenesisAccountProtoMsg {
     return {
-      typeUrl: "/cosmos.evm.vm.v1.GenesisAccount",
-      value: GenesisAccount.encode(message).finish()
+      typeUrl: '/cosmos.evm.vm.v1.GenesisAccount',
+      value: GenesisAccount.encode(message).finish(),
     };
-  }
+  },
 };

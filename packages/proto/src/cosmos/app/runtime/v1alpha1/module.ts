@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../../binary';
 /** Module is the config object for the runtime module. */
 export interface Module {
   /** app_name is the name of the app. */
@@ -53,7 +53,7 @@ export interface Module {
   prepareCheckStaters: string[];
 }
 export interface ModuleProtoMsg {
-  typeUrl: "/cosmos.app.runtime.v1alpha1.Module";
+  typeUrl: '/cosmos.app.runtime.v1alpha1.Module';
   value: Uint8Array;
 }
 /** Module is the config object for the runtime module. */
@@ -109,7 +109,7 @@ export interface ModuleAmino {
   prepare_check_staters?: string[];
 }
 export interface ModuleAminoMsg {
-  type: "cosmos-sdk/Module";
+  type: 'cosmos-sdk/Module';
   value: ModuleAmino;
 }
 /** Module is the config object for the runtime module. */
@@ -135,7 +135,7 @@ export interface StoreKeyConfig {
   kvStoreKey: string;
 }
 export interface StoreKeyConfigProtoMsg {
-  typeUrl: "/cosmos.app.runtime.v1alpha1.StoreKeyConfig";
+  typeUrl: '/cosmos.app.runtime.v1alpha1.StoreKeyConfig';
   value: Uint8Array;
 }
 /**
@@ -149,7 +149,7 @@ export interface StoreKeyConfigAmino {
   kv_store_key?: string;
 }
 export interface StoreKeyConfigAminoMsg {
-  type: "cosmos-sdk/StoreKeyConfig";
+  type: 'cosmos-sdk/StoreKeyConfig';
   value: StoreKeyConfigAmino;
 }
 /**
@@ -162,7 +162,7 @@ export interface StoreKeyConfigSDKType {
 }
 function createBaseModule(): Module {
   return {
-    appName: "",
+    appName: '',
     beginBlockers: [],
     endBlockers: [],
     initGenesis: [],
@@ -170,13 +170,16 @@ function createBaseModule(): Module {
     overrideStoreKeys: [],
     orderMigrations: [],
     precommiters: [],
-    prepareCheckStaters: []
+    prepareCheckStaters: [],
   };
 }
 export const Module = {
-  typeUrl: "/cosmos.app.runtime.v1alpha1.Module",
-  encode(message: Module, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.appName !== "") {
+  typeUrl: '/cosmos.app.runtime.v1alpha1.Module',
+  encode(
+    message: Module,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.appName !== '') {
       writer.uint32(10).string(message.appName);
     }
     for (const v of message.beginBlockers) {
@@ -206,7 +209,8 @@ export const Module = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Module {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseModule();
     while (reader.pos < end) {
@@ -228,7 +232,9 @@ export const Module = {
           message.exportGenesis.push(reader.string());
           break;
         case 6:
-          message.overrideStoreKeys.push(StoreKeyConfig.decode(reader, reader.uint32()));
+          message.overrideStoreKeys.push(
+            StoreKeyConfig.decode(reader, reader.uint32())
+          );
           break;
         case 7:
           message.orderMigrations.push(reader.string());
@@ -248,15 +254,17 @@ export const Module = {
   },
   fromPartial(object: Partial<Module>): Module {
     const message = createBaseModule();
-    message.appName = object.appName ?? "";
-    message.beginBlockers = object.beginBlockers?.map(e => e) || [];
-    message.endBlockers = object.endBlockers?.map(e => e) || [];
-    message.initGenesis = object.initGenesis?.map(e => e) || [];
-    message.exportGenesis = object.exportGenesis?.map(e => e) || [];
-    message.overrideStoreKeys = object.overrideStoreKeys?.map(e => StoreKeyConfig.fromPartial(e)) || [];
-    message.orderMigrations = object.orderMigrations?.map(e => e) || [];
-    message.precommiters = object.precommiters?.map(e => e) || [];
-    message.prepareCheckStaters = object.prepareCheckStaters?.map(e => e) || [];
+    message.appName = object.appName ?? '';
+    message.beginBlockers = object.beginBlockers?.map((e) => e) || [];
+    message.endBlockers = object.endBlockers?.map((e) => e) || [];
+    message.initGenesis = object.initGenesis?.map((e) => e) || [];
+    message.exportGenesis = object.exportGenesis?.map((e) => e) || [];
+    message.overrideStoreKeys =
+      object.overrideStoreKeys?.map((e) => StoreKeyConfig.fromPartial(e)) || [];
+    message.orderMigrations = object.orderMigrations?.map((e) => e) || [];
+    message.precommiters = object.precommiters?.map((e) => e) || [];
+    message.prepareCheckStaters =
+      object.prepareCheckStaters?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: ModuleAmino): Module {
@@ -264,56 +272,60 @@ export const Module = {
     if (object.app_name !== undefined && object.app_name !== null) {
       message.appName = object.app_name;
     }
-    message.beginBlockers = object.begin_blockers?.map(e => e) || [];
-    message.endBlockers = object.end_blockers?.map(e => e) || [];
-    message.initGenesis = object.init_genesis?.map(e => e) || [];
-    message.exportGenesis = object.export_genesis?.map(e => e) || [];
-    message.overrideStoreKeys = object.override_store_keys?.map(e => StoreKeyConfig.fromAmino(e)) || [];
-    message.orderMigrations = object.order_migrations?.map(e => e) || [];
-    message.precommiters = object.precommiters?.map(e => e) || [];
-    message.prepareCheckStaters = object.prepare_check_staters?.map(e => e) || [];
+    message.beginBlockers = object.begin_blockers?.map((e) => e) || [];
+    message.endBlockers = object.end_blockers?.map((e) => e) || [];
+    message.initGenesis = object.init_genesis?.map((e) => e) || [];
+    message.exportGenesis = object.export_genesis?.map((e) => e) || [];
+    message.overrideStoreKeys =
+      object.override_store_keys?.map((e) => StoreKeyConfig.fromAmino(e)) || [];
+    message.orderMigrations = object.order_migrations?.map((e) => e) || [];
+    message.precommiters = object.precommiters?.map((e) => e) || [];
+    message.prepareCheckStaters =
+      object.prepare_check_staters?.map((e) => e) || [];
     return message;
   },
   toAmino(message: Module): ModuleAmino {
     const obj: any = {};
-    obj.app_name = message.appName === "" ? undefined : message.appName;
+    obj.app_name = message.appName === '' ? undefined : message.appName;
     if (message.beginBlockers) {
-      obj.begin_blockers = message.beginBlockers.map(e => e);
+      obj.begin_blockers = message.beginBlockers.map((e) => e);
     } else {
       obj.begin_blockers = message.beginBlockers;
     }
     if (message.endBlockers) {
-      obj.end_blockers = message.endBlockers.map(e => e);
+      obj.end_blockers = message.endBlockers.map((e) => e);
     } else {
       obj.end_blockers = message.endBlockers;
     }
     if (message.initGenesis) {
-      obj.init_genesis = message.initGenesis.map(e => e);
+      obj.init_genesis = message.initGenesis.map((e) => e);
     } else {
       obj.init_genesis = message.initGenesis;
     }
     if (message.exportGenesis) {
-      obj.export_genesis = message.exportGenesis.map(e => e);
+      obj.export_genesis = message.exportGenesis.map((e) => e);
     } else {
       obj.export_genesis = message.exportGenesis;
     }
     if (message.overrideStoreKeys) {
-      obj.override_store_keys = message.overrideStoreKeys.map(e => e ? StoreKeyConfig.toAmino(e) : undefined);
+      obj.override_store_keys = message.overrideStoreKeys.map((e) =>
+        e ? StoreKeyConfig.toAmino(e) : undefined
+      );
     } else {
       obj.override_store_keys = message.overrideStoreKeys;
     }
     if (message.orderMigrations) {
-      obj.order_migrations = message.orderMigrations.map(e => e);
+      obj.order_migrations = message.orderMigrations.map((e) => e);
     } else {
       obj.order_migrations = message.orderMigrations;
     }
     if (message.precommiters) {
-      obj.precommiters = message.precommiters.map(e => e);
+      obj.precommiters = message.precommiters.map((e) => e);
     } else {
       obj.precommiters = message.precommiters;
     }
     if (message.prepareCheckStaters) {
-      obj.prepare_check_staters = message.prepareCheckStaters.map(e => e);
+      obj.prepare_check_staters = message.prepareCheckStaters.map((e) => e);
     } else {
       obj.prepare_check_staters = message.prepareCheckStaters;
     }
@@ -324,8 +336,8 @@ export const Module = {
   },
   toAminoMsg(message: Module): ModuleAminoMsg {
     return {
-      type: "cosmos-sdk/Module",
-      value: Module.toAmino(message)
+      type: 'cosmos-sdk/Module',
+      value: Module.toAmino(message),
     };
   },
   fromProtoMsg(message: ModuleProtoMsg): Module {
@@ -336,30 +348,34 @@ export const Module = {
   },
   toProtoMsg(message: Module): ModuleProtoMsg {
     return {
-      typeUrl: "/cosmos.app.runtime.v1alpha1.Module",
-      value: Module.encode(message).finish()
+      typeUrl: '/cosmos.app.runtime.v1alpha1.Module',
+      value: Module.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseStoreKeyConfig(): StoreKeyConfig {
   return {
-    moduleName: "",
-    kvStoreKey: ""
+    moduleName: '',
+    kvStoreKey: '',
   };
 }
 export const StoreKeyConfig = {
-  typeUrl: "/cosmos.app.runtime.v1alpha1.StoreKeyConfig",
-  encode(message: StoreKeyConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.moduleName !== "") {
+  typeUrl: '/cosmos.app.runtime.v1alpha1.StoreKeyConfig',
+  encode(
+    message: StoreKeyConfig,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.moduleName !== '') {
       writer.uint32(10).string(message.moduleName);
     }
-    if (message.kvStoreKey !== "") {
+    if (message.kvStoreKey !== '') {
       writer.uint32(18).string(message.kvStoreKey);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): StoreKeyConfig {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseStoreKeyConfig();
     while (reader.pos < end) {
@@ -380,8 +396,8 @@ export const StoreKeyConfig = {
   },
   fromPartial(object: Partial<StoreKeyConfig>): StoreKeyConfig {
     const message = createBaseStoreKeyConfig();
-    message.moduleName = object.moduleName ?? "";
-    message.kvStoreKey = object.kvStoreKey ?? "";
+    message.moduleName = object.moduleName ?? '';
+    message.kvStoreKey = object.kvStoreKey ?? '';
     return message;
   },
   fromAmino(object: StoreKeyConfigAmino): StoreKeyConfig {
@@ -396,8 +412,10 @@ export const StoreKeyConfig = {
   },
   toAmino(message: StoreKeyConfig): StoreKeyConfigAmino {
     const obj: any = {};
-    obj.module_name = message.moduleName === "" ? undefined : message.moduleName;
-    obj.kv_store_key = message.kvStoreKey === "" ? undefined : message.kvStoreKey;
+    obj.module_name =
+      message.moduleName === '' ? undefined : message.moduleName;
+    obj.kv_store_key =
+      message.kvStoreKey === '' ? undefined : message.kvStoreKey;
     return obj;
   },
   fromAminoMsg(object: StoreKeyConfigAminoMsg): StoreKeyConfig {
@@ -405,8 +423,8 @@ export const StoreKeyConfig = {
   },
   toAminoMsg(message: StoreKeyConfig): StoreKeyConfigAminoMsg {
     return {
-      type: "cosmos-sdk/StoreKeyConfig",
-      value: StoreKeyConfig.toAmino(message)
+      type: 'cosmos-sdk/StoreKeyConfig',
+      value: StoreKeyConfig.toAmino(message),
     };
   },
   fromProtoMsg(message: StoreKeyConfigProtoMsg): StoreKeyConfig {
@@ -417,8 +435,8 @@ export const StoreKeyConfig = {
   },
   toProtoMsg(message: StoreKeyConfig): StoreKeyConfigProtoMsg {
     return {
-      typeUrl: "/cosmos.app.runtime.v1alpha1.StoreKeyConfig",
-      value: StoreKeyConfig.encode(message).finish()
+      typeUrl: '/cosmos.app.runtime.v1alpha1.StoreKeyConfig',
+      value: StoreKeyConfig.encode(message).finish(),
     };
-  }
+  },
 };

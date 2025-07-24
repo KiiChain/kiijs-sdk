@@ -1,6 +1,6 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../../../../binary";
-import { bytesFromBase64, base64FromBytes } from "../../../../../helpers";
+import { BinaryReader, BinaryWriter } from '../../../../../binary';
+import { base64FromBytes, bytesFromBase64 } from '../../../../../helpers';
 /**
  * Params defines the set of on-chain interchain accounts parameters.
  * The following parameters may be used to disable the host submodule.
@@ -12,7 +12,7 @@ export interface Params {
   allowMessages: string[];
 }
 export interface ParamsProtoMsg {
-  typeUrl: "/ibc.applications.interchain_accounts.host.v1.Params";
+  typeUrl: '/ibc.applications.interchain_accounts.host.v1.Params';
   value: Uint8Array;
 }
 /**
@@ -26,7 +26,7 @@ export interface ParamsAmino {
   allow_messages?: string[];
 }
 export interface ParamsAminoMsg {
-  type: "cosmos-sdk/Params";
+  type: 'cosmos-sdk/Params';
   value: ParamsAmino;
 }
 /**
@@ -54,7 +54,7 @@ export interface QueryRequest {
   data: Uint8Array;
 }
 export interface QueryRequestProtoMsg {
-  typeUrl: "/ibc.applications.interchain_accounts.host.v1.QueryRequest";
+  typeUrl: '/ibc.applications.interchain_accounts.host.v1.QueryRequest';
   value: Uint8Array;
 }
 /**
@@ -74,7 +74,7 @@ export interface QueryRequestAmino {
   data?: string;
 }
 export interface QueryRequestAminoMsg {
-  type: "cosmos-sdk/QueryRequest";
+  type: 'cosmos-sdk/QueryRequest';
   value: QueryRequestAmino;
 }
 /**
@@ -88,12 +88,15 @@ export interface QueryRequestSDKType {
 function createBaseParams(): Params {
   return {
     hostEnabled: false,
-    allowMessages: []
+    allowMessages: [],
   };
 }
 export const Params = {
-  typeUrl: "/ibc.applications.interchain_accounts.host.v1.Params",
-  encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ibc.applications.interchain_accounts.host.v1.Params',
+  encode(
+    message: Params,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.hostEnabled === true) {
       writer.uint32(8).bool(message.hostEnabled);
     }
@@ -103,7 +106,8 @@ export const Params = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Params {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseParams();
     while (reader.pos < end) {
@@ -125,7 +129,7 @@ export const Params = {
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.hostEnabled = object.hostEnabled ?? false;
-    message.allowMessages = object.allowMessages?.map(e => e) || [];
+    message.allowMessages = object.allowMessages?.map((e) => e) || [];
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
@@ -133,14 +137,15 @@ export const Params = {
     if (object.host_enabled !== undefined && object.host_enabled !== null) {
       message.hostEnabled = object.host_enabled;
     }
-    message.allowMessages = object.allow_messages?.map(e => e) || [];
+    message.allowMessages = object.allow_messages?.map((e) => e) || [];
     return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.host_enabled = message.hostEnabled === false ? undefined : message.hostEnabled;
+    obj.host_enabled =
+      message.hostEnabled === false ? undefined : message.hostEnabled;
     if (message.allowMessages) {
-      obj.allow_messages = message.allowMessages.map(e => e);
+      obj.allow_messages = message.allowMessages.map((e) => e);
     } else {
       obj.allow_messages = message.allowMessages;
     }
@@ -151,8 +156,8 @@ export const Params = {
   },
   toAminoMsg(message: Params): ParamsAminoMsg {
     return {
-      type: "cosmos-sdk/Params",
-      value: Params.toAmino(message)
+      type: 'cosmos-sdk/Params',
+      value: Params.toAmino(message),
     };
   },
   fromProtoMsg(message: ParamsProtoMsg): Params {
@@ -163,21 +168,24 @@ export const Params = {
   },
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.host.v1.Params",
-      value: Params.encode(message).finish()
+      typeUrl: '/ibc.applications.interchain_accounts.host.v1.Params',
+      value: Params.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryRequest(): QueryRequest {
   return {
-    path: "",
-    data: new Uint8Array()
+    path: '',
+    data: new Uint8Array(),
   };
 }
 export const QueryRequest = {
-  typeUrl: "/ibc.applications.interchain_accounts.host.v1.QueryRequest",
-  encode(message: QueryRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.path !== "") {
+  typeUrl: '/ibc.applications.interchain_accounts.host.v1.QueryRequest',
+  encode(
+    message: QueryRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.path !== '') {
       writer.uint32(10).string(message.path);
     }
     if (message.data.length !== 0) {
@@ -186,7 +194,8 @@ export const QueryRequest = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): QueryRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryRequest();
     while (reader.pos < end) {
@@ -207,7 +216,7 @@ export const QueryRequest = {
   },
   fromPartial(object: Partial<QueryRequest>): QueryRequest {
     const message = createBaseQueryRequest();
-    message.path = object.path ?? "";
+    message.path = object.path ?? '';
     message.data = object.data ?? new Uint8Array();
     return message;
   },
@@ -223,7 +232,7 @@ export const QueryRequest = {
   },
   toAmino(message: QueryRequest): QueryRequestAmino {
     const obj: any = {};
-    obj.path = message.path === "" ? undefined : message.path;
+    obj.path = message.path === '' ? undefined : message.path;
     obj.data = message.data ? base64FromBytes(message.data) : undefined;
     return obj;
   },
@@ -232,8 +241,8 @@ export const QueryRequest = {
   },
   toAminoMsg(message: QueryRequest): QueryRequestAminoMsg {
     return {
-      type: "cosmos-sdk/QueryRequest",
-      value: QueryRequest.toAmino(message)
+      type: 'cosmos-sdk/QueryRequest',
+      value: QueryRequest.toAmino(message),
     };
   },
   fromProtoMsg(message: QueryRequestProtoMsg): QueryRequest {
@@ -244,8 +253,8 @@ export const QueryRequest = {
   },
   toProtoMsg(message: QueryRequest): QueryRequestProtoMsg {
     return {
-      typeUrl: "/ibc.applications.interchain_accounts.host.v1.QueryRequest",
-      value: QueryRequest.encode(message).finish()
+      typeUrl: '/ibc.applications.interchain_accounts.host.v1.QueryRequest',
+      value: QueryRequest.encode(message).finish(),
     };
-  }
+  },
 };

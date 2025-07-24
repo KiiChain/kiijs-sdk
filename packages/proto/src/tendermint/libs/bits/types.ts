@@ -1,11 +1,11 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../binary';
 export interface BitArray {
   bits: bigint;
   elems: bigint[];
 }
 export interface BitArrayProtoMsg {
-  typeUrl: "/tendermint.libs.bits.BitArray";
+  typeUrl: '/tendermint.libs.bits.BitArray';
   value: Uint8Array;
 }
 export interface BitArrayAmino {
@@ -13,7 +13,7 @@ export interface BitArrayAmino {
   elems?: string[];
 }
 export interface BitArrayAminoMsg {
-  type: "/tendermint.libs.bits.BitArray";
+  type: '/tendermint.libs.bits.BitArray';
   value: BitArrayAmino;
 }
 export interface BitArraySDKType {
@@ -23,12 +23,15 @@ export interface BitArraySDKType {
 function createBaseBitArray(): BitArray {
   return {
     bits: BigInt(0),
-    elems: []
+    elems: [],
   };
 }
 export const BitArray = {
-  typeUrl: "/tendermint.libs.bits.BitArray",
-  encode(message: BitArray, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/tendermint.libs.bits.BitArray',
+  encode(
+    message: BitArray,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.bits !== BigInt(0)) {
       writer.uint32(8).int64(message.bits);
     }
@@ -40,7 +43,8 @@ export const BitArray = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): BitArray {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBitArray();
     while (reader.pos < end) {
@@ -68,8 +72,11 @@ export const BitArray = {
   },
   fromPartial(object: Partial<BitArray>): BitArray {
     const message = createBaseBitArray();
-    message.bits = object.bits !== undefined && object.bits !== null ? BigInt(object.bits.toString()) : BigInt(0);
-    message.elems = object.elems?.map(e => BigInt(e.toString())) || [];
+    message.bits =
+      object.bits !== undefined && object.bits !== null
+        ? BigInt(object.bits.toString())
+        : BigInt(0);
+    message.elems = object.elems?.map((e) => BigInt(e.toString())) || [];
     return message;
   },
   fromAmino(object: BitArrayAmino): BitArray {
@@ -77,14 +84,15 @@ export const BitArray = {
     if (object.bits !== undefined && object.bits !== null) {
       message.bits = BigInt(object.bits);
     }
-    message.elems = object.elems?.map(e => BigInt(e)) || [];
+    message.elems = object.elems?.map((e) => BigInt(e)) || [];
     return message;
   },
   toAmino(message: BitArray): BitArrayAmino {
     const obj: any = {};
-    obj.bits = message.bits !== BigInt(0) ? message.bits?.toString() : undefined;
+    obj.bits =
+      message.bits !== BigInt(0) ? message.bits?.toString() : undefined;
     if (message.elems) {
-      obj.elems = message.elems.map(e => e.toString());
+      obj.elems = message.elems.map((e) => e.toString());
     } else {
       obj.elems = message.elems;
     }
@@ -101,8 +109,8 @@ export const BitArray = {
   },
   toProtoMsg(message: BitArray): BitArrayProtoMsg {
     return {
-      typeUrl: "/tendermint.libs.bits.BitArray",
-      value: BitArray.encode(message).finish()
+      typeUrl: '/tendermint.libs.bits.BitArray',
+      value: BitArray.encode(message).finish(),
     };
-  }
+  },
 };

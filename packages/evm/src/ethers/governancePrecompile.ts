@@ -1,11 +1,15 @@
 import { Contract, ContractRunner, InterfaceAbi } from 'ethers';
-import { GOVERNANCE_PRECOMPILE_ABI, GOVERNANCE_PRECOMPILE_ADDRESS } from '../precompiles';
+import {
+  GOVERNANCE_PRECOMPILE_ABI,
+  GOVERNANCE_PRECOMPILE_ADDRESS,
+} from '../precompiles';
 
 /**
  * The ABI for the Governance precompile contract, used to create an Ethers contract.
  * @category Cosmos Interoperability
  */
-export const ETHERS_GOVERNANCE_PRECOMPILE_ABI = GOVERNANCE_PRECOMPILE_ABI as InterfaceAbi;
+export const ETHERS_GOVERNANCE_PRECOMPILE_ABI =
+  GOVERNANCE_PRECOMPILE_ABI as InterfaceAbi;
 
 /**
  * Creates and returns a typed Ethers v6 contract instance for the Governance precompile contract.
@@ -30,6 +34,12 @@ export const ETHERS_GOVERNANCE_PRECOMPILE_ABI = GOVERNANCE_PRECOMPILE_ABI as Int
  * @returns The typed contract instance for interacting with the Governance precompile contract.
  * @category Cosmos Interoperability
  */
-export const getGovernancePrecompileEthersV6Contract = (runner: ContractRunner) => {
-	return new Contract(GOVERNANCE_PRECOMPILE_ADDRESS, ETHERS_GOVERNANCE_PRECOMPILE_ABI, runner);
+export const getGovernancePrecompileEthersV6Contract = (
+  runner: ContractRunner
+) => {
+  return new Contract(
+    GOVERNANCE_PRECOMPILE_ADDRESS,
+    ETHERS_GOVERNANCE_PRECOMPILE_ABI,
+    runner
+  );
 };

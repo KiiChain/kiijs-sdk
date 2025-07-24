@@ -1,15 +1,22 @@
 //@ts-nocheck
-import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
-import { defaultRegistryTypes, AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
-import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
-import * as ratelimitV1TxRegistry from "./v1/tx.registry";
-import * as ratelimitV1TxAmino from "./v1/tx.amino";
+import { GeneratedType, OfflineSigner, Registry } from '@cosmjs/proto-signing';
+import {
+  AminoTypes,
+  defaultRegistryTypes,
+  SigningStargateClient,
+} from '@cosmjs/stargate';
+import { HttpEndpoint } from '@cosmjs/tendermint-rpc';
+
+import * as ratelimitV1TxAmino from './v1/tx.amino';
+import * as ratelimitV1TxRegistry from './v1/tx.registry';
 export const ratelimitAminoConverters = {
-  ...ratelimitV1TxAmino.AminoConverter
+  ...ratelimitV1TxAmino.AminoConverter,
 };
-export const ratelimitProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...ratelimitV1TxRegistry.registry];
+export const ratelimitProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [
+  ...ratelimitV1TxRegistry.registry,
+];
 export const getSigningRatelimitClientOptions = ({
-  defaultTypes = defaultRegistryTypes
+  defaultTypes = defaultRegistryTypes,
 }: {
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 } = {}): {
@@ -18,31 +25,32 @@ export const getSigningRatelimitClientOptions = ({
 } => {
   const registry = new Registry([...defaultTypes, ...ratelimitProtoRegistry]);
   const aminoTypes = new AminoTypes({
-    ...ratelimitAminoConverters
+    ...ratelimitAminoConverters,
   });
   return {
     registry,
-    aminoTypes
+    aminoTypes,
   };
 };
 export const getSigningRatelimitClient = async ({
   rpcEndpoint,
   signer,
-  defaultTypes = defaultRegistryTypes
+  defaultTypes = defaultRegistryTypes,
 }: {
   rpcEndpoint: string | HttpEndpoint;
   signer: OfflineSigner;
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => {
-  const {
-    registry,
-    aminoTypes
-  } = getSigningRatelimitClientOptions({
-    defaultTypes
+  const { registry, aminoTypes } = getSigningRatelimitClientOptions({
+    defaultTypes,
   });
-  const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
-    registry: registry as any,
-    aminoTypes
-  });
+  const client = await SigningStargateClient.connectWithSigner(
+    rpcEndpoint,
+    signer,
+    {
+      registry: registry as any,
+      aminoTypes,
+    }
+  );
   return client;
 };

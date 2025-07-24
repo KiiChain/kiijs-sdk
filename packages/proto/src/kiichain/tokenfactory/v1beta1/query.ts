@@ -1,17 +1,21 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { DenomAuthorityMetadata, DenomAuthorityMetadataAmino, DenomAuthorityMetadataSDKType } from "./authorityMetadata";
-import { BinaryReader, BinaryWriter } from "../../../binary";
+import { BinaryReader, BinaryWriter } from '../../../binary';
+import {
+  DenomAuthorityMetadata,
+  DenomAuthorityMetadataAmino,
+  DenomAuthorityMetadataSDKType,
+} from './authorityMetadata';
+import { Params, ParamsAmino, ParamsSDKType } from './params';
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 export interface QueryParamsRequestProtoMsg {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryParamsRequest";
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryParamsRequest';
   value: Uint8Array;
 }
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequestAmino {}
 export interface QueryParamsRequestAminoMsg {
-  type: "/kiichain.tokenfactory.v1beta1.QueryParamsRequest";
+  type: '/kiichain.tokenfactory.v1beta1.QueryParamsRequest';
   value: QueryParamsRequestAmino;
 }
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
@@ -22,7 +26,7 @@ export interface QueryParamsResponse {
   params: Params;
 }
 export interface QueryParamsResponseProtoMsg {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryParamsResponse";
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryParamsResponse';
   value: Uint8Array;
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
@@ -31,7 +35,7 @@ export interface QueryParamsResponseAmino {
   params?: ParamsAmino;
 }
 export interface QueryParamsResponseAminoMsg {
-  type: "/kiichain.tokenfactory.v1beta1.QueryParamsResponse";
+  type: '/kiichain.tokenfactory.v1beta1.QueryParamsResponse';
   value: QueryParamsResponseAmino;
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
@@ -46,7 +50,7 @@ export interface QueryDenomAuthorityMetadataRequest {
   denom: string;
 }
 export interface QueryDenomAuthorityMetadataRequestProtoMsg {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataRequest";
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataRequest';
   value: Uint8Array;
 }
 /**
@@ -57,7 +61,7 @@ export interface QueryDenomAuthorityMetadataRequestAmino {
   denom?: string;
 }
 export interface QueryDenomAuthorityMetadataRequestAminoMsg {
-  type: "/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataRequest";
+  type: '/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataRequest';
   value: QueryDenomAuthorityMetadataRequestAmino;
 }
 /**
@@ -75,7 +79,7 @@ export interface QueryDenomAuthorityMetadataResponse {
   authorityMetadata: DenomAuthorityMetadata;
 }
 export interface QueryDenomAuthorityMetadataResponseProtoMsg {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataResponse";
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataResponse';
   value: Uint8Array;
 }
 /**
@@ -86,7 +90,7 @@ export interface QueryDenomAuthorityMetadataResponseAmino {
   authority_metadata?: DenomAuthorityMetadataAmino;
 }
 export interface QueryDenomAuthorityMetadataResponseAminoMsg {
-  type: "/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataResponse";
+  type: '/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataResponse';
   value: QueryDenomAuthorityMetadataResponseAmino;
 }
 /**
@@ -104,7 +108,7 @@ export interface QueryDenomsFromCreatorRequest {
   creator: string;
 }
 export interface QueryDenomsFromCreatorRequestProtoMsg {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorRequest";
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorRequest';
   value: Uint8Array;
 }
 /**
@@ -115,7 +119,7 @@ export interface QueryDenomsFromCreatorRequestAmino {
   creator?: string;
 }
 export interface QueryDenomsFromCreatorRequestAminoMsg {
-  type: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorRequest";
+  type: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorRequest';
   value: QueryDenomsFromCreatorRequestAmino;
 }
 /**
@@ -133,7 +137,7 @@ export interface QueryDenomsFromCreatorResponse {
   denoms: string[];
 }
 export interface QueryDenomsFromCreatorResponseProtoMsg {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorResponse";
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorResponse';
   value: Uint8Array;
 }
 /**
@@ -144,7 +148,7 @@ export interface QueryDenomsFromCreatorResponseAmino {
   denoms?: string[];
 }
 export interface QueryDenomsFromCreatorResponseAminoMsg {
-  type: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorResponse";
+  type: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorResponse';
   value: QueryDenomsFromCreatorResponseAmino;
 }
 /**
@@ -162,7 +166,7 @@ export interface QueryDenomsFromAdminRequest {
   admin: string;
 }
 export interface QueryDenomsFromAdminRequestProtoMsg {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminRequest";
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminRequest';
   value: Uint8Array;
 }
 /**
@@ -173,7 +177,7 @@ export interface QueryDenomsFromAdminRequestAmino {
   admin?: string;
 }
 export interface QueryDenomsFromAdminRequestAminoMsg {
-  type: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminRequest";
+  type: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminRequest';
   value: QueryDenomsFromAdminRequestAmino;
 }
 /**
@@ -191,7 +195,7 @@ export interface QueryDenomsFromAdminResponse {
   denoms: string[];
 }
 export interface QueryDenomsFromAdminResponseProtoMsg {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminResponse";
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminResponse';
   value: Uint8Array;
 }
 /**
@@ -202,7 +206,7 @@ export interface QueryDenomsFromAdminResponseAmino {
   denoms?: string[];
 }
 export interface QueryDenomsFromAdminResponseAminoMsg {
-  type: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminResponse";
+  type: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminResponse';
   value: QueryDenomsFromAdminResponseAmino;
 }
 /**
@@ -216,12 +220,19 @@ function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
 export const QueryParamsRequest = {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryParamsRequest",
-  encode(_: QueryParamsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryParamsRequest',
+  encode(
+    _: QueryParamsRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryParamsRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsRequest();
     while (reader.pos < end) {
@@ -257,26 +268,33 @@ export const QueryParamsRequest = {
   },
   toProtoMsg(message: QueryParamsRequest): QueryParamsRequestProtoMsg {
     return {
-      typeUrl: "/kiichain.tokenfactory.v1beta1.QueryParamsRequest",
-      value: QueryParamsRequest.encode(message).finish()
+      typeUrl: '/kiichain.tokenfactory.v1beta1.QueryParamsRequest',
+      value: QueryParamsRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryParamsResponse(): QueryParamsResponse {
   return {
-    params: Params.fromPartial({})
+    params: Params.fromPartial({}),
   };
 }
 export const QueryParamsResponse = {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryParamsResponse",
-  encode(message: QueryParamsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryParamsResponse',
+  encode(
+    message: QueryParamsResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryParamsResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryParamsResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
     while (reader.pos < end) {
@@ -294,7 +312,10 @@ export const QueryParamsResponse = {
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
-    message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
+    message.params =
+      object.params !== undefined && object.params !== null
+        ? Params.fromPartial(object.params)
+        : undefined;
     return message;
   },
   fromAmino(object: QueryParamsResponseAmino): QueryParamsResponse {
@@ -320,26 +341,33 @@ export const QueryParamsResponse = {
   },
   toProtoMsg(message: QueryParamsResponse): QueryParamsResponseProtoMsg {
     return {
-      typeUrl: "/kiichain.tokenfactory.v1beta1.QueryParamsResponse",
-      value: QueryParamsResponse.encode(message).finish()
+      typeUrl: '/kiichain.tokenfactory.v1beta1.QueryParamsResponse',
+      value: QueryParamsResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryDenomAuthorityMetadataRequest(): QueryDenomAuthorityMetadataRequest {
   return {
-    denom: ""
+    denom: '',
   };
 }
 export const QueryDenomAuthorityMetadataRequest = {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataRequest",
-  encode(message: QueryDenomAuthorityMetadataRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.denom !== "") {
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataRequest',
+  encode(
+    message: QueryDenomAuthorityMetadataRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.denom !== '') {
       writer.uint32(10).string(message.denom);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomAuthorityMetadataRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryDenomAuthorityMetadataRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDenomAuthorityMetadataRequest();
     while (reader.pos < end) {
@@ -355,61 +383,87 @@ export const QueryDenomAuthorityMetadataRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryDenomAuthorityMetadataRequest>): QueryDenomAuthorityMetadataRequest {
+  fromPartial(
+    object: Partial<QueryDenomAuthorityMetadataRequest>
+  ): QueryDenomAuthorityMetadataRequest {
     const message = createBaseQueryDenomAuthorityMetadataRequest();
-    message.denom = object.denom ?? "";
+    message.denom = object.denom ?? '';
     return message;
   },
-  fromAmino(object: QueryDenomAuthorityMetadataRequestAmino): QueryDenomAuthorityMetadataRequest {
+  fromAmino(
+    object: QueryDenomAuthorityMetadataRequestAmino
+  ): QueryDenomAuthorityMetadataRequest {
     const message = createBaseQueryDenomAuthorityMetadataRequest();
     if (object.denom !== undefined && object.denom !== null) {
       message.denom = object.denom;
     }
     return message;
   },
-  toAmino(message: QueryDenomAuthorityMetadataRequest): QueryDenomAuthorityMetadataRequestAmino {
+  toAmino(
+    message: QueryDenomAuthorityMetadataRequest
+  ): QueryDenomAuthorityMetadataRequestAmino {
     const obj: any = {};
-    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.denom = message.denom === '' ? undefined : message.denom;
     return obj;
   },
-  fromAminoMsg(object: QueryDenomAuthorityMetadataRequestAminoMsg): QueryDenomAuthorityMetadataRequest {
+  fromAminoMsg(
+    object: QueryDenomAuthorityMetadataRequestAminoMsg
+  ): QueryDenomAuthorityMetadataRequest {
     return QueryDenomAuthorityMetadataRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryDenomAuthorityMetadataRequestProtoMsg): QueryDenomAuthorityMetadataRequest {
+  fromProtoMsg(
+    message: QueryDenomAuthorityMetadataRequestProtoMsg
+  ): QueryDenomAuthorityMetadataRequest {
     return QueryDenomAuthorityMetadataRequest.decode(message.value);
   },
   toProto(message: QueryDenomAuthorityMetadataRequest): Uint8Array {
     return QueryDenomAuthorityMetadataRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryDenomAuthorityMetadataRequest): QueryDenomAuthorityMetadataRequestProtoMsg {
+  toProtoMsg(
+    message: QueryDenomAuthorityMetadataRequest
+  ): QueryDenomAuthorityMetadataRequestProtoMsg {
     return {
-      typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataRequest",
-      value: QueryDenomAuthorityMetadataRequest.encode(message).finish()
+      typeUrl:
+        '/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataRequest',
+      value: QueryDenomAuthorityMetadataRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryDenomAuthorityMetadataResponse(): QueryDenomAuthorityMetadataResponse {
   return {
-    authorityMetadata: DenomAuthorityMetadata.fromPartial({})
+    authorityMetadata: DenomAuthorityMetadata.fromPartial({}),
   };
 }
 export const QueryDenomAuthorityMetadataResponse = {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataResponse",
-  encode(message: QueryDenomAuthorityMetadataResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataResponse',
+  encode(
+    message: QueryDenomAuthorityMetadataResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.authorityMetadata !== undefined) {
-      DenomAuthorityMetadata.encode(message.authorityMetadata, writer.uint32(10).fork()).ldelim();
+      DenomAuthorityMetadata.encode(
+        message.authorityMetadata,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomAuthorityMetadataResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryDenomAuthorityMetadataResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDenomAuthorityMetadataResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.authorityMetadata = DenomAuthorityMetadata.decode(reader, reader.uint32());
+          message.authorityMetadata = DenomAuthorityMetadata.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -418,54 +472,85 @@ export const QueryDenomAuthorityMetadataResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryDenomAuthorityMetadataResponse>): QueryDenomAuthorityMetadataResponse {
+  fromPartial(
+    object: Partial<QueryDenomAuthorityMetadataResponse>
+  ): QueryDenomAuthorityMetadataResponse {
     const message = createBaseQueryDenomAuthorityMetadataResponse();
-    message.authorityMetadata = object.authorityMetadata !== undefined && object.authorityMetadata !== null ? DenomAuthorityMetadata.fromPartial(object.authorityMetadata) : undefined;
+    message.authorityMetadata =
+      object.authorityMetadata !== undefined &&
+      object.authorityMetadata !== null
+        ? DenomAuthorityMetadata.fromPartial(object.authorityMetadata)
+        : undefined;
     return message;
   },
-  fromAmino(object: QueryDenomAuthorityMetadataResponseAmino): QueryDenomAuthorityMetadataResponse {
+  fromAmino(
+    object: QueryDenomAuthorityMetadataResponseAmino
+  ): QueryDenomAuthorityMetadataResponse {
     const message = createBaseQueryDenomAuthorityMetadataResponse();
-    if (object.authority_metadata !== undefined && object.authority_metadata !== null) {
-      message.authorityMetadata = DenomAuthorityMetadata.fromAmino(object.authority_metadata);
+    if (
+      object.authority_metadata !== undefined &&
+      object.authority_metadata !== null
+    ) {
+      message.authorityMetadata = DenomAuthorityMetadata.fromAmino(
+        object.authority_metadata
+      );
     }
     return message;
   },
-  toAmino(message: QueryDenomAuthorityMetadataResponse): QueryDenomAuthorityMetadataResponseAmino {
+  toAmino(
+    message: QueryDenomAuthorityMetadataResponse
+  ): QueryDenomAuthorityMetadataResponseAmino {
     const obj: any = {};
-    obj.authority_metadata = message.authorityMetadata ? DenomAuthorityMetadata.toAmino(message.authorityMetadata) : undefined;
+    obj.authority_metadata = message.authorityMetadata
+      ? DenomAuthorityMetadata.toAmino(message.authorityMetadata)
+      : undefined;
     return obj;
   },
-  fromAminoMsg(object: QueryDenomAuthorityMetadataResponseAminoMsg): QueryDenomAuthorityMetadataResponse {
+  fromAminoMsg(
+    object: QueryDenomAuthorityMetadataResponseAminoMsg
+  ): QueryDenomAuthorityMetadataResponse {
     return QueryDenomAuthorityMetadataResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryDenomAuthorityMetadataResponseProtoMsg): QueryDenomAuthorityMetadataResponse {
+  fromProtoMsg(
+    message: QueryDenomAuthorityMetadataResponseProtoMsg
+  ): QueryDenomAuthorityMetadataResponse {
     return QueryDenomAuthorityMetadataResponse.decode(message.value);
   },
   toProto(message: QueryDenomAuthorityMetadataResponse): Uint8Array {
     return QueryDenomAuthorityMetadataResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryDenomAuthorityMetadataResponse): QueryDenomAuthorityMetadataResponseProtoMsg {
+  toProtoMsg(
+    message: QueryDenomAuthorityMetadataResponse
+  ): QueryDenomAuthorityMetadataResponseProtoMsg {
     return {
-      typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataResponse",
-      value: QueryDenomAuthorityMetadataResponse.encode(message).finish()
+      typeUrl:
+        '/kiichain.tokenfactory.v1beta1.QueryDenomAuthorityMetadataResponse',
+      value: QueryDenomAuthorityMetadataResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryDenomsFromCreatorRequest(): QueryDenomsFromCreatorRequest {
   return {
-    creator: ""
+    creator: '',
   };
 }
 export const QueryDenomsFromCreatorRequest = {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorRequest",
-  encode(message: QueryDenomsFromCreatorRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.creator !== "") {
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorRequest',
+  encode(
+    message: QueryDenomsFromCreatorRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.creator !== '') {
       writer.uint32(10).string(message.creator);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomsFromCreatorRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryDenomsFromCreatorRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDenomsFromCreatorRequest();
     while (reader.pos < end) {
@@ -481,54 +566,73 @@ export const QueryDenomsFromCreatorRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryDenomsFromCreatorRequest>): QueryDenomsFromCreatorRequest {
+  fromPartial(
+    object: Partial<QueryDenomsFromCreatorRequest>
+  ): QueryDenomsFromCreatorRequest {
     const message = createBaseQueryDenomsFromCreatorRequest();
-    message.creator = object.creator ?? "";
+    message.creator = object.creator ?? '';
     return message;
   },
-  fromAmino(object: QueryDenomsFromCreatorRequestAmino): QueryDenomsFromCreatorRequest {
+  fromAmino(
+    object: QueryDenomsFromCreatorRequestAmino
+  ): QueryDenomsFromCreatorRequest {
     const message = createBaseQueryDenomsFromCreatorRequest();
     if (object.creator !== undefined && object.creator !== null) {
       message.creator = object.creator;
     }
     return message;
   },
-  toAmino(message: QueryDenomsFromCreatorRequest): QueryDenomsFromCreatorRequestAmino {
+  toAmino(
+    message: QueryDenomsFromCreatorRequest
+  ): QueryDenomsFromCreatorRequestAmino {
     const obj: any = {};
-    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.creator = message.creator === '' ? undefined : message.creator;
     return obj;
   },
-  fromAminoMsg(object: QueryDenomsFromCreatorRequestAminoMsg): QueryDenomsFromCreatorRequest {
+  fromAminoMsg(
+    object: QueryDenomsFromCreatorRequestAminoMsg
+  ): QueryDenomsFromCreatorRequest {
     return QueryDenomsFromCreatorRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryDenomsFromCreatorRequestProtoMsg): QueryDenomsFromCreatorRequest {
+  fromProtoMsg(
+    message: QueryDenomsFromCreatorRequestProtoMsg
+  ): QueryDenomsFromCreatorRequest {
     return QueryDenomsFromCreatorRequest.decode(message.value);
   },
   toProto(message: QueryDenomsFromCreatorRequest): Uint8Array {
     return QueryDenomsFromCreatorRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryDenomsFromCreatorRequest): QueryDenomsFromCreatorRequestProtoMsg {
+  toProtoMsg(
+    message: QueryDenomsFromCreatorRequest
+  ): QueryDenomsFromCreatorRequestProtoMsg {
     return {
-      typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorRequest",
-      value: QueryDenomsFromCreatorRequest.encode(message).finish()
+      typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorRequest',
+      value: QueryDenomsFromCreatorRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryDenomsFromCreatorResponse(): QueryDenomsFromCreatorResponse {
   return {
-    denoms: []
+    denoms: [],
   };
 }
 export const QueryDenomsFromCreatorResponse = {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorResponse",
-  encode(message: QueryDenomsFromCreatorResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorResponse',
+  encode(
+    message: QueryDenomsFromCreatorResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.denoms) {
       writer.uint32(10).string(v!);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomsFromCreatorResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryDenomsFromCreatorResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDenomsFromCreatorResponse();
     while (reader.pos < end) {
@@ -544,56 +648,75 @@ export const QueryDenomsFromCreatorResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryDenomsFromCreatorResponse>): QueryDenomsFromCreatorResponse {
+  fromPartial(
+    object: Partial<QueryDenomsFromCreatorResponse>
+  ): QueryDenomsFromCreatorResponse {
     const message = createBaseQueryDenomsFromCreatorResponse();
-    message.denoms = object.denoms?.map(e => e) || [];
+    message.denoms = object.denoms?.map((e) => e) || [];
     return message;
   },
-  fromAmino(object: QueryDenomsFromCreatorResponseAmino): QueryDenomsFromCreatorResponse {
+  fromAmino(
+    object: QueryDenomsFromCreatorResponseAmino
+  ): QueryDenomsFromCreatorResponse {
     const message = createBaseQueryDenomsFromCreatorResponse();
-    message.denoms = object.denoms?.map(e => e) || [];
+    message.denoms = object.denoms?.map((e) => e) || [];
     return message;
   },
-  toAmino(message: QueryDenomsFromCreatorResponse): QueryDenomsFromCreatorResponseAmino {
+  toAmino(
+    message: QueryDenomsFromCreatorResponse
+  ): QueryDenomsFromCreatorResponseAmino {
     const obj: any = {};
     if (message.denoms) {
-      obj.denoms = message.denoms.map(e => e);
+      obj.denoms = message.denoms.map((e) => e);
     } else {
       obj.denoms = message.denoms;
     }
     return obj;
   },
-  fromAminoMsg(object: QueryDenomsFromCreatorResponseAminoMsg): QueryDenomsFromCreatorResponse {
+  fromAminoMsg(
+    object: QueryDenomsFromCreatorResponseAminoMsg
+  ): QueryDenomsFromCreatorResponse {
     return QueryDenomsFromCreatorResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryDenomsFromCreatorResponseProtoMsg): QueryDenomsFromCreatorResponse {
+  fromProtoMsg(
+    message: QueryDenomsFromCreatorResponseProtoMsg
+  ): QueryDenomsFromCreatorResponse {
     return QueryDenomsFromCreatorResponse.decode(message.value);
   },
   toProto(message: QueryDenomsFromCreatorResponse): Uint8Array {
     return QueryDenomsFromCreatorResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryDenomsFromCreatorResponse): QueryDenomsFromCreatorResponseProtoMsg {
+  toProtoMsg(
+    message: QueryDenomsFromCreatorResponse
+  ): QueryDenomsFromCreatorResponseProtoMsg {
     return {
-      typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorResponse",
-      value: QueryDenomsFromCreatorResponse.encode(message).finish()
+      typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromCreatorResponse',
+      value: QueryDenomsFromCreatorResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryDenomsFromAdminRequest(): QueryDenomsFromAdminRequest {
   return {
-    admin: ""
+    admin: '',
   };
 }
 export const QueryDenomsFromAdminRequest = {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminRequest",
-  encode(message: QueryDenomsFromAdminRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.admin !== "") {
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminRequest',
+  encode(
+    message: QueryDenomsFromAdminRequest,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.admin !== '') {
       writer.uint32(10).string(message.admin);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomsFromAdminRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryDenomsFromAdminRequest {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDenomsFromAdminRequest();
     while (reader.pos < end) {
@@ -609,54 +732,73 @@ export const QueryDenomsFromAdminRequest = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryDenomsFromAdminRequest>): QueryDenomsFromAdminRequest {
+  fromPartial(
+    object: Partial<QueryDenomsFromAdminRequest>
+  ): QueryDenomsFromAdminRequest {
     const message = createBaseQueryDenomsFromAdminRequest();
-    message.admin = object.admin ?? "";
+    message.admin = object.admin ?? '';
     return message;
   },
-  fromAmino(object: QueryDenomsFromAdminRequestAmino): QueryDenomsFromAdminRequest {
+  fromAmino(
+    object: QueryDenomsFromAdminRequestAmino
+  ): QueryDenomsFromAdminRequest {
     const message = createBaseQueryDenomsFromAdminRequest();
     if (object.admin !== undefined && object.admin !== null) {
       message.admin = object.admin;
     }
     return message;
   },
-  toAmino(message: QueryDenomsFromAdminRequest): QueryDenomsFromAdminRequestAmino {
+  toAmino(
+    message: QueryDenomsFromAdminRequest
+  ): QueryDenomsFromAdminRequestAmino {
     const obj: any = {};
-    obj.admin = message.admin === "" ? undefined : message.admin;
+    obj.admin = message.admin === '' ? undefined : message.admin;
     return obj;
   },
-  fromAminoMsg(object: QueryDenomsFromAdminRequestAminoMsg): QueryDenomsFromAdminRequest {
+  fromAminoMsg(
+    object: QueryDenomsFromAdminRequestAminoMsg
+  ): QueryDenomsFromAdminRequest {
     return QueryDenomsFromAdminRequest.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryDenomsFromAdminRequestProtoMsg): QueryDenomsFromAdminRequest {
+  fromProtoMsg(
+    message: QueryDenomsFromAdminRequestProtoMsg
+  ): QueryDenomsFromAdminRequest {
     return QueryDenomsFromAdminRequest.decode(message.value);
   },
   toProto(message: QueryDenomsFromAdminRequest): Uint8Array {
     return QueryDenomsFromAdminRequest.encode(message).finish();
   },
-  toProtoMsg(message: QueryDenomsFromAdminRequest): QueryDenomsFromAdminRequestProtoMsg {
+  toProtoMsg(
+    message: QueryDenomsFromAdminRequest
+  ): QueryDenomsFromAdminRequestProtoMsg {
     return {
-      typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminRequest",
-      value: QueryDenomsFromAdminRequest.encode(message).finish()
+      typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminRequest',
+      value: QueryDenomsFromAdminRequest.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseQueryDenomsFromAdminResponse(): QueryDenomsFromAdminResponse {
   return {
-    denoms: []
+    denoms: [],
   };
 }
 export const QueryDenomsFromAdminResponse = {
-  typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminResponse",
-  encode(message: QueryDenomsFromAdminResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminResponse',
+  encode(
+    message: QueryDenomsFromAdminResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     for (const v of message.denoms) {
       writer.uint32(10).string(v!);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomsFromAdminResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): QueryDenomsFromAdminResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDenomsFromAdminResponse();
     while (reader.pos < end) {
@@ -672,38 +814,50 @@ export const QueryDenomsFromAdminResponse = {
     }
     return message;
   },
-  fromPartial(object: Partial<QueryDenomsFromAdminResponse>): QueryDenomsFromAdminResponse {
+  fromPartial(
+    object: Partial<QueryDenomsFromAdminResponse>
+  ): QueryDenomsFromAdminResponse {
     const message = createBaseQueryDenomsFromAdminResponse();
-    message.denoms = object.denoms?.map(e => e) || [];
+    message.denoms = object.denoms?.map((e) => e) || [];
     return message;
   },
-  fromAmino(object: QueryDenomsFromAdminResponseAmino): QueryDenomsFromAdminResponse {
+  fromAmino(
+    object: QueryDenomsFromAdminResponseAmino
+  ): QueryDenomsFromAdminResponse {
     const message = createBaseQueryDenomsFromAdminResponse();
-    message.denoms = object.denoms?.map(e => e) || [];
+    message.denoms = object.denoms?.map((e) => e) || [];
     return message;
   },
-  toAmino(message: QueryDenomsFromAdminResponse): QueryDenomsFromAdminResponseAmino {
+  toAmino(
+    message: QueryDenomsFromAdminResponse
+  ): QueryDenomsFromAdminResponseAmino {
     const obj: any = {};
     if (message.denoms) {
-      obj.denoms = message.denoms.map(e => e);
+      obj.denoms = message.denoms.map((e) => e);
     } else {
       obj.denoms = message.denoms;
     }
     return obj;
   },
-  fromAminoMsg(object: QueryDenomsFromAdminResponseAminoMsg): QueryDenomsFromAdminResponse {
+  fromAminoMsg(
+    object: QueryDenomsFromAdminResponseAminoMsg
+  ): QueryDenomsFromAdminResponse {
     return QueryDenomsFromAdminResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: QueryDenomsFromAdminResponseProtoMsg): QueryDenomsFromAdminResponse {
+  fromProtoMsg(
+    message: QueryDenomsFromAdminResponseProtoMsg
+  ): QueryDenomsFromAdminResponse {
     return QueryDenomsFromAdminResponse.decode(message.value);
   },
   toProto(message: QueryDenomsFromAdminResponse): Uint8Array {
     return QueryDenomsFromAdminResponse.encode(message).finish();
   },
-  toProtoMsg(message: QueryDenomsFromAdminResponse): QueryDenomsFromAdminResponseProtoMsg {
+  toProtoMsg(
+    message: QueryDenomsFromAdminResponse
+  ): QueryDenomsFromAdminResponseProtoMsg {
     return {
-      typeUrl: "/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminResponse",
-      value: QueryDenomsFromAdminResponse.encode(message).finish()
+      typeUrl: '/kiichain.tokenfactory.v1beta1.QueryDenomsFromAdminResponse',
+      value: QueryDenomsFromAdminResponse.encode(message).finish(),
     };
-  }
+  },
 };

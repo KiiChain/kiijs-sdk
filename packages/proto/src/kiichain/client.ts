@@ -1,15 +1,22 @@
 //@ts-nocheck
-import { GeneratedType, Registry, OfflineSigner } from "@cosmjs/proto-signing";
-import { defaultRegistryTypes, AminoTypes, SigningStargateClient } from "@cosmjs/stargate";
-import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
-import * as kiichainTokenfactoryV1beta1TxRegistry from "./tokenfactory/v1beta1/tx.registry";
-import * as kiichainTokenfactoryV1beta1TxAmino from "./tokenfactory/v1beta1/tx.amino";
+import { GeneratedType, OfflineSigner, Registry } from '@cosmjs/proto-signing';
+import {
+  AminoTypes,
+  defaultRegistryTypes,
+  SigningStargateClient,
+} from '@cosmjs/stargate';
+import { HttpEndpoint } from '@cosmjs/tendermint-rpc';
+
+import * as kiichainTokenfactoryV1beta1TxAmino from './tokenfactory/v1beta1/tx.amino';
+import * as kiichainTokenfactoryV1beta1TxRegistry from './tokenfactory/v1beta1/tx.registry';
 export const kiichainAminoConverters = {
-  ...kiichainTokenfactoryV1beta1TxAmino.AminoConverter
+  ...kiichainTokenfactoryV1beta1TxAmino.AminoConverter,
 };
-export const kiichainProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [...kiichainTokenfactoryV1beta1TxRegistry.registry];
+export const kiichainProtoRegistry: ReadonlyArray<[string, GeneratedType]> = [
+  ...kiichainTokenfactoryV1beta1TxRegistry.registry,
+];
 export const getSigningKiichainClientOptions = ({
-  defaultTypes = defaultRegistryTypes
+  defaultTypes = defaultRegistryTypes,
 }: {
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 } = {}): {
@@ -18,31 +25,32 @@ export const getSigningKiichainClientOptions = ({
 } => {
   const registry = new Registry([...defaultTypes, ...kiichainProtoRegistry]);
   const aminoTypes = new AminoTypes({
-    ...kiichainAminoConverters
+    ...kiichainAminoConverters,
   });
   return {
     registry,
-    aminoTypes
+    aminoTypes,
   };
 };
 export const getSigningKiichainClient = async ({
   rpcEndpoint,
   signer,
-  defaultTypes = defaultRegistryTypes
+  defaultTypes = defaultRegistryTypes,
 }: {
   rpcEndpoint: string | HttpEndpoint;
   signer: OfflineSigner;
   defaultTypes?: ReadonlyArray<[string, GeneratedType]>;
 }) => {
-  const {
-    registry,
-    aminoTypes
-  } = getSigningKiichainClientOptions({
-    defaultTypes
+  const { registry, aminoTypes } = getSigningKiichainClientOptions({
+    defaultTypes,
   });
-  const client = await SigningStargateClient.connectWithSigner(rpcEndpoint, signer, {
-    registry: registry as any,
-    aminoTypes
-  });
+  const client = await SigningStargateClient.connectWithSigner(
+    rpcEndpoint,
+    signer,
+    {
+      registry: registry as any,
+      aminoTypes,
+    }
+  );
   return client;
 };

@@ -1,8 +1,14 @@
 //@ts-nocheck
-import { Rpc } from "../../../../helpers";
-import { BinaryReader } from "../../../../binary";
-import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryChecksumsRequest, QueryChecksumsResponse, QueryCodeRequest, QueryCodeResponse } from "./query";
+import { createProtobufRpcClient, QueryClient } from '@cosmjs/stargate';
+
+import { BinaryReader } from '../../../../binary';
+import { Rpc } from '../../../../helpers';
+import {
+  QueryChecksumsRequest,
+  QueryChecksumsResponse,
+  QueryCodeRequest,
+  QueryCodeResponse,
+} from './query';
 /** Query service for wasm module */
 export interface Query {
   /** Get all Wasm checksums */
@@ -17,28 +23,44 @@ export class QueryClientImpl implements Query {
     this.checksums = this.checksums.bind(this);
     this.code = this.code.bind(this);
   }
-  checksums(request: QueryChecksumsRequest = {
-    pagination: undefined
-  }): Promise<QueryChecksumsResponse> {
+  checksums(
+    request: QueryChecksumsRequest = {
+      pagination: undefined,
+    }
+  ): Promise<QueryChecksumsResponse> {
     const data = QueryChecksumsRequest.encode(request).finish();
-    const promise = this.rpc.request("ibc.lightclients.wasm.v1.Query", "Checksums", data);
-    return promise.then(data => QueryChecksumsResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'ibc.lightclients.wasm.v1.Query',
+      'Checksums',
+      data
+    );
+    return promise.then((data) =>
+      QueryChecksumsResponse.decode(new BinaryReader(data))
+    );
   }
   code(request: QueryCodeRequest): Promise<QueryCodeResponse> {
     const data = QueryCodeRequest.encode(request).finish();
-    const promise = this.rpc.request("ibc.lightclients.wasm.v1.Query", "Code", data);
-    return promise.then(data => QueryCodeResponse.decode(new BinaryReader(data)));
+    const promise = this.rpc.request(
+      'ibc.lightclients.wasm.v1.Query',
+      'Code',
+      data
+    );
+    return promise.then((data) =>
+      QueryCodeResponse.decode(new BinaryReader(data))
+    );
   }
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
   const queryService = new QueryClientImpl(rpc);
   return {
-    checksums(request?: QueryChecksumsRequest): Promise<QueryChecksumsResponse> {
+    checksums(
+      request?: QueryChecksumsRequest
+    ): Promise<QueryChecksumsResponse> {
       return queryService.checksums(request);
     },
     code(request: QueryCodeRequest): Promise<QueryCodeResponse> {
       return queryService.code(request);
-    }
+    },
   };
 };

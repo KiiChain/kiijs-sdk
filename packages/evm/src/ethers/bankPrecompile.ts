@@ -32,5 +32,5 @@ export const ETHERS_BANK_PRECOMPILE_ABI = BANK_PRECOMPILE_ABI as InterfaceAbi;
  * @category Cosmos Interoperability
  */
 export const getBankPrecompileEthersV6Contract = (runner: ContractRunner) => {
-	return new Contract(BANK_PRECOMPILE_ADDRESS, BANK_PRECOMPILE_ABI, runner);
+  return new Contract(BANK_PRECOMPILE_ADDRESS, BANK_PRECOMPILE_ABI, runner);
 };

@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../binary";
+import { BinaryReader, BinaryWriter } from '../../binary';
 /**
  * App includes the protocol and software version for the application.
  * This information is included in ResponseInfo. The App.Protocol can be
@@ -10,7 +10,7 @@ export interface App {
   software: string;
 }
 export interface AppProtoMsg {
-  typeUrl: "/tendermint.version.App";
+  typeUrl: '/tendermint.version.App';
   value: Uint8Array;
 }
 /**
@@ -23,7 +23,7 @@ export interface AppAmino {
   software?: string;
 }
 export interface AppAminoMsg {
-  type: "/tendermint.version.App";
+  type: '/tendermint.version.App';
   value: AppAmino;
 }
 /**
@@ -45,7 +45,7 @@ export interface Consensus {
   app: bigint;
 }
 export interface ConsensusProtoMsg {
-  typeUrl: "/tendermint.version.Consensus";
+  typeUrl: '/tendermint.version.Consensus';
   value: Uint8Array;
 }
 /**
@@ -58,7 +58,7 @@ export interface ConsensusAmino {
   app?: string;
 }
 export interface ConsensusAminoMsg {
-  type: "/tendermint.version.Consensus";
+  type: '/tendermint.version.Consensus';
   value: ConsensusAmino;
 }
 /**
@@ -73,22 +73,26 @@ export interface ConsensusSDKType {
 function createBaseApp(): App {
   return {
     protocol: BigInt(0),
-    software: ""
+    software: '',
   };
 }
 export const App = {
-  typeUrl: "/tendermint.version.App",
-  encode(message: App, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/tendermint.version.App',
+  encode(
+    message: App,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.protocol !== BigInt(0)) {
       writer.uint32(8).uint64(message.protocol);
     }
-    if (message.software !== "") {
+    if (message.software !== '') {
       writer.uint32(18).string(message.software);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): App {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseApp();
     while (reader.pos < end) {
@@ -109,8 +113,11 @@ export const App = {
   },
   fromPartial(object: Partial<App>): App {
     const message = createBaseApp();
-    message.protocol = object.protocol !== undefined && object.protocol !== null ? BigInt(object.protocol.toString()) : BigInt(0);
-    message.software = object.software ?? "";
+    message.protocol =
+      object.protocol !== undefined && object.protocol !== null
+        ? BigInt(object.protocol.toString())
+        : BigInt(0);
+    message.software = object.software ?? '';
     return message;
   },
   fromAmino(object: AppAmino): App {
@@ -125,8 +132,9 @@ export const App = {
   },
   toAmino(message: App): AppAmino {
     const obj: any = {};
-    obj.protocol = message.protocol !== BigInt(0) ? message.protocol?.toString() : undefined;
-    obj.software = message.software === "" ? undefined : message.software;
+    obj.protocol =
+      message.protocol !== BigInt(0) ? message.protocol?.toString() : undefined;
+    obj.software = message.software === '' ? undefined : message.software;
     return obj;
   },
   fromAminoMsg(object: AppAminoMsg): App {
@@ -140,20 +148,23 @@ export const App = {
   },
   toProtoMsg(message: App): AppProtoMsg {
     return {
-      typeUrl: "/tendermint.version.App",
-      value: App.encode(message).finish()
+      typeUrl: '/tendermint.version.App',
+      value: App.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseConsensus(): Consensus {
   return {
     block: BigInt(0),
-    app: BigInt(0)
+    app: BigInt(0),
   };
 }
 export const Consensus = {
-  typeUrl: "/tendermint.version.Consensus",
-  encode(message: Consensus, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/tendermint.version.Consensus',
+  encode(
+    message: Consensus,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     if (message.block !== BigInt(0)) {
       writer.uint32(8).uint64(message.block);
     }
@@ -163,7 +174,8 @@ export const Consensus = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): Consensus {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseConsensus();
     while (reader.pos < end) {
@@ -184,8 +196,14 @@ export const Consensus = {
   },
   fromPartial(object: Partial<Consensus>): Consensus {
     const message = createBaseConsensus();
-    message.block = object.block !== undefined && object.block !== null ? BigInt(object.block.toString()) : BigInt(0);
-    message.app = object.app !== undefined && object.app !== null ? BigInt(object.app.toString()) : BigInt(0);
+    message.block =
+      object.block !== undefined && object.block !== null
+        ? BigInt(object.block.toString())
+        : BigInt(0);
+    message.app =
+      object.app !== undefined && object.app !== null
+        ? BigInt(object.app.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: ConsensusAmino): Consensus {
@@ -200,7 +218,8 @@ export const Consensus = {
   },
   toAmino(message: Consensus): ConsensusAmino {
     const obj: any = {};
-    obj.block = message.block !== BigInt(0) ? message.block?.toString() : undefined;
+    obj.block =
+      message.block !== BigInt(0) ? message.block?.toString() : undefined;
     obj.app = message.app !== BigInt(0) ? message.app?.toString() : undefined;
     return obj;
   },
@@ -215,8 +234,8 @@ export const Consensus = {
   },
   toProtoMsg(message: Consensus): ConsensusProtoMsg {
     return {
-      typeUrl: "/tendermint.version.Consensus",
-      value: Consensus.encode(message).finish()
+      typeUrl: '/tendermint.version.Consensus',
+      value: Consensus.encode(message).finish(),
     };
-  }
+  },
 };

@@ -1,19 +1,23 @@
 //@ts-nocheck
-import { MsgGrantAllowance, MsgRevokeAllowance, MsgPruneAllowances } from "./tx";
+import {
+  MsgGrantAllowance,
+  MsgPruneAllowances,
+  MsgRevokeAllowance,
+} from './tx';
 export const AminoConverter = {
-  "/cosmos.feegrant.v1beta1.MsgGrantAllowance": {
-    aminoType: "cosmos-sdk/MsgGrantAllowance",
+  '/cosmos.feegrant.v1beta1.MsgGrantAllowance': {
+    aminoType: 'cosmos-sdk/MsgGrantAllowance',
     toAmino: MsgGrantAllowance.toAmino,
-    fromAmino: MsgGrantAllowance.fromAmino
+    fromAmino: MsgGrantAllowance.fromAmino,
   },
-  "/cosmos.feegrant.v1beta1.MsgRevokeAllowance": {
-    aminoType: "cosmos-sdk/MsgRevokeAllowance",
+  '/cosmos.feegrant.v1beta1.MsgRevokeAllowance': {
+    aminoType: 'cosmos-sdk/MsgRevokeAllowance',
     toAmino: MsgRevokeAllowance.toAmino,
-    fromAmino: MsgRevokeAllowance.fromAmino
+    fromAmino: MsgRevokeAllowance.fromAmino,
   },
-  "/cosmos.feegrant.v1beta1.MsgPruneAllowances": {
-    aminoType: "cosmos-sdk/MsgPruneAllowances",
+  '/cosmos.feegrant.v1beta1.MsgPruneAllowances': {
+    aminoType: 'cosmos-sdk/MsgPruneAllowances',
     toAmino: MsgPruneAllowances.toAmino,
-    fromAmino: MsgPruneAllowances.fromAmino
-  }
+    fromAmino: MsgPruneAllowances.fromAmino,
+  },
 };

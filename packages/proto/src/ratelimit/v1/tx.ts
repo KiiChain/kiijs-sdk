@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../binary";
+import { BinaryReader, BinaryWriter } from '../../binary';
 /** Gov tx to add a new rate limit */
 export interface MsgAddRateLimit {
   /** Authority defines the x/gov module account */
@@ -28,7 +28,7 @@ export interface MsgAddRateLimit {
   durationHours: bigint;
 }
 export interface MsgAddRateLimitProtoMsg {
-  typeUrl: "/ratelimit.v1.MsgAddRateLimit";
+  typeUrl: '/ratelimit.v1.MsgAddRateLimit';
   value: Uint8Array;
 }
 /** Gov tx to add a new rate limit */
@@ -59,7 +59,7 @@ export interface MsgAddRateLimitAmino {
   duration_hours?: string;
 }
 export interface MsgAddRateLimitAminoMsg {
-  type: "ratelimit/MsgAddRateLimit";
+  type: 'ratelimit/MsgAddRateLimit';
   value: MsgAddRateLimitAmino;
 }
 /** Gov tx to add a new rate limit */
@@ -73,12 +73,12 @@ export interface MsgAddRateLimitSDKType {
 }
 export interface MsgAddRateLimitResponse {}
 export interface MsgAddRateLimitResponseProtoMsg {
-  typeUrl: "/ratelimit.v1.MsgAddRateLimitResponse";
+  typeUrl: '/ratelimit.v1.MsgAddRateLimitResponse';
   value: Uint8Array;
 }
 export interface MsgAddRateLimitResponseAmino {}
 export interface MsgAddRateLimitResponseAminoMsg {
-  type: "/ratelimit.v1.MsgAddRateLimitResponse";
+  type: '/ratelimit.v1.MsgAddRateLimitResponse';
   value: MsgAddRateLimitResponseAmino;
 }
 export interface MsgAddRateLimitResponseSDKType {}
@@ -110,7 +110,7 @@ export interface MsgUpdateRateLimit {
   durationHours: bigint;
 }
 export interface MsgUpdateRateLimitProtoMsg {
-  typeUrl: "/ratelimit.v1.MsgUpdateRateLimit";
+  typeUrl: '/ratelimit.v1.MsgUpdateRateLimit';
   value: Uint8Array;
 }
 /** Gov tx to update an existing rate limit */
@@ -141,7 +141,7 @@ export interface MsgUpdateRateLimitAmino {
   duration_hours?: string;
 }
 export interface MsgUpdateRateLimitAminoMsg {
-  type: "ratelimit/MsgUpdateRateLimit";
+  type: 'ratelimit/MsgUpdateRateLimit';
   value: MsgUpdateRateLimitAmino;
 }
 /** Gov tx to update an existing rate limit */
@@ -155,12 +155,12 @@ export interface MsgUpdateRateLimitSDKType {
 }
 export interface MsgUpdateRateLimitResponse {}
 export interface MsgUpdateRateLimitResponseProtoMsg {
-  typeUrl: "/ratelimit.v1.MsgUpdateRateLimitResponse";
+  typeUrl: '/ratelimit.v1.MsgUpdateRateLimitResponse';
   value: Uint8Array;
 }
 export interface MsgUpdateRateLimitResponseAmino {}
 export interface MsgUpdateRateLimitResponseAminoMsg {
-  type: "/ratelimit.v1.MsgUpdateRateLimitResponse";
+  type: '/ratelimit.v1.MsgUpdateRateLimitResponse';
   value: MsgUpdateRateLimitResponseAmino;
 }
 export interface MsgUpdateRateLimitResponseSDKType {}
@@ -177,7 +177,7 @@ export interface MsgRemoveRateLimit {
   channelId: string;
 }
 export interface MsgRemoveRateLimitProtoMsg {
-  typeUrl: "/ratelimit.v1.MsgRemoveRateLimit";
+  typeUrl: '/ratelimit.v1.MsgRemoveRateLimit';
   value: Uint8Array;
 }
 /** Gov tx to remove a rate limit */
@@ -193,7 +193,7 @@ export interface MsgRemoveRateLimitAmino {
   channel_id?: string;
 }
 export interface MsgRemoveRateLimitAminoMsg {
-  type: "ratelimit/MsgRemoveRateLimit";
+  type: 'ratelimit/MsgRemoveRateLimit';
   value: MsgRemoveRateLimitAmino;
 }
 /** Gov tx to remove a rate limit */
@@ -204,12 +204,12 @@ export interface MsgRemoveRateLimitSDKType {
 }
 export interface MsgRemoveRateLimitResponse {}
 export interface MsgRemoveRateLimitResponseProtoMsg {
-  typeUrl: "/ratelimit.v1.MsgRemoveRateLimitResponse";
+  typeUrl: '/ratelimit.v1.MsgRemoveRateLimitResponse';
   value: Uint8Array;
 }
 export interface MsgRemoveRateLimitResponseAmino {}
 export interface MsgRemoveRateLimitResponseAminoMsg {
-  type: "/ratelimit.v1.MsgRemoveRateLimitResponse";
+  type: '/ratelimit.v1.MsgRemoveRateLimitResponse';
   value: MsgRemoveRateLimitResponseAmino;
 }
 export interface MsgRemoveRateLimitResponseSDKType {}
@@ -226,7 +226,7 @@ export interface MsgResetRateLimit {
   channelId: string;
 }
 export interface MsgResetRateLimitProtoMsg {
-  typeUrl: "/ratelimit.v1.MsgResetRateLimit";
+  typeUrl: '/ratelimit.v1.MsgResetRateLimit';
   value: Uint8Array;
 }
 /** Gov tx to reset the flow on a rate limit */
@@ -242,7 +242,7 @@ export interface MsgResetRateLimitAmino {
   channel_id?: string;
 }
 export interface MsgResetRateLimitAminoMsg {
-  type: "ratelimit/MsgResetRateLimit";
+  type: 'ratelimit/MsgResetRateLimit';
   value: MsgResetRateLimitAmino;
 }
 /** Gov tx to reset the flow on a rate limit */
@@ -253,41 +253,44 @@ export interface MsgResetRateLimitSDKType {
 }
 export interface MsgResetRateLimitResponse {}
 export interface MsgResetRateLimitResponseProtoMsg {
-  typeUrl: "/ratelimit.v1.MsgResetRateLimitResponse";
+  typeUrl: '/ratelimit.v1.MsgResetRateLimitResponse';
   value: Uint8Array;
 }
 export interface MsgResetRateLimitResponseAmino {}
 export interface MsgResetRateLimitResponseAminoMsg {
-  type: "/ratelimit.v1.MsgResetRateLimitResponse";
+  type: '/ratelimit.v1.MsgResetRateLimitResponse';
   value: MsgResetRateLimitResponseAmino;
 }
 export interface MsgResetRateLimitResponseSDKType {}
 function createBaseMsgAddRateLimit(): MsgAddRateLimit {
   return {
-    authority: "",
-    denom: "",
-    channelId: "",
-    maxPercentSend: "",
-    maxPercentRecv: "",
-    durationHours: BigInt(0)
+    authority: '',
+    denom: '',
+    channelId: '',
+    maxPercentSend: '',
+    maxPercentRecv: '',
+    durationHours: BigInt(0),
   };
 }
 export const MsgAddRateLimit = {
-  typeUrl: "/ratelimit.v1.MsgAddRateLimit",
-  encode(message: MsgAddRateLimit, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.authority !== "") {
+  typeUrl: '/ratelimit.v1.MsgAddRateLimit',
+  encode(
+    message: MsgAddRateLimit,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.authority !== '') {
       writer.uint32(10).string(message.authority);
     }
-    if (message.denom !== "") {
+    if (message.denom !== '') {
       writer.uint32(18).string(message.denom);
     }
-    if (message.channelId !== "") {
+    if (message.channelId !== '') {
       writer.uint32(26).string(message.channelId);
     }
-    if (message.maxPercentSend !== "") {
+    if (message.maxPercentSend !== '') {
       writer.uint32(34).string(message.maxPercentSend);
     }
-    if (message.maxPercentRecv !== "") {
+    if (message.maxPercentRecv !== '') {
       writer.uint32(42).string(message.maxPercentRecv);
     }
     if (message.durationHours !== BigInt(0)) {
@@ -296,7 +299,8 @@ export const MsgAddRateLimit = {
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgAddRateLimit {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgAddRateLimit();
     while (reader.pos < end) {
@@ -329,12 +333,15 @@ export const MsgAddRateLimit = {
   },
   fromPartial(object: Partial<MsgAddRateLimit>): MsgAddRateLimit {
     const message = createBaseMsgAddRateLimit();
-    message.authority = object.authority ?? "";
-    message.denom = object.denom ?? "";
-    message.channelId = object.channelId ?? "";
-    message.maxPercentSend = object.maxPercentSend ?? "";
-    message.maxPercentRecv = object.maxPercentRecv ?? "";
-    message.durationHours = object.durationHours !== undefined && object.durationHours !== null ? BigInt(object.durationHours.toString()) : BigInt(0);
+    message.authority = object.authority ?? '';
+    message.denom = object.denom ?? '';
+    message.channelId = object.channelId ?? '';
+    message.maxPercentSend = object.maxPercentSend ?? '';
+    message.maxPercentRecv = object.maxPercentRecv ?? '';
+    message.durationHours =
+      object.durationHours !== undefined && object.durationHours !== null
+        ? BigInt(object.durationHours.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: MsgAddRateLimitAmino): MsgAddRateLimit {
@@ -348,10 +355,16 @@ export const MsgAddRateLimit = {
     if (object.channel_id !== undefined && object.channel_id !== null) {
       message.channelId = object.channel_id;
     }
-    if (object.max_percent_send !== undefined && object.max_percent_send !== null) {
+    if (
+      object.max_percent_send !== undefined &&
+      object.max_percent_send !== null
+    ) {
       message.maxPercentSend = object.max_percent_send;
     }
-    if (object.max_percent_recv !== undefined && object.max_percent_recv !== null) {
+    if (
+      object.max_percent_recv !== undefined &&
+      object.max_percent_recv !== null
+    ) {
       message.maxPercentRecv = object.max_percent_recv;
     }
     if (object.duration_hours !== undefined && object.duration_hours !== null) {
@@ -361,12 +374,17 @@ export const MsgAddRateLimit = {
   },
   toAmino(message: MsgAddRateLimit): MsgAddRateLimitAmino {
     const obj: any = {};
-    obj.authority = message.authority === "" ? undefined : message.authority;
-    obj.denom = message.denom === "" ? undefined : message.denom;
-    obj.channel_id = message.channelId === "" ? undefined : message.channelId;
-    obj.max_percent_send = message.maxPercentSend === "" ? undefined : message.maxPercentSend;
-    obj.max_percent_recv = message.maxPercentRecv === "" ? undefined : message.maxPercentRecv;
-    obj.duration_hours = message.durationHours !== BigInt(0) ? message.durationHours?.toString() : undefined;
+    obj.authority = message.authority === '' ? undefined : message.authority;
+    obj.denom = message.denom === '' ? undefined : message.denom;
+    obj.channel_id = message.channelId === '' ? undefined : message.channelId;
+    obj.max_percent_send =
+      message.maxPercentSend === '' ? undefined : message.maxPercentSend;
+    obj.max_percent_recv =
+      message.maxPercentRecv === '' ? undefined : message.maxPercentRecv;
+    obj.duration_hours =
+      message.durationHours !== BigInt(0)
+        ? message.durationHours?.toString()
+        : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgAddRateLimitAminoMsg): MsgAddRateLimit {
@@ -374,8 +392,8 @@ export const MsgAddRateLimit = {
   },
   toAminoMsg(message: MsgAddRateLimit): MsgAddRateLimitAminoMsg {
     return {
-      type: "ratelimit/MsgAddRateLimit",
-      value: MsgAddRateLimit.toAmino(message)
+      type: 'ratelimit/MsgAddRateLimit',
+      value: MsgAddRateLimit.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgAddRateLimitProtoMsg): MsgAddRateLimit {
@@ -386,21 +404,28 @@ export const MsgAddRateLimit = {
   },
   toProtoMsg(message: MsgAddRateLimit): MsgAddRateLimitProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.MsgAddRateLimit",
-      value: MsgAddRateLimit.encode(message).finish()
+      typeUrl: '/ratelimit.v1.MsgAddRateLimit',
+      value: MsgAddRateLimit.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgAddRateLimitResponse(): MsgAddRateLimitResponse {
   return {};
 }
 export const MsgAddRateLimitResponse = {
-  typeUrl: "/ratelimit.v1.MsgAddRateLimitResponse",
-  encode(_: MsgAddRateLimitResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.MsgAddRateLimitResponse',
+  encode(
+    _: MsgAddRateLimitResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgAddRateLimitResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgAddRateLimitResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgAddRateLimitResponse();
     while (reader.pos < end) {
@@ -425,48 +450,57 @@ export const MsgAddRateLimitResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgAddRateLimitResponseAminoMsg): MsgAddRateLimitResponse {
+  fromAminoMsg(
+    object: MsgAddRateLimitResponseAminoMsg
+  ): MsgAddRateLimitResponse {
     return MsgAddRateLimitResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgAddRateLimitResponseProtoMsg): MsgAddRateLimitResponse {
+  fromProtoMsg(
+    message: MsgAddRateLimitResponseProtoMsg
+  ): MsgAddRateLimitResponse {
     return MsgAddRateLimitResponse.decode(message.value);
   },
   toProto(message: MsgAddRateLimitResponse): Uint8Array {
     return MsgAddRateLimitResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgAddRateLimitResponse): MsgAddRateLimitResponseProtoMsg {
+  toProtoMsg(
+    message: MsgAddRateLimitResponse
+  ): MsgAddRateLimitResponseProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.MsgAddRateLimitResponse",
-      value: MsgAddRateLimitResponse.encode(message).finish()
+      typeUrl: '/ratelimit.v1.MsgAddRateLimitResponse',
+      value: MsgAddRateLimitResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateRateLimit(): MsgUpdateRateLimit {
   return {
-    authority: "",
-    denom: "",
-    channelId: "",
-    maxPercentSend: "",
-    maxPercentRecv: "",
-    durationHours: BigInt(0)
+    authority: '',
+    denom: '',
+    channelId: '',
+    maxPercentSend: '',
+    maxPercentRecv: '',
+    durationHours: BigInt(0),
   };
 }
 export const MsgUpdateRateLimit = {
-  typeUrl: "/ratelimit.v1.MsgUpdateRateLimit",
-  encode(message: MsgUpdateRateLimit, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.authority !== "") {
+  typeUrl: '/ratelimit.v1.MsgUpdateRateLimit',
+  encode(
+    message: MsgUpdateRateLimit,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.authority !== '') {
       writer.uint32(10).string(message.authority);
     }
-    if (message.denom !== "") {
+    if (message.denom !== '') {
       writer.uint32(18).string(message.denom);
     }
-    if (message.channelId !== "") {
+    if (message.channelId !== '') {
       writer.uint32(26).string(message.channelId);
     }
-    if (message.maxPercentSend !== "") {
+    if (message.maxPercentSend !== '') {
       writer.uint32(34).string(message.maxPercentSend);
     }
-    if (message.maxPercentRecv !== "") {
+    if (message.maxPercentRecv !== '') {
       writer.uint32(42).string(message.maxPercentRecv);
     }
     if (message.durationHours !== BigInt(0)) {
@@ -474,8 +508,12 @@ export const MsgUpdateRateLimit = {
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateRateLimit {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgUpdateRateLimit {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateRateLimit();
     while (reader.pos < end) {
@@ -508,12 +546,15 @@ export const MsgUpdateRateLimit = {
   },
   fromPartial(object: Partial<MsgUpdateRateLimit>): MsgUpdateRateLimit {
     const message = createBaseMsgUpdateRateLimit();
-    message.authority = object.authority ?? "";
-    message.denom = object.denom ?? "";
-    message.channelId = object.channelId ?? "";
-    message.maxPercentSend = object.maxPercentSend ?? "";
-    message.maxPercentRecv = object.maxPercentRecv ?? "";
-    message.durationHours = object.durationHours !== undefined && object.durationHours !== null ? BigInt(object.durationHours.toString()) : BigInt(0);
+    message.authority = object.authority ?? '';
+    message.denom = object.denom ?? '';
+    message.channelId = object.channelId ?? '';
+    message.maxPercentSend = object.maxPercentSend ?? '';
+    message.maxPercentRecv = object.maxPercentRecv ?? '';
+    message.durationHours =
+      object.durationHours !== undefined && object.durationHours !== null
+        ? BigInt(object.durationHours.toString())
+        : BigInt(0);
     return message;
   },
   fromAmino(object: MsgUpdateRateLimitAmino): MsgUpdateRateLimit {
@@ -527,10 +568,16 @@ export const MsgUpdateRateLimit = {
     if (object.channel_id !== undefined && object.channel_id !== null) {
       message.channelId = object.channel_id;
     }
-    if (object.max_percent_send !== undefined && object.max_percent_send !== null) {
+    if (
+      object.max_percent_send !== undefined &&
+      object.max_percent_send !== null
+    ) {
       message.maxPercentSend = object.max_percent_send;
     }
-    if (object.max_percent_recv !== undefined && object.max_percent_recv !== null) {
+    if (
+      object.max_percent_recv !== undefined &&
+      object.max_percent_recv !== null
+    ) {
       message.maxPercentRecv = object.max_percent_recv;
     }
     if (object.duration_hours !== undefined && object.duration_hours !== null) {
@@ -540,12 +587,17 @@ export const MsgUpdateRateLimit = {
   },
   toAmino(message: MsgUpdateRateLimit): MsgUpdateRateLimitAmino {
     const obj: any = {};
-    obj.authority = message.authority === "" ? undefined : message.authority;
-    obj.denom = message.denom === "" ? undefined : message.denom;
-    obj.channel_id = message.channelId === "" ? undefined : message.channelId;
-    obj.max_percent_send = message.maxPercentSend === "" ? undefined : message.maxPercentSend;
-    obj.max_percent_recv = message.maxPercentRecv === "" ? undefined : message.maxPercentRecv;
-    obj.duration_hours = message.durationHours !== BigInt(0) ? message.durationHours?.toString() : undefined;
+    obj.authority = message.authority === '' ? undefined : message.authority;
+    obj.denom = message.denom === '' ? undefined : message.denom;
+    obj.channel_id = message.channelId === '' ? undefined : message.channelId;
+    obj.max_percent_send =
+      message.maxPercentSend === '' ? undefined : message.maxPercentSend;
+    obj.max_percent_recv =
+      message.maxPercentRecv === '' ? undefined : message.maxPercentRecv;
+    obj.duration_hours =
+      message.durationHours !== BigInt(0)
+        ? message.durationHours?.toString()
+        : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgUpdateRateLimitAminoMsg): MsgUpdateRateLimit {
@@ -553,8 +605,8 @@ export const MsgUpdateRateLimit = {
   },
   toAminoMsg(message: MsgUpdateRateLimit): MsgUpdateRateLimitAminoMsg {
     return {
-      type: "ratelimit/MsgUpdateRateLimit",
-      value: MsgUpdateRateLimit.toAmino(message)
+      type: 'ratelimit/MsgUpdateRateLimit',
+      value: MsgUpdateRateLimit.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgUpdateRateLimitProtoMsg): MsgUpdateRateLimit {
@@ -565,21 +617,28 @@ export const MsgUpdateRateLimit = {
   },
   toProtoMsg(message: MsgUpdateRateLimit): MsgUpdateRateLimitProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.MsgUpdateRateLimit",
-      value: MsgUpdateRateLimit.encode(message).finish()
+      typeUrl: '/ratelimit.v1.MsgUpdateRateLimit',
+      value: MsgUpdateRateLimit.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgUpdateRateLimitResponse(): MsgUpdateRateLimitResponse {
   return {};
 }
 export const MsgUpdateRateLimitResponse = {
-  typeUrl: "/ratelimit.v1.MsgUpdateRateLimitResponse",
-  encode(_: MsgUpdateRateLimitResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.MsgUpdateRateLimitResponse',
+  encode(
+    _: MsgUpdateRateLimitResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateRateLimitResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgUpdateRateLimitResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgUpdateRateLimitResponse();
     while (reader.pos < end) {
@@ -592,7 +651,9 @@ export const MsgUpdateRateLimitResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgUpdateRateLimitResponse>): MsgUpdateRateLimitResponse {
+  fromPartial(
+    _: Partial<MsgUpdateRateLimitResponse>
+  ): MsgUpdateRateLimitResponse {
     const message = createBaseMsgUpdateRateLimitResponse();
     return message;
   },
@@ -604,45 +665,58 @@ export const MsgUpdateRateLimitResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgUpdateRateLimitResponseAminoMsg): MsgUpdateRateLimitResponse {
+  fromAminoMsg(
+    object: MsgUpdateRateLimitResponseAminoMsg
+  ): MsgUpdateRateLimitResponse {
     return MsgUpdateRateLimitResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgUpdateRateLimitResponseProtoMsg): MsgUpdateRateLimitResponse {
+  fromProtoMsg(
+    message: MsgUpdateRateLimitResponseProtoMsg
+  ): MsgUpdateRateLimitResponse {
     return MsgUpdateRateLimitResponse.decode(message.value);
   },
   toProto(message: MsgUpdateRateLimitResponse): Uint8Array {
     return MsgUpdateRateLimitResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgUpdateRateLimitResponse): MsgUpdateRateLimitResponseProtoMsg {
+  toProtoMsg(
+    message: MsgUpdateRateLimitResponse
+  ): MsgUpdateRateLimitResponseProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.MsgUpdateRateLimitResponse",
-      value: MsgUpdateRateLimitResponse.encode(message).finish()
+      typeUrl: '/ratelimit.v1.MsgUpdateRateLimitResponse',
+      value: MsgUpdateRateLimitResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgRemoveRateLimit(): MsgRemoveRateLimit {
   return {
-    authority: "",
-    denom: "",
-    channelId: ""
+    authority: '',
+    denom: '',
+    channelId: '',
   };
 }
 export const MsgRemoveRateLimit = {
-  typeUrl: "/ratelimit.v1.MsgRemoveRateLimit",
-  encode(message: MsgRemoveRateLimit, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.authority !== "") {
+  typeUrl: '/ratelimit.v1.MsgRemoveRateLimit',
+  encode(
+    message: MsgRemoveRateLimit,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.authority !== '') {
       writer.uint32(10).string(message.authority);
     }
-    if (message.denom !== "") {
+    if (message.denom !== '') {
       writer.uint32(18).string(message.denom);
     }
-    if (message.channelId !== "") {
+    if (message.channelId !== '') {
       writer.uint32(26).string(message.channelId);
     }
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgRemoveRateLimit {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgRemoveRateLimit {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRemoveRateLimit();
     while (reader.pos < end) {
@@ -666,9 +740,9 @@ export const MsgRemoveRateLimit = {
   },
   fromPartial(object: Partial<MsgRemoveRateLimit>): MsgRemoveRateLimit {
     const message = createBaseMsgRemoveRateLimit();
-    message.authority = object.authority ?? "";
-    message.denom = object.denom ?? "";
-    message.channelId = object.channelId ?? "";
+    message.authority = object.authority ?? '';
+    message.denom = object.denom ?? '';
+    message.channelId = object.channelId ?? '';
     return message;
   },
   fromAmino(object: MsgRemoveRateLimitAmino): MsgRemoveRateLimit {
@@ -686,9 +760,9 @@ export const MsgRemoveRateLimit = {
   },
   toAmino(message: MsgRemoveRateLimit): MsgRemoveRateLimitAmino {
     const obj: any = {};
-    obj.authority = message.authority === "" ? undefined : message.authority;
-    obj.denom = message.denom === "" ? undefined : message.denom;
-    obj.channel_id = message.channelId === "" ? undefined : message.channelId;
+    obj.authority = message.authority === '' ? undefined : message.authority;
+    obj.denom = message.denom === '' ? undefined : message.denom;
+    obj.channel_id = message.channelId === '' ? undefined : message.channelId;
     return obj;
   },
   fromAminoMsg(object: MsgRemoveRateLimitAminoMsg): MsgRemoveRateLimit {
@@ -696,8 +770,8 @@ export const MsgRemoveRateLimit = {
   },
   toAminoMsg(message: MsgRemoveRateLimit): MsgRemoveRateLimitAminoMsg {
     return {
-      type: "ratelimit/MsgRemoveRateLimit",
-      value: MsgRemoveRateLimit.toAmino(message)
+      type: 'ratelimit/MsgRemoveRateLimit',
+      value: MsgRemoveRateLimit.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgRemoveRateLimitProtoMsg): MsgRemoveRateLimit {
@@ -708,21 +782,28 @@ export const MsgRemoveRateLimit = {
   },
   toProtoMsg(message: MsgRemoveRateLimit): MsgRemoveRateLimitProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.MsgRemoveRateLimit",
-      value: MsgRemoveRateLimit.encode(message).finish()
+      typeUrl: '/ratelimit.v1.MsgRemoveRateLimit',
+      value: MsgRemoveRateLimit.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgRemoveRateLimitResponse(): MsgRemoveRateLimitResponse {
   return {};
 }
 export const MsgRemoveRateLimitResponse = {
-  typeUrl: "/ratelimit.v1.MsgRemoveRateLimitResponse",
-  encode(_: MsgRemoveRateLimitResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.MsgRemoveRateLimitResponse',
+  encode(
+    _: MsgRemoveRateLimitResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgRemoveRateLimitResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgRemoveRateLimitResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgRemoveRateLimitResponse();
     while (reader.pos < end) {
@@ -735,7 +816,9 @@ export const MsgRemoveRateLimitResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgRemoveRateLimitResponse>): MsgRemoveRateLimitResponse {
+  fromPartial(
+    _: Partial<MsgRemoveRateLimitResponse>
+  ): MsgRemoveRateLimitResponse {
     const message = createBaseMsgRemoveRateLimitResponse();
     return message;
   },
@@ -747,45 +830,55 @@ export const MsgRemoveRateLimitResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgRemoveRateLimitResponseAminoMsg): MsgRemoveRateLimitResponse {
+  fromAminoMsg(
+    object: MsgRemoveRateLimitResponseAminoMsg
+  ): MsgRemoveRateLimitResponse {
     return MsgRemoveRateLimitResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgRemoveRateLimitResponseProtoMsg): MsgRemoveRateLimitResponse {
+  fromProtoMsg(
+    message: MsgRemoveRateLimitResponseProtoMsg
+  ): MsgRemoveRateLimitResponse {
     return MsgRemoveRateLimitResponse.decode(message.value);
   },
   toProto(message: MsgRemoveRateLimitResponse): Uint8Array {
     return MsgRemoveRateLimitResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgRemoveRateLimitResponse): MsgRemoveRateLimitResponseProtoMsg {
+  toProtoMsg(
+    message: MsgRemoveRateLimitResponse
+  ): MsgRemoveRateLimitResponseProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.MsgRemoveRateLimitResponse",
-      value: MsgRemoveRateLimitResponse.encode(message).finish()
+      typeUrl: '/ratelimit.v1.MsgRemoveRateLimitResponse',
+      value: MsgRemoveRateLimitResponse.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgResetRateLimit(): MsgResetRateLimit {
   return {
-    authority: "",
-    denom: "",
-    channelId: ""
+    authority: '',
+    denom: '',
+    channelId: '',
   };
 }
 export const MsgResetRateLimit = {
-  typeUrl: "/ratelimit.v1.MsgResetRateLimit",
-  encode(message: MsgResetRateLimit, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.authority !== "") {
+  typeUrl: '/ratelimit.v1.MsgResetRateLimit',
+  encode(
+    message: MsgResetRateLimit,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
+    if (message.authority !== '') {
       writer.uint32(10).string(message.authority);
     }
-    if (message.denom !== "") {
+    if (message.denom !== '') {
       writer.uint32(18).string(message.denom);
     }
-    if (message.channelId !== "") {
+    if (message.channelId !== '') {
       writer.uint32(26).string(message.channelId);
     }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): MsgResetRateLimit {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgResetRateLimit();
     while (reader.pos < end) {
@@ -809,9 +902,9 @@ export const MsgResetRateLimit = {
   },
   fromPartial(object: Partial<MsgResetRateLimit>): MsgResetRateLimit {
     const message = createBaseMsgResetRateLimit();
-    message.authority = object.authority ?? "";
-    message.denom = object.denom ?? "";
-    message.channelId = object.channelId ?? "";
+    message.authority = object.authority ?? '';
+    message.denom = object.denom ?? '';
+    message.channelId = object.channelId ?? '';
     return message;
   },
   fromAmino(object: MsgResetRateLimitAmino): MsgResetRateLimit {
@@ -829,9 +922,9 @@ export const MsgResetRateLimit = {
   },
   toAmino(message: MsgResetRateLimit): MsgResetRateLimitAmino {
     const obj: any = {};
-    obj.authority = message.authority === "" ? undefined : message.authority;
-    obj.denom = message.denom === "" ? undefined : message.denom;
-    obj.channel_id = message.channelId === "" ? undefined : message.channelId;
+    obj.authority = message.authority === '' ? undefined : message.authority;
+    obj.denom = message.denom === '' ? undefined : message.denom;
+    obj.channel_id = message.channelId === '' ? undefined : message.channelId;
     return obj;
   },
   fromAminoMsg(object: MsgResetRateLimitAminoMsg): MsgResetRateLimit {
@@ -839,8 +932,8 @@ export const MsgResetRateLimit = {
   },
   toAminoMsg(message: MsgResetRateLimit): MsgResetRateLimitAminoMsg {
     return {
-      type: "ratelimit/MsgResetRateLimit",
-      value: MsgResetRateLimit.toAmino(message)
+      type: 'ratelimit/MsgResetRateLimit',
+      value: MsgResetRateLimit.toAmino(message),
     };
   },
   fromProtoMsg(message: MsgResetRateLimitProtoMsg): MsgResetRateLimit {
@@ -851,21 +944,28 @@ export const MsgResetRateLimit = {
   },
   toProtoMsg(message: MsgResetRateLimit): MsgResetRateLimitProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.MsgResetRateLimit",
-      value: MsgResetRateLimit.encode(message).finish()
+      typeUrl: '/ratelimit.v1.MsgResetRateLimit',
+      value: MsgResetRateLimit.encode(message).finish(),
     };
-  }
+  },
 };
 function createBaseMsgResetRateLimitResponse(): MsgResetRateLimitResponse {
   return {};
 }
 export const MsgResetRateLimitResponse = {
-  typeUrl: "/ratelimit.v1.MsgResetRateLimitResponse",
-  encode(_: MsgResetRateLimitResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+  typeUrl: '/ratelimit.v1.MsgResetRateLimitResponse',
+  encode(
+    _: MsgResetRateLimitResponse,
+    writer: BinaryWriter = BinaryWriter.create()
+  ): BinaryWriter {
     return writer;
   },
-  decode(input: BinaryReader | Uint8Array, length?: number): MsgResetRateLimitResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number
+  ): MsgResetRateLimitResponse {
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgResetRateLimitResponse();
     while (reader.pos < end) {
@@ -878,7 +978,9 @@ export const MsgResetRateLimitResponse = {
     }
     return message;
   },
-  fromPartial(_: Partial<MsgResetRateLimitResponse>): MsgResetRateLimitResponse {
+  fromPartial(
+    _: Partial<MsgResetRateLimitResponse>
+  ): MsgResetRateLimitResponse {
     const message = createBaseMsgResetRateLimitResponse();
     return message;
   },
@@ -890,19 +992,25 @@ export const MsgResetRateLimitResponse = {
     const obj: any = {};
     return obj;
   },
-  fromAminoMsg(object: MsgResetRateLimitResponseAminoMsg): MsgResetRateLimitResponse {
+  fromAminoMsg(
+    object: MsgResetRateLimitResponseAminoMsg
+  ): MsgResetRateLimitResponse {
     return MsgResetRateLimitResponse.fromAmino(object.value);
   },
-  fromProtoMsg(message: MsgResetRateLimitResponseProtoMsg): MsgResetRateLimitResponse {
+  fromProtoMsg(
+    message: MsgResetRateLimitResponseProtoMsg
+  ): MsgResetRateLimitResponse {
     return MsgResetRateLimitResponse.decode(message.value);
   },
   toProto(message: MsgResetRateLimitResponse): Uint8Array {
     return MsgResetRateLimitResponse.encode(message).finish();
   },
-  toProtoMsg(message: MsgResetRateLimitResponse): MsgResetRateLimitResponseProtoMsg {
+  toProtoMsg(
+    message: MsgResetRateLimitResponse
+  ): MsgResetRateLimitResponseProtoMsg {
     return {
-      typeUrl: "/ratelimit.v1.MsgResetRateLimitResponse",
-      value: MsgResetRateLimitResponse.encode(message).finish()
+      typeUrl: '/ratelimit.v1.MsgResetRateLimitResponse',
+      value: MsgResetRateLimitResponse.encode(message).finish(),
     };
-  }
+  },
 };
