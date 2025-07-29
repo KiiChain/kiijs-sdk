@@ -1,0 +1,12 @@
+# .github/workflows/codeql-analysis.yml
+name: "CodeQL"
+on: [push, pull_request]
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
