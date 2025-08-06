@@ -1,4 +1,4 @@
-# KiiJs
+# KiiJs                                                                                                                                         KiiJS is a monorepo that contains multiple NPM libraries for writing ap>                                                                        ## Documentation                                                                                                                                Each package has it's own documentation under its readme file.                                                                                  ## Packages                                                                                                                                     KiiJS consists of smaller NPM packages within the @kiichain namespace. >                                                                        | Package                                                 | Description>|---------------------------------------------------------|------------>| [@kiichain/kiijs-evm](packages/evm)                             | Typ>| [@kiichain/kiijs-proto](packages/proto)               | Typescript su>| [@kiichain/kiijs-rwa](packages/rwa)               | Typescript suppor>| [@kiichain/kiijs-utils](packages/utils)               | Typescript su>                                                                        ## Contributing                                                                                                                                 All contributions are very welcome! Remember, contribution is not only >                                                                        Read below to learn how you can take part in the KiiJS-SDK project.                                                                             ### Code of Conduct                                                                                                                             Please be sure to read and follow our [Code of Conduct][coc]. By partic># KiiJs
 
 KiiJS is a monorepo that contains multiple NPM libraries for writing applications that interact with KiiChain.
 
@@ -43,3 +43,17 @@ The KiiJS-SDK project is licensed under [Apache License 2.0][license].
 [coc]: ./CODE_OF_CONDUCT.md
 [issues]: https://github.com/KiiChain/kiijs-sdk/issues
 [license]: ./LICENSE
+
+## Usage Examples
+
+You can find runnable examples in the [`examples/`](examples/) folder.  
+These are useful for understanding how to interact with KiiJS utilities directly.
+
+### 🔁 Address Conversion
+
+The file [`examples/address-conversion-example.js`](examples/address-conversion-example.js) shows how to convert addresses between Bech32 and Hex format using the `@kiichain/kiijs-utils` package.
+
+#### Run this example:
+
+```bash
+node examples/address-conversion-example.js
