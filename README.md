@@ -33,14 +33,14 @@ Read our [contribution guidelines][contributing] to learn about our issue and pu
 
 ### Issues, Questions, and Discussions
 
-We use [GitHub Issues][issues] for tracking requests and bugs, and for general questions and discussion.
+We use [GitHub Issues](https://github.com/KiiChain/kiijs-sdk/issues) for tracking requests and bugs, and for general questions and discussion.
 
 ## Usage
 
 ### Example: validateAddress
 
 ```ts
-import { validateAddress } from 'kiijs-sdk';
+import { validateAddress } from '@kiichain/kiijs-utils';
 
 const address = '0x1234567890abcdef1234567890abcdef12345678';
 const isValid = validateAddress(address);
