@@ -43,3 +43,13 @@ The KiiJS-SDK project is licensed under [Apache License 2.0][license].
 [coc]: ./CODE_OF_CONDUCT.md
 [issues]: https://github.com/KiiChain/kiijs-sdk/issues
 [license]: ./LICENSE
+
+### Example: validateAddress
+
+```ts
+import { validateAddress } from 'kiijs-sdk';
+
+const address = '0x1234567890abcdef1234567890abcdef12345678';
+const isValid = validateAddress(address);
+
+console.log('Valid address:', isValid); // Output: true or false
