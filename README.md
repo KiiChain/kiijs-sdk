@@ -1,45 +1,37 @@
-# KiiJs
+# KiiJS-SDK
 
-KiiJS is a monorepo that contains multiple NPM libraries for writing applications that interact with KiiChain.
+KiiJS-SDK is a JavaScript/TypeScript SDK for interacting with the KiiChain network and blockchain features. This SDK allows developers to easily integrate blockchain functionalities like minting tokens, transferring assets, and interacting with smart contracts.
 
-## Documentation
+## Installation
 
-Each package has it's own documentation under its readme file.
+To install KiiJS-SDK, run the following command:
 
-## Packages
+```bash
+npm install kiijs-sdk
 
-KiiJS consists of smaller NPM packages within the @kiichain namespace. For more detailed documentation on each package, please refer to the table below.
+## Example Usage
 
-| Package                                                 | Description                                                                                                                     |
-|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| [@kiichain/kiijs-evm](packages/evm)                             | Typescript library containing helper functions for interacting with the EVM on Kiichain.                                             |
-| [@kiichain/kiijs-proto](packages/proto)               | Typescript support for KiiChain protofiles, generated with Telescope                                   |
-| [@kiichain/kiijs-rwa](packages/rwa)               | Typescript support for KiiChain RWA transactions                                   |
-| [@kiichain/kiijs-utils](packages/utils)               | Typescript support for a few generic Kiichain fucntions, like address conversion or ethscp256-1 signer                                    |
+This section provides an example of how to use the KiiJS SDK to mint a token.
 
-## Contributing
+### Minting a Token Example
 
-All contributions are very welcome! Remember, contribution is not only PRs and code, but any help with docs or helping other developers solve their issues are very appreciated!
+```javascript
+// Example usage of the SDK to mint a token
+const { KiiJS } = require('kiijs-sdk');
 
-Read below to learn how you can take part in the KiiJS-SDK project.
+// Initialize the KiiJS SDK with your configuration
+const kii = new KiiJS({ 
+  /* your configuration */
+});
 
-### Code of Conduct
+async function mintToken() {
+  try {
+    // Replace with appropriate mint parameters
+    const result = await kii.mint({ /* mint parameters */ });
+    console.log('Token successfully minted:', result);
+  } catch (error) {
+    console.error('An error occurred:', error);
+  }
+}
 
-Please be sure to read and follow our [Code of Conduct][coc]. By participating, you are expected to uphold this code.
-
-### Contribution Guidelines
-
-Read our [contribution guidelines][contributing] to learn about our issue and pull request submission processes, coding rules, and more.
-
-### Issues, Questions and Discussions
-
-We use [GitHub Issues][issues] for tracking requests and bugs, and for general questions and discussion.
-
-## License
-
-The KiiJS-SDK project is licensed under [Apache License 2.0][license].
-
-[contributing]: ./CONTRIBUTING.md
-[coc]: ./CODE_OF_CONDUCT.md
-[issues]: https://github.com/KiiChain/kiijs-sdk/issues
-[license]: ./LICENSE
+mintToken();
