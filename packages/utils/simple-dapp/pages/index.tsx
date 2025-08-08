@@ -1,44 +1,63 @@
-import { useState } from "react";
-import { useTransferToken } from "@/lib/transferToken";
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { useEffect, useState } from "react";
+import {
+  useAccount,
+  useDisconnect,
+  useSendTransaction,
+  useConnect,
+} from "wagmi";
+import { parseEther } from "viem";
 
 export default function Home() {
-  const [toAddress, setToAddress] = useState("");
-  const [amount, setAmount] = useState("");
-  const { transfer, isLoading, error, success } = useTransferToken();
+  const { address, isConnected } = useAccount();
+  const { disconnect } = useDisconnect();
+  const { sendTransactionAsync } = useSendTransaction();
+  const { connect, connectors } = useConnect();
 
-  const handleTransfer = async () => {
-    await transfer(toAddress, amount);
+  const [isClient, setIsClient] = useState(false);
+
+  // Avoid hydration mismatch
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const handleConnect = async () => {
+    try {
+      const injected = connectors.find((c) => c.id === "injected");
+      if (!injected) throw new Error("No injected connector found");
+      await connect({ connector: injected });
+    } catch (err) {
+      console.error("Connect error:", err);
+    }
   };
 
+  const handleSendTx = async () => {
+    try {
+      const hash = await sendTransactionAsync({
+        to: address!,
+        value: parseEther("0.001"),
+      });
+      console.log("Tx Hash:", hash);
+    } catch (err) {
+      console.error("Tx error:", err);
+    }
+  };
+
+  if (!isClient) return null; // Avoid rendering before client ready
+
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full max-w-md">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-
-        <h1 className="text-xl font-semibold">Transfer Token</h1>
-
-        <input
-          type="text"
-          placeholder="To address"
-          value={toAddress
+    <main style={{ padding: "2rem", fontFamily: "sans-serif" }}>
+      <h1>Simple Kiichain DApp</h1>
+      {isConnected ? (
+        <>
+          <p>Connected as: <b>{address}</b></p>
+          <button onClick={() => disconnect()}>Disconnect</button>
+          <button onClick={handleSendTx} style={{ marginLeft: "1rem" }}>
+            Send 0.001 KII to Self
+          </button>
+        </>
+      ) : (
+        <button onClick={handleConnect}>Connect Wallet</button>
+      )}
+    </main>
+  );
+}

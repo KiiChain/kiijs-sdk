@@ -1,14 +1,33 @@
-import { http, createConfig } from "wagmi";
-import { mainnet, sepolia } from "wagmi/chains";
-import { walletConnect } from "@wagmi/connectors";
+import { defineChain } from 'viem'
+import { createConfig, http } from 'wagmi'
+import { mainnet } from 'wagmi/chains';
+import { injected } from 'wagmi/connectors'
 
-const projectId = "f64c28e5e6b7d716d70b927b001e8e1c";
+export const kiichainTestnet = defineChain({
+  id: 1336,
+  name: 'Kiichain Testnet',
+  nativeCurrency: {
+    name: 'Kii',
+    symbol: 'KII',
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: ['https://json-rpc.uno.sentry.testnet.v3.kiivalidator.com/'],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: 'Kiichain Explorer',
+      url: 'https://explorer.kiichain.io',
+    },
+  },
+})
 
 export const config = createConfig({
-  chains: [mainnet, sepolia],
-  connectors: [walletConnect({ projectId })],
+  chains: [kiichainTestnet],
+  connectors: [injected()],
   transports: {
-    [mainnet.id]: http(),
-    [sepolia.id]: http(),
+    [kiichainTestnet.id]: http(),
   },
-});
+})
