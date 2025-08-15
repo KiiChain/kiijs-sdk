@@ -12,8 +12,6 @@ const RPC_URL = 'https://json-rpc.dos.sentry.testnet.v3.kiivalidator.com/';
 // Replace with your own private key for real testing
 const PRIVATE_KEY =
   '0x0000000000000000000000000000000000000000000000000000000000000001';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const CHAIN_ID = 1336; // EVM Chain ID for KiiChain testnet
 
 // Example proposal ID - replace with an actual proposal ID from your network
 const EXAMPLE_PROPOSAL_ID = 1;
