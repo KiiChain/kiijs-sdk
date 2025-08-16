@@ -6,19 +6,21 @@ import { setupProviderAndWallet } from './utils';
 jest.setTimeout(60_000); // Total test timeout
 
 describe('Governance Precompile Tests', () => {
-  let provider: ethers.JsonRpcProvider;
   let wallet: ethers.Wallet;
-  let governanceContract: ReturnType<typeof getGovernancePrecompileEthersV6Contract>;
-  
+  let governanceContract: ReturnType<
+    typeof getGovernancePrecompileEthersV6Contract
+  >;
+
   beforeAll(async () => {
-    [provider, wallet] = setupProviderAndWallet();
+    const [, walletInstance] = setupProviderAndWallet();
+    wallet = walletInstance;
     governanceContract = getGovernancePrecompileEthersV6Contract(wallet);
     console.log('Wallet address:', wallet.address);
   });
 
   it('should get governance parameters', async () => {
     const params = await governanceContract.getParams();
-    
+
     console.log('Governance Parameters:', {
       votingPeriod: params.votingPeriod,
       minDeposit: params.minDeposit,
@@ -27,7 +29,7 @@ describe('Governance Precompile Tests', () => {
       threshold: params.threshold,
       vetoThreshold: params.vetoThreshold,
     });
-    
+
     expect(params.votingPeriod).toBeDefined();
     expect(params.minDeposit).toBeDefined();
   });
@@ -47,21 +49,27 @@ describe('Governance Precompile Tests', () => {
         reverse: false,
       }
     );
-    
-    console.log(`Found ${proposals.length} proposals, total: ${pageResponse.total}`);
-    
+
+    console.log(
+      `Found ${proposals.length} proposals, total: ${pageResponse.total}`
+    );
+
     // Log details of the first proposal if any exist
     if (proposals.length > 0) {
       const firstProposal = proposals[0];
       console.log('First proposal:', {
         id: firstProposal.id,
         status: firstProposal.status,
-        submitTime: new Date(Number(firstProposal.submitTime) * 1000).toISOString(),
-        title: firstProposal.metadata ? firstProposal.metadata.substring(0, 50) : 'No title',
+        submitTime: new Date(
+          Number(firstProposal.submitTime) * 1000
+        ).toISOString(),
+        title: firstProposal.metadata
+          ? firstProposal.metadata.substring(0, 50)
+          : 'No title',
       });
     }
   });
-  
+
   // Separate test for proposal details
   it('should get proposal details if available', async () => {
     // First get a list of proposals
@@ -77,13 +85,13 @@ describe('Governance Precompile Tests', () => {
         reverse: false,
       }
     );
-    
+
     // Skip the test if no proposals are available
     if (proposals.length === 0) {
       console.log('No proposals available to test proposal details');
       return;
     }
-    
+
     const firstProposal = proposals[0];
     const proposal = await governanceContract.getProposal(firstProposal.id);
     expect(proposal.id).toEqual(firstProposal.id);
@@ -93,7 +101,7 @@ describe('Governance Precompile Tests', () => {
       finalTallyResult: proposal.finalTallyResult,
     });
   });
-  
+
   // Separate test for tally results
   it('should get tally result if available', async () => {
     // First get a list of proposals
@@ -109,13 +117,13 @@ describe('Governance Precompile Tests', () => {
         reverse: false,
       }
     );
-    
+
     // Skip the test if no proposals are available
     if (proposals.length === 0) {
       console.log('No proposals available to test tally results');
       return;
     }
-    
+
     const firstProposal = proposals[0];
     const tally = await governanceContract.getTallyResult(firstProposal.id);
     console.log('Tally result:', {

@@ -6,14 +6,14 @@ import 'dotenv/config';
 jest.setTimeout(60_000); // Total test timeout
 
 describe('WASM Precompile Tests', () => {
-  let provider: ethers.JsonRpcProvider;
   let wallet: ethers.Wallet;
   let wasmPrecompile: ethers.Contract;
 
   beforeAll(async () => {
     // Setup provider and wallet
-    [provider, wallet] = setupProviderAndWallet();
-    
+    const [, walletInstance] = setupProviderAndWallet();
+    wallet = walletInstance;
+
     // Get the precompile contract
     wasmPrecompile = getWASMPrecompileEthersV6Contract(wallet);
   });
@@ -42,23 +42,29 @@ describe('WASM Precompile Tests', () => {
     try {
       // This test requires a deployed WASM contract address
       // If no contract is available, the test will be skipped
-      
+
       // Replace with a valid contract address if available for testing
-      const contractAddress = 'kii14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9srsl6sm';
+      const contractAddress =
+        'kii14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9srsl6sm';
       const queryMsg = JSON.stringify({ balance: { address: wallet.address } });
-      
+
       // Convert query message to bytes
       const queryBytes = ethers.toUtf8Bytes(queryMsg);
-      
-      const result = await wasmPrecompile.querySmart(contractAddress, queryBytes);
+
+      const result = await wasmPrecompile.querySmart(
+        contractAddress,
+        queryBytes
+      );
       console.log('Query result:', ethers.toUtf8String(result));
-      
+
       // Just check that we got some result
       expect(result).toBeDefined();
     } catch (error) {
       console.log('Error querying contract:', error);
       // Skip test if there's an error rather than failing
-      console.log('Skipping test: should attempt to query a contract if available');
+      console.log(
+        'Skipping test: should attempt to query a contract if available'
+      );
     }
   });
 

@@ -6,14 +6,14 @@ import 'dotenv/config';
 jest.setTimeout(60_000); // Total test timeout
 
 describe('Slashing Precompile Tests', () => {
-  let provider: ethers.JsonRpcProvider;
   let wallet: ethers.Wallet;
   let slashingPrecompile: ethers.Contract;
 
   beforeAll(async () => {
     // Setup provider and wallet
-    [provider, wallet] = setupProviderAndWallet();
-    
+    const [, walletInstance] = setupProviderAndWallet();
+    wallet = walletInstance;
+
     // Get the precompile contract
     slashingPrecompile = getSlashingPrecompileEthersV6Contract(wallet);
   });
@@ -21,15 +21,15 @@ describe('Slashing Precompile Tests', () => {
   it('should handle getParams request', async () => {
     try {
       const params = await slashingPrecompile.getParams();
-      
+
       console.log('Slashing parameters:', {
         signedBlocksWindow: params.signedBlocksWindow.toString(),
         minSignedPerWindow: params.minSignedPerWindow,
         downtimeJailDuration: params.downtimeJailDuration.toString(),
         slashFractionDoubleSign: params.slashFractionDoubleSign,
-        slashFractionDowntime: params.slashFractionDowntime
+        slashFractionDowntime: params.slashFractionDowntime,
       });
-      
+
       expect(params).toBeTruthy();
     } catch (error) {
       console.log('Error getting slashing parameters:', error);
@@ -47,18 +47,18 @@ describe('Slashing Precompile Tests', () => {
         offset: 0,
         limit: 10,
         countTotal: true,
-        reverse: false
+        reverse: false,
       };
-      
+
       const result = await slashingPrecompile.getSigningInfos(pageRequest);
       const [signingInfos, pageResponse] = result;
-      
+
       console.log('Signing infos count:', signingInfos.length);
       console.log('Page response:', {
         nextKey: pageResponse.nextKey,
-        total: pageResponse.total.toString()
+        total: pageResponse.total.toString(),
       });
-      
+
       expect(signingInfos).toBeDefined();
       expect(Array.isArray(signingInfos)).toBe(true);
     } catch (error) {
@@ -68,7 +68,7 @@ describe('Slashing Precompile Tests', () => {
       expect(true).toBe(true);
     }
   });
-  
+
   it('should handle getSigningInfo request for a validator', async () => {
     try {
       // First get a list of validators
@@ -77,27 +77,31 @@ describe('Slashing Precompile Tests', () => {
         offset: 0,
         limit: 1,
         countTotal: false,
-        reverse: false
+        reverse: false,
       };
-      
+
       const result = await slashingPrecompile.getSigningInfos(pageRequest);
       const [signingInfos] = result;
-      
+
       if (signingInfos && signingInfos.length > 0) {
         const validatorAddress = signingInfos[0].validatorAddress;
-        console.log('Found validator address for getSigningInfo test:', validatorAddress);
-        
-        const signingInfo = await slashingPrecompile.getSigningInfo(validatorAddress);
-        
+        console.log(
+          'Found validator address for getSigningInfo test:',
+          validatorAddress
+        );
+
+        const signingInfo =
+          await slashingPrecompile.getSigningInfo(validatorAddress);
+
         console.log('Signing info for validator:', validatorAddress);
         console.log('Signing info details:', {
           startHeight: signingInfo.startHeight.toString(),
           indexOffset: signingInfo.indexOffset.toString(),
           jailedUntil: signingInfo.jailedUntil.toString(),
           tombstoned: signingInfo.tombstoned,
-          missedBlocksCounter: signingInfo.missedBlocksCounter.toString()
+          missedBlocksCounter: signingInfo.missedBlocksCounter.toString(),
         });
-        
+
         expect(signingInfo).toBeTruthy();
       } else {
         console.log('No validators found to test getSigningInfo');
@@ -106,7 +110,9 @@ describe('Slashing Precompile Tests', () => {
       }
     } catch (error) {
       console.log('Error in getSigningInfo test:', error);
-      console.log('Skipping test: should handle getSigningInfo request for a validator');
+      console.log(
+        'Skipping test: should handle getSigningInfo request for a validator'
+      );
       // Don't fail the test if the function is not available or returns unexpected data
       expect(true).toBe(true);
     }

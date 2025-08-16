@@ -6,12 +6,14 @@ import { setupProviderAndWallet } from './utils';
 jest.setTimeout(60_000); // Total test timeout
 
 describe('Evidence Precompile Tests', () => {
-  let provider: ethers.JsonRpcProvider;
   let wallet: ethers.Wallet;
-  let evidenceContract: ReturnType<typeof getEvidencePrecompileEthersV6Contract>;
-  
+  let evidenceContract: ReturnType<
+    typeof getEvidencePrecompileEthersV6Contract
+  >;
+
   beforeAll(async () => {
-    [provider, wallet] = setupProviderAndWallet();
+    const [, walletInstance] = setupProviderAndWallet();
+    wallet = walletInstance;
     evidenceContract = getEvidencePrecompileEthersV6Contract(wallet);
     console.log('Wallet address:', wallet.address);
   });
@@ -24,19 +26,19 @@ describe('Evidence Precompile Tests', () => {
         offset: 0,
         limit: 10,
         countTotal: true,
-        reverse: false
+        reverse: false,
       };
-      
+
       const result = await evidenceContract.getAllEvidence(pageRequest);
-      
+
       console.log('All evidence result:', result);
       expect(result).toBeDefined();
-      
+
       // Check if we have evidence and page response
       if (result && result.evidence && result.pageResponse) {
         console.log('Evidence count:', result.evidence.length);
         console.log('Page response:', result.pageResponse);
-        
+
         // Even if there's no evidence, the structure should be correct
         expect(Array.isArray(result.evidence)).toBe(true);
         expect(result.pageResponse).toHaveProperty('nextKey');
@@ -45,7 +47,9 @@ describe('Evidence Precompile Tests', () => {
     } catch (error) {
       console.log('Error getting all evidence:', error);
       // Skip the test if there's an error
-      console.log('Skipping test as there might be an issue with the evidence module');
+      console.log(
+        'Skipping test as there might be an issue with the evidence module'
+      );
     }
   });
 
@@ -53,10 +57,11 @@ describe('Evidence Precompile Tests', () => {
     try {
       // This is a dummy hash that likely won't exist
       // In a real scenario, you would use a known evidence hash
-      const dummyEvidenceHash = '0x0000000000000000000000000000000000000000000000000000000000000000';
-      
+      const dummyEvidenceHash =
+        '0x0000000000000000000000000000000000000000000000000000000000000000';
+
       const evidence = await evidenceContract.evidence(dummyEvidenceHash);
-      
+
       console.log('Evidence by hash:', evidence);
       expect(evidence).toBeDefined();
     } catch (error) {
