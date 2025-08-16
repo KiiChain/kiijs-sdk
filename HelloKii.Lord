@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract HelloKii {
+    string public message;
+
+    // Define a mensagem inicial ao implantar
+    constructor(string memory _message) {
+        message = _message;
+    }
+
+    // Atualiza a mensagem
+    function setMessage(string memory _newMessage) public {
+        message = _newMessage;
+    }
+}
