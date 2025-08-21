@@ -1,7 +1,12 @@
 import { DeliverTxResponse } from '@cosmjs/stargate';
 
 import { RwaClient } from '../src/client';
-import { RwaProtocolModule, AssetMetadata, CollateralStatus, IssuerCredentials } from '../src/protocol';
+import {
+  RwaProtocolModule,
+  AssetMetadata,
+  CollateralStatus,
+  IssuerCredentials,
+} from '../src/protocol';
 
 // Mock the RwaClient
 jest.mock('../src/client');
@@ -24,44 +29,49 @@ describe('RwaProtocolModule', () => {
     // We need to mock the static 'new' method since the constructor is private
     rwaClient = {} as jest.Mocked<RwaClient>;
     rwaClient.execute = jest.fn().mockResolvedValue({} as DeliverTxResponse);
-    rwaClient.query = jest.fn().mockImplementation((contractAddress, queryMsg) => {
-      if (queryMsg.asset_metadata) {
-        return Promise.resolve({
-          assetId: mockAssetId,
-          name: 'Test Asset',
-          symbol: 'TRWA',
-          description: 'Test RWA Asset',
-          imageUri: 'https://example.com/image.png',
-          externalLink: 'https://example.com',
-          issuer: mockIssuerId,
-          issuanceDate: '2023-01-01T00:00:00Z',
-          denomination: 'USD',
-          totalSupply: '1000000',
-        } as AssetMetadata);
-      } else if (queryMsg.collateral_status) {
-        return Promise.resolve({
-          assetId: mockAssetId,
-          collateralType: 'FIAT',
-          collateralAmount: '1000000',
-          collateralRatio: '1.0',
-          lastUpdated: '2023-01-01T00:00:00Z',
-          custodian: 'Test Custodian',
-        } as CollateralStatus);
-      } else if (queryMsg.issuer_credentials) {
-        return Promise.resolve({
-          issuerId: mockIssuerId,
-          name: 'Test Issuer',
-          jurisdiction: 'Test Jurisdiction',
-          licenseNumber: 'LICENSE123',
-          verificationStatus: true,
-          verificationDate: '2023-01-01T00:00:00Z',
-        } as IssuerCredentials);
-      }
-      return Promise.resolve({});
-    });
+    rwaClient.query = jest
+      .fn()
+      .mockImplementation((contractAddress, queryMsg) => {
+        if (queryMsg.asset_metadata) {
+          return Promise.resolve({
+            assetId: mockAssetId,
+            name: 'Test Asset',
+            symbol: 'TRWA',
+            description: 'Test RWA Asset',
+            imageUri: 'https://example.com/image.png',
+            externalLink: 'https://example.com',
+            issuer: mockIssuerId,
+            issuanceDate: '2023-01-01T00:00:00Z',
+            denomination: 'USD',
+            totalSupply: '1000000',
+          } as AssetMetadata);
+        } else if (queryMsg.collateral_status) {
+          return Promise.resolve({
+            assetId: mockAssetId,
+            collateralType: 'FIAT',
+            collateralAmount: '1000000',
+            collateralRatio: '1.0',
+            lastUpdated: '2023-01-01T00:00:00Z',
+            custodian: 'Test Custodian',
+          } as CollateralStatus);
+        } else if (queryMsg.issuer_credentials) {
+          return Promise.resolve({
+            issuerId: mockIssuerId,
+            name: 'Test Issuer',
+            jurisdiction: 'Test Jurisdiction',
+            licenseNumber: 'LICENSE123',
+            verificationStatus: true,
+            verificationDate: '2023-01-01T00:00:00Z',
+          } as IssuerCredentials);
+        }
+        return Promise.resolve({});
+      });
 
     // Create the RwaProtocolModule with the mock client
-    rwaProtocolModule = new RwaProtocolModule(rwaClient, mockRwaProtocolAddress);
+    rwaProtocolModule = new RwaProtocolModule(
+      rwaClient,
+      mockRwaProtocolAddress
+    );
   });
 
   describe('mintAsset', () => {
@@ -161,14 +171,11 @@ describe('RwaProtocolModule', () => {
         assetId: mockAssetId,
       });
 
-      expect(rwaClient.query).toHaveBeenCalledWith(
-        mockRwaProtocolAddress,
-        {
-          asset_metadata: {
-            asset_id: mockAssetId,
-          },
-        }
-      );
+      expect(rwaClient.query).toHaveBeenCalledWith(mockRwaProtocolAddress, {
+        asset_metadata: {
+          asset_id: mockAssetId,
+        },
+      });
 
       expect(result).toEqual({
         assetId: mockAssetId,
@@ -191,14 +198,11 @@ describe('RwaProtocolModule', () => {
         assetId: mockAssetId,
       });
 
-      expect(rwaClient.query).toHaveBeenCalledWith(
-        mockRwaProtocolAddress,
-        {
-          collateral_status: {
-            asset_id: mockAssetId,
-          },
-        }
-      );
+      expect(rwaClient.query).toHaveBeenCalledWith(mockRwaProtocolAddress, {
+        collateral_status: {
+          asset_id: mockAssetId,
+        },
+      });
 
       expect(result).toEqual({
         assetId: mockAssetId,
@@ -217,14 +221,11 @@ describe('RwaProtocolModule', () => {
         issuerId: mockIssuerId,
       });
 
-      expect(rwaClient.query).toHaveBeenCalledWith(
-        mockRwaProtocolAddress,
-        {
-          issuer_credentials: {
-            issuer_id: mockIssuerId,
-          },
-        }
-      );
+      expect(rwaClient.query).toHaveBeenCalledWith(mockRwaProtocolAddress, {
+        issuer_credentials: {
+          issuer_id: mockIssuerId,
+        },
+      });
 
       expect(result).toEqual({
         issuerId: mockIssuerId,
