@@ -301,7 +301,7 @@ describe('RwaProtocolModule', () => {
     it('should call execute with correct parameters', async () => {
       // Mock Date.now() to return a fixed timestamp
       const mockDate = new Date('2023-03-01T00:00:00Z');
-      jest.spyOn(global, 'Date').mockImplementation(() => mockDate as any);
+      jest.spyOn(global, 'Date').mockImplementation(() => mockDate as Date);
 
       await rwaProtocolModule.verifyIssuerCredentials({
         from: mockFromAddress,

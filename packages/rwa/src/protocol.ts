@@ -77,9 +77,7 @@ export class RwaProtocolModule {
    * @param request - A MintRequest containing minting details
    * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
-  public async mintAsset(
-    request: MintRequest
-  ): Promise<DeliverTxResponse> {
+  public async mintAsset(request: MintRequest): Promise<DeliverTxResponse> {
     const msg = {
       mint_asset: {
         recipient: request.to,
@@ -128,9 +126,7 @@ export class RwaProtocolModule {
    * @param request - A RedeemRequest containing redemption details
    * @returns Promise<DeliverTxResponse> - The response data from the contract execution
    */
-  public async redeemAsset(
-    request: RedeemRequest
-  ): Promise<DeliverTxResponse> {
+  public async redeemAsset(request: RedeemRequest): Promise<DeliverTxResponse> {
     const msg = {
       redeem_asset: {
         asset_id: request.assetId,
