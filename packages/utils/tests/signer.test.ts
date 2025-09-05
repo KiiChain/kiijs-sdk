@@ -3,7 +3,6 @@ import { BaseAccount } from 'cosmjs-types/cosmos/auth/v1beta1/auth';
 import { PubKey } from '@kiichain/kiijs-proto/src/cosmos/evm/crypto/v1/ethsecp256k1/keys';
 
 import { ethsecpAccountParser } from '../src/cosmjs/signer';
-import 'dotenv/config';
 
 describe('Ethsecp Signer Tests', () => {
   // Test for ethsecpAccountParser
