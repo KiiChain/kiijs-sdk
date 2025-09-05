@@ -1,8 +1,10 @@
 import { Any } from 'cosmjs-types/google/protobuf/any';
 import { BaseAccount } from 'cosmjs-types/cosmos/auth/v1beta1/auth';
-import { PubKey } from '@kiichain/kiijs-proto/cosmos/evm/crypto/v1/ethsecp256k1/keys';
+import { cosmos } from '@kiichain/kiijs-proto';
 
 import { ethsecpAccountParser } from '../src/cosmjs/signer';
+
+const { PubKey } = cosmos.evm.crypto.v1.ethsecp256k1;
 
 describe('Ethsecp Signer Tests', () => {
   // Test for ethsecpAccountParser
