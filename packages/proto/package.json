@@ -29,7 +29,7 @@
     "url": "https://github.com/KiiChain/kiijs-sdk/issues"
   },
   "scripts": {
-    "copy": "copyfiles -f --up 2 LICENSE README.md package.json dist",
+    "copy": "copyfiles -f ../../LICENSE README.md package.json dist",
     "clean": "rimraf dist",
     "prepare": "npm run build",
     "codegen": "ts-node scripts/codegen.ts",
