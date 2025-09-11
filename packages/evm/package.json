@@ -22,7 +22,7 @@
 		"build:cjs": "tsc --outDir dist/cjs --module commonjs",
 		"build:esm": "tsc --outDir dist/esm --module esnext",
 		"build:types": "tsc --project ./tsconfig.declaration.json",
-		"build:prettier": "prettier --write 'dist/**/*.js'",
+		"build:prettier": "prettier --write dist/**/*.js",
 		"docs": "typedoc --out docs",
 		"test": "jest",
 		"test:ci": "jest",
