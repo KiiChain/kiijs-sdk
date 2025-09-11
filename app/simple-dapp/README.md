@@ -1,94 +1,42 @@
-# Simple DApp Example
+# Simple DApp (Kiichain)
 
-This is a minimal example of a decentralized application (DApp) built with *Next.js, **Vite, **Wagmi, **Viem, and **Web3Modal, configured to run on the **Kiichain Testnet*.
+Minimal example DApp for Kiichain: connect wallet & send native token (KII) on testnet.
 
-## ✨ Features
+## Prerequisites
+- Node.js 18+
+- Wallet (example: MetaMask)
+- WalletConnect Project ID from [cloud.walletconnect.com](https://cloud.walletconnect.com) (free)
 
-- Connect wallet (via injected connector or Web3Modal).
-- Display connected wallet address.
-- Send a small amount of *KII* (native token) to self.
-- Simple UI for quick testing and demonstration.
-
-## 🛠 Tech Stack
-
-- [Next.js](https://nextjs.org/) — React framework
-- [Vite](https://vitejs.dev/) — Fast development build tool
-- [Wagmi](https://wagmi.sh/) — React Hooks for Ethereum
-- [Viem](https://viem.sh/) — TypeScript interface for EVM
-- [Web3Modal](https://web3modal.com/) — Wallet connection modal
-
-## ⚙ Setup
-
-1. Navigate into the project folder:
-
-   ```bash
-   cd app/simple-dapp
-
-2. Install dependencies:
-
+## Quick Setup
+```bash
+# in this folder: app/simple-dapp
 npm install
 
+# create .env file from example
+cp .env.example .env
 
-3. Start local dev server:
+# fill in VITE_WALLETCONNECT_PROJECT_ID in .env
+# then run the dev server
+npm run dev
 
-npm run dev
+The app will run at http://localhost:5173/
 
-The app should be available at http://localhost:5173.
+Network Configuration (Kiichain Testnet)
 
+This project is already configured for Kiichain Testnet. RPC used:
 
+https://json-rpc.uno.sentry.testnet.v3.kiivalidator.com/
 
-🔗 Kiichain Testnet Config
+Environment Variables
 
-The DApp is configured to connect with the Kiichain Testnet:
+VITE_WALLETCONNECT_PROJECT_ID — Project ID from WalletConnect
 
-Chain ID: 8467
+Features
+- Connect/Disconnect wallet
+- Send KII to your own address (demo example)
+- Web3Modal + wagmi + viem
 
-Currency: KII
+Notes
 
-RPC URL: https://json-rpc.uno.sentry.testnet.v3.kiivalidator.com/
-
-Block Explorer: https://explorer.kiichain.io
-
-
-🚀 How to Use
-
-1. Open the app in your browser.
-
-
-2. Click Connect Wallet.
-
-
-3. Approve connection with your wallet (e.g., MetaMask).
-
-
-4. Test sending 0.001 KII to your own address.
-
-
-5. Check the transaction on Kiichain Explorer.
-
-
-
-📂 Project Structure
-
-app/simple-dapp/
- ├── src/              # React components and logic
- ├── public/           # Static assets
- ├── pages/            # Next.js pages (index.tsx, _app.tsx, etc.)
- ├── wagmi.ts          # Wagmi + Kiichain config
- ├── package.json      # Dependencies and scripts
- └── README.md         # This documentation
-
-🙌 Contribution
-
-This is an example module under the kiijs-sdk repository.
-Feel free to suggest improvements such as:
-
-Better error handling.
-
-More usage examples.
-
-Additional features (swap, stake, liquidity, etc.).
-
-
-
----
+This PR only adds documentation & .env.example file to make it easier for developers to run this example locally.
+No changes were made to the core SDK code.
