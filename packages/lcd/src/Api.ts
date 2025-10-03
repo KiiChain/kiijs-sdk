@@ -22,10 +22,10 @@
  * @default "STATE_UNINITIALIZED_UNSPECIFIED"
  */
 export enum IbcCoreConnectionV1State {
-  STATE_UNINITIALIZED_UNSPECIFIED = "STATE_UNINITIALIZED_UNSPECIFIED",
-  STATE_INIT = "STATE_INIT",
-  STATE_TRYOPEN = "STATE_TRYOPEN",
-  STATE_OPEN = "STATE_OPEN",
+  STATE_UNINITIALIZED_UNSPECIFIED = 'STATE_UNINITIALIZED_UNSPECIFIED',
+  STATE_INIT = 'STATE_INIT',
+  STATE_TRYOPEN = 'STATE_TRYOPEN',
+  STATE_OPEN = 'STATE_OPEN',
 }
 
 /**
@@ -44,13 +44,13 @@ export enum IbcCoreConnectionV1State {
  * @default "STATE_UNINITIALIZED_UNSPECIFIED"
  */
 export enum IbcCoreChannelV1State {
-  STATE_UNINITIALIZED_UNSPECIFIED = "STATE_UNINITIALIZED_UNSPECIFIED",
-  STATE_INIT = "STATE_INIT",
-  STATE_TRYOPEN = "STATE_TRYOPEN",
-  STATE_OPEN = "STATE_OPEN",
-  STATE_CLOSED = "STATE_CLOSED",
-  STATE_FLUSHING = "STATE_FLUSHING",
-  STATE_FLUSHCOMPLETE = "STATE_FLUSHCOMPLETE",
+  STATE_UNINITIALIZED_UNSPECIFIED = 'STATE_UNINITIALIZED_UNSPECIFIED',
+  STATE_INIT = 'STATE_INIT',
+  STATE_TRYOPEN = 'STATE_TRYOPEN',
+  STATE_OPEN = 'STATE_OPEN',
+  STATE_CLOSED = 'STATE_CLOSED',
+  STATE_FLUSHING = 'STATE_FLUSHING',
+  STATE_FLUSHCOMPLETE = 'STATE_FLUSHCOMPLETE',
 }
 
 /**
@@ -62,9 +62,9 @@ export enum IbcCoreChannelV1State {
  * @default "ORDER_NONE_UNSPECIFIED"
  */
 export enum IbcCoreChannelV1Order {
-  ORDER_NONE_UNSPECIFIED = "ORDER_NONE_UNSPECIFIED",
-  ORDER_UNORDERED = "ORDER_UNORDERED",
-  ORDER_ORDERED = "ORDER_ORDERED",
+  ORDER_NONE_UNSPECIFIED = 'ORDER_NONE_UNSPECIFIED',
+  ORDER_UNORDERED = 'ORDER_UNORDERED',
+  ORDER_ORDERED = 'ORDER_ORDERED',
 }
 
 /**
@@ -76,9 +76,9 @@ export enum IbcCoreChannelV1Order {
  * @default "ORDER_BY_UNSPECIFIED"
  */
 export enum CosmosTxV1Beta1OrderBy {
-  ORDER_BY_UNSPECIFIED = "ORDER_BY_UNSPECIFIED",
-  ORDER_BY_ASC = "ORDER_BY_ASC",
-  ORDER_BY_DESC = "ORDER_BY_DESC",
+  ORDER_BY_UNSPECIFIED = 'ORDER_BY_UNSPECIFIED',
+  ORDER_BY_ASC = 'ORDER_BY_ASC',
+  ORDER_BY_DESC = 'ORDER_BY_DESC',
 }
 
 /**
@@ -95,10 +95,10 @@ export enum CosmosTxV1Beta1OrderBy {
  * @default "BROADCAST_MODE_UNSPECIFIED"
  */
 export enum CosmosTxV1Beta1BroadcastMode {
-  BROADCAST_MODE_UNSPECIFIED = "BROADCAST_MODE_UNSPECIFIED",
-  BROADCAST_MODE_BLOCK = "BROADCAST_MODE_BLOCK",
-  BROADCAST_MODE_SYNC = "BROADCAST_MODE_SYNC",
-  BROADCAST_MODE_ASYNC = "BROADCAST_MODE_ASYNC",
+  BROADCAST_MODE_UNSPECIFIED = 'BROADCAST_MODE_UNSPECIFIED',
+  BROADCAST_MODE_BLOCK = 'BROADCAST_MODE_BLOCK',
+  BROADCAST_MODE_SYNC = 'BROADCAST_MODE_SYNC',
+  BROADCAST_MODE_ASYNC = 'BROADCAST_MODE_ASYNC',
 }
 
 /**
@@ -140,12 +140,12 @@ export enum CosmosTxV1Beta1BroadcastMode {
  * @default "SIGN_MODE_UNSPECIFIED"
  */
 export enum CosmosTxSigningV1Beta1SignMode {
-  SIGN_MODE_UNSPECIFIED = "SIGN_MODE_UNSPECIFIED",
-  SIGN_MODE_DIRECT = "SIGN_MODE_DIRECT",
-  SIGN_MODE_TEXTUAL = "SIGN_MODE_TEXTUAL",
-  SIGN_MODE_DIRECT_AUX = "SIGN_MODE_DIRECT_AUX",
-  SIGN_MODE_LEGACY_AMINO_JSON = "SIGN_MODE_LEGACY_AMINO_JSON",
-  SIGN_MODE_EIP_191 = "SIGN_MODE_EIP_191",
+  SIGN_MODE_UNSPECIFIED = 'SIGN_MODE_UNSPECIFIED',
+  SIGN_MODE_DIRECT = 'SIGN_MODE_DIRECT',
+  SIGN_MODE_TEXTUAL = 'SIGN_MODE_TEXTUAL',
+  SIGN_MODE_DIRECT_AUX = 'SIGN_MODE_DIRECT_AUX',
+  SIGN_MODE_LEGACY_AMINO_JSON = 'SIGN_MODE_LEGACY_AMINO_JSON',
+  SIGN_MODE_EIP_191 = 'SIGN_MODE_EIP_191',
 }
 
 /**
@@ -159,11 +159,11 @@ export enum CosmosTxSigningV1Beta1SignMode {
  * @default "VOTE_OPTION_UNSPECIFIED"
  */
 export enum CosmosGovV1VoteOption {
-  VOTE_OPTION_UNSPECIFIED = "VOTE_OPTION_UNSPECIFIED",
-  VOTE_OPTION_YES = "VOTE_OPTION_YES",
-  VOTE_OPTION_ABSTAIN = "VOTE_OPTION_ABSTAIN",
-  VOTE_OPTION_NO = "VOTE_OPTION_NO",
-  VOTE_OPTION_NO_WITH_VETO = "VOTE_OPTION_NO_WITH_VETO",
+  VOTE_OPTION_UNSPECIFIED = 'VOTE_OPTION_UNSPECIFIED',
+  VOTE_OPTION_YES = 'VOTE_OPTION_YES',
+  VOTE_OPTION_ABSTAIN = 'VOTE_OPTION_ABSTAIN',
+  VOTE_OPTION_NO = 'VOTE_OPTION_NO',
+  VOTE_OPTION_NO_WITH_VETO = 'VOTE_OPTION_NO_WITH_VETO',
 }
 
 /**
@@ -183,12 +183,12 @@ export enum CosmosGovV1VoteOption {
  * @default "PROPOSAL_STATUS_UNSPECIFIED"
  */
 export enum CosmosGovV1ProposalStatus {
-  PROPOSAL_STATUS_UNSPECIFIED = "PROPOSAL_STATUS_UNSPECIFIED",
-  PROPOSAL_STATUS_DEPOSIT_PERIOD = "PROPOSAL_STATUS_DEPOSIT_PERIOD",
-  PROPOSAL_STATUS_VOTING_PERIOD = "PROPOSAL_STATUS_VOTING_PERIOD",
-  PROPOSAL_STATUS_PASSED = "PROPOSAL_STATUS_PASSED",
-  PROPOSAL_STATUS_REJECTED = "PROPOSAL_STATUS_REJECTED",
-  PROPOSAL_STATUS_FAILED = "PROPOSAL_STATUS_FAILED",
+  PROPOSAL_STATUS_UNSPECIFIED = 'PROPOSAL_STATUS_UNSPECIFIED',
+  PROPOSAL_STATUS_DEPOSIT_PERIOD = 'PROPOSAL_STATUS_DEPOSIT_PERIOD',
+  PROPOSAL_STATUS_VOTING_PERIOD = 'PROPOSAL_STATUS_VOTING_PERIOD',
+  PROPOSAL_STATUS_PASSED = 'PROPOSAL_STATUS_PASSED',
+  PROPOSAL_STATUS_REJECTED = 'PROPOSAL_STATUS_REJECTED',
+  PROPOSAL_STATUS_FAILED = 'PROPOSAL_STATUS_FAILED',
 }
 
 /**
@@ -202,11 +202,11 @@ export enum CosmosGovV1ProposalStatus {
  * @default "VOTE_OPTION_UNSPECIFIED"
  */
 export enum CosmosGovV1Beta1VoteOption {
-  VOTE_OPTION_UNSPECIFIED = "VOTE_OPTION_UNSPECIFIED",
-  VOTE_OPTION_YES = "VOTE_OPTION_YES",
-  VOTE_OPTION_ABSTAIN = "VOTE_OPTION_ABSTAIN",
-  VOTE_OPTION_NO = "VOTE_OPTION_NO",
-  VOTE_OPTION_NO_WITH_VETO = "VOTE_OPTION_NO_WITH_VETO",
+  VOTE_OPTION_UNSPECIFIED = 'VOTE_OPTION_UNSPECIFIED',
+  VOTE_OPTION_YES = 'VOTE_OPTION_YES',
+  VOTE_OPTION_ABSTAIN = 'VOTE_OPTION_ABSTAIN',
+  VOTE_OPTION_NO = 'VOTE_OPTION_NO',
+  VOTE_OPTION_NO_WITH_VETO = 'VOTE_OPTION_NO_WITH_VETO',
 }
 
 /**
@@ -226,12 +226,12 @@ export enum CosmosGovV1Beta1VoteOption {
  * @default "PROPOSAL_STATUS_UNSPECIFIED"
  */
 export enum CosmosGovV1Beta1ProposalStatus {
-  PROPOSAL_STATUS_UNSPECIFIED = "PROPOSAL_STATUS_UNSPECIFIED",
-  PROPOSAL_STATUS_DEPOSIT_PERIOD = "PROPOSAL_STATUS_DEPOSIT_PERIOD",
-  PROPOSAL_STATUS_VOTING_PERIOD = "PROPOSAL_STATUS_VOTING_PERIOD",
-  PROPOSAL_STATUS_PASSED = "PROPOSAL_STATUS_PASSED",
-  PROPOSAL_STATUS_REJECTED = "PROPOSAL_STATUS_REJECTED",
-  PROPOSAL_STATUS_FAILED = "PROPOSAL_STATUS_FAILED",
+  PROPOSAL_STATUS_UNSPECIFIED = 'PROPOSAL_STATUS_UNSPECIFIED',
+  PROPOSAL_STATUS_DEPOSIT_PERIOD = 'PROPOSAL_STATUS_DEPOSIT_PERIOD',
+  PROPOSAL_STATUS_VOTING_PERIOD = 'PROPOSAL_STATUS_VOTING_PERIOD',
+  PROPOSAL_STATUS_PASSED = 'PROPOSAL_STATUS_PASSED',
+  PROPOSAL_STATUS_REJECTED = 'PROPOSAL_STATUS_REJECTED',
+  PROPOSAL_STATUS_FAILED = 'PROPOSAL_STATUS_FAILED',
 }
 
 /**
@@ -242,9 +242,9 @@ export enum CosmosGovV1Beta1ProposalStatus {
  * @default "ACCESS_TYPE_PERMISSIONLESS"
  */
 export enum CosmosEvmVmV1AccessType {
-  ACCESS_TYPE_PERMISSIONLESS = "ACCESS_TYPE_PERMISSIONLESS",
-  ACCESS_TYPE_RESTRICTED = "ACCESS_TYPE_RESTRICTED",
-  ACCESS_TYPE_PERMISSIONED = "ACCESS_TYPE_PERMISSIONED",
+  ACCESS_TYPE_PERMISSIONLESS = 'ACCESS_TYPE_PERMISSIONLESS',
+  ACCESS_TYPE_RESTRICTED = 'ACCESS_TYPE_RESTRICTED',
+  ACCESS_TYPE_PERMISSIONED = 'ACCESS_TYPE_PERMISSIONED',
 }
 
 /**
@@ -256,9 +256,9 @@ export enum CosmosEvmVmV1AccessType {
  * @default "OWNER_UNSPECIFIED"
  */
 export enum CosmosEvmErc20V1Owner {
-  OWNER_UNSPECIFIED = "OWNER_UNSPECIFIED",
-  OWNER_MODULE = "OWNER_MODULE",
-  OWNER_EXTERNAL = "OWNER_EXTERNAL",
+  OWNER_UNSPECIFIED = 'OWNER_UNSPECIFIED',
+  OWNER_MODULE = 'OWNER_MODULE',
+  OWNER_EXTERNAL = 'OWNER_EXTERNAL',
 }
 
 /**
@@ -269,10 +269,10 @@ export enum CosmosEvmErc20V1Owner {
  * @default "SIGNED_MSG_TYPE_UNKNOWN"
  */
 export enum TendermintTypesSignedMsgType {
-  SIGNED_MSG_TYPE_UNKNOWN = "SIGNED_MSG_TYPE_UNKNOWN",
-  SIGNED_MSG_TYPE_PREVOTE = "SIGNED_MSG_TYPE_PREVOTE",
-  SIGNED_MSG_TYPE_PRECOMMIT = "SIGNED_MSG_TYPE_PRECOMMIT",
-  SIGNED_MSG_TYPE_PROPOSAL = "SIGNED_MSG_TYPE_PROPOSAL",
+  SIGNED_MSG_TYPE_UNKNOWN = 'SIGNED_MSG_TYPE_UNKNOWN',
+  SIGNED_MSG_TYPE_PREVOTE = 'SIGNED_MSG_TYPE_PREVOTE',
+  SIGNED_MSG_TYPE_PRECOMMIT = 'SIGNED_MSG_TYPE_PRECOMMIT',
+  SIGNED_MSG_TYPE_PROPOSAL = 'SIGNED_MSG_TYPE_PROPOSAL',
 }
 
 /**
@@ -280,10 +280,10 @@ export enum TendermintTypesSignedMsgType {
  * @default "BLOCK_ID_FLAG_UNKNOWN"
  */
 export enum TendermintTypesBlockIDFlag {
-  BLOCK_ID_FLAG_UNKNOWN = "BLOCK_ID_FLAG_UNKNOWN",
-  BLOCK_ID_FLAG_ABSENT = "BLOCK_ID_FLAG_ABSENT",
-  BLOCK_ID_FLAG_COMMIT = "BLOCK_ID_FLAG_COMMIT",
-  BLOCK_ID_FLAG_NIL = "BLOCK_ID_FLAG_NIL",
+  BLOCK_ID_FLAG_UNKNOWN = 'BLOCK_ID_FLAG_UNKNOWN',
+  BLOCK_ID_FLAG_ABSENT = 'BLOCK_ID_FLAG_ABSENT',
+  BLOCK_ID_FLAG_COMMIT = 'BLOCK_ID_FLAG_COMMIT',
+  BLOCK_ID_FLAG_NIL = 'BLOCK_ID_FLAG_NIL',
 }
 
 /**
@@ -296,10 +296,10 @@ export enum TendermintTypesBlockIDFlag {
  * @default "BOND_STATUS_UNSPECIFIED"
  */
 export enum CosmosStakingV1Beta1BondStatus {
-  BOND_STATUS_UNSPECIFIED = "BOND_STATUS_UNSPECIFIED",
-  BOND_STATUS_UNBONDED = "BOND_STATUS_UNBONDED",
-  BOND_STATUS_UNBONDING = "BOND_STATUS_UNBONDING",
-  BOND_STATUS_BONDED = "BOND_STATUS_BONDED",
+  BOND_STATUS_UNSPECIFIED = 'BOND_STATUS_UNSPECIFIED',
+  BOND_STATUS_UNBONDED = 'BOND_STATUS_UNBONDED',
+  BOND_STATUS_UNBONDING = 'BOND_STATUS_UNBONDING',
+  BOND_STATUS_BONDED = 'BOND_STATUS_BONDED',
 }
 
 /**
@@ -311,10 +311,10 @@ export enum CosmosStakingV1Beta1BondStatus {
  * @default "CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED"
  */
 export enum CosmwasmWasmV1ContractCodeHistoryOperationType {
-  CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED = "CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED",
-  CONTRACT_CODE_HISTORY_OPERATION_TYPE_INIT = "CONTRACT_CODE_HISTORY_OPERATION_TYPE_INIT",
-  CONTRACT_CODE_HISTORY_OPERATION_TYPE_MIGRATE = "CONTRACT_CODE_HISTORY_OPERATION_TYPE_MIGRATE",
-  CONTRACT_CODE_HISTORY_OPERATION_TYPE_GENESIS = "CONTRACT_CODE_HISTORY_OPERATION_TYPE_GENESIS",
+  CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED = 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED',
+  CONTRACT_CODE_HISTORY_OPERATION_TYPE_INIT = 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_INIT',
+  CONTRACT_CODE_HISTORY_OPERATION_TYPE_MIGRATE = 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_MIGRATE',
+  CONTRACT_CODE_HISTORY_OPERATION_TYPE_GENESIS = 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_GENESIS',
 }
 
 /**
@@ -326,10 +326,10 @@ export enum CosmwasmWasmV1ContractCodeHistoryOperationType {
  * @default "ACCESS_TYPE_UNSPECIFIED"
  */
 export enum CosmwasmWasmV1AccessType {
-  ACCESS_TYPE_UNSPECIFIED = "ACCESS_TYPE_UNSPECIFIED",
-  ACCESS_TYPE_NOBODY = "ACCESS_TYPE_NOBODY",
-  ACCESS_TYPE_EVERYBODY = "ACCESS_TYPE_EVERYBODY",
-  ACCESS_TYPE_ANY_OF_ADDRESSES = "ACCESS_TYPE_ANY_OF_ADDRESSES",
+  ACCESS_TYPE_UNSPECIFIED = 'ACCESS_TYPE_UNSPECIFIED',
+  ACCESS_TYPE_NOBODY = 'ACCESS_TYPE_NOBODY',
+  ACCESS_TYPE_EVERYBODY = 'ACCESS_TYPE_EVERYBODY',
+  ACCESS_TYPE_ANY_OF_ADDRESSES = 'ACCESS_TYPE_ANY_OF_ADDRESSES',
 }
 
 /**
@@ -430,10 +430,10 @@ export interface CosmwasmWasmV1AccessConfig {
    * @default "ACCESS_TYPE_UNSPECIFIED"
    */
   permission?:
-    | "ACCESS_TYPE_UNSPECIFIED"
-    | "ACCESS_TYPE_NOBODY"
-    | "ACCESS_TYPE_EVERYBODY"
-    | "ACCESS_TYPE_ANY_OF_ADDRESSES";
+    | 'ACCESS_TYPE_UNSPECIFIED'
+    | 'ACCESS_TYPE_NOBODY'
+    | 'ACCESS_TYPE_EVERYBODY'
+    | 'ACCESS_TYPE_ANY_OF_ADDRESSES';
   addresses?: string[];
 }
 
@@ -455,10 +455,10 @@ export interface CosmwasmWasmV1CodeInfoResponse {
      * @default "ACCESS_TYPE_UNSPECIFIED"
      */
     permission?:
-      | "ACCESS_TYPE_UNSPECIFIED"
-      | "ACCESS_TYPE_NOBODY"
-      | "ACCESS_TYPE_EVERYBODY"
-      | "ACCESS_TYPE_ANY_OF_ADDRESSES";
+      | 'ACCESS_TYPE_UNSPECIFIED'
+      | 'ACCESS_TYPE_NOBODY'
+      | 'ACCESS_TYPE_EVERYBODY'
+      | 'ACCESS_TYPE_ANY_OF_ADDRESSES';
     addresses?: string[];
   };
 }
@@ -474,10 +474,10 @@ export interface CosmwasmWasmV1ContractCodeHistoryEntry {
    * @default "CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED"
    */
   operation?:
-    | "CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED"
-    | "CONTRACT_CODE_HISTORY_OPERATION_TYPE_INIT"
-    | "CONTRACT_CODE_HISTORY_OPERATION_TYPE_MIGRATE"
-    | "CONTRACT_CODE_HISTORY_OPERATION_TYPE_GENESIS";
+    | 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED'
+    | 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_INIT'
+    | 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_MIGRATE'
+    | 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_GENESIS';
   /**
    * CodeID is the reference to the stored WASM code
    * @format uint64
@@ -682,10 +682,10 @@ export interface CosmwasmWasmV1Params {
      * @default "ACCESS_TYPE_UNSPECIFIED"
      */
     permission?:
-      | "ACCESS_TYPE_UNSPECIFIED"
-      | "ACCESS_TYPE_NOBODY"
-      | "ACCESS_TYPE_EVERYBODY"
-      | "ACCESS_TYPE_ANY_OF_ADDRESSES";
+      | 'ACCESS_TYPE_UNSPECIFIED'
+      | 'ACCESS_TYPE_NOBODY'
+      | 'ACCESS_TYPE_EVERYBODY'
+      | 'ACCESS_TYPE_ANY_OF_ADDRESSES';
     addresses?: string[];
   };
   /**
@@ -697,10 +697,10 @@ export interface CosmwasmWasmV1Params {
    * @default "ACCESS_TYPE_UNSPECIFIED"
    */
   instantiate_default_permission?:
-    | "ACCESS_TYPE_UNSPECIFIED"
-    | "ACCESS_TYPE_NOBODY"
-    | "ACCESS_TYPE_EVERYBODY"
-    | "ACCESS_TYPE_ANY_OF_ADDRESSES";
+    | 'ACCESS_TYPE_UNSPECIFIED'
+    | 'ACCESS_TYPE_NOBODY'
+    | 'ACCESS_TYPE_EVERYBODY'
+    | 'ACCESS_TYPE_ANY_OF_ADDRESSES';
 }
 
 /**
@@ -767,10 +767,10 @@ export interface CosmwasmWasmV1QueryCodeResponse {
        * @default "ACCESS_TYPE_UNSPECIFIED"
        */
       permission?:
-        | "ACCESS_TYPE_UNSPECIFIED"
-        | "ACCESS_TYPE_NOBODY"
-        | "ACCESS_TYPE_EVERYBODY"
-        | "ACCESS_TYPE_ANY_OF_ADDRESSES";
+        | 'ACCESS_TYPE_UNSPECIFIED'
+        | 'ACCESS_TYPE_NOBODY'
+        | 'ACCESS_TYPE_EVERYBODY'
+        | 'ACCESS_TYPE_ANY_OF_ADDRESSES';
       addresses?: string[];
     };
   };
@@ -797,10 +797,10 @@ export interface CosmwasmWasmV1QueryCodesResponse {
        * @default "ACCESS_TYPE_UNSPECIFIED"
        */
       permission?:
-        | "ACCESS_TYPE_UNSPECIFIED"
-        | "ACCESS_TYPE_NOBODY"
-        | "ACCESS_TYPE_EVERYBODY"
-        | "ACCESS_TYPE_ANY_OF_ADDRESSES";
+        | 'ACCESS_TYPE_UNSPECIFIED'
+        | 'ACCESS_TYPE_NOBODY'
+        | 'ACCESS_TYPE_EVERYBODY'
+        | 'ACCESS_TYPE_ANY_OF_ADDRESSES';
       addresses?: string[];
     };
   }[];
@@ -837,10 +837,10 @@ export interface CosmwasmWasmV1QueryContractHistoryResponse {
      * @default "CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED"
      */
     operation?:
-      | "CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED"
-      | "CONTRACT_CODE_HISTORY_OPERATION_TYPE_INIT"
-      | "CONTRACT_CODE_HISTORY_OPERATION_TYPE_MIGRATE"
-      | "CONTRACT_CODE_HISTORY_OPERATION_TYPE_GENESIS";
+      | 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED'
+      | 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_INIT'
+      | 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_MIGRATE'
+      | 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_GENESIS';
     /**
      * CodeID is the reference to the stored WASM code
      * @format uint64
@@ -1108,10 +1108,10 @@ export interface CosmwasmWasmV1QueryParamsResponse {
        * @default "ACCESS_TYPE_UNSPECIFIED"
        */
       permission?:
-        | "ACCESS_TYPE_UNSPECIFIED"
-        | "ACCESS_TYPE_NOBODY"
-        | "ACCESS_TYPE_EVERYBODY"
-        | "ACCESS_TYPE_ANY_OF_ADDRESSES";
+        | 'ACCESS_TYPE_UNSPECIFIED'
+        | 'ACCESS_TYPE_NOBODY'
+        | 'ACCESS_TYPE_EVERYBODY'
+        | 'ACCESS_TYPE_ANY_OF_ADDRESSES';
       addresses?: string[];
     };
     /**
@@ -1123,10 +1123,10 @@ export interface CosmwasmWasmV1QueryParamsResponse {
      * @default "ACCESS_TYPE_UNSPECIFIED"
      */
     instantiate_default_permission?:
-      | "ACCESS_TYPE_UNSPECIFIED"
-      | "ACCESS_TYPE_NOBODY"
-      | "ACCESS_TYPE_EVERYBODY"
-      | "ACCESS_TYPE_ANY_OF_ADDRESSES";
+      | 'ACCESS_TYPE_UNSPECIFIED'
+      | 'ACCESS_TYPE_NOBODY'
+      | 'ACCESS_TYPE_EVERYBODY'
+      | 'ACCESS_TYPE_ANY_OF_ADDRESSES';
   };
 }
 
@@ -3594,10 +3594,10 @@ export interface CosmosStakingV1Beta1HistoricalInfo {
      * @default "BOND_STATUS_UNSPECIFIED"
      */
     status?:
-      | "BOND_STATUS_UNSPECIFIED"
-      | "BOND_STATUS_UNBONDED"
-      | "BOND_STATUS_UNBONDING"
-      | "BOND_STATUS_BONDED";
+      | 'BOND_STATUS_UNSPECIFIED'
+      | 'BOND_STATUS_UNBONDED'
+      | 'BOND_STATUS_UNBONDING'
+      | 'BOND_STATUS_BONDED';
     /** tokens define the delegated tokens (incl. self-delegation). */
     tokens?: string;
     /** delegator_shares defines total shares issued to a validator's delegators. */
@@ -3979,10 +3979,10 @@ export interface CosmosStakingV1Beta1QueryDelegatorValidatorResponse {
      * @default "BOND_STATUS_UNSPECIFIED"
      */
     status?:
-      | "BOND_STATUS_UNSPECIFIED"
-      | "BOND_STATUS_UNBONDED"
-      | "BOND_STATUS_UNBONDING"
-      | "BOND_STATUS_BONDED";
+      | 'BOND_STATUS_UNSPECIFIED'
+      | 'BOND_STATUS_UNBONDED'
+      | 'BOND_STATUS_UNBONDING'
+      | 'BOND_STATUS_BONDED';
     /** tokens define the delegated tokens (incl. self-delegation). */
     tokens?: string;
     /** delegator_shares defines total shares issued to a validator's delegators. */
@@ -4183,10 +4183,10 @@ export interface CosmosStakingV1Beta1QueryDelegatorValidatorsResponse {
      * @default "BOND_STATUS_UNSPECIFIED"
      */
     status?:
-      | "BOND_STATUS_UNSPECIFIED"
-      | "BOND_STATUS_UNBONDED"
-      | "BOND_STATUS_UNBONDING"
-      | "BOND_STATUS_BONDED";
+      | 'BOND_STATUS_UNSPECIFIED'
+      | 'BOND_STATUS_UNBONDED'
+      | 'BOND_STATUS_UNBONDING'
+      | 'BOND_STATUS_BONDED';
     /** tokens define the delegated tokens (incl. self-delegation). */
     tokens?: string;
     /** delegator_shares defines total shares issued to a validator's delegators. */
@@ -4463,10 +4463,10 @@ export interface CosmosStakingV1Beta1QueryHistoricalInfoResponse {
        * @default "BOND_STATUS_UNSPECIFIED"
        */
       status?:
-        | "BOND_STATUS_UNSPECIFIED"
-        | "BOND_STATUS_UNBONDED"
-        | "BOND_STATUS_UNBONDING"
-        | "BOND_STATUS_BONDED";
+        | 'BOND_STATUS_UNSPECIFIED'
+        | 'BOND_STATUS_UNBONDED'
+        | 'BOND_STATUS_UNBONDING'
+        | 'BOND_STATUS_BONDED';
       /** tokens define the delegated tokens (incl. self-delegation). */
       tokens?: string;
       /** delegator_shares defines total shares issued to a validator's delegators. */
@@ -4897,10 +4897,10 @@ export interface CosmosStakingV1Beta1QueryValidatorResponse {
      * @default "BOND_STATUS_UNSPECIFIED"
      */
     status?:
-      | "BOND_STATUS_UNSPECIFIED"
-      | "BOND_STATUS_UNBONDED"
-      | "BOND_STATUS_UNBONDING"
-      | "BOND_STATUS_BONDED";
+      | 'BOND_STATUS_UNSPECIFIED'
+      | 'BOND_STATUS_UNBONDED'
+      | 'BOND_STATUS_UNBONDING'
+      | 'BOND_STATUS_BONDED';
     /** tokens define the delegated tokens (incl. self-delegation). */
     tokens?: string;
     /** delegator_shares defines total shares issued to a validator's delegators. */
@@ -5154,10 +5154,10 @@ export interface CosmosStakingV1Beta1QueryValidatorsResponse {
      * @default "BOND_STATUS_UNSPECIFIED"
      */
     status?:
-      | "BOND_STATUS_UNSPECIFIED"
-      | "BOND_STATUS_UNBONDED"
-      | "BOND_STATUS_UNBONDING"
-      | "BOND_STATUS_BONDED";
+      | 'BOND_STATUS_UNSPECIFIED'
+      | 'BOND_STATUS_UNBONDED'
+      | 'BOND_STATUS_UNBONDING'
+      | 'BOND_STATUS_BONDED';
     /** tokens define the delegated tokens (incl. self-delegation). */
     tokens?: string;
     /** delegator_shares defines total shares issued to a validator's delegators. */
@@ -5625,10 +5625,10 @@ export interface CosmosStakingV1Beta1Validator {
    * @default "BOND_STATUS_UNSPECIFIED"
    */
   status?:
-    | "BOND_STATUS_UNSPECIFIED"
-    | "BOND_STATUS_UNBONDED"
-    | "BOND_STATUS_UNBONDING"
-    | "BOND_STATUS_BONDED";
+    | 'BOND_STATUS_UNSPECIFIED'
+    | 'BOND_STATUS_UNBONDED'
+    | 'BOND_STATUS_UNBONDING'
+    | 'BOND_STATUS_BONDED';
   /** tokens define the delegated tokens (incl. self-delegation). */
   tokens?: string;
   /** delegator_shares defines total shares issued to a validator's delegators. */
@@ -6293,10 +6293,10 @@ export interface CosmosBaseTendermintV1Beta1Block {
            * @default "SIGNED_MSG_TYPE_UNKNOWN"
            */
           type?:
-            | "SIGNED_MSG_TYPE_UNKNOWN"
-            | "SIGNED_MSG_TYPE_PREVOTE"
-            | "SIGNED_MSG_TYPE_PRECOMMIT"
-            | "SIGNED_MSG_TYPE_PROPOSAL";
+            | 'SIGNED_MSG_TYPE_UNKNOWN'
+            | 'SIGNED_MSG_TYPE_PREVOTE'
+            | 'SIGNED_MSG_TYPE_PRECOMMIT'
+            | 'SIGNED_MSG_TYPE_PROPOSAL';
           /** @format int64 */
           height?: string;
           /** @format int32 */
@@ -6352,10 +6352,10 @@ export interface CosmosBaseTendermintV1Beta1Block {
            * @default "SIGNED_MSG_TYPE_UNKNOWN"
            */
           type?:
-            | "SIGNED_MSG_TYPE_UNKNOWN"
-            | "SIGNED_MSG_TYPE_PREVOTE"
-            | "SIGNED_MSG_TYPE_PRECOMMIT"
-            | "SIGNED_MSG_TYPE_PROPOSAL";
+            | 'SIGNED_MSG_TYPE_UNKNOWN'
+            | 'SIGNED_MSG_TYPE_PREVOTE'
+            | 'SIGNED_MSG_TYPE_PRECOMMIT'
+            | 'SIGNED_MSG_TYPE_PROPOSAL';
           /** @format int64 */
           height?: string;
           /** @format int32 */
@@ -6492,10 +6492,10 @@ export interface CosmosBaseTendermintV1Beta1Block {
                  * @default "BLOCK_ID_FLAG_UNKNOWN"
                  */
                 block_id_flag?:
-                  | "BLOCK_ID_FLAG_UNKNOWN"
-                  | "BLOCK_ID_FLAG_ABSENT"
-                  | "BLOCK_ID_FLAG_COMMIT"
-                  | "BLOCK_ID_FLAG_NIL";
+                  | 'BLOCK_ID_FLAG_UNKNOWN'
+                  | 'BLOCK_ID_FLAG_ABSENT'
+                  | 'BLOCK_ID_FLAG_COMMIT'
+                  | 'BLOCK_ID_FLAG_NIL';
                 /** @format byte */
                 validator_address?: string;
                 /** @format date-time */
@@ -6588,10 +6588,10 @@ export interface CosmosBaseTendermintV1Beta1Block {
        * @default "BLOCK_ID_FLAG_UNKNOWN"
        */
       block_id_flag?:
-        | "BLOCK_ID_FLAG_UNKNOWN"
-        | "BLOCK_ID_FLAG_ABSENT"
-        | "BLOCK_ID_FLAG_COMMIT"
-        | "BLOCK_ID_FLAG_NIL";
+        | 'BLOCK_ID_FLAG_UNKNOWN'
+        | 'BLOCK_ID_FLAG_ABSENT'
+        | 'BLOCK_ID_FLAG_COMMIT'
+        | 'BLOCK_ID_FLAG_NIL';
       /** @format byte */
       validator_address?: string;
       /** @format date-time */
@@ -6703,10 +6703,10 @@ export interface CosmosBaseTendermintV1Beta1GetBlockByHeightResponse {
              * @default "SIGNED_MSG_TYPE_UNKNOWN"
              */
             type?:
-              | "SIGNED_MSG_TYPE_UNKNOWN"
-              | "SIGNED_MSG_TYPE_PREVOTE"
-              | "SIGNED_MSG_TYPE_PRECOMMIT"
-              | "SIGNED_MSG_TYPE_PROPOSAL";
+              | 'SIGNED_MSG_TYPE_UNKNOWN'
+              | 'SIGNED_MSG_TYPE_PREVOTE'
+              | 'SIGNED_MSG_TYPE_PRECOMMIT'
+              | 'SIGNED_MSG_TYPE_PROPOSAL';
             /** @format int64 */
             height?: string;
             /** @format int32 */
@@ -6762,10 +6762,10 @@ export interface CosmosBaseTendermintV1Beta1GetBlockByHeightResponse {
              * @default "SIGNED_MSG_TYPE_UNKNOWN"
              */
             type?:
-              | "SIGNED_MSG_TYPE_UNKNOWN"
-              | "SIGNED_MSG_TYPE_PREVOTE"
-              | "SIGNED_MSG_TYPE_PRECOMMIT"
-              | "SIGNED_MSG_TYPE_PROPOSAL";
+              | 'SIGNED_MSG_TYPE_UNKNOWN'
+              | 'SIGNED_MSG_TYPE_PREVOTE'
+              | 'SIGNED_MSG_TYPE_PRECOMMIT'
+              | 'SIGNED_MSG_TYPE_PROPOSAL';
             /** @format int64 */
             height?: string;
             /** @format int32 */
@@ -6902,10 +6902,10 @@ export interface CosmosBaseTendermintV1Beta1GetBlockByHeightResponse {
                    * @default "BLOCK_ID_FLAG_UNKNOWN"
                    */
                   block_id_flag?:
-                    | "BLOCK_ID_FLAG_UNKNOWN"
-                    | "BLOCK_ID_FLAG_ABSENT"
-                    | "BLOCK_ID_FLAG_COMMIT"
-                    | "BLOCK_ID_FLAG_NIL";
+                    | 'BLOCK_ID_FLAG_UNKNOWN'
+                    | 'BLOCK_ID_FLAG_ABSENT'
+                    | 'BLOCK_ID_FLAG_COMMIT'
+                    | 'BLOCK_ID_FLAG_NIL';
                   /** @format byte */
                   validator_address?: string;
                   /** @format date-time */
@@ -6998,10 +6998,10 @@ export interface CosmosBaseTendermintV1Beta1GetBlockByHeightResponse {
          * @default "BLOCK_ID_FLAG_UNKNOWN"
          */
         block_id_flag?:
-          | "BLOCK_ID_FLAG_UNKNOWN"
-          | "BLOCK_ID_FLAG_ABSENT"
-          | "BLOCK_ID_FLAG_COMMIT"
-          | "BLOCK_ID_FLAG_NIL";
+          | 'BLOCK_ID_FLAG_UNKNOWN'
+          | 'BLOCK_ID_FLAG_ABSENT'
+          | 'BLOCK_ID_FLAG_COMMIT'
+          | 'BLOCK_ID_FLAG_NIL';
         /** @format byte */
         validator_address?: string;
         /** @format date-time */
@@ -7106,10 +7106,10 @@ export interface CosmosBaseTendermintV1Beta1GetBlockByHeightResponse {
              * @default "SIGNED_MSG_TYPE_UNKNOWN"
              */
             type?:
-              | "SIGNED_MSG_TYPE_UNKNOWN"
-              | "SIGNED_MSG_TYPE_PREVOTE"
-              | "SIGNED_MSG_TYPE_PRECOMMIT"
-              | "SIGNED_MSG_TYPE_PROPOSAL";
+              | 'SIGNED_MSG_TYPE_UNKNOWN'
+              | 'SIGNED_MSG_TYPE_PREVOTE'
+              | 'SIGNED_MSG_TYPE_PRECOMMIT'
+              | 'SIGNED_MSG_TYPE_PROPOSAL';
             /** @format int64 */
             height?: string;
             /** @format int32 */
@@ -7165,10 +7165,10 @@ export interface CosmosBaseTendermintV1Beta1GetBlockByHeightResponse {
              * @default "SIGNED_MSG_TYPE_UNKNOWN"
              */
             type?:
-              | "SIGNED_MSG_TYPE_UNKNOWN"
-              | "SIGNED_MSG_TYPE_PREVOTE"
-              | "SIGNED_MSG_TYPE_PRECOMMIT"
-              | "SIGNED_MSG_TYPE_PROPOSAL";
+              | 'SIGNED_MSG_TYPE_UNKNOWN'
+              | 'SIGNED_MSG_TYPE_PREVOTE'
+              | 'SIGNED_MSG_TYPE_PRECOMMIT'
+              | 'SIGNED_MSG_TYPE_PROPOSAL';
             /** @format int64 */
             height?: string;
             /** @format int32 */
@@ -7305,10 +7305,10 @@ export interface CosmosBaseTendermintV1Beta1GetBlockByHeightResponse {
                    * @default "BLOCK_ID_FLAG_UNKNOWN"
                    */
                   block_id_flag?:
-                    | "BLOCK_ID_FLAG_UNKNOWN"
-                    | "BLOCK_ID_FLAG_ABSENT"
-                    | "BLOCK_ID_FLAG_COMMIT"
-                    | "BLOCK_ID_FLAG_NIL";
+                    | 'BLOCK_ID_FLAG_UNKNOWN'
+                    | 'BLOCK_ID_FLAG_ABSENT'
+                    | 'BLOCK_ID_FLAG_COMMIT'
+                    | 'BLOCK_ID_FLAG_NIL';
                   /** @format byte */
                   validator_address?: string;
                   /** @format date-time */
@@ -7401,10 +7401,10 @@ export interface CosmosBaseTendermintV1Beta1GetBlockByHeightResponse {
          * @default "BLOCK_ID_FLAG_UNKNOWN"
          */
         block_id_flag?:
-          | "BLOCK_ID_FLAG_UNKNOWN"
-          | "BLOCK_ID_FLAG_ABSENT"
-          | "BLOCK_ID_FLAG_COMMIT"
-          | "BLOCK_ID_FLAG_NIL";
+          | 'BLOCK_ID_FLAG_UNKNOWN'
+          | 'BLOCK_ID_FLAG_ABSENT'
+          | 'BLOCK_ID_FLAG_COMMIT'
+          | 'BLOCK_ID_FLAG_NIL';
         /** @format byte */
         validator_address?: string;
         /** @format date-time */
@@ -7517,10 +7517,10 @@ export interface CosmosBaseTendermintV1Beta1GetLatestBlockResponse {
              * @default "SIGNED_MSG_TYPE_UNKNOWN"
              */
             type?:
-              | "SIGNED_MSG_TYPE_UNKNOWN"
-              | "SIGNED_MSG_TYPE_PREVOTE"
-              | "SIGNED_MSG_TYPE_PRECOMMIT"
-              | "SIGNED_MSG_TYPE_PROPOSAL";
+              | 'SIGNED_MSG_TYPE_UNKNOWN'
+              | 'SIGNED_MSG_TYPE_PREVOTE'
+              | 'SIGNED_MSG_TYPE_PRECOMMIT'
+              | 'SIGNED_MSG_TYPE_PROPOSAL';
             /** @format int64 */
             height?: string;
             /** @format int32 */
@@ -7576,10 +7576,10 @@ export interface CosmosBaseTendermintV1Beta1GetLatestBlockResponse {
              * @default "SIGNED_MSG_TYPE_UNKNOWN"
              */
             type?:
-              | "SIGNED_MSG_TYPE_UNKNOWN"
-              | "SIGNED_MSG_TYPE_PREVOTE"
-              | "SIGNED_MSG_TYPE_PRECOMMIT"
-              | "SIGNED_MSG_TYPE_PROPOSAL";
+              | 'SIGNED_MSG_TYPE_UNKNOWN'
+              | 'SIGNED_MSG_TYPE_PREVOTE'
+              | 'SIGNED_MSG_TYPE_PRECOMMIT'
+              | 'SIGNED_MSG_TYPE_PROPOSAL';
             /** @format int64 */
             height?: string;
             /** @format int32 */
@@ -7716,10 +7716,10 @@ export interface CosmosBaseTendermintV1Beta1GetLatestBlockResponse {
                    * @default "BLOCK_ID_FLAG_UNKNOWN"
                    */
                   block_id_flag?:
-                    | "BLOCK_ID_FLAG_UNKNOWN"
-                    | "BLOCK_ID_FLAG_ABSENT"
-                    | "BLOCK_ID_FLAG_COMMIT"
-                    | "BLOCK_ID_FLAG_NIL";
+                    | 'BLOCK_ID_FLAG_UNKNOWN'
+                    | 'BLOCK_ID_FLAG_ABSENT'
+                    | 'BLOCK_ID_FLAG_COMMIT'
+                    | 'BLOCK_ID_FLAG_NIL';
                   /** @format byte */
                   validator_address?: string;
                   /** @format date-time */
@@ -7812,10 +7812,10 @@ export interface CosmosBaseTendermintV1Beta1GetLatestBlockResponse {
          * @default "BLOCK_ID_FLAG_UNKNOWN"
          */
         block_id_flag?:
-          | "BLOCK_ID_FLAG_UNKNOWN"
-          | "BLOCK_ID_FLAG_ABSENT"
-          | "BLOCK_ID_FLAG_COMMIT"
-          | "BLOCK_ID_FLAG_NIL";
+          | 'BLOCK_ID_FLAG_UNKNOWN'
+          | 'BLOCK_ID_FLAG_ABSENT'
+          | 'BLOCK_ID_FLAG_COMMIT'
+          | 'BLOCK_ID_FLAG_NIL';
         /** @format byte */
         validator_address?: string;
         /** @format date-time */
@@ -7920,10 +7920,10 @@ export interface CosmosBaseTendermintV1Beta1GetLatestBlockResponse {
              * @default "SIGNED_MSG_TYPE_UNKNOWN"
              */
             type?:
-              | "SIGNED_MSG_TYPE_UNKNOWN"
-              | "SIGNED_MSG_TYPE_PREVOTE"
-              | "SIGNED_MSG_TYPE_PRECOMMIT"
-              | "SIGNED_MSG_TYPE_PROPOSAL";
+              | 'SIGNED_MSG_TYPE_UNKNOWN'
+              | 'SIGNED_MSG_TYPE_PREVOTE'
+              | 'SIGNED_MSG_TYPE_PRECOMMIT'
+              | 'SIGNED_MSG_TYPE_PROPOSAL';
             /** @format int64 */
             height?: string;
             /** @format int32 */
@@ -7979,10 +7979,10 @@ export interface CosmosBaseTendermintV1Beta1GetLatestBlockResponse {
              * @default "SIGNED_MSG_TYPE_UNKNOWN"
              */
             type?:
-              | "SIGNED_MSG_TYPE_UNKNOWN"
-              | "SIGNED_MSG_TYPE_PREVOTE"
-              | "SIGNED_MSG_TYPE_PRECOMMIT"
-              | "SIGNED_MSG_TYPE_PROPOSAL";
+              | 'SIGNED_MSG_TYPE_UNKNOWN'
+              | 'SIGNED_MSG_TYPE_PREVOTE'
+              | 'SIGNED_MSG_TYPE_PRECOMMIT'
+              | 'SIGNED_MSG_TYPE_PROPOSAL';
             /** @format int64 */
             height?: string;
             /** @format int32 */
@@ -8119,10 +8119,10 @@ export interface CosmosBaseTendermintV1Beta1GetLatestBlockResponse {
                    * @default "BLOCK_ID_FLAG_UNKNOWN"
                    */
                   block_id_flag?:
-                    | "BLOCK_ID_FLAG_UNKNOWN"
-                    | "BLOCK_ID_FLAG_ABSENT"
-                    | "BLOCK_ID_FLAG_COMMIT"
-                    | "BLOCK_ID_FLAG_NIL";
+                    | 'BLOCK_ID_FLAG_UNKNOWN'
+                    | 'BLOCK_ID_FLAG_ABSENT'
+                    | 'BLOCK_ID_FLAG_COMMIT'
+                    | 'BLOCK_ID_FLAG_NIL';
                   /** @format byte */
                   validator_address?: string;
                   /** @format date-time */
@@ -8215,10 +8215,10 @@ export interface CosmosBaseTendermintV1Beta1GetLatestBlockResponse {
          * @default "BLOCK_ID_FLAG_UNKNOWN"
          */
         block_id_flag?:
-          | "BLOCK_ID_FLAG_UNKNOWN"
-          | "BLOCK_ID_FLAG_ABSENT"
-          | "BLOCK_ID_FLAG_COMMIT"
-          | "BLOCK_ID_FLAG_NIL";
+          | 'BLOCK_ID_FLAG_UNKNOWN'
+          | 'BLOCK_ID_FLAG_ABSENT'
+          | 'BLOCK_ID_FLAG_COMMIT'
+          | 'BLOCK_ID_FLAG_NIL';
         /** @format byte */
         validator_address?: string;
         /** @format date-time */
@@ -8972,10 +8972,10 @@ export interface TendermintTypesBlock {
            * @default "SIGNED_MSG_TYPE_UNKNOWN"
            */
           type?:
-            | "SIGNED_MSG_TYPE_UNKNOWN"
-            | "SIGNED_MSG_TYPE_PREVOTE"
-            | "SIGNED_MSG_TYPE_PRECOMMIT"
-            | "SIGNED_MSG_TYPE_PROPOSAL";
+            | 'SIGNED_MSG_TYPE_UNKNOWN'
+            | 'SIGNED_MSG_TYPE_PREVOTE'
+            | 'SIGNED_MSG_TYPE_PRECOMMIT'
+            | 'SIGNED_MSG_TYPE_PROPOSAL';
           /** @format int64 */
           height?: string;
           /** @format int32 */
@@ -9031,10 +9031,10 @@ export interface TendermintTypesBlock {
            * @default "SIGNED_MSG_TYPE_UNKNOWN"
            */
           type?:
-            | "SIGNED_MSG_TYPE_UNKNOWN"
-            | "SIGNED_MSG_TYPE_PREVOTE"
-            | "SIGNED_MSG_TYPE_PRECOMMIT"
-            | "SIGNED_MSG_TYPE_PROPOSAL";
+            | 'SIGNED_MSG_TYPE_UNKNOWN'
+            | 'SIGNED_MSG_TYPE_PREVOTE'
+            | 'SIGNED_MSG_TYPE_PRECOMMIT'
+            | 'SIGNED_MSG_TYPE_PROPOSAL';
           /** @format int64 */
           height?: string;
           /** @format int32 */
@@ -9171,10 +9171,10 @@ export interface TendermintTypesBlock {
                  * @default "BLOCK_ID_FLAG_UNKNOWN"
                  */
                 block_id_flag?:
-                  | "BLOCK_ID_FLAG_UNKNOWN"
-                  | "BLOCK_ID_FLAG_ABSENT"
-                  | "BLOCK_ID_FLAG_COMMIT"
-                  | "BLOCK_ID_FLAG_NIL";
+                  | 'BLOCK_ID_FLAG_UNKNOWN'
+                  | 'BLOCK_ID_FLAG_ABSENT'
+                  | 'BLOCK_ID_FLAG_COMMIT'
+                  | 'BLOCK_ID_FLAG_NIL';
                 /** @format byte */
                 validator_address?: string;
                 /** @format date-time */
@@ -9267,10 +9267,10 @@ export interface TendermintTypesBlock {
        * @default "BLOCK_ID_FLAG_UNKNOWN"
        */
       block_id_flag?:
-        | "BLOCK_ID_FLAG_UNKNOWN"
-        | "BLOCK_ID_FLAG_ABSENT"
-        | "BLOCK_ID_FLAG_COMMIT"
-        | "BLOCK_ID_FLAG_NIL";
+        | 'BLOCK_ID_FLAG_UNKNOWN'
+        | 'BLOCK_ID_FLAG_ABSENT'
+        | 'BLOCK_ID_FLAG_COMMIT'
+        | 'BLOCK_ID_FLAG_NIL';
       /** @format byte */
       validator_address?: string;
       /** @format date-time */
@@ -9305,10 +9305,10 @@ export interface TendermintTypesCommit {
      * @default "BLOCK_ID_FLAG_UNKNOWN"
      */
     block_id_flag?:
-      | "BLOCK_ID_FLAG_UNKNOWN"
-      | "BLOCK_ID_FLAG_ABSENT"
-      | "BLOCK_ID_FLAG_COMMIT"
-      | "BLOCK_ID_FLAG_NIL";
+      | 'BLOCK_ID_FLAG_UNKNOWN'
+      | 'BLOCK_ID_FLAG_ABSENT'
+      | 'BLOCK_ID_FLAG_COMMIT'
+      | 'BLOCK_ID_FLAG_NIL';
     /** @format byte */
     validator_address?: string;
     /** @format date-time */
@@ -9325,10 +9325,10 @@ export interface TendermintTypesCommitSig {
    * @default "BLOCK_ID_FLAG_UNKNOWN"
    */
   block_id_flag?:
-    | "BLOCK_ID_FLAG_UNKNOWN"
-    | "BLOCK_ID_FLAG_ABSENT"
-    | "BLOCK_ID_FLAG_COMMIT"
-    | "BLOCK_ID_FLAG_NIL";
+    | 'BLOCK_ID_FLAG_UNKNOWN'
+    | 'BLOCK_ID_FLAG_ABSENT'
+    | 'BLOCK_ID_FLAG_COMMIT'
+    | 'BLOCK_ID_FLAG_NIL';
   /** @format byte */
   validator_address?: string;
   /** @format date-time */
@@ -9362,10 +9362,10 @@ export interface TendermintTypesDuplicateVoteEvidence {
      * @default "SIGNED_MSG_TYPE_UNKNOWN"
      */
     type?:
-      | "SIGNED_MSG_TYPE_UNKNOWN"
-      | "SIGNED_MSG_TYPE_PREVOTE"
-      | "SIGNED_MSG_TYPE_PRECOMMIT"
-      | "SIGNED_MSG_TYPE_PROPOSAL";
+      | 'SIGNED_MSG_TYPE_UNKNOWN'
+      | 'SIGNED_MSG_TYPE_PREVOTE'
+      | 'SIGNED_MSG_TYPE_PRECOMMIT'
+      | 'SIGNED_MSG_TYPE_PROPOSAL';
     /** @format int64 */
     height?: string;
     /** @format int32 */
@@ -9421,10 +9421,10 @@ export interface TendermintTypesDuplicateVoteEvidence {
      * @default "SIGNED_MSG_TYPE_UNKNOWN"
      */
     type?:
-      | "SIGNED_MSG_TYPE_UNKNOWN"
-      | "SIGNED_MSG_TYPE_PREVOTE"
-      | "SIGNED_MSG_TYPE_PRECOMMIT"
-      | "SIGNED_MSG_TYPE_PROPOSAL";
+      | 'SIGNED_MSG_TYPE_UNKNOWN'
+      | 'SIGNED_MSG_TYPE_PREVOTE'
+      | 'SIGNED_MSG_TYPE_PRECOMMIT'
+      | 'SIGNED_MSG_TYPE_PROPOSAL';
     /** @format int64 */
     height?: string;
     /** @format int32 */
@@ -9491,10 +9491,10 @@ export interface TendermintTypesEvidence {
        * @default "SIGNED_MSG_TYPE_UNKNOWN"
        */
       type?:
-        | "SIGNED_MSG_TYPE_UNKNOWN"
-        | "SIGNED_MSG_TYPE_PREVOTE"
-        | "SIGNED_MSG_TYPE_PRECOMMIT"
-        | "SIGNED_MSG_TYPE_PROPOSAL";
+        | 'SIGNED_MSG_TYPE_UNKNOWN'
+        | 'SIGNED_MSG_TYPE_PREVOTE'
+        | 'SIGNED_MSG_TYPE_PRECOMMIT'
+        | 'SIGNED_MSG_TYPE_PROPOSAL';
       /** @format int64 */
       height?: string;
       /** @format int32 */
@@ -9550,10 +9550,10 @@ export interface TendermintTypesEvidence {
        * @default "SIGNED_MSG_TYPE_UNKNOWN"
        */
       type?:
-        | "SIGNED_MSG_TYPE_UNKNOWN"
-        | "SIGNED_MSG_TYPE_PREVOTE"
-        | "SIGNED_MSG_TYPE_PRECOMMIT"
-        | "SIGNED_MSG_TYPE_PROPOSAL";
+        | 'SIGNED_MSG_TYPE_UNKNOWN'
+        | 'SIGNED_MSG_TYPE_PREVOTE'
+        | 'SIGNED_MSG_TYPE_PRECOMMIT'
+        | 'SIGNED_MSG_TYPE_PROPOSAL';
       /** @format int64 */
       height?: string;
       /** @format int32 */
@@ -9690,10 +9690,10 @@ export interface TendermintTypesEvidence {
              * @default "BLOCK_ID_FLAG_UNKNOWN"
              */
             block_id_flag?:
-              | "BLOCK_ID_FLAG_UNKNOWN"
-              | "BLOCK_ID_FLAG_ABSENT"
-              | "BLOCK_ID_FLAG_COMMIT"
-              | "BLOCK_ID_FLAG_NIL";
+              | 'BLOCK_ID_FLAG_UNKNOWN'
+              | 'BLOCK_ID_FLAG_ABSENT'
+              | 'BLOCK_ID_FLAG_COMMIT'
+              | 'BLOCK_ID_FLAG_NIL';
             /** @format byte */
             validator_address?: string;
             /** @format date-time */
@@ -9779,10 +9779,10 @@ export interface TendermintTypesEvidenceList {
          * @default "SIGNED_MSG_TYPE_UNKNOWN"
          */
         type?:
-          | "SIGNED_MSG_TYPE_UNKNOWN"
-          | "SIGNED_MSG_TYPE_PREVOTE"
-          | "SIGNED_MSG_TYPE_PRECOMMIT"
-          | "SIGNED_MSG_TYPE_PROPOSAL";
+          | 'SIGNED_MSG_TYPE_UNKNOWN'
+          | 'SIGNED_MSG_TYPE_PREVOTE'
+          | 'SIGNED_MSG_TYPE_PRECOMMIT'
+          | 'SIGNED_MSG_TYPE_PROPOSAL';
         /** @format int64 */
         height?: string;
         /** @format int32 */
@@ -9838,10 +9838,10 @@ export interface TendermintTypesEvidenceList {
          * @default "SIGNED_MSG_TYPE_UNKNOWN"
          */
         type?:
-          | "SIGNED_MSG_TYPE_UNKNOWN"
-          | "SIGNED_MSG_TYPE_PREVOTE"
-          | "SIGNED_MSG_TYPE_PRECOMMIT"
-          | "SIGNED_MSG_TYPE_PROPOSAL";
+          | 'SIGNED_MSG_TYPE_UNKNOWN'
+          | 'SIGNED_MSG_TYPE_PREVOTE'
+          | 'SIGNED_MSG_TYPE_PRECOMMIT'
+          | 'SIGNED_MSG_TYPE_PROPOSAL';
         /** @format int64 */
         height?: string;
         /** @format int32 */
@@ -9978,10 +9978,10 @@ export interface TendermintTypesEvidenceList {
                * @default "BLOCK_ID_FLAG_UNKNOWN"
                */
               block_id_flag?:
-                | "BLOCK_ID_FLAG_UNKNOWN"
-                | "BLOCK_ID_FLAG_ABSENT"
-                | "BLOCK_ID_FLAG_COMMIT"
-                | "BLOCK_ID_FLAG_NIL";
+                | 'BLOCK_ID_FLAG_UNKNOWN'
+                | 'BLOCK_ID_FLAG_ABSENT'
+                | 'BLOCK_ID_FLAG_COMMIT'
+                | 'BLOCK_ID_FLAG_NIL';
               /** @format byte */
               validator_address?: string;
               /** @format date-time */
@@ -10136,10 +10136,10 @@ export interface TendermintTypesLightBlock {
          * @default "BLOCK_ID_FLAG_UNKNOWN"
          */
         block_id_flag?:
-          | "BLOCK_ID_FLAG_UNKNOWN"
-          | "BLOCK_ID_FLAG_ABSENT"
-          | "BLOCK_ID_FLAG_COMMIT"
-          | "BLOCK_ID_FLAG_NIL";
+          | 'BLOCK_ID_FLAG_UNKNOWN'
+          | 'BLOCK_ID_FLAG_ABSENT'
+          | 'BLOCK_ID_FLAG_COMMIT'
+          | 'BLOCK_ID_FLAG_NIL';
         /** @format byte */
         validator_address?: string;
         /** @format date-time */
@@ -10272,10 +10272,10 @@ export interface TendermintTypesLightClientAttackEvidence {
            * @default "BLOCK_ID_FLAG_UNKNOWN"
            */
           block_id_flag?:
-            | "BLOCK_ID_FLAG_UNKNOWN"
-            | "BLOCK_ID_FLAG_ABSENT"
-            | "BLOCK_ID_FLAG_COMMIT"
-            | "BLOCK_ID_FLAG_NIL";
+            | 'BLOCK_ID_FLAG_UNKNOWN'
+            | 'BLOCK_ID_FLAG_ABSENT'
+            | 'BLOCK_ID_FLAG_COMMIT'
+            | 'BLOCK_ID_FLAG_NIL';
           /** @format byte */
           validator_address?: string;
           /** @format date-time */
@@ -10427,10 +10427,10 @@ export interface TendermintTypesSignedHeader {
        * @default "BLOCK_ID_FLAG_UNKNOWN"
        */
       block_id_flag?:
-        | "BLOCK_ID_FLAG_UNKNOWN"
-        | "BLOCK_ID_FLAG_ABSENT"
-        | "BLOCK_ID_FLAG_COMMIT"
-        | "BLOCK_ID_FLAG_NIL";
+        | 'BLOCK_ID_FLAG_UNKNOWN'
+        | 'BLOCK_ID_FLAG_ABSENT'
+        | 'BLOCK_ID_FLAG_COMMIT'
+        | 'BLOCK_ID_FLAG_NIL';
       /** @format byte */
       validator_address?: string;
       /** @format date-time */
@@ -10505,10 +10505,10 @@ export interface TendermintTypesVote {
    * @default "SIGNED_MSG_TYPE_UNKNOWN"
    */
   type?:
-    | "SIGNED_MSG_TYPE_UNKNOWN"
-    | "SIGNED_MSG_TYPE_PREVOTE"
-    | "SIGNED_MSG_TYPE_PRECOMMIT"
-    | "SIGNED_MSG_TYPE_PROPOSAL";
+    | 'SIGNED_MSG_TYPE_UNKNOWN'
+    | 'SIGNED_MSG_TYPE_PREVOTE'
+    | 'SIGNED_MSG_TYPE_PRECOMMIT'
+    | 'SIGNED_MSG_TYPE_PROPOSAL';
   /** @format int64 */
   height?: string;
   /** @format int32 */
@@ -11111,7 +11111,7 @@ export interface CosmosEvmErc20V1QueryTokenPairResponse {
      *  - OWNER_EXTERNAL: OWNER_EXTERNAL - erc20 is owned by an external account.
      * @default "OWNER_UNSPECIFIED"
      */
-    contract_owner?: "OWNER_UNSPECIFIED" | "OWNER_MODULE" | "OWNER_EXTERNAL";
+    contract_owner?: 'OWNER_UNSPECIFIED' | 'OWNER_MODULE' | 'OWNER_EXTERNAL';
   };
 }
 
@@ -11138,7 +11138,7 @@ export interface CosmosEvmErc20V1QueryTokenPairsResponse {
      *  - OWNER_EXTERNAL: OWNER_EXTERNAL - erc20 is owned by an external account.
      * @default "OWNER_UNSPECIFIED"
      */
-    contract_owner?: "OWNER_UNSPECIFIED" | "OWNER_MODULE" | "OWNER_EXTERNAL";
+    contract_owner?: 'OWNER_UNSPECIFIED' | 'OWNER_MODULE' | 'OWNER_EXTERNAL';
   }[];
   /** pagination defines the pagination in the response. */
   pagination?: {
@@ -11179,7 +11179,7 @@ export interface CosmosEvmErc20V1TokenPair {
    *  - OWNER_EXTERNAL: OWNER_EXTERNAL - erc20 is owned by an external account.
    * @default "OWNER_UNSPECIFIED"
    */
-  contract_owner?: "OWNER_UNSPECIFIED" | "OWNER_MODULE" | "OWNER_EXTERNAL";
+  contract_owner?: 'OWNER_UNSPECIFIED' | 'OWNER_MODULE' | 'OWNER_EXTERNAL';
 }
 
 /**
@@ -11197,9 +11197,9 @@ export interface CosmosEvmVmV1AccessControl {
      * @default "ACCESS_TYPE_PERMISSIONLESS"
      */
     access_type?:
-      | "ACCESS_TYPE_PERMISSIONLESS"
-      | "ACCESS_TYPE_RESTRICTED"
-      | "ACCESS_TYPE_PERMISSIONED";
+      | 'ACCESS_TYPE_PERMISSIONLESS'
+      | 'ACCESS_TYPE_RESTRICTED'
+      | 'ACCESS_TYPE_PERMISSIONED';
     /**
      * access_control_list defines defines different things depending on the
      * AccessType:
@@ -11221,9 +11221,9 @@ export interface CosmosEvmVmV1AccessControl {
      * @default "ACCESS_TYPE_PERMISSIONLESS"
      */
     access_type?:
-      | "ACCESS_TYPE_PERMISSIONLESS"
-      | "ACCESS_TYPE_RESTRICTED"
-      | "ACCESS_TYPE_PERMISSIONED";
+      | 'ACCESS_TYPE_PERMISSIONLESS'
+      | 'ACCESS_TYPE_RESTRICTED'
+      | 'ACCESS_TYPE_PERMISSIONED';
     /**
      * access_control_list defines defines different things depending on the
      * AccessType:
@@ -11247,9 +11247,9 @@ export interface CosmosEvmVmV1AccessControlType {
    * @default "ACCESS_TYPE_PERMISSIONLESS"
    */
   access_type?:
-    | "ACCESS_TYPE_PERMISSIONLESS"
-    | "ACCESS_TYPE_RESTRICTED"
-    | "ACCESS_TYPE_PERMISSIONED";
+    | 'ACCESS_TYPE_PERMISSIONLESS'
+    | 'ACCESS_TYPE_RESTRICTED'
+    | 'ACCESS_TYPE_PERMISSIONED';
   /**
    * access_control_list defines defines different things depending on the
    * AccessType:
@@ -11731,9 +11731,9 @@ export interface CosmosEvmVmV1Params {
        * @default "ACCESS_TYPE_PERMISSIONLESS"
        */
       access_type?:
-        | "ACCESS_TYPE_PERMISSIONLESS"
-        | "ACCESS_TYPE_RESTRICTED"
-        | "ACCESS_TYPE_PERMISSIONED";
+        | 'ACCESS_TYPE_PERMISSIONLESS'
+        | 'ACCESS_TYPE_RESTRICTED'
+        | 'ACCESS_TYPE_PERMISSIONED';
       /**
        * access_control_list defines defines different things depending on the
        * AccessType:
@@ -11755,9 +11755,9 @@ export interface CosmosEvmVmV1Params {
        * @default "ACCESS_TYPE_PERMISSIONLESS"
        */
       access_type?:
-        | "ACCESS_TYPE_PERMISSIONLESS"
-        | "ACCESS_TYPE_RESTRICTED"
-        | "ACCESS_TYPE_PERMISSIONED";
+        | 'ACCESS_TYPE_PERMISSIONLESS'
+        | 'ACCESS_TYPE_RESTRICTED'
+        | 'ACCESS_TYPE_PERMISSIONED';
       /**
        * access_control_list defines defines different things depending on the
        * AccessType:
@@ -12050,9 +12050,9 @@ export interface CosmosEvmVmV1QueryParamsResponse {
          * @default "ACCESS_TYPE_PERMISSIONLESS"
          */
         access_type?:
-          | "ACCESS_TYPE_PERMISSIONLESS"
-          | "ACCESS_TYPE_RESTRICTED"
-          | "ACCESS_TYPE_PERMISSIONED";
+          | 'ACCESS_TYPE_PERMISSIONLESS'
+          | 'ACCESS_TYPE_RESTRICTED'
+          | 'ACCESS_TYPE_PERMISSIONED';
         /**
          * access_control_list defines defines different things depending on the
          * AccessType:
@@ -12074,9 +12074,9 @@ export interface CosmosEvmVmV1QueryParamsResponse {
          * @default "ACCESS_TYPE_PERMISSIONLESS"
          */
         access_type?:
-          | "ACCESS_TYPE_PERMISSIONLESS"
-          | "ACCESS_TYPE_RESTRICTED"
-          | "ACCESS_TYPE_PERMISSIONED";
+          | 'ACCESS_TYPE_PERMISSIONLESS'
+          | 'ACCESS_TYPE_RESTRICTED'
+          | 'ACCESS_TYPE_PERMISSIONED';
         /**
          * access_control_list defines defines different things depending on the
          * AccessType:
@@ -13640,12 +13640,12 @@ export interface CosmosGovV1Beta1Proposal {
    * @default "PROPOSAL_STATUS_UNSPECIFIED"
    */
   status?:
-    | "PROPOSAL_STATUS_UNSPECIFIED"
-    | "PROPOSAL_STATUS_DEPOSIT_PERIOD"
-    | "PROPOSAL_STATUS_VOTING_PERIOD"
-    | "PROPOSAL_STATUS_PASSED"
-    | "PROPOSAL_STATUS_REJECTED"
-    | "PROPOSAL_STATUS_FAILED";
+    | 'PROPOSAL_STATUS_UNSPECIFIED'
+    | 'PROPOSAL_STATUS_DEPOSIT_PERIOD'
+    | 'PROPOSAL_STATUS_VOTING_PERIOD'
+    | 'PROPOSAL_STATUS_PASSED'
+    | 'PROPOSAL_STATUS_REJECTED'
+    | 'PROPOSAL_STATUS_FAILED';
   /**
    * final_tally_result is the final tally result of the proposal. When
    * querying a proposal via gRPC, this field is not populated until the
@@ -13925,12 +13925,12 @@ export interface CosmosGovV1Beta1QueryProposalResponse {
      * @default "PROPOSAL_STATUS_UNSPECIFIED"
      */
     status?:
-      | "PROPOSAL_STATUS_UNSPECIFIED"
-      | "PROPOSAL_STATUS_DEPOSIT_PERIOD"
-      | "PROPOSAL_STATUS_VOTING_PERIOD"
-      | "PROPOSAL_STATUS_PASSED"
-      | "PROPOSAL_STATUS_REJECTED"
-      | "PROPOSAL_STATUS_FAILED";
+      | 'PROPOSAL_STATUS_UNSPECIFIED'
+      | 'PROPOSAL_STATUS_DEPOSIT_PERIOD'
+      | 'PROPOSAL_STATUS_VOTING_PERIOD'
+      | 'PROPOSAL_STATUS_PASSED'
+      | 'PROPOSAL_STATUS_REJECTED'
+      | 'PROPOSAL_STATUS_FAILED';
     /**
      * final_tally_result is the final tally result of the proposal. When
      * querying a proposal via gRPC, this field is not populated until the
@@ -14115,12 +14115,12 @@ export interface CosmosGovV1Beta1QueryProposalsResponse {
      * @default "PROPOSAL_STATUS_UNSPECIFIED"
      */
     status?:
-      | "PROPOSAL_STATUS_UNSPECIFIED"
-      | "PROPOSAL_STATUS_DEPOSIT_PERIOD"
-      | "PROPOSAL_STATUS_VOTING_PERIOD"
-      | "PROPOSAL_STATUS_PASSED"
-      | "PROPOSAL_STATUS_REJECTED"
-      | "PROPOSAL_STATUS_FAILED";
+      | 'PROPOSAL_STATUS_UNSPECIFIED'
+      | 'PROPOSAL_STATUS_DEPOSIT_PERIOD'
+      | 'PROPOSAL_STATUS_VOTING_PERIOD'
+      | 'PROPOSAL_STATUS_PASSED'
+      | 'PROPOSAL_STATUS_REJECTED'
+      | 'PROPOSAL_STATUS_FAILED';
     /**
      * final_tally_result is the final tally result of the proposal. When
      * querying a proposal via gRPC, this field is not populated until the
@@ -14216,11 +14216,11 @@ export interface CosmosGovV1Beta1QueryVoteResponse {
      * @default "VOTE_OPTION_UNSPECIFIED"
      */
     option?:
-      | "VOTE_OPTION_UNSPECIFIED"
-      | "VOTE_OPTION_YES"
-      | "VOTE_OPTION_ABSTAIN"
-      | "VOTE_OPTION_NO"
-      | "VOTE_OPTION_NO_WITH_VETO";
+      | 'VOTE_OPTION_UNSPECIFIED'
+      | 'VOTE_OPTION_YES'
+      | 'VOTE_OPTION_ABSTAIN'
+      | 'VOTE_OPTION_NO'
+      | 'VOTE_OPTION_NO_WITH_VETO';
     /**
      * options is the weighted vote options.
      *
@@ -14232,11 +14232,11 @@ export interface CosmosGovV1Beta1QueryVoteResponse {
        * @default "VOTE_OPTION_UNSPECIFIED"
        */
       option?:
-        | "VOTE_OPTION_UNSPECIFIED"
-        | "VOTE_OPTION_YES"
-        | "VOTE_OPTION_ABSTAIN"
-        | "VOTE_OPTION_NO"
-        | "VOTE_OPTION_NO_WITH_VETO";
+        | 'VOTE_OPTION_UNSPECIFIED'
+        | 'VOTE_OPTION_YES'
+        | 'VOTE_OPTION_ABSTAIN'
+        | 'VOTE_OPTION_NO'
+        | 'VOTE_OPTION_NO_WITH_VETO';
       /** weight is the vote weight associated with the vote option. */
       weight?: string;
     }[];
@@ -14261,11 +14261,11 @@ export interface CosmosGovV1Beta1QueryVotesResponse {
      * @default "VOTE_OPTION_UNSPECIFIED"
      */
     option?:
-      | "VOTE_OPTION_UNSPECIFIED"
-      | "VOTE_OPTION_YES"
-      | "VOTE_OPTION_ABSTAIN"
-      | "VOTE_OPTION_NO"
-      | "VOTE_OPTION_NO_WITH_VETO";
+      | 'VOTE_OPTION_UNSPECIFIED'
+      | 'VOTE_OPTION_YES'
+      | 'VOTE_OPTION_ABSTAIN'
+      | 'VOTE_OPTION_NO'
+      | 'VOTE_OPTION_NO_WITH_VETO';
     /**
      * options is the weighted vote options.
      *
@@ -14277,11 +14277,11 @@ export interface CosmosGovV1Beta1QueryVotesResponse {
        * @default "VOTE_OPTION_UNSPECIFIED"
        */
       option?:
-        | "VOTE_OPTION_UNSPECIFIED"
-        | "VOTE_OPTION_YES"
-        | "VOTE_OPTION_ABSTAIN"
-        | "VOTE_OPTION_NO"
-        | "VOTE_OPTION_NO_WITH_VETO";
+        | 'VOTE_OPTION_UNSPECIFIED'
+        | 'VOTE_OPTION_YES'
+        | 'VOTE_OPTION_ABSTAIN'
+        | 'VOTE_OPTION_NO'
+        | 'VOTE_OPTION_NO_WITH_VETO';
       /** weight is the vote weight associated with the vote option. */
       weight?: string;
     }[];
@@ -14356,11 +14356,11 @@ export interface CosmosGovV1Beta1Vote {
    * @default "VOTE_OPTION_UNSPECIFIED"
    */
   option?:
-    | "VOTE_OPTION_UNSPECIFIED"
-    | "VOTE_OPTION_YES"
-    | "VOTE_OPTION_ABSTAIN"
-    | "VOTE_OPTION_NO"
-    | "VOTE_OPTION_NO_WITH_VETO";
+    | 'VOTE_OPTION_UNSPECIFIED'
+    | 'VOTE_OPTION_YES'
+    | 'VOTE_OPTION_ABSTAIN'
+    | 'VOTE_OPTION_NO'
+    | 'VOTE_OPTION_NO_WITH_VETO';
   /**
    * options is the weighted vote options.
    *
@@ -14372,11 +14372,11 @@ export interface CosmosGovV1Beta1Vote {
      * @default "VOTE_OPTION_UNSPECIFIED"
      */
     option?:
-      | "VOTE_OPTION_UNSPECIFIED"
-      | "VOTE_OPTION_YES"
-      | "VOTE_OPTION_ABSTAIN"
-      | "VOTE_OPTION_NO"
-      | "VOTE_OPTION_NO_WITH_VETO";
+      | 'VOTE_OPTION_UNSPECIFIED'
+      | 'VOTE_OPTION_YES'
+      | 'VOTE_OPTION_ABSTAIN'
+      | 'VOTE_OPTION_NO'
+      | 'VOTE_OPTION_NO_WITH_VETO';
     /** weight is the vote weight associated with the vote option. */
     weight?: string;
   }[];
@@ -14399,11 +14399,11 @@ export interface CosmosGovV1Beta1WeightedVoteOption {
    * @default "VOTE_OPTION_UNSPECIFIED"
    */
   option?:
-    | "VOTE_OPTION_UNSPECIFIED"
-    | "VOTE_OPTION_YES"
-    | "VOTE_OPTION_ABSTAIN"
-    | "VOTE_OPTION_NO"
-    | "VOTE_OPTION_NO_WITH_VETO";
+    | 'VOTE_OPTION_UNSPECIFIED'
+    | 'VOTE_OPTION_YES'
+    | 'VOTE_OPTION_ABSTAIN'
+    | 'VOTE_OPTION_NO'
+    | 'VOTE_OPTION_NO_WITH_VETO';
   /** weight is the vote weight associated with the vote option. */
   weight?: string;
 }
@@ -14569,12 +14569,12 @@ export interface CosmosGovV1Proposal {
    * @default "PROPOSAL_STATUS_UNSPECIFIED"
    */
   status?:
-    | "PROPOSAL_STATUS_UNSPECIFIED"
-    | "PROPOSAL_STATUS_DEPOSIT_PERIOD"
-    | "PROPOSAL_STATUS_VOTING_PERIOD"
-    | "PROPOSAL_STATUS_PASSED"
-    | "PROPOSAL_STATUS_REJECTED"
-    | "PROPOSAL_STATUS_FAILED";
+    | 'PROPOSAL_STATUS_UNSPECIFIED'
+    | 'PROPOSAL_STATUS_DEPOSIT_PERIOD'
+    | 'PROPOSAL_STATUS_VOTING_PERIOD'
+    | 'PROPOSAL_STATUS_PASSED'
+    | 'PROPOSAL_STATUS_REJECTED'
+    | 'PROPOSAL_STATUS_FAILED';
   /**
    * final_tally_result is the final tally result of the proposal. When
    * querying a proposal via gRPC, this field is not populated until the
@@ -14885,12 +14885,12 @@ export interface CosmosGovV1QueryProposalResponse {
      * @default "PROPOSAL_STATUS_UNSPECIFIED"
      */
     status?:
-      | "PROPOSAL_STATUS_UNSPECIFIED"
-      | "PROPOSAL_STATUS_DEPOSIT_PERIOD"
-      | "PROPOSAL_STATUS_VOTING_PERIOD"
-      | "PROPOSAL_STATUS_PASSED"
-      | "PROPOSAL_STATUS_REJECTED"
-      | "PROPOSAL_STATUS_FAILED";
+      | 'PROPOSAL_STATUS_UNSPECIFIED'
+      | 'PROPOSAL_STATUS_DEPOSIT_PERIOD'
+      | 'PROPOSAL_STATUS_VOTING_PERIOD'
+      | 'PROPOSAL_STATUS_PASSED'
+      | 'PROPOSAL_STATUS_REJECTED'
+      | 'PROPOSAL_STATUS_FAILED';
     /**
      * final_tally_result is the final tally result of the proposal. When
      * querying a proposal via gRPC, this field is not populated until the
@@ -15020,12 +15020,12 @@ export interface CosmosGovV1QueryProposalsResponse {
      * @default "PROPOSAL_STATUS_UNSPECIFIED"
      */
     status?:
-      | "PROPOSAL_STATUS_UNSPECIFIED"
-      | "PROPOSAL_STATUS_DEPOSIT_PERIOD"
-      | "PROPOSAL_STATUS_VOTING_PERIOD"
-      | "PROPOSAL_STATUS_PASSED"
-      | "PROPOSAL_STATUS_REJECTED"
-      | "PROPOSAL_STATUS_FAILED";
+      | 'PROPOSAL_STATUS_UNSPECIFIED'
+      | 'PROPOSAL_STATUS_DEPOSIT_PERIOD'
+      | 'PROPOSAL_STATUS_VOTING_PERIOD'
+      | 'PROPOSAL_STATUS_PASSED'
+      | 'PROPOSAL_STATUS_REJECTED'
+      | 'PROPOSAL_STATUS_FAILED';
     /**
      * final_tally_result is the final tally result of the proposal. When
      * querying a proposal via gRPC, this field is not populated until the
@@ -15152,11 +15152,11 @@ export interface CosmosGovV1QueryVoteResponse {
        * @default "VOTE_OPTION_UNSPECIFIED"
        */
       option?:
-        | "VOTE_OPTION_UNSPECIFIED"
-        | "VOTE_OPTION_YES"
-        | "VOTE_OPTION_ABSTAIN"
-        | "VOTE_OPTION_NO"
-        | "VOTE_OPTION_NO_WITH_VETO";
+        | 'VOTE_OPTION_UNSPECIFIED'
+        | 'VOTE_OPTION_YES'
+        | 'VOTE_OPTION_ABSTAIN'
+        | 'VOTE_OPTION_NO'
+        | 'VOTE_OPTION_NO_WITH_VETO';
       /** weight is the vote weight associated with the vote option. */
       weight?: string;
     }[];
@@ -15186,11 +15186,11 @@ export interface CosmosGovV1QueryVotesResponse {
        * @default "VOTE_OPTION_UNSPECIFIED"
        */
       option?:
-        | "VOTE_OPTION_UNSPECIFIED"
-        | "VOTE_OPTION_YES"
-        | "VOTE_OPTION_ABSTAIN"
-        | "VOTE_OPTION_NO"
-        | "VOTE_OPTION_NO_WITH_VETO";
+        | 'VOTE_OPTION_UNSPECIFIED'
+        | 'VOTE_OPTION_YES'
+        | 'VOTE_OPTION_ABSTAIN'
+        | 'VOTE_OPTION_NO'
+        | 'VOTE_OPTION_NO_WITH_VETO';
       /** weight is the vote weight associated with the vote option. */
       weight?: string;
     }[];
@@ -15265,11 +15265,11 @@ export interface CosmosGovV1Vote {
      * @default "VOTE_OPTION_UNSPECIFIED"
      */
     option?:
-      | "VOTE_OPTION_UNSPECIFIED"
-      | "VOTE_OPTION_YES"
-      | "VOTE_OPTION_ABSTAIN"
-      | "VOTE_OPTION_NO"
-      | "VOTE_OPTION_NO_WITH_VETO";
+      | 'VOTE_OPTION_UNSPECIFIED'
+      | 'VOTE_OPTION_YES'
+      | 'VOTE_OPTION_ABSTAIN'
+      | 'VOTE_OPTION_NO'
+      | 'VOTE_OPTION_NO_WITH_VETO';
     /** weight is the vote weight associated with the vote option. */
     weight?: string;
   }[];
@@ -15293,11 +15293,11 @@ export interface CosmosGovV1WeightedVoteOption {
    * @default "VOTE_OPTION_UNSPECIFIED"
    */
   option?:
-    | "VOTE_OPTION_UNSPECIFIED"
-    | "VOTE_OPTION_YES"
-    | "VOTE_OPTION_ABSTAIN"
-    | "VOTE_OPTION_NO"
-    | "VOTE_OPTION_NO_WITH_VETO";
+    | 'VOTE_OPTION_UNSPECIFIED'
+    | 'VOTE_OPTION_YES'
+    | 'VOTE_OPTION_ABSTAIN'
+    | 'VOTE_OPTION_NO'
+    | 'VOTE_OPTION_NO_WITH_VETO';
   /** weight is the vote weight associated with the vote option. */
   weight?: string;
 }
@@ -15725,10 +15725,10 @@ export interface CosmosTxV1Beta1BroadcastTxRequest {
    * @default "BROADCAST_MODE_UNSPECIFIED"
    */
   mode?:
-    | "BROADCAST_MODE_UNSPECIFIED"
-    | "BROADCAST_MODE_BLOCK"
-    | "BROADCAST_MODE_SYNC"
-    | "BROADCAST_MODE_ASYNC";
+    | 'BROADCAST_MODE_UNSPECIFIED'
+    | 'BROADCAST_MODE_BLOCK'
+    | 'BROADCAST_MODE_SYNC'
+    | 'BROADCAST_MODE_ASYNC';
 }
 
 /**
@@ -16078,10 +16078,10 @@ export interface CosmosTxV1Beta1GetBlockWithTxsResponse {
              * @default "SIGNED_MSG_TYPE_UNKNOWN"
              */
             type?:
-              | "SIGNED_MSG_TYPE_UNKNOWN"
-              | "SIGNED_MSG_TYPE_PREVOTE"
-              | "SIGNED_MSG_TYPE_PRECOMMIT"
-              | "SIGNED_MSG_TYPE_PROPOSAL";
+              | 'SIGNED_MSG_TYPE_UNKNOWN'
+              | 'SIGNED_MSG_TYPE_PREVOTE'
+              | 'SIGNED_MSG_TYPE_PRECOMMIT'
+              | 'SIGNED_MSG_TYPE_PROPOSAL';
             /** @format int64 */
             height?: string;
             /** @format int32 */
@@ -16137,10 +16137,10 @@ export interface CosmosTxV1Beta1GetBlockWithTxsResponse {
              * @default "SIGNED_MSG_TYPE_UNKNOWN"
              */
             type?:
-              | "SIGNED_MSG_TYPE_UNKNOWN"
-              | "SIGNED_MSG_TYPE_PREVOTE"
-              | "SIGNED_MSG_TYPE_PRECOMMIT"
-              | "SIGNED_MSG_TYPE_PROPOSAL";
+              | 'SIGNED_MSG_TYPE_UNKNOWN'
+              | 'SIGNED_MSG_TYPE_PREVOTE'
+              | 'SIGNED_MSG_TYPE_PRECOMMIT'
+              | 'SIGNED_MSG_TYPE_PROPOSAL';
             /** @format int64 */
             height?: string;
             /** @format int32 */
@@ -16277,10 +16277,10 @@ export interface CosmosTxV1Beta1GetBlockWithTxsResponse {
                    * @default "BLOCK_ID_FLAG_UNKNOWN"
                    */
                   block_id_flag?:
-                    | "BLOCK_ID_FLAG_UNKNOWN"
-                    | "BLOCK_ID_FLAG_ABSENT"
-                    | "BLOCK_ID_FLAG_COMMIT"
-                    | "BLOCK_ID_FLAG_NIL";
+                    | 'BLOCK_ID_FLAG_UNKNOWN'
+                    | 'BLOCK_ID_FLAG_ABSENT'
+                    | 'BLOCK_ID_FLAG_COMMIT'
+                    | 'BLOCK_ID_FLAG_NIL';
                   /** @format byte */
                   validator_address?: string;
                   /** @format date-time */
@@ -16373,10 +16373,10 @@ export interface CosmosTxV1Beta1GetBlockWithTxsResponse {
          * @default "BLOCK_ID_FLAG_UNKNOWN"
          */
         block_id_flag?:
-          | "BLOCK_ID_FLAG_UNKNOWN"
-          | "BLOCK_ID_FLAG_ABSENT"
-          | "BLOCK_ID_FLAG_COMMIT"
-          | "BLOCK_ID_FLAG_NIL";
+          | 'BLOCK_ID_FLAG_UNKNOWN'
+          | 'BLOCK_ID_FLAG_ABSENT'
+          | 'BLOCK_ID_FLAG_COMMIT'
+          | 'BLOCK_ID_FLAG_NIL';
         /** @format byte */
         validator_address?: string;
         /** @format date-time */
@@ -16888,12 +16888,12 @@ export interface CosmosTxV1Beta1ModeInfo {
      * @default "SIGN_MODE_UNSPECIFIED"
      */
     mode?:
-      | "SIGN_MODE_UNSPECIFIED"
-      | "SIGN_MODE_DIRECT"
-      | "SIGN_MODE_TEXTUAL"
-      | "SIGN_MODE_DIRECT_AUX"
-      | "SIGN_MODE_LEGACY_AMINO_JSON"
-      | "SIGN_MODE_EIP_191";
+      | 'SIGN_MODE_UNSPECIFIED'
+      | 'SIGN_MODE_DIRECT'
+      | 'SIGN_MODE_TEXTUAL'
+      | 'SIGN_MODE_DIRECT_AUX'
+      | 'SIGN_MODE_LEGACY_AMINO_JSON'
+      | 'SIGN_MODE_EIP_191';
   };
   /** multi represents a nested multisig signer */
   multi?: CosmosTxV1Beta1ModeInfoMulti;
@@ -16967,12 +16967,12 @@ export interface CosmosTxV1Beta1ModeInfoSingle {
    * @default "SIGN_MODE_UNSPECIFIED"
    */
   mode?:
-    | "SIGN_MODE_UNSPECIFIED"
-    | "SIGN_MODE_DIRECT"
-    | "SIGN_MODE_TEXTUAL"
-    | "SIGN_MODE_DIRECT_AUX"
-    | "SIGN_MODE_LEGACY_AMINO_JSON"
-    | "SIGN_MODE_EIP_191";
+    | 'SIGN_MODE_UNSPECIFIED'
+    | 'SIGN_MODE_DIRECT'
+    | 'SIGN_MODE_TEXTUAL'
+    | 'SIGN_MODE_DIRECT_AUX'
+    | 'SIGN_MODE_LEGACY_AMINO_JSON'
+    | 'SIGN_MODE_EIP_191';
 }
 
 /**
@@ -18699,13 +18699,13 @@ export interface IbcCoreChannelV1Channel {
    * @default "STATE_UNINITIALIZED_UNSPECIFIED"
    */
   state?:
-    | "STATE_UNINITIALIZED_UNSPECIFIED"
-    | "STATE_INIT"
-    | "STATE_TRYOPEN"
-    | "STATE_OPEN"
-    | "STATE_CLOSED"
-    | "STATE_FLUSHING"
-    | "STATE_FLUSHCOMPLETE";
+    | 'STATE_UNINITIALIZED_UNSPECIFIED'
+    | 'STATE_INIT'
+    | 'STATE_TRYOPEN'
+    | 'STATE_OPEN'
+    | 'STATE_CLOSED'
+    | 'STATE_FLUSHING'
+    | 'STATE_FLUSHCOMPLETE';
   /**
    * whether the channel is ordered or unordered
    * - ORDER_NONE_UNSPECIFIED: zero-value for channel ordering
@@ -18714,7 +18714,7 @@ export interface IbcCoreChannelV1Channel {
    *  - ORDER_ORDERED: packets are delivered exactly in the order which they were sent
    * @default "ORDER_NONE_UNSPECIFIED"
    */
-  ordering?: "ORDER_NONE_UNSPECIFIED" | "ORDER_UNORDERED" | "ORDER_ORDERED";
+  ordering?: 'ORDER_NONE_UNSPECIFIED' | 'ORDER_UNORDERED' | 'ORDER_ORDERED';
   /** counterparty channel end */
   counterparty?: {
     /** port on the counterparty chain which owns the other end of the channel. */
@@ -18782,13 +18782,13 @@ export interface IbcCoreChannelV1IdentifiedChannel {
    * @default "STATE_UNINITIALIZED_UNSPECIFIED"
    */
   state?:
-    | "STATE_UNINITIALIZED_UNSPECIFIED"
-    | "STATE_INIT"
-    | "STATE_TRYOPEN"
-    | "STATE_OPEN"
-    | "STATE_CLOSED"
-    | "STATE_FLUSHING"
-    | "STATE_FLUSHCOMPLETE";
+    | 'STATE_UNINITIALIZED_UNSPECIFIED'
+    | 'STATE_INIT'
+    | 'STATE_TRYOPEN'
+    | 'STATE_OPEN'
+    | 'STATE_CLOSED'
+    | 'STATE_FLUSHING'
+    | 'STATE_FLUSHCOMPLETE';
   /**
    * whether the channel is ordered or unordered
    * - ORDER_NONE_UNSPECIFIED: zero-value for channel ordering
@@ -18797,7 +18797,7 @@ export interface IbcCoreChannelV1IdentifiedChannel {
    *  - ORDER_ORDERED: packets are delivered exactly in the order which they were sent
    * @default "ORDER_NONE_UNSPECIFIED"
    */
-  ordering?: "ORDER_NONE_UNSPECIFIED" | "ORDER_UNORDERED" | "ORDER_ORDERED";
+  ordering?: 'ORDER_NONE_UNSPECIFIED' | 'ORDER_UNORDERED' | 'ORDER_ORDERED';
   /** counterparty channel end */
   counterparty?: {
     /** port on the counterparty chain which owns the other end of the channel. */
@@ -19281,13 +19281,13 @@ export interface IbcCoreChannelV1QueryChannelResponse {
      * @default "STATE_UNINITIALIZED_UNSPECIFIED"
      */
     state?:
-      | "STATE_UNINITIALIZED_UNSPECIFIED"
-      | "STATE_INIT"
-      | "STATE_TRYOPEN"
-      | "STATE_OPEN"
-      | "STATE_CLOSED"
-      | "STATE_FLUSHING"
-      | "STATE_FLUSHCOMPLETE";
+      | 'STATE_UNINITIALIZED_UNSPECIFIED'
+      | 'STATE_INIT'
+      | 'STATE_TRYOPEN'
+      | 'STATE_OPEN'
+      | 'STATE_CLOSED'
+      | 'STATE_FLUSHING'
+      | 'STATE_FLUSHCOMPLETE';
     /**
      * whether the channel is ordered or unordered
      * - ORDER_NONE_UNSPECIFIED: zero-value for channel ordering
@@ -19296,7 +19296,7 @@ export interface IbcCoreChannelV1QueryChannelResponse {
      *  - ORDER_ORDERED: packets are delivered exactly in the order which they were sent
      * @default "ORDER_NONE_UNSPECIFIED"
      */
-    ordering?: "ORDER_NONE_UNSPECIFIED" | "ORDER_UNORDERED" | "ORDER_ORDERED";
+    ordering?: 'ORDER_NONE_UNSPECIFIED' | 'ORDER_UNORDERED' | 'ORDER_ORDERED';
     /** counterparty channel end */
     counterparty?: {
       /** port on the counterparty chain which owns the other end of the channel. */
@@ -19367,13 +19367,13 @@ export interface IbcCoreChannelV1QueryChannelsResponse {
      * @default "STATE_UNINITIALIZED_UNSPECIFIED"
      */
     state?:
-      | "STATE_UNINITIALIZED_UNSPECIFIED"
-      | "STATE_INIT"
-      | "STATE_TRYOPEN"
-      | "STATE_OPEN"
-      | "STATE_CLOSED"
-      | "STATE_FLUSHING"
-      | "STATE_FLUSHCOMPLETE";
+      | 'STATE_UNINITIALIZED_UNSPECIFIED'
+      | 'STATE_INIT'
+      | 'STATE_TRYOPEN'
+      | 'STATE_OPEN'
+      | 'STATE_CLOSED'
+      | 'STATE_FLUSHING'
+      | 'STATE_FLUSHCOMPLETE';
     /**
      * whether the channel is ordered or unordered
      * - ORDER_NONE_UNSPECIFIED: zero-value for channel ordering
@@ -19382,7 +19382,7 @@ export interface IbcCoreChannelV1QueryChannelsResponse {
      *  - ORDER_ORDERED: packets are delivered exactly in the order which they were sent
      * @default "ORDER_NONE_UNSPECIFIED"
      */
-    ordering?: "ORDER_NONE_UNSPECIFIED" | "ORDER_UNORDERED" | "ORDER_ORDERED";
+    ordering?: 'ORDER_NONE_UNSPECIFIED' | 'ORDER_UNORDERED' | 'ORDER_ORDERED';
     /** counterparty channel end */
     counterparty?: {
       /** port on the counterparty chain which owns the other end of the channel. */
@@ -19480,13 +19480,13 @@ export interface IbcCoreChannelV1QueryConnectionChannelsResponse {
      * @default "STATE_UNINITIALIZED_UNSPECIFIED"
      */
     state?:
-      | "STATE_UNINITIALIZED_UNSPECIFIED"
-      | "STATE_INIT"
-      | "STATE_TRYOPEN"
-      | "STATE_OPEN"
-      | "STATE_CLOSED"
-      | "STATE_FLUSHING"
-      | "STATE_FLUSHCOMPLETE";
+      | 'STATE_UNINITIALIZED_UNSPECIFIED'
+      | 'STATE_INIT'
+      | 'STATE_TRYOPEN'
+      | 'STATE_OPEN'
+      | 'STATE_CLOSED'
+      | 'STATE_FLUSHING'
+      | 'STATE_FLUSHCOMPLETE';
     /**
      * whether the channel is ordered or unordered
      * - ORDER_NONE_UNSPECIFIED: zero-value for channel ordering
@@ -19495,7 +19495,7 @@ export interface IbcCoreChannelV1QueryConnectionChannelsResponse {
      *  - ORDER_ORDERED: packets are delivered exactly in the order which they were sent
      * @default "ORDER_NONE_UNSPECIFIED"
      */
-    ordering?: "ORDER_NONE_UNSPECIFIED" | "ORDER_UNORDERED" | "ORDER_ORDERED";
+    ordering?: 'ORDER_NONE_UNSPECIFIED' | 'ORDER_UNORDERED' | 'ORDER_ORDERED';
     /** counterparty channel end */
     counterparty?: {
       /** port on the counterparty chain which owns the other end of the channel. */
@@ -20024,7 +20024,7 @@ export interface IbcCoreChannelV1QueryUpgradeResponse {
        *  - ORDER_ORDERED: packets are delivered exactly in the order which they were sent
        * @default "ORDER_NONE_UNSPECIFIED"
        */
-      ordering?: "ORDER_NONE_UNSPECIFIED" | "ORDER_UNORDERED" | "ORDER_ORDERED";
+      ordering?: 'ORDER_NONE_UNSPECIFIED' | 'ORDER_UNORDERED' | 'ORDER_ORDERED';
       connection_hops?: string[];
       version?: string;
     };
@@ -20147,7 +20147,7 @@ export interface IbcCoreChannelV1Upgrade {
      *  - ORDER_ORDERED: packets are delivered exactly in the order which they were sent
      * @default "ORDER_NONE_UNSPECIFIED"
      */
-    ordering?: "ORDER_NONE_UNSPECIFIED" | "ORDER_UNORDERED" | "ORDER_ORDERED";
+    ordering?: 'ORDER_NONE_UNSPECIFIED' | 'ORDER_UNORDERED' | 'ORDER_ORDERED';
     connection_hops?: string[];
     version?: string;
   };
@@ -20201,7 +20201,7 @@ export interface IbcCoreChannelV1UpgradeFields {
    *  - ORDER_ORDERED: packets are delivered exactly in the order which they were sent
    * @default "ORDER_NONE_UNSPECIFIED"
    */
-  ordering?: "ORDER_NONE_UNSPECIFIED" | "ORDER_UNORDERED" | "ORDER_ORDERED";
+  ordering?: 'ORDER_NONE_UNSPECIFIED' | 'ORDER_UNORDERED' | 'ORDER_ORDERED';
   connection_hops?: string[];
   version?: string;
 }
@@ -20398,10 +20398,10 @@ export interface IbcCoreConnectionV1ConnectionEnd {
    * @default "STATE_UNINITIALIZED_UNSPECIFIED"
    */
   state?:
-    | "STATE_UNINITIALIZED_UNSPECIFIED"
-    | "STATE_INIT"
-    | "STATE_TRYOPEN"
-    | "STATE_OPEN";
+    | 'STATE_UNINITIALIZED_UNSPECIFIED'
+    | 'STATE_INIT'
+    | 'STATE_TRYOPEN'
+    | 'STATE_OPEN';
   /** counterparty chain associated with this connection. */
   counterparty?: {
     /**
@@ -20482,10 +20482,10 @@ export interface IbcCoreConnectionV1IdentifiedConnection {
    * @default "STATE_UNINITIALIZED_UNSPECIFIED"
    */
   state?:
-    | "STATE_UNINITIALIZED_UNSPECIFIED"
-    | "STATE_INIT"
-    | "STATE_TRYOPEN"
-    | "STATE_OPEN";
+    | 'STATE_UNINITIALIZED_UNSPECIFIED'
+    | 'STATE_INIT'
+    | 'STATE_TRYOPEN'
+    | 'STATE_OPEN';
   /** counterparty chain associated with this connection. */
   counterparty?: {
     /**
@@ -20934,10 +20934,10 @@ export interface IbcCoreConnectionV1QueryConnectionResponse {
      * @default "STATE_UNINITIALIZED_UNSPECIFIED"
      */
     state?:
-      | "STATE_UNINITIALIZED_UNSPECIFIED"
-      | "STATE_INIT"
-      | "STATE_TRYOPEN"
-      | "STATE_OPEN";
+      | 'STATE_UNINITIALIZED_UNSPECIFIED'
+      | 'STATE_INIT'
+      | 'STATE_TRYOPEN'
+      | 'STATE_OPEN';
     /** counterparty chain associated with this connection. */
     counterparty?: {
       /**
@@ -21023,10 +21023,10 @@ export interface IbcCoreConnectionV1QueryConnectionsResponse {
      * @default "STATE_UNINITIALIZED_UNSPECIFIED"
      */
     state?:
-      | "STATE_UNINITIALIZED_UNSPECIFIED"
-      | "STATE_INIT"
-      | "STATE_TRYOPEN"
-      | "STATE_OPEN";
+      | 'STATE_UNINITIALIZED_UNSPECIFIED'
+      | 'STATE_INIT'
+      | 'STATE_TRYOPEN'
+      | 'STATE_OPEN';
     /** counterparty chain associated with this connection. */
     counterparty?: {
       /**
@@ -22347,9 +22347,9 @@ export interface IbcCoreCommitmentV1MerklePath {
 }
 
 export type QueryParamsType = Record<string | number, any>;
-export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
+export type ResponseFormat = keyof Omit<Body, 'body' | 'bodyUsed'>;
 
-export interface FullRequestParams extends Omit<RequestInit, "body"> {
+export interface FullRequestParams extends Omit<RequestInit, 'body'> {
   /** set parameter to `true` for call `securityWorker` for this request */
   secure?: boolean;
   /** request path */
@@ -22370,14 +22370,14 @@ export interface FullRequestParams extends Omit<RequestInit, "body"> {
 
 export type RequestParams = Omit<
   FullRequestParams,
-  "body" | "method" | "query" | "path"
+  'body' | 'method' | 'query' | 'path'
 >;
 
 export interface ApiConfig<SecurityDataType = unknown> {
   baseUrl?: string;
-  baseApiParams?: Omit<RequestParams, "baseUrl" | "cancelToken" | "signal">;
+  baseApiParams?: Omit<RequestParams, 'baseUrl' | 'cancelToken' | 'signal'>;
   securityWorker?: (
-    securityData: SecurityDataType | null,
+    securityData: SecurityDataType | null
   ) => Promise<RequestParams | void> | RequestParams | void;
   customFetch?: typeof fetch;
 }
@@ -22391,26 +22391,26 @@ export interface HttpResponse<D extends unknown, E extends unknown = unknown>
 type CancelToken = Symbol | string | number;
 
 export enum ContentType {
-  Json = "application/json",
-  JsonApi = "application/vnd.api+json",
-  FormData = "multipart/form-data",
-  UrlEncoded = "application/x-www-form-urlencoded",
-  Text = "text/plain",
+  Json = 'application/json',
+  JsonApi = 'application/vnd.api+json',
+  FormData = 'multipart/form-data',
+  UrlEncoded = 'application/x-www-form-urlencoded',
+  Text = 'text/plain',
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public baseUrl: string = "";
+  public baseUrl: string = '';
   private securityData: SecurityDataType | null = null;
-  private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"];
+  private securityWorker?: ApiConfig<SecurityDataType>['securityWorker'];
   private abortControllers = new Map<CancelToken, AbortController>();
   private customFetch = (...fetchParams: Parameters<typeof fetch>) =>
     fetch(...fetchParams);
 
   private baseApiParams: RequestParams = {
-    credentials: "same-origin",
+    credentials: 'same-origin',
     headers: {},
-    redirect: "follow",
-    referrerPolicy: "no-referrer",
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
   };
 
   constructor(apiConfig: ApiConfig<SecurityDataType> = {}) {
@@ -22423,7 +22423,7 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected encodeQueryParam(key: string, value: any) {
     const encodedKey = encodeURIComponent(key);
-    return `${encodedKey}=${encodeURIComponent(typeof value === "number" ? value : `${value}`)}`;
+    return `${encodedKey}=${encodeURIComponent(typeof value === 'number' ? value : `${value}`)}`;
   }
 
   protected addQueryParam(query: QueryParamsType, key: string) {
@@ -22432,39 +22432,39 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected addArrayQueryParam(query: QueryParamsType, key: string) {
     const value = query[key];
-    return value.map((v: any) => this.encodeQueryParam(key, v)).join("&");
+    return value.map((v: any) => this.encodeQueryParam(key, v)).join('&');
   }
 
   protected toQueryString(rawQuery?: QueryParamsType): string {
     const query = rawQuery || {};
     const keys = Object.keys(query).filter(
-      (key) => "undefined" !== typeof query[key],
+      (key) => 'undefined' !== typeof query[key]
     );
     return keys
       .map((key) =>
         Array.isArray(query[key])
           ? this.addArrayQueryParam(query, key)
-          : this.addQueryParam(query, key),
+          : this.addQueryParam(query, key)
       )
-      .join("&");
+      .join('&');
   }
 
   protected addQueryParams(rawQuery?: QueryParamsType): string {
     const queryString = this.toQueryString(rawQuery);
-    return queryString ? `?${queryString}` : "";
+    return queryString ? `?${queryString}` : '';
   }
 
   private contentFormatters: Record<ContentType, (input: any) => any> = {
     [ContentType.Json]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.JsonApi]: (input: any) =>
-      input !== null && (typeof input === "object" || typeof input === "string")
+      input !== null && (typeof input === 'object' || typeof input === 'string')
         ? JSON.stringify(input)
         : input,
     [ContentType.Text]: (input: any) =>
-      input !== null && typeof input !== "string"
+      input !== null && typeof input !== 'string'
         ? JSON.stringify(input)
         : input,
     [ContentType.FormData]: (input: any) => {
@@ -22478,9 +22478,9 @@ export class HttpClient<SecurityDataType = unknown> {
           key,
           property instanceof Blob
             ? property
-            : typeof property === "object" && property !== null
+            : typeof property === 'object' && property !== null
               ? JSON.stringify(property)
-              : `${property}`,
+              : `${property}`
         );
         return formData;
       }, new FormData());
@@ -22490,7 +22490,7 @@ export class HttpClient<SecurityDataType = unknown> {
 
   protected mergeRequestParams(
     params1: RequestParams,
-    params2?: RequestParams,
+    params2?: RequestParams
   ): RequestParams {
     return {
       ...this.baseApiParams,
@@ -22505,7 +22505,7 @@ export class HttpClient<SecurityDataType = unknown> {
   }
 
   protected createAbortSignal = (
-    cancelToken: CancelToken,
+    cancelToken: CancelToken
   ): AbortSignal | undefined => {
     if (this.abortControllers.has(cancelToken)) {
       const abortController = this.abortControllers.get(cancelToken);
@@ -22541,7 +22541,7 @@ export class HttpClient<SecurityDataType = unknown> {
     ...params
   }: FullRequestParams): Promise<HttpResponse<T, E>> => {
     const secureParams =
-      ((typeof secure === "boolean" ? secure : this.baseApiParams.secure) &&
+      ((typeof secure === 'boolean' ? secure : this.baseApiParams.secure) &&
         this.securityWorker &&
         (await this.securityWorker(this.securityData))) ||
       {};
@@ -22551,13 +22551,13 @@ export class HttpClient<SecurityDataType = unknown> {
     const responseFormat = format || requestParams.format;
 
     return this.customFetch(
-      `${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`,
+      `${baseUrl || this.baseUrl || ''}${path}${queryString ? `?${queryString}` : ''}`,
       {
         ...requestParams,
         headers: {
           ...(requestParams.headers || {}),
           ...(type && type !== ContentType.FormData
-            ? { "Content-Type": type }
+            ? { 'Content-Type': type }
             : {}),
         },
         signal:
@@ -22565,10 +22565,10 @@ export class HttpClient<SecurityDataType = unknown> {
             ? this.createAbortSignal(cancelToken)
             : requestParams.signal) || null,
         body:
-          typeof body === "undefined" || body === null
+          typeof body === 'undefined' || body === null
             ? null
             : payloadFormatter(body),
-      },
+      }
     ).then(async (response) => {
       const r = response as HttpResponse<T, E>;
       r.data = null as unknown as T;
@@ -22627,35 +22627,35 @@ export class Api<
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -22676,10 +22676,10 @@ export class Api<
                * @default "ACCESS_TYPE_UNSPECIFIED"
                */
               permission?:
-                | "ACCESS_TYPE_UNSPECIFIED"
-                | "ACCESS_TYPE_NOBODY"
-                | "ACCESS_TYPE_EVERYBODY"
-                | "ACCESS_TYPE_ANY_OF_ADDRESSES";
+                | 'ACCESS_TYPE_UNSPECIFIED'
+                | 'ACCESS_TYPE_NOBODY'
+                | 'ACCESS_TYPE_EVERYBODY'
+                | 'ACCESS_TYPE_ANY_OF_ADDRESSES';
               addresses?: string[];
             };
           }[];
@@ -22745,7 +22745,7 @@ export class Api<
         }
       >({
         path: `/cosmwasm/wasm/v1/code`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -22779,10 +22779,10 @@ export class Api<
                * @default "ACCESS_TYPE_UNSPECIFIED"
                */
               permission?:
-                | "ACCESS_TYPE_UNSPECIFIED"
-                | "ACCESS_TYPE_NOBODY"
-                | "ACCESS_TYPE_EVERYBODY"
-                | "ACCESS_TYPE_ANY_OF_ADDRESSES";
+                | 'ACCESS_TYPE_UNSPECIFIED'
+                | 'ACCESS_TYPE_NOBODY'
+                | 'ACCESS_TYPE_EVERYBODY'
+                | 'ACCESS_TYPE_ANY_OF_ADDRESSES';
               addresses?: string[];
             };
           };
@@ -22834,7 +22834,7 @@ export class Api<
         }
       >({
         path: `/cosmwasm/wasm/v1/code/${codeId}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -22855,35 +22855,35 @@ export class Api<
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -22951,7 +22951,7 @@ export class Api<
         }
       >({
         path: `/cosmwasm/wasm/v1/code/${codeId}/contracts`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -22980,10 +22980,10 @@ export class Api<
                * @default "ACCESS_TYPE_UNSPECIFIED"
                */
               permission?:
-                | "ACCESS_TYPE_UNSPECIFIED"
-                | "ACCESS_TYPE_NOBODY"
-                | "ACCESS_TYPE_EVERYBODY"
-                | "ACCESS_TYPE_ANY_OF_ADDRESSES";
+                | 'ACCESS_TYPE_UNSPECIFIED'
+                | 'ACCESS_TYPE_NOBODY'
+                | 'ACCESS_TYPE_EVERYBODY'
+                | 'ACCESS_TYPE_ANY_OF_ADDRESSES';
               addresses?: string[];
             };
             /**
@@ -22995,10 +22995,10 @@ export class Api<
              * @default "ACCESS_TYPE_UNSPECIFIED"
              */
             instantiate_default_permission?:
-              | "ACCESS_TYPE_UNSPECIFIED"
-              | "ACCESS_TYPE_NOBODY"
-              | "ACCESS_TYPE_EVERYBODY"
-              | "ACCESS_TYPE_ANY_OF_ADDRESSES";
+              | 'ACCESS_TYPE_UNSPECIFIED'
+              | 'ACCESS_TYPE_NOBODY'
+              | 'ACCESS_TYPE_EVERYBODY'
+              | 'ACCESS_TYPE_ANY_OF_ADDRESSES';
           };
         },
         {
@@ -23046,7 +23046,7 @@ export class Api<
         }
       >({
         path: `/cosmwasm/wasm/v1/codes/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -23066,35 +23066,35 @@ export class Api<
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -23161,7 +23161,7 @@ export class Api<
         }
       >({
         path: `/cosmwasm/wasm/v1/codes/pinned`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -23189,7 +23189,7 @@ export class Api<
          */
         init_args?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -23241,7 +23241,7 @@ export class Api<
         }
       >({
         path: `/cosmwasm/wasm/v1/contract/build_address`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -23458,7 +23458,7 @@ export class Api<
         }
       >({
         path: `/cosmwasm/wasm/v1/contract/${address}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -23479,35 +23479,35 @@ export class Api<
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -23521,10 +23521,10 @@ export class Api<
              * @default "CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED"
              */
             operation?:
-              | "CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED"
-              | "CONTRACT_CODE_HISTORY_OPERATION_TYPE_INIT"
-              | "CONTRACT_CODE_HISTORY_OPERATION_TYPE_MIGRATE"
-              | "CONTRACT_CODE_HISTORY_OPERATION_TYPE_GENESIS";
+              | 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_UNSPECIFIED'
+              | 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_INIT'
+              | 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_MIGRATE'
+              | 'CONTRACT_CODE_HISTORY_OPERATION_TYPE_GENESIS';
             /**
              * CodeID is the reference to the stored WASM code
              * @format uint64
@@ -23609,7 +23609,7 @@ export class Api<
         }
       >({
         path: `/cosmwasm/wasm/v1/contract/${address}/history`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -23625,7 +23625,7 @@ export class Api<
     rawContractState: (
       address: string,
       queryData: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -23680,7 +23680,7 @@ export class Api<
         }
       >({
         path: `/cosmwasm/wasm/v1/contract/${address}/raw/${queryData}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -23695,7 +23695,7 @@ export class Api<
     smartContractState: (
       address: string,
       queryData: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -23750,7 +23750,7 @@ export class Api<
         }
       >({
         path: `/cosmwasm/wasm/v1/contract/${address}/smart/${queryData}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -23771,35 +23771,35 @@ export class Api<
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -23877,7 +23877,7 @@ export class Api<
         }
       >({
         path: `/cosmwasm/wasm/v1/contract/${address}/state`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -23899,35 +23899,35 @@ export class Api<
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -23995,7 +23995,7 @@ export class Api<
         }
       >({
         path: `/cosmwasm/wasm/v1/contracts/creator/${creatorAddress}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -24036,7 +24036,7 @@ DenomAuthorityMetadata for a particular denom.
         }
       >({
         path: `/kiichain/tokenfactory/v1beta1/denoms/${denom}/authority_metadata`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24067,7 +24067,7 @@ denominations owned by a specific admin.
         }
       >({
         path: `/kiichain/tokenfactory/v1beta1/denoms_from_admin/${admin}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24098,7 +24098,7 @@ denominations created by a specific admin/creator.
         }
       >({
         path: `/kiichain/tokenfactory/v1beta1/denoms_from_creator/${creator}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24142,7 +24142,7 @@ parameters.
         }
       >({
         path: `/kiichain/tokenfactory/v1beta1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24172,7 +24172,7 @@ parameters.
         }
       >({
         path: `/kiichain/oracle/v1beta1/denoms/actives`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24214,7 +24214,7 @@ parameters.
         }
       >({
         path: `/kiichain/oracle/v1beta1/denoms/exchange_rates`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24260,7 +24260,7 @@ parameters.
         }
       >({
         path: `/kiichain/oracle/v1beta1/denoms/price_snapshot_history`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24300,7 +24300,7 @@ Twaps returns the list of the average price over a specific period of time and d
         }
       >({
         path: `/kiichain/oracle/v1beta1/denoms/twaps/${lookbackSeconds}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24330,7 +24330,7 @@ Twaps returns the list of the average price over a specific period of time and d
         }
       >({
         path: `/kiichain/oracle/v1beta1/denoms/vote_targets`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24369,7 +24369,7 @@ Twaps returns the list of the average price over a specific period of time and d
         }
       >({
         path: `/kiichain/oracle/v1beta1/denoms/${denom}/exchange_rate`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24444,7 +24444,7 @@ Twaps returns the list of the average price over a specific period of time and d
         }
       >({
         path: `/kiichain/oracle/v1beta1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24478,7 +24478,7 @@ Twaps returns the list of the average price over a specific period of time and d
         }
       >({
         path: `/kiichain/oracle/v1beta1/slash_window`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24509,7 +24509,7 @@ Twaps returns the list of the average price over a specific period of time and d
         }
       >({
         path: `/kiichain/oracle/v1beta1/validators/${validatorAddr}/feeder`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24547,7 +24547,7 @@ Twaps returns the list of the average price over a specific period of time and d
         }
       >({
         path: `/kiichain/oracle/v1beta1/validators/${validatorAddr}/vote_penalty_counter`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24582,7 +24582,7 @@ parameters.
         }
       >({
         path: `/kiichain/rewards/v1beta1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24649,7 +24649,7 @@ ReleaseSchedule data.
         }
       >({
         path: `/kiichain/rewards/v1beta1/release-schedule`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24686,7 +24686,7 @@ RewardPool data.
         }
       >({
         path: `/kiichain/rewards/v1beta1/reward-pool`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24741,7 +24741,7 @@ RewardPool data.
         }
       >({
         path: `/kiichain/feeabstraction/v1beta1/fee_tokens`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -24794,7 +24794,7 @@ RewardPool data.
         }
       >({
         path: `/kiichain/feeabstraction/v1beta1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
   };
@@ -24816,33 +24816,33 @@ RewardPool data.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
         /**
          * resolve_denom is the flag to resolve the denom into a human-readable form from the metadata.
          *
@@ -24850,7 +24850,7 @@ RewardPool data.
          */
         resolve_denom?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -24889,7 +24889,7 @@ RewardPool data.
         }
       >({
         path: `/cosmos/bank/v1beta1/balances/${address}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -24908,7 +24908,7 @@ RewardPool data.
         /** denom is the coin denom to query balances for. */
         denom?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -24936,7 +24936,7 @@ RewardPool data.
         }
       >({
         path: `/cosmos/bank/v1beta1/balances/${address}/by_denom`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -24959,35 +24959,35 @@ denomination.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -25035,7 +25035,7 @@ denomination.
         }
       >({
         path: `/cosmos/bank/v1beta1/denom_owners/${denom}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -25059,35 +25059,35 @@ denomination.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -25135,7 +25135,7 @@ denomination.
         }
       >({
         path: `/cosmos/bank/v1beta1/denom_owners_by_query`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -25157,35 +25157,35 @@ denominations.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -25271,7 +25271,7 @@ denominations.
         }
       >({
         path: `/cosmos/bank/v1beta1/denoms_metadata`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -25356,7 +25356,7 @@ denominations.
         }
       >({
         path: `/cosmos/bank/v1beta1/denoms_metadata/${denom}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -25373,7 +25373,7 @@ denominations.
         /** denom is the coin denom to query the metadata for. */
         denom?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -25446,7 +25446,7 @@ denominations.
         }
       >({
         path: `/cosmos/bank/v1beta1/denoms_metadata_by_query_string`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -25491,7 +25491,7 @@ denominations.
         }
       >({
         path: `/cosmos/bank/v1beta1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -25513,35 +25513,35 @@ denominations.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -25582,7 +25582,7 @@ denominations.
         }
       >({
         path: `/cosmos/bank/v1beta1/send_enabled`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -25605,35 +25605,35 @@ account.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -25672,7 +25672,7 @@ account.
         }
       >({
         path: `/cosmos/bank/v1beta1/spendable_balances/${address}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -25692,7 +25692,7 @@ a single account.
         /** denom is the coin denom to query balances for. */
         denom?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -25720,7 +25720,7 @@ a single account.
         }
       >({
         path: `/cosmos/bank/v1beta1/spendable_balances/${address}/by_denom`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -25741,35 +25741,35 @@ a single account.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -25812,7 +25812,7 @@ a single account.
         }
       >({
         path: `/cosmos/bank/v1beta1/supply`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -25830,7 +25830,7 @@ a single account.
         /** denom is the coin denom to query balances for. */
         denom?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -25858,7 +25858,7 @@ a single account.
         }
       >({
         path: `/cosmos/bank/v1beta1/supply/by_denom`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -25883,35 +25883,35 @@ a single account.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -26111,7 +26111,7 @@ a single account.
         }
       >({
         path: `/cosmos/authz/v1beta1/grants`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -26133,35 +26133,35 @@ a single account.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -26358,7 +26358,7 @@ a single account.
         }
       >({
         path: `/cosmos/authz/v1beta1/grants/grantee/${grantee}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -26380,35 +26380,35 @@ a single account.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -26605,7 +26605,7 @@ a single account.
         }
       >({
         path: `/cosmos/authz/v1beta1/grants/granter/${granter}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -26627,35 +26627,35 @@ a single account.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -26747,7 +26747,7 @@ a single account.
         }
       >({
         path: `/cosmos/staking/v1beta1/delegations/${delegatorAddr}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -26773,35 +26773,35 @@ a single account.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -26938,7 +26938,7 @@ a single account.
         }
       >({
         path: `/cosmos/staking/v1beta1/delegators/${delegatorAddr}/redelegations`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -26961,35 +26961,35 @@ delegator address.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -27088,7 +27088,7 @@ delegator address.
         }
       >({
         path: `/cosmos/staking/v1beta1/delegators/${delegatorAddr}/unbonding_delegations`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -27111,35 +27111,35 @@ address.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -27278,10 +27278,10 @@ address.
              * @default "BOND_STATUS_UNSPECIFIED"
              */
             status?:
-              | "BOND_STATUS_UNSPECIFIED"
-              | "BOND_STATUS_UNBONDED"
-              | "BOND_STATUS_UNBONDING"
-              | "BOND_STATUS_BONDED";
+              | 'BOND_STATUS_UNSPECIFIED'
+              | 'BOND_STATUS_UNBONDED'
+              | 'BOND_STATUS_UNBONDING'
+              | 'BOND_STATUS_BONDED';
             /** tokens define the delegated tokens (incl. self-delegation). */
             tokens?: string;
             /** delegator_shares defines total shares issued to a validator's delegators. */
@@ -27402,7 +27402,7 @@ address.
         }
       >({
         path: `/cosmos/staking/v1beta1/delegators/${delegatorAddr}/validators`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -27419,7 +27419,7 @@ pair.
     delegatorValidator: (
       delegatorAddr: string,
       validatorAddr: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -27567,10 +27567,10 @@ pair.
              * @default "BOND_STATUS_UNSPECIFIED"
              */
             status?:
-              | "BOND_STATUS_UNSPECIFIED"
-              | "BOND_STATUS_UNBONDED"
-              | "BOND_STATUS_UNBONDING"
-              | "BOND_STATUS_BONDED";
+              | 'BOND_STATUS_UNSPECIFIED'
+              | 'BOND_STATUS_UNBONDED'
+              | 'BOND_STATUS_UNBONDING'
+              | 'BOND_STATUS_BONDED';
             /** tokens define the delegated tokens (incl. self-delegation). */
             tokens?: string;
             /** delegator_shares defines total shares issued to a validator's delegators. */
@@ -27675,7 +27675,7 @@ pair.
         }
       >({
         path: `/cosmos/staking/v1beta1/delegators/${delegatorAddr}/validators/${validatorAddr}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -27885,10 +27885,10 @@ pair.
                * @default "BOND_STATUS_UNSPECIFIED"
                */
               status?:
-                | "BOND_STATUS_UNSPECIFIED"
-                | "BOND_STATUS_UNBONDED"
-                | "BOND_STATUS_UNBONDING"
-                | "BOND_STATUS_BONDED";
+                | 'BOND_STATUS_UNSPECIFIED'
+                | 'BOND_STATUS_UNBONDED'
+                | 'BOND_STATUS_UNBONDING'
+                | 'BOND_STATUS_BONDED';
               /** tokens define the delegated tokens (incl. self-delegation). */
               tokens?: string;
               /** delegator_shares defines total shares issued to a validator's delegators. */
@@ -27994,7 +27994,7 @@ pair.
         }
       >({
         path: `/cosmos/staking/v1beta1/historical_info/${height}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -28079,7 +28079,7 @@ pair.
         }
       >({
         path: `/cosmos/staking/v1beta1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -28145,7 +28145,7 @@ pair.
         }
       >({
         path: `/cosmos/staking/v1beta1/pool`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -28167,35 +28167,35 @@ pair.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -28334,10 +28334,10 @@ pair.
              * @default "BOND_STATUS_UNSPECIFIED"
              */
             status?:
-              | "BOND_STATUS_UNSPECIFIED"
-              | "BOND_STATUS_UNBONDED"
-              | "BOND_STATUS_UNBONDING"
-              | "BOND_STATUS_BONDED";
+              | 'BOND_STATUS_UNSPECIFIED'
+              | 'BOND_STATUS_UNBONDED'
+              | 'BOND_STATUS_UNBONDING'
+              | 'BOND_STATUS_BONDED';
             /** tokens define the delegated tokens (incl. self-delegation). */
             tokens?: string;
             /** delegator_shares defines total shares issued to a validator's delegators. */
@@ -28458,7 +28458,7 @@ pair.
         }
       >({
         path: `/cosmos/staking/v1beta1/validators`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -28618,10 +28618,10 @@ pair.
              * @default "BOND_STATUS_UNSPECIFIED"
              */
             status?:
-              | "BOND_STATUS_UNSPECIFIED"
-              | "BOND_STATUS_UNBONDED"
-              | "BOND_STATUS_UNBONDING"
-              | "BOND_STATUS_BONDED";
+              | 'BOND_STATUS_UNSPECIFIED'
+              | 'BOND_STATUS_UNBONDED'
+              | 'BOND_STATUS_UNBONDING'
+              | 'BOND_STATUS_BONDED';
             /** tokens define the delegated tokens (incl. self-delegation). */
             tokens?: string;
             /** delegator_shares defines total shares issued to a validator's delegators. */
@@ -28726,7 +28726,7 @@ pair.
         }
       >({
         path: `/cosmos/staking/v1beta1/validators/${validatorAddr}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -28747,35 +28747,35 @@ pair.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -28866,7 +28866,7 @@ pair.
         }
       >({
         path: `/cosmos/staking/v1beta1/validators/${validatorAddr}/delegations`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -28882,7 +28882,7 @@ pair.
     delegation: (
       validatorAddr: string,
       delegatorAddr: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -28961,7 +28961,7 @@ pair.
         }
       >({
         path: `/cosmos/staking/v1beta1/validators/${validatorAddr}/delegations/${delegatorAddr}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -28977,7 +28977,7 @@ pair.
     unbondingDelegation: (
       validatorAddr: string,
       delegatorAddr: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -29064,7 +29064,7 @@ pair.
         }
       >({
         path: `/cosmos/staking/v1beta1/validators/${validatorAddr}/delegations/${delegatorAddr}/unbonding_delegation`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -29085,35 +29085,35 @@ pair.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -29212,7 +29212,7 @@ pair.
         }
       >({
         path: `/cosmos/staking/v1beta1/validators/${validatorAddr}/unbonding_delegations`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -29279,7 +29279,7 @@ pair.
         }
       >({
         path: `/cosmos/upgrade/v1beta1/applied_plan/${name}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -29341,7 +29341,7 @@ pair.
         }
       >({
         path: `/cosmos/upgrade/v1beta1/authority`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -29556,7 +29556,7 @@ pair.
         }
       >({
         path: `/cosmos/upgrade/v1beta1/current_plan`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -29577,7 +29577,7 @@ pair.
          */
         module_name?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -29637,7 +29637,7 @@ pair.
         }
       >({
         path: `/cosmos/upgrade/v1beta1/module_versions`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -29709,7 +29709,7 @@ This rpc is deprecated now that IBC has its own replacement
         }
       >({
         path: `/cosmos/upgrade/v1beta1/upgraded_consensus_state/${lastHeight}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -29732,7 +29732,7 @@ a valid and supported path, including app, custom, p2p, and store.
         height?: string;
         prove?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -29809,7 +29809,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/base/tendermint/v1beta1/abci_query`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -29924,10 +29924,10 @@ a valid and supported path, including app, custom, p2p, and store.
                      * @default "SIGNED_MSG_TYPE_UNKNOWN"
                      */
                     type?:
-                      | "SIGNED_MSG_TYPE_UNKNOWN"
-                      | "SIGNED_MSG_TYPE_PREVOTE"
-                      | "SIGNED_MSG_TYPE_PRECOMMIT"
-                      | "SIGNED_MSG_TYPE_PROPOSAL";
+                      | 'SIGNED_MSG_TYPE_UNKNOWN'
+                      | 'SIGNED_MSG_TYPE_PREVOTE'
+                      | 'SIGNED_MSG_TYPE_PRECOMMIT'
+                      | 'SIGNED_MSG_TYPE_PROPOSAL';
                     /** @format int64 */
                     height?: string;
                     /** @format int32 */
@@ -29983,10 +29983,10 @@ a valid and supported path, including app, custom, p2p, and store.
                      * @default "SIGNED_MSG_TYPE_UNKNOWN"
                      */
                     type?:
-                      | "SIGNED_MSG_TYPE_UNKNOWN"
-                      | "SIGNED_MSG_TYPE_PREVOTE"
-                      | "SIGNED_MSG_TYPE_PRECOMMIT"
-                      | "SIGNED_MSG_TYPE_PROPOSAL";
+                      | 'SIGNED_MSG_TYPE_UNKNOWN'
+                      | 'SIGNED_MSG_TYPE_PREVOTE'
+                      | 'SIGNED_MSG_TYPE_PRECOMMIT'
+                      | 'SIGNED_MSG_TYPE_PROPOSAL';
                     /** @format int64 */
                     height?: string;
                     /** @format int32 */
@@ -30123,10 +30123,10 @@ a valid and supported path, including app, custom, p2p, and store.
                            * @default "BLOCK_ID_FLAG_UNKNOWN"
                            */
                           block_id_flag?:
-                            | "BLOCK_ID_FLAG_UNKNOWN"
-                            | "BLOCK_ID_FLAG_ABSENT"
-                            | "BLOCK_ID_FLAG_COMMIT"
-                            | "BLOCK_ID_FLAG_NIL";
+                            | 'BLOCK_ID_FLAG_UNKNOWN'
+                            | 'BLOCK_ID_FLAG_ABSENT'
+                            | 'BLOCK_ID_FLAG_COMMIT'
+                            | 'BLOCK_ID_FLAG_NIL';
                           /** @format byte */
                           validator_address?: string;
                           /** @format date-time */
@@ -30219,10 +30219,10 @@ a valid and supported path, including app, custom, p2p, and store.
                  * @default "BLOCK_ID_FLAG_UNKNOWN"
                  */
                 block_id_flag?:
-                  | "BLOCK_ID_FLAG_UNKNOWN"
-                  | "BLOCK_ID_FLAG_ABSENT"
-                  | "BLOCK_ID_FLAG_COMMIT"
-                  | "BLOCK_ID_FLAG_NIL";
+                  | 'BLOCK_ID_FLAG_UNKNOWN'
+                  | 'BLOCK_ID_FLAG_ABSENT'
+                  | 'BLOCK_ID_FLAG_COMMIT'
+                  | 'BLOCK_ID_FLAG_NIL';
                 /** @format byte */
                 validator_address?: string;
                 /** @format date-time */
@@ -30327,10 +30327,10 @@ a valid and supported path, including app, custom, p2p, and store.
                      * @default "SIGNED_MSG_TYPE_UNKNOWN"
                      */
                     type?:
-                      | "SIGNED_MSG_TYPE_UNKNOWN"
-                      | "SIGNED_MSG_TYPE_PREVOTE"
-                      | "SIGNED_MSG_TYPE_PRECOMMIT"
-                      | "SIGNED_MSG_TYPE_PROPOSAL";
+                      | 'SIGNED_MSG_TYPE_UNKNOWN'
+                      | 'SIGNED_MSG_TYPE_PREVOTE'
+                      | 'SIGNED_MSG_TYPE_PRECOMMIT'
+                      | 'SIGNED_MSG_TYPE_PROPOSAL';
                     /** @format int64 */
                     height?: string;
                     /** @format int32 */
@@ -30386,10 +30386,10 @@ a valid and supported path, including app, custom, p2p, and store.
                      * @default "SIGNED_MSG_TYPE_UNKNOWN"
                      */
                     type?:
-                      | "SIGNED_MSG_TYPE_UNKNOWN"
-                      | "SIGNED_MSG_TYPE_PREVOTE"
-                      | "SIGNED_MSG_TYPE_PRECOMMIT"
-                      | "SIGNED_MSG_TYPE_PROPOSAL";
+                      | 'SIGNED_MSG_TYPE_UNKNOWN'
+                      | 'SIGNED_MSG_TYPE_PREVOTE'
+                      | 'SIGNED_MSG_TYPE_PRECOMMIT'
+                      | 'SIGNED_MSG_TYPE_PROPOSAL';
                     /** @format int64 */
                     height?: string;
                     /** @format int32 */
@@ -30526,10 +30526,10 @@ a valid and supported path, including app, custom, p2p, and store.
                            * @default "BLOCK_ID_FLAG_UNKNOWN"
                            */
                           block_id_flag?:
-                            | "BLOCK_ID_FLAG_UNKNOWN"
-                            | "BLOCK_ID_FLAG_ABSENT"
-                            | "BLOCK_ID_FLAG_COMMIT"
-                            | "BLOCK_ID_FLAG_NIL";
+                            | 'BLOCK_ID_FLAG_UNKNOWN'
+                            | 'BLOCK_ID_FLAG_ABSENT'
+                            | 'BLOCK_ID_FLAG_COMMIT'
+                            | 'BLOCK_ID_FLAG_NIL';
                           /** @format byte */
                           validator_address?: string;
                           /** @format date-time */
@@ -30622,10 +30622,10 @@ a valid and supported path, including app, custom, p2p, and store.
                  * @default "BLOCK_ID_FLAG_UNKNOWN"
                  */
                 block_id_flag?:
-                  | "BLOCK_ID_FLAG_UNKNOWN"
-                  | "BLOCK_ID_FLAG_ABSENT"
-                  | "BLOCK_ID_FLAG_COMMIT"
-                  | "BLOCK_ID_FLAG_NIL";
+                  | 'BLOCK_ID_FLAG_UNKNOWN'
+                  | 'BLOCK_ID_FLAG_ABSENT'
+                  | 'BLOCK_ID_FLAG_COMMIT'
+                  | 'BLOCK_ID_FLAG_NIL';
                 /** @format byte */
                 validator_address?: string;
                 /** @format date-time */
@@ -30681,7 +30681,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/base/tendermint/v1beta1/blocks/latest`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -30795,10 +30795,10 @@ a valid and supported path, including app, custom, p2p, and store.
                      * @default "SIGNED_MSG_TYPE_UNKNOWN"
                      */
                     type?:
-                      | "SIGNED_MSG_TYPE_UNKNOWN"
-                      | "SIGNED_MSG_TYPE_PREVOTE"
-                      | "SIGNED_MSG_TYPE_PRECOMMIT"
-                      | "SIGNED_MSG_TYPE_PROPOSAL";
+                      | 'SIGNED_MSG_TYPE_UNKNOWN'
+                      | 'SIGNED_MSG_TYPE_PREVOTE'
+                      | 'SIGNED_MSG_TYPE_PRECOMMIT'
+                      | 'SIGNED_MSG_TYPE_PROPOSAL';
                     /** @format int64 */
                     height?: string;
                     /** @format int32 */
@@ -30854,10 +30854,10 @@ a valid and supported path, including app, custom, p2p, and store.
                      * @default "SIGNED_MSG_TYPE_UNKNOWN"
                      */
                     type?:
-                      | "SIGNED_MSG_TYPE_UNKNOWN"
-                      | "SIGNED_MSG_TYPE_PREVOTE"
-                      | "SIGNED_MSG_TYPE_PRECOMMIT"
-                      | "SIGNED_MSG_TYPE_PROPOSAL";
+                      | 'SIGNED_MSG_TYPE_UNKNOWN'
+                      | 'SIGNED_MSG_TYPE_PREVOTE'
+                      | 'SIGNED_MSG_TYPE_PRECOMMIT'
+                      | 'SIGNED_MSG_TYPE_PROPOSAL';
                     /** @format int64 */
                     height?: string;
                     /** @format int32 */
@@ -30994,10 +30994,10 @@ a valid and supported path, including app, custom, p2p, and store.
                            * @default "BLOCK_ID_FLAG_UNKNOWN"
                            */
                           block_id_flag?:
-                            | "BLOCK_ID_FLAG_UNKNOWN"
-                            | "BLOCK_ID_FLAG_ABSENT"
-                            | "BLOCK_ID_FLAG_COMMIT"
-                            | "BLOCK_ID_FLAG_NIL";
+                            | 'BLOCK_ID_FLAG_UNKNOWN'
+                            | 'BLOCK_ID_FLAG_ABSENT'
+                            | 'BLOCK_ID_FLAG_COMMIT'
+                            | 'BLOCK_ID_FLAG_NIL';
                           /** @format byte */
                           validator_address?: string;
                           /** @format date-time */
@@ -31090,10 +31090,10 @@ a valid and supported path, including app, custom, p2p, and store.
                  * @default "BLOCK_ID_FLAG_UNKNOWN"
                  */
                 block_id_flag?:
-                  | "BLOCK_ID_FLAG_UNKNOWN"
-                  | "BLOCK_ID_FLAG_ABSENT"
-                  | "BLOCK_ID_FLAG_COMMIT"
-                  | "BLOCK_ID_FLAG_NIL";
+                  | 'BLOCK_ID_FLAG_UNKNOWN'
+                  | 'BLOCK_ID_FLAG_ABSENT'
+                  | 'BLOCK_ID_FLAG_COMMIT'
+                  | 'BLOCK_ID_FLAG_NIL';
                 /** @format byte */
                 validator_address?: string;
                 /** @format date-time */
@@ -31198,10 +31198,10 @@ a valid and supported path, including app, custom, p2p, and store.
                      * @default "SIGNED_MSG_TYPE_UNKNOWN"
                      */
                     type?:
-                      | "SIGNED_MSG_TYPE_UNKNOWN"
-                      | "SIGNED_MSG_TYPE_PREVOTE"
-                      | "SIGNED_MSG_TYPE_PRECOMMIT"
-                      | "SIGNED_MSG_TYPE_PROPOSAL";
+                      | 'SIGNED_MSG_TYPE_UNKNOWN'
+                      | 'SIGNED_MSG_TYPE_PREVOTE'
+                      | 'SIGNED_MSG_TYPE_PRECOMMIT'
+                      | 'SIGNED_MSG_TYPE_PROPOSAL';
                     /** @format int64 */
                     height?: string;
                     /** @format int32 */
@@ -31257,10 +31257,10 @@ a valid and supported path, including app, custom, p2p, and store.
                      * @default "SIGNED_MSG_TYPE_UNKNOWN"
                      */
                     type?:
-                      | "SIGNED_MSG_TYPE_UNKNOWN"
-                      | "SIGNED_MSG_TYPE_PREVOTE"
-                      | "SIGNED_MSG_TYPE_PRECOMMIT"
-                      | "SIGNED_MSG_TYPE_PROPOSAL";
+                      | 'SIGNED_MSG_TYPE_UNKNOWN'
+                      | 'SIGNED_MSG_TYPE_PREVOTE'
+                      | 'SIGNED_MSG_TYPE_PRECOMMIT'
+                      | 'SIGNED_MSG_TYPE_PROPOSAL';
                     /** @format int64 */
                     height?: string;
                     /** @format int32 */
@@ -31397,10 +31397,10 @@ a valid and supported path, including app, custom, p2p, and store.
                            * @default "BLOCK_ID_FLAG_UNKNOWN"
                            */
                           block_id_flag?:
-                            | "BLOCK_ID_FLAG_UNKNOWN"
-                            | "BLOCK_ID_FLAG_ABSENT"
-                            | "BLOCK_ID_FLAG_COMMIT"
-                            | "BLOCK_ID_FLAG_NIL";
+                            | 'BLOCK_ID_FLAG_UNKNOWN'
+                            | 'BLOCK_ID_FLAG_ABSENT'
+                            | 'BLOCK_ID_FLAG_COMMIT'
+                            | 'BLOCK_ID_FLAG_NIL';
                           /** @format byte */
                           validator_address?: string;
                           /** @format date-time */
@@ -31493,10 +31493,10 @@ a valid and supported path, including app, custom, p2p, and store.
                  * @default "BLOCK_ID_FLAG_UNKNOWN"
                  */
                 block_id_flag?:
-                  | "BLOCK_ID_FLAG_UNKNOWN"
-                  | "BLOCK_ID_FLAG_ABSENT"
-                  | "BLOCK_ID_FLAG_COMMIT"
-                  | "BLOCK_ID_FLAG_NIL";
+                  | 'BLOCK_ID_FLAG_UNKNOWN'
+                  | 'BLOCK_ID_FLAG_ABSENT'
+                  | 'BLOCK_ID_FLAG_COMMIT'
+                  | 'BLOCK_ID_FLAG_NIL';
                 /** @format byte */
                 validator_address?: string;
                 /** @format date-time */
@@ -31552,7 +31552,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/base/tendermint/v1beta1/blocks/${height}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -31653,7 +31653,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/base/tendermint/v1beta1/node_info`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -31715,7 +31715,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/base/tendermint/v1beta1/syncing`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -31735,35 +31735,35 @@ a valid and supported path, including app, custom, p2p, and store.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -31962,7 +31962,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/base/tendermint/v1beta1/validatorsets/latest`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -31984,35 +31984,35 @@ a valid and supported path, including app, custom, p2p, and store.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -32211,7 +32211,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/base/tendermint/v1beta1/validatorsets/${height}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -32246,7 +32246,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/base/node/v1beta1/config`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -32285,7 +32285,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/base/node/v1beta1/status`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -32390,7 +32390,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/consensus/v1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -32499,7 +32499,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/feegrant/v1beta1/allowance/${granter}/${grantee}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -32520,35 +32520,35 @@ a valid and supported path, including app, custom, p2p, and store.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -32659,7 +32659,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/feegrant/v1beta1/allowances/${grantee}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -32681,35 +32681,35 @@ a valid and supported path, including app, custom, p2p, and store.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -32820,7 +32820,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/feegrant/v1beta1/issued/${granter}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -32869,7 +32869,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/evm/erc20/v1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -32889,35 +32889,35 @@ a valid and supported path, including app, custom, p2p, and store.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -32940,9 +32940,9 @@ a valid and supported path, including app, custom, p2p, and store.
              * @default "OWNER_UNSPECIFIED"
              */
             contract_owner?:
-              | "OWNER_UNSPECIFIED"
-              | "OWNER_MODULE"
-              | "OWNER_EXTERNAL";
+              | 'OWNER_UNSPECIFIED'
+              | 'OWNER_MODULE'
+              | 'OWNER_EXTERNAL';
           }[];
           /** pagination defines the pagination in the response. */
           pagination?: {
@@ -32974,7 +32974,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/evm/erc20/v1/token_pairs`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -33014,9 +33014,9 @@ a valid and supported path, including app, custom, p2p, and store.
              * @default "OWNER_UNSPECIFIED"
              */
             contract_owner?:
-              | "OWNER_UNSPECIFIED"
-              | "OWNER_MODULE"
-              | "OWNER_EXTERNAL";
+              | 'OWNER_UNSPECIFIED'
+              | 'OWNER_MODULE'
+              | 'OWNER_EXTERNAL';
           };
         },
         {
@@ -33032,7 +33032,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/evm/erc20/v1/token_pairs/${token}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -33102,7 +33102,7 @@ a valid and supported path, including app, custom, p2p, and store.
         }
       >({
         path: `/cosmos/evm/vm/v1/account/${address}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -33166,7 +33166,7 @@ account.
         }
       >({
         path: `/cosmos/evm/vm/v1/balances/${address}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -33231,7 +33231,7 @@ status.
         }
       >({
         path: `/cosmos/evm/vm/v1/base_fee`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -33297,7 +33297,7 @@ status.
         }
       >({
         path: `/cosmos/evm/vm/v1/codes/${address}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -33445,7 +33445,7 @@ status.
         }
       >({
         path: `/cosmos/evm/vm/v1/config`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -33518,7 +33518,7 @@ status.
         }
       >({
         path: `/cosmos/evm/vm/v1/cosmos_account/${address}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -33553,7 +33553,7 @@ status.
          */
         chain_id?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -33616,7 +33616,7 @@ status.
         }
       >({
         path: `/cosmos/evm/vm/v1/estimate_gas`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -33652,7 +33652,7 @@ status.
          */
         chain_id?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -33761,7 +33761,7 @@ status.
         }
       >({
         path: `/cosmos/evm/vm/v1/eth_call`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -33828,7 +33828,7 @@ when the evm denom is represented with a different precision.
         }
       >({
         path: `/cosmos/evm/vm/v1/min_gas_price`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -33961,9 +33961,9 @@ when the evm denom is represented with a different precision.
                  * @default "ACCESS_TYPE_PERMISSIONLESS"
                  */
                 access_type?:
-                  | "ACCESS_TYPE_PERMISSIONLESS"
-                  | "ACCESS_TYPE_RESTRICTED"
-                  | "ACCESS_TYPE_PERMISSIONED";
+                  | 'ACCESS_TYPE_PERMISSIONLESS'
+                  | 'ACCESS_TYPE_RESTRICTED'
+                  | 'ACCESS_TYPE_PERMISSIONED';
                 /**
                  * access_control_list defines defines different things depending on the
                  * AccessType:
@@ -33985,9 +33985,9 @@ when the evm denom is represented with a different precision.
                  * @default "ACCESS_TYPE_PERMISSIONLESS"
                  */
                 access_type?:
-                  | "ACCESS_TYPE_PERMISSIONLESS"
-                  | "ACCESS_TYPE_RESTRICTED"
-                  | "ACCESS_TYPE_PERMISSIONED";
+                  | 'ACCESS_TYPE_PERMISSIONLESS'
+                  | 'ACCESS_TYPE_RESTRICTED'
+                  | 'ACCESS_TYPE_PERMISSIONED';
                 /**
                  * access_control_list defines defines different things depending on the
                  * AccessType:
@@ -34052,7 +34052,7 @@ when the evm denom is represented with a different precision.
         }
       >({
         path: `/cosmos/evm/vm/v1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -34115,7 +34115,7 @@ when the evm denom is represented with a different precision.
         }
       >({
         path: `/cosmos/evm/vm/v1/storage/${address}/${key}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -34131,114 +34131,114 @@ when the evm denom is represented with a different precision.
     traceBlock: (
       query?: {
         /** tracer is a custom javascript tracer. */
-        "trace_config.tracer"?: string;
+        'trace_config.tracer'?: string;
         /**
          * timeout overrides the default timeout of 5 seconds for JavaScript-based
          * tracing calls.
          */
-        "trace_config.timeout"?: string;
+        'trace_config.timeout'?: string;
         /**
          * reexec defines the number of blocks the tracer is willing to go back.
          * @format uint64
          */
-        "trace_config.reexec"?: string;
+        'trace_config.reexec'?: string;
         /** disable_stack switches stack capture. */
-        "trace_config.disable_stack"?: boolean;
+        'trace_config.disable_stack'?: boolean;
         /** disable_storage switches storage capture. */
-        "trace_config.disable_storage"?: boolean;
+        'trace_config.disable_storage'?: boolean;
         /** debug can be used to print output during capture end. */
-        "trace_config.debug"?: boolean;
+        'trace_config.debug'?: boolean;
         /**
          * limit defines the maximum length of output, but zero means unlimited.
          * @format int32
          */
-        "trace_config.limit"?: number;
+        'trace_config.limit'?: number;
         /** homestead_block switch (nil no fork, 0 = already homestead). */
-        "trace_config.overrides.homestead_block"?: string;
+        'trace_config.overrides.homestead_block'?: string;
         /** dao_fork_block corresponds to TheDAO hard-fork switch block (nil no fork). */
-        "trace_config.overrides.dao_fork_block"?: string;
+        'trace_config.overrides.dao_fork_block'?: string;
         /**
          * dao_fork_support defines whether the nodes supports or opposes the DAO
          * hard-fork.
          */
-        "trace_config.overrides.dao_fork_support"?: boolean;
+        'trace_config.overrides.dao_fork_support'?: boolean;
         /**
          * eip150_block: EIP150 implements the Gas price changes
          * (https://github.com/ethereum/EIPs/issues/150) EIP150 HF block (nil no fork).
          */
-        "trace_config.overrides.eip150_block"?: string;
+        'trace_config.overrides.eip150_block'?: string;
         /**
          * eip150_hash: EIP150 HF hash (needed for header only clients as only gas
          * pricing changed).
          */
-        "trace_config.overrides.eip150_hash"?: string;
+        'trace_config.overrides.eip150_hash'?: string;
         /** eip155_block: EIP155Block HF block. */
-        "trace_config.overrides.eip155_block"?: string;
+        'trace_config.overrides.eip155_block'?: string;
         /** eip158_block: EIP158 HF block. */
-        "trace_config.overrides.eip158_block"?: string;
+        'trace_config.overrides.eip158_block'?: string;
         /**
          * byzantium_block: Byzantium switch block (nil no fork, 0 = already on
          * byzantium).
          */
-        "trace_config.overrides.byzantium_block"?: string;
+        'trace_config.overrides.byzantium_block'?: string;
         /**
          * constantinople_block: Constantinople switch block (nil no fork, 0 = already
          * activated).
          */
-        "trace_config.overrides.constantinople_block"?: string;
+        'trace_config.overrides.constantinople_block'?: string;
         /** petersburg_block: Petersburg switch block (nil same as Constantinople). */
-        "trace_config.overrides.petersburg_block"?: string;
+        'trace_config.overrides.petersburg_block'?: string;
         /**
          * istanbul_block: Istanbul switch block (nil no fork, 0 = already on
          * istanbul).
          */
-        "trace_config.overrides.istanbul_block"?: string;
+        'trace_config.overrides.istanbul_block'?: string;
         /**
          * muir_glacier_block: Eip-2384 (bomb delay) switch block (nil no fork, 0 =
          * already activated).
          */
-        "trace_config.overrides.muir_glacier_block"?: string;
+        'trace_config.overrides.muir_glacier_block'?: string;
         /** berlin_block: Berlin switch block (nil = no fork, 0 = already on berlin). */
-        "trace_config.overrides.berlin_block"?: string;
+        'trace_config.overrides.berlin_block'?: string;
         /** london_block: London switch block (nil = no fork, 0 = already on london). */
-        "trace_config.overrides.london_block"?: string;
+        'trace_config.overrides.london_block'?: string;
         /**
          * arrow_glacier_block: Eip-4345 (bomb delay) switch block (nil = no fork, 0 =
          * already activated).
          */
-        "trace_config.overrides.arrow_glacier_block"?: string;
+        'trace_config.overrides.arrow_glacier_block'?: string;
         /**
          * gray_glacier_block: EIP-5133 (bomb delay) switch block (nil = no fork, 0 =
          * already activated).
          */
-        "trace_config.overrides.gray_glacier_block"?: string;
+        'trace_config.overrides.gray_glacier_block'?: string;
         /**
          * merge_netsplit_block: Virtual fork after The Merge to use as a network
          * splitter.
          */
-        "trace_config.overrides.merge_netsplit_block"?: string;
+        'trace_config.overrides.merge_netsplit_block'?: string;
         /** shanghai_block switch block (nil = no fork, 0 = already on shanghai). */
-        "trace_config.overrides.shanghai_block"?: string;
+        'trace_config.overrides.shanghai_block'?: string;
         /** cancun_block switch block (nil = no fork, 0 = already on cancun). */
-        "trace_config.overrides.cancun_block"?: string;
+        'trace_config.overrides.cancun_block'?: string;
         /**
          * chain_id is the id of the chain (EIP-155).
          * @format uint64
          */
-        "trace_config.overrides.chain_id"?: string;
+        'trace_config.overrides.chain_id'?: string;
         /** denom is the denomination used on the EVM. */
-        "trace_config.overrides.denom"?: string;
+        'trace_config.overrides.denom'?: string;
         /**
          * decimals is the real decimal precision of the denomination used on the EVM.
          * @format uint64
          */
-        "trace_config.overrides.decimals"?: string;
+        'trace_config.overrides.decimals'?: string;
         /** enable_memory switches memory capture. */
-        "trace_config.enable_memory"?: boolean;
+        'trace_config.enable_memory'?: boolean;
         /** enable_return_data switches the capture of return data. */
-        "trace_config.enable_return_data"?: boolean;
+        'trace_config.enable_return_data'?: boolean;
         /** tracer_json_config configures the tracer using a JSON string. */
-        "trace_config.tracer_json_config"?: string;
+        'trace_config.tracer_json_config'?: string;
         /**
          * block_number of the traced block.
          * @format int64
@@ -34267,7 +34267,7 @@ when the evm denom is represented with a different precision.
          */
         block_max_gas?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -34322,7 +34322,7 @@ when the evm denom is represented with a different precision.
         }
       >({
         path: `/cosmos/evm/vm/v1/trace_block`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -34366,134 +34366,134 @@ when the evm denom is represented with a different precision.
          * Schemes other than `http`, `https` (or the empty scheme) might be
          * used with implementation specific semantics.
          */
-        "msg.data.type_url"?: string;
+        'msg.data.type_url'?: string;
         /**
          * Must be a valid serialized protocol buffer of the above specified type.
          * @format byte
          */
-        "msg.data.value"?: string;
+        'msg.data.value'?: string;
         /**
          * size is the encoded storage size of the transaction (DEPRECATED).
          * @format double
          */
-        "msg.size"?: number;
+        'msg.size'?: number;
         /** hash of the transaction in hex format. */
-        "msg.hash"?: string;
+        'msg.hash'?: string;
         /**
          * from is the ethereum signer address in hex format. This address value is
          * checked against the address derived from the signature (V, R, S) using the
          * secp256k1 elliptic curve.
          */
-        "msg.from"?: string;
+        'msg.from'?: string;
         /** tracer is a custom javascript tracer. */
-        "trace_config.tracer"?: string;
+        'trace_config.tracer'?: string;
         /**
          * timeout overrides the default timeout of 5 seconds for JavaScript-based
          * tracing calls.
          */
-        "trace_config.timeout"?: string;
+        'trace_config.timeout'?: string;
         /**
          * reexec defines the number of blocks the tracer is willing to go back.
          * @format uint64
          */
-        "trace_config.reexec"?: string;
+        'trace_config.reexec'?: string;
         /** disable_stack switches stack capture. */
-        "trace_config.disable_stack"?: boolean;
+        'trace_config.disable_stack'?: boolean;
         /** disable_storage switches storage capture. */
-        "trace_config.disable_storage"?: boolean;
+        'trace_config.disable_storage'?: boolean;
         /** debug can be used to print output during capture end. */
-        "trace_config.debug"?: boolean;
+        'trace_config.debug'?: boolean;
         /**
          * limit defines the maximum length of output, but zero means unlimited.
          * @format int32
          */
-        "trace_config.limit"?: number;
+        'trace_config.limit'?: number;
         /** homestead_block switch (nil no fork, 0 = already homestead). */
-        "trace_config.overrides.homestead_block"?: string;
+        'trace_config.overrides.homestead_block'?: string;
         /** dao_fork_block corresponds to TheDAO hard-fork switch block (nil no fork). */
-        "trace_config.overrides.dao_fork_block"?: string;
+        'trace_config.overrides.dao_fork_block'?: string;
         /**
          * dao_fork_support defines whether the nodes supports or opposes the DAO
          * hard-fork.
          */
-        "trace_config.overrides.dao_fork_support"?: boolean;
+        'trace_config.overrides.dao_fork_support'?: boolean;
         /**
          * eip150_block: EIP150 implements the Gas price changes
          * (https://github.com/ethereum/EIPs/issues/150) EIP150 HF block (nil no fork).
          */
-        "trace_config.overrides.eip150_block"?: string;
+        'trace_config.overrides.eip150_block'?: string;
         /**
          * eip150_hash: EIP150 HF hash (needed for header only clients as only gas
          * pricing changed).
          */
-        "trace_config.overrides.eip150_hash"?: string;
+        'trace_config.overrides.eip150_hash'?: string;
         /** eip155_block: EIP155Block HF block. */
-        "trace_config.overrides.eip155_block"?: string;
+        'trace_config.overrides.eip155_block'?: string;
         /** eip158_block: EIP158 HF block. */
-        "trace_config.overrides.eip158_block"?: string;
+        'trace_config.overrides.eip158_block'?: string;
         /**
          * byzantium_block: Byzantium switch block (nil no fork, 0 = already on
          * byzantium).
          */
-        "trace_config.overrides.byzantium_block"?: string;
+        'trace_config.overrides.byzantium_block'?: string;
         /**
          * constantinople_block: Constantinople switch block (nil no fork, 0 = already
          * activated).
          */
-        "trace_config.overrides.constantinople_block"?: string;
+        'trace_config.overrides.constantinople_block'?: string;
         /** petersburg_block: Petersburg switch block (nil same as Constantinople). */
-        "trace_config.overrides.petersburg_block"?: string;
+        'trace_config.overrides.petersburg_block'?: string;
         /**
          * istanbul_block: Istanbul switch block (nil no fork, 0 = already on
          * istanbul).
          */
-        "trace_config.overrides.istanbul_block"?: string;
+        'trace_config.overrides.istanbul_block'?: string;
         /**
          * muir_glacier_block: Eip-2384 (bomb delay) switch block (nil no fork, 0 =
          * already activated).
          */
-        "trace_config.overrides.muir_glacier_block"?: string;
+        'trace_config.overrides.muir_glacier_block'?: string;
         /** berlin_block: Berlin switch block (nil = no fork, 0 = already on berlin). */
-        "trace_config.overrides.berlin_block"?: string;
+        'trace_config.overrides.berlin_block'?: string;
         /** london_block: London switch block (nil = no fork, 0 = already on london). */
-        "trace_config.overrides.london_block"?: string;
+        'trace_config.overrides.london_block'?: string;
         /**
          * arrow_glacier_block: Eip-4345 (bomb delay) switch block (nil = no fork, 0 =
          * already activated).
          */
-        "trace_config.overrides.arrow_glacier_block"?: string;
+        'trace_config.overrides.arrow_glacier_block'?: string;
         /**
          * gray_glacier_block: EIP-5133 (bomb delay) switch block (nil = no fork, 0 =
          * already activated).
          */
-        "trace_config.overrides.gray_glacier_block"?: string;
+        'trace_config.overrides.gray_glacier_block'?: string;
         /**
          * merge_netsplit_block: Virtual fork after The Merge to use as a network
          * splitter.
          */
-        "trace_config.overrides.merge_netsplit_block"?: string;
+        'trace_config.overrides.merge_netsplit_block'?: string;
         /** shanghai_block switch block (nil = no fork, 0 = already on shanghai). */
-        "trace_config.overrides.shanghai_block"?: string;
+        'trace_config.overrides.shanghai_block'?: string;
         /** cancun_block switch block (nil = no fork, 0 = already on cancun). */
-        "trace_config.overrides.cancun_block"?: string;
+        'trace_config.overrides.cancun_block'?: string;
         /**
          * chain_id is the id of the chain (EIP-155).
          * @format uint64
          */
-        "trace_config.overrides.chain_id"?: string;
+        'trace_config.overrides.chain_id'?: string;
         /** denom is the denomination used on the EVM. */
-        "trace_config.overrides.denom"?: string;
+        'trace_config.overrides.denom'?: string;
         /**
          * decimals is the real decimal precision of the denomination used on the EVM.
          * @format uint64
          */
-        "trace_config.overrides.decimals"?: string;
+        'trace_config.overrides.decimals'?: string;
         /** enable_memory switches memory capture. */
-        "trace_config.enable_memory"?: boolean;
+        'trace_config.enable_memory'?: boolean;
         /** enable_return_data switches the capture of return data. */
-        "trace_config.enable_return_data"?: boolean;
+        'trace_config.enable_return_data'?: boolean;
         /** tracer_json_config configures the tracer using a JSON string. */
-        "trace_config.tracer_json_config"?: string;
+        'trace_config.tracer_json_config'?: string;
         /**
          * block_number of requested transaction.
          * @format int64
@@ -34522,7 +34522,7 @@ when the evm denom is represented with a different precision.
          */
         block_max_gas?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -34577,7 +34577,7 @@ when the evm denom is represented with a different precision.
         }
       >({
         path: `/cosmos/evm/vm/v1/trace_tx`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -34652,7 +34652,7 @@ Address.
         }
       >({
         path: `/cosmos/evm/vm/v1/validator_account/${consAddress}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -34683,7 +34683,7 @@ Address.
         }
       >({
         path: `/cosmos/evm/feemarket/v1/base_fee`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -34717,7 +34717,7 @@ Address.
         }
       >({
         path: `/cosmos/evm/feemarket/v1/block_gas`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -34784,7 +34784,7 @@ Address.
         }
       >({
         path: `/cosmos/evm/feemarket/v1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -34977,7 +34977,7 @@ Address.
         }
       >({
         path: `/cosmos/auth/v1beta1/account_info/${address}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -34997,35 +34997,35 @@ Address.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -35129,7 +35129,7 @@ Address.
         }
       >({
         path: `/cosmos/auth/v1beta1/accounts`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -35315,7 +35315,7 @@ Address.
         }
       >({
         path: `/cosmos/auth/v1beta1/accounts/${address}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -35338,7 +35338,7 @@ Address.
          */
         account_id?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -35389,7 +35389,7 @@ Address.
         }
       >({
         path: `/cosmos/auth/v1beta1/address_by_id/${id}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -35452,7 +35452,7 @@ Address.
         }
       >({
         path: `/cosmos/auth/v1beta1/bech32`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -35514,7 +35514,7 @@ Address.
         }
       >({
         path: `/cosmos/auth/v1beta1/bech32/${addressBytes}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -35577,7 +35577,7 @@ Address.
         }
       >({
         path: `/cosmos/auth/v1beta1/bech32/${addressString}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -35675,7 +35675,7 @@ Address.
         }
       >({
         path: `/cosmos/auth/v1beta1/module_accounts`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -35860,7 +35860,7 @@ Address.
         }
       >({
         path: `/cosmos/auth/v1beta1/module_accounts/${name}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -35934,7 +35934,7 @@ Address.
         }
       >({
         path: `/cosmos/auth/v1beta1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -35968,7 +35968,7 @@ Address.
         }
       >({
         path: `/cosmos/distribution/v1beta1/community_pool`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -35983,7 +35983,7 @@ validator.
  */
     delegationTotalRewards: (
       delegatorAddress: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -36014,7 +36014,7 @@ validator.
         }
       >({
         path: `/cosmos/distribution/v1beta1/delegators/${delegatorAddress}/rewards`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -36029,7 +36029,7 @@ validator.
     delegationRewards: (
       delegatorAddress: string,
       validatorAddress: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -36052,7 +36052,7 @@ validator.
         }
       >({
         path: `/cosmos/distribution/v1beta1/delegators/${delegatorAddress}/rewards/${validatorAddress}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -36066,7 +36066,7 @@ validator.
      */
     distributionDelegatorValidators: (
       delegatorAddress: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -36086,7 +36086,7 @@ validator.
         }
       >({
         path: `/cosmos/distribution/v1beta1/delegators/${delegatorAddress}/validators`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -36100,7 +36100,7 @@ validator.
      */
     delegatorWithdrawAddress: (
       delegatorAddress: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -36120,7 +36120,7 @@ validator.
         }
       >({
         path: `/cosmos/distribution/v1beta1/delegators/${delegatorAddress}/withdraw_address`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -36164,7 +36164,7 @@ validator.
         }
       >({
         path: `/cosmos/distribution/v1beta1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -36178,7 +36178,7 @@ validator.
      */
     validatorDistributionInfo: (
       validatorAddress: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -36208,7 +36208,7 @@ validator.
         }
       >({
         path: `/cosmos/distribution/v1beta1/validators/${validatorAddress}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -36222,7 +36222,7 @@ validator.
      */
     validatorCommission: (
       validatorAddress: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -36247,7 +36247,7 @@ validator.
         }
       >({
         path: `/cosmos/distribution/v1beta1/validators/${validatorAddress}/commission`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -36261,7 +36261,7 @@ validator.
      */
     validatorOutstandingRewards: (
       validatorAddress: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -36289,7 +36289,7 @@ validator.
         }
       >({
         path: `/cosmos/distribution/v1beta1/validators/${validatorAddress}/outstanding_rewards`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -36320,35 +36320,35 @@ validator.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -36388,7 +36388,7 @@ validator.
         }
       >({
         path: `/cosmos/distribution/v1beta1/validators/${validatorAddress}/slashes`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -36409,35 +36409,35 @@ validator.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -36541,7 +36541,7 @@ validator.
         }
       >({
         path: `/cosmos/evidence/v1beta1/evidence`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -36564,7 +36564,7 @@ validator.
          */
         evidence_hash?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -36738,7 +36738,7 @@ validator.
         }
       >({
         path: `/cosmos/evidence/v1beta1/evidence/${hash}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -36838,7 +36838,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1beta1/params/${paramsType}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -36869,12 +36869,12 @@ validator.
          * @default "PROPOSAL_STATUS_UNSPECIFIED"
          */
         proposal_status?:
-          | "PROPOSAL_STATUS_UNSPECIFIED"
-          | "PROPOSAL_STATUS_DEPOSIT_PERIOD"
-          | "PROPOSAL_STATUS_VOTING_PERIOD"
-          | "PROPOSAL_STATUS_PASSED"
-          | "PROPOSAL_STATUS_REJECTED"
-          | "PROPOSAL_STATUS_FAILED";
+          | 'PROPOSAL_STATUS_UNSPECIFIED'
+          | 'PROPOSAL_STATUS_DEPOSIT_PERIOD'
+          | 'PROPOSAL_STATUS_VOTING_PERIOD'
+          | 'PROPOSAL_STATUS_PASSED'
+          | 'PROPOSAL_STATUS_REJECTED'
+          | 'PROPOSAL_STATUS_FAILED';
         /** voter defines the voter address for the proposals. */
         voter?: string;
         /** depositor defines the deposit addresses from the proposals. */
@@ -36885,35 +36885,35 @@ validator.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -37053,12 +37053,12 @@ validator.
              * @default "PROPOSAL_STATUS_UNSPECIFIED"
              */
             status?:
-              | "PROPOSAL_STATUS_UNSPECIFIED"
-              | "PROPOSAL_STATUS_DEPOSIT_PERIOD"
-              | "PROPOSAL_STATUS_VOTING_PERIOD"
-              | "PROPOSAL_STATUS_PASSED"
-              | "PROPOSAL_STATUS_REJECTED"
-              | "PROPOSAL_STATUS_FAILED";
+              | 'PROPOSAL_STATUS_UNSPECIFIED'
+              | 'PROPOSAL_STATUS_DEPOSIT_PERIOD'
+              | 'PROPOSAL_STATUS_VOTING_PERIOD'
+              | 'PROPOSAL_STATUS_PASSED'
+              | 'PROPOSAL_STATUS_REJECTED'
+              | 'PROPOSAL_STATUS_FAILED';
             /**
              * final_tally_result is the final tally result of the proposal. When
              * querying a proposal via gRPC, this field is not populated until the
@@ -37162,7 +37162,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1beta1/proposals`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -37314,12 +37314,12 @@ validator.
              * @default "PROPOSAL_STATUS_UNSPECIFIED"
              */
             status?:
-              | "PROPOSAL_STATUS_UNSPECIFIED"
-              | "PROPOSAL_STATUS_DEPOSIT_PERIOD"
-              | "PROPOSAL_STATUS_VOTING_PERIOD"
-              | "PROPOSAL_STATUS_PASSED"
-              | "PROPOSAL_STATUS_REJECTED"
-              | "PROPOSAL_STATUS_FAILED";
+              | 'PROPOSAL_STATUS_UNSPECIFIED'
+              | 'PROPOSAL_STATUS_DEPOSIT_PERIOD'
+              | 'PROPOSAL_STATUS_VOTING_PERIOD'
+              | 'PROPOSAL_STATUS_PASSED'
+              | 'PROPOSAL_STATUS_REJECTED'
+              | 'PROPOSAL_STATUS_FAILED';
             /**
              * final_tally_result is the final tally result of the proposal. When
              * querying a proposal via gRPC, this field is not populated until the
@@ -37407,7 +37407,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1beta1/proposals/${proposalId}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -37428,35 +37428,35 @@ validator.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -37537,7 +37537,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1beta1/proposals/${proposalId}/deposits`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -37553,7 +37553,7 @@ validator.
     deposit: (
       proposalId: string,
       depositor: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -37621,7 +37621,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1beta1/proposals/${proposalId}/deposits/${depositor}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -37693,7 +37693,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1beta1/proposals/${proposalId}/tally`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -37714,35 +37714,35 @@ validator.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -37762,11 +37762,11 @@ validator.
              * @default "VOTE_OPTION_UNSPECIFIED"
              */
             option?:
-              | "VOTE_OPTION_UNSPECIFIED"
-              | "VOTE_OPTION_YES"
-              | "VOTE_OPTION_ABSTAIN"
-              | "VOTE_OPTION_NO"
-              | "VOTE_OPTION_NO_WITH_VETO";
+              | 'VOTE_OPTION_UNSPECIFIED'
+              | 'VOTE_OPTION_YES'
+              | 'VOTE_OPTION_ABSTAIN'
+              | 'VOTE_OPTION_NO'
+              | 'VOTE_OPTION_NO_WITH_VETO';
             /**
              * options is the weighted vote options.
              *
@@ -37778,11 +37778,11 @@ validator.
                * @default "VOTE_OPTION_UNSPECIFIED"
                */
               option?:
-                | "VOTE_OPTION_UNSPECIFIED"
-                | "VOTE_OPTION_YES"
-                | "VOTE_OPTION_ABSTAIN"
-                | "VOTE_OPTION_NO"
-                | "VOTE_OPTION_NO_WITH_VETO";
+                | 'VOTE_OPTION_UNSPECIFIED'
+                | 'VOTE_OPTION_YES'
+                | 'VOTE_OPTION_ABSTAIN'
+                | 'VOTE_OPTION_NO'
+                | 'VOTE_OPTION_NO_WITH_VETO';
               /** weight is the vote weight associated with the vote option. */
               weight?: string;
             }[];
@@ -37849,7 +37849,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1beta1/proposals/${proposalId}/votes`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -37884,11 +37884,11 @@ validator.
              * @default "VOTE_OPTION_UNSPECIFIED"
              */
             option?:
-              | "VOTE_OPTION_UNSPECIFIED"
-              | "VOTE_OPTION_YES"
-              | "VOTE_OPTION_ABSTAIN"
-              | "VOTE_OPTION_NO"
-              | "VOTE_OPTION_NO_WITH_VETO";
+              | 'VOTE_OPTION_UNSPECIFIED'
+              | 'VOTE_OPTION_YES'
+              | 'VOTE_OPTION_ABSTAIN'
+              | 'VOTE_OPTION_NO'
+              | 'VOTE_OPTION_NO_WITH_VETO';
             /**
              * options is the weighted vote options.
              *
@@ -37900,11 +37900,11 @@ validator.
                * @default "VOTE_OPTION_UNSPECIFIED"
                */
               option?:
-                | "VOTE_OPTION_UNSPECIFIED"
-                | "VOTE_OPTION_YES"
-                | "VOTE_OPTION_ABSTAIN"
-                | "VOTE_OPTION_NO"
-                | "VOTE_OPTION_NO_WITH_VETO";
+                | 'VOTE_OPTION_UNSPECIFIED'
+                | 'VOTE_OPTION_YES'
+                | 'VOTE_OPTION_ABSTAIN'
+                | 'VOTE_OPTION_NO'
+                | 'VOTE_OPTION_NO_WITH_VETO';
               /** weight is the vote weight associated with the vote option. */
               weight?: string;
             }[];
@@ -37955,7 +37955,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1beta1/proposals/${proposalId}/votes/${voter}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -38017,7 +38017,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1/constitution`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -38197,7 +38197,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1/params/${paramsType}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -38228,12 +38228,12 @@ validator.
          * @default "PROPOSAL_STATUS_UNSPECIFIED"
          */
         proposal_status?:
-          | "PROPOSAL_STATUS_UNSPECIFIED"
-          | "PROPOSAL_STATUS_DEPOSIT_PERIOD"
-          | "PROPOSAL_STATUS_VOTING_PERIOD"
-          | "PROPOSAL_STATUS_PASSED"
-          | "PROPOSAL_STATUS_REJECTED"
-          | "PROPOSAL_STATUS_FAILED";
+          | 'PROPOSAL_STATUS_UNSPECIFIED'
+          | 'PROPOSAL_STATUS_DEPOSIT_PERIOD'
+          | 'PROPOSAL_STATUS_VOTING_PERIOD'
+          | 'PROPOSAL_STATUS_PASSED'
+          | 'PROPOSAL_STATUS_REJECTED'
+          | 'PROPOSAL_STATUS_FAILED';
         /** voter defines the voter address for the proposals. */
         voter?: string;
         /** depositor defines the deposit addresses from the proposals. */
@@ -38244,35 +38244,35 @@ validator.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -38326,12 +38326,12 @@ validator.
              * @default "PROPOSAL_STATUS_UNSPECIFIED"
              */
             status?:
-              | "PROPOSAL_STATUS_UNSPECIFIED"
-              | "PROPOSAL_STATUS_DEPOSIT_PERIOD"
-              | "PROPOSAL_STATUS_VOTING_PERIOD"
-              | "PROPOSAL_STATUS_PASSED"
-              | "PROPOSAL_STATUS_REJECTED"
-              | "PROPOSAL_STATUS_FAILED";
+              | 'PROPOSAL_STATUS_UNSPECIFIED'
+              | 'PROPOSAL_STATUS_DEPOSIT_PERIOD'
+              | 'PROPOSAL_STATUS_VOTING_PERIOD'
+              | 'PROPOSAL_STATUS_PASSED'
+              | 'PROPOSAL_STATUS_REJECTED'
+              | 'PROPOSAL_STATUS_FAILED';
             /**
              * final_tally_result is the final tally result of the proposal. When
              * querying a proposal via gRPC, this field is not populated until the
@@ -38466,7 +38466,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1/proposals`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -38534,12 +38534,12 @@ validator.
              * @default "PROPOSAL_STATUS_UNSPECIFIED"
              */
             status?:
-              | "PROPOSAL_STATUS_UNSPECIFIED"
-              | "PROPOSAL_STATUS_DEPOSIT_PERIOD"
-              | "PROPOSAL_STATUS_VOTING_PERIOD"
-              | "PROPOSAL_STATUS_PASSED"
-              | "PROPOSAL_STATUS_REJECTED"
-              | "PROPOSAL_STATUS_FAILED";
+              | 'PROPOSAL_STATUS_UNSPECIFIED'
+              | 'PROPOSAL_STATUS_DEPOSIT_PERIOD'
+              | 'PROPOSAL_STATUS_VOTING_PERIOD'
+              | 'PROPOSAL_STATUS_PASSED'
+              | 'PROPOSAL_STATUS_REJECTED'
+              | 'PROPOSAL_STATUS_FAILED';
             /**
              * final_tally_result is the final tally result of the proposal. When
              * querying a proposal via gRPC, this field is not populated until the
@@ -38658,7 +38658,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1/proposals/${proposalId}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -38679,35 +38679,35 @@ validator.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -38788,7 +38788,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1/proposals/${proposalId}/deposits`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -38806,7 +38806,7 @@ validator.
     govV1Deposit2: (
       proposalId: string,
       depositor: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -38874,7 +38874,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1/proposals/${proposalId}/deposits/${depositor}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -38946,7 +38946,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1/proposals/${proposalId}/tally`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -38967,35 +38967,35 @@ validator.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -39015,11 +39015,11 @@ validator.
                * @default "VOTE_OPTION_UNSPECIFIED"
                */
               option?:
-                | "VOTE_OPTION_UNSPECIFIED"
-                | "VOTE_OPTION_YES"
-                | "VOTE_OPTION_ABSTAIN"
-                | "VOTE_OPTION_NO"
-                | "VOTE_OPTION_NO_WITH_VETO";
+                | 'VOTE_OPTION_UNSPECIFIED'
+                | 'VOTE_OPTION_YES'
+                | 'VOTE_OPTION_ABSTAIN'
+                | 'VOTE_OPTION_NO'
+                | 'VOTE_OPTION_NO_WITH_VETO';
               /** weight is the vote weight associated with the vote option. */
               weight?: string;
             }[];
@@ -39091,7 +39091,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1/proposals/${proposalId}/votes`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -39107,7 +39107,7 @@ validator.
     govV1Vote: (
       proposalId: string,
       voter: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -39130,11 +39130,11 @@ validator.
                * @default "VOTE_OPTION_UNSPECIFIED"
                */
               option?:
-                | "VOTE_OPTION_UNSPECIFIED"
-                | "VOTE_OPTION_YES"
-                | "VOTE_OPTION_ABSTAIN"
-                | "VOTE_OPTION_NO"
-                | "VOTE_OPTION_NO_WITH_VETO";
+                | 'VOTE_OPTION_UNSPECIFIED'
+                | 'VOTE_OPTION_YES'
+                | 'VOTE_OPTION_ABSTAIN'
+                | 'VOTE_OPTION_NO'
+                | 'VOTE_OPTION_NO_WITH_VETO';
               /** weight is the vote weight associated with the vote option. */
               weight?: string;
             }[];
@@ -39190,7 +39190,7 @@ validator.
         }
       >({
         path: `/cosmos/gov/v1/proposals/${proposalId}/votes/${voter}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -39210,7 +39210,7 @@ validator.
          */
         tx_bytes?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         CosmosTxV1Beta1TxDecodeResponse,
@@ -39259,7 +39259,7 @@ validator.
         }
       >({
         path: `/cosmos/tx/v1beta1/decode`,
-        method: "POST",
+        method: 'POST',
         body: body,
         type: ContentType.Json,
         ...params,
@@ -39278,7 +39278,7 @@ validator.
         /** @format byte */
         amino_binary?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -39329,7 +39329,7 @@ validator.
         }
       >({
         path: `/cosmos/tx/v1beta1/decode/amino`,
-        method: "POST",
+        method: 'POST',
         body: body,
         type: ContentType.Json,
         ...params,
@@ -39345,7 +39345,7 @@ validator.
      */
     txEncode: (
       body: CosmosTxV1Beta1TxEncodeRequest,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -39400,7 +39400,7 @@ validator.
         }
       >({
         path: `/cosmos/tx/v1beta1/encode`,
-        method: "POST",
+        method: 'POST',
         body: body,
         type: ContentType.Json,
         ...params,
@@ -39418,7 +39418,7 @@ validator.
       body: {
         amino_json?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -39470,7 +39470,7 @@ validator.
         }
       >({
         path: `/cosmos/tx/v1beta1/encode/amino`,
-        method: "POST",
+        method: 'POST',
         body: body,
         type: ContentType.Json,
         ...params,
@@ -39486,7 +39486,7 @@ validator.
      */
     simulate: (
       body: CosmosTxV1Beta1SimulateRequest,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -39616,7 +39616,7 @@ validator.
         }
       >({
         path: `/cosmos/tx/v1beta1/simulate`,
-        method: "POST",
+        method: 'POST',
         body: body,
         type: ContentType.Json,
         ...params,
@@ -39644,33 +39644,33 @@ validator.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
         /**
          *  - ORDER_BY_UNSPECIFIED: ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults
          * to ASC in this case.
@@ -39678,7 +39678,7 @@ validator.
          *  - ORDER_BY_DESC: ORDER_BY_DESC defines descending order
          * @default "ORDER_BY_UNSPECIFIED"
          */
-        order_by?: "ORDER_BY_UNSPECIFIED" | "ORDER_BY_ASC" | "ORDER_BY_DESC";
+        order_by?: 'ORDER_BY_UNSPECIFIED' | 'ORDER_BY_ASC' | 'ORDER_BY_DESC';
         /**
          * page is the page number to query, starts at 1. If not provided, will
          * default to first page.
@@ -39699,7 +39699,7 @@ validator.
          */
         query?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         CosmosTxV1Beta1GetTxsEventResponse,
@@ -39748,7 +39748,7 @@ validator.
         }
       >({
         path: `/cosmos/tx/v1beta1/txs`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -39782,12 +39782,12 @@ validator.
          * @default "BROADCAST_MODE_UNSPECIFIED"
          */
         mode?:
-          | "BROADCAST_MODE_UNSPECIFIED"
-          | "BROADCAST_MODE_BLOCK"
-          | "BROADCAST_MODE_SYNC"
-          | "BROADCAST_MODE_ASYNC";
+          | 'BROADCAST_MODE_UNSPECIFIED'
+          | 'BROADCAST_MODE_BLOCK'
+          | 'BROADCAST_MODE_SYNC'
+          | 'BROADCAST_MODE_ASYNC';
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -40039,7 +40039,7 @@ validator.
         }
       >({
         path: `/cosmos/tx/v1beta1/txs`,
-        method: "POST",
+        method: 'POST',
         body: body,
         type: ContentType.Json,
         ...params,
@@ -40062,35 +40062,35 @@ validator.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         CosmosTxV1Beta1GetBlockWithTxsResponse,
@@ -40139,7 +40139,7 @@ validator.
         }
       >({
         path: `/cosmos/tx/v1beta1/txs/block/${height}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -40200,7 +40200,7 @@ validator.
         }
       >({
         path: `/cosmos/tx/v1beta1/txs/${hash}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -40241,7 +40241,7 @@ validator.
         }
       >({
         path: `/cosmos/slashing/v1beta1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -40261,35 +40261,35 @@ validator.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -40364,7 +40364,7 @@ validator.
         }
       >({
         path: `/cosmos/slashing/v1beta1/signing_infos`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -40431,7 +40431,7 @@ validator.
         }
       >({
         path: `/cosmos/slashing/v1beta1/signing_infos/${consAddress}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
   };
@@ -40462,7 +40462,7 @@ validator.
         }
       >({
         path: `/Stride-Labs/ibc-rate-limiting/ratelimit/blacklisted_denoms`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -40481,7 +40481,7 @@ Ex:
       query?: {
         denom?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -40549,7 +40549,7 @@ Ex:
         }
       >({
         path: `/Stride-Labs/ibc-rate-limiting/ratelimit/ratelimit/${channelId}/by_denom`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -40624,7 +40624,7 @@ Ex:
         }
       >({
         path: `/Stride-Labs/ibc-rate-limiting/ratelimit/ratelimits`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -40698,7 +40698,7 @@ Ex:
         }
       >({
         path: `/Stride-Labs/ibc-rate-limiting/ratelimit/ratelimits/${chainId}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -40772,7 +40772,7 @@ Ex:
         }
       >({
         path: `/Stride-Labs/ibc-rate-limiting/ratelimit/ratelimits/${channelId}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -40805,7 +40805,7 @@ Ex:
         }
       >({
         path: `/Stride-Labs/ibc-rate-limiting/ratelimit/whitelisted_addresses`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
   };
@@ -40821,7 +40821,7 @@ Ex:
     escrowAddress: (
       channelId: string,
       portId: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -40841,7 +40841,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/transfer/v1/channels/${channelId}/ports/${portId}/escrow_address`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -40872,7 +40872,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/transfer/v1/denom_hashes/${trace}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -40892,35 +40892,35 @@ Ex:
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -40964,7 +40964,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/transfer/v1/denom_traces`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -41007,7 +41007,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/transfer/v1/denom_traces/${hash}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -41046,7 +41046,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/transfer/v1/denoms/${denom}/total_escrow`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -41088,7 +41088,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/transfer/v1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -41103,7 +41103,7 @@ Ex:
     feeEnabledChannel: (
       channelId: string,
       portId: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -41155,7 +41155,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/fee/v1/channels/${channelId}/ports/${portId}/fee_enabled`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -41177,40 +41177,40 @@ Ex:
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
         /**
          * Height to query at.
          * @format uint64
          */
         query_height?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -41316,7 +41316,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/fee/v1/channels/${channelId}/ports/${portId}/incentivized_packets`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -41332,7 +41332,7 @@ Ex:
     counterpartyPayee: (
       channelId: string,
       relayer: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -41384,7 +41384,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/fee/v1/channels/${channelId}/relayers/${relayer}/counterparty_payee`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -41447,7 +41447,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/fee/v1/channels/${channelId}/relayers/${relayer}/payee`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -41470,7 +41470,7 @@ Ex:
          */
         query_height?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -41560,7 +41560,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/fee/v1/channels/${packetIdChannelId}/ports/${packetIdPortId}/sequences/${packetIdSequence}/incentivized_packet`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -41577,7 +41577,7 @@ Ex:
       packetIdChannelId: string,
       packetIdPortId: string,
       packetIdSequence: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -41632,7 +41632,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/fee/v1/channels/${packetIdChannelId}/ports/${packetIdPortId}/sequences/${packetIdSequence}/total_ack_fees`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -41648,7 +41648,7 @@ Ex:
       packetIdChannelId: string,
       packetIdPortId: string,
       packetIdSequence: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -41703,7 +41703,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/fee/v1/channels/${packetIdChannelId}/ports/${packetIdPortId}/sequences/${packetIdSequence}/total_recv_fees`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -41719,7 +41719,7 @@ Ex:
       packetIdChannelId: string,
       packetIdPortId: string,
       packetIdSequence: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -41774,7 +41774,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/fee/v1/channels/${packetIdChannelId}/ports/${packetIdPortId}/sequences/${packetIdSequence}/total_timeout_fees`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -41794,40 +41794,40 @@ Ex:
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
         /**
          * block height at which to query.
          * @format uint64
          */
         query_height?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -41900,7 +41900,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/fee/v1/fee_enabled`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -41921,40 +41921,40 @@ Ex:
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
         /**
          * block height at which to query.
          * @format uint64
          */
         query_height?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -42060,7 +42060,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/fee/v1/incentivized_packets`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -42076,7 +42076,7 @@ Ex:
     interchainAccount: (
       owner: string,
       connectionId: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -42095,7 +42095,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/interchain_accounts/controller/v1/owners/${owner}/connections/${connectionId}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -42129,7 +42129,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/interchain_accounts/controller/v1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -42165,7 +42165,7 @@ Ex:
         }
       >({
         path: `/ibc/apps/interchain_accounts/host/v1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -42185,35 +42185,35 @@ Ex:
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -42236,13 +42236,13 @@ Ex:
              * @default "STATE_UNINITIALIZED_UNSPECIFIED"
              */
             state?:
-              | "STATE_UNINITIALIZED_UNSPECIFIED"
-              | "STATE_INIT"
-              | "STATE_TRYOPEN"
-              | "STATE_OPEN"
-              | "STATE_CLOSED"
-              | "STATE_FLUSHING"
-              | "STATE_FLUSHCOMPLETE";
+              | 'STATE_UNINITIALIZED_UNSPECIFIED'
+              | 'STATE_INIT'
+              | 'STATE_TRYOPEN'
+              | 'STATE_OPEN'
+              | 'STATE_CLOSED'
+              | 'STATE_FLUSHING'
+              | 'STATE_FLUSHCOMPLETE';
             /**
              * whether the channel is ordered or unordered
              * - ORDER_NONE_UNSPECIFIED: zero-value for channel ordering
@@ -42252,9 +42252,9 @@ Ex:
              * @default "ORDER_NONE_UNSPECIFIED"
              */
             ordering?:
-              | "ORDER_NONE_UNSPECIFIED"
-              | "ORDER_UNORDERED"
-              | "ORDER_ORDERED";
+              | 'ORDER_NONE_UNSPECIFIED'
+              | 'ORDER_UNORDERED'
+              | 'ORDER_ORDERED';
             /** counterparty channel end */
             counterparty?: {
               /** port on the counterparty chain which owns the other end of the channel. */
@@ -42372,7 +42372,7 @@ Ex:
         }
       >({
         path: `/ibc/core/channel/v1/channels`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -42412,13 +42412,13 @@ Ex:
              * @default "STATE_UNINITIALIZED_UNSPECIFIED"
              */
             state?:
-              | "STATE_UNINITIALIZED_UNSPECIFIED"
-              | "STATE_INIT"
-              | "STATE_TRYOPEN"
-              | "STATE_OPEN"
-              | "STATE_CLOSED"
-              | "STATE_FLUSHING"
-              | "STATE_FLUSHCOMPLETE";
+              | 'STATE_UNINITIALIZED_UNSPECIFIED'
+              | 'STATE_INIT'
+              | 'STATE_TRYOPEN'
+              | 'STATE_OPEN'
+              | 'STATE_CLOSED'
+              | 'STATE_FLUSHING'
+              | 'STATE_FLUSHCOMPLETE';
             /**
              * whether the channel is ordered or unordered
              * - ORDER_NONE_UNSPECIFIED: zero-value for channel ordering
@@ -42428,9 +42428,9 @@ Ex:
              * @default "ORDER_NONE_UNSPECIFIED"
              */
             ordering?:
-              | "ORDER_NONE_UNSPECIFIED"
-              | "ORDER_UNORDERED"
-              | "ORDER_ORDERED";
+              | 'ORDER_NONE_UNSPECIFIED'
+              | 'ORDER_UNORDERED'
+              | 'ORDER_ORDERED';
             /** counterparty channel end */
             counterparty?: {
               /** port on the counterparty chain which owns the other end of the channel. */
@@ -42524,7 +42524,7 @@ Ex:
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -42540,7 +42540,7 @@ with the provided channel identifiers.
     channelClientState: (
       channelId: string,
       portId: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -42750,7 +42750,7 @@ with the provided channel identifiers.
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}/client_state`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -42768,7 +42768,7 @@ associated with the provided channel identifiers.
       portId: string,
       revisionNumber: string,
       revisionHeight: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -42971,7 +42971,7 @@ associated with the provided channel identifiers.
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}/consensus_state/revision/${revisionNumber}/height/${revisionHeight}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -42986,7 +42986,7 @@ associated with the provided channel identifiers.
     nextSequenceReceive: (
       channelId: string,
       portId: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -43067,7 +43067,7 @@ associated with the provided channel identifiers.
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}/next_sequence`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -43082,7 +43082,7 @@ associated with the provided channel identifiers.
     nextSequenceSend: (
       channelId: string,
       portId: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -43163,7 +43163,7 @@ associated with the provided channel identifiers.
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}/next_sequence_send`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -43186,37 +43186,37 @@ with a channel.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
         /** list of packet sequences. */
         packet_commitment_sequences?: string[];
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -43328,7 +43328,7 @@ with a channel.
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}/packet_acknowledgements`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -43345,7 +43345,7 @@ with a channel.
       channelId: string,
       portId: string,
       sequence: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -43426,7 +43426,7 @@ with a channel.
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}/packet_acks/${sequence}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -43449,35 +43449,35 @@ with a channel.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -43589,7 +43589,7 @@ with a channel.
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}/packet_commitments`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -43607,7 +43607,7 @@ with a channel and sequences.
       channelId: string,
       portId: string,
       packetAckSequences: string[],
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -43680,7 +43680,7 @@ with a channel and sequences.
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}/packet_commitments/${packetAckSequences}/unreceived_acks`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -43697,7 +43697,7 @@ channel and sequences.
       channelId: string,
       portId: string,
       packetCommitmentSequences: string[],
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -43770,7 +43770,7 @@ channel and sequences.
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}/packet_commitments/${packetCommitmentSequences}/unreceived_packets`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -43786,7 +43786,7 @@ channel and sequences.
       channelId: string,
       portId: string,
       sequence: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -43867,7 +43867,7 @@ channel and sequences.
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}/packet_commitments/${sequence}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -43884,7 +43884,7 @@ queried chain
       channelId: string,
       portId: string,
       sequence: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -43962,7 +43962,7 @@ queried chain
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}/packet_receipts/${sequence}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -43999,9 +43999,9 @@ queried chain
                * @default "ORDER_NONE_UNSPECIFIED"
                */
               ordering?:
-                | "ORDER_NONE_UNSPECIFIED"
-                | "ORDER_UNORDERED"
-                | "ORDER_ORDERED";
+                | 'ORDER_NONE_UNSPECIFIED'
+                | 'ORDER_UNORDERED'
+                | 'ORDER_ORDERED';
               connection_hops?: string[];
               version?: string;
             };
@@ -44113,7 +44113,7 @@ queried chain
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}/upgrade`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -44128,7 +44128,7 @@ queried chain
     upgradeError: (
       channelId: string,
       portId: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -44218,7 +44218,7 @@ queried chain
         }
       >({
         path: `/ibc/core/channel/v1/channels/${channelId}/ports/${portId}/upgrade_error`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -44240,35 +44240,35 @@ end.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -44291,13 +44291,13 @@ end.
              * @default "STATE_UNINITIALIZED_UNSPECIFIED"
              */
             state?:
-              | "STATE_UNINITIALIZED_UNSPECIFIED"
-              | "STATE_INIT"
-              | "STATE_TRYOPEN"
-              | "STATE_OPEN"
-              | "STATE_CLOSED"
-              | "STATE_FLUSHING"
-              | "STATE_FLUSHCOMPLETE";
+              | 'STATE_UNINITIALIZED_UNSPECIFIED'
+              | 'STATE_INIT'
+              | 'STATE_TRYOPEN'
+              | 'STATE_OPEN'
+              | 'STATE_CLOSED'
+              | 'STATE_FLUSHING'
+              | 'STATE_FLUSHCOMPLETE';
             /**
              * whether the channel is ordered or unordered
              * - ORDER_NONE_UNSPECIFIED: zero-value for channel ordering
@@ -44307,9 +44307,9 @@ end.
              * @default "ORDER_NONE_UNSPECIFIED"
              */
             ordering?:
-              | "ORDER_NONE_UNSPECIFIED"
-              | "ORDER_UNORDERED"
-              | "ORDER_ORDERED";
+              | 'ORDER_NONE_UNSPECIFIED'
+              | 'ORDER_UNORDERED'
+              | 'ORDER_ORDERED';
             /** counterparty channel end */
             counterparty?: {
               /** port on the counterparty chain which owns the other end of the channel. */
@@ -44427,7 +44427,7 @@ end.
         }
       >({
         path: `/ibc/core/channel/v1/connections/${connection}/channels`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -44525,7 +44525,7 @@ end.
         }
       >({
         path: `/ibc/core/channel/v1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -44615,7 +44615,7 @@ state.
         }
       >({
         path: `/ibc/core/connection/v1/client_connections/${clientId}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -44635,35 +44635,35 @@ state.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -44688,10 +44688,10 @@ state.
              * @default "STATE_UNINITIALIZED_UNSPECIFIED"
              */
             state?:
-              | "STATE_UNINITIALIZED_UNSPECIFIED"
-              | "STATE_INIT"
-              | "STATE_TRYOPEN"
-              | "STATE_OPEN";
+              | 'STATE_UNINITIALIZED_UNSPECIFIED'
+              | 'STATE_INIT'
+              | 'STATE_TRYOPEN'
+              | 'STATE_OPEN';
             /** counterparty chain associated with this connection. */
             counterparty?: {
               /**
@@ -44813,7 +44813,7 @@ state.
         }
       >({
         path: `/ibc/core/connection/v1/connections`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -44854,10 +44854,10 @@ state.
              * @default "STATE_UNINITIALIZED_UNSPECIFIED"
              */
             state?:
-              | "STATE_UNINITIALIZED_UNSPECIFIED"
-              | "STATE_INIT"
-              | "STATE_TRYOPEN"
-              | "STATE_OPEN";
+              | 'STATE_UNINITIALIZED_UNSPECIFIED'
+              | 'STATE_INIT'
+              | 'STATE_TRYOPEN'
+              | 'STATE_OPEN';
             /** counterparty chain associated with this connection. */
             counterparty?: {
               /**
@@ -44961,7 +44961,7 @@ state.
         }
       >({
         path: `/ibc/core/connection/v1/connections/${connectionId}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -45183,7 +45183,7 @@ connection.
         }
       >({
         path: `/ibc/core/connection/v1/connections/${connectionId}/client_state`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -45200,7 +45200,7 @@ connection.
       connectionId: string,
       revisionNumber: string,
       revisionHeight: string,
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -45403,7 +45403,7 @@ connection.
         }
       >({
         path: `/ibc/core/connection/v1/connections/${connectionId}/consensus_state/revision/${revisionNumber}/height/${revisionHeight}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -45474,7 +45474,7 @@ connection.
         }
       >({
         path: `/ibc/core/connection/v1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -45494,35 +45494,35 @@ connection.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -45727,7 +45727,7 @@ connection.
         }
       >({
         path: `/ibc/core/client/v1/client_states`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -45940,7 +45940,7 @@ connection.
         }
       >({
         path: `/ibc/core/client/v1/client_states/${clientId}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -46002,7 +46002,7 @@ connection.
         }
       >({
         path: `/ibc/core/client/v1/client_status/${clientId}`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -46024,35 +46024,35 @@ client.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -46276,7 +46276,7 @@ client.
         }
       >({
         path: `/ibc/core/client/v1/consensus_states/${clientId}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -46298,35 +46298,35 @@ client.
          * should be set.
          * @format byte
          */
-        "pagination.key"?: string;
+        'pagination.key'?: string;
         /**
          * offset is a numeric offset that can be used when key is unavailable.
          * It is less efficient than using key. Only one of offset or key should
          * be set.
          * @format uint64
          */
-        "pagination.offset"?: string;
+        'pagination.offset'?: string;
         /**
          * limit is the total number of results to be returned in the result page.
          * If left empty it will default to a value to be set by each app.
          * @format uint64
          */
-        "pagination.limit"?: string;
+        'pagination.limit'?: string;
         /**
          * count_total is set to true  to indicate that the result set should include
          * a count of the total number of items available for pagination in UIs.
          * count_total is only respected when offset is used. It is ignored when key
          * is set.
          */
-        "pagination.count_total"?: boolean;
+        'pagination.count_total'?: boolean;
         /**
          * reverse is set to true if results are to be returned in the descending order.
          *
          * Since: cosmos-sdk 0.43
          */
-        "pagination.reverse"?: boolean;
+        'pagination.reverse'?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -46414,7 +46414,7 @@ client.
         }
       >({
         path: `/ibc/core/client/v1/consensus_states/${clientId}/heights`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -46439,7 +46439,7 @@ a given height.
          */
         latest_height?: boolean;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -46642,7 +46642,7 @@ a given height.
         }
       >({
         path: `/ibc/core/client/v1/consensus_states/${clientId}/revision/${revisionNumber}/height/${revisionHeight}`,
-        method: "GET",
+        method: 'GET',
         query: query,
         ...params,
       }),
@@ -46713,7 +46713,7 @@ a given height.
         }
       >({
         path: `/ibc/core/client/v1/params`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -46899,7 +46899,7 @@ a given height.
         }
       >({
         path: `/ibc/core/client/v1/upgraded_client_states`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -47085,7 +47085,7 @@ a given height.
         }
       >({
         path: `/ibc/core/client/v1/upgraded_consensus_states`,
-        method: "GET",
+        method: 'GET',
         ...params,
       }),
 
@@ -47154,7 +47154,7 @@ a given height.
          */
         block_delay?: string;
       },
-      params: RequestParams = {},
+      params: RequestParams = {}
     ) =>
       this.request<
         {
@@ -47206,7 +47206,7 @@ a given height.
         }
       >({
         path: `/ibc/core/client/v1/verify_membership`,
-        method: "POST",
+        method: 'POST',
         body: body,
         type: ContentType.Json,
         ...params,
