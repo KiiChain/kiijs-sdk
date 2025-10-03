@@ -30,16 +30,13 @@
     "url": "https://github.com/KiiChain/kiijs-sdk/issues"
   },
   "scripts": {
-    "copy": "copyfiles -f ../../LICENSE README.md package.json dist",
-    "clean": "rimraf dist/**",
+    "copy": "npx copyfiles -f ../../LICENSE README.md package.json dist",
+    "clean": "npx rimraf dist",
     "prepare": "npm run build",
-    "build": "npm run clean; tsc; tsc -p tsconfig.declaration.json; npm run copy",
+    "build": "npm run clean; npx tsc; npx tsc -p tsconfig.declaration.json; npm run copy",
     "build:dev": "npm run clean; npm run codegen; tsc --declarationMap; tsc -p tsconfig.declaration.json; npm run copy",
-    "codegen": "tsx scripts/codegen.ts",
-    "lint": "eslint . --fix",
-    "test": "jest",
-    "test:ci": "jest",
-    "test:watch": "jest --watch"
+    "codegen": "npx tsx scripts/codegen.ts",
+    "lint": "npx eslint . --fix"
   },
   "devDependencies": {
     "swagger-typescript-api": "^13.2.13",
