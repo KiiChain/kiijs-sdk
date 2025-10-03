@@ -3085,7 +3085,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kiichain/kiijs-proto@npm:^0.2.0, @kiichain/kiijs-proto@workspace:packages/proto":
+"@kiichain/kiijs-proto@workspace:^, @kiichain/kiijs-proto@workspace:packages/proto":
   version: 0.0.0-use.local
   resolution: "@kiichain/kiijs-proto@workspace:packages/proto"
   dependencies:
@@ -3126,7 +3126,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@kiichain/kiijs-utils@workspace:packages/utils"
   dependencies:
-    "@kiichain/kiijs-proto": "npm:^0.2.0"
+    "@kiichain/kiijs-proto": "workspace:^"
     "@types/jest": "npm:^29.5.14"
     ethers: "npm:^6.0.0"
     jest: "npm:^29.7.0"
