@@ -1,6 +1,7 @@
 {
   "name": "@kiichain/kiijs-utils",
   "version": "0.1.1",
+  "type": "module",
   "author": "kiiglobal.io <devs@kiiglobal.io>",
   "description": "TypeScript utility library for the Kii blockchain",
   "main": "./dist/cjs/index.js",

@@ -2,8 +2,10 @@
   "name": "@kiichain/kiijs-proto",
   "version": "0.2.1",
   "author": "kiiglobal.io <dev@kiiglobal.io>",
+  "type": "module",
   "description": "JS SDK for kiichain protofiles",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "homepage": "https://github.com/KiiChain/kiijs-sdk",
   "license": "Apache-2.0",
@@ -29,16 +31,16 @@
     "url": "https://github.com/KiiChain/kiijs-sdk/issues"
   },
   "scripts": {
-    "copy": "copyfiles -f ../../LICENSE README.md package.json dist",
-    "clean": "rimraf dist/**",
+    "copy": "npx copyfiles -f ../../LICENSE README.md package.json dist",
+    "clean": "npx rimraf dist",
     "prepare": "npm run build",
-    "codegen": "ts-node scripts/codegen.ts",
-    "build": "npm run clean; tsc; tsc -p tsconfig.declaration.json; npm run copy",
-    "build:dev": "npm run clean; npm run codegen; tsc --declarationMap; tsc -p tsconfig.declaration.json; npm run copy",
-    "lint": "eslint . --fix",
-    "test": "jest",
-    "test:ci": "jest",
-    "test:watch": "jest --watch"
+    "codegen": "npx ts-node scripts/codegen.ts",
+    "build": "npm run clean; npx tsc; npx tsc -p tsconfig.declaration.json; npm run copy",
+    "build:dev": "npm run clean; npm run codegen; npx tsc --declarationMap; npx tsc -p tsconfig.declaration.json; npm run copy",
+    "lint": "npx eslint . --fix",
+    "test": "npx jest",
+    "test:ci": "npx jest",
+    "test:watch": "npx jest --watch"
   },
   "devDependencies": {
     "@cosmology/telescope": "^1.10.0",

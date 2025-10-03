@@ -1,6 +1,7 @@
 {
   "name": "@kiichain/kiijs-rwa",
   "version": "0.2.1",
+  "type": "module",
   "author": "kiiglobal.io <dev@kiiglobal.io>",
   "description": "JS SDK for kiichain rwa",
   "main": "dist/index.js",
