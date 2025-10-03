@@ -16,7 +16,7 @@ KiiJS consists of smaller NPM packages within the @kiichain namespace. For more 
 | [@kiichain/kiijs-lcd](packages/lcd)     | Typescript support for KiiChain LCD client                                                             |
 | [@kiichain/kiijs-proto](packages/proto) | Typescript support for KiiChain protofiles, generated with Telescope                                   |
 | [@kiichain/kiijs-rwa](packages/rwa)     | Typescript support for KiiChain RWA transactions                                                       |
-| [@kiichain/kiijs-utils](packages/utils) | Typescript support for a few generic Kiichain fucntions, like address conversion or ethscp256-1 signer |
+| [@kiichain/kiijs-utils](packages/utils) | Typescript support for a few generic Kiichain functions, like address conversion or ethscp256-1 signer |
 
 ## Contributing
 
