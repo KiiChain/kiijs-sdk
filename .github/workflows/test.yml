@@ -11,22 +11,22 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package: ['evm', 'proto', 'utils', 'rwa']
-    
+        package: ["evm", "proto", "utils", "rwa"]
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          
+          node-version: "20"
+
       # Install Yarn (modern Berry)
       - name: Setup Yarn
         run: |
           corepack enable
-          yarn set version stable
+          yarn set version berry
           yarn install --no-immutable
-          
+
       # Run tests with coverage
       - name: Test ${{ matrix.package }}
         working-directory: ./packages/${{ matrix.package }}

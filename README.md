@@ -10,12 +10,13 @@ Each package has it's own documentation under its readme file.
 
 KiiJS consists of smaller NPM packages within the @kiichain namespace. For more detailed documentation on each package, please refer to the table below.
 
-| Package                                                 | Description                                                                                                                     |
-|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| [@kiichain/kiijs-evm](packages/evm)                             | Typescript library containing helper functions for interacting with the EVM on Kiichain.                                             |
-| [@kiichain/kiijs-proto](packages/proto)               | Typescript support for KiiChain protofiles, generated with Telescope                                   |
-| [@kiichain/kiijs-rwa](packages/rwa)               | Typescript support for KiiChain RWA transactions                                   |
-| [@kiichain/kiijs-utils](packages/utils)               | Typescript support for a few generic Kiichain fucntions, like address conversion or ethscp256-1 signer                                    |
+| Package                                 | Description                                                                                            |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| [@kiichain/kiijs-evm](packages/evm)     | Typescript library containing helper functions for interacting with the EVM on Kiichain.               |
+| [@kiichain/kiijs-lcd](packages/lcd)     | Typescript support for KiiChain LCD client                                                             |
+| [@kiichain/kiijs-proto](packages/proto) | Typescript support for KiiChain protofiles, generated with Telescope                                   |
+| [@kiichain/kiijs-rwa](packages/rwa)     | Typescript support for KiiChain RWA transactions                                                       |
+| [@kiichain/kiijs-utils](packages/utils) | Typescript support for a few generic Kiichain functions, like address conversion or ethscp256-1 signer |
 
 ## Contributing
 

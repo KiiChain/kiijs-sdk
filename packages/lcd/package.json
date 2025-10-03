@@ -1,11 +1,10 @@
 {
-  "name": "@kiichain/kiijs-proto",
-  "version": "0.2.1",
+  "name": "@kiichain/kiijs-lcd",
+  "version": "0.1.0",
   "author": "kiiglobal.io <dev@kiiglobal.io>",
+  "description": "JS SDK for kiichain LCD endpoints",
   "type": "module",
-  "description": "JS SDK for kiichain protofiles",
   "main": "dist/index.js",
-  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "homepage": "https://github.com/KiiChain/kiijs-sdk",
   "license": "Apache-2.0",
@@ -34,28 +33,14 @@
     "copy": "npx copyfiles -f ../../LICENSE README.md package.json dist",
     "clean": "npx rimraf dist",
     "prepare": "npm run build",
-    "codegen": "npx ts-node scripts/codegen.ts",
     "build": "npm run clean; npx tsc; npx tsc -p tsconfig.declaration.json; npm run copy",
-    "build:dev": "npm run clean; npm run codegen; npx tsc --declarationMap; npx tsc -p tsconfig.declaration.json; npm run copy",
-    "lint": "npx eslint . --fix",
-    "test": "npx jest",
-    "test:ci": "npx jest",
-    "test:watch": "npx jest --watch"
+    "build:dev": "npm run clean; npm run codegen; tsc --declarationMap; tsc -p tsconfig.declaration.json; npm run copy",
+    "codegen": "npx tsx scripts/codegen.ts",
+    "lint": "npx eslint . --fix"
   },
   "devDependencies": {
-    "@cosmology/telescope": "^1.10.0",
-    "@types/jest": "^29.5.14",
-    "dotenv": "16.4.7",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.3.1"
-  },
-  "dependencies": {
-    "@cosmjs/amino": "^0.33.1",
-    "@cosmjs/encoding": "^0.33.1",
-    "@cosmjs/math": "^0.33.1",
-    "@cosmjs/proto-signing": "^0.33.1",
-    "@cosmjs/stargate": "^0.33.1",
-    "@cosmology/lcd": "^0.14.0"
+    "swagger-typescript-api": "^13.2.13",
+    "tsx": "^4.20.6"
   },
   "keywords": []
 }

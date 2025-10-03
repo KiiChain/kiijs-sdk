@@ -1,4 +1,4 @@
-name: Publish EVM package
+name: Publish LCD package
 
 on:
   workflow_dispatch: {} # Manual trigger
@@ -42,9 +42,9 @@ jobs:
         run: yarn build
 
       # Publish package with proper auth
-      - name: Publish evm package
+      - name: Publish lcd package
         run: |
-          cd packages/evm && yarn npm publish --access public
+          cd packages/lcd && yarn npm publish --access public
         env:
           NPM_CONFIG_REGISTRY: "https://registry.npmjs.org"
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
