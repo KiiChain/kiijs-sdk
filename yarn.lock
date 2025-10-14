@@ -3064,6 +3064,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@kiichain/kiijs-evm@workspace:packages/evm"
   dependencies:
+    "@kiichain/kiijs-utils": "workspace:^"
     "@types/jest": "npm:^29.5.14"
     ethers: "npm:^6.0.0"
     jest: "npm:^29.7.0"
@@ -3122,7 +3123,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@kiichain/kiijs-utils@workspace:packages/utils":
+"@kiichain/kiijs-utils@workspace:^, @kiichain/kiijs-utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@kiichain/kiijs-utils@workspace:packages/utils"
   dependencies:
