@@ -3,6 +3,7 @@
   "conventionalCommits": true,
   "npmClient": "yarn",
   "npmClientArgs": ["--no-lockfile"],
+  "useWorkspaces": true,
   "packages": ["packages/*"],
   "version": "independent",
   "registry": "https://registry.npmjs.org",
