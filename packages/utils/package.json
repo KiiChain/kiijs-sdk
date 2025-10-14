@@ -57,5 +57,6 @@
     "@kiichain/kiijs-proto": "workspace:^",
     "npm": "^11.4.1",
     "ts-node": "^10.9.2"
-  }
+  },
+  "packageManager": "yarn@4.10.3"
 }

@@ -42,5 +42,6 @@
     "swagger-typescript-api": "^13.2.13",
     "tsx": "^4.20.6"
   },
-  "keywords": []
+  "keywords": [],
+  "packageManager": "yarn@4.10.3"
 }
