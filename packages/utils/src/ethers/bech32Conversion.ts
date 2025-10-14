@@ -19,7 +19,7 @@ export function Bech32ToHex(bechAddress: string): string | null {
  * Function to turn a hex address into a respective bech32 kii address
  * @category Cosmos Interoperability
  */
-export async function HexToBech32(wallet: string) {
+export function HexToBech32(wallet: string) {
   if (!wallet || !wallet.startsWith('0x') || !isAddress(wallet)) {
     return null;
   }
