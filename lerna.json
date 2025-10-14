@@ -16,17 +16,9 @@
       "allowBranch": "main",
       "message": "chore(release): publish"
     },
-    "build": {
-      "dependsOn": ["^build"],
-      "stream": true
-    },
-    "test": {
-      "dependsOn": ["build"],
-      "stream": true
-    },
-    "test:ci": {
-      "dependsOn": ["build"],
-      "stream": true
+    "run": {
+      "stream": true,
+      "sort": true
     }
   }
 }

@@ -31,16 +31,16 @@
     "url": "https://github.com/KiiChain/kiijs-sdk/issues"
   },
   "scripts": {
-    "copy": "copyfiles -f ../../LICENSE README.md package.json dist",
-    "clean": "rimraf dist/**",
+    "copy": "npx copyfiles -f ../../LICENSE README.md package.json dist",
+    "clean": "npx rimraf dist/**",
     "prepare": "npm run build",
-    "codegen": "ts-node scripts/codegen.ts",
+    "codegen": "npx ts-node scripts/codegen.ts",
     "build": "npm run clean; tsc; tsc -p tsconfig.esm.json; npm run copy",
     "build:dev": "npm run clean; npm run codegen; tsc --declarationMap; tsc -p tsconfig.esm.json; npm run copy",
-    "lint": "eslint . --fix",
-    "test": "jest",
-    "test:ci": "jest",
-    "test:watch": "jest --watch"
+    "lint": "npx eslint . --fix",
+    "test": "npx jest",
+    "test:ci": "npx jest",
+    "test:watch": "npx jest --watch"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
