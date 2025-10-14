@@ -13,10 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "declaration": false,
 
-    "baseUrl": "./",
-    "paths": {
-      "@kiichain/kiijs-evm/*": ["packages/evm/dist/esm/*", "packages/evm/dist/cjs/*"],
-    }
+    "baseUrl": "./"
   },
   "exclude": [
     "node_modules",
