@@ -24,7 +24,6 @@ jobs:
       - name: Setup Yarn
         run: |
           corepack enable
-          yarn set version berry
           yarn install --no-immutable
 
       # Run tests with coverage

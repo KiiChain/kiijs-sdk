@@ -63,8 +63,5 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.1.6"
   },
-  "packageManager": "yarn@4.10.3",
-  "dependencies": {
-    "yarn": "^1.22.22"
-  }
+  "packageManager": "yarn@4.10.3"
 }

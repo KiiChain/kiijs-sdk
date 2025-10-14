@@ -1,7 +1,3 @@
-import {
-  Bech32ToHex as UtilB2H,
-  HexToBech32 as UtilH2B,
-} from '@kiichain/kiijs-utils';
 import { Contract, ContractRunner, InterfaceAbi } from 'ethers';
 import {
   BECH32_PRECOMPILE_ABI,
@@ -39,25 +35,3 @@ export const ETHERS_BECH32_PRECOMPILE_ABI =
 export const getBech32PrecompileEthersV6Contract = (runner: ContractRunner) => {
   return new Contract(BECH32_PRECOMPILE_ADDRESS, BECH32_PRECOMPILE_ABI, runner);
 };
-
-/**
- * Function to turn a kii bech32 into an associated hex address
- * @category Cosmos Interoperability
- *
- * @dev This function uses the utility function `Bech32ToHex` from utils package to perform the conversion.
- * We kept both for backward compatibility.
- */
-export function Bech32ToHex(bechAddress: string): string | null {
-  return UtilB2H(bechAddress);
-}
-
-/**
- * Function to turn a hex address into a respective bech32 kii address
- * @category Cosmos Interoperability
- *
- * @dev This function uses the utility function `HexToBech32` from utils package to perform the conversion.
- * We kept both for backward compatibility.
- */
-export function HexToBech32(wallet: string) {
-  return UtilH2B(wallet);
-}

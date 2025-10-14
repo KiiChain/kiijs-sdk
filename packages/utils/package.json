@@ -18,16 +18,16 @@
     "has-ansi": "5.0.1"
   },
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "npx rimraf dist",
     "build": "yarn build:types && yarn build:cjs && yarn build:esm && yarn build:prettier",
-    "build:cjs": "tsc --outDir dist/cjs --module commonjs",
-    "build:esm": "tsc --outDir dist/esm --module esnext",
-    "build:types": "tsc --project ./tsconfig.declaration.json",
-    "build:prettier": "prettier --write dist/**/*.js",
-    "docs": "typedoc --out docs",
-    "test": "jest",
-    "test:ci": "jest",
-    "lint": "eslint --ext .ts"
+    "build:cjs": "npx tsc --outDir dist/cjs --module commonjs",
+    "build:esm": "npx tsc --outDir dist/esm --module esnext",
+    "build:types": "npx tsc --project ./tsconfig.declaration.json",
+    "build:prettier": "npx prettier --write dist/**/*.js",
+    "docs": "npx typedoc --out docs",
+    "test": "npx jest",
+    "test:ci": "npx jest",
+    "lint": "npx eslint --ext .ts"
   },
   "homepage": "https://github.com/KiiChain/kiijs-sdk#readme",
   "keywords": [
@@ -58,5 +58,5 @@
     "npm": "^11.4.1",
     "ts-node": "^10.9.2"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@4.10.3"
 }

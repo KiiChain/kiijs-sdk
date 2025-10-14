@@ -3,6 +3,7 @@
   "conventionalCommits": true,
   "npmClient": "yarn",
   "npmClientArgs": ["--no-lockfile"],
+  "useWorkspaces": true,
   "packages": ["packages/*"],
   "version": "independent",
   "registry": "https://registry.npmjs.org",
@@ -16,17 +17,9 @@
       "allowBranch": "main",
       "message": "chore(release): publish"
     },
-    "build": {
-      "dependsOn": ["^build"],
-      "stream": true
-    },
-    "test": {
-      "dependsOn": ["build"],
-      "stream": true
-    },
-    "test:ci": {
-      "dependsOn": ["build"],
-      "stream": true
+    "run": {
+      "stream": true,
+      "sort": true
     }
   }
 }

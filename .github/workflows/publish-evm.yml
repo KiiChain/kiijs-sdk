@@ -26,16 +26,14 @@ jobs:
       - name: Configure registry
         run: |
           corepack enable
-          yarn set version berry
           npm config set registry https://registry.npmjs.org/
           yarn config set npmRegistryServer "https://registry.npmjs.org"
           yarn config set npmAuthToken ${{ secrets.npm_token }}
           yarn config set unsafeHttpWhitelist --json '["*.npmjs.org"]'
 
-      # Install Yarn and dependencies
+      # Install dependencies
       - name: Install dependencies
-        run: |
-          YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install
+        run: yarn install
 
       # Build packages
       - name: Build packages
