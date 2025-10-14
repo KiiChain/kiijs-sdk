@@ -2,12 +2,8 @@
   "lerna": "6",
   "conventionalCommits": true,
   "npmClient": "yarn",
-  "npmClientArgs": [
-    "--no-lockfile"
-  ],
-  "packages": [
-    "packages/*"
-  ],
+  "npmClientArgs": ["--no-lockfile"],
+  "packages": ["packages/*"],
   "version": "independent",
   "registry": "https://registry.npmjs.org",
   "command": {
@@ -19,6 +15,18 @@
     "publish": {
       "allowBranch": "main",
       "message": "chore(release): publish"
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "stream": true
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "stream": true
+    },
+    "test:ci": {
+      "dependsOn": ["build"],
+      "stream": true
     }
   }
 }
