@@ -23,9 +23,6 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
 
-      - name: Set Yarn to latest version
-        run: yarn set version berry
-
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
