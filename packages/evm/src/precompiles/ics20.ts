@@ -2,8 +2,8 @@
  * The address of the ICS20 precompile contract.
  * @category Cosmos Interoperability
  */
-export const ICS20_PRECOMPILE_ADDRESS: `0x${string}` =
-  '0x0000000000000000000000000000000000000802';
+export const ICS20_PRECOMPILE_ADDRESS =
+  '0x0000000000000000000000000000000000000802' as const;
 
 /**
  * The ABI for the ICS20 precompile contract.
@@ -11,422 +11,146 @@ export const ICS20_PRECOMPILE_ADDRESS: `0x${string}` =
  */
 export const ICS20_PRECOMPILE_ABI = [
   {
+    type: 'event',
+    anonymous: false,
     inputs: [
       {
-        internalType: 'address',
-        name: 'grantee',
-        type: 'address',
-      },
-      {
-        internalType: 'address',
-        name: 'granter',
-        type: 'address',
-      },
-    ],
-    name: 'allowance',
-    outputs: [
-      {
-        components: [
-          {
-            internalType: 'string',
-            name: 'sourcePort',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'sourceChannel',
-            type: 'string',
-          },
-          {
-            components: [
-              {
-                internalType: 'string',
-                name: 'denom',
-                type: 'string',
-              },
-              {
-                internalType: 'uint256',
-                name: 'amount',
-                type: 'uint256',
-              },
-            ],
-            internalType: 'struct Coin[]',
-            name: 'spendLimit',
-            type: 'tuple[]',
-          },
-          {
-            internalType: 'string[]',
-            name: 'allowList',
-            type: 'string[]',
-          },
-          {
-            internalType: 'string[]',
-            name: 'allowedPacketData',
-            type: 'string[]',
-          },
-        ],
-        internalType: 'struct ICS20Allocation[]',
-        name: 'allocations',
-        type: 'tuple[]',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'grantee',
-        type: 'address',
-      },
-      {
-        components: [
-          {
-            internalType: 'string',
-            name: 'sourcePort',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'sourceChannel',
-            type: 'string',
-          },
-          {
-            components: [
-              {
-                internalType: 'string',
-                name: 'denom',
-                type: 'string',
-              },
-              {
-                internalType: 'uint256',
-                name: 'amount',
-                type: 'uint256',
-              },
-            ],
-            internalType: 'struct Coin[]',
-            name: 'spendLimit',
-            type: 'tuple[]',
-          },
-          {
-            internalType: 'string[]',
-            name: 'allowList',
-            type: 'string[]',
-          },
-          {
-            internalType: 'string[]',
-            name: 'allowedPacketData',
-            type: 'string[]',
-          },
-        ],
-        internalType: 'struct ICS20Allocation[]',
-        name: 'allocations',
-        type: 'tuple[]',
-      },
-    ],
-    name: 'approve',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'approved',
-        type: 'bool',
-      },
-    ],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'grantee',
-        type: 'address',
-      },
-      {
-        internalType: 'string',
-        name: 'sourcePort',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'sourceChannel',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'denom',
-        type: 'string',
-      },
-      {
-        internalType: 'uint256',
-        name: 'amount',
-        type: 'uint256',
-      },
-    ],
-    name: 'decreaseAllowance',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'approved',
-        type: 'bool',
-      },
-    ],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'string',
-        name: 'trace',
-        type: 'string',
-      },
-    ],
-    name: 'denomHash',
-    outputs: [
-      {
-        internalType: 'string',
-        name: 'hash',
-        type: 'string',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'string',
-        name: 'hash',
-        type: 'string',
-      },
-    ],
-    name: 'denomTrace',
-    outputs: [
-      {
-        components: [
-          {
-            internalType: 'string',
-            name: 'path',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'baseDenom',
-            type: 'string',
-          },
-        ],
-        internalType: 'struct DenomTrace',
-        name: 'denomTrace',
-        type: 'tuple',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        components: [
-          {
-            internalType: 'bytes',
-            name: 'key',
-            type: 'bytes',
-          },
-          {
-            internalType: 'uint64',
-            name: 'offset',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'limit',
-            type: 'uint64',
-          },
-          {
-            internalType: 'bool',
-            name: 'countTotal',
-            type: 'bool',
-          },
-          {
-            internalType: 'bool',
-            name: 'reverse',
-            type: 'bool',
-          },
-        ],
-        internalType: 'struct PageRequest',
-        name: 'pageRequest',
-        type: 'tuple',
-      },
-    ],
-    name: 'denomTraces',
-    outputs: [
-      {
-        components: [
-          {
-            internalType: 'string',
-            name: 'path',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'baseDenom',
-            type: 'string',
-          },
-        ],
-        internalType: 'struct DenomTrace[]',
-        name: 'denomTraces',
-        type: 'tuple[]',
-      },
-      {
-        components: [
-          {
-            internalType: 'bytes',
-            name: 'nextKey',
-            type: 'bytes',
-          },
-          {
-            internalType: 'uint64',
-            name: 'total',
-            type: 'uint64',
-          },
-        ],
-        internalType: 'struct PageResponse',
-        name: 'pageResponse',
-        type: 'tuple',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'grantee',
-        type: 'address',
-      },
-      {
-        internalType: 'string',
-        name: 'sourcePort',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'sourceChannel',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'denom',
-        type: 'string',
-      },
-      {
-        internalType: 'uint256',
-        name: 'amount',
-        type: 'uint256',
-      },
-    ],
-    name: 'increaseAllowance',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'approved',
-        type: 'bool',
-      },
-    ],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'grantee',
-        type: 'address',
-      },
-    ],
-    name: 'revoke',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'revoked',
-        type: 'bool',
-      },
-    ],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'string',
-        name: 'sourcePort',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'sourceChannel',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'denom',
-        type: 'string',
-      },
-      {
-        internalType: 'uint256',
-        name: 'amount',
-        type: 'uint256',
-      },
-      {
-        internalType: 'address',
         name: 'sender',
+        internalType: 'address',
         type: 'address',
+        indexed: true,
       },
       {
-        internalType: 'string',
         name: 'receiver',
+        internalType: 'string',
         type: 'string',
+        indexed: true,
       },
       {
+        name: 'sourcePort',
+        internalType: 'string',
+        type: 'string',
+        indexed: false,
+      },
+      {
+        name: 'sourceChannel',
+        internalType: 'string',
+        type: 'string',
+        indexed: false,
+      },
+      { name: 'denom', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'amount',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+      { name: 'memo', internalType: 'string', type: 'string', indexed: false },
+    ],
+    name: 'IBCTransfer',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'hash', internalType: 'string', type: 'string' }],
+    name: 'denom',
+    outputs: [
+      {
+        name: 'denom',
+        internalType: 'struct Denom',
+        type: 'tuple',
         components: [
+          { name: 'base', internalType: 'string', type: 'string' },
           {
-            internalType: 'uint64',
-            name: 'revisionNumber',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'revisionHeight',
-            type: 'uint64',
+            name: 'trace',
+            internalType: 'struct Hop[]',
+            type: 'tuple[]',
+            components: [
+              { name: 'portId', internalType: 'string', type: 'string' },
+              { name: 'channelId', internalType: 'string', type: 'string' },
+            ],
           },
         ],
-        internalType: 'struct Height',
-        name: 'timeoutHeight',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'trace', internalType: 'string', type: 'string' }],
+    name: 'denomHash',
+    outputs: [{ name: 'hash', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      {
+        name: 'pageRequest',
+        internalType: 'struct PageRequest',
         type: 'tuple',
+        components: [
+          { name: 'key', internalType: 'bytes', type: 'bytes' },
+          { name: 'offset', internalType: 'uint64', type: 'uint64' },
+          { name: 'limit', internalType: 'uint64', type: 'uint64' },
+          { name: 'countTotal', internalType: 'bool', type: 'bool' },
+          { name: 'reverse', internalType: 'bool', type: 'bool' },
+        ],
+      },
+    ],
+    name: 'denoms',
+    outputs: [
+      {
+        name: 'denoms',
+        internalType: 'struct Denom[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'base', internalType: 'string', type: 'string' },
+          {
+            name: 'trace',
+            internalType: 'struct Hop[]',
+            type: 'tuple[]',
+            components: [
+              { name: 'portId', internalType: 'string', type: 'string' },
+              { name: 'channelId', internalType: 'string', type: 'string' },
+            ],
+          },
+        ],
       },
       {
-        internalType: 'uint64',
-        name: 'timeoutTimestamp',
-        type: 'uint64',
+        name: 'pageResponse',
+        internalType: 'struct PageResponse',
+        type: 'tuple',
+        components: [
+          { name: 'nextKey', internalType: 'bytes', type: 'bytes' },
+          { name: 'total', internalType: 'uint64', type: 'uint64' },
+        ],
       },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'sourcePort', internalType: 'string', type: 'string' },
+      { name: 'sourceChannel', internalType: 'string', type: 'string' },
+      { name: 'denom', internalType: 'string', type: 'string' },
+      { name: 'amount', internalType: 'uint256', type: 'uint256' },
+      { name: 'sender', internalType: 'address', type: 'address' },
+      { name: 'receiver', internalType: 'string', type: 'string' },
       {
-        internalType: 'string',
-        name: 'memo',
-        type: 'string',
+        name: 'timeoutHeight',
+        internalType: 'struct Height',
+        type: 'tuple',
+        components: [
+          { name: 'revisionNumber', internalType: 'uint64', type: 'uint64' },
+          { name: 'revisionHeight', internalType: 'uint64', type: 'uint64' },
+        ],
       },
+      { name: 'timeoutTimestamp', internalType: 'uint64', type: 'uint64' },
+      { name: 'memo', internalType: 'string', type: 'string' },
     ],
     name: 'transfer',
-    outputs: [
-      {
-        internalType: 'uint64',
-        name: 'nextSequence',
-        type: 'uint64',
-      },
-    ],
+    outputs: [{ name: 'nextSequence', internalType: 'uint64', type: 'uint64' }],
     stateMutability: 'nonpayable',
-    type: 'function',
   },
 ] as const;

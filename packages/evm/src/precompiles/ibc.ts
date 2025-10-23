@@ -2,8 +2,8 @@
  * The address of the ibc precompile contract.
  * @category Cosmos Interoperability
  */
-export const IBC_PRECOMPILE_ADDRESS: `0x${string}` =
-  '0x0000000000000000000000000000000000001002';
+export const IBC_PRECOMPILE_ADDRESS =
+  '0x0000000000000000000000000000000000001002' as const;
 
 /**
  * The ABI for the IBC precompile contract.
@@ -11,106 +11,86 @@ export const IBC_PRECOMPILE_ADDRESS: `0x${string}` =
  */
 export const IBC_PRECOMPILE_ABI = [
   {
+    type: 'event',
+    anonymous: false,
     inputs: [
       {
-        internalType: 'string',
+        name: 'caller',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
         name: 'receiver',
-        type: 'string',
-      },
-      {
         internalType: 'string',
-        name: 'port',
         type: 'string',
+        indexed: true,
       },
+      { name: 'denom', internalType: 'string', type: 'string', indexed: true },
+      { name: 'port', internalType: 'string', type: 'string', indexed: false },
       {
-        internalType: 'string',
         name: 'channel',
-        type: 'string',
-      },
-      {
         internalType: 'string',
-        name: 'denom',
         type: 'string',
+        indexed: false,
       },
       {
-        internalType: 'uint256',
         name: 'amount',
+        internalType: 'uint256',
         type: 'uint256',
+        indexed: false,
       },
       {
-        internalType: 'uint64',
         name: 'revisionNumber',
+        internalType: 'uint64',
         type: 'uint64',
+        indexed: false,
       },
       {
-        internalType: 'uint64',
         name: 'revisionHeight',
-        type: 'uint64',
-      },
-      {
         internalType: 'uint64',
-        name: 'timeoutTimestamp',
         type: 'uint64',
+        indexed: false,
       },
       {
-        internalType: 'string',
-        name: 'memo',
-        type: 'string',
+        name: 'timeoutTimestamp',
+        internalType: 'uint64',
+        type: 'uint64',
+        indexed: false,
       },
+      { name: 'memo', internalType: 'string', type: 'string', indexed: false },
     ],
-    name: 'transfer',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'success',
-        type: 'bool',
-      },
-    ],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    name: 'Transfer',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'string',
-        name: 'receiver',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'port',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'channel',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'denom',
-        type: 'string',
-      },
-      {
-        internalType: 'uint256',
-        name: 'amount',
-        type: 'uint256',
-      },
-      {
-        internalType: 'string',
-        name: 'memo',
-        type: 'string',
-      },
+      { name: 'receiver', internalType: 'string', type: 'string' },
+      { name: 'port', internalType: 'string', type: 'string' },
+      { name: 'channel', internalType: 'string', type: 'string' },
+      { name: 'denom', internalType: 'string', type: 'string' },
+      { name: 'amount', internalType: 'uint256', type: 'uint256' },
+      { name: 'revisionNumber', internalType: 'uint64', type: 'uint64' },
+      { name: 'revisionHeight', internalType: 'uint64', type: 'uint64' },
+      { name: 'timeoutTimestamp', internalType: 'uint64', type: 'uint64' },
+      { name: 'memo', internalType: 'string', type: 'string' },
+    ],
+    name: 'transfer',
+    outputs: [{ name: 'success', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'receiver', internalType: 'string', type: 'string' },
+      { name: 'port', internalType: 'string', type: 'string' },
+      { name: 'channel', internalType: 'string', type: 'string' },
+      { name: 'denom', internalType: 'string', type: 'string' },
+      { name: 'amount', internalType: 'uint256', type: 'uint256' },
+      { name: 'memo', internalType: 'string', type: 'string' },
     ],
     name: 'transferWithDefaultTimeout',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'success',
-        type: 'bool',
-      },
-    ],
+    outputs: [{ name: 'success', internalType: 'bool', type: 'bool' }],
     stateMutability: 'nonpayable',
-    type: 'function',
   },
 ] as const;

@@ -2,8 +2,8 @@
  * The address of the Slashing precompile contract.
  * @category Cosmos Interoperability
  */
-export const SLASHING_PRECOMPILE_ADDRESS: `0x${string}` =
-  '0x0000000000000000000000000000000000000806';
+export const SLASHING_PRECOMPILE_ADDRESS =
+  '0x0000000000000000000000000000000000000806' as const;
 
 /**
  * The ABI for the Slashing precompile contract.
@@ -11,208 +11,145 @@ export const SLASHING_PRECOMPILE_ADDRESS: `0x${string}` =
  */
 export const SLASHING_PRECOMPILE_ABI = [
   {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'validator',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+    ],
+    name: 'ValidatorUnjailed',
+  },
+  {
+    type: 'function',
     inputs: [],
     name: 'getParams',
     outputs: [
       {
+        name: 'params',
+        internalType: 'struct Params',
+        type: 'tuple',
         components: [
+          { name: 'signedBlocksWindow', internalType: 'int64', type: 'int64' },
           {
-            internalType: 'uint64',
-            name: 'signedBlocksWindow',
-            type: 'uint64',
-          },
-          {
-            internalType: 'string',
             name: 'minSignedPerWindow',
-            type: 'string',
+            internalType: 'struct Dec',
+            type: 'tuple',
+            components: [
+              { name: 'value', internalType: 'uint256', type: 'uint256' },
+              { name: 'precision', internalType: 'uint8', type: 'uint8' },
+            ],
           },
           {
-            internalType: 'uint64',
             name: 'downtimeJailDuration',
-            type: 'uint64',
+            internalType: 'int64',
+            type: 'int64',
           },
           {
-            internalType: 'string',
             name: 'slashFractionDoubleSign',
-            type: 'string',
+            internalType: 'struct Dec',
+            type: 'tuple',
+            components: [
+              { name: 'value', internalType: 'uint256', type: 'uint256' },
+              { name: 'precision', internalType: 'uint8', type: 'uint8' },
+            ],
           },
           {
-            internalType: 'string',
             name: 'slashFractionDowntime',
-            type: 'string',
+            internalType: 'struct Dec',
+            type: 'tuple',
+            components: [
+              { name: 'value', internalType: 'uint256', type: 'uint256' },
+              { name: 'precision', internalType: 'uint8', type: 'uint8' },
+            ],
           },
         ],
-        internalType: 'struct Params',
-        name: 'params',
-        type: 'tuple',
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'consAddress',
-        type: 'address',
-      },
-    ],
+    type: 'function',
+    inputs: [{ name: 'consAddress', internalType: 'address', type: 'address' }],
     name: 'getSigningInfo',
     outputs: [
       {
+        name: 'signingInfo',
+        internalType: 'struct SigningInfo',
+        type: 'tuple',
         components: [
           {
-            internalType: 'address',
             name: 'validatorAddress',
+            internalType: 'address',
             type: 'address',
           },
-          {
-            internalType: 'uint64',
-            name: 'startHeight',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'indexOffset',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'jailedUntil',
-            type: 'uint64',
-          },
-          {
-            internalType: 'bool',
-            name: 'tombstoned',
-            type: 'bool',
-          },
-          {
-            internalType: 'uint64',
-            name: 'missedBlocksCounter',
-            type: 'uint64',
-          },
+          { name: 'startHeight', internalType: 'int64', type: 'int64' },
+          { name: 'indexOffset', internalType: 'int64', type: 'int64' },
+          { name: 'jailedUntil', internalType: 'int64', type: 'int64' },
+          { name: 'tombstoned', internalType: 'bool', type: 'bool' },
+          { name: 'missedBlocksCounter', internalType: 'int64', type: 'int64' },
         ],
-        internalType: 'struct SigningInfo',
-        name: 'signingInfo',
-        type: 'tuple',
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
       {
-        components: [
-          {
-            internalType: 'bytes',
-            name: 'key',
-            type: 'bytes',
-          },
-          {
-            internalType: 'uint64',
-            name: 'offset',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'limit',
-            type: 'uint64',
-          },
-          {
-            internalType: 'bool',
-            name: 'countTotal',
-            type: 'bool',
-          },
-          {
-            internalType: 'bool',
-            name: 'reverse',
-            type: 'bool',
-          },
-        ],
-        internalType: 'struct PageRequest',
         name: 'pagination',
+        internalType: 'struct PageRequest',
         type: 'tuple',
+        components: [
+          { name: 'key', internalType: 'bytes', type: 'bytes' },
+          { name: 'offset', internalType: 'uint64', type: 'uint64' },
+          { name: 'limit', internalType: 'uint64', type: 'uint64' },
+          { name: 'countTotal', internalType: 'bool', type: 'bool' },
+          { name: 'reverse', internalType: 'bool', type: 'bool' },
+        ],
       },
     ],
     name: 'getSigningInfos',
     outputs: [
       {
+        name: 'signingInfos',
+        internalType: 'struct SigningInfo[]',
+        type: 'tuple[]',
         components: [
           {
-            internalType: 'address',
             name: 'validatorAddress',
+            internalType: 'address',
             type: 'address',
           },
-          {
-            internalType: 'uint64',
-            name: 'startHeight',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'indexOffset',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'jailedUntil',
-            type: 'uint64',
-          },
-          {
-            internalType: 'bool',
-            name: 'tombstoned',
-            type: 'bool',
-          },
-          {
-            internalType: 'uint64',
-            name: 'missedBlocksCounter',
-            type: 'uint64',
-          },
+          { name: 'startHeight', internalType: 'int64', type: 'int64' },
+          { name: 'indexOffset', internalType: 'int64', type: 'int64' },
+          { name: 'jailedUntil', internalType: 'int64', type: 'int64' },
+          { name: 'tombstoned', internalType: 'bool', type: 'bool' },
+          { name: 'missedBlocksCounter', internalType: 'int64', type: 'int64' },
         ],
-        internalType: 'struct SigningInfo[]',
-        name: 'signingInfos',
-        type: 'tuple[]',
       },
       {
-        components: [
-          {
-            internalType: 'bytes',
-            name: 'nextKey',
-            type: 'bytes',
-          },
-          {
-            internalType: 'uint64',
-            name: 'total',
-            type: 'uint64',
-          },
-        ],
-        internalType: 'struct PageResponse',
         name: 'pageResponse',
+        internalType: 'struct PageResponse',
         type: 'tuple',
+        components: [
+          { name: 'nextKey', internalType: 'bytes', type: 'bytes' },
+          { name: 'total', internalType: 'uint64', type: 'uint64' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'address',
-        name: 'validatorAddress',
-        type: 'address',
-      },
+      { name: 'validatorAddress', internalType: 'address', type: 'address' },
     ],
     name: 'unjail',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'success',
-        type: 'bool',
-      },
-    ],
+    outputs: [{ name: 'success', internalType: 'bool', type: 'bool' }],
     stateMutability: 'nonpayable',
-    type: 'function',
   },
 ] as const;
