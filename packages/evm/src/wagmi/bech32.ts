@@ -1,0 +1,9 @@
+import {
+  BECH32_PRECOMPILE_ABI,
+  BECH32_PRECOMPILE_ADDRESS,
+} from '../precompiles';
+
+export const BECH32_PRECOMPILE_CONFIG = {
+  address: BECH32_PRECOMPILE_ADDRESS,
+  abi: BECH32_PRECOMPILE_ABI,
+} as const;

@@ -1,88 +1,54 @@
-/**
- * The address of the Bank precompile contract.
- * @category Cosmos Interoperability
- */
-export const BANK_PRECOMPILE_ADDRESS: `0x${string}` =
-  '0x0000000000000000000000000000000000000804';
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// BankPrecompile
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * The ABI for the Bank precompile contract.
- * @category Cosmos Interoperability
- */
+export const BANK_PRECOMPILE_ADDRESS =
+  '0x0000000000000000000000000000000000000804' as const;
+
 export const BANK_PRECOMPILE_ABI = [
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'account',
-        type: 'address',
-      },
-    ],
+    type: 'function',
+    inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
     name: 'balances',
     outputs: [
       {
-        components: [
-          {
-            internalType: 'address',
-            name: 'contractAddress',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-        ],
-        internalType: 'struct Balance[]',
         name: 'balances',
+        internalType: 'struct Balance[]',
         type: 'tuple[]',
+        components: [
+          { name: 'contractAddress', internalType: 'address', type: 'address' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'address',
-        name: 'erc20Address',
-        type: 'address',
-      },
+      { name: 'erc20Address', internalType: 'address', type: 'address' },
     ],
     name: 'supplyOf',
     outputs: [
-      {
-        internalType: 'uint256',
-        name: 'totalSupply',
-        type: 'uint256',
-      },
+      { name: 'totalSupply', internalType: 'uint256', type: 'uint256' },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [],
     name: 'totalSupply',
     outputs: [
       {
-        components: [
-          {
-            internalType: 'address',
-            name: 'contractAddress',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-        ],
-        internalType: 'struct Balance[]',
         name: 'totalSupply',
+        internalType: 'struct Balance[]',
         type: 'tuple[]',
+        components: [
+          { name: 'contractAddress', internalType: 'address', type: 'address' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
 ] as const;

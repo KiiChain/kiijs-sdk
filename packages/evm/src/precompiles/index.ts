@@ -1,7 +1,6 @@
 export * from './bank';
 export * from './bech32';
 export * from './distribution';
-export * from './evidence';
 export * from './governance';
 export * from './ibc';
 export * from './ics20';
