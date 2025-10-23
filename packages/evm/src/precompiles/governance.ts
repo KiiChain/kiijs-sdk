@@ -1,862 +1,581 @@
-/**
- * The address of the Governance precompile contract.
- * @category Cosmos Interoperability
- */
-export const GOVERNANCE_PRECOMPILE_ADDRESS: `0x${string}` =
-  '0x0000000000000000000000000000000000000805';
+export const GOVERNANCE_PRECOMPILE_ADDRESS =
+  '0x0000000000000000000000000000000000000805' as const;
 
-/**
- * The ABI for the Governance precompile contract.
- * @category Cosmos Interoperability
- */
 export const GOVERNANCE_PRECOMPILE_ABI = [
   {
+    type: 'event',
+    anonymous: false,
     inputs: [
       {
-        internalType: 'uint64',
-        name: 'proposalId',
-        type: 'uint64',
+        name: 'proposer',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
       },
       {
-        internalType: 'address',
-        name: 'depositor',
-        type: 'address',
+        name: 'proposalId',
+        internalType: 'uint64',
+        type: 'uint64',
+        indexed: false,
       },
+    ],
+    name: 'CancelProposal',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'depositor',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'proposalId',
+        internalType: 'uint64',
+        type: 'uint64',
+        indexed: false,
+      },
+      {
+        name: 'amount',
+        internalType: 'struct Coin[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+        ],
+        indexed: false,
+      },
+    ],
+    name: 'Deposit',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'proposer',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'proposalId',
+        internalType: 'uint64',
+        type: 'uint64',
+        indexed: false,
+      },
+    ],
+    name: 'SubmitProposal',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'voter',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'proposalId',
+        internalType: 'uint64',
+        type: 'uint64',
+        indexed: false,
+      },
+      { name: 'option', internalType: 'uint8', type: 'uint8', indexed: false },
+    ],
+    name: 'Vote',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'voter',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'proposalId',
+        internalType: 'uint64',
+        type: 'uint64',
+        indexed: false,
+      },
+      {
+        name: 'options',
+        internalType: 'struct WeightedVoteOption[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'option', internalType: 'enum VoteOption', type: 'uint8' },
+          { name: 'weight', internalType: 'string', type: 'string' },
+        ],
+        indexed: false,
+      },
+    ],
+    name: 'VoteWeighted',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'proposer', internalType: 'address', type: 'address' },
+      { name: 'proposalId', internalType: 'uint64', type: 'uint64' },
+    ],
+    name: 'cancelProposal',
+    outputs: [{ name: 'success', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'depositor', internalType: 'address', type: 'address' },
+      { name: 'proposalId', internalType: 'uint64', type: 'uint64' },
+      {
+        name: 'amount',
+        internalType: 'struct Coin[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+        ],
+      },
+    ],
+    name: 'deposit',
+    outputs: [{ name: 'success', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'getConstitution',
+    outputs: [{ name: 'constitution', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'proposalId', internalType: 'uint64', type: 'uint64' },
+      { name: 'depositor', internalType: 'address', type: 'address' },
     ],
     name: 'getDeposit',
     outputs: [
       {
+        name: 'deposit',
+        internalType: 'struct DepositData',
+        type: 'tuple',
         components: [
+          { name: 'proposalId', internalType: 'uint64', type: 'uint64' },
+          { name: 'depositor', internalType: 'address', type: 'address' },
           {
-            internalType: 'uint64',
-            name: 'proposalId',
-            type: 'uint64',
-          },
-          {
-            internalType: 'address',
-            name: 'depositor',
-            type: 'address',
-          },
-          {
-            components: [
-              {
-                internalType: 'string',
-                name: 'denom',
-                type: 'string',
-              },
-              {
-                internalType: 'uint256',
-                name: 'amount',
-                type: 'uint256',
-              },
-            ],
-            internalType: 'struct Coin[]',
             name: 'amount',
+            internalType: 'struct Coin[]',
             type: 'tuple[]',
+            components: [
+              { name: 'denom', internalType: 'string', type: 'string' },
+              { name: 'amount', internalType: 'uint256', type: 'uint256' },
+            ],
           },
         ],
-        internalType: 'struct DepositData',
-        name: 'deposit',
-        type: 'tuple',
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
+      { name: 'proposalId', internalType: 'uint64', type: 'uint64' },
       {
-        internalType: 'uint64',
-        name: 'proposalId',
-        type: 'uint64',
-      },
-      {
-        components: [
-          {
-            internalType: 'bytes',
-            name: 'key',
-            type: 'bytes',
-          },
-          {
-            internalType: 'uint64',
-            name: 'offset',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'limit',
-            type: 'uint64',
-          },
-          {
-            internalType: 'bool',
-            name: 'countTotal',
-            type: 'bool',
-          },
-          {
-            internalType: 'bool',
-            name: 'reverse',
-            type: 'bool',
-          },
-        ],
-        internalType: 'struct PageRequest',
         name: 'pagination',
+        internalType: 'struct PageRequest',
         type: 'tuple',
+        components: [
+          { name: 'key', internalType: 'bytes', type: 'bytes' },
+          { name: 'offset', internalType: 'uint64', type: 'uint64' },
+          { name: 'limit', internalType: 'uint64', type: 'uint64' },
+          { name: 'countTotal', internalType: 'bool', type: 'bool' },
+          { name: 'reverse', internalType: 'bool', type: 'bool' },
+        ],
       },
     ],
     name: 'getDeposits',
     outputs: [
       {
+        name: 'deposits',
+        internalType: 'struct DepositData[]',
+        type: 'tuple[]',
         components: [
+          { name: 'proposalId', internalType: 'uint64', type: 'uint64' },
+          { name: 'depositor', internalType: 'address', type: 'address' },
           {
-            internalType: 'uint64',
-            name: 'proposalId',
-            type: 'uint64',
-          },
-          {
-            internalType: 'address',
-            name: 'depositor',
-            type: 'address',
-          },
-          {
-            components: [
-              {
-                internalType: 'string',
-                name: 'denom',
-                type: 'string',
-              },
-              {
-                internalType: 'uint256',
-                name: 'amount',
-                type: 'uint256',
-              },
-            ],
-            internalType: 'struct Coin[]',
             name: 'amount',
+            internalType: 'struct Coin[]',
             type: 'tuple[]',
+            components: [
+              { name: 'denom', internalType: 'string', type: 'string' },
+              { name: 'amount', internalType: 'uint256', type: 'uint256' },
+            ],
           },
         ],
-        internalType: 'struct DepositData[]',
-        name: 'deposits',
-        type: 'tuple[]',
       },
       {
-        components: [
-          {
-            internalType: 'bytes',
-            name: 'nextKey',
-            type: 'bytes',
-          },
-          {
-            internalType: 'uint64',
-            name: 'total',
-            type: 'uint64',
-          },
-        ],
-        internalType: 'struct PageResponse',
         name: 'pageResponse',
+        internalType: 'struct PageResponse',
         type: 'tuple',
+        components: [
+          { name: 'nextKey', internalType: 'bytes', type: 'bytes' },
+          { name: 'total', internalType: 'uint64', type: 'uint64' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [],
     name: 'getParams',
     outputs: [
       {
-        components: [
-          {
-            internalType: 'int64',
-            name: 'votingPeriod',
-            type: 'int64',
-          },
-          {
-            components: [
-              {
-                internalType: 'string',
-                name: 'denom',
-                type: 'string',
-              },
-              {
-                internalType: 'uint256',
-                name: 'amount',
-                type: 'uint256',
-              },
-            ],
-            internalType: 'struct Coin[]',
-            name: 'minDeposit',
-            type: 'tuple[]',
-          },
-          {
-            internalType: 'int64',
-            name: 'maxDepositPeriod',
-            type: 'int64',
-          },
-          {
-            internalType: 'string',
-            name: 'quorum',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'threshold',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'vetoThreshold',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'minInitialDepositRatio',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'proposalCancelRatio',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'proposalCancelDest',
-            type: 'string',
-          },
-          {
-            internalType: 'int64',
-            name: 'expeditedVotingPeriod',
-            type: 'int64',
-          },
-          {
-            internalType: 'string',
-            name: 'expeditedThreshold',
-            type: 'string',
-          },
-          {
-            components: [
-              {
-                internalType: 'string',
-                name: 'denom',
-                type: 'string',
-              },
-              {
-                internalType: 'uint256',
-                name: 'amount',
-                type: 'uint256',
-              },
-            ],
-            internalType: 'struct Coin[]',
-            name: 'expeditedMinDeposit',
-            type: 'tuple[]',
-          },
-          {
-            internalType: 'bool',
-            name: 'burnVoteQuorum',
-            type: 'bool',
-          },
-          {
-            internalType: 'bool',
-            name: 'burnProposalDepositPrevote',
-            type: 'bool',
-          },
-          {
-            internalType: 'bool',
-            name: 'burnVoteVeto',
-            type: 'bool',
-          },
-          {
-            internalType: 'string',
-            name: 'minDepositRatio',
-            type: 'string',
-          },
-        ],
-        internalType: 'struct Params',
         name: 'params',
+        internalType: 'struct Params',
         type: 'tuple',
+        components: [
+          { name: 'votingPeriod', internalType: 'int64', type: 'int64' },
+          {
+            name: 'minDeposit',
+            internalType: 'struct Coin[]',
+            type: 'tuple[]',
+            components: [
+              { name: 'denom', internalType: 'string', type: 'string' },
+              { name: 'amount', internalType: 'uint256', type: 'uint256' },
+            ],
+          },
+          { name: 'maxDepositPeriod', internalType: 'int64', type: 'int64' },
+          { name: 'quorum', internalType: 'string', type: 'string' },
+          { name: 'threshold', internalType: 'string', type: 'string' },
+          { name: 'vetoThreshold', internalType: 'string', type: 'string' },
+          {
+            name: 'minInitialDepositRatio',
+            internalType: 'string',
+            type: 'string',
+          },
+          {
+            name: 'proposalCancelRatio',
+            internalType: 'string',
+            type: 'string',
+          },
+          {
+            name: 'proposalCancelDest',
+            internalType: 'string',
+            type: 'string',
+          },
+          {
+            name: 'expeditedVotingPeriod',
+            internalType: 'int64',
+            type: 'int64',
+          },
+          {
+            name: 'expeditedThreshold',
+            internalType: 'string',
+            type: 'string',
+          },
+          {
+            name: 'expeditedMinDeposit',
+            internalType: 'struct Coin[]',
+            type: 'tuple[]',
+            components: [
+              { name: 'denom', internalType: 'string', type: 'string' },
+              { name: 'amount', internalType: 'uint256', type: 'uint256' },
+            ],
+          },
+          { name: 'burnVoteQuorum', internalType: 'bool', type: 'bool' },
+          {
+            name: 'burnProposalDepositPrevote',
+            internalType: 'bool',
+            type: 'bool',
+          },
+          { name: 'burnVoteVeto', internalType: 'bool', type: 'bool' },
+          { name: 'minDepositRatio', internalType: 'string', type: 'string' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'uint64',
-        name: 'proposalId',
-        type: 'uint64',
-      },
-    ],
+    type: 'function',
+    inputs: [{ name: 'proposalId', internalType: 'uint64', type: 'uint64' }],
     name: 'getProposal',
     outputs: [
       {
-        components: [
-          {
-            internalType: 'uint64',
-            name: 'id',
-            type: 'uint64',
-          },
-          {
-            internalType: 'string[]',
-            name: 'messages',
-            type: 'string[]',
-          },
-          {
-            internalType: 'uint32',
-            name: 'status',
-            type: 'uint32',
-          },
-          {
-            components: [
-              {
-                internalType: 'string',
-                name: 'yes',
-                type: 'string',
-              },
-              {
-                internalType: 'string',
-                name: 'abstain',
-                type: 'string',
-              },
-              {
-                internalType: 'string',
-                name: 'no',
-                type: 'string',
-              },
-              {
-                internalType: 'string',
-                name: 'noWithVeto',
-                type: 'string',
-              },
-            ],
-            internalType: 'struct TallyResultData',
-            name: 'finalTallyResult',
-            type: 'tuple',
-          },
-          {
-            internalType: 'uint64',
-            name: 'submitTime',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'depositEndTime',
-            type: 'uint64',
-          },
-          {
-            components: [
-              {
-                internalType: 'string',
-                name: 'denom',
-                type: 'string',
-              },
-              {
-                internalType: 'uint256',
-                name: 'amount',
-                type: 'uint256',
-              },
-            ],
-            internalType: 'struct Coin[]',
-            name: 'totalDeposit',
-            type: 'tuple[]',
-          },
-          {
-            internalType: 'uint64',
-            name: 'votingStartTime',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'votingEndTime',
-            type: 'uint64',
-          },
-          {
-            internalType: 'string',
-            name: 'metadata',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'title',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'summary',
-            type: 'string',
-          },
-          {
-            internalType: 'address',
-            name: 'proposer',
-            type: 'address',
-          },
-        ],
-        internalType: 'struct ProposalData',
         name: 'proposal',
+        internalType: 'struct ProposalData',
         type: 'tuple',
+        components: [
+          { name: 'id', internalType: 'uint64', type: 'uint64' },
+          { name: 'messages', internalType: 'string[]', type: 'string[]' },
+          { name: 'status', internalType: 'uint32', type: 'uint32' },
+          {
+            name: 'finalTallyResult',
+            internalType: 'struct TallyResultData',
+            type: 'tuple',
+            components: [
+              { name: 'yes', internalType: 'string', type: 'string' },
+              { name: 'abstain', internalType: 'string', type: 'string' },
+              { name: 'no', internalType: 'string', type: 'string' },
+              { name: 'noWithVeto', internalType: 'string', type: 'string' },
+            ],
+          },
+          { name: 'submitTime', internalType: 'uint64', type: 'uint64' },
+          { name: 'depositEndTime', internalType: 'uint64', type: 'uint64' },
+          {
+            name: 'totalDeposit',
+            internalType: 'struct Coin[]',
+            type: 'tuple[]',
+            components: [
+              { name: 'denom', internalType: 'string', type: 'string' },
+              { name: 'amount', internalType: 'uint256', type: 'uint256' },
+            ],
+          },
+          { name: 'votingStartTime', internalType: 'uint64', type: 'uint64' },
+          { name: 'votingEndTime', internalType: 'uint64', type: 'uint64' },
+          { name: 'metadata', internalType: 'string', type: 'string' },
+          { name: 'title', internalType: 'string', type: 'string' },
+          { name: 'summary', internalType: 'string', type: 'string' },
+          { name: 'proposer', internalType: 'address', type: 'address' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
+      { name: 'proposalStatus', internalType: 'uint32', type: 'uint32' },
+      { name: 'voter', internalType: 'address', type: 'address' },
+      { name: 'depositor', internalType: 'address', type: 'address' },
       {
-        internalType: 'uint32',
-        name: 'proposalStatus',
-        type: 'uint32',
-      },
-      {
-        internalType: 'address',
-        name: 'voter',
-        type: 'address',
-      },
-      {
-        internalType: 'address',
-        name: 'depositor',
-        type: 'address',
-      },
-      {
-        components: [
-          {
-            internalType: 'bytes',
-            name: 'key',
-            type: 'bytes',
-          },
-          {
-            internalType: 'uint64',
-            name: 'offset',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'limit',
-            type: 'uint64',
-          },
-          {
-            internalType: 'bool',
-            name: 'countTotal',
-            type: 'bool',
-          },
-          {
-            internalType: 'bool',
-            name: 'reverse',
-            type: 'bool',
-          },
-        ],
-        internalType: 'struct PageRequest',
         name: 'pagination',
+        internalType: 'struct PageRequest',
         type: 'tuple',
+        components: [
+          { name: 'key', internalType: 'bytes', type: 'bytes' },
+          { name: 'offset', internalType: 'uint64', type: 'uint64' },
+          { name: 'limit', internalType: 'uint64', type: 'uint64' },
+          { name: 'countTotal', internalType: 'bool', type: 'bool' },
+          { name: 'reverse', internalType: 'bool', type: 'bool' },
+        ],
       },
     ],
     name: 'getProposals',
     outputs: [
       {
-        components: [
-          {
-            internalType: 'uint64',
-            name: 'id',
-            type: 'uint64',
-          },
-          {
-            internalType: 'string[]',
-            name: 'messages',
-            type: 'string[]',
-          },
-          {
-            internalType: 'uint32',
-            name: 'status',
-            type: 'uint32',
-          },
-          {
-            components: [
-              {
-                internalType: 'string',
-                name: 'yes',
-                type: 'string',
-              },
-              {
-                internalType: 'string',
-                name: 'abstain',
-                type: 'string',
-              },
-              {
-                internalType: 'string',
-                name: 'no',
-                type: 'string',
-              },
-              {
-                internalType: 'string',
-                name: 'noWithVeto',
-                type: 'string',
-              },
-            ],
-            internalType: 'struct TallyResultData',
-            name: 'finalTallyResult',
-            type: 'tuple',
-          },
-          {
-            internalType: 'uint64',
-            name: 'submitTime',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'depositEndTime',
-            type: 'uint64',
-          },
-          {
-            components: [
-              {
-                internalType: 'string',
-                name: 'denom',
-                type: 'string',
-              },
-              {
-                internalType: 'uint256',
-                name: 'amount',
-                type: 'uint256',
-              },
-            ],
-            internalType: 'struct Coin[]',
-            name: 'totalDeposit',
-            type: 'tuple[]',
-          },
-          {
-            internalType: 'uint64',
-            name: 'votingStartTime',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'votingEndTime',
-            type: 'uint64',
-          },
-          {
-            internalType: 'string',
-            name: 'metadata',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'title',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'summary',
-            type: 'string',
-          },
-          {
-            internalType: 'address',
-            name: 'proposer',
-            type: 'address',
-          },
-        ],
-        internalType: 'struct ProposalData[]',
         name: 'proposals',
+        internalType: 'struct ProposalData[]',
         type: 'tuple[]',
+        components: [
+          { name: 'id', internalType: 'uint64', type: 'uint64' },
+          { name: 'messages', internalType: 'string[]', type: 'string[]' },
+          { name: 'status', internalType: 'uint32', type: 'uint32' },
+          {
+            name: 'finalTallyResult',
+            internalType: 'struct TallyResultData',
+            type: 'tuple',
+            components: [
+              { name: 'yes', internalType: 'string', type: 'string' },
+              { name: 'abstain', internalType: 'string', type: 'string' },
+              { name: 'no', internalType: 'string', type: 'string' },
+              { name: 'noWithVeto', internalType: 'string', type: 'string' },
+            ],
+          },
+          { name: 'submitTime', internalType: 'uint64', type: 'uint64' },
+          { name: 'depositEndTime', internalType: 'uint64', type: 'uint64' },
+          {
+            name: 'totalDeposit',
+            internalType: 'struct Coin[]',
+            type: 'tuple[]',
+            components: [
+              { name: 'denom', internalType: 'string', type: 'string' },
+              { name: 'amount', internalType: 'uint256', type: 'uint256' },
+            ],
+          },
+          { name: 'votingStartTime', internalType: 'uint64', type: 'uint64' },
+          { name: 'votingEndTime', internalType: 'uint64', type: 'uint64' },
+          { name: 'metadata', internalType: 'string', type: 'string' },
+          { name: 'title', internalType: 'string', type: 'string' },
+          { name: 'summary', internalType: 'string', type: 'string' },
+          { name: 'proposer', internalType: 'address', type: 'address' },
+        ],
       },
       {
-        components: [
-          {
-            internalType: 'bytes',
-            name: 'nextKey',
-            type: 'bytes',
-          },
-          {
-            internalType: 'uint64',
-            name: 'total',
-            type: 'uint64',
-          },
-        ],
-        internalType: 'struct PageResponse',
         name: 'pageResponse',
+        internalType: 'struct PageResponse',
         type: 'tuple',
+        components: [
+          { name: 'nextKey', internalType: 'bytes', type: 'bytes' },
+          { name: 'total', internalType: 'uint64', type: 'uint64' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'uint64',
-        name: 'proposalId',
-        type: 'uint64',
-      },
-    ],
+    type: 'function',
+    inputs: [{ name: 'proposalId', internalType: 'uint64', type: 'uint64' }],
     name: 'getTallyResult',
     outputs: [
       {
-        components: [
-          {
-            internalType: 'string',
-            name: 'yes',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'abstain',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'no',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'noWithVeto',
-            type: 'string',
-          },
-        ],
-        internalType: 'struct TallyResultData',
         name: 'tallyResult',
+        internalType: 'struct TallyResultData',
         type: 'tuple',
+        components: [
+          { name: 'yes', internalType: 'string', type: 'string' },
+          { name: 'abstain', internalType: 'string', type: 'string' },
+          { name: 'no', internalType: 'string', type: 'string' },
+          { name: 'noWithVeto', internalType: 'string', type: 'string' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'uint64',
-        name: 'proposalId',
-        type: 'uint64',
-      },
-      {
-        internalType: 'address',
-        name: 'voter',
-        type: 'address',
-      },
+      { name: 'proposalId', internalType: 'uint64', type: 'uint64' },
+      { name: 'voter', internalType: 'address', type: 'address' },
     ],
     name: 'getVote',
     outputs: [
       {
+        name: 'vote',
+        internalType: 'struct WeightedVote',
+        type: 'tuple',
         components: [
+          { name: 'proposalId', internalType: 'uint64', type: 'uint64' },
+          { name: 'voter', internalType: 'address', type: 'address' },
           {
-            internalType: 'uint64',
-            name: 'proposalId',
-            type: 'uint64',
-          },
-          {
-            internalType: 'address',
-            name: 'voter',
-            type: 'address',
-          },
-          {
+            name: 'options',
+            internalType: 'struct WeightedVoteOption[]',
+            type: 'tuple[]',
             components: [
               {
-                internalType: 'enum VoteOption',
                 name: 'option',
+                internalType: 'enum VoteOption',
                 type: 'uint8',
               },
-              {
-                internalType: 'string',
-                name: 'weight',
-                type: 'string',
-              },
+              { name: 'weight', internalType: 'string', type: 'string' },
             ],
-            internalType: 'struct WeightedVoteOption[]',
-            name: 'options',
-            type: 'tuple[]',
           },
-          {
-            internalType: 'string',
-            name: 'metadata',
-            type: 'string',
-          },
+          { name: 'metadata', internalType: 'string', type: 'string' },
         ],
-        internalType: 'struct WeightedVote',
-        name: 'vote',
-        type: 'tuple',
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
+      { name: 'proposalId', internalType: 'uint64', type: 'uint64' },
       {
-        internalType: 'uint64',
-        name: 'proposalId',
-        type: 'uint64',
-      },
-      {
-        components: [
-          {
-            internalType: 'bytes',
-            name: 'key',
-            type: 'bytes',
-          },
-          {
-            internalType: 'uint64',
-            name: 'offset',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'limit',
-            type: 'uint64',
-          },
-          {
-            internalType: 'bool',
-            name: 'countTotal',
-            type: 'bool',
-          },
-          {
-            internalType: 'bool',
-            name: 'reverse',
-            type: 'bool',
-          },
-        ],
-        internalType: 'struct PageRequest',
         name: 'pagination',
+        internalType: 'struct PageRequest',
         type: 'tuple',
+        components: [
+          { name: 'key', internalType: 'bytes', type: 'bytes' },
+          { name: 'offset', internalType: 'uint64', type: 'uint64' },
+          { name: 'limit', internalType: 'uint64', type: 'uint64' },
+          { name: 'countTotal', internalType: 'bool', type: 'bool' },
+          { name: 'reverse', internalType: 'bool', type: 'bool' },
+        ],
       },
     ],
     name: 'getVotes',
     outputs: [
       {
+        name: 'votes',
+        internalType: 'struct WeightedVote[]',
+        type: 'tuple[]',
         components: [
+          { name: 'proposalId', internalType: 'uint64', type: 'uint64' },
+          { name: 'voter', internalType: 'address', type: 'address' },
           {
-            internalType: 'uint64',
-            name: 'proposalId',
-            type: 'uint64',
-          },
-          {
-            internalType: 'address',
-            name: 'voter',
-            type: 'address',
-          },
-          {
+            name: 'options',
+            internalType: 'struct WeightedVoteOption[]',
+            type: 'tuple[]',
             components: [
               {
-                internalType: 'enum VoteOption',
                 name: 'option',
+                internalType: 'enum VoteOption',
                 type: 'uint8',
               },
-              {
-                internalType: 'string',
-                name: 'weight',
-                type: 'string',
-              },
+              { name: 'weight', internalType: 'string', type: 'string' },
             ],
-            internalType: 'struct WeightedVoteOption[]',
-            name: 'options',
-            type: 'tuple[]',
           },
-          {
-            internalType: 'string',
-            name: 'metadata',
-            type: 'string',
-          },
+          { name: 'metadata', internalType: 'string', type: 'string' },
         ],
-        internalType: 'struct WeightedVote[]',
-        name: 'votes',
-        type: 'tuple[]',
       },
       {
-        components: [
-          {
-            internalType: 'bytes',
-            name: 'nextKey',
-            type: 'bytes',
-          },
-          {
-            internalType: 'uint64',
-            name: 'total',
-            type: 'uint64',
-          },
-        ],
-        internalType: 'struct PageResponse',
         name: 'pageResponse',
+        internalType: 'struct PageResponse',
         type: 'tuple',
+        components: [
+          { name: 'nextKey', internalType: 'bytes', type: 'bytes' },
+          { name: 'total', internalType: 'uint64', type: 'uint64' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
+      { name: 'proposer', internalType: 'address', type: 'address' },
+      { name: 'jsonProposal', internalType: 'bytes', type: 'bytes' },
       {
-        internalType: 'address',
-        name: 'voter',
-        type: 'address',
+        name: 'deposit',
+        internalType: 'struct Coin[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+        ],
       },
-      {
-        internalType: 'uint64',
-        name: 'proposalId',
-        type: 'uint64',
-      },
-      {
-        internalType: 'enum VoteOption',
-        name: 'option',
-        type: 'uint8',
-      },
-      {
-        internalType: 'string',
-        name: 'metadata',
-        type: 'string',
-      },
+    ],
+    name: 'submitProposal',
+    outputs: [{ name: 'proposalId', internalType: 'uint64', type: 'uint64' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'voter', internalType: 'address', type: 'address' },
+      { name: 'proposalId', internalType: 'uint64', type: 'uint64' },
+      { name: 'option', internalType: 'enum VoteOption', type: 'uint8' },
+      { name: 'metadata', internalType: 'string', type: 'string' },
     ],
     name: 'vote',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'success',
-        type: 'bool',
-      },
-    ],
+    outputs: [{ name: 'success', internalType: 'bool', type: 'bool' }],
     stateMutability: 'nonpayable',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
+      { name: 'voter', internalType: 'address', type: 'address' },
+      { name: 'proposalId', internalType: 'uint64', type: 'uint64' },
       {
-        internalType: 'address',
-        name: 'voter',
-        type: 'address',
-      },
-      {
-        internalType: 'uint64',
-        name: 'proposalId',
-        type: 'uint64',
-      },
-      {
-        components: [
-          {
-            internalType: 'enum VoteOption',
-            name: 'option',
-            type: 'uint8',
-          },
-          {
-            internalType: 'string',
-            name: 'weight',
-            type: 'string',
-          },
-        ],
-        internalType: 'struct WeightedVoteOption[]',
         name: 'options',
+        internalType: 'struct WeightedVoteOption[]',
         type: 'tuple[]',
+        components: [
+          { name: 'option', internalType: 'enum VoteOption', type: 'uint8' },
+          { name: 'weight', internalType: 'string', type: 'string' },
+        ],
       },
-      {
-        internalType: 'string',
-        name: 'metadata',
-        type: 'string',
-      },
+      { name: 'metadata', internalType: 'string', type: 'string' },
     ],
     name: 'voteWeighted',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'success',
-        type: 'bool',
-      },
-    ],
+    outputs: [{ name: 'success', internalType: 'bool', type: 'bool' }],
     stateMutability: 'nonpayable',
-    type: 'function',
   },
 ] as const;

@@ -33,8 +33,8 @@
     "copy": "npx copyfiles -f ../../LICENSE README.md package.json dist",
     "clean": "npx rimraf dist",
     "prepare": "npm run build",
-    "build": "npm run clean; npx tsc; npx tsc -p tsconfig.declaration.json; npm run copy",
-    "build:dev": "npm run clean; npm run codegen; tsc --declarationMap; tsc -p tsconfig.declaration.json; npm run copy",
+    "build": "npm run clean && npx tsc && npx tsc -p tsconfig.declaration.json && npm run copy",
+    "build:dev": "npm run clean && npm run codegen && tsc --declarationMap && tsc -p tsconfig.declaration.json && npm run copy",
     "codegen": "npx tsx scripts/codegen.ts",
     "lint": "npx eslint . --fix"
   },

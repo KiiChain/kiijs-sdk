@@ -1,7 +1,6 @@
 export * from './bankPrecompile';
 export * from './bech32Precompile';
 export * from './distributionPrecompile';
-export * from './evidencePrecompile';
 export * from './governancePrecompile';
 export * from './ibcPrecompile';
 export * from './ics20Precompile';

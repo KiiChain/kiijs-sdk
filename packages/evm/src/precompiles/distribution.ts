@@ -1,545 +1,456 @@
-/**
- * The address of the Distribution precompile contract.
- * @category Cosmos Interoperability
- */
-export const DISTRIBUTION_PRECOMPILE_ADDRESS: `0x${string}` =
-  '0x0000000000000000000000000000000000000801';
+export const DISTRIBUTION_PRECOMPILE_ADDRESS =
+  '0x0000000000000000000000000000000000000801' as const;
 
-/**
- * The ABI for the Distribution precompile contract.
- * @category Cosmos Interoperability
- */
 export const DISTRIBUTION_PRECOMPILE_ABI = [
   {
+    type: 'event',
+    anonymous: false,
     inputs: [
       {
-        internalType: 'address',
         name: 'delegatorAddress',
+        internalType: 'address',
         type: 'address',
+        indexed: true,
       },
       {
-        internalType: 'uint32',
-        name: 'maxRetrieve',
-        type: 'uint32',
+        name: 'amount',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
       },
     ],
-    name: 'claimRewards',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'success',
-        type: 'bool',
-      },
-    ],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    name: 'ClaimRewards',
   },
   {
+    type: 'event',
+    anonymous: false,
     inputs: [
       {
+        name: 'depositor',
         internalType: 'address',
-        name: 'delegatorAddress',
         type: 'address',
+        indexed: true,
       },
       {
-        internalType: 'string',
         name: 'validatorAddress',
-        type: 'string',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
       },
+      { name: 'denom', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'amount',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'DepositValidatorRewardsPool',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'depositor',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      { name: 'denom', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'amount',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'FundCommunityPool',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'caller',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'withdrawerAddress',
+        internalType: 'string',
+        type: 'string',
+        indexed: false,
+      },
+    ],
+    name: 'SetWithdrawerAddress',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'delegatorAddress',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'validatorAddress',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'amount',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'WithdrawDelegatorReward',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'validatorAddress',
+        internalType: 'string',
+        type: 'string',
+        indexed: true,
+      },
+      {
+        name: 'commission',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'WithdrawValidatorCommission',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'delegatorAddress', internalType: 'address', type: 'address' },
+      { name: 'maxRetrieve', internalType: 'uint32', type: 'uint32' },
+    ],
+    name: 'claimRewards',
+    outputs: [{ name: 'success', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'communityPool',
+    outputs: [
+      {
+        name: 'coins',
+        internalType: 'struct DecCoin[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+          { name: 'precision', internalType: 'uint8', type: 'uint8' },
+        ],
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'delegatorAddress', internalType: 'address', type: 'address' },
+      { name: 'validatorAddress', internalType: 'string', type: 'string' },
     ],
     name: 'delegationRewards',
     outputs: [
       {
-        components: [
-          {
-            internalType: 'string',
-            name: 'denom',
-            type: 'string',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-          {
-            internalType: 'uint8',
-            name: 'precision',
-            type: 'uint8',
-          },
-        ],
-        internalType: 'struct DecCoin[]',
         name: 'rewards',
+        internalType: 'struct DecCoin[]',
         type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+          { name: 'precision', internalType: 'uint8', type: 'uint8' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'address',
-        name: 'delegatorAddress',
-        type: 'address',
-      },
+      { name: 'delegatorAddress', internalType: 'address', type: 'address' },
     ],
     name: 'delegationTotalRewards',
     outputs: [
       {
+        name: 'rewards',
+        internalType: 'struct DelegationDelegatorReward[]',
+        type: 'tuple[]',
         components: [
+          { name: 'validatorAddress', internalType: 'string', type: 'string' },
           {
-            internalType: 'string',
-            name: 'validatorAddress',
-            type: 'string',
-          },
-          {
-            components: [
-              {
-                internalType: 'string',
-                name: 'denom',
-                type: 'string',
-              },
-              {
-                internalType: 'uint256',
-                name: 'amount',
-                type: 'uint256',
-              },
-              {
-                internalType: 'uint8',
-                name: 'precision',
-                type: 'uint8',
-              },
-            ],
-            internalType: 'struct DecCoin[]',
             name: 'reward',
+            internalType: 'struct DecCoin[]',
             type: 'tuple[]',
+            components: [
+              { name: 'denom', internalType: 'string', type: 'string' },
+              { name: 'amount', internalType: 'uint256', type: 'uint256' },
+              { name: 'precision', internalType: 'uint8', type: 'uint8' },
+            ],
           },
         ],
-        internalType: 'struct DelegationDelegatorReward[]',
-        name: 'rewards',
-        type: 'tuple[]',
       },
       {
-        components: [
-          {
-            internalType: 'string',
-            name: 'denom',
-            type: 'string',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-          {
-            internalType: 'uint8',
-            name: 'precision',
-            type: 'uint8',
-          },
-        ],
-        internalType: 'struct DecCoin[]',
         name: 'total',
+        internalType: 'struct DecCoin[]',
         type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+          { name: 'precision', internalType: 'uint8', type: 'uint8' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'address',
-        name: 'delegatorAddress',
-        type: 'address',
-      },
+      { name: 'delegatorAddress', internalType: 'address', type: 'address' },
     ],
     name: 'delegatorValidators',
     outputs: [
-      {
-        internalType: 'string[]',
-        name: 'validators',
-        type: 'string[]',
-      },
+      { name: 'validators', internalType: 'string[]', type: 'string[]' },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'address',
-        name: 'delegatorAddress',
-        type: 'address',
-      },
+      { name: 'delegatorAddress', internalType: 'address', type: 'address' },
     ],
     name: 'delegatorWithdrawAddress',
     outputs: [
-      {
-        internalType: 'string',
-        name: 'withdrawAddress',
-        type: 'string',
-      },
+      { name: 'withdrawAddress', internalType: 'string', type: 'string' },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
+      { name: 'depositor', internalType: 'address', type: 'address' },
+      { name: 'validatorAddress', internalType: 'string', type: 'string' },
       {
-        internalType: 'address',
-        name: 'depositor',
-        type: 'address',
-      },
-      {
-        internalType: 'uint256',
         name: 'amount',
-        type: 'uint256',
+        internalType: 'struct Coin[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+        ],
+      },
+    ],
+    name: 'depositValidatorRewardsPool',
+    outputs: [{ name: 'success', internalType: 'bool', type: 'bool' }],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'depositor', internalType: 'address', type: 'address' },
+      {
+        name: 'amount',
+        internalType: 'struct Coin[]',
+        type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+        ],
       },
     ],
     name: 'fundCommunityPool',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'success',
-        type: 'bool',
-      },
-    ],
+    outputs: [{ name: 'success', internalType: 'bool', type: 'bool' }],
     stateMutability: 'nonpayable',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'address',
-        name: 'delegatorAddress',
-        type: 'address',
-      },
-      {
-        internalType: 'string',
-        name: 'withdrawerAddress',
-        type: 'string',
-      },
+      { name: 'delegatorAddress', internalType: 'address', type: 'address' },
+      { name: 'withdrawerAddress', internalType: 'string', type: 'string' },
     ],
     name: 'setWithdrawAddress',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'success',
-        type: 'bool',
-      },
-    ],
+    outputs: [{ name: 'success', internalType: 'bool', type: 'bool' }],
     stateMutability: 'nonpayable',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'string',
-        name: 'validatorAddress',
-        type: 'string',
-      },
+      { name: 'validatorAddress', internalType: 'string', type: 'string' },
     ],
     name: 'validatorCommission',
     outputs: [
       {
-        components: [
-          {
-            internalType: 'string',
-            name: 'denom',
-            type: 'string',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-          {
-            internalType: 'uint8',
-            name: 'precision',
-            type: 'uint8',
-          },
-        ],
-        internalType: 'struct DecCoin[]',
         name: 'commission',
+        internalType: 'struct DecCoin[]',
         type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+          { name: 'precision', internalType: 'uint8', type: 'uint8' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'string',
-        name: 'validatorAddress',
-        type: 'string',
-      },
+      { name: 'validatorAddress', internalType: 'string', type: 'string' },
     ],
     name: 'validatorDistributionInfo',
     outputs: [
       {
+        name: 'distributionInfo',
+        internalType: 'struct ValidatorDistributionInfo',
+        type: 'tuple',
         components: [
+          { name: 'operatorAddress', internalType: 'string', type: 'string' },
           {
-            internalType: 'string',
-            name: 'operatorAddress',
-            type: 'string',
-          },
-          {
-            components: [
-              {
-                internalType: 'string',
-                name: 'denom',
-                type: 'string',
-              },
-              {
-                internalType: 'uint256',
-                name: 'amount',
-                type: 'uint256',
-              },
-              {
-                internalType: 'uint8',
-                name: 'precision',
-                type: 'uint8',
-              },
-            ],
-            internalType: 'struct DecCoin[]',
             name: 'selfBondRewards',
+            internalType: 'struct DecCoin[]',
             type: 'tuple[]',
+            components: [
+              { name: 'denom', internalType: 'string', type: 'string' },
+              { name: 'amount', internalType: 'uint256', type: 'uint256' },
+              { name: 'precision', internalType: 'uint8', type: 'uint8' },
+            ],
           },
           {
-            components: [
-              {
-                internalType: 'string',
-                name: 'denom',
-                type: 'string',
-              },
-              {
-                internalType: 'uint256',
-                name: 'amount',
-                type: 'uint256',
-              },
-              {
-                internalType: 'uint8',
-                name: 'precision',
-                type: 'uint8',
-              },
-            ],
-            internalType: 'struct DecCoin[]',
             name: 'commission',
+            internalType: 'struct DecCoin[]',
             type: 'tuple[]',
+            components: [
+              { name: 'denom', internalType: 'string', type: 'string' },
+              { name: 'amount', internalType: 'uint256', type: 'uint256' },
+              { name: 'precision', internalType: 'uint8', type: 'uint8' },
+            ],
           },
         ],
-        internalType: 'struct ValidatorDistributionInfo',
-        name: 'distributionInfo',
-        type: 'tuple',
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'string',
-        name: 'validatorAddress',
-        type: 'string',
-      },
+      { name: 'validatorAddress', internalType: 'string', type: 'string' },
     ],
     name: 'validatorOutstandingRewards',
     outputs: [
       {
-        components: [
-          {
-            internalType: 'string',
-            name: 'denom',
-            type: 'string',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-          {
-            internalType: 'uint8',
-            name: 'precision',
-            type: 'uint8',
-          },
-        ],
-        internalType: 'struct DecCoin[]',
         name: 'rewards',
+        internalType: 'struct DecCoin[]',
         type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+          { name: 'precision', internalType: 'uint8', type: 'uint8' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
+      { name: 'validatorAddress', internalType: 'string', type: 'string' },
+      { name: 'startingHeight', internalType: 'uint64', type: 'uint64' },
+      { name: 'endingHeight', internalType: 'uint64', type: 'uint64' },
       {
-        internalType: 'string',
-        name: 'validatorAddress',
-        type: 'string',
-      },
-      {
-        internalType: 'uint64',
-        name: 'startingHeight',
-        type: 'uint64',
-      },
-      {
-        internalType: 'uint64',
-        name: 'endingHeight',
-        type: 'uint64',
-      },
-      {
-        components: [
-          {
-            internalType: 'bytes',
-            name: 'key',
-            type: 'bytes',
-          },
-          {
-            internalType: 'uint64',
-            name: 'offset',
-            type: 'uint64',
-          },
-          {
-            internalType: 'uint64',
-            name: 'limit',
-            type: 'uint64',
-          },
-          {
-            internalType: 'bool',
-            name: 'countTotal',
-            type: 'bool',
-          },
-          {
-            internalType: 'bool',
-            name: 'reverse',
-            type: 'bool',
-          },
-        ],
-        internalType: 'struct PageRequest',
         name: 'pageRequest',
+        internalType: 'struct PageRequest',
         type: 'tuple',
+        components: [
+          { name: 'key', internalType: 'bytes', type: 'bytes' },
+          { name: 'offset', internalType: 'uint64', type: 'uint64' },
+          { name: 'limit', internalType: 'uint64', type: 'uint64' },
+          { name: 'countTotal', internalType: 'bool', type: 'bool' },
+          { name: 'reverse', internalType: 'bool', type: 'bool' },
+        ],
       },
     ],
     name: 'validatorSlashes',
     outputs: [
       {
+        name: 'slashes',
+        internalType: 'struct ValidatorSlashEvent[]',
+        type: 'tuple[]',
         components: [
+          { name: 'validatorPeriod', internalType: 'uint64', type: 'uint64' },
           {
-            internalType: 'uint64',
-            name: 'validatorPeriod',
-            type: 'uint64',
-          },
-          {
-            components: [
-              {
-                internalType: 'uint256',
-                name: 'value',
-                type: 'uint256',
-              },
-              {
-                internalType: 'uint8',
-                name: 'precision',
-                type: 'uint8',
-              },
-            ],
-            internalType: 'struct Dec',
             name: 'fraction',
+            internalType: 'struct Dec',
             type: 'tuple',
+            components: [
+              { name: 'value', internalType: 'uint256', type: 'uint256' },
+              { name: 'precision', internalType: 'uint8', type: 'uint8' },
+            ],
           },
         ],
-        internalType: 'struct ValidatorSlashEvent[]',
-        name: 'slashes',
-        type: 'tuple[]',
       },
       {
-        components: [
-          {
-            internalType: 'bytes',
-            name: 'nextKey',
-            type: 'bytes',
-          },
-          {
-            internalType: 'uint64',
-            name: 'total',
-            type: 'uint64',
-          },
-        ],
-        internalType: 'struct PageResponse',
         name: 'pageResponse',
+        internalType: 'struct PageResponse',
         type: 'tuple',
+        components: [
+          { name: 'nextKey', internalType: 'bytes', type: 'bytes' },
+          { name: 'total', internalType: 'uint64', type: 'uint64' },
+        ],
       },
     ],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'address',
-        name: 'delegatorAddress',
-        type: 'address',
-      },
-      {
-        internalType: 'string',
-        name: 'validatorAddress',
-        type: 'string',
-      },
+      { name: 'delegatorAddress', internalType: 'address', type: 'address' },
+      { name: 'validatorAddress', internalType: 'string', type: 'string' },
     ],
     name: 'withdrawDelegatorRewards',
     outputs: [
       {
-        components: [
-          {
-            internalType: 'string',
-            name: 'denom',
-            type: 'string',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-        ],
-        internalType: 'struct Coin[]',
         name: 'amount',
+        internalType: 'struct Coin[]',
         type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+        ],
       },
     ],
     stateMutability: 'nonpayable',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'string',
-        name: 'validatorAddress',
-        type: 'string',
-      },
+      { name: 'validatorAddress', internalType: 'string', type: 'string' },
     ],
     name: 'withdrawValidatorCommission',
     outputs: [
       {
-        components: [
-          {
-            internalType: 'string',
-            name: 'denom',
-            type: 'string',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-        ],
-        internalType: 'struct Coin[]',
         name: 'amount',
+        internalType: 'struct Coin[]',
         type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+        ],
       },
     ],
     stateMutability: 'nonpayable',
-    type: 'function',
   },
 ] as const;

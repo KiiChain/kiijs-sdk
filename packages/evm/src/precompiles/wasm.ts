@@ -2,8 +2,8 @@
  * The address of the wasm precompile contract.
  * @category Cosmos Interoperability
  */
-export const WASM_PRECOMPILE_ADDRESS: `0x${string}` =
-  '0x0000000000000000000000000000000000001001';
+export const WASM_PRECOMPILE_ADDRESS =
+  '0x0000000000000000000000000000000000001001' as const;
 
 /**
  * The ABI for the WASM precompile contract.
@@ -11,143 +11,104 @@ export const WASM_PRECOMPILE_ADDRESS: `0x${string}` =
  */
 export const WASM_PRECOMPILE_ABI = [
   {
+    type: 'event',
+    anonymous: false,
     inputs: [
       {
-        internalType: 'string',
         name: 'contractAddress',
+        internalType: 'string',
         type: 'string',
+        indexed: true,
       },
       {
-        internalType: 'bytes',
-        name: 'msg',
-        type: 'bytes',
+        name: 'caller',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
       },
+      { name: 'data', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'ContractExecuted',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
       {
-        components: [
-          {
-            internalType: 'string',
-            name: 'denom',
-            type: 'string',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-        ],
-        internalType: 'struct Coin[]',
+        name: 'caller',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      { name: 'codeID', internalType: 'uint64', type: 'uint64', indexed: true },
+      {
+        name: 'contractAddress',
+        internalType: 'string',
+        type: 'string',
+        indexed: false,
+      },
+      { name: 'data', internalType: 'bytes', type: 'bytes', indexed: false },
+    ],
+    name: 'ContractInstantiated',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'contractAddress', internalType: 'string', type: 'string' },
+      { name: 'msg', internalType: 'bytes', type: 'bytes' },
+      {
         name: 'coins',
+        internalType: 'struct Coin[]',
         type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+        ],
       },
     ],
     name: 'execute',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'success',
-        type: 'bool',
-      },
-    ],
+    outputs: [{ name: 'success', internalType: 'bool', type: 'bool' }],
     stateMutability: 'nonpayable',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
+      { name: 'admin', internalType: 'address', type: 'address' },
+      { name: 'codeID', internalType: 'uint64', type: 'uint64' },
+      { name: 'label', internalType: 'string', type: 'string' },
+      { name: 'msg', internalType: 'bytes', type: 'bytes' },
       {
-        internalType: 'address',
-        name: 'admin',
-        type: 'address',
-      },
-      {
-        internalType: 'uint64',
-        name: 'codeID',
-        type: 'uint64',
-      },
-      {
-        internalType: 'string',
-        name: 'label',
-        type: 'string',
-      },
-      {
-        internalType: 'bytes',
-        name: 'msg',
-        type: 'bytes',
-      },
-      {
-        components: [
-          {
-            internalType: 'string',
-            name: 'denom',
-            type: 'string',
-          },
-          {
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-        ],
-        internalType: 'struct Coin[]',
         name: 'coins',
+        internalType: 'struct Coin[]',
         type: 'tuple[]',
+        components: [
+          { name: 'denom', internalType: 'string', type: 'string' },
+          { name: 'amount', internalType: 'uint256', type: 'uint256' },
+        ],
       },
     ],
     name: 'instantiate',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'success',
-        type: 'bool',
-      },
-    ],
+    outputs: [{ name: 'success', internalType: 'bool', type: 'bool' }],
     stateMutability: 'nonpayable',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'string',
-        name: 'contractAddress',
-        type: 'string',
-      },
-      {
-        internalType: 'bytes',
-        name: 'queryData',
-        type: 'bytes',
-      },
+      { name: 'contractAddress', internalType: 'string', type: 'string' },
+      { name: 'queryData', internalType: 'bytes', type: 'bytes' },
     ],
     name: 'queryRaw',
-    outputs: [
-      {
-        internalType: 'bytes',
-        name: 'data',
-        type: 'bytes',
-      },
-    ],
+    outputs: [{ name: 'data', internalType: 'bytes', type: 'bytes' }],
     stateMutability: 'view',
-    type: 'function',
   },
   {
+    type: 'function',
     inputs: [
-      {
-        internalType: 'string',
-        name: 'contractAddress',
-        type: 'string',
-      },
-      {
-        internalType: 'bytes',
-        name: 'msg',
-        type: 'bytes',
-      },
+      { name: 'contractAddress', internalType: 'string', type: 'string' },
+      { name: 'msg', internalType: 'bytes', type: 'bytes' },
     ],
     name: 'querySmart',
-    outputs: [
-      {
-        internalType: 'bytes',
-        name: 'data',
-        type: 'bytes',
-      },
-    ],
+    outputs: [{ name: 'data', internalType: 'bytes', type: 'bytes' }],
     stateMutability: 'view',
-    type: 'function',
   },
 ] as const;
