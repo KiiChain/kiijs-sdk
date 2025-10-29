@@ -1,6 +1,5 @@
-import { fromBech32, normalizeBech32, toHex } from '@cosmjs/encoding';
+import { fromBech32, toBech32, toHex } from '@cosmjs/encoding';
 import { getAddress, isAddress } from 'ethers';
-import { toBech32 } from '@cosmjs/encoding';
 
 /**
  * Function to turn a kii bech32 into an associated hex address
