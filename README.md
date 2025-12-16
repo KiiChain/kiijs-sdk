@@ -44,3 +44,10 @@ The KiiJS-SDK project is licensed under [Apache License 2.0][license].
 [coc]: ./CODE_OF_CONDUCT.md
 [issues]: https://github.com/KiiChain/kiijs-sdk/issues
 [license]: ./LICENSE
+### Usage Example
+
+import { LCDClient } from "@kiichain/kiijs-lcd";
+
+const lcd = new LCDClient({ chainId: "kiichain-testnet" });
+const account = await lcd.auth.accountInfo("kii1exampleaddress...");
+console.log("Account info:", account);
