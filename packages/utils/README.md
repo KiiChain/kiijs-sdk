@@ -72,3 +72,10 @@ const txRaw = await signWithEthsecpSigner(
 const receipt = await client.broadcastTx(txRaw);
 
 A full example can be found [here](https://github.com/KiiChain/keplr-tx-template/blob/main/src/App.tsx)
+### Usage Example
+
+```ts
+import { convertBech32Address } from "@kiichain/kiijs-utils";
+
+const evmAddress = convertBech32Address("kii1exampleaddress...");
+console.log("EVM Address:", evmAddress);
