@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 import 'dotenv/config';
 import { getEvidencePrecompileEthersV6Contract } from '../src/ethers/evidencePrecompile';
-import { setupProviderAndWallet } from './utils';
+import { setupTestnetProviderAndWallet } from './utils';
 
 jest.setTimeout(60_000); // Total test timeout
 
@@ -12,7 +12,7 @@ describe('Evidence Precompile Tests', () => {
   >;
 
   beforeAll(async () => {
-    const [, walletInstance] = setupProviderAndWallet();
+    const [, walletInstance] = setupTestnetProviderAndWallet();
     wallet = walletInstance;
     evidenceContract = getEvidencePrecompileEthersV6Contract(wallet);
     console.log('Wallet address:', wallet.address);

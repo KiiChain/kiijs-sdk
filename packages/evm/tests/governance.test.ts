@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 import 'dotenv/config';
 import { getGovernancePrecompileEthersV6Contract } from '../src/ethers/governancePrecompile';
-import { setupProviderAndWallet } from './utils';
+import { setupTestnetProviderAndWallet } from './utils';
 
 jest.setTimeout(60_000); // Total test timeout
 
@@ -12,7 +12,7 @@ describe('Governance Precompile Tests', () => {
   >;
 
   beforeAll(async () => {
-    const [, walletInstance] = setupProviderAndWallet();
+    const [, walletInstance] = setupTestnetProviderAndWallet();
     wallet = walletInstance;
     governanceContract = getGovernancePrecompileEthersV6Contract(wallet);
     console.log('Wallet address:', wallet.address);

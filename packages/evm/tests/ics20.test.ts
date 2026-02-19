@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 import { getIcs20PrecompileEthersV6Contract } from '../src/ethers/ics20Precompile';
-import { setupProviderAndWallet } from './utils';
+import { setupTestnetProviderAndWallet } from './utils';
 import 'dotenv/config';
 
 jest.setTimeout(60_000); // Total test timeout
@@ -11,7 +11,7 @@ describe('ICS20 Precompile Tests', () => {
 
   beforeAll(async () => {
     // Setup provider and wallet
-    const [, walletInstance] = setupProviderAndWallet();
+    const [, walletInstance] = setupTestnetProviderAndWallet();
     wallet = walletInstance;
 
     // Get the precompile contract

@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 import 'dotenv/config';
 import { getStakingPrecompileEthersV6Contract } from '../src/ethers/stakingPrecompile';
-import { setupProviderAndWallet } from './utils';
+import { setupTestnetProviderAndWallet } from './utils';
 
 jest.setTimeout(60_000); // Total test timeout
 
@@ -16,7 +16,7 @@ describe('Staking Precompile Tests', () => {
     'kiivalidatorvaloper1zyqz9twqhxn0t3s28zts8lmj5rqq4394qfmjw9';
 
   beforeAll(async () => {
-    const [, walletInstance] = setupProviderAndWallet();
+    const [, walletInstance] = setupTestnetProviderAndWallet();
     wallet = walletInstance;
     stakingContract = getStakingPrecompileEthersV6Contract(wallet);
     console.log('Wallet address:', wallet.address);

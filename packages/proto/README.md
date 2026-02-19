@@ -195,7 +195,7 @@ import {
 } from '@kiichain/kiijs-proto';
 
 const signer: OfflineSigner = /* create your signer (see above)  */
-const rpcEndpoint = 'https://rpc.dos.sentry.testnet.v3.kiivalidator.com/'; // or another URL
+const rpcEndpoint = 'https://rpc.dos.sentry.testnet.v3.kiivalidator.com/'; // or https://rpc.kiivalidator.com/ for mainnet
 
 const protoRegistry: ReadonlyArray<[string, GeneratedType]> = [
     ...cosmosProtoRegistry,

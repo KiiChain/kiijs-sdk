@@ -35,7 +35,7 @@ const contract = getBankPrecompileEthersV6Contract(signer);
 const cosmosAddress = await contract.balances("youraddress");
 ```
 
-An alternative without the popup is to directly use your private key to connect.
+An alternative without the popup is to directly use your private key to connect. Use `https://json-rpc.kiivalidator.com/` instead for mainnet.
 ```tsx
 import { ethers } from 'ethers';
 

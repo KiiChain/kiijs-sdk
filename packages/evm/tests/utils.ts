@@ -8,7 +8,7 @@ export const TESTNET_CONFIG = {
   defaultKey: process.env.TEST_PRIVATE_KEY,
 };
 
-export function setupProviderAndWallet(
+export function setupTestnetProviderAndWallet(
   privateKey = TESTNET_CONFIG.defaultKey
 ): [ethers.JsonRpcProvider, ethers.Wallet] {
   const provider = new ethers.JsonRpcProvider(TESTNET_CONFIG.rpcEndpoint);

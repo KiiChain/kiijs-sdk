@@ -3,14 +3,14 @@ const { ethers } = require('ethers');
 const { getBankPrecompileEthersV6Contract } = require('@kiichain/kiijs-evm');
 
 // Configuration
-const RPC_URL = 'https://json-rpc.dos.sentry.testnet.v3.kiivalidator.com/';
+const RPC_URL = 'https://json-rpc.kiivalidator.com/';
 
 // IMPORTANT: This is a dummy private key for example purposes only
 // DO NOT use in production environment
 // Replace with your own private key for real testing
 const PRIVATE_KEY =
   '0x0000000000000000000000000000000000000000000000000000000000000001';
-const CHAIN_ID = 1336; // EVM Chain ID for KiiChain testnet
+const CHAIN_ID = 1783; // EVM Chain ID for KiiChain
 
 // ERC20 token ABI (minimal ABI for transfer function)
 const ERC20_ABI = [

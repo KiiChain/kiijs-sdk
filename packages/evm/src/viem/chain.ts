@@ -13,7 +13,7 @@ export const kiiLocal = defineChain({
 
 export const ORO_DENOM =
   'factory/kii1ef2eurf9ls4kmhc6adcazscmzn8en73tuh2nvq/ORO';
-export const KIICHAIN_LCD_ENDPOINT =
+export const KIICHAIN_ORO_LCD_ENDPOINT =
   'https://lcd.uno.sentry.testnet.v3.kiivalidator.com';
 export const KIICHAIN_BASE_DENOM = 'akii';
 
@@ -52,3 +52,31 @@ export const ORO_ASSET = {
       'https://raw.githubusercontent.com/KiiChain/testnets/refs/heads/main/testnet_oro/assets/coin_256_256.png',
   },
 };
+
+export const KIICHAIN_LCD_ENDPOINT =
+  'https://lcd.kiivalidator.com';
+
+export const KIICHAIN_EVM = defineChain({
+  id: 1783,
+  caipNetworkId: 'eip155:1783',
+  chainNamespace: 'eip155',
+  name: 'Kii Testnet Oro',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Kii',
+    symbol: 'KII',
+  },
+  rpcUrls: {
+    default: {
+      http: ['https://json-rpc.kiivalidator.com/'],
+      webSocket: ['https://json-rpc.kiivalidator.com/'],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: 'KiiExplorer',
+      url: 'https://explorer.kiichain.io',
+    },
+  },
+  contracts: {},
+});
