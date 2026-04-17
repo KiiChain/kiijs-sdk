@@ -10,6 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         package: ["evm", "proto", "utils", "rwa"]
 
@@ -20,13 +21,13 @@ jobs:
         with:
           node-version: "20"
 
-      # Install Yarn (modern Berry)
+      - uses: oven-sh/setup-bun@v2
+
       - name: Setup Yarn
         run: |
           corepack enable
-          yarn install --no-immutable
+          yarn install --immutable
 
-      # Run tests with coverage
       - name: Test ${{ matrix.package }}
         working-directory: ./packages/${{ matrix.package }}
         env:

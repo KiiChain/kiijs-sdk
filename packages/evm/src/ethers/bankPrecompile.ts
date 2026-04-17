@@ -1,4 +1,5 @@
 import { Contract, ContractRunner, InterfaceAbi } from 'ethers';
+
 import { BANK_PRECOMPILE_ABI, BANK_PRECOMPILE_ADDRESS } from '../precompiles';
 
 /**

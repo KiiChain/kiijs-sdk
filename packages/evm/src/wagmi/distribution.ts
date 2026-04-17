@@ -4,6 +4,7 @@ import {
   createUseWatchContractEvent,
   createUseWriteContract,
 } from 'wagmi/codegen';
+
 import {
   DISTRIBUTION_PRECOMPILE_ABI,
   DISTRIBUTION_PRECOMPILE_ADDRESS,

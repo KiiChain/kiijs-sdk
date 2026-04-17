@@ -1,2 +1,2 @@
-export * from './ethers';
 export * from './cosmjs';
+export * from './ethers';

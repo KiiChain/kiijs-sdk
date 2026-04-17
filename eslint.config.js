@@ -1,11 +1,13 @@
 import tsEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import prettierPlugin from 'eslint-plugin-prettier';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 
 export default [
   {
-    // Global settings
+    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       globals: {
         ...globals.node,
@@ -19,16 +21,24 @@ export default [
     plugins: {
       '@typescript-eslint': tsEslint,
       prettier: prettierPlugin,
+      'simple-import-sort': simpleImportSort,
+      'unused-imports': unusedImports,
     },
     rules: {
       // TypeScript rules
       '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-unused-vars': [
+      '@typescript-eslint/no-unused-vars': 'off', // handled by unused-imports plugin
+
+      // Unused imports
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
         'warn',
         { argsIgnorePattern: '^_' },
       ],
-      '@typescript-eslint/no-unsafe-assignment': 'off',
-      '@typescript-eslint/no-unsafe-call': 'off',
+
+      // Import sorting
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
 
       // Prettier integration
       'prettier/prettier': 'error',
@@ -55,6 +65,7 @@ export default [
       '*.md',
       '*.yml',
       'packages/proto/*',
+      'scripts/*',
     ],
   },
 ];

@@ -4,8 +4,21 @@
   "author": "kiiglobal.io <dev@kiiglobal.io>",
   "description": "JS SDK for kiichain LCD endpoints",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
   "homepage": "https://github.com/KiiChain/kiijs-sdk",
   "license": "Apache-2.0",
   "overrides": {
@@ -17,10 +30,12 @@
     "error-ex": "1.3.2",
     "has-ansi": "5.0.1"
   },
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org",
-    "directory": "dist"
+    "registry": "https://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
@@ -30,13 +45,10 @@
     "url": "https://github.com/KiiChain/kiijs-sdk/issues"
   },
   "scripts": {
-    "copy": "npx copyfiles -f ../../LICENSE README.md package.json dist",
     "clean": "npx rimraf dist",
-    "prepare": "npm run build",
-    "build": "npm run clean && npx tsc && npx tsc -p tsconfig.declaration.json && npm run copy",
-    "build:dev": "npm run clean && npm run codegen && tsc --declarationMap && tsc -p tsconfig.declaration.json && npm run copy",
+    "build": "bun run ../../scripts/build.ts",
     "codegen": "npx tsx scripts/codegen.ts",
-    "lint": "npx eslint . --fix"
+    "lint": "npx eslint src/"
   },
   "devDependencies": {
     "swagger-typescript-api": "^13.2.13",

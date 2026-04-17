@@ -1,4 +1,5 @@
 import { Contract, ContractRunner, InterfaceAbi } from 'ethers';
+
 import { WASM_PRECOMPILE_ABI, WASM_PRECOMPILE_ADDRESS } from '../precompiles';
 
 /**

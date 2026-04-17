@@ -1,4 +1,5 @@
 import { Abi } from 'viem';
+
 import { STAKING_PRECOMPILE_ABI } from '../precompiles';
 
 /**

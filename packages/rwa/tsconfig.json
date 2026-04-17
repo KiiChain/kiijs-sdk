@@ -1,16 +1,13 @@
 {
+  "extends": "../../tsconfig.base.json",
+  "include": ["src"],
   "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "declaration": true, // Generate declaration files
-    "outDir": "./dist", // Output directory for compiled JavaScript
-    "rootDir": "./src" // Root directory of TypeScript source files
+    "outDir": "./dist/types"
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "tests"]
+  "typedocOptions": {
+    "readme": "./README.md",
+    "name": "rwa",
+    "entryPoints": ["src/index.ts"],
+    "exclude": ["node_modules"]
+  }
 }
-

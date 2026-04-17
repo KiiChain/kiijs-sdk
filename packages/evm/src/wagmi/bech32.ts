@@ -2,6 +2,7 @@ import {
   createUseSimulateContract,
   createUseWriteContract,
 } from 'wagmi/codegen';
+
 import {
   BECH32_PRECOMPILE_ABI,
   BECH32_PRECOMPILE_ADDRESS,

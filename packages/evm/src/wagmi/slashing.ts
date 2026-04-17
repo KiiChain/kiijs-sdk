@@ -1,9 +1,10 @@
 import {
   createUseReadContract,
-  createUseWriteContract,
   createUseSimulateContract,
   createUseWatchContractEvent,
+  createUseWriteContract,
 } from 'wagmi/codegen';
+
 import {
   SLASHING_PRECOMPILE_ABI,
   SLASHING_PRECOMPILE_ADDRESS,

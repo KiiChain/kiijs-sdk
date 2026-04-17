@@ -1,4 +1,5 @@
 import { createUseReadContract } from 'wagmi/codegen';
+
 import { BANK_PRECOMPILE_ABI, BANK_PRECOMPILE_ADDRESS } from '../precompiles';
 
 /**

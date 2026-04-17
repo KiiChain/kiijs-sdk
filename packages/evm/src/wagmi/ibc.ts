@@ -3,6 +3,7 @@ import {
   createUseWatchContractEvent,
   createUseWriteContract,
 } from 'wagmi/codegen';
+
 import { IBC_PRECOMPILE_ABI, IBC_PRECOMPILE_ADDRESS } from '../precompiles';
 
 /**

@@ -4,6 +4,7 @@ import {
   createUseWatchContractEvent,
   createUseWriteContract,
 } from 'wagmi/codegen';
+
 import { ICS20_PRECOMPILE_ABI, ICS20_PRECOMPILE_ADDRESS } from '../precompiles';
 
 export const ICS20_PRECOMPILE_CONFIG = {

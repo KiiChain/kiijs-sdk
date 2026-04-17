@@ -12,6 +12,7 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": false,
+    "sourceMap": true,
 
     "baseUrl": "./"
   },

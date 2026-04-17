@@ -1,17 +1,16 @@
-import { SigningStargateClient, type Account } from '@cosmjs/stargate';
+import { fromBase64 } from '@cosmjs/encoding';
 import {
   type Coin,
   type EncodeObject,
+  makeAuthInfoBytes,
+  makeSignDoc,
   type OfflineDirectSigner,
 } from '@cosmjs/proto-signing';
-
-import { fromBase64 } from '@cosmjs/encoding';
-import { makeAuthInfoBytes, makeSignDoc } from '@cosmjs/proto-signing';
-
-import { Any } from 'cosmjs-types/google/protobuf/any';
-import { TxRaw } from 'cosmjs-types/cosmos/tx/v1beta1/tx';
+import { type Account, SigningStargateClient } from '@cosmjs/stargate';
 import { cosmos } from '@kiichain/kiijs-proto';
 import { BaseAccount } from 'cosmjs-types/cosmos/auth/v1beta1/auth';
+import { TxRaw } from 'cosmjs-types/cosmos/tx/v1beta1/tx';
+import { Any } from 'cosmjs-types/google/protobuf/any';
 
 const { PubKey } = cosmos.evm.crypto.v1.ethsecp256k1;
 

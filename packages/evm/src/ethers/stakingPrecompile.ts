@@ -1,4 +1,5 @@
 import { Contract, ContractRunner, InterfaceAbi } from 'ethers';
+
 import {
   STAKING_PRECOMPILE_ABI,
   STAKING_PRECOMPILE_ADDRESS,

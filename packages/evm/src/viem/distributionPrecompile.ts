@@ -1,4 +1,5 @@
 import { Abi } from 'viem';
+
 import { DISTRIBUTION_PRECOMPILE_ABI } from '../precompiles';
 
 /**

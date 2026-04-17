@@ -1,4 +1,5 @@
 import { Abi } from 'viem';
+
 import { ICS20_PRECOMPILE_ABI } from '../precompiles';
 
 /**

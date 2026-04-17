@@ -1,4 +1,5 @@
 import { Abi } from 'viem';
+
 import { GOVERNANCE_PRECOMPILE_ABI } from '../precompiles';
 
 /**

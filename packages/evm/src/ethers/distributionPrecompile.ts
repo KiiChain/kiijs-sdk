@@ -1,7 +1,8 @@
 import { Contract, ContractRunner, InterfaceAbi } from 'ethers';
+
 import {
-  DISTRIBUTION_PRECOMPILE_ADDRESS,
   DISTRIBUTION_PRECOMPILE_ABI,
+  DISTRIBUTION_PRECOMPILE_ADDRESS,
 } from '../precompiles';
 
 /**

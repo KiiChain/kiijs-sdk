@@ -1,0 +1,60 @@
+name: Publish Packages
+
+on:
+  workflow_dispatch: {}
+  push:
+    tags: ["v*"]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Setup Yarn
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build all packages
+        run: yarn build
+
+      - name: Run tests
+        env:
+          TEST_MNEMONIC: ${{ secrets.TEST_MNEMONIC }}
+          TEST_PRIVATE_KEY: ${{ secrets.TEST_PRIVATE_KEY }}
+          TEST_HEX_ADDRESS: ${{ secrets.TEST_HEX_ADDRESS }}
+        run: yarn test
+
+      - name: Publish @kiichain/kiijs-proto
+        continue-on-error: true
+        run: cd packages/proto && npm publish --provenance --access public
+
+      - name: Publish @kiichain/kiijs-lcd
+        continue-on-error: true
+        run: cd packages/lcd && npm publish --provenance --access public
+
+      - name: Publish @kiichain/kiijs-utils
+        continue-on-error: true
+        run: cd packages/utils && npm publish --provenance --access public
+
+      - name: Publish @kiichain/kiijs-evm
+        continue-on-error: true
+        run: cd packages/evm && npm publish --provenance --access public
+
+      - name: Publish @kiichain/kiijs-rwa
+        continue-on-error: true
+        run: cd packages/rwa && npm publish --provenance --access public

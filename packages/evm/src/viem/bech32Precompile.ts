@@ -1,4 +1,5 @@
 import { Abi } from 'viem';
+
 import { BECH32_PRECOMPILE_ABI } from '../precompiles';
 
 /**

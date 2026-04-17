@@ -1,4 +1,5 @@
 import { Contract, ContractRunner, InterfaceAbi } from 'ethers';
+
 import {
   GOVERNANCE_PRECOMPILE_ABI,
   GOVERNANCE_PRECOMPILE_ADDRESS,

@@ -1,5 +1,6 @@
 export * from './bankPrecompile';
 export * from './bech32Precompile';
+export * from './chain';
 export * from './distributionPrecompile';
 export * from './governancePrecompile';
 export * from './ibcPrecompile';
@@ -7,5 +8,3 @@ export * from './ics20Precompile';
 export * from './slashingPrecompile';
 export * from './stakingPrecompile';
 export * from './wasmPrecompile';
-
-export * from './chain';

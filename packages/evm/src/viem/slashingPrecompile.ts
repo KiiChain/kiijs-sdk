@@ -1,4 +1,5 @@
 import { Abi } from 'viem';
+
 import { SLASHING_PRECOMPILE_ABI } from '../precompiles';
 
 /**

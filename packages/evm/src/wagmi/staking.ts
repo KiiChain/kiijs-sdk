@@ -1,9 +1,10 @@
 import {
   createUseReadContract,
-  createUseWriteContract,
   createUseSimulateContract,
   createUseWatchContractEvent,
+  createUseWriteContract,
 } from 'wagmi/codegen';
+
 import {
   STAKING_PRECOMPILE_ABI,
   STAKING_PRECOMPILE_ADDRESS,

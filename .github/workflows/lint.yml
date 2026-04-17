@@ -20,14 +20,16 @@ jobs:
         with:
           node-version: "20"
 
+      - uses: oven-sh/setup-bun@v2
+
       - name: Enable Corepack
         run: corepack enable
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Run ESLint
         run: yarn lint
 
       - name: Check formatting with Prettier
-        run: yarn prettier --check "**/*.{ts,tsx}" --ignore-path .prettierignore
+        run: yarn format:check
