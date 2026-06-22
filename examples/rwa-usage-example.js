@@ -12,8 +12,10 @@ const CHAIN_ID = 'oro_1336-1';
 const DENOM = 'akii';
 const GAS_PRICE = '0.025akii';
 
-const MNEMONIC =
-  'test test test test test test test test test test test junk';
+const MNEMONIC = process.env.KII_MNEMONIC;
+if (!MNEMONIC) {
+  throw new Error('Set KII_MNEMONIC before running this example');
+}
 const GAS_LIMIT = 200000;
 
 async function main() {
@@ -296,6 +298,7 @@ async function main() {
     console.log('\n--- Example Complete ---');
   } catch (error) {
     console.error('An error occurred:', error);
+    throw error;
   }
 }
 
