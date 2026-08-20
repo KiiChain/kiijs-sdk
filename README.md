@@ -6,6 +6,16 @@ KiiJS is a monorepo that contains multiple NPM libraries for writing application
 
 Each package has it's own documentation under its readme file.
 
+## Networks
+
+| Network | Chain ID | EVM Chain ID | JSON-RPC | Cosmos RPC | LCD |
+| ------- | -------- | ------------ | -------- | ---------- | --- |
+| Mainnet | `kiichain_1783-1` | `1783` | `https://json-rpc.kiivalidator.com` | `https://rpc.kiivalidator.com` | `https://lcd.kiivalidator.com` |
+| Testnet Oro | `oro_1336-1` | `1336` | `https://json-rpc.uno.sentry.testnet.v3.kiivalidator.com` | `https://rpc.uno.sentry.testnet.v3.kiivalidator.com` | `https://lcd.uno.sentry.testnet.v3.kiivalidator.com` |
+
+- Mainnet configs: [KiiChain/mainnets](https://github.com/KiiChain/mainnets/tree/main/kiichain)
+- Testnet configs: [KiiChain/testnets](https://github.com/KiiChain/testnets/tree/main/testnet_oro)
+
 ## Packages
 
 KiiJS consists of smaller NPM packages within the @kiichain namespace. For more detailed documentation on each package, please refer to the table below.

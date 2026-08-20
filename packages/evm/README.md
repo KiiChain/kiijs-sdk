@@ -17,6 +17,11 @@ This package provides exports for easily interacting with viem, and ethers.js. Y
 ### Wallet network setup
 Ensure that your EVM wallet has the KiiChain network enabled.
 
+| Network | Chain ID | EVM Chain ID | JSON-RPC |
+| ------- | -------- | ------------ | -------- |
+| Mainnet | `kiichain_1783-1` | `1783` | `https://json-rpc.kiivalidator.com` |
+| Testnet Oro | `oro_1336-1` | `1336` | `https://json-rpc.uno.sentry.testnet.v3.kiivalidator.com` |
+
 <br>
 
 ### Connection with ethers v6
@@ -39,12 +44,15 @@ An alternative without the popup is to directly use your private key to connect.
 ```tsx
 import { ethers } from 'ethers';
 
-const provider = new ethers.JsonRpcProvider('https://json-rpc.dos.sentry.testnet.v3.kiivalidator.com/');
+// Mainnet
+const provider = new ethers.JsonRpcProvider('https://json-rpc.kiivalidator.com');
+// Testnet Oro
+// const provider = new ethers.JsonRpcProvider('https://json-rpc.uno.sentry.testnet.v3.kiivalidator.com/');
 const wallet = new ethers.Wallet("0xyourprivatekey", provider);
 ```
 
 ### Usage with viem
-This package exports `viem` Chains and precompile ABI's for KiiChain. The ABI used in the ethers example above is a viem ABI instance and the `ARCTIC_1_VIEM_CHAIN` is a `viem Chain` instance.
+This package exports `viem` Chains and precompile ABI's for KiiChain. Use `MAINNET_KIICHAIN_EVM` (chain id `1783`) or `TESTNET_ORO_EVM` (chain id `1336`).
 
 ## Interoperability with Cosmos
 KiiChain v3 supports both EVM JSON-RPC and Cosmos RPC interfaces. In order to easily interact with certain Cosmos modules, KiiChain v3 has a set of precompiled contracts that can be called from the EVM.

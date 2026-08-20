@@ -17,7 +17,9 @@ To create an LCD client you can import the following helper and utilize it:
 ```js
 import { createLCDClient } from '@kiichain/kiijs-lcd';
 
-const client = createLCDClient(LCD_ENDPOINT);
+// Mainnet: https://lcd.kiivalidator.com
+// Testnet Oro: https://lcd.uno.sentry.testnet.v3.kiivalidator.com
+const client = createLCDClient('https://lcd.kiivalidator.com');
 
 // now you can query the cosmos modules
 const balance = await client.cosmos.balance('kiichain1addresshere', {

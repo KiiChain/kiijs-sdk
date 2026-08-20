@@ -24,9 +24,11 @@ const signer = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
   prefix: "kii",
 });
 
-// Create RWA client
-const rpcUrl = "https://json-rpc.dos.sentry.testnet.v3.kiivalidator.com/";
-const chainId = "oro_1336-1";
+// Create RWA client (Cosmos RPC — not JSON-RPC)
+// Mainnet:  https://rpc.kiivalidator.com  / kiichain_1783-1
+// Testnet:  https://rpc.uno.sentry.testnet.v3.kiivalidator.com  / oro_1336-1
+const rpcUrl = "https://rpc.kiivalidator.com";
+const chainId = "kiichain_1783-1";
 const denom = "akii";
 const gasPrice = "0.025akii";
 
@@ -135,9 +137,11 @@ async function main() {
   // Get wallet address
   const [{ address }] = await signer.getAccounts();
   
-  // Create RWA client
-  const rpcUrl = "https://json-rpc.dos.sentry.testnet.v3.kiivalidator.com/";
-  const chainId = "oro_1336-1";
+  // Create RWA client (Cosmos RPC — not JSON-RPC)
+  // Mainnet:  https://rpc.kiivalidator.com  / kiichain_1783-1
+  // Testnet:  https://rpc.uno.sentry.testnet.v3.kiivalidator.com  / oro_1336-1
+  const rpcUrl = "https://rpc.kiivalidator.com";
+  const chainId = "kiichain_1783-1";
   const denom = "akii";
   const gasPrice = "0.025akii";
   
