@@ -39,11 +39,8 @@
     "typescript7": "npm:typescript@~7.0.2",
     "vitest": "^5.1.0"
   },
-  "overrides": {
-    "bun-types": "1.4.4-canary.20261112T141248"
-  },
   "engines": {
     "node": ">=26"
   },
-  "packageManager": "bun@1.4.4-canary.20261112.1"
+  "packageManager": "bun@1.4.4"
 }
