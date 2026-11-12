@@ -1,6 +1,6 @@
 {
   "name": "kiijs-sdk",
-  "version": "0.5.1",
+  "version": "1.0.0",
   "author": "kiiglobal.io <dev@kiiglobal.io>",
   "private": true,
   "type": "module",

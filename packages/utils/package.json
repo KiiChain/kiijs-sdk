@@ -1,6 +1,6 @@
 {
   "name": "@kiichain/kiijs-utils",
-  "version": "0.5.1",
+  "version": "1.0.0",
   "description": "TypeScript utility library for the Kii blockchain",
   "author": "kiiglobal.io <dev@kiiglobal.io>",
   "license": "Apache-2.0",
