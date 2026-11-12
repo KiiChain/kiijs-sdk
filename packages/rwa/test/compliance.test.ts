@@ -1,25 +1,26 @@
 // compliance.test.ts
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { DeliverTxResponse } from '@cosmjs/stargate';
+import { beforeEach, describe, expect, it, type Mocked, vi } from 'vitest';
 
 import { RwaClient } from '../src/client';
 import { ComplianceModule } from '../src/compliance';
 
 // Mock the entire RwaClient module
-jest.mock('../src/client', () => {
+vi.mock('../src/client', () => {
   // Create a mock implementation that matches the real class
   return {
     RwaClient: {
-      new: jest.fn().mockResolvedValue({
-        execute: jest.fn(),
-        query: jest.fn(),
+      new: vi.fn().mockResolvedValue({
+        execute: vi.fn(),
+        query: vi.fn(),
       }),
     },
   };
 });
 
 describe('ComplianceModule', () => {
-  let mockRwaClient: jest.Mocked<RwaClient>;
+  let mockRwaClient: Mocked<RwaClient>;
   let complianceModule: ComplianceModule;
   const mockComplianceAddress = 'kii1complianceaddress';
   const mockFromAddress = 'kii1fromaddress';
@@ -40,7 +41,7 @@ describe('ComplianceModule', () => {
 
   beforeEach(async () => {
     // Clear all mocks before each test
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     // Get the mocked instance by calling the static 'new' method
     mockRwaClient = (await RwaClient.new(
@@ -49,7 +50,7 @@ describe('ComplianceModule', () => {
       'testdenom',
       '0.025',
       mockSigner
-    )) as jest.Mocked<RwaClient>;
+    )) as Mocked<RwaClient>;
 
     // Mock the execute method to resolve with our test response
     mockRwaClient.execute.mockResolvedValue(mockTxResponse);

@@ -1,11 +1,13 @@
 import { ethers } from 'ethers';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
+
 import { getWASMPrecompileEthersV6Contract } from '../src/ethers/wasmPrecompile';
 import { setupProviderAndWallet } from './utils';
-import 'dotenv/config';
 
-jest.setTimeout(60_000); // Total test timeout
+vi.setConfig({ testTimeout: 60_000 }); // Total test timeout
 
-describe('WASM Precompile Tests', () => {
+// Runs against the live testnet, so it needs a funded account in TEST_PRIVATE_KEY.
+describe.skipIf(!process.env.TEST_PRIVATE_KEY)('WASM Precompile Tests', () => {
   let wallet: ethers.Wallet;
   let wasmPrecompile: ethers.Contract;
 

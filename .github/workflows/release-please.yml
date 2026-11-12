@@ -1,0 +1,81 @@
+name: Release Please
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # Every package shares one version (release-please-config.json bumps them all together), so a release always
+  # publishes all five, changed or not.
+  #
+  # release-please runs on the release bot's token, not GITHUB_TOKEN, so the workflow token needs nothing beyond
+  # reading.
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      # A GitHub App token makes the bot the release PR's author (so anyone can approve it), and unlike GITHUB_TOKEN
+      # its PRs still trigger CI.
+      - name: Generate release bot token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.RELEASE_BOT_APP_ID }}
+          private-key: ${{ secrets.RELEASE_BOT_PRIVATE_KEY }}
+
+      - name: Open or update the release PR, or tag the release
+        id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+
+  publish:
+    needs: release-please
+    if: needs.release-please.outputs.release_created == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # npm trusted publishing (OIDC): no npm token. Each package's trusted publisher on npmjs.com must name this
+      # repository and this workflow file (release-please.yml).
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.release-please.outputs.tag_name }}
+
+      - uses: ./.github/actions/setup
+
+      - name: Build packages
+        run: bun run build
+
+      # `bun pm pack` swaps `workspace:^` for the real version; `npm publish` alone would ship it as-is. npm does the
+      # upload because it's the one that supports trusted publishing and provenance. Dependencies go first.
+      #
+      # A version already on npm is skipped, so re-running after a partial failure publishes only what's missing.
+      # `npm view name@version` prints the version when it exists, prints nothing when the package exists without that
+      # version, and fails with E404 when the package doesn't exist at all. Any other error stops the run.
+      - name: Publish to npm
+        run: |
+          for pkg in proto lcd utils evm rwa; do
+            name=$(node -p "require('./packages/$pkg/package.json').name")
+            version=$(node -p "require('./packages/$pkg/package.json').version")
+
+            if published=$(npm view "$name@$version" version 2> npm-view.err); then
+              if [ "$published" = "$version" ]; then
+                echo "$name@$version is already on npm, skipping"
+                continue
+              fi
+            elif ! grep -q E404 npm-view.err; then
+              cat npm-view.err
+              exit 1
+            fi
+
+            tarball=$(cd "packages/$pkg" && bun pm pack --destination ../../.pack --quiet | tail -n 1)
+            npm publish "$tarball" --provenance --access public
+          done

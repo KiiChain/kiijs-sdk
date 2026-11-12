@@ -1,102 +1,91 @@
 /**
- * Shared build script for all packages.
- * Uses Bun's JS API for ESM/CJS bundling and tsc for type declarations.
+ * Shared build for every package: an ESM-only bundle from Bun.build, plus .d.ts files from tsc.
+ * Run it from a package directory (each package's `build` script does).
  *
- * Usage: bun run scripts/build.ts
- * Run from within a package directory.
+ * Entrypoints come from the package's `exports` map: an export whose `default` is `./dist/foo/index.js` is built from
+ * `src/foo/index.ts`. Dependencies stay external, so consumers dedupe them.
+ *
+ * Declarations come from tsc with the package's tsconfig.build.json, which also type-checks src, so a type error
+ * fails the build.
  */
-import { rmSync, existsSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
-import { resolve } from 'path';
+import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+
+type ExportEntry = { types: string; default: string };
 
 const cwd = process.cwd();
 const pkg = JSON.parse(readFileSync(resolve(cwd, 'package.json'), 'utf-8'));
-const entrypoint = resolve(cwd, 'src/index.ts');
+const distDir = resolve(cwd, 'dist');
 
-if (!existsSync(entrypoint)) {
-  console.error(`Entry point not found: ${entrypoint}`);
+function fail(message: string): never {
+  console.error(message);
+  console.error(`✗ ${pkg.name} build failed`);
   process.exit(1);
 }
 
-// Collect all external dependencies (libraries should not bundle deps)
-const externals: string[] = [
-  ...Object.keys(pkg.dependencies || {}),
-  ...Object.keys(pkg.peerDependencies || {}),
-  ...Object.keys(pkg.optionalDependencies || {}),
-];
+const exportsMap: Record<string, ExportEntry> = pkg.exports;
+const entrypoints = Object.values(exportsMap).map((entry) => {
+  const source = entry.default
+    .replace(/^\.\/dist\//, './src/')
+    .replace(/\.js$/, '.ts');
+  if (!existsSync(resolve(cwd, source))) {
+    fail(`${pkg.name}: no source ${source} for export ${entry.default}`);
+  }
+  return source;
+});
 
-// Clean dist
-const distDir = resolve(cwd, 'dist');
-if (existsSync(distDir)) {
-  rmSync(distDir, { recursive: true });
-}
+rmSync(distDir, { recursive: true, force: true });
 
-console.log(`Building ${pkg.name}...`);
-
-async function build() {
-  // Build ESM with Bun's JS API
-  console.log('  → ESM bundle');
-  const esmResult = await Bun.build({
-    entrypoints: [entrypoint],
-    outdir: resolve(cwd, 'dist/esm'),
+try {
+  await Bun.build({
+    entrypoints,
+    root: './src',
+    outdir: distDir,
     target: 'node',
     format: 'esm',
+    packages: 'external',
     splitting: true,
-    sourcemap: 'external',
-    external: externals,
+    sourcemap: 'linked',
   });
-
-  if (!esmResult.success) {
-    console.error('ESM build errors:');
-    for (const log of esmResult.logs) {
-      console.error(log);
-    }
-    process.exit(1);
-  }
-
-  // Build CJS with Bun's JS API (no splitting — CJS doesn't support it)
-  console.log('  → CJS bundle');
-  const cjsResult = await Bun.build({
-    entrypoints: [entrypoint],
-    outdir: resolve(cwd, 'dist/cjs'),
-    target: 'node',
-    format: 'cjs',
-    splitting: false,
-    sourcemap: 'external',
-    external: externals,
-  });
-
-  if (!cjsResult.success) {
-    console.error('CJS build errors:');
-    for (const log of cjsResult.logs) {
-      console.error(log);
-    }
-    process.exit(1);
-  }
-
-  // Write CJS package.json so Node resolves .js files as CommonJS
-  // even when the parent package has "type": "module"
-  const cjsDir = resolve(cwd, 'dist/cjs');
-  mkdirSync(cjsDir, { recursive: true });
-  writeFileSync(
-    resolve(cjsDir, 'package.json'),
-    JSON.stringify({ type: 'commonjs' }, null, 2) + '\n',
+} catch (error) {
+  fail(
+    ((error as AggregateError).errors ?? [error])
+      .map((log) => String(log))
+      .join('\n')
   );
-
-  // Build type declarations with tsc (still needs CLI — no JS API for tsc)
-  console.log('  → Type declarations');
-  const tscResult = Bun.spawnSync(
-    ['npx', 'tsc', '--project', './tsconfig.declaration.json'],
-    { cwd, stdio: ['inherit', 'inherit', 'inherit'] },
-  );
-
-  if (tscResult.exitCode !== 0) {
-    throw new Error('tsc failed');
-  }
 }
 
-build()
-  .then(() => console.log(`✓ ${pkg.name} built successfully`))
-  .catch(() => {
-    console.error(`✗ ${pkg.name} build failed`);
-    process.exit(1);
-  });
+const tsc = Bun.spawnSync(['tsc', '--project', 'tsconfig.build.json'], {
+  cwd,
+  stdio: ['inherit', 'inherit', 'inherit'],
+});
+if (tsc.exitCode !== 0) {
+  fail('tsc failed');
+}
+
+// tsc keeps relative specifiers as written (`./cosmjs`), but in a `"type": "module"` package Node-style resolution
+// (TypeScript's node16/nodenext) needs the full path. Point each one at the .js file its declaration sits next to.
+const relativeSpecifier =
+  /((?:from|import)\s*\(?\s*['"])(\.{1,2}\/[^'"]*?)(['"])/g;
+
+for (const file of new Bun.Glob('**/*.d.ts').scanSync(distDir)) {
+  const path = resolve(distDir, file);
+  const dir = dirname(path);
+  const source = readFileSync(path, 'utf-8');
+  const rewritten = source.replace(
+    relativeSpecifier,
+    (match, before: string, specifier: string, after: string) => {
+      if (/\.(js|json)$/.test(specifier)) return match;
+      if (existsSync(resolve(dir, `${specifier}.d.ts`))) {
+        return `${before}${specifier}.js${after}`;
+      }
+      if (existsSync(resolve(dir, specifier, 'index.d.ts'))) {
+        return `${before}${specifier}/index.js${after}`;
+      }
+      fail(`${file}: can't resolve ${specifier}`);
+    }
+  );
+  if (rewritten !== source) writeFileSync(path, rewritten);
+}
+
+console.log(`✓ ${pkg.name} built`);

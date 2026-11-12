@@ -1,11 +1,13 @@
 import { ethers } from 'ethers';
-import 'dotenv/config';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
+
 import { getBankPrecompileEthersV6Contract } from '../src/ethers/bankPrecompile';
 import { setupProviderAndWallet } from './utils';
 
-jest.setTimeout(60_000); // Total test timeout
+vi.setConfig({ testTimeout: 60_000 }); // Total test timeout
 
-describe('Connect Wallet Test', () => {
+// Runs against the live testnet, so it needs a funded account in TEST_PRIVATE_KEY.
+describe.skipIf(!process.env.TEST_PRIVATE_KEY)('Connect Wallet Test', () => {
   let provider: ethers.JsonRpcProvider;
   let wallet: ethers.Wallet;
 

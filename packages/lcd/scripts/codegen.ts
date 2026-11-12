@@ -1,4 +1,5 @@
 import * as path from 'node:path';
+
 import { generateApi } from 'swagger-typescript-api';
 
 await generateApi({

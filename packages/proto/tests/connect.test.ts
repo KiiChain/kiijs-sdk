@@ -1,12 +1,14 @@
+import { describe, expect, it, vi } from 'vitest';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { SigningStargateClient } from '@cosmjs/stargate';
 
 import { kiichain } from '../src';
 import { setupTestClient,TESTNET_CONFIG } from './utils';
 
-jest.setTimeout(30_000); // Total test timeout
+vi.setConfig({ testTimeout: 30_000 }); // Total test timeout
 
-describe('sign connection Test', () => {
+// Runs against the live testnet, so it needs a funded account in TEST_MNEMONIC.
+describe.skipIf(!process.env.TEST_MNEMONIC)('sign connection Test', () => {
   let client: SigningStargateClient;
   let wallet: DirectSecp256k1HdWallet;
 

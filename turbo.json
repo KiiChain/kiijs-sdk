@@ -1,26 +1,45 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://turborepo.com/schema.json",
+  "futureFlags": {
+    "affectedUsingTaskInputs": true
+  },
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
+      "inputs": [
+        "src/**",
+        "package.json",
+        "tsconfig.json",
+        "tsconfig.build.json",
+        "$TURBO_ROOT$/scripts/build.ts",
+        "$TURBO_ROOT$/tsconfig.base.json"
+      ],
       "outputs": ["dist/**"]
     },
     "test": {
-      "dependsOn": ["build"],
-      "outputs": []
-    },
-    "test:ci": {
-      "dependsOn": ["build"],
-      "outputs": []
-    },
-    "lint": {
-      "outputs": []
-    },
-    "codegen": {
-      "outputs": ["src/**"],
+      "dependsOn": ["^build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/vitest.shared.ts",
+        "$TURBO_ROOT$/vitest.setup.ts",
+        "$TURBO_ROOT$/tsconfig.base.json"
+      ],
+      "passThroughEnv": ["TEST_*"],
       "cache": false
     },
-    "clean": {
+    "lint": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/tsconfig.base.json",
+        "$TURBO_ROOT$/eslint.config.js"
+      ]
+    },
+    "lint:fix": {
+      "dependsOn": ["^build"],
+      "cache": false
+    },
+    "codegen": {
       "cache": false
     }
   }

@@ -1,11 +1,11 @@
+import { Coin, StdFee } from '@cosmjs/amino';
 import { CosmWasmClient, JsonObject } from '@cosmjs/cosmwasm-stargate';
 import { toUtf8 } from '@cosmjs/encoding';
-import { Coin, StdFee } from '@cosmjs/launchpad';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { Registry } from '@cosmjs/proto-signing';
 import { DeliverTxResponse, SigningStargateClient } from '@cosmjs/stargate';
 import { defaultRegistryTypes } from '@cosmjs/stargate';
-import { MsgExecuteContract } from 'cosmjs-types/cosmwasm/wasm/v1/tx';
+import { MsgExecuteContract } from 'cosmjs-types/cosmwasm/wasm/v1/tx.js';
 
 export interface AccountInfoResponse {
   account_number: number;

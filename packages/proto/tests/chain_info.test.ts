@@ -1,11 +1,12 @@
-// packages/proto/tests/integration/chain-info.test.ts
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { StargateClient } from '@cosmjs/stargate';
 
 import { TESTNET_CONFIG as TESTNET_CONFIG, withRetry } from './utils';
 
-jest.setTimeout(30_000); // Total test timeout
+vi.setConfig({ testTimeout: 30_000 }); // Total test timeout
 
-describe('Chain Info Tests', () => {
+// Runs against the live testnet, so it needs a funded account in TEST_MNEMONIC.
+describe.skipIf(!process.env.TEST_MNEMONIC)('Chain Info Tests', () => {
   let client: StargateClient;
 
   beforeAll(async () => {

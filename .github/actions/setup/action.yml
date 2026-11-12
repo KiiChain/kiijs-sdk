@@ -1,0 +1,28 @@
+name: Setup
+description: Installs Node, the Bun version pinned in package.json, and the workspace dependencies
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "26"
+        registry-url: "https://registry.npmjs.org"
+
+    - name: Cache Bun dependencies
+      uses: actions/cache@v5
+      with:
+        path: ~/.bun/install/cache
+        key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-bun-
+
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version-file: package.json
+
+    - name: Install dependencies
+      shell: bash
+      run: bun install --frozen-lockfile
