@@ -5,7 +5,7 @@ Typescript library containing general utility functions for interacting with Kii
 ## Installation
 
 ```bash
-yarn add @kiichain/kiijs-utils @kiichain/kiijs-proto
+npm install @kiichain/kiijs-utils @kiichain/kiijs-proto
 ```
 
 <br>

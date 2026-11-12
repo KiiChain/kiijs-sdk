@@ -7,7 +7,7 @@ A TypeScript SDK for interacting with Real World Assets (RWA) on Cosmos-based bl
 ```bash
 npm install @kiichain/kiijs-rwa
 # or
-yarn add @kiichain/kiijs-rwa
+npm install @kiichain/kiijs-rwa
 ```
 
 ## Getting Started
@@ -372,7 +372,5 @@ console.log(`Transfer tx hash: ${transferResult.transactionHash}`);
 Run tests with:
 
 ```bash
-npm test
-# or
-yarn test
+bun run test
 ```

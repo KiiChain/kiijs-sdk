@@ -1,26 +1,26 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://turborepo.com/schema.json",
+  "futureFlags": {
+    "affectedUsingTaskInputs": true
+  },
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
+      "inputs": ["src/**", "package.json", "tsconfig.json", "../../scripts/build.ts"],
       "outputs": ["dist/**"]
     },
     "test": {
-      "dependsOn": ["build"],
-      "outputs": []
-    },
-    "test:ci": {
-      "dependsOn": ["build"],
-      "outputs": []
+      "dependsOn": ["^build"],
+      "passThroughEnv": ["TEST_*"]
     },
     "lint": {
-      "outputs": []
+      "dependsOn": ["^build"]
     },
-    "codegen": {
-      "outputs": ["src/**"],
+    "lint:fix": {
+      "dependsOn": ["^build"],
       "cache": false
     },
-    "clean": {
+    "codegen": {
       "cache": false
     }
   }

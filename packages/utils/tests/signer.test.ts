@@ -1,6 +1,7 @@
-import { Any } from 'cosmjs-types/google/protobuf/any';
-import { BaseAccount } from 'cosmjs-types/cosmos/auth/v1beta1/auth';
 import { cosmos } from '@kiichain/kiijs-proto';
+import { BaseAccount } from 'cosmjs-types/cosmos/auth/v1beta1/auth.js';
+import { Any } from 'cosmjs-types/google/protobuf/any.js';
+import { describe, expect, it } from 'vitest';
 
 import { ethsecpAccountParser } from '../src/cosmjs/signer';
 

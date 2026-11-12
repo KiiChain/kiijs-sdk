@@ -1,5 +1,4 @@
 import { ethers } from 'ethers';
-import 'dotenv/config';
 
 export const TESTNET_CONFIG = {
   rpcEndpoint: 'https://json-rpc.dos.sentry.testnet.v3.kiivalidator.com/',

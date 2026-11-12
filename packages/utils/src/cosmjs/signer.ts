@@ -8,9 +8,9 @@ import {
 } from '@cosmjs/proto-signing';
 import { type Account, SigningStargateClient } from '@cosmjs/stargate';
 import { cosmos } from '@kiichain/kiijs-proto';
-import { BaseAccount } from 'cosmjs-types/cosmos/auth/v1beta1/auth';
-import { TxRaw } from 'cosmjs-types/cosmos/tx/v1beta1/tx';
-import { Any } from 'cosmjs-types/google/protobuf/any';
+import { BaseAccount } from 'cosmjs-types/cosmos/auth/v1beta1/auth.js';
+import { TxRaw } from 'cosmjs-types/cosmos/tx/v1beta1/tx.js';
+import { Any } from 'cosmjs-types/google/protobuf/any.js';
 
 const { PubKey } = cosmos.evm.crypto.v1.ethsecp256k1;
 

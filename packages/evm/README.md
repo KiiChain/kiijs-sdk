@@ -5,7 +5,7 @@ Typescript library containing helper functions for interacting with the EVM on K
 ## Installation
 
 ```bash
-yarn add @kiichain/kiijs-evm ethers viem
+npm install @kiichain/kiijs-evm ethers viem
 ```
 
 <br>

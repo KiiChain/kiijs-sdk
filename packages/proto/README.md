@@ -227,8 +227,8 @@ const stargateClient = await SigningStargateClient.connectWithSigner(rpcEndpoint
 When first cloning the repo:
 
 ```
-yarn
-yarn build
+bun install
+bun run build
 ```
 
 ### Codegen
@@ -236,7 +236,7 @@ yarn build
 Look inside of `scripts/codegen.ts` and configure the settings for bundling your SDK and contracts into `kiijs-proto`:
 
 ```
-yarn codegen
+bun run codegen
 ```
 
 ## Credits

@@ -1,7 +1,8 @@
 **/node_modules/
 **/.DS_Store
 **/dist
-**/yarn-error.log
 **/.env
-.turbo
-.yarn/install-state.gz
+**/.turbo
+coverage
+.pack
+*.tgz

@@ -1,13 +1,13 @@
 import { TelescopeInput } from '@cosmology/telescope';
 import telescope from '@cosmology/telescope';
-import { join } from 'path';
-import { rimrafSync as rimraf } from 'rimraf';
+import { rmSync } from 'node:fs';
+import { join } from 'node:path';
 
 import { AMINO_MAP } from './aminos';
 
-const protoDirs: string[] = [join(__dirname, '/../proto')];
-const outPath: string = join(__dirname, '../src');
-rimraf(outPath);
+const protoDirs: string[] = [join(import.meta.dirname, '../proto')];
+const outPath: string = join(import.meta.dirname, '../src');
+rmSync(outPath, { recursive: true, force: true });
 
 export const options: TelescopeInput = {
   protoDirs,

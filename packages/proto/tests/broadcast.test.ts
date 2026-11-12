@@ -1,3 +1,4 @@
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { AccountData, StdFee } from '@cosmjs/amino';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { SigningStargateClient } from '@cosmjs/stargate';
@@ -5,9 +6,10 @@ import { SigningStargateClient } from '@cosmjs/stargate';
 import { cosmos } from '../src/';
 import { setupTestClient } from './utils';
 
-jest.setTimeout(30_000); // Total test timeout
+vi.setConfig({ testTimeout: 30_000 }); // Total test timeout
 
-describe('sign connection Test', () => {
+// Runs against the live testnet, so it needs a funded account in TEST_MNEMONIC.
+describe.skipIf(!process.env.TEST_MNEMONIC)('sign connection Test', () => {
   let client: SigningStargateClient;
   let wallet: DirectSecp256k1HdWallet;
   let account: AccountData;

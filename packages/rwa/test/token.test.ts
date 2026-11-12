@@ -1,24 +1,25 @@
 // token.test.ts
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { DeliverTxResponse } from '@cosmjs/stargate';
+import { beforeEach, describe, expect, it, type Mocked, vi } from 'vitest';
 
 import { RwaClient } from '../src/client';
 import { TokenModule } from '../src/token';
 
 // Mock the entire RwaClient module
-jest.mock('../src/client', () => {
+vi.mock('../src/client', () => {
   return {
     RwaClient: {
-      new: jest.fn().mockResolvedValue({
-        execute: jest.fn(),
-        query: jest.fn(),
+      new: vi.fn().mockResolvedValue({
+        execute: vi.fn(),
+        query: vi.fn(),
       }),
     },
   };
 });
 
 describe('TokenModule', () => {
-  let mockRwaClient: jest.Mocked<RwaClient>;
+  let mockRwaClient: Mocked<RwaClient>;
   let tokenModule: TokenModule;
   const mockTokenAddress = 'kii1tokenaddress';
   const mockFromAddress = 'kii1fromaddress';
@@ -48,7 +49,7 @@ describe('TokenModule', () => {
   };
 
   beforeEach(async () => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     // Get the mocked instance by calling the static 'new' method
     mockRwaClient = (await RwaClient.new(
@@ -57,7 +58,7 @@ describe('TokenModule', () => {
       'testdenom',
       '0.025',
       mockSigner
-    )) as jest.Mocked<RwaClient>;
+    )) as Mocked<RwaClient>;
 
     mockRwaClient.execute.mockResolvedValue(mockTxResponse);
 

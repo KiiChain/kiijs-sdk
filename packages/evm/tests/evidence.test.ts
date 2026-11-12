@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 // Skipped: evidencePrecompile module has not been implemented yet.
 // Re-enable this test suite once src/ethers/evidencePrecompile.ts exists.
 

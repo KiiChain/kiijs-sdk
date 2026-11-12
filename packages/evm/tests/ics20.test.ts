@@ -1,11 +1,13 @@
 import { ethers } from 'ethers';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
+
 import { getIcs20PrecompileEthersV6Contract } from '../src/ethers/ics20Precompile';
 import { setupProviderAndWallet } from './utils';
-import 'dotenv/config';
 
-jest.setTimeout(60_000); // Total test timeout
+vi.setConfig({ testTimeout: 60_000 }); // Total test timeout
 
-describe('ICS20 Precompile Tests', () => {
+// Runs against the live testnet, so it needs a funded account in TEST_PRIVATE_KEY.
+describe.skipIf(!process.env.TEST_PRIVATE_KEY)('ICS20 Precompile Tests', () => {
   let wallet: ethers.Wallet;
   let ics20Precompile: ethers.Contract;
 

@@ -1,18 +1,19 @@
 import { DeliverTxResponse } from '@cosmjs/stargate';
+import { beforeEach, describe, expect, it, type Mocked, vi } from 'vitest';
 
 import { RwaClient } from '../src/client';
 import {
-  RwaProtocolModule,
   AssetMetadata,
   CollateralStatus,
   IssuerCredentials,
+  RwaProtocolModule,
 } from '../src/protocol';
 
 // Mock the RwaClient
-jest.mock('../src/client');
+vi.mock('../src/client');
 
 describe('RwaProtocolModule', () => {
-  let rwaClient: jest.Mocked<RwaClient>;
+  let rwaClient: Mocked<RwaClient>;
   let rwaProtocolModule: RwaProtocolModule;
   const mockRwaProtocolAddress = 'kii1rwaprotocoladdress';
   const mockFromAddress = 'kii1fromaddress';
@@ -23,13 +24,13 @@ describe('RwaProtocolModule', () => {
 
   beforeEach(() => {
     // Clear all mocks
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     // Create a mock RwaClient
     // We need to mock the static 'new' method since the constructor is private
-    rwaClient = {} as jest.Mocked<RwaClient>;
-    rwaClient.execute = jest.fn().mockResolvedValue({} as DeliverTxResponse);
-    rwaClient.query = jest
+    rwaClient = {} as Mocked<RwaClient>;
+    rwaClient.execute = vi.fn().mockResolvedValue({} as DeliverTxResponse);
+    rwaClient.query = vi
       .fn()
       .mockImplementation((contractAddress, queryMsg) => {
         if (queryMsg.asset_metadata) {
@@ -299,9 +300,8 @@ describe('RwaProtocolModule', () => {
 
   describe('verifyIssuerCredentials', () => {
     it('should call execute with correct parameters', async () => {
-      // Mock Date.now() to return a fixed timestamp
-      const mockDate = new Date('2023-03-01T00:00:00Z');
-      jest.spyOn(global, 'Date').mockImplementation(() => mockDate as Date);
+      // Freeze the clock so the verification date is predictable
+      vi.useFakeTimers({ now: new Date('2023-03-01T00:00:00Z') });
 
       await rwaProtocolModule.verifyIssuerCredentials({
         from: mockFromAddress,
@@ -324,8 +324,7 @@ describe('RwaProtocolModule', () => {
         mockGasLimit
       );
 
-      // Restore the original Date implementation
-      jest.restoreAllMocks();
+      vi.useRealTimers();
     });
   });
 });

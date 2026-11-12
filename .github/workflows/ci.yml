@@ -1,0 +1,86 @@
+name: Build, Lint, Test, and Format Check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+# format-check needs no build, so it starts right away. build saves Turborepo's cache for this commit; lint and test
+# restore it, so their "build dependencies first" step is a cache hit instead of a rebuild.
+#
+# build, lint and test only run for the packages a change affects (Turborepo's --affected), plus everything that
+# depends on them. The base is the PR's target branch, or the commit before the push on main.
+env:
+  TURBO_SCM_BASE: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before }}
+
+jobs:
+  format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: Check code formatting
+        run: bun run format:check
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # --affected needs the history back to the comparison base
+          fetch-depth: 0
+      - uses: ./.github/actions/setup
+      - name: Cache Turborepo
+        uses: actions/cache@v5
+        with:
+          path: .turbo/cache
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+      - name: Build packages
+        run: bun run build --affected
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup
+      - name: Restore Turborepo cache
+        uses: actions/cache/restore@v5
+        with:
+          path: .turbo/cache
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+      - name: Run linting
+        run: bun run lint --affected
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup
+      - name: Restore Turborepo cache
+        uses: actions/cache/restore@v5
+        with:
+          path: .turbo/cache
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+      # The evm and proto suites run against the live testnet and skip themselves when these aren't set, as on PRs
+      # from forks. `bun run`, not `bun test`: the latter is Bun's built-in test runner, not this script.
+      - name: Run tests
+        env:
+          TEST_MNEMONIC: ${{ secrets.TEST_MNEMONIC }}
+          TEST_PRIVATE_KEY: ${{ secrets.TEST_PRIVATE_KEY }}
+          TEST_HEX_ADDRESS: ${{ secrets.TEST_HEX_ADDRESS }}
+        run: bun run test --affected

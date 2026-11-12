@@ -1,63 +1,68 @@
 import { ethers } from 'ethers';
-import 'dotenv/config';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
+
 import { getDistributionPrecompileEthersV6Contract } from '../src/ethers/distributionPrecompile';
 import { setupProviderAndWallet } from './utils';
 
-jest.setTimeout(60_000); // Total test timeout
+vi.setConfig({ testTimeout: 60_000 }); // Total test timeout
 
-describe('Distribution Precompile Tests', () => {
-  let wallet: ethers.Wallet;
-  let distributionContract: ReturnType<
-    typeof getDistributionPrecompileEthersV6Contract
-  >;
+// Runs against the live testnet, so it needs a funded account in TEST_PRIVATE_KEY.
+describe.skipIf(!process.env.TEST_PRIVATE_KEY)(
+  'Distribution Precompile Tests',
+  () => {
+    let wallet: ethers.Wallet;
+    let distributionContract: ReturnType<
+      typeof getDistributionPrecompileEthersV6Contract
+    >;
 
-  beforeAll(async () => {
-    const [, walletInstance] = setupProviderAndWallet();
-    wallet = walletInstance;
-    distributionContract = getDistributionPrecompileEthersV6Contract(wallet);
-    console.log('Wallet address:', wallet.address);
-  });
+    beforeAll(async () => {
+      const [, walletInstance] = setupProviderAndWallet();
+      wallet = walletInstance;
+      distributionContract = getDistributionPrecompileEthersV6Contract(wallet);
+      console.log('Wallet address:', wallet.address);
+    });
 
-  it('should get delegation total rewards', async () => {
-    try {
-      const totalRewards = await distributionContract.delegationTotalRewards(
-        wallet.address
-      );
+    it('should get delegation total rewards', async () => {
+      try {
+        const totalRewards = await distributionContract.delegationTotalRewards(
+          wallet.address
+        );
 
-      console.log('Delegation total rewards:', totalRewards);
-      expect(totalRewards).toBeDefined();
+        console.log('Delegation total rewards:', totalRewards);
+        expect(totalRewards).toBeDefined();
 
-      // Check if we have rewards data
-      if (totalRewards && totalRewards.rewards) {
-        console.log('Total rewards:', totalRewards.rewards);
-        expect(Array.isArray(totalRewards.rewards)).toBe(true);
-      } else {
-        console.log('No rewards data available');
+        // Check if we have rewards data
+        if (totalRewards && totalRewards.rewards) {
+          console.log('Total rewards:', totalRewards.rewards);
+          expect(Array.isArray(totalRewards.rewards)).toBe(true);
+        } else {
+          console.log('No rewards data available');
+        }
+      } catch (error) {
+        console.log('Error getting delegation total rewards:', error);
+        // Skip the test if there's an error
+        console.log(
+          'Skipping test as there might be no delegations for this wallet'
+        );
       }
-    } catch (error) {
-      console.log('Error getting delegation total rewards:', error);
-      // Skip the test if there's an error
-      console.log(
-        'Skipping test as there might be no delegations for this wallet'
-      );
-    }
-  });
+    });
 
-  it('should get withdraw address', async () => {
-    try {
-      const withdrawAddress = await distributionContract.withdrawAddress(
-        wallet.address
-      );
+    it('should get withdraw address', async () => {
+      try {
+        const withdrawAddress = await distributionContract.withdrawAddress(
+          wallet.address
+        );
 
-      console.log('Withdraw address:', withdrawAddress);
-      expect(withdrawAddress).toBeDefined();
-      expect(typeof withdrawAddress).toBe('string');
-    } catch (error) {
-      console.log('Error getting withdraw address:', error);
-      // Skip the test if there's an error
-      console.log(
-        'Skipping test as there might be an issue with the withdraw address'
-      );
-    }
-  });
-});
+        console.log('Withdraw address:', withdrawAddress);
+        expect(withdrawAddress).toBeDefined();
+        expect(typeof withdrawAddress).toBe('string');
+      } catch (error) {
+        console.log('Error getting withdraw address:', error);
+        // Skip the test if there's an error
+        console.log(
+          'Skipping test as there might be an issue with the withdraw address'
+        );
+      }
+    });
+  }
+);

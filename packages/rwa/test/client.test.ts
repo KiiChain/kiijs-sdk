@@ -1,14 +1,23 @@
+import { Coin } from '@cosmjs/amino';
 import { CosmWasmClient } from '@cosmjs/cosmwasm-stargate';
-import { Coin } from '@cosmjs/launchpad';
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing';
 import { DeliverTxResponse, SigningStargateClient } from '@cosmjs/stargate';
+import {
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type Mock,
+  type Mocked,
+  vi,
+} from 'vitest';
 
 import { RwaClient } from '../src/client';
 
 // Mock the external dependencies
-jest.mock('@cosmjs/proto-signing');
-jest.mock('@cosmjs/stargate');
-jest.mock('@cosmjs/cosmwasm-stargate');
+vi.mock('@cosmjs/proto-signing');
+vi.mock('@cosmjs/stargate');
+vi.mock('@cosmjs/cosmwasm-stargate');
 
 describe('RwaClient', () => {
   const mockRpcUrl = 'http://localhost:26657';
@@ -18,9 +27,9 @@ describe('RwaClient', () => {
   const mockFromAddress = 'kii1abc...';
   const mockContractAddress = 'kii123...';
 
-  let mockSigner: jest.Mocked<DirectSecp256k1HdWallet>;
-  let mockRpcClient: jest.Mocked<SigningStargateClient>;
-  let mockQueryClient: jest.Mocked<CosmWasmClient>;
+  let mockSigner: Mocked<DirectSecp256k1HdWallet>;
+  let mockRpcClient: Mocked<SigningStargateClient>;
+  let mockQueryClient: Mocked<CosmWasmClient>;
   let rwaClient: RwaClient;
 
   // Sample test data
@@ -43,29 +52,29 @@ describe('RwaClient', () => {
 
   beforeEach(async () => {
     // Reset all mocks before each test
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     // Setup mock signer
     mockSigner = {
-      getAccounts: jest.fn().mockResolvedValue([{ address: mockFromAddress }]),
-    } as unknown as jest.Mocked<DirectSecp256k1HdWallet>;
+      getAccounts: vi.fn().mockResolvedValue([{ address: mockFromAddress }]),
+    } as unknown as Mocked<DirectSecp256k1HdWallet>;
 
     // Setup mock RPC client
     mockRpcClient = {
-      getAccount: jest.fn().mockResolvedValue(mockAccountInfo),
-      signAndBroadcast: jest.fn().mockResolvedValue(mockDeliverTxResponse),
-    } as unknown as jest.Mocked<SigningStargateClient>;
+      getAccount: vi.fn().mockResolvedValue(mockAccountInfo),
+      signAndBroadcast: vi.fn().mockResolvedValue(mockDeliverTxResponse),
+    } as unknown as Mocked<SigningStargateClient>;
 
     // Setup mock query client
     mockQueryClient = {
-      queryContractSmart: jest.fn().mockResolvedValue({}),
-    } as unknown as jest.Mocked<CosmWasmClient>;
+      queryContractSmart: vi.fn().mockResolvedValue({}),
+    } as unknown as Mocked<CosmWasmClient>;
 
     // Mock the static methods
-    (SigningStargateClient.connectWithSigner as jest.Mock).mockResolvedValue(
+    (SigningStargateClient.connectWithSigner as Mock).mockResolvedValue(
       mockRpcClient
     );
-    (CosmWasmClient.connect as jest.Mock).mockResolvedValue(mockQueryClient);
+    (CosmWasmClient.connect as Mock).mockResolvedValue(mockQueryClient);
 
     // Create a real instance with mocked dependencies
     rwaClient = await RwaClient.new(
@@ -89,7 +98,7 @@ describe('RwaClient', () => {
     });
 
     it('should throw when initialization fails', async () => {
-      (SigningStargateClient.connectWithSigner as jest.Mock).mockRejectedValue(
+      (SigningStargateClient.connectWithSigner as Mock).mockRejectedValue(
         new Error('Connection failed')
       );
 

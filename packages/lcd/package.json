@@ -1,59 +1,48 @@
 {
   "name": "@kiichain/kiijs-lcd",
-  "version": "0.1.0",
-  "author": "kiiglobal.io <dev@kiiglobal.io>",
+  "version": "0.5.1",
   "description": "JS SDK for kiichain LCD endpoints",
-  "type": "module",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/types/index.d.ts",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/esm/index.js"
-      },
-      "require": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/cjs/index.js"
-      }
-    }
-  },
-  "homepage": "https://github.com/KiiChain/kiijs-sdk",
+  "author": "kiiglobal.io <dev@kiiglobal.io>",
   "license": "Apache-2.0",
-  "overrides": {
-    "chalk": "5.3.0",
-    "strip-ansi": "7.1.0",
-    "color-convert": "2.0.1",
-    "color-name": "1.1.4",
-    "is-core-module": "2.13.1",
-    "error-ex": "1.3.2",
-    "has-ansi": "5.0.1"
-  },
-  "files": [
-    "dist"
-  ],
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
-  },
+  "homepage": "https://github.com/KiiChain/kiijs-sdk#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/KiiChain/kiijs-sdk"
+    "url": "git+https://github.com/KiiChain/kiijs-sdk.git",
+    "directory": "packages/lcd"
   },
   "bugs": {
     "url": "https://github.com/KiiChain/kiijs-sdk/issues"
   },
+  "keywords": [
+    "kii",
+    "kiichain",
+    "typescript"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=26"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "clean": "npx rimraf dist",
-    "build": "bun run ../../scripts/build.ts",
-    "codegen": "npx tsx scripts/codegen.ts",
-    "lint": "npx eslint src/"
+    "build": "bun ../../scripts/build.ts",
+    "lint": "tsc && eslint .",
+    "lint:fix": "eslint . --fix",
+    "codegen": "bun scripts/codegen.ts"
   },
   "devDependencies": {
-    "swagger-typescript-api": "^13.2.13",
-    "tsx": "^4.20.6"
-  },
-  "keywords": [],
-  "packageManager": "yarn@4.10.3"
+    "swagger-typescript-api": "^13.2.13"
+  }
 }

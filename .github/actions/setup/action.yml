@@ -1,0 +1,32 @@
+name: Setup
+description: Installs Node, the Bun version pinned in package.json, and the workspace dependencies
+
+# Bun comes from npm rather than oven-sh/setup-bun: the build needs a Bun canary for `Bun.build({ dts })`, and only
+# npm keeps every canary build under its own version. setup-bun's "canary" is whatever the latest one is.
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "26"
+        registry-url: "https://registry.npmjs.org"
+
+    - name: Setup Bun
+      shell: bash
+      run: |
+        version=$(node -p "require('./package.json').packageManager.replace(/^bun@/, '')")
+        npm install --global "bun@$version"
+        bun --revision
+
+    - name: Cache Bun dependencies
+      uses: actions/cache@v5
+      with:
+        path: ~/.bun/install/cache
+        key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-bun-
+
+    - name: Install dependencies
+      shell: bash
+      run: bun install --frozen-lockfile

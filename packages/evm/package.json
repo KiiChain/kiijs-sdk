@@ -1,47 +1,18 @@
 {
   "name": "@kiichain/kiijs-evm",
   "version": "0.5.1",
-  "type": "module",
-  "author": "kiiglobal.io <devs@kiiglobal.io>",
   "description": "TypeScript library for EVM interactions on the Kii blockchain",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/types/index.d.ts",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/esm/index.js"
-      },
-      "require": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/cjs/index.js"
-      }
-    }
-  },
-  "sideEffects": false,
-  "overrides": {
-    "chalk": "5.3.0",
-    "strip-ansi": "7.1.0",
-    "color-convert": "2.0.1",
-    "color-name": "1.1.4",
-    "is-core-module": "2.13.1",
-    "error-ex": "1.3.2",
-    "has-ansi": "5.0.1"
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "prebuild": "npx rimraf dist",
-    "build": "bun run ../../scripts/build.ts",
-    "docs": "npx typedoc --out docs",
-    "test": "yarn jest",
-    "test:ci": "yarn jest",
-    "lint": "npx eslint src/",
-    "generate": "wagmi generate"
-  },
+  "author": "kiiglobal.io <dev@kiiglobal.io>",
+  "license": "Apache-2.0",
   "homepage": "https://github.com/KiiChain/kiijs-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KiiChain/kiijs-sdk.git",
+    "directory": "packages/evm"
+  },
+  "bugs": {
+    "url": "https://github.com/KiiChain/kiijs-sdk/issues"
+  },
   "keywords": [
     "kii",
     "javascript",
@@ -49,25 +20,61 @@
     "node",
     "evm"
   ],
-  "repository": "git@github.com:KiiChain/kiijs-sdk.git",
-  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./ethers": {
+      "types": "./dist/ethers/index.d.ts",
+      "default": "./dist/ethers/index.js"
+    },
+    "./viem": {
+      "types": "./dist/viem/index.d.ts",
+      "default": "./dist/viem/index.js"
+    },
+    "./wagmi": {
+      "types": "./dist/wagmi/index.d.ts",
+      "default": "./dist/wagmi/index.js"
+    },
+    "./precompiles": {
+      "types": "./dist/precompiles/index.d.ts",
+      "default": "./dist/precompiles/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=26"
+  },
   "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
+    "access": "public"
+  },
+  "scripts": {
+    "build": "bun ../../scripts/build.ts",
+    "test": "vitest run",
+    "lint": "tsc && eslint .",
+    "lint:fix": "eslint . --fix",
+    "codegen": "wagmi generate"
   },
   "peerDependencies": {
+    "@tanstack/react-query": ">=5.0.0",
     "ethers": "^6.0.0",
+    "react": ">=18",
     "viem": "2.x",
     "wagmi": "^2.18.2"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.14",
+    "@tanstack/react-query": "^5.0.0",
     "@wagmi/cli": "^2.7.0",
     "ethers": "^6.0.0",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.3.1",
+    "react": "^19.0.0",
     "viem": "2.x",
     "wagmi": "^2.18.2"
-  },
-  "packageManager": "yarn@4.10.3"
+  }
 }
