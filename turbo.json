@@ -18,10 +18,22 @@
     },
     "test": {
       "dependsOn": ["^build"],
-      "passThroughEnv": ["TEST_*"]
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/vitest.shared.ts",
+        "$TURBO_ROOT$/vitest.setup.ts",
+        "$TURBO_ROOT$/tsconfig.base.json"
+      ],
+      "passThroughEnv": ["TEST_*"],
+      "cache": false
     },
     "lint": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/tsconfig.base.json",
+        "$TURBO_ROOT$/eslint.config.js"
+      ]
     },
     "lint:fix": {
       "dependsOn": ["^build"],
